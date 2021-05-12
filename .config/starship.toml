@@ -1,0 +1,38 @@
+# ❯, ➜
+# Use custom format
+format = '''
+[╭\[](blue)[cs](yellow)[@](blue)$hostname[\]](blue) [➜](blue) $directory [\(](blue)$git_branch $git_state$git_status$git_commit[\)](blue)
+[╰➜](blue) '''
+# {](blue)[}
+[username]
+# show_always = true
+format = "[$user]($style)[@](blue)"
+style_user = "cyan"
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style)"
+style = "cyan" #
+
+[git_branch]
+format = "[$symbol$branch]($style)"
+style = "cyan" #
+symbol = "[ ](yellow)"
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style)"
+truncation_length = 4
+truncation_symbol = "…/"
+style = "purple"
+read_only = ""
+read_only_style = "yellow"
+
+[git_status]
+style = "yellow"
+format = '([$all_status$ahead_behind]($style))'
+
+[git_commit]
+style = "cyan"
+
+[git_state]
+style = "cyan"

@@ -1,0 +1,34 @@
+{
+  "4090:1C541CAE": {
+    "_modelId": "B02540900000",
+    "_name": "MX Anywhere 3",
+    "_sensitive": {
+      "divert-keys": false,
+      "hires-smooth-resolution": true,
+      "mouse-gestures": false
+    },
+    "_serial": "1C541CAE",
+    "_unitId": "1C541CAE",
+    "divert-keys": {
+      "196": 0,
+      "82": 0,
+      "83": 0,
+      "86": 0
+    },
+    "dpi": "1000",
+    "dpi-sliding": 0,
+    "hires-smooth-invert": false,
+    "hires-smooth-resolution": true,
+    "mouse-gestures": "0",
+    "reprogrammable-keys": {
+      "196": 196,
+      "80": 80,
+      "81": 81,
+      "82": 82,
+      "83": 83,
+      "86": 86
+    },
+    "smart-shift": 10
+  },
+  "_version": "1.0.6rc1"
+}
