@@ -1,0 +1,20 @@
+"*":
+  core:
+    telemetryConsent: "no"
+    themes: [
+      "dracula-ui"
+      "dracula-syntax"
+    ]
+  editor:
+    fontSize: 16
+  "exception-reporting":
+    userId: "61c0fb46-ddea-4bf5-a45f-fc568cb39a38"
+  fonts:
+    fontFamily: "Hack"
+    secondaryFonts: "\"Hack Nerd Font\""
+  minimap:
+    plugins:
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+  welcome:
+    showOnStartup: false

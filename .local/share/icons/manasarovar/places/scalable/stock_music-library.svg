@@ -1,0 +1,18 @@
+<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <linearGradient id="a" x2="1" gradientTransform="matrix(55.3026 106.602 -106.602 55.3026 -398.117 235.428)" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#00f5ff" offset="0"/>
+  <stop stop-color="#9a11a2" offset="1"/>
+ </linearGradient>
+ <linearGradient id="b" x2="1" gradientTransform="matrix(-.197428 -60.0411 60.0411 -.197428 1811.65 85.7073)" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#ececec" offset="0"/>
+  <stop stop-color="#e4f7ff" offset="1"/>
+ </linearGradient>
+ <clipPath id="c">
+  <circle cx="64" cy="64" r="52.833" clip-rule="evenodd"/>
+ </clipPath>
+ <circle cx="64" cy="64" r="59.966" fill="url(#a)"/>
+ <g clip-path="url(#c)">
+  <image transform="matrix(.996849 0 0 .996849 11.166702 11.166702)" width="105.666" height="105.666" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABqAGoDAREAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAwcCAf/EABgQAQEBAQEAAAAAAAAAAAAAAAACAREx/8QAGgEBAQEBAQEBAAAAAAAAAAAAAQIDAAYECP/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8A5ePevzhKKsC5RVgaQV4FwV4FyirA0lFWBpKKsFXKKsDSCvAuCrAuCrAuUNYKuVkKUKsfa8nKKsc0lFeJXKKsFaQVYFwNYFwdYGkoqwLlFWBpKKsC5Q3gXBVgXBXgaSscdilCrH2vJSivA0lHWBcoqwNIG8C4K8C5RVgaQVYFyirA0lFWBcoqwNIKsCoKsDSUfApQ7x9ryUoqwNJRVjlyivEtJRVgrSUVYFQVYGkFWBcoqwNJRVgaSivAuUV4FwVY5co+BWqHWPtryUoqwNIK8DSUVYFyirA0lFeBcFeBcoawNJR1gXKKsDSUVYFyirAuBrAuMcCtUKsfc8lKK8S0gqxzSUVYFyivEtJR1gq5Q1jlwVYlpKKsC5RVgaSirAuUV4GkorwLg+OVqh3j7XkoKsFXKKsDSCvAuUVYGkoqwLlFeBpBXgXKKsC5RVgaQVYFyirA0lFWBcHwK1Q6x9ryUFWOXKK8S0lFWOq5RVgaSivEtJRVjquUVYFwNYlco6wNJRVgaQNYFyjvHNJR8ClDvH2vJShvAuDrBVyhrAuUVYGkoqwNJRVgXKK8DSCvAuUVYFyirA0grwLlFWBpKxwKUK8fa8lKKsC4KscuUV4GkoqwLlFWBpBXgXKKsDSUVYFwVYlcoqxzSUVYlcoqwVpKxxytUKsfa8lKKsC5RXgXBVgrSUVYFyirA0gqwLlFWBpKK8C4K8C5Q1gaSirAuUV4GkrHArVDrH3PJQV4FyirEtIGscuUV4FyirBWkoqwLgrwNJR1gaShrAuCrAuUVYGkoqxK5WOOXqhVj7XkZRVgaQVYFyivAuCrBWkorwLlFWBpKKsC5RVgaSirBVwV4FyirA0lFWBco+BagvteSg6FXBWGkFTquCoLgrS0gq9cuCsNIK0rgqDSCpy4Gkrg6c0g0qf/2Q=="/>
+ </g>
+ <path d="m52.091 51.569v38.63c.038 1.533-.385 3.054-1.232 4.358-1.105 1.7-2.84 2.892-4.823 3.313-1.539.327-3.16.671-4.699.998-1.984.421-4.054.037-5.754-1.067-1.7-1.105-2.892-2.84-3.313-4.823-.063-.295-.126-.591-.188-.886-.422-1.984-.037-4.053 1.067-5.754 1.105-1.7 2.84-2.892 4.823-3.313 1.539-.327 3.16-.671 4.699-.998.212-.045.424-.081.637-.107v-.028s1.145-.243 2.326-.494c1.491-.317 2.558-1.633 2.558-3.158v-39.287c0-1.534 1.079-2.857 2.582-3.163 6.894-1.407 25.707-5.247 33.185-6.772.767-.157 1.563.039 2.17.533.607.495.96 1.235.962 2.018l.126 51.469c.02 1.503-.403 2.991-1.234 4.269-1.105 1.701-2.839 2.892-4.823 3.314-1.539.326-3.16.671-4.699.997-1.984.422-4.053.038-5.754-1.067-1.7-1.105-2.892-2.839-3.313-4.823-.063-.295-.125-.591-.188-.886-.421-1.983-.037-4.053 1.067-5.753 1.105-1.7 2.84-2.892 4.823-3.314 1.539-.326 3.161-.671 4.7-.997.244-.052.491-.092.737-.12l2.166-.437c1.507-.304 2.59-1.628 2.59-3.164v-25.877l-31.198 6.389zm31.198-9.56v-2.846c0-.658-.295-1.281-.804-1.698s-1.178-.584-1.823-.454c-5.895 1.183-20.116 4.038-25.979 5.215-1.507.303-2.592 1.627-2.592 3.165v3.007z" fill="url(#b)"/>
+</svg>

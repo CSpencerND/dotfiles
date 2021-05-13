@@ -1,0 +1,18 @@
+<svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+ <linearGradient id="a" x2="1" gradientTransform="matrix(30.1001 -31.6845 31.6845 30.1001 8.02804 39.8445)" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#005e6c" offset="0"/>
+  <stop stop-color="#00acc7" offset="1"/>
+ </linearGradient>
+ <linearGradient id="b" x2="1" gradientTransform="matrix(-40.9891 29.9086 -21.7748 -29.842 44.7188 9.23817)" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#007b8e" offset="0"/>
+  <stop stop-color="#03d0df" offset="1"/>
+ </linearGradient>
+ <linearGradient id="c" x2="1" gradientTransform="matrix(40.1334 -42.246 42.246 40.1334 10.7041 53.126)" gradientUnits="userSpaceOnUse">
+  <stop stop-color="#005e6c" offset="0"/>
+  <stop stop-color="#00bddb" offset="1"/>
+ </linearGradient>
+ <path d="m46.841 11.91c0-2.624-2.127-4.75-4.75-4.75h-36.182c-2.623 0-4.75 2.126-4.75 4.75v24.185c0 2.622 2.127 4.749 4.75 4.749h36.183c2.622 0 4.749-2.127 4.749-4.749zm-1 0c0-2.071-1.679-3.75-3.75-3.75h-36.183c-2.07 0-3.75 1.679-3.75 3.75v24.185c0 2.07 1.68 3.75 3.75 3.75h36.183c2.071 0 3.75-1.68 3.75-3.75z" fill="url(#a)"/>
+ <path d="m45.841 11.924c0-2.079-1.679-3.764-3.75-3.764h-36.183c-2.07 0-3.75 1.685-3.75 3.764v24.275c0 2.079 1.68 3.764 3.75 3.764h36.183c2.071 0 3.75-1.685 3.75-3.764z" fill="url(#b)"/>
+ <path d="m2.159 13.217h43.683" fill="none" stroke="url(#c)"/>
+ <path d="m24.024 23.18c2.052.013 3.71 1.689 3.71 3.734v7.47c0 2.054-1.671 3.734-3.734 3.734s-3.734-1.68-3.734-3.734v-7.47c0-2.053 1.671-3.734 3.734-3.734v-1.867h-1.868v-1.867h1.868v1.867h1.867c0 .933-.837 1.867-1.867 1.867zm-.024 7.469c1.031 0 1.867.747 1.867 1.867v1.868c0 .933-.837 1.867-1.867 1.867-1.031 0-1.868-.934-1.868-1.867v-1.868c0-1.12.837-1.867 1.868-1.867zm0-5.601c-1.031 0-1.868.747-1.868 1.866 0 .934.837 1.868 1.868 1.868s1.867-.934 1.867-1.868c0-1.119-.837-1.866-1.867-1.866zm0-7.47v1.868h1.867v-1.868zm0-1.867h-1.868v1.867h1.868zm0-1.867v1.867h1.867v-1.867z" fill="#006f7f"/>
+</svg>
