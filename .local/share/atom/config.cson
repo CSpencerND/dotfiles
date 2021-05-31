@@ -6,7 +6,7 @@
       "dracula-syntax"
     ]
   editor:
-    fontSize: 16
+    fontSize: 15
   "exception-reporting":
     userId: "61c0fb46-ddea-4bf5-a45f-fc568cb39a38"
   fonts:

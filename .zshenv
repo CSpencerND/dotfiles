@@ -19,13 +19,16 @@ export PATH="$PATH:$HOME/.config/nvim/utils/bin"
 export ATOM_HOME="$XDG_DATA_HOME"/atom
 export ATOM_CONFIG="$XDG_CONFIG_HOME"/Atom
 export ATOM_CACHE="$XDG_CACHE_HOME"/atom
+
 # Cargo
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
+
 # Conda
 export CONDARC="$XDG_CONFIG_HOME/conda/condarc"
 export PATH="$HOME/miniconda3/condabin:$PATH" # can't be changed?
 export PATH="$HOME/miniconda3/bin:$PATH" # can't be changed?
+
 # Misc
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg #gpg --homedir "$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
@@ -68,3 +71,5 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 export LESSHISTFILE=-
 
 # -----------------------------------------------------------------------------
+
+unclutter --timeout 2 &
