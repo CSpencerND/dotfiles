@@ -72,4 +72,4 @@ export LESSHISTFILE=-
 
 # -----------------------------------------------------------------------------
 
-unclutter --timeout 2 &
+unclutter --timeout 2 -b
