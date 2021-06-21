@@ -1,0 +1,177 @@
+# Dynamic Panel Transparency Translation File
+# Copyright (c) 2017
+# This file is distributed under the same license as the dynamic-panel-transparency package.
+#
+# Evan Welsh <contact@evanwelsh.com>, 2017.
+# Alexey Varfolomeev <varlesh@gmail.com>, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: GNOME Shell Extension Dynamic Panel Transparency\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-06 09:37-0500\n"
+"PO-Revision-Date: 2016-03-07 12:21+0300\n"
+"Last-Translator: Alexey Varfolomeev <varlesh@gmail.com>\n"
+"Language-Team: Evan Welsh <contact@evanwelsh.com>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: prefs.js:91
+msgid "default"
+msgstr "по-умолчанию"
+
+#: prefs.ui:11
+msgid "Classy transparency for your panel."
+msgstr ""
+
+#: prefs.ui:13
+msgid "Website"
+msgstr ""
+
+#: prefs.ui:107
+msgid "Shell Restart Required."
+msgstr ""
+
+#. Meant to ask the user if they would like to restart right now or later in a yes/no format.
+#: prefs.ui:108
+msgid ""
+"A shell restart is required to view some of your changes. Do you want to "
+"restart now?"
+msgstr ""
+
+#. How long the transition will take.
+#: prefs.ui:184
+msgid "Transition Speed"
+msgstr "Скорость перехода"
+
+#: prefs.ui:214 prefs.ui:242
+msgid "Overrides 'gtk-enable-animations'."
+msgstr "Переопределение 'gtk-enable-animations'."
+
+#. Whether the panel transitions should happen with the overview transitions or after.
+#: prefs.ui:227
+msgid "Transition with the overview"
+msgstr ""
+
+#. Whether the panel should transition when a window touches it or only when a window is actually maximized.
+#: prefs.ui:255
+msgid "Transition when windows touch the panel"
+msgstr ""
+
+#: prefs.ui:272
+msgid "Transitions"
+msgstr "Скорость перехода"
+
+#. Allows the user to set their own text color.
+#: prefs.ui:331
+msgid "Enable custom text coloring"
+msgstr ""
+
+#. The main color to be used.
+#: prefs.ui:358 prefs.ui:373
+msgid "Primary Color"
+msgstr "Цвет панели"
+
+#. Another color for special functions.
+#: prefs.ui:387 prefs.ui:401
+msgid "Secondary Color"
+msgstr ""
+
+#: prefs.ui:421
+msgid "Use when a window is maximized"
+msgstr ""
+
+#: prefs.ui:444
+msgid "Use when the overview is visible"
+msgstr ""
+
+#: prefs.ui:512
+msgid "Enable text shadowing"
+msgstr "Добавить тень для текста"
+
+#: prefs.ui:552 prefs.ui:613 prefs.ui:751 prefs.ui:812
+msgid "Shadow Color"
+msgstr "Цвет панели"
+
+#: prefs.ui:626 prefs.ui:825
+msgid "Radius"
+msgstr ""
+
+#: prefs.ui:639 prefs.ui:838
+msgid "Horizontal Offset"
+msgstr ""
+
+#: prefs.ui:652 prefs.ui:851
+msgid "Vertical Offset"
+msgstr ""
+
+#: prefs.ui:711
+msgid "Enable icon shadowing"
+msgstr ""
+
+#: prefs.ui:897
+msgid "Foreground"
+msgstr ""
+
+#. Opacity of the panel when no window is maximized.
+#: prefs.ui:961
+msgid "Unmaximized Opacity"
+msgstr "Максимум прозрачности"
+
+#. Opacity of the panel when a window is maximized.
+#: prefs.ui:1008
+msgid "Maximized Opacity"
+msgstr "Максимум прозрачности"
+
+#. Allows the user to set their own opacity.
+#: prefs.ui:1030
+msgid "Enable custom opacity"
+msgstr ""
+
+#. The panel's background color.
+#: prefs.ui:1097 prefs.ui:1112
+msgid "Panel Color"
+msgstr "Цвет панели"
+
+#. Allows the user to set their own background color for the panel.
+#: prefs.ui:1133
+msgid "Enable custom panel color"
+msgstr ""
+
+#. Removes any extra styling certain themes may have. Fixes theme issues.
+#: prefs.ui:1197
+msgid "Remove excess panel styling"
+msgstr ""
+
+#: prefs.ui:1210
+msgid "(Fixes theme incompatibilities.)"
+msgstr ""
+
+#. Hides the panel corners.
+#: prefs.ui:1238
+msgid "Hide corners"
+msgstr "Скрыть углы"
+
+#: prefs.ui:1266
+msgid "Background"
+msgstr ""
+
+#: prefs.ui:1306
+msgid "About"
+msgstr ""
+
+#~ msgid "Theme Source"
+#~ msgstr "Исходная тема"
+
+#~ msgid "Force animation"
+#~ msgstr "Принудительная анимация"
+
+#~ msgid "Transition Style"
+#~ msgstr "Скорость перехода"
+
+#~ msgid "Linear (default)"
+#~ msgstr "по-умолчанию"

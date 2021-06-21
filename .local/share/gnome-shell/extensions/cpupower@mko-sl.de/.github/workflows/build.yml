@@ -1,0 +1,17 @@
+on:
+  push:
+    branches:
+    - master
+
+name: latest build
+
+jobs:
+  build:
+    name: Build project
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install gettext
+      run: sudo apt-get install -y gettext
+    - name: Build
+      run: make package
