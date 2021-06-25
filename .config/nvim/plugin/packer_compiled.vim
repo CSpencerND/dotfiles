@@ -116,6 +116,11 @@ _G.packer_plugins = {
     needs_bufread = true,
     path = "/home/cspencer/.local/share/nvim/site/pack/packer/opt/nvim-bqf"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/cspencer/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua"
+  },
   ["nvim-comment"] = {
     loaded = false,
     needs_bufread = false,

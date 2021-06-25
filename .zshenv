@@ -12,6 +12,7 @@ export XDG_CONFIG_DIRS=/etc/xdg
 # Misc PATH
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.config/nvim/utils/bin"
+export PATH="$PATH:$HOME/.local/share/npm/bin"
 
 # -------------------------- Cleanup Home -------------------------------------
 

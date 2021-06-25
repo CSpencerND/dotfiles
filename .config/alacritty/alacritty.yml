@@ -255,7 +255,7 @@ draw_bold_text_with_bright_colors: false
 colors:
   # Default colors
   primary:
-    background: '0x171925'
+    background: '0x232731'
     foreground: '0xf8f8f2'
 
     # Bright and dim foreground colors
@@ -328,7 +328,7 @@ colors:
     cyan:    '0x59dffc'
     white:   '0xe6e6d1'
 
-background_opacity: .95
+background_opacity: .90
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

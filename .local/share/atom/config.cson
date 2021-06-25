@@ -2,8 +2,8 @@
   core:
     telemetryConsent: "no"
     themes: [
-      "one-light-ui"
-      "one-light-syntax"
+      "dracula-ui"
+      "dracula-syntax"
     ]
   editor: {}
   "exception-reporting":

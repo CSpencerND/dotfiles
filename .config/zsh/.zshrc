@@ -388,3 +388,7 @@ eval "$(lua ~/.local/share/zsh/plugins/z.lua/z.lua --init zsh)"
 eval "$(starship init zsh)"
 
 
+
+# fnm
+export PATH=/home/cspencer/.local/bin:$PATH
+eval "`fnm env`"
