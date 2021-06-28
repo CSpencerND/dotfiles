@@ -1,0 +1,5 @@
+#!/bin/sh
+
+SCR_DIR="$HOME/.local/bin"
+SCR_FILE="$SCR_DIR/$1"
+touch $1

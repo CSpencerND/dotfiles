@@ -41,6 +41,7 @@ export TUXTYPE_CONF="$XDG_CONFIG_HOME/tuxtype/settings.txt"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export MYVIMRC=XDG_CONFIG_HOME/nvim/init.lua
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 
 #zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
@@ -74,3 +75,4 @@ export LESSHISTFILE=-
 # -----------------------------------------------------------------------------
 
 unclutter --timeout 2 -b
+

@@ -12,7 +12,7 @@ alias ip='ip --color=auto'
 
 ### Various
 alias rm='rm -Iv'
-alias cp='cp -iv'
+alias cp='cp -ivr'
 alias mv='mv -iv'
 alias mkdir='mkdir -pv'
 alias du='du -sh'
