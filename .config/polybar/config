@@ -33,6 +33,7 @@ font-1 = FontAwesome:size=12;1
 font-2 = Weather Icons:size=12;1
 font-3 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
 
+
 ; font-3 = Font Awesome 5 Free:style=Regular:size=9;2
 ; font-4 = Font Awesome 5 Brands:style=Regular:size=9;2
 ; font-5 = Material Design Icons:style=Regular:size=11;2
@@ -56,7 +57,7 @@ tray-scale = 1.0
 ; ---------------- MODULES ----------------- ;
 
 modules-left = xwindow
-modules-center = date time openweathermap-fullfeatured
+modules-center = date clock forecast
 modules-right = battery-combined-udev
 
 
@@ -68,33 +69,47 @@ label = %title:0:30%
 [module/date]
 type = custom/script
 exec = date +"%a %b %e, %Y"
-label = "%output%"
+label = "📅 %output%"
 interval = 60
 format-padding = 1
 click-left =
 
 
-[module/time]
+[module/clock]
 type = custom/script
-exec = date +"%I:%M %P"
-label = "%output%"
+exec = poly-clock
 interval = 60
-format-padding = 1
+tail = true
 
 
-[module/openweathermap-fullfeatured]
+[module/forecast]
 type = custom/script
-exec = openweathermap-fullfeatured.sh
-interval = 660
-label-font = 3
-click-left = $TERMINAL -e w3m wttr.in/Denver,Colorado &
-; scroll-down = cat ~/.cache/daytime
+exec = forecast
+interval = 1800
+tail = true
 
 
 [module/battery-combined-udev]
 type = custom/script
 exec = battery-combined-udev.sh
 tail = true
+
+
+; [module/time]
+; type = custom/script
+; exec = date +"%I:%M %P"
+; label = "%output%"
+; interval = 60
+; format-padding = 1
+
+
+; [module/openweathermap-fullfeatured]
+; type = custom/script
+; exec = openweathermap-fullfeatured.sh
+; interval = 660
+; label-font = 3
+; click-left = $TERMINAL -e w3m wttr.in/Denver,Colorado &
+; scroll-down = cat ~/.cache/daytime
 
 
 ; ---------------- SETTINGS ----------------- ;
@@ -134,7 +149,7 @@ alert =          #ff5555
 [settings]
 screenchange-reload = true
 format-padding = 1
-format-margin = 0
+format-margin = 1
 throttle-output = 5
 throttle-output-for = 10
 compositing-background = over

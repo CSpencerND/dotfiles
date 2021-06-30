@@ -1,5 +1,5 @@
 /home/cspencer/.config/zsh|12|1624909524
-/home/cspencer/Installed|103|1624950301
+/home/cspencer/Installed|105|1625027069
 /home/cspencer/Installed/fzf|3|1620635652
 /home/cspencer/.config/nvim/lua|7|1624550747
 /home/cspencer/.config/java|2|1620801093
@@ -9,7 +9,7 @@
 /home/cspencer/.backup|134|1624649468
 /usr/local|4|1622581813
 /home/cspencer/.cache|24|1624915457
-/home/cspencer/.config|95|1625021478
+/home/cspencer/.config|105|1625024459
 /home/cspencer/.config/rust|8|1620828867
 /home/cspencer/.config/rust/.cargo|20|1620828867
 /home/cspencer/.config/rust/.cargo/registry/src|1|1620816037
@@ -26,7 +26,7 @@
 /home/cspencer/.local/share/nautilus-python|3|1620820332
 /home/cspencer/.local/share/nvim|33|1624856962
 /home/cspencer/.local/share/themes|12|1623930900
-/home/cspencer/.local/bin|279|1625022105
+/home/cspencer/.local/bin|298|1625047149
 /home/cspencer/Documents|27|1624913650
 /home/cspencer/.mozilla/firefox/x6tg8y6d.default-release|19|1620874129
 /home/cspencer/.mozilla/firefox|2|1620821715
@@ -95,8 +95,8 @@
 /home/cspencer/Desktop|1|1623657872
 /home/cspencer/.local/share/themes/Flat-Remix-Green-Dark-fullPanel/gnome-shell|2|1623930927
 /home/cspencer/Code/Fitness|73|1624857132
-/home/cspencer/Games|2|1624039590
-/home/cspencer/Games/Bomb Guy|6|1624041921
+/home/cspencer/Games|3|1625040174
+/home/cspencer/Games/Bomb Guy|24|1625041035
 /home/cspencer/.local/share/gnome-shell|20|1624403783
 /home/cspencer/.local/share/gnome-shell/extensions|17|1624403789
 /home/cspencer/Code/Practice|38|1624743347
@@ -123,7 +123,7 @@
 /home/cspencer/Code/Maison/assets|9|1624476594
 /home/cspencer/.config/discord|1|1624503829
 /home/cspencer/.config/BetterDiscord/themes|13|1624506292
-/home/cspencer/.config/polybar|152|1624948837
+/home/cspencer/.config/polybar|156|1625024079
 /home/cspencer/.config/nvim/lua/lv-colorizer|5|1624551583
 /home/cspencer/Pictures/Bebbies|18|1624858254
 /home/cspencer/Pictures/Me|2|1624556263
