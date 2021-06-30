@@ -1,5 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 SCR_DIR="$HOME/.local/bin"
 SCR_FILE="$SCR_DIR/$1"
-touch $1
+
+if [[ -f $SCR_FILE ]]; then
+    echo "File already exists."
+else 
+    echo '#!/bin/sh' > $SCR_FILE
+    chmod +x $SCR_FILE
+    nvim $SCR_FILE
+fi
+

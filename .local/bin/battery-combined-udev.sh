@@ -1,88 +1,36 @@
 #!/bin/sh
 
-battery_print() {
-    PATH_AC="/sys/class/power_supply/AC"
-    PATH_BATTERY_0="/sys/class/power_supply/BAT0"
-    PATH_BATTERY_1="/sys/class/power_supply/BAT1"
+# Prints all batteries, their percentage remaining and an emoji corresponding
+# to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
 
-    ac=0
-    battery_level_0=0
-    battery_level_1=0
-    battery_max_0=0
-    battery_max_1=0
-
-    if [ -f "$PATH_AC/online" ]; then
-        ac=$(cat "$PATH_AC/online")
-    fi
-
-    if [ -f "$PATH_BATTERY_0/energy_now" ]; then
-        battery_level_0=$(cat "$PATH_BATTERY_0/energy_now")
-    fi
-
-    if [ -f "$PATH_BATTERY_0/energy_full" ]; then
-        battery_max_0=$(cat "$PATH_BATTERY_0/energy_full")
-    fi
-
-    if [ -f "$PATH_BATTERY_1/energy_now" ]; then
-        battery_level_1=$(cat "$PATH_BATTERY_1/energy_now")
-    fi
-
-    if [ -f "$PATH_BATTERY_1/energy_full" ]; then
-        battery_max_1=$(cat "$PATH_BATTERY_1/energy_full")
-    fi
-
-    battery_level=$(("$battery_level_0 + $battery_level_1"))
-    battery_max=$(("$battery_max_0 + $battery_max_1"))
-
-    battery_percent=$(("$battery_level * 100"))
-    battery_percent=$(("$battery_percent / $battery_max"))
-
-    if [ "$ac" -eq 1 ]; then
-        icon="#1"
-
-        if [ "$battery_percent" -gt 97 ]; then
-            echo "$icon"
-        else
-            echo "$icon $battery_percent %"
-        fi
-    else
-        if [ "$battery_percent" -gt 85 ]; then
-            icon="#21"
-        elif [ "$battery_percent" -gt 60 ]; then
-            icon="#22"
-        elif [ "$battery_percent" -gt 35 ]; then
-            icon="#23"
-        elif [ "$battery_percent" -gt 10 ]; then
-            icon="#24"
-        else
-            icon="#25"
-        fi
-
-        echo "$icon $battery_percent %"
-    fi
-}
-
-path_pid="/tmp/polybar-battery-combined-udev.pid"
-
-case "$1" in
-    --update)
-        pid=$(cat $path_pid)
-
-        if [ "$pid" != "" ]; then
-            kill -10 "$pid"
-        fi
-        ;;
-    *)
-        echo $$ > $path_pid
-
-        trap exit INT
-        trap "echo" USR1
-
-        while true; do
-            battery_print
-
-            sleep 30 &
-            wait
-        done
-        ;;
+case $BLOCK_BUTTON in
+	3) notify-send "🔋 Battery module" "🔋: discharging
+🛑: not charging
+♻: stagnant charge
+🔌: charging
+⚡: charged
+❗: battery very low!
+- Scroll to change adjust xbacklight." ;;
+	4) xbacklight -inc 10 ;;
+	5) xbacklight -dec 10 ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
+
+# Loop through all attached batteries and format the info
+for battery in /sys/class/power_supply/BAT?*; do
+	# If non-first battery, print a space separator.
+	[ -n "${capacity+x}" ] && printf " "
+	# Sets up the status and capacity
+	case "$(cat "$battery/status")" in
+		"Full") status="⚡ " ;;
+		"Discharging") status="🔋" ;;
+		"Charging") status="🔌 " ;;
+		"Not charging") status="🛑 " ;;
+		"Unknown") status="♻️ " ;;
+	esac
+	capacity=$(cat "$battery/capacity")
+	# Will make a warn variable if discharging and low
+	[ "$status" = "🔋" ] && [ "$capacity" -le 25 ] && warn="❗"
+	# Prints the info
+	printf "%s%s%d%%" "$status" "$warn" "$capacity"; unset warn
+done && exit 0

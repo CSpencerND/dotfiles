@@ -28,9 +28,15 @@ padding-right = 1
 module-margin-left = 0
 module-margin-right = 1
 
-font-0 = hacknerdfont:pixelsize=11;
-font-1 = FontAwesome:size=12;
+font-0 = Alice:pixelsize=12;
+font-1 = FontAwesome:size=12;1
 font-2 = Weather Icons:size=12;1
+font-3 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
+
+; font-3 = Font Awesome 5 Free:style=Regular:size=9;2
+; font-4 = Font Awesome 5 Brands:style=Regular:size=9;2
+; font-5 = Material Design Icons:style=Regular:size=11;2
+; font-1 = Font Awesome 5 Free:style=Solid:size=9;2
 
 enable-ipc = true
 
@@ -41,7 +47,7 @@ tray-position = right
 tray-detached = false
 tray-maxsize = 20
 tray-padding = 4
-tray-background = #4d5b86
+tray-background = #131721
 tray-offset-x = 0
 tray-offset-y = 0
 tray-scale = 1.0
@@ -51,7 +57,7 @@ tray-scale = 1.0
 
 modules-left = xwindow
 modules-center = date time openweathermap-fullfeatured
-modules-right = ;battery-combined-udev
+modules-right = battery-combined-udev
 
 
 [module/xwindow]
@@ -71,7 +77,7 @@ click-left =
 [module/time]
 type = custom/script
 exec = date +"%I:%M %P"
-label = "⏰ %output%"
+label = "%output%"
 interval = 60
 format-padding = 1
 
