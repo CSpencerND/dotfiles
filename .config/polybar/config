@@ -21,12 +21,12 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 2
-line-color = ${colors.primary}
+; line-color = ${colors.primary}
 
 padding-left = 1
 padding-right = 1
 module-margin-left = 0
-module-margin-right = 1
+module-margin-right = 0
 
 font-0 = Alice:pixelsize=12;
 font-1 = FontAwesome:size=12;1
@@ -58,7 +58,7 @@ tray-scale = 1.0
 
 modules-left = xwindow
 modules-center = date clock forecast
-modules-right = battery-combined-udev
+modules-right = cpu battery-combined-udev
 
 
 [module/xwindow]
@@ -86,6 +86,13 @@ tail = true
 type = custom/script
 exec = forecast
 interval = 1800
+tail = true
+
+
+[module/cpu]
+type = custom/script
+exec = poly-cpu
+interval = 10
 tail = true
 
 
@@ -159,7 +166,7 @@ compositing-underline = over
 compositing-border = over
 format-foreground = #f8f8f2
 format-background = #343842
-format-underline = ${colors.primary}
+format-underline = #50fa7b
 
 
 [global/wm]

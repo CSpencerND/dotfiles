@@ -1,4 +1,4 @@
-/home/cspencer/.config/zsh|12|1624909524
+/home/cspencer/.config/zsh|18|1625112622
 /home/cspencer/Installed|105|1625027069
 /home/cspencer/Installed/fzf|3|1620635652
 /home/cspencer/.config/nvim/lua|7|1624550747
@@ -18,7 +18,7 @@
 /home/cspencer/.config/rust/.cargo/registry/index/github.com-1ecc6299db9ec823|3|1620816120
 /home/cspencer/.config/rust/.cargo/bin|2|1620816648
 /home/cspencer/.local|22|1625022082
-/home/cspencer/.local/share|108|1624949641
+/home/cspencer/.local/share|112|1625112470
 /home/cspencer/.local/share/atom|8|1620867529
 /home/cspencer/.local/share/cargo|11|1620868873
 /home/cspencer/.local/share/fonts|73|1624951931
@@ -26,8 +26,8 @@
 /home/cspencer/.local/share/nautilus-python|3|1620820332
 /home/cspencer/.local/share/nvim|33|1624856962
 /home/cspencer/.local/share/themes|12|1623930900
-/home/cspencer/.local/bin|298|1625047149
-/home/cspencer/Documents|27|1624913650
+/home/cspencer/.local/bin|313|1625112563
+/home/cspencer/Documents|37|1625110033
 /home/cspencer/.mozilla/firefox/x6tg8y6d.default-release|19|1620874129
 /home/cspencer/.mozilla/firefox|2|1620821715
 /home/cspencer/.mozilla|2|1620821721
@@ -37,7 +37,7 @@
 /home/cspencer/.config/ranger/plugins|3|1620826644
 /home/cspencer/.config/ranger/plugins/ranger_devicons|4|1620826639
 /home|2|1620827667
-/home/cspencer/.local/share/backgrounds|3|1620867862
+/home/cspencer/.local/share/backgrounds|5|1625112529
 /home/cspencer/.local/share/cargo/registry|3|1620868671
 /home/cspencer/.local/share/cargo/registry/cache|3|1620868665
 /home/cspencer/.local/share/cargo/registry/cache/github.com-1ecc6299db9ec823|2|1620868661
@@ -64,7 +64,7 @@
 /|38|1625021599
 /usr/lib|1|1620878433
 /usr/lib/modules-load.d|5|1620879282
-/home/cspencer/Downloads|13|1624503101
+/home/cspencer/Downloads|17|1625102704
 /home/cspencer/Downloads/usr|2|1620878880
 /home/cspencer/Downloads/usr/lib|5|1620878926
 /home/cspencer/Downloads/usr/lib/modules-load.d|5|1620878922
@@ -84,7 +84,7 @@
 /home/cspencer/Installed/libev|4|1622496662
 /usr/include|3|1624376612
 /usr/local/bin|22|1625022603
-/home/cspencer/Music|12|1623277344
+/home/cspencer/Music|14|1625110659
 /home/cspencer/Documents/Fitness|13|1623751942
 /home/cspencer/Pictures|14|1624860045
 /home/cspencer/Pictures/Misc|1|1623314028
@@ -95,10 +95,9 @@
 /home/cspencer/Desktop|1|1623657872
 /home/cspencer/.local/share/themes/Flat-Remix-Green-Dark-fullPanel/gnome-shell|2|1623930927
 /home/cspencer/Code/Fitness|73|1624857132
-/home/cspencer/Games|3|1625040174
+/home/cspencer/Games|5|1625110323
 /home/cspencer/Games/Bomb Guy|24|1625041035
-/home/cspencer/.local/share/gnome-shell|20|1624403783
-/home/cspencer/.local/share/gnome-shell/extensions|17|1624403789
+/home/cspencer/.local/share/gnome-shell|21|1625083994
 /home/cspencer/Code/Practice|38|1624743347
 /home/cspencer/Code/Maison|12|1624478905
 /home/cspencer/Code/Unseamly|14|1624277480
@@ -123,7 +122,7 @@
 /home/cspencer/Code/Maison/assets|9|1624476594
 /home/cspencer/.config/discord|1|1624503829
 /home/cspencer/.config/BetterDiscord/themes|13|1624506292
-/home/cspencer/.config/polybar|156|1625024079
+/home/cspencer/.config/polybar|159|1625112545
 /home/cspencer/.config/nvim/lua/lv-colorizer|5|1624551583
 /home/cspencer/Pictures/Bebbies|18|1624858254
 /home/cspencer/Pictures/Me|2|1624556263
@@ -157,3 +156,6 @@
 /tmp|2|1624878388
 /media|3|1624906880
 /dev|3|1624955981
+/etc/apt/sources.list.d|2|1625094467
+/opt|10|1625095654
+/home/cspencer/Music/Library|4|1625110675
