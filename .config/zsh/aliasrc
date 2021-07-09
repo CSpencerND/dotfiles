@@ -44,6 +44,13 @@ command -v batcat > /dev/null && \
 
 ### Misc
 alias luamake=/home/cspencer/Installed/lua-language-server/3rd/luamake/luamake
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+
+
+gedit () {
+    command gedit "$@" & disown
+}
+
 
 # --------------------------- Important Commands -------------------------------
 alias hp="pactl load-module module-alsa-sink device=hw:1,1"
@@ -61,3 +68,4 @@ alias ethernet_on="sudo ifconfig enp35s0 up"
 # alias startup="code/scripts/startup.sh"
 
 alias backup='/usr/bin/git --git-dir=$HOME/.backup/ --work-tree=$HOME'
+
