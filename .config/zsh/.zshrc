@@ -192,7 +192,7 @@ glog() {
 # Plugin source helper
 _source_plugin() {
 	local plugin_name="$1"
-	for basedir in /usr/share/zsh/plugins /usr/share
+	for basedir in $HOME/.local/share/zsh/plugins /usr/share
 	do
 		plugin="$basedir/$plugin_name/$plugin_name.zsh"
 		[ -f "$plugin" ] && source "$plugin" && return 0
@@ -253,7 +253,7 @@ fi
 
 unset -f _source_plugin
 
-[ -f ~/.local/share/fzf.zsh ] && source ~/.local/share/fzf.zsh
+[ -f ~/usr/bin/fzf ] && source ~/usr/bin/fzf
 
 ### GIT
 # alias gp=gitpush
@@ -391,4 +391,3 @@ eval "$(starship init zsh)"
 # fnm
 export PATH=/home/cspencer/.local/bin:$PATH
 eval "`fnm env`"
-

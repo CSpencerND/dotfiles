@@ -38,11 +38,11 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export TUXTYPE_CONF="$XDG_CONFIG_HOME/tuxtype/settings.txt"
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+# export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export MYVIMRC=XDG_CONFIG_HOME/nvim/init.lua
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
-export STACK_ROOT="$XDG_DATA_HOME"/stack 
+export STACK_ROOT="$XDG_DATA_HOME"/stack
 
 #zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
@@ -76,4 +76,3 @@ export LESSHISTFILE=-
 # -----------------------------------------------------------------------------
 
 unclutter --timeout 2 -b
-

@@ -6,7 +6,11 @@
       "dracula-syntax"
     ]
   editor:
-    fontSize: 13
+    defaultFontSize: 16
+    fontFamily: "Hack Nerd Font"
+    fontSize: 16
+    showIndentGuide: true
+    softWrap: true
   "exception-reporting":
     userId: "61c0fb46-ddea-4bf5-a45f-fc568cb39a38"
   fonts:

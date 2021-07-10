@@ -1,13 +1,14 @@
-# ❯, ➜
+# ❯ ➜ ─ #box drawing line
 # Use custom format
 format = '''
-[╭\[](blue)[cs](yellow)[@](blue)$hostname[\]](blue) [➜](blue) $directory [\(](blue)$git_branch $git_state$git_status$git_commit[\)](blue)
-[╰➜](blue) '''
+[╭\[](blue)$username(yellow)[@](blue)$hostname[\]](blue) [➜](blue) $directory [\(](blue)$git_branch $git_state$git_status$git_commit[\)](blue)
+[╰─\$](blue) '''
 # {](blue)[}
+
 [username]
-# show_always = true
-format = "[$user]($style)[@](blue)"
-style_user = "cyan"
+show_always = true
+format = "[$user]($style)"
+style_user = "yellow"
 
 [hostname]
 ssh_only = false
