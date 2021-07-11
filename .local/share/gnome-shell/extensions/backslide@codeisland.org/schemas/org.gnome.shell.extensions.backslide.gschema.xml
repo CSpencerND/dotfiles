@@ -1,0 +1,32 @@
+<!--
+    Strings for "type"-attribute: http://developer.gnome.org/glib/2.33/gvariant-format-strings.html
+-->
+<schemalist>
+    <schema id="org.gnome.shell.extensions.backslide" path="/org/gnome/shell/extensions/backslide/">
+        <key name="delay" type="i">
+            <default>5</default>
+            <summary>The delay in minutes</summary>
+            <description>The delay in minutes between wallpaper changes.</description>
+        </key>
+        <key name="random" type="b">
+            <default>true</default>
+            <summary>Whether to randomize the list or not.</summary>
+            <description>If set to true, the order of the wallpaper-list will be random.</description>
+        </key>
+        <key name="image-list" type="as">
+            <default>[]</default>
+            <summary>The list of wallpaper-paths.</summary>
+            <description>An Array of absolute, unix-styled path's to the wallpapers.</description>
+        </key>
+        <key name="elapsed-time" type="i">
+            <default>0</default>
+            <summary>Minutes elapsed from the last delay.</summary>
+            <description>The minutes already elapsed from the last delay-interval.</description>
+        </key>
+        <key name="change-lockscreen" type="b">
+            <default>true</default>
+            <summary>Whether to change the lockscreen wallpaper or not.</summary>
+            <description>If set to true, the lockscreen wallpaper will be changed.</description>
+        </key>
+    </schema>
+</schemalist>
