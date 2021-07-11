@@ -1,0 +1,11 @@
+{
+  "float": [
+    {
+      "class": "pop-shell-example",
+      "title": "pop-shell-example"
+    }
+  ],
+  "log_on_focus": true,
+  "move_pointer_on_switch": true,
+  "default_pointer_position": "CENTER"
+}
