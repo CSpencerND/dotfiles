@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 #Cuz it looks nice :)
-neofetch
+colorscript random
 
 # Load aliases and shortcuts if existent:
 [ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"

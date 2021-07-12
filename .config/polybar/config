@@ -58,12 +58,15 @@ tray-scale = 1.0
 
 modules-left = xwindow
 modules-center = date clock forecast
-modules-right = cpu battery-combined-udev
+modules-right = cpu battery-combined-udev 
 
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30%
+label = %title%
+format-background = #bd93f9
+format-foreground = #282a36 
+format-underline =
 
 
 [module/date]
@@ -144,7 +147,7 @@ tail = true
 
 
 [colors]
-background =     #232731
+background =     #282a36
 background-alt = #282a36
 foreground =     #f8f8f2
 foreground-alt = #e6e6e6
@@ -166,7 +169,7 @@ compositing-underline = over
 compositing-border = over
 format-foreground = #f8f8f2
 format-background = #343842
-format-underline = #50fa7b
+format-underline = #bd93f9
 
 
 [global/wm]
