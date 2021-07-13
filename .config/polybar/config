@@ -17,23 +17,22 @@ radius = 0.0
 fixed-center = true
 bottom = false
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = #282a36
+foreground = #f8f8f2
 
 line-size = 2
 ; line-color = ${colors.primary}
 
-padding-left = 1
-padding-right = 1
+padding-left = 3
+padding-right = 3
 module-margin-left = 0
 module-margin-right = 0
 
 font-0 = Alice:pixelsize=12;
-font-1 = FontAwesome:size=12;1
+font-1 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
 font-2 = Weather Icons:size=12;1
-font-3 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
 
-
+; font-1 = FontAwesome:size=12;1
 ; font-3 = Font Awesome 5 Free:style=Regular:size=9;2
 ; font-4 = Font Awesome 5 Brands:style=Regular:size=9;2
 ; font-5 = Material Design Icons:style=Regular:size=11;2
@@ -48,7 +47,7 @@ tray-position = right
 tray-detached = false
 tray-maxsize = 20
 tray-padding = 4
-tray-background = #131721
+tray-background = #14151b
 tray-offset-x = 0
 tray-offset-y = 0
 tray-scale = 1.0
@@ -57,15 +56,14 @@ tray-scale = 1.0
 ; ---------------- MODULES ----------------- ;
 
 modules-left = xwindow
-modules-center = date clock forecast
-modules-right = cpu battery-combined-udev 
+modules-center = date clock weather forecast moon 
+modules-right = network memory cpu battery 
 
 
 [module/xwindow]
 type = internal/xwindow
 label = %title%
-format-background = #bd93f9
-format-foreground = #282a36 
+format-background = #714ba5
 format-underline =
 
 
@@ -85,10 +83,43 @@ interval = 60
 tail = true
 
 
+[module/weather]
+type = custom/script
+exec = openweathermap-fullfeatured.sh
+interval = 600
+; label-font = 3
+
+
 [module/forecast]
 type = custom/script
 exec = forecast
 interval = 1800
+tail = true
+
+
+[module/moon]
+type = custom/script
+exec = moonphase
+interval = 43200
+tail = true
+
+
+; [module/vol]
+; type = custom/ipc
+; exec = volume
+
+
+[module/network]
+type = custom/script
+exec = nettraff
+; interval = 1
+tail = true
+
+
+[module/memory]
+type = custom/script
+exec = memory
+interval = 10
 tail = true
 
 
@@ -99,10 +130,25 @@ interval = 10
 tail = true
 
 
-[module/battery-combined-udev]
+[module/battery]
 type = custom/script
 exec = battery-combined-udev.sh
+interval = 300
 tail = true
+
+
+; [module/doppler]
+; type = custom/script
+; exec = doppler
+; interval = 1800
+; tail = true
+
+
+; [module/internet]
+; type = custom/script
+; exec = internet
+; interval = 60
+; tail = true
 
 
 ; [module/time]
@@ -113,42 +159,10 @@ tail = true
 ; format-padding = 1
 
 
-; [module/openweathermap-fullfeatured]
-; type = custom/script
-; exec = openweathermap-fullfeatured.sh
-; interval = 660
-; label-font = 3
-; click-left = $TERMINAL -e w3m wttr.in/Denver,Colorado &
-; scroll-down = cat ~/.cache/daytime
-
-
 ; ---------------- SETTINGS ----------------- ;
-
-; [Dracula Theme]
-; background = #232731
-; foreground = #f8f8f2
-
-; foreground = #44475a
-; background = #50fa7b
-
-; foreground = #44475a
-; background = #ffb86c
-
-; background = #282a36
-; foreground = #f8f8f2
-
-; red        = #ff5555
-; green      = #50fa7b
-; yellow     = #f1fa8c
-; blue       = #bd93f9
-; magenta    = #ff79c6
-; cyan       = #8be9fd
-; white      = #bfbfbf
-
-
 [colors]
 background =     #282a36
-background-alt = #282a36
+background-alt = #343842
 foreground =     #f8f8f2
 foreground-alt = #e6e6e6
 primary =        #bd93f9
@@ -168,10 +182,28 @@ compositing-overline = over
 compositing-underline = over
 compositing-border = over
 format-foreground = #f8f8f2
-format-background = #343842
+format-background = #44475a
 format-underline = #bd93f9
 
 
 [global/wm]
 margin-top = 0
 margin-bottom = 0
+
+
+; [Dracula Theme]
+; background = #14151b
+; background = #282a36
+; foreground = #44475a
+; blurple    = #4d5b86
+; grey       = #bfbfbf
+; foreground = #f8f8f2
+
+; red        = #ff5555
+; orange     = #ffb86c
+; yellow     = #f1fa8c
+; green      = #50fa7b
+; cyan       = #8be9fd
+; blue       = #bd93f9
+; magenta    = #ff79c6
+

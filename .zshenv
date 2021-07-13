@@ -11,6 +11,7 @@ export XDG_CONFIG_DIRS=/etc/xdg
 
 # Misc PATH
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin/polyscr"
 export PATH="$PATH:$HOME/.config/nvim/utils/bin"
 export PATH="$PATH:$HOME/.local/share/npm/bin"
 export PATH="$PATH:$HOME/node_modules/.bin"
@@ -76,4 +77,5 @@ export LESSHISTFILE=-
 
 # -----------------------------------------------------------------------------
 
-unclutter --timeout 2 -b
+unclutter --timeout 3 -b
+
