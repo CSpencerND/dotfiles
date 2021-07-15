@@ -7,7 +7,6 @@
     ]
   editor:
     defaultFontSize: 16
-    fontFamily: "Hack Nerd Font"
     fontSize: 16
     showIndentGuide: true
     softWrap: true

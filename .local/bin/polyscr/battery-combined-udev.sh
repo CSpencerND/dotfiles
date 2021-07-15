@@ -6,8 +6,8 @@
 case $BLOCK_BUTTON in
 	3) notify-send "🔋 Battery module" "🔋: discharging
 🛑: not charging
-♻: stagnant charge
-🔌: charging
+♻ : stagnant charge
+ﮣ : charging
 ⚡: charged
 ❗: battery very low!
 - Scroll to change adjust xbacklight." ;;
@@ -24,7 +24,7 @@ for battery in /sys/class/power_supply/BAT?*; do
 	case "$(cat "$battery/status")" in
 		"Full") status="⚡ " ;;
 		"Discharging") status="🔋" ;;
-		"Charging") status="🔌 " ;;
+		"Charging") status="ﮣ " ;;
 		"Not charging") status="🛑 " ;;
 		"Unknown") status="♻️ " ;;
 	esac

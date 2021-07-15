@@ -1,0 +1,3 @@
+#!/bin/sh
+setsid -f "$TERMINAL" -e less -Srf ~/.local/share/weatherreport \
+  && sleep .17 && xdotool key super+shift+m
