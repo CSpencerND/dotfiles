@@ -17,7 +17,7 @@ radius = 0.0
 fixed-center = true
 bottom = false
 
-background = #282a36
+background = #e6282a36
 foreground = #f8f8f2
 
 line-size = 2
@@ -37,11 +37,11 @@ enable-ipc = true
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-; tray-position = right
+tray-position = right
 ; tray-detached = false
 ; tray-maxsize = 20
-; tray-padding = 4
-; tray-background = #14151b
+tray-padding = 4
+tray-background = #282a36
 ; tray-offset-x = 0
 ; tray-offset-y = 0
 ; tray-scale = 1.0
@@ -49,8 +49,8 @@ cursor-scroll = ns-resize
 
 ; ---------------- MODULES ----------------- ;
 
-modules-left = ewmh xwindow
-modules-center = date clock weather moon 
+modules-left = ewmh xwindow 
+modules-center = date clock weather 
 modules-right = usb network memory cpu battery 
 
 
@@ -61,19 +61,19 @@ enable-click = true
 enable-scroll = false
 
 label-active = %index%
-label-occupied = "%index%"
+label-occupied = %index%
 label-urgent = %index%
-label-empty = 
+label-empty = 
 
-label-active-background = #714ba5
-label-active-underline = #bd93f9
+label-active-background = #55bd93f9
+label-active-underline = #77bd93f9
 
 label-active-padding = 1
 label-occupied-padding = 1
 label-empty-padding = 1
 label-urgent-padding = 1
 
-format-background = #282a36
+format-background = #0054576a
 format-underline =
 format-padding = 0
 
@@ -81,9 +81,10 @@ format-padding = 0
 [module/xwindow]
 type = internal/xwindow
 label = "%title%"
-format-background = #714ba5
+format-background = #55bd93f9
 format-underline =
 format-margin = 0
+label-maxlen = 65
 
 
 [module/date]
@@ -99,14 +100,15 @@ click-left =
 type = custom/script
 exec = poly-clock
 interval = 60
-tail = true
+; tail = true
 
 
 [module/weather]
 type = custom/script
 exec = openweathermap-fullfeatured.sh
-interval = 600
+interval = 3600
 click-left = wttr-bttn 
+click-right = wttr-update
 
 
 ; [module/forecast]
@@ -116,19 +118,19 @@ click-left = wttr-bttn
 ; tail = true
  
 
-[module/moon]
-type = custom/script
-exec = moonphase
-interval = 43200
-tail = true
+; [module/moon]
+; type = custom/script
+; exec = moonphase
+; interval = 43200
+; tail = true
 
 
 [module/usb]
 type = custom/script
-exec = ~/.local/bin/polyscr/system-usb-udev.sh
+exec = system-usb-udev.sh 
 tail = true
-click-left = ~/.local/bin/polyscr/system-usb-udev.sh --mount &
-click-right = ~/.local/bin/polyscr/system-usb-udev.sh --unmount &
+click-left = usb-tool --open
+click-right = usb-tool --dismount
 
 
 ; [module/vol]
@@ -147,21 +149,25 @@ tail = true
 type = custom/script
 exec = memory
 interval = 10
-tail = true
+; tail = true
+click-left = notify-send "🧠 Memory hogs" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)"
+click-right = setsid -f "$TERMINAL" -e bpytop && sleep .18 && xdotool key super+shift+m
 
 
 [module/cpu]
 type = custom/script
 exec = poly-cpu
 interval = 10
-tail = true
+; tail = true
+click-left = notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)\\n(100% per core)"
+click-right = setsid -f "$TERMINAL" -e htop && sleep .18 && xdotool key super+shift+m
 
 
 [module/battery]
 type = custom/script
 exec = battery-combined-udev.sh
 ; interval = 300
-tail = true
+; tail = true
 
 
 ; [module/doppler]
@@ -209,8 +215,8 @@ compositing-overline = over
 compositing-underline = over
 compositing-border = over
 format-foreground = #f8f8f2
-format-background = #44475a
-format-underline = #bd93f9
+format-background = #5555586b
+format-underline = #77bd93f9
 
 
 [global/wm]

@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+DEVICE_NAME=""
+
+if [ -e /dev/sda1 ]; then 
+  DEVICE_NAME=$(udisksctl info -b /dev/sda1 | awk '/IdLabel/ {print $2}');
+  if [[ $DEVICE_NAME != "" ]]; then
+    echo "禍 $DEVICE_NAME";
+  fi
+else
+  echo ""
+fi 
+
+

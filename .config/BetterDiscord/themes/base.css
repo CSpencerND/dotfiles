@@ -1,0 +1,87 @@
+:root {
+  /* Dracula Colors */
+  --dracula-background: #282a36 !important;
+  --dracula-current-line: #44475a !important;
+  --dracula-selection: #44475a !important;
+  --dracula-foreground: #f8f8f2 !important;
+  --dracula-comment: #6272a4 !important;
+  --dracula-cyan: #8be9fd !important;
+  --dracula-green: #50fa7b !important;
+  --dracula-orange: #ffb86c !important;
+  --dracula-pink: #ff79c6 !important;
+  --dracula-purple: #bd93f9 !important;
+  --dracula-red: #ff5555 !important;
+  --dracula-yellow: #f1fa8c !important;
+  /* Discord Root Colors */
+  --background-primary: var(--dracula-background) !important;
+  --background-secondary: var(--dracula-background) !important;
+  --background-secondary-alt: var(--dracula-background) !important;
+  --background-tertiary: var(--dracula-background) !important;
+  --background-accent: var(--dracula-current-line) !important;
+  --background-floating: var(--dracula-background) !important;
+  --background-modifier-selected: var(--dracula-current-line) !important;
+  --activity-card-background: var(--dracula-background) !important;
+  --interactive-normal: var(--dracula-foreground) !important;
+  --channeltextarea-background: var(--dracula-selection) !important;
+  --rs-online-color: var(--dracula-green) !important;
+  --rs-idle-color: var(--dracula-orange) !important;
+  --rs-dnd-color: var(--dracula-red) !important;
+  --rs-offline-color: var(--dracula-selection) !important;
+  --rs-streaming-color: var(--dracula-purple) !important;
+  --rs-invisible-color: var(--dracula-comment) !important;
+  --interactive-muted: var(--dracula-comment) !important;
+}
+
+.wrapper-1BJsBx.selected-bZ3Lue .childWrapper-anI2G9,
+.wrapper-1BJsBx:hover .childWrapper-anI2G9 {
+  background-color: var(--dracula-comment) !important;
+}
+
+/* Home */
+.container-1D34oG {
+  background-color: var(--dracula-background) !important;
+}
+
+/* Scroll Bar */
+.theme-dark
+  .scrollerThemed-2oenus.themedWithTrack-q8E3vB
+  .scroller-2FKFPG::-webkit-scrollbar-track-piece {
+  background-color: var(--dracula-selection) !important;
+  border: 4px solid var(--dracula-background) !important;
+  border-radius: 8px !important;
+}
+
+/* Syntax Highlighing in Code Blocks*/
+code {
+  color: var(--dracula-foreground) !important;
+}
+span.hljs-built_in {
+  color: var(--dracula-purple) !important;
+}
+span.hljs-keyword {
+  color: var(--dracula-pink) !important;
+}
+span.hljs-title {
+  color: var(--dracula-cyan) !important;
+}
+span.hljs-attr {
+  color: var(--dracula-foreground) !important;
+}
+span.hljs-string {
+  color: var(--dracula-yellow) !important;
+}
+span.hljs-number {
+  color: var(--dracula-purple) !important;
+}
+span.hljs-symbol {
+  color: var(--dracula-orange) !important;
+}
+span.hljs-meta {
+  color: var(--dracula-foreground) !important;
+}
+span.hljs-meta-keyword {
+  color: var(--dracula-pink) !important;
+}
+span.hljs-meta-string {
+  color: var(--dracula-orange) !important;
+}

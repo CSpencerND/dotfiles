@@ -1,0 +1,11 @@
+#!/bin/sh
+
+weatherreport="$XDG_CACHE_HOME/weatherreport"
+# curl -sf "wttr.in/$LOCATION" > "$weatherreport" || exit 1;
+
+curl -sf "wttr.in/$LOCATION" > "$weatherreport" || exit 1;
+  # getforecast
+
+setsid -f "$TERMINAL" -e less -Srf $weatherreport \
+  && sleep .18 && xdotool key super+shift+m;
+

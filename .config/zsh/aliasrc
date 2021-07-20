@@ -2,7 +2,7 @@
 
 ### Colorize commands
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+alias grep='grep -i --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias rgrep='rgrep --color=auto'
@@ -18,13 +18,15 @@ alias mkdir='mkdir -pv'
 alias du='du -sh'
 alias vi='nvim'
 alias vim='nvim'
+
 # alias nvim='nvim -u ~/.config/nvim/init.lua'
-alias top='bashtop'
+alias top='bpytop'
 alias apt-get='apt-get --show-progress'
 
 ### LS & TREE
 alias ll='ls -lAG'
 alias la='ls -A'
+
 # alias l='ls -F'
 command -v lsd > /dev/null && alias ls='lsd --group-dirs first' && \
 	alias tree='lsd --tree'

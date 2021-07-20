@@ -14,7 +14,6 @@ autoload -U colors && colors
 COLOR_SCHEME=dark # dark/light
 
 
-
 # ZSH completion system
 zmodload zsh/complist
 autoload -Uz compinit

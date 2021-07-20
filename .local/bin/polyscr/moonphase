@@ -2,10 +2,10 @@
 
 # Shows the current moon phase.
 
-moonfile="${XDG_DATA_HOME:-$HOME/.local/share}/moonphase"
+moonfile="$XDG_CACHE_HOME/moonphase"
 
-[ "$(stat -c %y "$moonfile" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] ||
-	{ curl -sf "wttr.in/?format=%m" > "$moonfile" || exit 1 ;}
+# [ "$(stat -c %y "$moonfile" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] ||
+curl -sf "wttr.in/?format=%m" > "$moonfile" || exit 1 ;
 
 icon="$(cat "$moonfile")"
 
@@ -21,17 +21,17 @@ case "$icon" in
 	*) exit 1 ;;
 esac
 
-echo "${icon-?}"
+# echo "${icon-?}"
 
-case $BLOCK_BUTTON in
-	3) notify-send "🌜 Moon phase module" "Displays current moon phase.
-- 🌑: New
-- 🌒: Waxing Crescent
-- 🌓: First Quarter
-- 🌔: Waxing Gibbous
-- 🌕: Full
-- 🌖: Waning Gibbous
-- 🌗: Last Quarter
-- 🌘: Waning Crescent" ;;
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
-esac
+# case $BLOCK_BUTTON in
+# 	3) notify-send "🌜 Moon phase module" "Displays current moon phase.
+# - 🌑: New
+# - 🌒: Waxing Crescent
+# - 🌓: First Quarter
+# - 🌔: Waxing Gibbous
+# - 🌕: Full
+# - 🌖: Waning Gibbous
+# - 🌗: Last Quarter
+# - 🌘: Waning Crescent" ;;
+# 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+# esac

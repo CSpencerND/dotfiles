@@ -1,12 +1,22 @@
-#!/bin/bash
+#!/bin/zsh
 
-SCR_DIR="$HOME/.local/bin"
-SCR_FILE="$SCR_DIR/$1"
+SCR_DIR=""
+SCR_FILE=""
+
+
+if [[ $1 = "-p" ]]; then
+  SCR_DIR="$HOME/.local/bin/polyscr"
+  SCR_FILE="$SCR_DIR/$2";
+else
+  SCR_DIR="$HOME/.local/bin"
+  SCR_FILE="$SCR_DIR/$1"
+fi
+
 
 if [[ -f $SCR_FILE ]]; then
     echo "File already exists."
 else 
-    echo '#!/bin/sh' > $SCR_FILE
+    echo '#!/bin/zsh' > $SCR_FILE
     chmod +x $SCR_FILE
     nvim $SCR_FILE
 fi

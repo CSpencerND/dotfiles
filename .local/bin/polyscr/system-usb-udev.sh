@@ -17,7 +17,7 @@ usb_print() {
         fi
         counter=$((counter + 1))
 
-        output="$output$space $unmounted"
+        output="$output$space禍 $unmounted"
     done
 
     for mounted in $(echo "$devices" | jq -r '.blockdevices[] | select(.type == "part") | select(.rm == true) | select(.mountpoint != null) | .size'); do

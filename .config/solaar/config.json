@@ -1,9 +1,10 @@
 {
-  "4090:082B9AEB": {
+  "4090:1C541CAE": {
     "_modelId": "B02540900000",
     "_name": "MX Anywhere 3",
     "_sensitive": {
-      "divert-keys": false,
+      "divert-keys": true,
+      "dpi": false,
       "hires-smooth-resolution": true,
       "mouse-gestures": false
     },
@@ -15,7 +16,7 @@
       "83": 0,
       "86": 0
     },
-    "dpi": "1000",
+    "dpi": "600",
     "dpi-sliding": 0,
     "hires-smooth-invert": false,
     "hires-smooth-resolution": true,
@@ -30,5 +31,6 @@
     },
     "smart-shift": 10
   },
-  "_version": "1.0.6"
+  "_version": "1.0.6",
+  "battery-icons": "solaar"
 }
