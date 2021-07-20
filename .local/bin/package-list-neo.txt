@@ -8,6 +8,7 @@ automake
 base-files
 base-passwd
 bash
+bat
 bsdutils
 build-essential
 bzip2
@@ -32,6 +33,7 @@ dosfstools
 dpkg
 e2fsprogs
 eject
+fd-find
 file
 findutils
 firefox-locale-ar

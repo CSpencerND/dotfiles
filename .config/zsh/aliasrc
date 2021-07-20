@@ -67,7 +67,8 @@ alias set_thold="system76-power charge-thresholds --profile"
 alias ethernet_off="sudo ifconfig enp35s0 down"
 alias ethernet_on="sudo ifconfig enp35s0 up"
 
-# alias startup="code/scripts/startup.sh"
+alias polyconfig="vi $XDG_CONFIG_HOME/polybar/config"
+alias kbconfig="sudo ~/.local/bin/kmonad .config/kmonad/main.kbd & disown"
 
 alias backup='/usr/bin/git --git-dir=$HOME/.backup/ --work-tree=$HOME'
 
