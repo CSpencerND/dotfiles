@@ -93,7 +93,8 @@ exec = date +"%a %b %e, %Y"
 label = "📅 %output%"
 interval = 60
 format-padding = 1
-click-left =
+click-left = setsid -f "$TERMINAL" -e calcurse && sleep .18 && xdotool key super+shift+m
+
 
 
 [module/clock]
