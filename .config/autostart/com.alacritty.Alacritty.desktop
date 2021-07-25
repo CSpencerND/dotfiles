@@ -12,6 +12,8 @@ Comment=A fast, cross-platform, OpenGL terminal emulator
 StartupWMClass=Alacritty
 Actions=New;
 
+X-GNOME-Autostart-enabled=false
+
 [Desktop Action New]
 Name=New Terminal
 Exec=alacritty

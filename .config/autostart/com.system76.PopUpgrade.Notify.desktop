@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Pop!_OS Release Check
-Icon=distributor-logo-upgrade-symbolic
-Comment=Check for a new OS release, and display notification if found
-Categories=System
-Exec=/usr/bin/pop-upgrade release check
-X-GNOME-Autostart-enabled=false

@@ -5,6 +5,7 @@
       "title": "pop-shell-example"
     }
   ],
+  "skiptaskbarhidden": [],
   "log_on_focus": true,
   "move_pointer_on_switch": true,
   "default_pointer_position": "CENTER"
