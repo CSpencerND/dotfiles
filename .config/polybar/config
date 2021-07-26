@@ -99,17 +99,17 @@ click-left = setsid -f "$TERMINAL" -e calcurse && sleep .18 && xdotool key super
 
 [module/clock]
 type = custom/script
-exec = poly-clock
+exec = ~/.local/bin/polyscr/poly-clock
 interval = 60
 ; tail = true
 
 
 [module/weather]
 type = custom/script
-exec = openweathermap-fullfeatured.sh
+exec = ~/.local/bin/polyscr/openweathermap-fullfeatured.sh
 interval = 3600
-click-left = wttr-bttn 
-click-right = wttr-update
+click-left = ~/.local/bin/polyscr/wttr-bttn 
+click-right = ~/.local/bin/polyscr/wttr-update
 
 
 ; [module/forecast]
@@ -128,10 +128,10 @@ click-right = wttr-update
 
 [module/usb]
 type = custom/script
-exec = system-usb-udev.sh 
+exec = ~/.local/bin/polyscr/system-usb-udev.sh 
 tail = true
-click-left = usb-tool --open
-click-right = usb-tool --dismount
+click-left = ~/.local/bin/polyscr/usb-tool --open
+click-right = ~/.local/bin/polyscr/usb-tool --dismount
 
 
 ; [module/vol]
@@ -141,14 +141,14 @@ click-right = usb-tool --dismount
 
 [module/network]
 type = custom/script
-exec = nettraff
+exec = ~/.local/bin/polyscr/nettraff
 ; interval = 5
 tail = true
 
 
 [module/memory]
 type = custom/script
-exec = memory
+exec = ~/.local/bin/polyscr/memory
 interval = 10
 ; tail = true
 click-left = notify-send "🧠 Memory hogs" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)"
@@ -157,7 +157,7 @@ click-right = setsid -f "$TERMINAL" -e bpytop && sleep .18 && xdotool key super+
 
 [module/cpu]
 type = custom/script
-exec = poly-cpu
+exec = ~/.local/bin/polyscr/poly-cpu
 interval = 10
 ; tail = true
 click-left = notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)\\n(100% per core)"
@@ -166,7 +166,7 @@ click-right = setsid -f "$TERMINAL" -e htop && sleep .18 && xdotool key super+sh
 
 [module/battery]
 type = custom/script
-exec = battery-combined-udev.sh
+exec = ~/.local/bin/polyscr/battery-combined-udev.sh
 ; interval = 300
 ; tail = true
 

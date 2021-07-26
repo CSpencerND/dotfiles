@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=nm-applet & disown
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=NetworkManager
+Name=NetworkManager
+Comment[en_US]=
+Comment=

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=pactl load-module module-alsa-sink device=hw:1,1\n
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Load Headset
+Name=Load Headset
+Comment[en_US]=
+Comment=
