@@ -47,7 +47,7 @@ font:
     family: Hack Nerd Font
     style: Bold Italic
 
-  size: 12
+  size: 8
 
   offset:
     x: 0
@@ -57,7 +57,7 @@ font:
 draw_bold_text_with_bright_colors: false
 
 
-background_opacity: .90
+background_opacity: 1
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

@@ -16,3 +16,10 @@ end
 -- end
 -- if O.lang.tailwindcss.active then
 --   require "lsp.tailwind
+
+-- init.lua
+require("packer").startup(
+    function()
+        use "lukas-reineke/indent-blankline.nvim"
+    end
+)

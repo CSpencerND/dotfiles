@@ -9,6 +9,8 @@
 
 
 [bar/example]
+override-redirect = true
+wm-name = awesome
 width = 100%
 height = 28
 offset-x = 0
@@ -41,7 +43,8 @@ tray-position = right
 ; tray-detached = false
 ; tray-maxsize = 20
 tray-padding = 4
-tray-background = #282a36
+tray-background = #77282a36
+tray-transparent = true
 ; tray-offset-x = 0
 ; tray-offset-y = 0
 ; tray-scale = 1.0
