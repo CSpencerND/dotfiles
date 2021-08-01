@@ -1,4 +1,8 @@
 0
+/home/cs/.local/share/backgrounds/5073864.jpg
+/home/cs/.local/share/backgrounds/rtVhzX.jpg
+/home/cs/.local/share/backgrounds/50706.jpg
+/home/cs/.local/share/backgrounds/313184.jpg
 /home/cs/.local/share/backgrounds/wallpaperflare.com_wallpaper5.jpg
 /home/cs/.local/share/backgrounds/1115102.png
 /home/cs/.local/share/backgrounds/wp7161157-pc-4k-japan-anime-wallpapers.jpg
@@ -95,7 +99,3 @@
 /home/cs/.local/share/backgrounds/699223.jpg
 /home/cs/.local/share/backgrounds/757919.jpg
 /home/cs/.local/share/backgrounds/50366.jpg
-/home/cs/.local/share/backgrounds/16481562366_5da872fe84_o.jpg
-/home/cs/.local/share/backgrounds/los_angles_synthwave_4k_hd_vaporwave-1920x1080.jpg
-/home/cs/.local/share/backgrounds/wp6801420-japanese-city-anime-wallpapers.jpg
-/home/cs/.local/share/backgrounds/50706.jpg

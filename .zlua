@@ -52,7 +52,7 @@
 /home/cs/.config/alacritty|12|1627814521
 /home/cs/.config/dconf|13|1625999649
 /home/cs/.config/BetterDiscord|3|1625999633
-/home/cs/.local/share/atom|14|1627855912
+/home/cs/.local/share/atom|17|1627855984
 /usr/share/xsessions|34|1627415470
 /home/cs/.local/src|96|1627460593
 /home/cs/.local/share/nvim/site/pack/packer/opt/barbar.nvim|2|1626060923
@@ -109,7 +109,7 @@
 /home/cs/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim|4|1627404400
 /home/cs/.config/variety|8|1627404402
 /etc/xdg/awesome|2|1627389329
-/home/cs/.config/copyq|5|1627404402
+/home/cs/.config/copyq|31|1627857001
 /home/cs/.config/nitrogen|3|1627404402
 /home/cs/.config/yarn|3|1627404401
 /home/cs/.local/share/backgrounds|12|1627649080
@@ -121,7 +121,7 @@
 /home/cs/.local/src/cbatticon|24|1627460907
 /opt/pycharm-community-2021.1.3|5|1627591990
 /opt/pycharm-community-2021.1.3/bin|4|1627467420
-/home/cs/.config/picom|54|1627644770
+/home/cs/.config/picom|61|1627856047
 /usr/local/lib/python3.9/dist-packages|2|1627492199
 /usr/include/xorg|3|1627546876
 /home/cs/.config/java|2|1627556557
