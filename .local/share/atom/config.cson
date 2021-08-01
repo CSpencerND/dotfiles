@@ -6,8 +6,6 @@
       "dracula-syntax"
     ]
   editor:
-    defaultFontSize: 16
-    fontSize: 16
     showIndentGuide: true
     softWrap: true
   "exception-reporting":
@@ -15,9 +13,13 @@
   fonts:
     fontFamily: "Hack"
     secondaryFonts: "\"Hack Nerd Font\""
+  "linter-ui-default":
+    showPanel: true
   minimap:
     plugins:
       pigments: true
       pigmentsDecorationsZIndex: 0
   welcome:
     showOnStartup: false
+"atom-workspace":
+  "ctrl-alt-v": "vim-mode:toggle-enabled"

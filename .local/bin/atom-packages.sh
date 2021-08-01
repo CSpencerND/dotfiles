@@ -20,4 +20,5 @@ minimap \
 minimap-pigments \
 pigments \
 todo-show \
+vim-mode-plus \
 language-lua

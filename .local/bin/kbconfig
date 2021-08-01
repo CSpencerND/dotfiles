@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-kmonad /home/cs/.config/kmonad/main.kbd &
+sudo kmonad /home/cs/.config/kmonad/main.kbd &

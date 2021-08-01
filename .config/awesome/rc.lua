@@ -324,9 +324,9 @@ globalkeys = gears.table.join(
     -- Terminal
     awful.key({ modkey, }, "Return",    function () awful.spawn(terminal)                end,
               {description = "open a terminal", group = "launcher"}),
-    -- Dmenu
-    awful.key({ modkey, }, "semicolon", function () awful.util.spawn("dmenu_run")        end,
-              {description = "dmenu launcher", group = "launcher"}),
+    -- Rofi
+    awful.key({ modkey, }, "slash", function () awful.util.spawn("rofi -show run")        end,
+              {description = "rofi launcher", group = "launcher"}),
     -- Browser
     awful.key({ modkey, }, "b", function () awful.util.spawn("firefox")          end,
               {description = "firefox launcher", group = "launcher"})
@@ -642,13 +642,13 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- ##                                   ##
 -- #######################################
 
-awful.spawn.with_shell("picom")
+awful.spawn.with_shell("picom -b --experimental-backends")
 awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/.local/share/backgrounds")
 awful.spawn.with_shell("variety")
 awful.spawn.with_shell("pactl load-module module-alsa-sink device=hw:1,1")
 
 awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("pasystray")
+awful.spawn.with_shell("volumeicon")
 awful.spawn.with_shell("copyq")
 awful.spawn.with_shell("solaar -b solaar -w hide")
 
@@ -659,7 +659,7 @@ awful.spawn.with_shell("sudo ifconfig enp35s0 down")
 
 -- awful.spawn.with_shell("/home/cs/.local/bin/polyscr/polystart.sh")
 awful.spawn.with_shell("discord")
-awful.spawn.with_shell("xset r rate 250 60")
+awful.spawn.with_shell("alacritty -e xset r rate 250 60")
 
 -- Customize
 -- beautiful.useless_gap = 5

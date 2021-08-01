@@ -49,9 +49,11 @@ alias luamake=/home/cspencer/Installed/lua-language-server/3rd/luamake/luamake
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias gedit="devour gedit"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+alias pycharm="pycharm.sh"
 
 # --------------------------- Important Commands -------------------------------
 alias hp="pactl load-module module-alsa-sink device=hw:1,1"
+alias kbrate="xset r rate 250 60"
 
 alias kb_off="xinput disable 'AT Translated Set 2 keyboard' && notify-send 'Keyboard' 'Built-in keyboard disabled'"
 alias kb_on="xinput enable 'AT Translated Set 2 keyboard' && notify-send 'Keyboard' 'Built-in keyboard enabled'"

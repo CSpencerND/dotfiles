@@ -16,6 +16,7 @@ export PATH="$PATH:$HOME/.local/bin/polyscr"
 export PATH="$PATH:$HOME/.config/nvim/utils/bin"
 export PATH="$PATH:$HOME/.local/share/npm/bin"
 export PATH="$PATH:$HOME/node_modules/.bin"
+export PATH="$PATH:/opt/pycharm-community-2021.1.3/bin"
 
 # -------------------------- Cleanup Home -------------------------------------
 
