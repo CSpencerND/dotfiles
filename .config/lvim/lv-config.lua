@@ -49,6 +49,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
+    { "lunarvim/colorschemes" },
     { "folke/tokyonight.nvim" },
     {
         "ray-x/lsp_signature.nvim",
