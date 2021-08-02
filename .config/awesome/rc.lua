@@ -352,7 +352,7 @@ clientkeys = gears.table.join(
               {description = "(un)maximize", group = "client"}),
 
     -- Kill the focused window
-    awful.key({ modkey          }, "q",  function (c) c:kill() end,
+    awful.key({ modkey          }, "c",  function (c) c:kill() end,
               {description = "close window", group = "client"}),
 
     -- Toggle Floating the focused window
@@ -659,7 +659,7 @@ awful.spawn.with_shell("sudo ifconfig enp35s0 down")
 
 -- awful.spawn.with_shell("/home/cs/.local/bin/polyscr/polystart.sh")
 awful.spawn.with_shell("discord")
-awful.spawn.with_shell("alacritty -e xset r rate 250 60")
+awful.spawn.with_shell("xset r rate 250 60")
 
 -- Customize
 -- beautiful.useless_gap = 5

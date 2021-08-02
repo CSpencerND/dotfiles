@@ -59,11 +59,11 @@ SAVEHIST=10000
 # -----------------------------------------------------------------------------
 
 # Default Apps
-export VISUAL='nvim'
+export VISUAL='lvim'
 export EDITOR=$VISUAL
 export TERMINAL="alacritty"
 export COLORTERM="truecolor"
-# export MANPAGER='nvim +Man!'
+# export MANPAGER='lvim +Man!'
 # export MANWIDTH=999
 # export PAGER="less"
 

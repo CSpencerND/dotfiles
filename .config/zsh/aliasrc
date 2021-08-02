@@ -16,7 +16,7 @@ alias cp='cp -ivr'
 alias mv='mv -iv'
 alias mkdir='mkdir -pv'
 alias du='du -sh'
-alias vi='nvim'
+alias vi='lvim'
 alias vim='nvim'
 
 # alias nvim='nvim -u ~/.config/nvim/init.lua'
