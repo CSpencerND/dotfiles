@@ -25,12 +25,12 @@ browser = "firefox"
 
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
-# Workspaces
+# Groups
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-# group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall",
-#                  "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall",
+                 "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
 for i in range(len(group_names)):
     groups.append(
@@ -41,6 +41,7 @@ for i in range(len(group_names)):
         )
     )
 
+# Colors
 dracula = {
     'black':    '#14151b',
     'bg':       '#282a36',
@@ -61,105 +62,115 @@ dracula = {
 # --- VARIABLE DEFINITIONS }}}
 ##############################
 # {{{     KEYBINDINGS      ---
-
 keys = [
-    # Switch Between Windows
-    # Vim Keys
-    Key
-    (
-        [mod], "k",
-        lazy.layout.up()
-    ),
-    Key
-    (
-        [mod], "j",
-        lazy.layout.down()
-    ),
-    Key
-    (
-        [mod], "h",
-        lazy.layout.left()
-    ),
-    Key
-    (
-        [mod], "l",
-        lazy.layout.right()
-    ),
+    # Change Focus
+    Key([mod], "Up", lazy.layout.up()),
+    Key([mod], "Down", lazy.layout.down()),
+    Key([mod], "Left", lazy.layout.left()),
+    Key([mod], "Right", lazy.layout.right()),
+    Key([mod], "k", lazy.layout.up()),
+    Key([mod], "j", lazy.layout.down()),
+    Key([mod], "h", lazy.layout.left()),
+    Key([mod], "l", lazy.layout.right()),
 
-    # Arrow Keys
+    # Resize
     Key
     (
-        [mod], "Up",
-        lazy.layout.up()
-    ),
-    Key
-    (
-        [mod], "Down",
-        lazy.layout.down()
-    ),
-    Key
-    (
-        [mod], "Left",
-        lazy.layout.left()
-    ),
-    Key
-    (
-        [mod], "Right",
-        lazy.layout.right()
-    ),
-
-    # Switch Between Groups
-    Key
-    (
-        [mod], "i",
-        lazy.screen.next_group(),
-        desc="Switch to next group"
-    ),
-    Key
-    (
-        [mod], "u",
-        lazy.screen.prev_group(),
-        desc="Switch to previous group"
-    ),
-    Key
-    (
-        [mod], "semicolon",
-        lazy.screen.toggle_group(),
-        desc="Toggle to previous group"
-    ),
-
-    # Switch Between Monitors
-
-    # Resize Windows
-    Key
-    (
-        [mod, "shift"], "l",
+        [mod, "control"], "l",
         lazy.layout.grow_right(),
         lazy.layout.grow(),
         lazy.layout.increase_ratio(),
-        lazy.layout.delete()
+        lazy.layout.delete(),
     ),
     Key
     (
-        [mod, "shift"], "h",
+        [mod, "control"], "Right",
+        lazy.layout.grow_right(),
+        lazy.layout.grow(),
+        lazy.layout.increase_ratio(),
+        lazy.layout.delete(),
+    ),
+    Key
+    (
+        [mod, "control"], "h",
         lazy.layout.grow_left(),
         lazy.layout.shrink(),
         lazy.layout.decrease_ratio(),
-        lazy.layout.add()
+        lazy.layout.add(),
     ),
     Key
     (
-        [mod, "shift"], "k",
+        [mod, "control"], "Left",
+        lazy.layout.grow_left(),
+        lazy.layout.shrink(),
+        lazy.layout.decrease_ratio(),
+        lazy.layout.add(),
+    ),
+    Key
+    (
+        [mod, "control"], "k",
         lazy.layout.grow_up(),
         lazy.layout.grow(),
-        lazy.layout.decrease_nmaster()
+        lazy.layout.decrease_nmaster(),
+    ),
+    Key
+    (
+        [mod, "control"], "Up",
+        lazy.layout.grow_up(),
+        lazy.layout.grow(),
+        lazy.layout.decrease_nmaster(),
     ),
     Key
     (
         [mod, "control"], "j",
         lazy.layout.grow_down(),
         lazy.layout.shrink(),
-        lazy.layout.increase_nmaster()
+        lazy.layout.increase_nmaster(),
+    ),
+    Key
+    (
+        [mod, "control"], "Down",
+        lazy.layout.grow_down(),
+        lazy.layout.shrink(),
+        lazy.layout.increase_nmaster(),
+    ),
+
+    # Monad Flip
+    Key([mod, "shift"], "f", lazy.layout.flip()),
+
+    # BSP Flip
+    Key([mod, "mod1"], "k", lazy.layout.flip_up()),
+    Key([mod, "mod1"], "j", lazy.layout.flip_down()),
+    Key([mod, "mod1"], "l", lazy.layout.flip_right()),
+    Key([mod, "mod1"], "h", lazy.layout.flip_left()),
+
+    # BSP Shuffle
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+
+    # 
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "Left", lazy.layout.swap_left()),
+    Key([mod, "shift"], "Right", lazy.layout.swap_right()),
+
+    # Switch Groups
+    Key
+    (
+        [mod], "i",
+        lazy.screen.next_group()
+    ),
+    Key
+    (
+        [mod], "u",
+        lazy.screen.prev_group()
+    ),
+    Key
+    (
+        [mod], "semicolon",
+        lazy.screen.toggle_group()
     ),
 
     # Window Functions
@@ -182,11 +193,6 @@ keys = [
     # Layout Functions
     Key
     (
-        [mod], "n",
-        lazy.layout.normalize()
-    ),
-    Key
-    (
         [mod], "bracketright",
         lazy.next_layout()
     ),
@@ -197,22 +203,20 @@ keys = [
     ),
     Key
     (
-        [mod], "s",
-        lazy.layout.toggle_split()
+        [mod], "n",
+        lazy.layout.normalize()
     ),
 
-    ### Refresh / Logout
+    # Refresh / Logout
     Key
     (
         [mod, "shift"], "r",
-        lazy.restart(),
-        desc="Refresh Qtile"
+        lazy.restart()
     ),
     Key
     (
         [mod, "shift"], "x",
-        lazy.shutdown(),
-        desc="Logout Qtile"
+        lazy.shutdown()
     ),
 
 
@@ -220,26 +224,22 @@ keys = [
     Key
     (
         [mod], "Return",
-        lazy.spawn(terminal),
-        desc="Launch Terminal"
+        lazy.spawn(terminal)
     ),
     Key
     (
         [mod], "slash",
-        lazy.spawn(prompt),
-        desc="Launch Rofi"
+        lazy.spawn(prompt)
     ),
     Key
     (
         [mod], "b",
-        lazy.spawn(browser),
-        desc="Launch Firefox"
+        lazy.spawn(browser)
     ),
     Key
     (
         [mod], "e",
-        lazy.spawn("rofimoji"),
-        desc="Search Emojis"
+        lazy.spawn("rofimoji")
     ),
 
 
@@ -261,7 +261,7 @@ keys = [
     )
 ]
 
-# Switching Groups By Index
+# Switch Groups By Index
 for i in groups:
     keys.extend(
         [
@@ -284,7 +284,8 @@ for i in groups:
                 lazy.group[i.name].toscreen(),
                 desc="Move focused window and switch to group by index"
             )
-        ])
+        ]
+    )
 
 # ---     KEYBINDINGS      }}}
 ##############################
@@ -313,9 +314,11 @@ extension_defaults = {
     'font': 'JetBrains Mono',
     'fontsize': 12,
     'padding': 3,
-    'background': dracula['bgl'],
+    'background': dracula['bg'],
     'foreground': dracula['fg']
 }
+
+widget_defaults = extension_defaults.copy()
 
 widgets_list = [
     widget.Sep(
@@ -430,9 +433,6 @@ widgets_list = [
         text=" ₿",
         padding=0,
         fontsize=12
-    ),
-    widget.BitcoinTicker(
-        padding=5
     ),
     widget.TextBox(
         text='',

@@ -9,7 +9,7 @@
 
 
 [bar/example]
-override-redirect = true
+; override-redirect = true
 wm-name = awesome
 width = 100%
 height = 28

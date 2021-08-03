@@ -18,6 +18,8 @@
 #|------- Main Layer -----------|#
 (defalias esc (tap-next-release esc lalt)
           vi (layer-add vim)
+          nsv (cmd-button "notify-send KMonad Vim")
+          sv #(@vi @nsv)
 )
 
 (deflayer main
@@ -26,7 +28,7 @@
           tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn  kp7  kp8  kp9  kp+
           @esc a    s    d    f    g    h    j    k    l    ;    '    ret                        kp4  kp5  kp6
           lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
-          @vi  lmet lctl           spc            bspc rmet cmp  rctl            left down rght  kp0  kp.
+          @sv  lmet lctl           spc            bspc rmet cmp  rctl            left down rght  kp0  kp.
 ) ;;;;;;; Main Layer ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -34,6 +36,8 @@
 (defalias mn (layer-rem vim)
           w (around rctl right)
           b (around rctl left)
+          nsn (cmd-button "notify-send KMonad Normal")
+          sn #(@mn @nsn)
 )
 
 
@@ -43,6 +47,6 @@
           tab  q    @w   e    r    t    home pgdn pgup end  p    [    ]    \     del  end  pgdn  kp7  kp8  kp9  kp+
           @esc a    s    d    f    g    left down up   rght ;    '    ret                        kp4  kp5  kp6
           lsft z    del  c    v    @b   n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
-          @mn  lmet lctl           spc            bspc rmet cmp  rctl            left down rght  kp0  kp.
+          @sn  lmet lctl           spc            bspc rmet cmp  rctl            left down rght  kp0  kp.
 ) ;;;;;;; Vim Layer ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

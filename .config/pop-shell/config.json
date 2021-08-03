@@ -6,6 +6,9 @@
     },
     {
       "class": "copyq"
+    },
+    {
+      "class": "Gnome-tweaks"
     }
   ],
   "skiptaskbarhidden": [],
