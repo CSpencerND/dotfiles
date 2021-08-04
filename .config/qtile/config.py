@@ -23,6 +23,18 @@ terminal = "alacritty"
 prompt = "rofi -show run"
 browser = "firefox"
 
+@lazy.function
+def window_to_prev_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+
+@lazy.function
+def window_to_next_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 # Groups
@@ -36,7 +48,7 @@ for i in range(len(group_names)):
     groups.append(
         Group(
             name=group_names[i],
-            # layout=group_layouts[i].lower(),
+            layout=group_layouts[i].lower(),
             label=group_labels[i]
         )
     )
@@ -62,17 +74,8 @@ dracula = {
 # --- VARIABLE DEFINITIONS }}}
 ##############################
 # {{{     KEYBINDINGS      ---
-keys = [
-    # Change Focus
-    Key([mod], "Up", lazy.layout.up()),
-    Key([mod], "Down", lazy.layout.down()),
-    Key([mod], "Left", lazy.layout.left()),
-    Key([mod], "Right", lazy.layout.right()),
-    Key([mod], "k", lazy.layout.up()),
-    Key([mod], "j", lazy.layout.down()),
-    Key([mod], "h", lazy.layout.left()),
-    Key([mod], "l", lazy.layout.right()),
 
+keys = [
     # Resize
     Key
     (
@@ -135,129 +138,80 @@ keys = [
         lazy.layout.increase_nmaster(),
     ),
 
-    # Monad Flip
-    Key([mod, "shift"], "f", lazy.layout.flip()),
+    # Change Focus
+    Key([mod        ], "Up",            lazy.layout.up()),
+    Key([mod        ], "Down",          lazy.layout.down()),
+    Key([mod        ], "Left",          lazy.layout.left()),
+    Key([mod        ], "Right",         lazy.layout.right()),
+    Key([mod        ], "k",             lazy.layout.up()),
+    Key([mod        ], "j",             lazy.layout.down()),
+    Key([mod        ], "h",             lazy.layout.left()),
+    Key([mod        ], "l",             lazy.layout.right()),
 
     # BSP Flip
-    Key([mod, "mod1"], "k", lazy.layout.flip_up()),
-    Key([mod, "mod1"], "j", lazy.layout.flip_down()),
-    Key([mod, "mod1"], "l", lazy.layout.flip_right()),
-    Key([mod, "mod1"], "h", lazy.layout.flip_left()),
+    Key([mod, "mod1" ], "k",            lazy.layout.flip_up()),
+    Key([mod, "mod1" ], "j",            lazy.layout.flip_down()),
+    Key([mod, "mod1" ], "l",            lazy.layout.flip_right()),
+    Key([mod, "mod1" ], "h",            lazy.layout.flip_left()),
 
     # BSP Shuffle
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+    Key([mod, "shift"], "k",            lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "j",            lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "h",            lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "l",            lazy.layout.shuffle_right()),
 
-    # 
-    Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "Left", lazy.layout.swap_left()),
-    Key([mod, "shift"], "Right", lazy.layout.swap_right()),
+    # Monad move windows up or down
+    Key([mod, "shift"], "Up",           lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "Down",         lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "Left",         lazy.layout.swap_left()),
+    Key([mod, "shift"], "Right",        lazy.layout.swap_right()),
 
     # Switch Groups
-    Key
-    (
-        [mod], "i",
-        lazy.screen.next_group()
-    ),
-    Key
-    (
-        [mod], "u",
-        lazy.screen.prev_group()
-    ),
-    Key
-    (
-        [mod], "semicolon",
-        lazy.screen.toggle_group()
-    ),
+    Key([mod         ], "i",            lazy.screen.next_group()),
+    Key([mod         ], "u",            lazy.screen.prev_group()),
+    Key([mod         ], "semicolon",    lazy.screen.toggle_group()),
 
     # Window Functions
-    Key
-    (
-        [mod], "c",
-        lazy.window.kill()
-    ),
-    Key
-    (
-        [mod, "shift"], "m",
-        lazy.window.toggle_fullscreen()
-    ),
-    Key
-    (
-        [mod], "f",
-        lazy.window.toggle_floating()
-    ),
+    Key([mod           ], "c",          lazy.window.kill()),
+    Key([mod,          ], "m",          lazy.window.toggle_minimize()),
+    Key([mod, "control"], "m",          lazy.window.toggle_maximize()),
+    Key([mod, "shift"  ], "m",          lazy.window.toggle_fullscreen()),
+    Key([mod           ], "f",          lazy.window.toggle_floating()),
+    Key([mod           ], "space",      lazy.findwindow()),
 
     # Layout Functions
-    Key
-    (
-        [mod], "bracketright",
-        lazy.next_layout()
-    ),
-    Key
-    (
-        [mod], "bracketleft",
-        lazy.prev_layout()
-    ),
-    Key
-    (
-        [mod], "n",
-        lazy.layout.normalize()
-    ),
+    Key([mod         ], "bracketright", lazy.next_layout()),
+    Key([mod         ], "bracketleft",  lazy.prev_layout()),
+    Key([mod         ], "n",            lazy.layout.normalize()),
+    Key([mod         ], "r",            lazy.layout.reset()),
+    Key([mod, "shift"], "f",            lazy.layout.flip()),
+    Key([mod         ], "s",            lazy.layout.toggle_split()),
+
 
     # Refresh / Logout
-    Key
-    (
-        [mod, "shift"], "r",
-        lazy.restart()
-    ),
-    Key
-    (
-        [mod, "shift"], "x",
-        lazy.shutdown()
-    ),
-
+    Key([mod, "shift"], "r",            lazy.restart()),
+    Key([mod, "shift"], "x",            lazy.shutdown()),
 
     # Launchers
-    Key
-    (
-        [mod], "Return",
-        lazy.spawn(terminal)
-    ),
-    Key
-    (
-        [mod], "slash",
-        lazy.spawn(prompt)
-    ),
-    Key
-    (
-        [mod], "b",
-        lazy.spawn(browser)
-    ),
-    Key
-    (
-        [mod], "e",
-        lazy.spawn("rofimoji")
-    ),
-
+    Key([mod         ], "Return",       lazy.spawn(terminal)),
+    Key([mod         ], "slash",        lazy.spawn("rofi -show run")),
+    Key([mod         ], "b",            lazy.spawn(browser)),
+    Key([mod         ], "e",            lazy.spawn("rofimoji")),
 
     # Media Keys
-    Key
-    (
-        [], "XF86AudioMute",
-        lazy.spawn("amixer -D pulse sset Master toggle")
+    Key(
+        [], "XF86AudioMute", 
+        lazy.spawn("amixer sset Master toggle")
     ),
-    Key
-    (
-        [], "XF86AudioLowerVolume",
-        lazy.spawn("amixer -D pulse sset Master 5%-")
+
+    Key(
+        [], "XF86AudioLowerVolume", 
+        lazy.spawn("amixer sset Master 5%-")
     ),
-    Key
-    (
-        [], "XF86AudioRaiseVolume",
-        lazy.spawn("amixer -D pulse sset Master 5%+")
+
+    Key(
+        [], "XF86AudioRaiseVolume", 
+        lazy.spawn("amixer sset Master 5%+")
     )
 ]
 
@@ -265,24 +219,20 @@ keys = [
 for i in groups:
     keys.extend(
         [
-            Key
-            (
-                [mod], i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group by index"
+            Key(
+                [mod           ], i.name, 
+                lazy.group[i.name].toscreen()
             ),
-            Key
-            (
-                [mod, "shift"], i.name,
-                lazy.window.togroup(i.name),
-                desc="Move focused window to group by index"
+
+            Key(
+                [mod, "shift"  ], i.name, 
+                lazy.window.togroup(i.name)
             ),
-            Key
-            (
-                [mod, "control"], i.name,
+
+            Key(
+                [mod, "control"], i.name, 
                 lazy.window.togroup(i.name),
-                lazy.group[i.name].toscreen(),
-                desc="Move focused window and switch to group by index"
+                lazy.group[i.name].toscreen()
             )
         ]
     )
@@ -291,16 +241,31 @@ for i in groups:
 ##############################
 # {{{       LAYOUTS        ---
 
-layout_theme = {
-    "margin": 10,
-    "border_width": 1,
-    "border_focus": dracula['purple'],
-    "border_normal": dracula['bg']
-}
+def init_layout_theme():
+    return {
+        "margin": 5,
+        "border_width": 1,
+        "border_focus": dracula['purple'],
+        "border_normal": dracula['bg']
+    }
+
+layout_theme = init_layout_theme()
 
 layouts = [
-    layout.MonadTall(new_client_position="top", **layout_theme),
-    layout.Tile(ratio_increment=0.039, **layout_theme),
+    layout.MonadTall(
+        new_client_position="top", 
+        margin=8,
+        border_width=1,
+        single_border_width=1,
+        border_focus=dracula['purple'],
+        border_normal=dracula['bg']
+    ),
+
+    layout.Tile(
+        ratio_increment=0.039, 
+        **layout_theme
+    ),
+
     layout.Bsp(**layout_theme),
     layout.Columns(**layout_theme),
     layout.Floating(**layout_theme),
@@ -310,15 +275,16 @@ layouts = [
 ##############################
 # {{{       WIDGETS        ---
 
-extension_defaults = {
-    'font': 'JetBrains Mono',
-    'fontsize': 12,
-    'padding': 3,
-    'background': dracula['bg'],
-    'foreground': dracula['fg']
-}
+def init_widgets_defaults():
+    return {
+        'font': 'JetBrains Mono',
+        'fontsize': 12,
+        'padding': 3,
+        'background': dracula['bg'],
+        'foreground': dracula['fg']
+    }
 
-widget_defaults = extension_defaults.copy()
+widget_defaults = init_widgets_defaults()
 
 widgets_list = [
     widget.Sep(
@@ -472,7 +438,8 @@ widgets_list = [
 
 screens = [
     Screen(
-        top=bar.Bar(
+        top=bar.Bar
+        (
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
@@ -484,14 +451,10 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn",
-                               foreground="#d75f5f"),
-                widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.QuickExit(),
-            ],
-            24,
+                widget.Systray(),
+                # widget.QuickExit(),
+            ], 24, opacity=0.9
         ),
     ),
 ]
@@ -536,4 +499,3 @@ wmname = "LG3D"
 
 # ---    MISCELLANEOUS     }}}
 
-lazy.spawn("nitrogen --restore")

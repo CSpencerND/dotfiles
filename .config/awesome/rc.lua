@@ -647,6 +647,7 @@ awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/.local/share/backgro
 awful.spawn.with_shell("variety")
 awful.spawn.with_shell("pactl load-module module-alsa-sink device=hw:1,1")
 
+awful.spawn.with_shell("cbatticon")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("volumeicon")
 awful.spawn.with_shell("copyq")
