@@ -53,7 +53,6 @@ alias pycharm="pycharm.sh"
 
 # --------------------------- Important Commands -------------------------------
 alias hp="pactl load-module module-alsa-sink device=hw:1,1"
-alias kbrate="xset r rate 250 60"
 
 alias kb_off="xinput disable 'AT Translated Set 2 keyboard' && notify-send 'Keyboard' 'Built-in keyboard disabled'"
 alias kb_on="xinput enable 'AT Translated Set 2 keyboard' && notify-send 'Keyboard' 'Built-in keyboard enabled'"

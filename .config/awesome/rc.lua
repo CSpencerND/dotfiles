@@ -270,11 +270,24 @@ root.buttons(gears.table.join(
 -- #######################################
 -- {{{
 globalkeys = gears.table.join(
+    awful.key
+    (
+      { }, "XF86MonBrightnessUp",
+      function () awful.spawn("sudo brightnessctl -s +5%") end,
+      {description = "Brightness Up", group = "Function"}
+    ),
+
+    awful.key
+    (
+      { }, "XF86MonBrightnessDown",
+      function () awful.spawn("sudo brightnessctl -s 5%-") end,
+      {description = "Brightness Down", group = "Function"}
+    ),
 
     -- Switch Tags
-    awful.key({ modkey, "Control" }, "j",  awful.tag.viewnext,
+    awful.key({ modkey, "Control" }, "k",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    awful.key({ modkey, "Control" }, "k",   awful.tag.viewprev,
+    awful.key({ modkey, "Control" }, "j",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
 
     -- Switch Screens
@@ -660,7 +673,7 @@ awful.spawn.with_shell("sudo ifconfig enp35s0 down")
 
 -- awful.spawn.with_shell("/home/cs/.local/bin/polyscr/polystart.sh")
 awful.spawn.with_shell("discord")
-awful.spawn.with_shell("xset r rate 250 60")
+awful.spawn.with_shell("/home/$USER/.local/bin/kbconfig")
 
 -- Customize
 -- beautiful.useless_gap = 5

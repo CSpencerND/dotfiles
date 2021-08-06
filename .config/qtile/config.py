@@ -1,10 +1,12 @@
 # {{{       IMPORTS        ---
 
-import os
+from os.path import expanduser
 import re
 import socket
 import subprocess
-from libqtile import qtile, bar, layout, widget, hook
+from libqtile import qtile, bar, layout, widget, hook, extension
+from libqtile.extension import base, command_set, dmenu, window_list
+from libqtile.extension.window_list import WindowList
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord, Rule
 from libqtile.command import lazy
 from libqtile.lazy import lazy
@@ -12,15 +14,11 @@ from typing import List  # noqa: F401
 
 # ---       IMPORTS        }}}
 ##############################
-# {{{ VARIABLE DEFINITIONS ---
+# {{{       VARIOUS        ---
 
 mod = "mod4"
-mod1 = "alt"
-mod2 = "control"
-home = os.path.expanduser('~')
-
 terminal = "alacritty"
-prompt = "rofi -show run"
+launcher = "rofi -show run"
 browser = "firefox"
 
 @lazy.function
@@ -34,8 +32,6 @@ def window_to_next_group(qtile):
     if qtile.currentWindow is not None:
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
-
-prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 # Groups
 groups = []
@@ -71,11 +67,18 @@ dracula = {
     'red':      '#ff5555',
 }
 
-# --- VARIABLE DEFINITIONS }}}
+# ---      VARIABLE        }}}
 ##############################
 # {{{     KEYBINDINGS      ---
 
 keys = [
+    # Window List
+    Key
+    (
+        [mod], "grave",
+        lazy.run_extension(extension.window_list) # .WindowList  # .list_windows()
+    ),
+
     # Resize
     Key
     (
@@ -194,25 +197,76 @@ keys = [
 
     # Launchers
     Key([mod         ], "Return",       lazy.spawn(terminal)),
-    Key([mod         ], "slash",        lazy.spawn("rofi -show run")),
+    Key([mod         ], "slash",        lazy.spawn(launcher)),
     Key([mod         ], "b",            lazy.spawn(browser)),
     Key([mod         ], "e",            lazy.spawn("rofimoji")),
 
-    # Media Keys
-    Key(
+    # Function Keys
+    Key
+    (
         [], "XF86AudioMute", 
         lazy.spawn("amixer sset Master toggle")
     ),
 
-    Key(
+    Key
+    (
         [], "XF86AudioLowerVolume", 
-        lazy.spawn("amixer sset Master 5%-")
+        lazy.spawn("amixer -D pulse sset Master 5%-") # amixer -c 0 -q set Master 5dB-
     ),
 
-    Key(
+    Key
+    (
         [], "XF86AudioRaiseVolume", 
-        lazy.spawn("amixer sset Master 5%+")
+        lazy.spawn("amixer -D pulse sset Master 5%+") # amixer -c 0 -q set Master 5dB+
+    ),
+
+    Key
+    (
+        [], "XF86MonBrightnessUp", 
+        lazy.spawn("sudo brightnessctl s +5%")
+    ),
+
+    Key
+    (
+        [], "XF86MonBrightnessDown", 
+        lazy.spawn("sudo brightnessctl s 5%-")
+    ),
+
+    # Function Keys Alt
+    Key
+    (
+        [], "F21", 
+        lazy.spawn("amixer sset Master toggle")
+    ),
+    Key
+    (
+        [mod], "F2", 
+        lazy.spawn("amixer sset Master toggle")
+    ),
+    Key
+    (
+        [mod], "F3", 
+        lazy.spawn("amixer -D pulse sset Master 5%-")
+    ),
+
+    Key
+    (
+        [mod], "F4", 
+        lazy.spawn("amixer -D pulse sset Master 5%+")
+    ),
+
+    Key
+    (
+        [mod], "F8", 
+        lazy.spawn("sudo brightnessctl s +5%")
+    ),
+
+    Key
+    (
+        [mod], "F7", 
+        lazy.spawn("sudo brightnessctl s 5%-")
     )
+
 ]
 
 # Switch Groups By Index
@@ -248,7 +302,6 @@ def init_layout_theme():
         "border_focus": dracula['purple'],
         "border_normal": dracula['bg']
     }
-
 layout_theme = init_layout_theme()
 
 layouts = [
@@ -283,157 +336,217 @@ def init_widgets_defaults():
         'background': dracula['bg'],
         'foreground': dracula['fg']
     }
-
 widget_defaults = init_widgets_defaults()
 
-widgets_list = [
-    widget.Sep(
-        linewidth=0,
-        padding=6,
-    ),
-    widget.Image(
-        filename="~/.config/qtile/icons/python-white.png",
-        scale="False",
-        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(terminal)}
-    ),
-    widget.Sep(
-        linewidth=0,
-        padding=6,
-    ),
-    widget.GroupBox(
-        font="Ubuntu Bold",
-        fontsize=9,
-        margin_y=3,
-        margin_x=0,
-        padding_y=5,
-        padding_x=3,
-        borderwidth=3,
-        rounded=False,
-        highlight_method="line",
-    ),
-    widget.Prompt(
-        prompt=prompt,
-        font="Ubuntu Mono",
-        padding=10,
-    ),
-    widget.Sep(
-        linewidth=0,
-        padding=40,
-    ),
-    widget.WindowName(
-        padding=0
-    ),
-    widget.Systray(
-        padding=5
-    ),
-    widget.Sep(
-        linewidth=0,
-        padding=6,
-    ),
-    widget.TextBox(
-        text='',
-        padding=0,
-        fontsize=37
-    ),
-    widget.Net(
-        interface="enp6s0",
-        format='{down} ↓↑ {up}',
-        padding=5
-    ),
-    widget.TextBox(
-        text='',
-        padding=0,
-        fontsize=37
-    ),
-    widget.TextBox(
-        text=" 🌡 TEMP NOT SHOWN ",
-        padding=2,
-        fontsize=11
-    ),
-    # widget.ThermalSensor(
-    #          foreground = colors[2],
-    #          background = colors[5],
-    #          threshold = 90,
-    #          padding = 5
-    # ),
-    widget.TextBox(
-        text='',
-        padding=0,
-        fontsize=37
-    ),
-    widget.TextBox(
-        text=" ⟳",
-        padding=2,
-        fontsize=14
-    ),
-    widget.CheckUpdates(
-        update_interval=1800,
-        distro="Arch_checkupdates",
-        display_format="{updates} Updates",
-        mouse_callbacks={
-            'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo apt update')
-        },
-    ),
-    widget.TextBox(
-        text='',
-        padding=0,
-        fontsize=37
-    ),
-    widget.TextBox(
-        text=" 🖬",
-        padding=0,
-        fontsize=14
-    ),
-    widget.Memory(
-        mouse_callbacks={
-            'Button1': lambda: qtile.cmd_spawn(terminal + ' -e bpytop')
-        },
-        padding=5
-    ),
-    widget.TextBox(
-        text='',
-        padding=0,
-        fontsize=37
-    ),
-    widget.TextBox(
-        text=" ₿",
-        padding=0,
-        fontsize=12
-    ),
-    widget.TextBox(
-        text='',
-        padding=0,
-        fontsize=37
-    ),
-    widget.TextBox(
-        text=" Vol:",
-        padding=0
-    ),
-    widget.Volume(
-        padding=5
-    ),
-    widget.TextBox(
-        text='',
-        padding=0,
-        fontsize=37
-    ),
-    widget.CurrentLayoutIcon(
-        custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
-        padding=0,
-        scale=0.7
-    ),
-    widget.CurrentLayout(
-        padding=5
-    ),
-    widget.TextBox(
-        text='',
-        padding=0,
-        fontsize=37
-    ),
-    widget.Clock(
-        format="%A, %B %d - %H:%M "
-    ),
-]
+def init_widgets_list():
+    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+    widgets_list = [
+        widget.Sep
+        (
+            linewidth=0,
+            padding=6,
+        ),
+
+        widget.Image
+        (
+            filename="~/.config/qtile/icons/python.png",
+            scale="False",
+            mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(launcher)}
+        ),
+
+        widget.Sep
+        (
+            linewidth=0,
+            padding=6,
+        ),
+
+        widget.GroupBox
+        (
+            font="Ubuntu Bold",
+            fontsize=9,
+            margin_y=3,
+            margin_x=0,
+            padding_y=5,
+            padding_x=3,
+            borderwidth=3,
+            rounded=False,
+            highlight_method="line",
+        ),
+
+        widget.Prompt
+        (
+            prompt=prompt,
+            font="Ubuntu Mono",
+            padding=10,
+        ),
+
+        widget.Sep
+        (
+            linewidth=0,
+            padding=40,
+        ),
+
+        widget.WindowName
+        (
+            padding=0
+        ),
+
+        widget.Systray
+        (
+            padding=5
+        ),
+
+        widget.Sep
+        (
+            linewidth=0,
+            padding=6,
+        ),
+
+        widget.TextBox
+        (
+            text='',
+            padding=0,
+            fontsize=37
+        ),
+        
+        widget.Net
+        (
+            interface="enp6s0",
+            format='{down} ↓↑ {up}',
+            padding=5
+        ),
+
+        widget.TextBox
+        (
+            text='',
+            padding=0,
+            fontsize=37
+        ),
+
+        widget.TextBox
+        (
+            text=" 🌡 TEMP NOT SHOWN ",
+            padding=2,
+            fontsize=11
+        ),
+
+        # widget.ThermalSensor
+        # (
+        #          foreground = colors[2],
+        #          background = colors[5],
+        #          threshold = 90,
+        #          padding = 5
+        # ),
+
+        widget.TextBox
+        (
+            text='',
+            padding=0,
+            fontsize=37
+        ),
+
+        widget.TextBox
+        (
+            text=" ⟳",
+            padding=2,
+            fontsize=14
+        ),
+
+        widget.CheckUpdates
+        (
+            update_interval=1800,
+            distro="Arch_checkupdates",
+            display_format="{updates} Updates",
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo apt update')
+            },
+        ),
+
+        widget.TextBox
+        (
+            text='',
+            padding=0,
+            fontsize=37
+        ),
+
+        widget.TextBox
+        (
+            text=" 🖬",
+            padding=0,
+            fontsize=14
+        ),
+
+        widget.Memory
+        (
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e bpytop')
+            },
+            padding=5
+        ),
+
+        widget.TextBox
+        (
+            text='',
+            padding=0,
+            fontsize=37
+        ),
+        
+        widget.TextBox
+        (
+            text=" ₿",
+            padding=0,
+            fontsize=12
+        ),
+
+        widget.TextBox
+        (
+            text='',
+            padding=0,
+            fontsize=37
+        ),
+
+        widget.TextBox
+        (
+            text=" Vol:",
+            padding=0
+        ),
+
+        widget.Volume
+        (
+            padding=5
+        ),
+
+        widget.TextBox
+        (
+            text='',
+            padding=0,
+            fontsize=37
+        ),
+
+        widget.CurrentLayoutIcon
+        (
+            custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
+            padding=0,
+            scale=0.7
+        ),
+
+        widget.CurrentLayout
+        (
+            padding=5
+        ),
+
+        widget.TextBox
+        (
+            text='',
+            padding=0,
+            fontsize=37
+        ),
+
+        widget.Clock
+        (
+            format="%A, %B %d - %H:%M "
+        ),
+    ]
 
 
 screens = [
@@ -497,5 +610,9 @@ reconfigure_screens = True
 auto_minimize = True
 wmname = "LG3D"
 
-# ---    MISCELLANEOUS     }}}
+# @hook.subscribe.startup
+@hook.subscribe.startup_once
+def start():
+    call([expanduser("~/.config/qtile/autostart.sh")])
 
+# ---    MISCELLANEOUS     }}}

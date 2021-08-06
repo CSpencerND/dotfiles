@@ -1,3 +1,10 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
-sudo kmonad /home/cs/.config/kmonad/main.kbd &
+if [ -e /dev/input/by-id/usb-Logitech_G815_RGB_MECHANICAL_GAMING_KEYBOARD_015938683232-event-kbd ]; then
+  sudo kmonad /home/$USER/.config/kmonad/main.kbd &
+else
+  echo "Logitech Keyboard Not Found"
+fi
+
+sleep 1
+/home/$USER/.local/bin/kbrate

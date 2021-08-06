@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 SCR_DIR=""
 SCR_FILE=""
@@ -16,7 +16,7 @@ fi
 if [[ -f $SCR_FILE ]]; then
     echo "File already exists."
 else 
-    echo '#!/bin/zsh' > $SCR_FILE
+    echo '#!/usr/bin/env bash' > $SCR_FILE
     chmod +x $SCR_FILE
     nvim $SCR_FILE
 fi
