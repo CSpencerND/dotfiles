@@ -90,3 +90,14 @@ font = fixed-11:weight=bold
 miwMouse1 = focus
 miwMouse2 = close-ewmh
 miwMouse3 = iconify
+keysUp = Up k
+keysDown = Down j
+keysLeft = Left h
+keysRight = Right l
+keysExitCancelOnPress = Escape BackSpace x q
+keysExitCancelOnRelease =
+keysExitSelectOnPress = Return space
+keysExitSelectOnRelease = Alt_L Alt_R
+keysReverseDirection = Tab
+modifierKeyMasksReverseDirection = ShiftMask ControlMask
+

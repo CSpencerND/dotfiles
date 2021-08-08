@@ -237,7 +237,6 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
             s.mytaglist,
-            s.mylayoutbox,
             -- s.mypromptbox,
         },
 
@@ -246,6 +245,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mytextclock,
             s.systray,
+            s.mylayoutbox,
             -- mykeyboardlayout,
         },
     }

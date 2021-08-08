@@ -1,37 +1,24 @@
 # {{{       IMPORTS        ---
 
-from os.path import expanduser
-import re
 import socket
-import subprocess
-from libqtile import qtile, bar, layout, widget, hook, extension
-from libqtile.extension import base, command_set, dmenu, window_list
-from libqtile.extension.window_list import WindowList
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord, Rule
-from libqtile.command import lazy
+import os
+from os.path import expanduser
+from subprocess import call
+from libqtile import qtile, bar, layout, widget, hook
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from typing import List  # noqa: F401
+from libqtile.command.client import InteractiveCommandClient as c
 
 # ---       IMPORTS        }}}
 ##############################
-# {{{       VARIOUS        ---
+# {{{      VARIABLES       ---
 
 mod = "mod4"
 terminal = "alacritty"
 launcher = "rofi -show run"
 browser = "firefox"
-
-@lazy.function
-def window_to_prev_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
-
-@lazy.function
-def window_to_next_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+home = expanduser("~")
 
 # Groups
 groups = []
@@ -50,34 +37,68 @@ for i in range(len(group_names)):
     )
 
 # Colors
-dracula = {
-    'black':    '#14151b',
-    'bg':       '#282a36',
-    'bgl':      '#44475a',
-    'grey':     '#4d4d4d',
-    'fga':      '#bfbfbf',
-    'fg':       '#f8f8f2',
-    'magenta':  '#ff79c6',
-    'purple':   '#bd93f9',
-    'blurple':  '#4d5b86',
-    'cyan':     '#8be9fd',
-    'green':    '#50fa7b',
-    'yellow':   '#f1fa8c',
-    'orange':   '#ffb86c',
-    'red':      '#ff5555',
-}
+class dracula:
+    black =   '#14151b'
+    bg =      '#282a36'
+    bgl =     '#44475a'
+    grey =    '#4d4d4d'
+    fga =     '#bfbfbf'
+    fg =      '#f8f8f2'
+    magenta = '#ff79c6'
+    purple =  '#bd93f9'
+    blurple = '#4d5b86'
+    cyan =    '#8be9fd'
+    green =   '#50fa7b'
+    yellow =  '#f1fa8c'
+    orange =  '#ffb86c'
+    red =     '#ff5555'
 
-# ---      VARIABLE        }}}
+# dracula = {
+#     'black':    '#14151b',
+#     'bg':       '#282a36',
+#     'bgl':      '#44475a',
+#     'grey':     '#4d4d4d',
+#     'fga':      '#bfbfbf',
+#     'fg':       '#f8f8f2',
+#     'magenta':  '#ff79c6',
+#     'purple':   '#bd93f9',
+#     'blurple':  '#4d5b86',
+#     'cyan':     '#8be9fd',
+#     'green':    '#50fa7b',
+#     'yellow':   '#f1fa8c',
+#     'orange':   '#ffb86c',
+#     'red':      '#ff5555',
+# }
+
+# ---      VARIABLES       }}}
+##############################
+# {{{      FUNCTIONS       ---
+
+c.group.info()
+# Switch Groups By Direction
+# @lazy.function
+# def window_to_prev_group(qtile):
+#     if qtile.currentWindow is not None:
+#         i = qtile.groups.index(qtile.currentGroup)
+#         qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+# 
+# @lazy.function
+# def window_to_next_group(qtile):
+#     if qtile.currentWindow is not None:
+#         i = qtile.groups.index(qtile.currentGroup)
+#         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+
+# ---      FUNCTIONS       }}}
 ##############################
 # {{{     KEYBINDINGS      ---
 
 keys = [
     # Window List
-    Key
-    (
-        [mod], "grave",
-        lazy.run_extension(extension.window_list) # .WindowList  # .list_windows()
-    ),
+    # Key
+    # (
+    #     [mod], "grave",
+    #     lazy.run_extension(WindowList)
+    # ),
 
     # Resize
     Key
@@ -170,24 +191,36 @@ keys = [
     Key([mod, "shift"], "Right",        lazy.layout.swap_right()),
 
     # Switch Groups
-    Key([mod         ], "i",            lazy.screen.next_group()),
-    Key([mod         ], "u",            lazy.screen.prev_group()),
-    Key([mod         ], "semicolon",    lazy.screen.toggle_group()),
+    Key([mod           ], "i",          lazy.screen.next_group()),
+    Key([mod           ], "u",          lazy.screen.prev_group()),
+    Key([mod           ], "semicolon",  lazy.screen.toggle_group()),
+    # Key([mod, "control"], "i",          ),
+    # Key([mod, "control"], "u",          ),
+    # Key(
+    #     [mod, "shift"  ], "i",
+    #     lazy.screen.next_group()
+    # ),
+    # Key(
+    #     [mod, "shift"  ], "u",
+    #     lazy.screen.prev_group()
+    # ),
 
     # Window Functions
     Key([mod           ], "c",          lazy.window.kill()),
+    Key([mod, "shift"  ], "m",          lazy.window.toggle_maximize()),
+    Key([mod, "shift"  ], "f",          lazy.window.toggle_fullscreen()),
     Key([mod,          ], "m",          lazy.window.toggle_minimize()),
-    Key([mod, "control"], "m",          lazy.window.toggle_maximize()),
-    Key([mod, "shift"  ], "m",          lazy.window.toggle_fullscreen()),
+    Key([mod, "control"], "m",          lazy.group.unminimize_all()),
     Key([mod           ], "f",          lazy.window.toggle_floating()),
-    Key([mod           ], "space",      lazy.findwindow()),
+    Key([mod           ], "apostrophe", lazy.findwindow()),
+    # Key([mod           ], "space",      lazy.spawn(expose)),
 
     # Layout Functions
     Key([mod         ], "bracketright", lazy.next_layout()),
     Key([mod         ], "bracketleft",  lazy.prev_layout()),
     Key([mod         ], "n",            lazy.layout.normalize()),
     Key([mod         ], "r",            lazy.layout.reset()),
-    Key([mod, "shift"], "f",            lazy.layout.flip()),
+    Key([mod, "mod1" ], "f",            lazy.layout.flip()),
     Key([mod         ], "s",            lazy.layout.toggle_split()),
 
 
@@ -202,24 +235,24 @@ keys = [
     Key([mod         ], "e",            lazy.spawn("rofimoji")),
 
     # Function Keys
-    Key
-    (
-        [], "XF86AudioMute", 
-        lazy.spawn("amixer sset Master toggle")
-    ),
-
-    Key
-    (
-        [], "XF86AudioLowerVolume", 
-        lazy.spawn("amixer -D pulse sset Master 5%-") # amixer -c 0 -q set Master 5dB-
-    ),
-
-    Key
-    (
-        [], "XF86AudioRaiseVolume", 
-        lazy.spawn("amixer -D pulse sset Master 5%+") # amixer -c 0 -q set Master 5dB+
-    ),
-
+#     Key
+#     (
+#         [], "XF86AudioMute", 
+#         lazy.spawn("amixer sset Master toggle")
+#     ),
+# 
+#     Key
+#     (
+#         [], "XF86AudioLowerVolume", 
+#         lazy.spawn("amixer amixer -c 0 -q set Master 5dB-") # amixer -c 0 -q set Master 5dB-
+#     ),
+# 
+#     Key
+#     (
+#         [], "XF86AudioRaiseVolume", 
+#         lazy.spawn("amixer amixer -c 0 -q set Master 5dB+") # amixer -c 0 -q set Master 5dB+
+#     ),
+# 
     Key
     (
         [], "XF86MonBrightnessUp", 
@@ -287,6 +320,12 @@ for i in groups:
                 [mod, "control"], i.name, 
                 lazy.window.togroup(i.name),
                 lazy.group[i.name].toscreen()
+            ),
+
+            Key(
+                [mod, "control"], i.name, 
+                lazy.window.togroup(i.name),
+                lazy.group[i.name].toscreen()
             )
         ]
     )
@@ -297,21 +336,18 @@ for i in groups:
 
 def init_layout_theme():
     return {
-        "margin": 5,
-        "border_width": 1,
-        "border_focus": dracula['purple'],
-        "border_normal": dracula['bg']
+        "margin": 8,
+        "border_width": 2,
+        "single_border_width": 2,
+        "border_focus": dracula.purple,
+        "border_normal": dracula.bg
     }
 layout_theme = init_layout_theme()
 
 layouts = [
     layout.MonadTall(
         new_client_position="top", 
-        margin=8,
-        border_width=1,
-        single_border_width=1,
-        border_focus=dracula['purple'],
-        border_normal=dracula['bg']
+        **layout_theme
     ),
 
     layout.Tile(
@@ -333,8 +369,8 @@ def init_widgets_defaults():
         'font': 'JetBrains Mono',
         'fontsize': 12,
         'padding': 3,
-        'background': dracula['bg'],
-        'foreground': dracula['fg']
+        'background': dracula.bg,
+        'foreground': dracula.fg
     }
 widget_defaults = init_widgets_defaults()
 
@@ -525,7 +561,7 @@ def init_widgets_list():
 
         widget.CurrentLayoutIcon
         (
-            custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
+            custom_icon_paths=[expanduser("~/.config/qtile/autostart.sh")],
             padding=0,
             scale=0.7
         ),
@@ -608,11 +644,10 @@ reconfigure_screens = True
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
 auto_minimize = True
-wmname = "LG3D"
+wmname = "qtile"
 
-# @hook.subscribe.startup
 @hook.subscribe.startup_once
-def start():
+def start_once():
     call([expanduser("~/.config/qtile/autostart.sh")])
 
 # ---    MISCELLANEOUS     }}}
