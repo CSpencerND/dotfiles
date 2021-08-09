@@ -5,10 +5,9 @@ import os
 from os.path import expanduser
 from subprocess import call
 from libqtile import qtile, bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen 
 from libqtile.lazy import lazy
 from typing import List  # noqa: F401
-from libqtile.command.client import InteractiveCommandClient as c
 
 # ---       IMPORTS        }}}
 ##############################
@@ -36,7 +35,6 @@ for i in range(len(group_names)):
         )
     )
 
-# Colors
 class dracula:
     black =   '#14151b'
     bg =      '#282a36'
@@ -53,53 +51,28 @@ class dracula:
     orange =  '#ffb86c'
     red =     '#ff5555'
 
-# dracula = {
-#     'black':    '#14151b',
-#     'bg':       '#282a36',
-#     'bgl':      '#44475a',
-#     'grey':     '#4d4d4d',
-#     'fga':      '#bfbfbf',
-#     'fg':       '#f8f8f2',
-#     'magenta':  '#ff79c6',
-#     'purple':   '#bd93f9',
-#     'blurple':  '#4d5b86',
-#     'cyan':     '#8be9fd',
-#     'green':    '#50fa7b',
-#     'yellow':   '#f1fa8c',
-#     'orange':   '#ffb86c',
-#     'red':      '#ff5555',
-# }
-
 # ---      VARIABLES       }}}
 ##############################
 # {{{      FUNCTIONS       ---
 
-c.group.info()
-# Switch Groups By Direction
-# @lazy.function
-# def window_to_prev_group(qtile):
-#     if qtile.currentWindow is not None:
-#         i = qtile.groups.index(qtile.currentGroup)
-#         qtile.currentWindow.togroup(qtile.groups[i - 1].name)
-# 
-# @lazy.function
-# def window_to_next_group(qtile):
-#     if qtile.currentWindow is not None:
-#         i = qtile.groups.index(qtile.currentGroup)
-#         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+# Move Windows To Groups By Direction
+@lazy.function
+def window_to_prev_group(qtile):
+    if qtile.current_window is not None:
+        i = qtile.groups.index(qtile.current_group)
+        qtile.current_window.togroup(qtile.groups[i - 1].name)
+
+@lazy.function
+def window_to_next_group(qtile):
+    if qtile.current_window is not None:
+        i = qtile.groups.index(qtile.current_group)
+        qtile.current_window.togroup(qtile.groups[i + 1].name)
 
 # ---      FUNCTIONS       }}}
 ##############################
 # {{{     KEYBINDINGS      ---
 
 keys = [
-    # Window List
-    # Key
-    # (
-    #     [mod], "grave",
-    #     lazy.run_extension(WindowList)
-    # ),
-
     # Resize
     Key
     (
@@ -171,6 +144,7 @@ keys = [
     Key([mod        ], "j",             lazy.layout.down()),
     Key([mod        ], "h",             lazy.layout.left()),
     Key([mod        ], "l",             lazy.layout.right()),
+    Key([mod        ], 'z',             lazy.next_urgent()),
 
     # BSP Flip
     Key([mod, "mod1" ], "k",            lazy.layout.flip_up()),
@@ -190,20 +164,14 @@ keys = [
     Key([mod, "shift"], "Left",         lazy.layout.swap_left()),
     Key([mod, "shift"], "Right",        lazy.layout.swap_right()),
 
-    # Switch Groups
+    # Switch Groups by direction
     Key([mod           ], "i",          lazy.screen.next_group()),
     Key([mod           ], "u",          lazy.screen.prev_group()),
     Key([mod           ], "semicolon",  lazy.screen.toggle_group()),
-    # Key([mod, "control"], "i",          ),
-    # Key([mod, "control"], "u",          ),
-    # Key(
-    #     [mod, "shift"  ], "i",
-    #     lazy.screen.next_group()
-    # ),
-    # Key(
-    #     [mod, "shift"  ], "u",
-    #     lazy.screen.prev_group()
-    # ),
+    Key([mod, "shift"  ], "i",          window_to_next_group),
+    Key([mod, "shift"  ], "u",          window_to_prev_group),
+    Key([mod, "control"], "i",          window_to_next_group, lazy.screen.next_group()),
+    Key([mod, "control"], "u",          window_to_prev_group, lazy.screen.prev_group()),
 
     # Window Functions
     Key([mod           ], "c",          lazy.window.kill()),
@@ -213,7 +181,6 @@ keys = [
     Key([mod, "control"], "m",          lazy.group.unminimize_all()),
     Key([mod           ], "f",          lazy.window.toggle_floating()),
     Key([mod           ], "apostrophe", lazy.findwindow()),
-    # Key([mod           ], "space",      lazy.spawn(expose)),
 
     # Layout Functions
     Key([mod         ], "bracketright", lazy.next_layout()),
@@ -303,6 +270,7 @@ keys = [
 ]
 
 # Switch Groups By Index
+
 for i in groups:
     keys.extend(
         [
@@ -322,11 +290,6 @@ for i in groups:
                 lazy.group[i.name].toscreen()
             ),
 
-            Key(
-                [mod, "control"], i.name, 
-                lazy.window.togroup(i.name),
-                lazy.group[i.name].toscreen()
-            )
         ]
     )
 
@@ -644,7 +607,7 @@ reconfigure_screens = True
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
 auto_minimize = True
-wmname = "qtile"
+wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def start_once():
