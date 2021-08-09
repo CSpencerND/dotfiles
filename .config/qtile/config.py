@@ -201,6 +201,9 @@ keys = [
     Key([mod         ], "b",            lazy.spawn(browser)),
     Key([mod         ], "e",            lazy.spawn("rofimoji")),
 
+    # Miscellaneous
+    Key([mod, "shift"], "b",            lazy.hide_show_bar()),
+
     # Function Keys
 #     Key
 #     (
