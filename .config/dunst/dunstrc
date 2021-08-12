@@ -7,10 +7,10 @@
     transparency = 20
     notification_height = 0
     separator_height = 2
-    padding = 0
+    padding = 2
     horizontal_padding = 8
-    frame_width = 3
-    frame_color = "#282828"
+    frame_width = 1
+    frame_color = "#bd93f9"
 
     # Define a color for the separator.
     # possible values are:
@@ -24,7 +24,7 @@
     sort = yes
 
     idle_threshold = 120
-    font = Monospace 14
+    font = JetBrains Mono 10
     line_height = 0
     markup = full
 
@@ -63,6 +63,7 @@
     class = Dunst
     startup_notification = false
     force_xinerama = false
+
 [experimental]
     per_monitor_dpi = false
 
@@ -77,19 +78,20 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#282a36"
     foreground = "#f8f8f2"
-    timeout = 5
+    frame_color = "#4d5b86"
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#4d5b86"
+    background = "#282a36"
     foreground = "#f8f8f2"
     timeout = 5
 
 [urgency_critical]
-    background = "#ff5555"
+    background = "#282a36"
     foreground = "#f8f8f2"
-    frame_color = "#ffb86c"
+    frame_color = "#ff79c6"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to

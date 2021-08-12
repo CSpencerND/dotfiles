@@ -1,7 +1,7 @@
 # {{{       IMPORTS        ---
 
 import socket
-import os
+from os import environ
 from os.path import expanduser
 from subprocess import call
 from libqtile import qtile, bar, layout, widget, hook
@@ -77,108 +77,97 @@ keys = [
     Key
     (
         [mod, "control"], "l",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.increase_ratio().when(layout='tile'),
+        lazy.layout.grow_right().when(layout='columns'),
+        lazy.layout.delete().when(layout='matrix'),
     ),
     Key
     (
         [mod, "control"], "Right",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.increase_ratio().when(layout='tile'),
+        lazy.layout.grow_right().when(layout='columns'),
+        lazy.layout.delete().when(layout='matrix'),
     ),
     Key
     (
         [mod, "control"], "h",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
+        lazy.layout.shrink_main().when(layout='monadtall'),
+        lazy.layout.decrease_ratio().when(layout='tile'),
+        lazy.layout.grow_left().when(layout='columns'),
+        lazy.layout.add().when(layout='matrix'),
     ),
     Key
     (
         [mod, "control"], "Left",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
+        lazy.layout.shrink_main().when(layout='monadtall'),
+        lazy.layout.decrease_ratio().when(layout='tile'),
+        lazy.layout.grow_left().when(layout='columns'),
+        lazy.layout.add().when(layout='matrix'),
     ),
     Key
     (
         [mod, "control"], "k",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.grow_up().when(layout='columns'),
+        lazy.layout.decrease_nmaster().when(layout='tile'),
     ),
     Key
     (
         [mod, "control"], "Up",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.grow_up().when(layout='columns'),
+        lazy.layout.decrease_nmaster().when(layout='tile'),
     ),
     Key
     (
         [mod, "control"], "j",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
+        lazy.layout.shrink_main().when(layout='monadtall'),
+        lazy.layout.grow_down().when(layout='columns'),
+        lazy.layout.increase_nmaster().when(layout='tile'),
     ),
     Key
     (
         [mod, "control"], "Down",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
+        lazy.layout.shrink_main().when(layout='monadtall'),
+        lazy.layout.grow_down().when(layout='columns'),
+        lazy.layout.increase_nmaster().when(layout='tile'),
     ),
 
     # Change Focus
-    Key([mod        ], "Up",            lazy.layout.up()),
-    Key([mod        ], "Down",          lazy.layout.down()),
-    Key([mod        ], "Left",          lazy.layout.left()),
-    Key([mod        ], "Right",         lazy.layout.right()),
     Key([mod        ], "k",             lazy.layout.up()),
     Key([mod        ], "j",             lazy.layout.down()),
     Key([mod        ], "h",             lazy.layout.left()),
     Key([mod        ], "l",             lazy.layout.right()),
     Key([mod        ], 'z',             lazy.next_urgent()),
 
-    # BSP Flip
-    Key([mod, "mod1" ], "k",            lazy.layout.flip_up()),
-    Key([mod, "mod1" ], "j",            lazy.layout.flip_down()),
-    Key([mod, "mod1" ], "l",            lazy.layout.flip_right()),
-    Key([mod, "mod1" ], "h",            lazy.layout.flip_left()),
-
-    # BSP Shuffle
-    Key([mod, "shift"], "k",            lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "j",            lazy.layout.shuffle_down()),
+    # Move Windows Around The Stack
     Key([mod, "shift"], "h",            lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "j",            lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "k",            lazy.layout.shuffle_up()),
     Key([mod, "shift"], "l",            lazy.layout.shuffle_right()),
 
-    # Monad move windows up or down
-    Key([mod, "shift"], "Up",           lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "Down",         lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "Left",         lazy.layout.swap_left()),
-    Key([mod, "shift"], "Right",        lazy.layout.swap_right()),
+    Key([mod, "mod1" ], "h",            lazy.layout.swap_left()),
+    Key([mod, "mod1" ], "j",            lazy.layout.swap_left()),
+    Key([mod, "mod1" ], "k",            lazy.layout.swap_right()),
+    Key([mod, "mod1" ], "l",            lazy.layout.swap_right()),
 
     # Switch Groups by direction
-    Key([mod           ], "i",          lazy.screen.next_group()),
-    Key([mod           ], "u",          lazy.screen.prev_group()),
-    Key([mod           ], "semicolon",  lazy.screen.toggle_group()),
-    Key([mod, "shift"  ], "i",          window_to_next_group),
-    Key([mod, "shift"  ], "u",          window_to_prev_group),
-    Key([mod, "control"], "i",          window_to_next_group, lazy.screen.next_group()),
-    Key([mod, "control"], "u",          window_to_prev_group, lazy.screen.prev_group()),
+    Key([mod           ], "i",         lazy.screen.next_group()),
+    Key([mod           ], "u",         lazy.screen.prev_group()),
+    Key([mod           ], "semicolon", lazy.screen.toggle_group()),
+    Key([mod, "shift"  ], "i",         window_to_next_group),
+    Key([mod, "shift"  ], "u",         window_to_prev_group),
+    Key([mod, "control"], "i",         window_to_next_group, lazy.screen.next_group()),
+    Key([mod, "control"], "u",         window_to_prev_group, lazy.screen.prev_group()),
 
     # Window Functions
     Key([mod           ], "c",          lazy.window.kill()),
-    Key([mod, "shift"  ], "m",          lazy.window.toggle_maximize()),
-    Key([mod, "shift"  ], "f",          lazy.window.toggle_fullscreen()),
     Key([mod,          ], "m",          lazy.window.toggle_minimize()),
     Key([mod, "control"], "m",          lazy.group.unminimize_all()),
+    Key([mod, "shift"  ], "m",          lazy.window.toggle_maximize()),
+    Key([mod, "shift"  ], "f",          lazy.window.toggle_fullscreen()),
     Key([mod           ], "f",          lazy.window.toggle_floating()),
     Key([mod           ], "apostrophe", lazy.findwindow()),
 
@@ -205,71 +194,31 @@ keys = [
     Key([mod, "shift"], "b",            lazy.hide_show_bar()),
 
     # Function Keys
-#     Key
-#     (
-#         [], "XF86AudioMute", 
-#         lazy.spawn("amixer sset Master toggle")
-#     ),
-# 
-#     Key
-#     (
-#         [], "XF86AudioLowerVolume", 
-#         lazy.spawn("amixer amixer -c 0 -q set Master 5dB-") # amixer -c 0 -q set Master 5dB-
-#     ),
-# 
-#     Key
-#     (
-#         [], "XF86AudioRaiseVolume", 
-#         lazy.spawn("amixer amixer -c 0 -q set Master 5dB+") # amixer -c 0 -q set Master 5dB+
-#     ),
-# 
     Key
     (
         [], "XF86MonBrightnessUp", 
         lazy.spawn("sudo brightnessctl s +5%")
     ),
-
     Key
     (
         [], "XF86MonBrightnessDown", 
         lazy.spawn("sudo brightnessctl s 5%-")
     ),
-
-    # Function Keys Alt
-    Key
-    (
-        [], "F21", 
-        lazy.spawn("amixer sset Master toggle")
-    ),
-    Key
-    (
-        [mod], "F2", 
-        lazy.spawn("amixer sset Master toggle")
-    ),
-    Key
-    (
-        [mod], "F3", 
-        lazy.spawn("amixer -D pulse sset Master 5%-")
-    ),
-
-    Key
-    (
-        [mod], "F4", 
-        lazy.spawn("amixer -D pulse sset Master 5%+")
-    ),
-
-    Key
-    (
-        [mod], "F8", 
-        lazy.spawn("sudo brightnessctl s +5%")
-    ),
-
-    Key
-    (
-        [mod], "F7", 
-        lazy.spawn("sudo brightnessctl s 5%-")
-    )
-
+#     Key
+#     (
+#         [], "XF86AudioMute", 
+#         lazy.spawn("amixer sset Master toggle")
+#     ),
+#     Key
+#     (
+#         [], "XF86AudioLowerVolume", 
+#         lazy.spawn("amixer amixer -c 0 -q set Master 5dB-") 
+#     ),
+#     Key
+#     (
+#         [], "XF86AudioRaiseVolume", 
+#         lazy.spawn("amixer amixer -c 0 -q set Master 5dB+") 
+#     ),
 ]
 
 # Switch Groups By Index
@@ -277,22 +226,22 @@ keys = [
 for i in groups:
     keys.extend(
         [
-            Key(
+            Key
+            (
                 [mod           ], i.name, 
                 lazy.group[i.name].toscreen()
             ),
-
-            Key(
+            Key
+            (
                 [mod, "shift"  ], i.name, 
                 lazy.window.togroup(i.name)
             ),
-
-            Key(
+            Key
+            (
                 [mod, "control"], i.name, 
                 lazy.window.togroup(i.name),
                 lazy.group[i.name].toscreen()
             ),
-
         ]
     )
 
@@ -310,6 +259,7 @@ def init_layout_theme():
     }
 layout_theme = init_layout_theme()
 
+
 layouts = [
     layout.MonadTall(
         new_client_position="top", 
@@ -321,9 +271,8 @@ layouts = [
         **layout_theme
     ),
 
-    layout.Bsp(**layout_theme),
     layout.Columns(**layout_theme),
-    layout.Floating(**layout_theme),
+    layout.Matrix(**layout_theme)
 ]
 
 # ---       LAYOUTS        }}}
@@ -333,222 +282,34 @@ layouts = [
 def init_widgets_defaults():
     return {
         'font': 'JetBrains Mono',
-        'fontsize': 12,
+        'fontsize': 14,
         'padding': 3,
         'background': dracula.bg,
         'foreground': dracula.fg
     }
 widget_defaults = init_widgets_defaults()
 
+
 def init_widgets_list():
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+    icon_path = expanduser("~/.config/qtile/icons")
+    prompt = "{0}@{1}: ".format(environ["USER"], socket.gethostname())
     widgets_list = [
-        widget.Sep
+        widget.CurrentLayoutIcon
         (
-            linewidth=0,
-            padding=6,
+            custom_icon_paths=[icon_path],
+            **widget_defaults
         ),
-
-        widget.Image
-        (
-            filename="~/.config/qtile/icons/python.png",
-            scale="False",
-            mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(launcher)}
-        ),
-
-        widget.Sep
-        (
-            linewidth=0,
-            padding=6,
-        ),
-
         widget.GroupBox
         (
-            font="Ubuntu Bold",
-            fontsize=9,
-            margin_y=3,
-            margin_x=0,
-            padding_y=5,
-            padding_x=3,
             borderwidth=3,
             rounded=False,
             highlight_method="line",
+            **widget_defaults
         ),
 
-        widget.Prompt
-        (
-            prompt=prompt,
-            font="Ubuntu Mono",
-            padding=10,
-        ),
-
-        widget.Sep
-        (
-            linewidth=0,
-            padding=40,
-        ),
-
-        widget.WindowName
-        (
-            padding=0
-        ),
-
-        widget.Systray
-        (
-            padding=5
-        ),
-
-        widget.Sep
-        (
-            linewidth=0,
-            padding=6,
-        ),
-
-        widget.TextBox
-        (
-            text='',
-            padding=0,
-            fontsize=37
-        ),
-        
-        widget.Net
-        (
-            interface="enp6s0",
-            format='{down} ↓↑ {up}',
-            padding=5
-        ),
-
-        widget.TextBox
-        (
-            text='',
-            padding=0,
-            fontsize=37
-        ),
-
-        widget.TextBox
-        (
-            text=" 🌡 TEMP NOT SHOWN ",
-            padding=2,
-            fontsize=11
-        ),
-
-        # widget.ThermalSensor
-        # (
-        #          foreground = colors[2],
-        #          background = colors[5],
-        #          threshold = 90,
-        #          padding = 5
-        # ),
-
-        widget.TextBox
-        (
-            text='',
-            padding=0,
-            fontsize=37
-        ),
-
-        widget.TextBox
-        (
-            text=" ⟳",
-            padding=2,
-            fontsize=14
-        ),
-
-        widget.CheckUpdates
-        (
-            update_interval=1800,
-            distro="Arch_checkupdates",
-            display_format="{updates} Updates",
-            mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo apt update')
-            },
-        ),
-
-        widget.TextBox
-        (
-            text='',
-            padding=0,
-            fontsize=37
-        ),
-
-        widget.TextBox
-        (
-            text=" 🖬",
-            padding=0,
-            fontsize=14
-        ),
-
-        widget.Memory
-        (
-            mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e bpytop')
-            },
-            padding=5
-        ),
-
-        widget.TextBox
-        (
-            text='',
-            padding=0,
-            fontsize=37
-        ),
-        
-        widget.TextBox
-        (
-            text=" ₿",
-            padding=0,
-            fontsize=12
-        ),
-
-        widget.TextBox
-        (
-            text='',
-            padding=0,
-            fontsize=37
-        ),
-
-        widget.TextBox
-        (
-            text=" Vol:",
-            padding=0
-        ),
-
-        widget.Volume
-        (
-            padding=5
-        ),
-
-        widget.TextBox
-        (
-            text='',
-            padding=0,
-            fontsize=37
-        ),
-
-        widget.CurrentLayoutIcon
-        (
-            custom_icon_paths=[expanduser("~/.config/qtile/autostart.sh")],
-            padding=0,
-            scale=0.7
-        ),
-
-        widget.CurrentLayout
-        (
-            padding=5
-        ),
-
-        widget.TextBox
-        (
-            text='',
-            padding=0,
-            fontsize=37
-        ),
-
-        widget.Clock
-        (
-            format="%A, %B %d - %H:%M "
-        ),
     ]
+    return widgets_list
+widgets = init_widgets_list()
 
 
 screens = [
@@ -556,7 +317,7 @@ screens = [
         top=bar.Bar
         (
             [
-                widget.CurrentLayout(),
+                widget.CurrentLayoutIcon(),
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
@@ -569,7 +330,7 @@ screens = [
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 widget.Systray(),
                 # widget.QuickExit(),
-            ], 24, opacity=0.9
+            ], 24, opacity=0.95
         ),
     ),
 ]
@@ -611,6 +372,7 @@ reconfigure_screens = True
 # focus, should we respect this or not?
 auto_minimize = True
 wmname = "LG3D"
+
 
 @hook.subscribe.startup_once
 def start_once():
