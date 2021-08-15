@@ -33,16 +33,16 @@ command -v lsd > /dev/null && alias ls='lsd --group-dirs first' && \
 command -v colorls > /dev/null && alias ls='colorls --sd --gs' && \
 	alias tree='colorls --tree'
 
-### CAT & LESS
-# command -v bat > /dev/null && \
-	# alias bat='bat --theme=ansi' && \
-	# alias cat='bat --pager=never' && \
-	# alias less='bat'
-# in debian the command is batcat
-command -v batcat > /dev/null && \
-	alias batcat='batcat --theme=ansi-dark' && \
-	alias cat='batcat --pager=never' && \
-	alias less='batcat'
+## CAT & LESS
+command -v bat > /dev/null && \
+	alias bat='bat --theme=ansi' && \
+	alias cat='bat --pager=never' && \
+	alias less='bat'
+# # in debian the command is batcat
+# command -v batcat > /dev/null && \
+# 	alias batcat='batcat --theme=ansi-dark' && \
+# 	alias cat='batcat --pager=never' && \
+# 	alias less='batcat'
 
 ### Misc
 alias luamake=/home/cspencer/Installed/lua-language-server/3rd/luamake/luamake
@@ -67,4 +67,3 @@ alias ethernet_on="sudo ifconfig enp35s0 up"
 alias polyconfig="vi $XDG_CONFIG_HOME/polybar/config"
 
 alias backup='/usr/bin/git --git-dir=$HOME/.backup/ --work-tree=$HOME'
-
