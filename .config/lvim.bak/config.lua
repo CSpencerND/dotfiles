@@ -77,7 +77,8 @@ lvim.plugins = {
       config = function()
         require("colorizer").setup()
       end
-    }
+    },
+    {"Yggdroot/indentLine"}
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
