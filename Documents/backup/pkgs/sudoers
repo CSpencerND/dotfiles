@@ -95,4 +95,4 @@ root ALL=(ALL) ALL
 ## Read drop-in files from /etc/sudoers.d
 @includedir /etc/sudoers.d
 
-%cs ALL=NOPASSWD: /usr/local/bin/kmonad, /usr/bin/system76-power, /user/sbin/ifconfig, /usr/bin/udisksctl, /usr/local/bin/usb-tool
+%cs ALL=NOPASSWD: /usr/bin/kmonad, /usr/bin/system76-power, /user/sbin/ifconfig, /usr/bin/udisksctl, /usr/local/bin/usb-tool
