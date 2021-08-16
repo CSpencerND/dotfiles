@@ -1,0 +1,92 @@
+#################################################################
+#     GENERAL
+#################################################################
+
+super + slash
+  rofi -show drun
+
+super + grave
+  rofi -show window
+
+super + e
+  rofimoji
+
+super + x
+  arcolinux-logout
+
+super + Return
+  alacritty
+
+super + shift + Return
+	pcmanfm
+
+#screeenshooter
+ctrl + Print
+  xfce4-screenshooter
+
+#Gnome-Screenshot
+ctrl + shift + Print
+  gnome-screenshot -i
+
+#reload sxhkd:
+super + shift + backslash
+	pkill -USR1 -x sxhkd
+
+
+#################################################################
+#     MULTIMEDIA KEYS
+#################################################################
+
+#Raises volume
+XF86AudioRaiseVolume
+    amixer set Master 10%+
+
+#Lowers volume
+XF86AudioLowerVolume
+    amixer set Master 10%-
+
+#Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+#Playerctl works for Pragha, Spotify and others
+#Delete the line for playerctl if you want to use mpc
+#and replace it with the corresponding code
+#mpc works for e.g.ncmpcpp
+#mpc toggle
+#mpc next
+#mpc prev
+#mpc stop
+
+#PLAY
+XF86AudioPlay
+    playerctl play-pause
+
+#Next
+XF86AudioNext
+    playerctl next
+
+#previous
+XF86AudioPrev
+    playerctl previous
+
+#Stop
+XF86AudioStop
+    playerctl stop
+
+#Brightness up
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
+#Brightness down
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
+#These actually work with the volume wheel! =D
+#Brightness up
+super + XF86AudioRaiseVolume
+    xbacklight -inc 10
+
+#Brightness down
+super + XF86AudioLowerVolume
+    xbacklight -dec 10

@@ -233,6 +233,7 @@ nfs-utils
 nilfs-utils
 nitrogen
 noto-fonts
+noto-fonts-emoji
 nss-mdns
 ntfs-3g
 ntp
@@ -282,6 +283,7 @@ reiserfsprogs
 ripgrep
 ristretto
 rofi
+rofimoji
 rp-pppoe
 rsync
 rxvt-unicode
