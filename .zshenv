@@ -47,6 +47,7 @@ export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export MYVIMRC=XDG_CONFIG_HOME/nvim/init.lua
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export STACK_ROOT="$XDG_DATA_HOME"/stack
+export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc 
 
 #zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
