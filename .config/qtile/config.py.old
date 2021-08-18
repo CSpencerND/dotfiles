@@ -14,17 +14,13 @@ from typing import List  # noqa: F401
 # {{{      VARIABLES       ---
 
 mod = "mod4"
-terminal = "alacritty"
-launcher = "rofi -show run"
-browser = "firefox"
 home = expanduser("~")
 
 # Groups
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall",
-                 "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall" for i in group_names]
 
 for i in range(len(group_names)):
     groups.append(
@@ -135,90 +131,218 @@ keys = [
         lazy.layout.increase_nmaster().when(layout='tile'),
     ),
 
+
     # Change Focus
-    Key([mod        ], "k",             lazy.layout.up()),
-    Key([mod        ], "j",             lazy.layout.down()),
-    Key([mod        ], "h",             lazy.layout.left()),
-    Key([mod        ], "l",             lazy.layout.right()),
-    Key([mod        ], 'z',             lazy.next_urgent()),
+    Key
+    (
+        [mod], "k",
+        lazy.layout.up()
+    ),
+    Key
+    (
+        [mod], "j",
+        lazy.layout.down()
+    ),
+    Key
+    (
+        [mod], "h",
+        lazy.layout.left()
+    ),
+    Key
+    (
+        [mod], "l",
+        lazy.layout.right()
+    ),
+    Key
+    (
+        [mod], 'z',
+        lazy.next_urgent()
+    ),
+
 
     # Move Windows Around The Stack
-    Key([mod, "shift"], "h",            lazy.layout.shuffle_left()),
-    Key([mod, "shift"], "j",            lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "k",            lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "l",            lazy.layout.shuffle_right()),
+    Key
+    (
+        [mod, "shift"], "h",
+        lazy.layout.shuffle_left()
+    ),
+    Key
+    (
+        [mod, "shift"], "j",
+        lazy.layout.shuffle_down()
+    ),
+    Key
+    (
+        [mod, "shift"], "k",
+        lazy.layout.shuffle_up()
+    ),
+    Key
+    (
+        [mod, "shift"], "l",
+        lazy.layout.shuffle_right()
+    ),
 
-    Key([mod, "mod1" ], "h",            lazy.layout.swap_left()),
-    Key([mod, "mod1" ], "j",            lazy.layout.swap_left()),
-    Key([mod, "mod1" ], "k",            lazy.layout.swap_right()),
-    Key([mod, "mod1" ], "l",            lazy.layout.swap_right()),
+    Key
+    (
+        [mod, "alt" ], "h",
+        lazy.layout.swap_left()
+    ),
+    Key
+    (
+        [mod, "alt" ], "j",
+        lazy.layout.swap_left()
+    ),
+    Key
+    (
+        [mod, "alt" ], "k",
+        lazy.layout.swap_right()
+    ),
+    Key
+    (
+        [mod, "alt" ], "l",
+        lazy.layout.swap_right()
+    ),
+
 
     # Switch Groups by direction
-    Key([mod           ], "i",         lazy.screen.next_group()),
-    Key([mod           ], "u",         lazy.screen.prev_group()),
-    Key([mod           ], "semicolon", lazy.screen.toggle_group()),
-    Key([mod, "shift"  ], "i",         window_to_next_group),
-    Key([mod, "shift"  ], "u",         window_to_prev_group),
-    Key([mod, "control"], "i",         window_to_next_group, lazy.screen.next_group()),
-    Key([mod, "control"], "u",         window_to_prev_group, lazy.screen.prev_group()),
+    Key
+    (
+        [mod], "Tab",
+        lazy.screen.next_group()
+    ),
+    Key
+    (
+        [mod, "shift"], "Tab",
+        lazy.screen.prev_group()
+    ),
+    Key
+    (
+        [mod], "i",
+        lazy.screen.next_group()
+    ),
+    Key
+    (
+        [mod], "u",
+        lazy.screen.prev_group()
+    ),
+    Key
+    (
+        [mod], "semicolon",
+        lazy.screen.toggle_group()),
+    Key
+    (
+        [mod, "shift"], "i",
+        window_to_next_group
+    ),
+    Key
+    (
+        [mod, "shift"], "u",
+        window_to_prev_group
+    ),
+    Key
+    (
+        [mod, "control"], "i",
+        window_to_next_group,
+        lazy.screen.next_group()
+    ),
+    Key
+    (
+        [mod, "control"], "u",
+        window_to_prev_group,
+        lazy.screen.prev_group()
+    ),
+
 
     # Window Functions
-    Key([mod           ], "c",          lazy.window.kill()),
-    Key([mod,          ], "m",          lazy.window.toggle_minimize()),
-    Key([mod, "control"], "m",          lazy.group.unminimize_all()),
-    Key([mod, "shift"  ], "m",          lazy.window.toggle_maximize()),
-    Key([mod, "shift"  ], "f",          lazy.window.toggle_fullscreen()),
-    Key([mod           ], "f",          lazy.window.toggle_floating()),
-    Key([mod           ], "apostrophe", lazy.findwindow()),
+    Key
+    (
+        [mod], "c",
+        lazy.window.kill()
+    ),
+    Key
+    (
+        [mod], "m",
+        lazy.window.toggle_minimize()
+    ),
+    Key
+    (
+        [mod, "control"], "m",
+        lazy.group.unminimize_all()
+    ),
+    Key
+    (
+        [mod, "shift"], "m",
+        lazy.window.toggle_maximize()
+    ),
+    Key
+    (
+        [mod, "alt"], "m",
+        lazy.window.toggle_fullscreen()
+    ),
+    Key
+    (
+        [mod], "f",
+        lazy.window.toggle_floating()
+    ),
+    Key
+    (
+        [mod], "apostrophe",
+        lazy.findwindow()
+    ),
+
 
     # Layout Functions
-    Key([mod         ], "bracketright", lazy.next_layout()),
-    Key([mod         ], "bracketleft",  lazy.prev_layout()),
-    Key([mod         ], "n",            lazy.layout.normalize()),
-    Key([mod         ], "r",            lazy.layout.reset()),
-    Key([mod, "mod1" ], "f",            lazy.layout.flip()),
-    Key([mod         ], "s",            lazy.layout.toggle_split()),
+    Key
+    (
+        [mod], "bracketright",
+        lazy.next_layout()
+    ),
+    Key
+    (
+        [mod], "bracketleft",
+        lazy.prev_layout()
+    ),
+    Key
+    (
+        [mod], "n",
+        lazy.layout.normalize()
+    ),
+    Key
+    (
+        [mod], "r",
+        lazy.layout.reset()
+    ),
+    Key
+    (
+        [mod, "alt" ], "f",
+        lazy.layout.flip()
+    ),
+    Key
+    (
+        [mod], "s",
+        lazy.layout.toggle_split()
+    ),
 
 
     # Refresh / Logout
-    Key([mod, "shift"], "r",            lazy.restart()),
-    Key([mod, "shift"], "x",            lazy.shutdown()),
+    Key
+    (
+        [mod, "shift"], "r",
+        lazy.restart()
+    ),
+    Key
+    (
+        [mod, "shift"], "x",
+        lazy.shutdown()
+    ),
 
-    # Launchers
-    Key([mod         ], "Return",       lazy.spawn(terminal)),
-    Key([mod         ], "slash",        lazy.spawn(launcher)),
-    Key([mod         ], "b",            lazy.spawn(browser)),
-    Key([mod         ], "e",            lazy.spawn("rofimoji")),
 
     # Miscellaneous
-    Key([mod, "shift"], "b",            lazy.hide_show_bar()),
-
-    # Function Keys
     Key
     (
-        [], "XF86MonBrightnessUp", 
-        lazy.spawn("sudo brightnessctl s +5%")
+        [mod, "shift"], "b",
+        lazy.hide_show_bar()
     ),
-    Key
-    (
-        [], "XF86MonBrightnessDown", 
-        lazy.spawn("sudo brightnessctl s 5%-")
-    ),
-#     Key
-#     (
-#         [], "XF86AudioMute", 
-#         lazy.spawn("amixer sset Master toggle")
-#     ),
-#     Key
-#     (
-#         [], "XF86AudioLowerVolume", 
-#         lazy.spawn("amixer amixer -c 0 -q set Master 5dB-") 
-#     ),
-#     Key
-#     (
-#         [], "XF86AudioRaiseVolume", 
-#         lazy.spawn("amixer amixer -c 0 -q set Master 5dB+") 
-#     ),
 ]
 
 # Switch Groups By Index
@@ -249,24 +373,26 @@ for i in groups:
 ##############################
 # {{{       LAYOUTS        ---
 
-def init_layout_theme():
-    return {
+layout_theme = \
+{
         "margin": 8,
         "border_width": 2,
         "single_border_width": 2,
         "border_focus": dracula.purple,
-        "border_normal": dracula.bg
-    }
-layout_theme = init_layout_theme()
+        "border_normal": dracula.blurple
+}
 
 
-layouts = [
-    layout.MonadTall(
+layouts = \
+[
+    layout.MonadTall
+    (
         new_client_position="top", 
         **layout_theme
     ),
 
-    layout.Tile(
+    layout.Tile
+    (
         ratio_increment=0.039, 
         **layout_theme
     ),
@@ -279,103 +405,138 @@ layouts = [
 ##############################
 # {{{       WIDGETS        ---
 
-def init_widgets_defaults():
-    return {
-        'font': 'JetBrains Mono',
-        'fontsize': 14,
-        'padding': 3,
-        'background': dracula.bg,
-        'foreground': dracula.fg
-    }
-widget_defaults = init_widgets_defaults()
+widget_defaults = \
+{
+    'font': 'Hack Nerd Font',
+    'fontsize': 14,
+    'padding': 3,
+    'background': dracula.bg,
+    'foreground': dracula.fg
+}
+extension_defaults = widget_defaults.copy()
 
+icon_path = expanduser("~/.config/qtile/icons")
 
-def init_widgets_list():
-    icon_path = expanduser("~/.config/qtile/icons")
-    prompt = "{0}@{1}: ".format(environ["USER"], socket.gethostname())
-    widgets_list = [
-        widget.CurrentLayoutIcon
-        (
-            custom_icon_paths=[icon_path],
-            **widget_defaults
-        ),
-        widget.GroupBox
-        (
-            borderwidth=3,
-            rounded=False,
-            highlight_method="line",
-            **widget_defaults
-        ),
-
-    ]
-    return widgets_list
-widgets = init_widgets_list()
-
-
-screens = [
-    Screen(
-        top=bar.Bar
-        (
-            [
-                widget.CurrentLayoutIcon(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.Systray(),
-                # widget.QuickExit(),
-            ], 24, opacity=0.95
-        ),
+widgets_list = \
+[
+    widget.CurrentLayoutIcon
+    (
+        # custom_icon_paths=[icon_path],
+        scale=0.7,
+    ),
+    widget.GroupBox
+    (
+        borderwidth=3,
+        rounded=False,
+        highlight_method="border",
+    ),
+    widget.TaskList
+    (
+    ),
+    widget.TextBox
+    (
+        font="FontAwesome",
+        text="  ",
+        foreground=dracula.orange,
+        padding = 0,
+        fontsize=16
+    ),
+    widget.Clock
+    (
+        format="%a %b %e, %Y   %I:%M%P  "
+    ),
+    widget.Systray
+    (
+        icon_size=20,
+        padding = 4
     ),
 ]
+
+
+screens = [Screen(top=bar.Bar(widgets_list, 24, opacity=0.90))]
 
 # ---       WIDGETS        }}}
 ##############################
 # {{{    MISCELLANEOUS     ---
 
-# Drag floating layouts.
-mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+mouse = \
+[
+    Drag
+    (
+        [mod], "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position()
+    ),
+    Drag
+    (
+        [mod], "Button3",
+        lazy.window.set_size_floating(),
+        start=lazy.window.get_size()
+    ),
+    Click
+    (
+        [mod], "Button2",
+        lazy.window.bring_to_front()
+    )
 ]
 
+
+floating_types = ["notification", "toolbar", "splash", "dialog"]
+
+floating_layout = layout.Floating(float_rules = \
+    [
+        {'wmclass': 'Arcolinux-welcome-app.py'},
+        {'wmclass': 'Arcolinux-tweak-tool.py'},
+        {'wmclass': 'Arcolinux-calamares-tool.py'},
+        {'wmclass': 'confirm'},
+        {'wmclass': 'dialog'},
+        {'wmclass': 'download'},
+        {'wmclass': 'error'},
+        {'wmclass': 'file_progress'},
+        {'wmclass': 'notification'},
+        {'wmclass': 'splash'},
+        {'wmclass': 'toolbar'},
+        {'wmclass': 'confirmreset'},
+        {'wmclass': 'makebranch'},
+        {'wmclass': 'maketag'},
+        {'wmclass': 'Arandr'},
+        {'wmclass': 'feh'},
+        {'wmclass': 'Galculator'},
+        {'wmclass': 'arcolinux-logout'},
+        {'wmclass': 'xfce4-terminal'},
+        {'wname': 'branchdialog'},
+        {'wname': 'Open File'},
+        {'wname': 'pinentry'},
+        {'wmclass': 'ssh-askpass'},
+
+    ],  fullscreen_border_width = 0, border_width = 0)
+
+
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: List
+dgroups_app_rules = []
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    # Run the utility of `xprop` to see the wm class and name of an X client.
-    *layout.Floating.default_float_rules,
-    Match(wm_class='confirmreset'),  # gitk
-    Match(wm_class='makebranch'),  # gitk
-    Match(wm_class='maketag'),  # gitk
-    Match(wm_class='ssh-askpass'),  # ssh-askpass
-    Match(title='branchdialog'),  # gitk
-    Match(title='pinentry'),  # GPG key password entry
-])
-
-auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = "smart" #focus
 reconfigure_screens = True
-
-# If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
+auto_fullscreen = True
 auto_minimize = True
 wmname = "LG3D"
+main = None
 
 
 @hook.subscribe.startup_once
 def start_once():
-    call([expanduser("~/.config/qtile/autostart.sh")])
+    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
+
+@hook.subscribe.startup
+def start_always():
+    subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
+
+@hook.subscribe.client_new
+def set_floating(window):
+    if (window.window.get_wm_transient_for()
+            or window.window.get_wm_type() in floating_types):
+        window.floating = True
 
 # ---    MISCELLANEOUS     }}}

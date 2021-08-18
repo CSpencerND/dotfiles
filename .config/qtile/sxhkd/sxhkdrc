@@ -5,7 +5,7 @@
 super + slash
   rofi -show drun
 
-super + grave
+super + apostrophe
   rofi -show window
 
 super + e
@@ -16,6 +16,9 @@ super + x
 
 super + Return
   alacritty
+
+super + b
+  firefox
 
 super + shift + Return
 	pcmanfm

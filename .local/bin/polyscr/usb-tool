@@ -12,6 +12,7 @@ fi
 
 if [[ $1 = "--dismount" ]]; then
   udisksctl unmount --no-user-interaction -b /dev/sda1 && wait && \
-  udisksctl power-off --no-user-interaction -b /dev/sda1; 
+  udisksctl power-off --no-user-interaction -b /dev/sda1 && \
+  notify-send "usb-tool" "Safe to remove backup drive"
 fi
 
