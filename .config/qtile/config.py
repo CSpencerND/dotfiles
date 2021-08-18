@@ -1,5 +1,4 @@
-# This is the config that comes with ArcoLinux
-##############################################
+# {{{       IMPORTS        ---
 
 import os
 import re
@@ -11,177 +10,397 @@ from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
 #import arcobattery
 
+# ---       IMPORTS        }}}
+##############################
+# {{{     VARS/FUNCS       ---
+
 #mod4 or mod = super key
 mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
 
+# Move Windows To Groups By Direction
+@lazy.function
+def window_to_prev_group(qtile):
+    if qtile.current_window is not None:
+        i = qtile.groups.index(qtile.current_group)
+        qtile.current_window.togroup(qtile.groups[i - 1].name)
 
-keys = [
-
-# Most of our keybindings are in sxhkd file
-# SUPER + FUNCTION KEYS
-
-    Key([mod], "f", lazy.window.toggle_fullscreen()),
-    Key([mod], "q", lazy.window.kill()),
-
-
-# SUPER + SHIFT KEYS
-
-    Key([mod, "shift"], "q", lazy.window.kill()),
-    Key([mod, "shift"], "r", lazy.restart()),
-
-
-# QTILE LAYOUT KEYS
-    Key([mod], "n", lazy.layout.normalize()),
-    Key([mod], "space", lazy.next_layout()),
-
-# CHANGE FOCUS
-    Key([mod], "Up", lazy.layout.up()),
-    Key([mod], "Down", lazy.layout.down()),
-    Key([mod], "Left", lazy.layout.left()),
-    Key([mod], "Right", lazy.layout.right()),
-    Key([mod], "k", lazy.layout.up()),
-    Key([mod], "j", lazy.layout.down()),
-    Key([mod], "h", lazy.layout.left()),
-    Key([mod], "l", lazy.layout.right()),
-
-
-# RESIZE UP, DOWN, LEFT, RIGHT
-    Key([mod, "control"], "l",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        ),
-    Key([mod, "control"], "Right",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        ),
-    Key([mod, "control"], "h",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        ),
-    Key([mod, "control"], "Left",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        ),
-    Key([mod, "control"], "k",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        ),
-    Key([mod, "control"], "Up",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        ),
-    Key([mod, "control"], "j",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        ),
-    Key([mod, "control"], "Down",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        ),
-
-
-# FLIP LAYOUT FOR MONADTALL/MONADWIDE
-    Key([mod, "shift"], "f", lazy.layout.flip()),
-
-# FLIP LAYOUT FOR BSP
-    Key([mod, "mod1"], "k", lazy.layout.flip_up()),
-    Key([mod, "mod1"], "j", lazy.layout.flip_down()),
-    Key([mod, "mod1"], "l", lazy.layout.flip_right()),
-    Key([mod, "mod1"], "h", lazy.layout.flip_left()),
-
-# MOVE WINDOWS UP OR DOWN BSP LAYOUT
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
-
-# MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
-    Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "Left", lazy.layout.swap_left()),
-    Key([mod, "shift"], "Right", lazy.layout.swap_right()),
-
-# TOGGLE FLOATING LAYOUT
-    Key([mod, "shift"], "space", lazy.window.toggle_floating()),
-
-    ]
+@lazy.function
+def window_to_next_group(qtile):
+    if qtile.current_window is not None:
+        i = qtile.groups.index(qtile.current_group)
+        qtile.current_window.togroup(qtile.groups[i + 1].name)
 
 groups = []
-
-# FOR QWERTY KEYBOARDS
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
-
-# FOR AZERTY KEYBOARDS
-#group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave",]
-
-#group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
-group_labels = ["", "", "", "", "", "", "", "", "", "",]
-#group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
-
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
-#group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall",]
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+group_layouts = ["monadtall" for i in group_names]
 
 for i in range(len(group_names)):
     groups.append(
         Group(
             name=group_names[i],
             layout=group_layouts[i].lower(),
-            label=group_labels[i],
-        ))
+            label=group_labels[i]
+        )
+    )
 
-for i in groups:
-    keys.extend([
+class dracula:
+    black =   '#14151b'
+    bg =      '#282a36'
+    bgl =     '#44475a'
+    grey =    '#4d4d4d'
+    fga =     '#bfbfbf'
+    fg =      '#f8f8f2'
+    magenta = '#ff79c6'
+    purple =  '#bd93f9'
+    blurple = '#4d5b86'
+    cyan =    '#8be9fd'
+    green =   '#50fa7b'
+    yellow =  '#f1fa8c'
+    orange =  '#ffb86c'
+    red =     '#ff5555'
 
-#CHANGE WORKSPACES
-        Key([mod], i.name, lazy.group[i.name].toscreen()),
-        Key([mod], "Tab", lazy.screen.next_group()),
-        Key([mod, "shift" ], "Tab", lazy.screen.prev_group()),
-        Key(["mod1"], "Tab", lazy.screen.next_group()),
-        Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
+# ---     VARS/FUNCS       }}}
+##############################
+# {{{     KEYBINDINGS      ---
 
-# MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
-        #Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
-# MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
-    ])
+keys = [
+    # Resize
+    Key
+    (
+        [mod, "control"], "l",
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.increase_ratio().when(layout='tile'),
+        lazy.layout.grow_right().when(layout='columns'),
+        lazy.layout.delete().when(layout='matrix'),
+    ),
+    Key
+    (
+        [mod, "control"], "Right",
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.increase_ratio().when(layout='tile'),
+        lazy.layout.grow_right().when(layout='columns'),
+        lazy.layout.delete().when(layout='matrix'),
+    ),
+    Key
+    (
+        [mod, "control"], "h",
+        lazy.layout.shrink_main().when(layout='monadtall'),
+        lazy.layout.decrease_ratio().when(layout='tile'),
+        lazy.layout.grow_left().when(layout='columns'),
+        lazy.layout.add().when(layout='matrix'),
+    ),
+    Key
+    (
+        [mod, "control"], "Left",
+        lazy.layout.shrink_main().when(layout='monadtall'),
+        lazy.layout.decrease_ratio().when(layout='tile'),
+        lazy.layout.grow_left().when(layout='columns'),
+        lazy.layout.add().when(layout='matrix'),
+    ),
+    Key
+    (
+        [mod, "control"], "k",
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.grow_up().when(layout='columns'),
+        lazy.layout.decrease_nmaster().when(layout='tile'),
+    ),
+    Key
+    (
+        [mod, "control"], "Up",
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.grow_up().when(layout='columns'),
+        lazy.layout.decrease_nmaster().when(layout='tile'),
+    ),
+    Key
+    (
+        [mod, "control"], "j",
+        lazy.layout.shrink_main().when(layout='monadtall'),
+        lazy.layout.grow_down().when(layout='columns'),
+        lazy.layout.increase_nmaster().when(layout='tile'),
+    ),
+    Key
+    (
+        [mod, "control"], "Down",
+        lazy.layout.shrink_main().when(layout='monadtall'),
+        lazy.layout.grow_down().when(layout='columns'),
+        lazy.layout.increase_nmaster().when(layout='tile'),
+    ),
 
 
-def init_layout_theme():
-    return {"margin":5,
-            "border_width":2,
-            "border_focus": "#5e81ac",
-            "border_normal": "#4c566a"
-            }
+    # Change Focus
+    Key
+    (
+        [mod], "k",
+        lazy.layout.up()
+    ),
+    Key
+    (
+        [mod], "j",
+        lazy.layout.down()
+    ),
+    Key
+    (
+        [mod], "h",
+        lazy.layout.left()
+    ),
+    Key
+    (
+        [mod], "l",
+        lazy.layout.right()
+    ),
+    Key
+    (
+        [mod], 'z',
+        lazy.next_urgent()
+    ),
 
-layout_theme = init_layout_theme()
+
+    # Move Windows Around The Stack
+    Key
+    (
+        [mod, "shift"], "h",
+        lazy.layout.shuffle_left()
+    ),
+    Key
+    (
+        [mod, "shift"], "j",
+        lazy.layout.shuffle_down()
+    ),
+    Key
+    (
+        [mod, "shift"], "k",
+        lazy.layout.shuffle_up()
+    ),
+    Key
+    (
+        [mod, "shift"], "l",
+        lazy.layout.shuffle_right()
+    ),
+
+    Key
+    (
+        [mod, "mod1"], "h",
+        lazy.layout.swap_left()
+    ),
+    Key
+    (
+        [mod, "mod1"], "j",
+        lazy.layout.swap_left()
+    ),
+    Key
+    (
+        [mod, "mod1"], "k",
+        lazy.layout.swap_right()
+    ),
+    Key
+    (
+        [mod, "mod1"], "l",
+        lazy.layout.swap_right()
+    ),
 
 
-layouts = [
-    layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
-    layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme),
-    layout.Max(**layout_theme)
+    # Switch Groups by direction
+    Key
+    (
+        [mod], "Tab",
+        lazy.screen.next_group()
+    ),
+    Key
+    (
+        [mod, "shift"], "Tab",
+        lazy.screen.prev_group()
+    ),
+    Key
+    (
+        [mod], "i",
+        lazy.screen.next_group()
+    ),
+    Key
+    (
+        [mod], "u",
+        lazy.screen.prev_group()
+    ),
+    Key
+    (
+        [mod], "semicolon",
+        lazy.screen.toggle_group()),
+    Key
+    (
+        [mod, "shift"], "i",
+        window_to_next_group
+    ),
+    Key
+    (
+        [mod, "shift"], "u",
+        window_to_prev_group
+    ),
+    Key
+    (
+        [mod, "control"], "i",
+        window_to_next_group,
+        lazy.screen.next_group()
+    ),
+    Key
+    (
+        [mod, "control"], "u",
+        window_to_prev_group,
+        lazy.screen.prev_group()
+    ),
+
+
+    # Window Functions
+    Key
+    (
+        [mod], "c",
+        lazy.window.kill()
+    ),
+    Key
+    (
+        [mod], "m",
+        lazy.window.toggle_minimize()
+    ),
+    Key
+    (
+        [mod, "control"], "m",
+        lazy.group.unminimize_all()
+    ),
+    Key
+    (
+        [mod, "shift"], "m",
+        lazy.window.toggle_maximize()
+    ),
+    Key
+    (
+        [mod, "mod1"], "m",
+        lazy.window.toggle_fullscreen()
+    ),
+    Key
+    (
+        [mod], "f",
+        lazy.window.toggle_floating()
+    ),
+    Key
+    (
+        [mod], "apostrophe",
+        lazy.findwindow()
+    ),
+
+
+    # Layout Functions
+    Key
+    (
+        [mod], "bracketright",
+        lazy.next_layout()
+    ),
+    Key
+    (
+        [mod], "bracketleft",
+        lazy.prev_layout()
+    ),
+    Key
+    (
+        [mod], "n",
+        lazy.layout.normalize()
+    ),
+    Key
+    (
+        [mod], "r",
+        lazy.layout.reset()
+    ),
+    Key
+    (
+        [mod, "mod1"], "f",
+        lazy.layout.flip()
+    ),
+    Key
+    (
+        [mod], "s",
+        lazy.layout.toggle_split()
+    ),
+
+
+    # Refresh / Logout
+    Key
+    (
+        [mod, "shift"], "r",
+        lazy.restart()
+    ),
+    Key
+    (
+        [mod, "shift"], "x",
+        lazy.shutdown()
+    ),
+
+
+    # Miscellaneous
+    Key
+    (
+        [mod, "shift"], "b",
+        lazy.hide_show_bar()
+    ),
 ]
 
-# COLORS FOR THE BAR
+
+for i in groups:
+    keys.extend(
+        [
+            Key
+            (
+                [mod           ], i.name, 
+                lazy.group[i.name].toscreen()
+            ),
+            Key
+            (
+                [mod, "shift"  ], i.name, 
+                lazy.window.togroup(i.name)
+            ),
+            Key
+            (
+                [mod, "control"], i.name, 
+                lazy.window.togroup(i.name),
+                lazy.group[i.name].toscreen()
+            ),
+        ]
+    )
+
+# ---     KEYBINDINGS      }}}
+##############################
+# {{{       LAYOUTS        ---
+
+layout_theme = \
+{
+    "margin": 8,
+    "border_width": 2,
+    "single_border_width": 2,
+    "border_focus": dracula.purple,
+    "border_normal": dracula.blurple
+}
+
+layouts = \
+[
+    layout.MonadTall
+    (
+        new_client_position="top", 
+        **layout_theme
+    ),
+
+    layout.Tile
+    (
+        ratio_increment=0.039, 
+        **layout_theme
+    ),
+
+    layout.Columns(**layout_theme),
+    layout.Matrix(**layout_theme)
+]
+
+# ---       LAYOUTS        }}}
+##############################
+# {{{       WIDGETS        ---
 
 def init_colors():
     return [["#2F343F", "#2F343F"], # color 0
@@ -202,7 +421,7 @@ colors = init_colors()
 # WIDGETS FOR THE BAR
 
 def init_widgets_defaults():
-    return dict(font="Noto Sans",
+    return dict(font="Hack Nerd Font",
                 fontsize = 12,
                 padding = 2,
                 background=colors[1])
@@ -212,7 +431,7 @@ widget_defaults = init_widgets_defaults()
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
-               widget.GroupBox(font="FontAwesome",
+               widget.GroupBox(
                         fontsize = 16,
                         margin_y = -1,
                         margin_x = 0,
