@@ -47,6 +47,7 @@ run solaar -w hide -b solaar &
 run cbatticon &
 #starting user applications at boot time
 run volumeicon &
+run redshift &
 #run discord &
 #nitrogen --restore &
 #run caffeine -a &

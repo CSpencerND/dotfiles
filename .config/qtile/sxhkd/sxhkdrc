@@ -5,7 +5,7 @@
 super + slash
   rofi -show drun
 
-super + apostrophe
+super + space
   rofi -show window
 
 super + e
