@@ -2,15 +2,15 @@
     background-color:            #282a36;
     border-color:                #bd93f9;
     text-color:                  #f8f8f2;
-    font:                        "Jetbrains Mono 12";
-    prompt-font:                 "Jetbrains Mono 12";
-    prompt-background:           #bd93f9;
-    prompt-foreground:           #44475a;
+    font:                        "Jetbrains Mono 14";
+    prompt-font:                 "Jetbrains Mono 14";
+    prompt-background:           #4d5b86;
+    prompt-foreground:           #f8f8f2;
     prompt-padding:              4px;
     alternate-normal-background: #2b2d39;
     alternate-normal-foreground: @text-color;
-    selected-normal-background:  #bd93f9;
-    selected-normal-foreground:  #44475a;
+    selected-normal-background:  #4d5b86;
+    selected-normal-foreground:  #f8f8f2;
     spacing:                     3;
 }
 #window {

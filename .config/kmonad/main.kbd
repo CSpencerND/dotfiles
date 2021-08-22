@@ -18,7 +18,7 @@
 #|------- Main Layer -----------|#
 (defalias esc (tap-next-release esc lalt)
           vi (layer-add vim)
-          nsv (cmd-button "notify-send KMonad Vim")
+          nsv (cmd-button "/home/cs/.local/bin/layout-vim")
           sv #(@vi @nsv)
 )
 
@@ -36,7 +36,7 @@
 (defalias mn (layer-rem vim)
           w (around rctl right)
           b (around rctl left)
-          nsn (cmd-button "notify-send KMonad Normal")
+          nsn (cmd-button "/home/cs/.local/bin/layout-normal")
           sn #(@mn @nsn)
 )
 

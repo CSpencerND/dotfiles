@@ -17,3 +17,4 @@ X-GNOME-Autostart-enabled=false
 [Desktop Action New]
 Name=New Terminal
 Exec=alacritty
+Hidden=false

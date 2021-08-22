@@ -6,3 +6,4 @@ Comment=Check for deprecated Debian packages, and display notification if found
 Categories=System
 Exec=/usr/bin/pop-transition -d
 X-GNOME-Autostart-enabled=false
+Hidden=false

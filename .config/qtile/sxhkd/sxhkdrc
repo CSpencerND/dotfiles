@@ -3,10 +3,10 @@
 #################################################################
 
 super + slash
-  rofi -show drun
+  rofi -show-icons -modi drun -show drun
 
 super + space
-  rofi -show window
+  rofi -show-icons -show window
 
 super + e
   rofimoji

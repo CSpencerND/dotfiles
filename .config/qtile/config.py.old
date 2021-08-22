@@ -394,7 +394,13 @@ layouts = \
         **layout_theme
     ),
 
-    layout.Columns(**layout_theme),
+    layout.Columns
+    (   insert_position=0,
+        border_normal_stack=dracula.blurple,
+        border_focus_stack=dracula.magenta,
+        **layout_theme
+    ),
+
     layout.Matrix(**layout_theme)
 ]
 
@@ -416,20 +422,26 @@ icon_path = expanduser("~/.config/qtile/icons")
 
 widgets_list = \
 [
-    widget.CurrentLayoutIcon
-    (
-        # custom_icon_paths=[icon_path],
-        scale=0.7,
-    ),
     widget.GroupBox
     (
-        borderwidth=3,
-        rounded=False,
-        highlight_method="border",
+        active = dracula.fg,
+        borderwidth = 1,
+        disable_drag = True,
+        highlight_method = "line",
+        highlight_color = [dracula.blurple, dracula.purple],
+        rounded = False,
+        this_current_screen_border = dracula.purple,
     ),
+
+    widget.CurrentLayoutIcon
+    (
+        scale=0.7,
+    ),
+
     widget.TaskList
     (
     ),
+
     widget.TextBox
     (
         font="FontAwesome",
@@ -438,10 +450,12 @@ widgets_list = \
         padding = 0,
         fontsize=16
     ),
+
     widget.Clock
     (
-        format="%a %b %e, %Y   %I:%M%P  "
+        format="%a %b %e, %Y  %I:%M%P  "
     ),
+
     widget.Systray
     (
         icon_size=20,

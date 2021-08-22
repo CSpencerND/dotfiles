@@ -43,11 +43,12 @@ blueberry-tray &
 picom --config $HOME/.config/qtile/scripts/picom.conf -b --experimental-backends &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
+# run dunst &
 run solaar -w hide -b solaar &
 run cbatticon &
 #starting user applications at boot time
 run volumeicon &
-run redshift &
+run redshift-gtk &
 #run discord &
 #nitrogen --restore &
 #run caffeine -a &
