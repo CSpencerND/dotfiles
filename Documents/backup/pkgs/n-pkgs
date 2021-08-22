@@ -278,6 +278,7 @@ qt5-webkit
 qt5ct
 qtile
 ranger
+redshift
 reflector
 reiserfsprogs
 ripgrep
@@ -385,6 +386,7 @@ w3m
 webkit2gtk
 wget
 which
+wine
 wireless-regdb
 wireless_tools
 wmctrl
