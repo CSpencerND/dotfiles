@@ -4,7 +4,7 @@ import os
 import re
 import socket
 import subprocess
-from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule, Match
+from libqtile.config import Key, Screen, Group, Drag, Click, Rule, Match
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
@@ -436,14 +436,21 @@ def init_colors():
 colors = init_colors()
 
 
-widget_defaults = \
-{
-    'font': 'Hack Nerd Font',
-    'fontsize': 14,
-    'padding': 3,
-    'background': dracula.bg,
-    'foreground': dracula.fg
-}
+widget_defaults = dict\
+(
+    font = 'Hack Nerd Font',
+    fontsize = 14,
+    padding = 3,
+    background = dracula.bg,
+    foreground = dracula.fg,
+    highlight_method = 'border',
+    border = dracula.purple,
+    borderwidth = 1,
+    # rounded = False,
+    urgent_alert_method = 'text',
+    urgent_text = dracula.magenta,
+    urgent_border = dracula.magenta,
+)
 extension_defaults = widget_defaults.copy()
 
 
@@ -453,15 +460,10 @@ widgets_list = \
     widget.GroupBox
     (
         active = dracula.fg,
-        borderwidth = 2,
-        disable_drag = True,
-        highlight_color = dracula_highlight,
-        highlight_method = "line",
+        disable_drag = False,
+        # highlight_color = dracula_highlight,
         inactive = dracula.bgl,
-        rounded = False,
         this_current_screen_border = dracula.purple,
-        urgent_alert_method = 'text',
-        urgent_text = dracula.magenta
     ),
 
     widget.CurrentLayoutIcon
@@ -470,9 +472,16 @@ widgets_list = \
         scale = 0.7
     ),
 
-    widget.WindowName
+    widget.TaskList
     (
-
+        icon_size = 20,
+        max_title_width = 350,
+        margin = 2,
+        padding_y = 2,
+        # title_width_method = 'uniform',
+        txt_floating = '🗗 ',
+        txt_maximized = '🗖 ',
+        txt_minimized = '🗕 ',
     ),
 
     widget.TextBox
@@ -489,7 +498,6 @@ widgets_list = \
     (
         foreground = colors[5],
         background = colors[1],
-        fontsize = 12,
         format="%a %b %e, %Y  %I:%M%P"
     ),
 
@@ -522,8 +530,8 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, opacity=0.8)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, opacity=0.8))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, opacity=0.9)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, opacity=0.9))]
 screens = init_screens()
 
 
