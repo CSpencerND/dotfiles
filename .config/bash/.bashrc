@@ -296,4 +296,5 @@ neofetch
 
 alias backup="/usr/bin/git --git-dir=$HOME/.backup/ --work-tree=$HOME"
 
+alias notify-send="sudo -u cs DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send"
 

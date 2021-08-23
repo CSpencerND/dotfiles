@@ -80,7 +80,7 @@ find() {
 }
 
 ### EXTRACTION
-ext ()
+ex ()
 {
   if [ -f $1 ] ; then
     case $1 in

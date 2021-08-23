@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# fix obvious typos
+alias cd..="cd .."
+alias pdw="pwd"
+
 ### Colorize commands
 alias ls='ls --color=auto'
 alias grep='grep -i --color=auto'
@@ -16,12 +20,17 @@ alias cp='cp -ivr'
 alias mv='mv -iv'
 alias mkdir='mkdir -pv'
 alias du='du -sh'
+alias df='df -h'
+alias free='free -mt' 
 alias vi='lvim'
 alias vim='nvim'
-
 # alias nvim='nvim -u ~/.config/nvim/init.lua'
 alias top='bpytop'
 alias apt-get='apt-get --show-progress'
+alias update="sudo pacman -Syyu"
+alias update-all="paru -Syu --noconfirm"
+alias pacman='sudo pacman --color auto'
+alias update-mirrors="sudo reflector -c 'United States' -a 6 --sort rate --save /etc/pacman.d/mirrorlist"
 
 ### LS & TREE
 alias ll='ls -lAG'
@@ -46,10 +55,9 @@ command -v bat > /dev/null && \
 
 ### Misc
 alias luamake=/home/cspencer/Installed/lua-language-server/3rd/luamake/luamake
-alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias wget="wget -c --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias gedit="devour gedit"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
-alias pycharm="pycharm.sh"
 
 # --------------------------- Important Commands -------------------------------
 alias hp="pactl load-module module-alsa-sink device=hw:1,1"
@@ -67,3 +75,6 @@ alias ethernet_on="sudo ifconfig enp35s0 up"
 alias polyconfig="vi $XDG_CONFIG_HOME/polybar/config"
 
 alias backup='/usr/bin/git --git-dir=$HOME/.backup/ --work-tree=$HOME'
+
+alias notify-send="sudo -u cs DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send"
+

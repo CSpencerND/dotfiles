@@ -4,9 +4,12 @@ import os
 import re
 import socket
 import subprocess
-from libqtile.config import Key, Screen, Group, Drag, Click, Rule, Match
+
+from libqtile.config import (
+    Key, Screen, Group, Drag, Click, Rule, Match, ScratchPad, DropDown
+)
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import layout, bar, widget, hook, extension
 from libqtile.widget import Spacer
 #import arcobattery
 
@@ -34,7 +37,17 @@ def window_to_next_group(qtile):
         i = qtile.groups.index(qtile.current_group)
         qtile.current_window.togroup(qtile.groups[i + 1].name)
 
+# Bring floating windows to front
+@lazy.function
+def float_to_front(qtile):
+    logging.info("bring floating windows to front")
+    for group in qtile.groups:
+        for window in group.windows:
+            if window.floating:
+                window.cmd_bring_to_front()
+
 # Group Definitions
+# groups = []
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -51,10 +64,18 @@ for i in range(len(group_names)):
         )
     )
 
+groups.append(ScratchPad("scratchpad", dropdowns=\
+        [
+            DropDown("term", "alacritty", height=0.5, width=0.5, x=0.25)
+        ]
+    )
+)
+
 # Theme
 class dracula:
     black =   '#14151b'
     bg =      '#282a36'
+    arcobg =  '#383c4a'
     bgl =     '#44475a'
     grey =    '#4d4d4d'
     fga =     '#bfbfbf'
@@ -62,6 +83,7 @@ class dracula:
     magenta = '#ff79c6'
     purple =  '#bd93f9'
     blurple = '#4d5b86'
+    arcoblue= '#6790eb'
     cyan =    '#8be9fd'
     green =   '#50fa7b'
     yellow =  '#f1fa8c'
@@ -233,6 +255,16 @@ keys = [
     ),
     Key
     (
+        [mod], "Right",
+        lazy.screen.next_group()
+    ),
+    Key
+    (
+        [mod], "Left",
+        lazy.screen.prev_group()
+    ),
+    Key
+    (
         [mod], "semicolon",
         lazy.screen.toggle_group()),
     Key
@@ -292,10 +324,9 @@ keys = [
     ),
     Key
     (
-        [mod], "apostrophe",
-        lazy.findwindow()
+        [mod, "shift"], "f",
+        float_to_front
     ),
-
 
     # Layout Functions
     Key
@@ -355,28 +386,33 @@ keys = [
         [mod, "shift"], "b",
         lazy.hide_show_bar()
     ),
+    Key
+    (
+        [mod], "apostrophe",
+        lazy.group["scratchpad"].dropdown_toggle("term")
+    ),
 ]
 
 
-for i in groups:
+for i in group_names:
     keys.extend\
     (
         [
             Key
             (
-                [mod           ], i.name, 
-                lazy.group[i.name].toscreen()
+                [mod           ], i, 
+                lazy.group[i].toscreen()
             ),
             Key
             (
-                [mod, "shift"  ], i.name, 
-                lazy.window.togroup(i.name)
+                [mod, "shift"  ], i, 
+                lazy.window.togroup(i)
             ),
             Key
             (
-                [mod, "control"], i.name, 
-                lazy.window.togroup(i.name),
-                lazy.group[i.name].toscreen()
+                [mod, "control"], i, 
+                lazy.window.togroup(i),
+                lazy.group[i].toscreen()
             ),
         ]
     )
@@ -486,19 +522,19 @@ widgets_list = \
 
     widget.TextBox
     (
-        font="FontAwesome",
-        text="  ",
-        foreground=colors[3],
-        background=colors[1],
+        font = "FontAwesome",
+        text = "  ",
+        foreground = dracula.orange,
+        background = dracula.bgl,
         padding = 0,
-        fontsize=16
+        fontsize = 16
     ),
 
     widget.Clock
     (
-        foreground = colors[5],
-        background = colors[1],
-        format="%a %b %e, %Y  %I:%M%P"
+        foreground = dracula.fg,
+        background = dracula.bgl,
+        format = "%a %b %e, %Y  %I:%M%P"
     ),
 
     widget.Sep
@@ -530,8 +566,8 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, opacity=0.9)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, opacity=0.9))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, background=dracula.bg, opacity=0.8)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, background=dracula.bg, opacity=0.8))]
 screens = init_screens()
 
 
@@ -610,36 +646,40 @@ def set_floating(window):
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 
 follow_mouse_focus = True
-bring_front_click = False
+bring_front_click = True
 cursor_warp = False
 
 floating_layout = layout.Floating(float_rules=\
-[
-    Match(wm_class='Arcolinux-welcome-app.py'),
-    Match(wm_class='Arcolinux-tweak-tool.py'),
-    Match(wm_class='Arcolinux-calamares-tool.py'),
-    Match(wm_class='confirm'),
-    Match(wm_class='dialog'),
-    Match(wm_class='download'),
-    Match(wm_class='error'),
-    Match(wm_class='file_progress'),
-    Match(wm_class='notification'),
-    Match(wm_class='splash'),
-    Match(wm_class='toolbar'),
-    Match(wm_class='confirmreset'),
-    Match(wm_class='makebranch'),
-    Match(wm_class='maketag'),
-    Match(wm_class='Arandr'),
-    Match(wm_class='feh'),
-    Match(wm_class='Galculator'),
-    Match(wm_class='arcolinux-logout'),
-    Match(wm_class='xfce4-terminal'),
-    Match(wm_class='ssh-askpass'),
-    Match(title='branchdialog'),
-    Match(title='Open File'),
-    Match(title='pinentry'),
-   
-],  fullscreen_border_width=0, border_width=0)
+    [
+        Match(wm_class='Arcolinux-welcome-app.py'),
+        Match(wm_class='Arcolinux-tweak-tool.py'),
+        Match(wm_class='Arcolinux-calamares-tool.py'),
+        Match(wm_class='confirm'),
+        Match(wm_class='dialog'),
+        Match(wm_class='download'),
+        Match(wm_class='error'),
+        Match(wm_class='file_progress'),
+        Match(wm_class='notification'),
+        Match(wm_class='splash'),
+        Match(wm_class='toolbar'),
+        Match(wm_class='confirmreset'),
+        Match(wm_class='makebranch'),
+        Match(wm_class='maketag'),
+        Match(wm_class='Arandr'),
+        Match(wm_class='feh'),
+        Match(wm_class='Galculator'),
+        Match(wm_class='arcolinux-logout'),
+        Match(wm_class='xfce4-terminal'),
+        Match(wm_class='ssh-askpass'),
+        Match(title='branchdialog'),
+        Match(title='Open File'),
+        Match(title='pinentry'),
+    ],  
+        fullscreen_border_width=0, 
+        border_width=1, 
+        border_focus=dracula.arcoblue,
+        border_normal=dracula.blurple,
+)
 
 
 auto_fullscreen = True

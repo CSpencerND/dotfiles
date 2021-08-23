@@ -32,7 +32,7 @@ ctrl + shift + Print
   gnome-screenshot -i
 
 #reload sxhkd:
-super + shift + backslash
+super + backslash
 	pkill -USR1 -x sxhkd
 
 
