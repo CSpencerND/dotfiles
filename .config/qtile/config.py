@@ -4,18 +4,16 @@ import os
 import re
 import socket
 import subprocess
-
 from libqtile.config import (
     Key, Screen, Group, Drag, Click, Rule, Match, ScratchPad, DropDown
 )
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook, extension
-from libqtile.widget import Spacer
-#import arcobattery
+from libqtile import qtile, layout, bar, widget, hook, extension
+# import arcobattery
 
 # ---       IMPORTS        }}}
 ##############################
-# {{{     VARS/FUNCS       ---
+# {{{        VARS          ---
 
 #mod4 or mod = super key
 mod = "mod4"
@@ -24,30 +22,7 @@ mod2 = "control"
 home = os.path.expanduser('~')
 qtile_home = os.path.expanduser('~/.config/qtile')
 
-# Move Windows To Groups By Direction
-@lazy.function
-def window_to_prev_group(qtile):
-    if qtile.current_window is not None:
-        i = qtile.groups.index(qtile.current_group)
-        qtile.current_window.togroup(qtile.groups[i - 1].name)
-
-@lazy.function
-def window_to_next_group(qtile):
-    if qtile.current_window is not None:
-        i = qtile.groups.index(qtile.current_group)
-        qtile.current_window.togroup(qtile.groups[i + 1].name)
-
-# Bring floating windows to front
-@lazy.function
-def float_to_front(qtile):
-    logging.info("bring floating windows to front")
-    for group in qtile.groups:
-        for window in group.windows:
-            if window.floating:
-                window.cmd_bring_to_front()
-
 # Group Definitions
-# groups = []
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -64,9 +39,18 @@ for i in range(len(group_names)):
         )
     )
 
+dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
+
 groups.append(ScratchPad("scratchpad", dropdowns=\
         [
-            DropDown("term", "alacritty", height=0.5, width=0.5, x=0.25)
+            DropDown(
+                "pad", "alacritty -e lvim ~/.cache/scratchpad",
+                **dropdown_defaults
+            ),
+            DropDown(
+                "term", "alacritty",
+                **dropdown_defaults
+            )
         ]
     )
 )
@@ -90,11 +74,31 @@ class dracula:
     orange =  '#ffb86c'
     red =     '#ff5555'
 
-dracula_highlight = [dracula.blurple, dracula.purple]
-
-# ---     VARS/FUNCS       }}}
+# ---        VARS          }}}
 ##############################
 # {{{     KEYBINDINGS      ---
+
+# Move Windows To Groups By Direction
+@lazy.function
+def window_to_prev_group(qtile):
+    if qtile.current_window is not None:
+        i = qtile.groups.index(qtile.current_group)
+        qtile.current_window.togroup(qtile.groups[i - 1].name)
+
+@lazy.function
+def window_to_next_group(qtile):
+    if qtile.current_window is not None:
+        i = qtile.groups.index(qtile.current_group)
+        qtile.current_window.togroup(qtile.groups[i + 1].name)
+
+# Bring floating windows to front
+@lazy.function
+def float_to_front(qtile):
+    logging.info("bring floating windows to front")
+    for group in qtile.groups:
+        for window in group.windows:
+            if window.floating:
+                window.cmd_bring_to_front()
 
 keys = [
     # Resize
@@ -391,6 +395,11 @@ keys = [
         [mod], "apostrophe",
         lazy.group["scratchpad"].dropdown_toggle("term")
     ),
+    Key
+    (
+        [mod], "p",
+        lazy.group["scratchpad"].dropdown_toggle("pad")
+    ),
 ]
 
 
@@ -458,31 +467,30 @@ layouts = \
 ##############################
 # {{{       WIDGETS        ---
 
-def init_colors():
-    return [["#2F343F", "#2F343F"], # color 0
-            ["#2F343F", "#2F343F"], # color 1
-            ["#c0c5ce", "#c0c5ce"], # color 2
-            ["#fba922", "#fba922"], # color 3
-            ["#3384d0", "#3384d0"], # color 4
-            ["#f3f4f5", "#f3f4f5"], # color 5
-            ["#cd1f3f", "#cd1f3f"], # color 6
-            ["#62FF00", "#62FF00"], # color 7
-            ["#6790eb", "#6790eb"], # color 8
-            ["#a9a9a9", "#a9a9a9"]] # color 9
-colors = init_colors()
+def open_calendar():
+    qtile.cmd_spawn('sb-cal')
 
+def get_clock_icon():
+    pass
+    # clock_icon_home = os.path.expanduser('~/.cache/clock-icon')
+    # subprocess.getoutput("cat ~/.cache/clock-icon")
+    # qtile.cmd_spawn('cat clock_icon_home')
+
+clock_icon = subprocess.getoutput("cat ~/.cache/clock-icon")
 
 widget_defaults = dict\
 (
     font = 'Hack Nerd Font',
-    fontsize = 14,
+    fontsize = 15,
     padding = 3,
     background = dracula.bg,
     foreground = dracula.fg,
-    highlight_method = 'border',
-    border = dracula.purple,
-    borderwidth = 1,
-    # rounded = False,
+    # highlight_method = 'border',
+    highlight_method = 'block',
+    border = dracula.blurple,
+    borderwidth = 2,
+    rounded = False,
+    this_current_screen_border = dracula.purple,
     urgent_alert_method = 'text',
     urgent_text = dracula.magenta,
     urgent_border = dracula.magenta,
@@ -493,33 +501,36 @@ extension_defaults = widget_defaults.copy()
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 widgets_list = \
 [
+    widget.Spacer(length=5),
     widget.GroupBox
     (
+        padding = 2,
+        margin_y = 6,
         active = dracula.fg,
         disable_drag = False,
-        # highlight_color = dracula_highlight,
+        highlight_method = 'line',
+        highlight_color = [dracula.blurple, dracula.blurple],
         inactive = dracula.bgl,
-        this_current_screen_border = dracula.purple,
     ),
-
     widget.CurrentLayoutIcon
     (
         # custom_icon_paths = [qtile_home + '/icons/layouts/'],
         scale = 0.7
     ),
-
     widget.TaskList
     (
-        icon_size = 20,
+        icon_size = 22,
         max_title_width = 350,
-        margin = 2,
+        margin = 3,
         padding_y = 2,
         # title_width_method = 'uniform',
         txt_floating = '🗗 ',
         txt_maximized = '🗖 ',
         txt_minimized = '🗕 ',
+        
     ),
 
+    # Date
     widget.TextBox
     (
         font = "FontAwesome",
@@ -527,29 +538,60 @@ widgets_list = \
         foreground = dracula.orange,
         background = dracula.bgl,
         padding = 0,
-        fontsize = 16
+        fontsize = 16,
+        mouse_callbacks = {"Button1": open_calendar}
     ),
-
     widget.Clock
     (
         foreground = dracula.fg,
         background = dracula.bgl,
-        format = "%a %b %e, %Y  %I:%M%P"
+        format = "%a %b %e, %Y",
+        update_interval = 60
     ),
+    widget.Spacer(length=5),
 
-    widget.Sep
+    # Time
+    widget.TextBox
     (
-        linewidth = 1,
-        padding = 10,
-        foreground = colors[2],
-        background = colors[1]
+        font = "Noto Color Emoji",
+        text = clock_icon,
+        background = dracula.bgl,
+        padding = 0,
+        fontsize = 16
     ),
+    widget.Clock
+    (
+        foreground = dracula.fg,
+        background = dracula.bgl,
+        format = "%I:%M%P"
+    ),
+    widget.Spacer(length=5),
 
+    # Thermals
+    widget.TextBox
+    (
+        font = "Noto Color Emoji",
+        text = "🌡",
+        background = dracula.bgl,
+        padding = 0,
+        fontsize = 16
+    ),
+    widget.ThermalSensor
+    (
+        foreground_alert = dracula.magenta,
+        background = dracula.bgl,
+        metric = True,
+        threshold = 65,
+    ),
+    widget.Spacer(length=5),
+
+    # Tray
     widget.Systray
     (
-        icon_size=20,
+        icon_size = 21,
         padding = 4
     ),
+    widget.Spacer(length=5),
 ]
 
 
@@ -566,12 +608,14 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, background=dracula.bg, opacity=0.8)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, background=dracula.bg, opacity=0.8))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=28, background=dracula.bg, opacity=0.9)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=28, background=dracula.bg, opacity=0.9))]
 screens = init_screens()
 
+# ---       WIDGETS        }}}
+##############################
+# {{{        MISC          ---
 
-# MOUSE CONFIGURATION
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
@@ -581,50 +625,6 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []
-
-# ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
-# BEGIN
-
-#########################################################
-################ assgin apps to groups ##################
-#########################################################
-# @hook.subscribe.client_new
-# def assign_app_group(client):
-#     d = {}
-#     #####################################################################################
-#     ### Use xprop fo find  the value of WM_CLASS(STRING) -> First field is sufficient ###
-#     #####################################################################################
-#     d[group_names[0]] = ["Navigator", "Firefox", "Vivaldi-stable", "Vivaldi-snapshot", "Chromium", "Google-chrome", "Brave", "Brave-browser",
-#               "navigator", "firefox", "vivaldi-stable", "vivaldi-snapshot", "chromium", "google-chrome", "brave", "brave-browser", ]
-#     d[group_names[1]] = [ "Atom", "Subl", "Geany", "Brackets", "Code-oss", "Code", "TelegramDesktop", "Discord",
-#                "atom", "subl", "geany", "brackets", "code-oss", "code", "telegramDesktop", "discord", ]
-#     d[group_names[2]] = ["Inkscape", "Nomacs", "Ristretto", "Nitrogen", "Feh",
-#               "inkscape", "nomacs", "ristretto", "nitrogen", "feh", ]
-#     d[group_names[3]] = ["Gimp", "gimp" ]
-#     d[group_names[4]] = ["Meld", "meld", "org.gnome.meld" "org.gnome.Meld" ]
-#     d[group_names[5]] = ["Vlc","vlc", "Mpv", "mpv" ]
-#     d[group_names[6]] = ["VirtualBox Manager", "VirtualBox Machine", "Vmplayer",
-#               "virtualbox manager", "virtualbox machine", "vmplayer", ]
-#     d[group_names[7]] = ["Thunar", "Nemo", "Caja", "Nautilus", "org.gnome.Nautilus", "Pcmanfm", "Pcmanfm-qt",
-#               "thunar", "nemo", "caja", "nautilus", "org.gnome.nautilus", "pcmanfm", "pcmanfm-qt", ]
-#     d[group_names[8]] = ["Evolution", "Geary", "Mail", "Thunderbird",
-#               "evolution", "geary", "mail", "thunderbird" ]
-#     d[group_names[9]] = ["Spotify", "Pragha", "Clementine", "Deadbeef", "Audacious",
-#               "spotify", "pragha", "clementine", "deadbeef", "audacious" ]
-#     ######################################################################################
-#
-# wm_class = client.window.get_wm_class()[0]
-#
-#     for i in range(len(d)):
-#         if wm_class in list(d.values())[i]:
-#             group = list(d.keys())[i]
-#             client.togroup(group)
-#             client.group.cmd_toscreen(toggle=False)
-
-# END
-# ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
-
-
 
 main = None
 
@@ -686,56 +686,8 @@ auto_fullscreen = True
 focus_on_window_activation = "focus" # or smart
 wmname = "LG3D"
 
-# widget.Net(
-#          font="Noto Sans",
-#          fontsize=12,
-#          interface="enp0s31f6",
-#          foreground=colors[2],
-#          background=colors[1],
-#          padding = 0,
-#          ),
-# widget.Sep(
-#          linewidth = 1,
-#          padding = 10,
-#          foreground = colors[2],
-#          background = colors[1]
-#          ),
-# widget.NetGraph(
-#          font="Noto Sans",
-#          fontsize=12,
-#          bandwidth="down",
-#          interface="auto",
-#          fill_color = colors[8],
-#          foreground=colors[2],
-#          background=colors[1],
-#          graph_color = colors[8],
-#          border_color = colors[2],
-#          padding = 0,
-#          border_width = 1,
-#          line_width = 1,
-#          ),
-# widget.Sep(
-#          linewidth = 1,
-#          padding = 10,
-#          foreground = colors[2],
-#          background = colors[1]
-#          ),
-# # do not activate in Virtualbox - will break qtile
-# widget.ThermalSensor(
-#          foreground = colors[5],
-#          foreground_alert = colors[6],
-#          background = colors[1],
-#          metric = True,
-#          padding = 3,
-#          threshold = 80
-#          ),
-# # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
-# widget.Sep(
-#          linewidth = 1,
-#          padding = 10,
-#          foreground = colors[2],
-#          background = colors[1]
-#          ),
+# ---        MISC          }}}
+
 # arcobattery.BatteryIcon(
 #          padding=0,
 #          scale=0.7,
@@ -745,12 +697,6 @@ wmname = "LG3D"
 #          background = colors[1]
 #          ),
 # # battery option 2  from Qtile
-# widget.Sep(
-#          linewidth = 1,
-#          padding = 10,
-#          foreground = colors[2],
-#          background = colors[1]
-#          ),
 # widget.Battery(
 #          font="Noto Sans",
 #          update_interval = 10,

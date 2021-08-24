@@ -27,11 +27,10 @@ run dex $HOME/.config/autostart/arcolinux-welcome-app.desktop &
 #Some ways to set your wallpaper besides variety or nitrogen
 # feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 #start the conky to learn the shortcuts
-(conky -c $HOME/.config/qtile/scripts/system-overview) &
+# (conky -c $HOME/.config/qtile/scripts/system-overview) &
 
 #start sxhkd to replace Qtile native key-bindings
 run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
-
 
 #starting utility applications at boot time
 run variety &
@@ -60,5 +59,5 @@ run redshift-gtk &
 #run spotify &
 #run atom &
 #run telegram-desktop &
-sleep 1
-/home/cs/.local/bin/kbrate
+pactl load-module module-alsa-sink device=hw:1,1
+/home/cs/.local/bin/kbconfig
