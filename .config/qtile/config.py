@@ -1,9 +1,6 @@
 # {{{       IMPORTS        ---
 
-import os
-import re
-import socket
-import subprocess
+import os, re, socket, subprocess, time
 from libqtile.config import (
     Key, Screen, Group, Drag, Click, Rule, Match, ScratchPad, DropDown
 )
@@ -24,8 +21,8 @@ qtile_home = os.path.expanduser('~/.config/qtile')
 
 # Group Definitions
 groups = []
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+group_names = ["1", "2", "3", "4", "5", "6", "7",]
+group_labels = ["1", "2", "3", "4", "5", "6", "7",]
 group_layouts = ["monadtall" for i in group_names]
 
 for i in range(len(group_names)):
@@ -470,13 +467,8 @@ layouts = \
 def open_calendar():
     qtile.cmd_spawn('sb-cal')
 
-def get_clock_icon():
-    pass
-    # clock_icon_home = os.path.expanduser('~/.cache/clock-icon')
-    # subprocess.getoutput("cat ~/.cache/clock-icon")
-    # qtile.cmd_spawn('cat clock_icon_home')
-
 clock_icon = subprocess.getoutput("cat ~/.cache/clock-icon")
+
 
 widget_defaults = dict\
 (
@@ -498,100 +490,121 @@ widget_defaults = dict\
 extension_defaults = widget_defaults.copy()
 
 
-prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+class widgets:
+    spacer = widget.Spacer(length=5)
+
+    basics = \
+    [
+        spacer,
+        widget.GroupBox
+        (
+            padding = 2,
+            margin_y = 6,
+            active = dracula.fg,
+            disable_drag = False,
+            highlight_method = 'line',
+            highlight_color = [dracula.blurple, dracula.blurple],
+            inactive = dracula.bgl,
+        ),
+        widget.CurrentLayoutIcon
+        (
+            # custom_icon_paths = [qtile_home + '/icons/layouts/'],
+            scale = 0.7
+        ),
+        widget.TaskList
+        (
+            icon_size = 22,
+            max_title_width = 350,
+            margin = 3,
+            padding_y = 2,
+            # title_width_method = 'uniform',
+            txt_floating = '🗗 ',
+            txt_maximized = '🗖 ',
+            txt_minimized = '🗕 ',
+            
+        ),
+        spacer
+    ]
+
+    date = \
+    [
+        widget.TextBox
+        (
+            font = "FontAwesome",
+            text = "  ",
+            foreground = dracula.orange,
+            background = dracula.bgl,
+            padding = 0,
+            fontsize = 16,
+            mouse_callbacks = {"Button1": open_calendar}
+        ),
+        widget.Clock
+        (
+            foreground = dracula.fg,
+            background = dracula.bgl,
+            format = "%a %b %e, %Y",
+            update_interval = 60
+        ),
+        spacer
+    ]
+
+    time = \
+    [
+        widget.TextBox
+        (
+            font = "Noto Color Emoji",
+            text = clock_icon,
+            background = dracula.bgl,
+            padding = 0,
+            fontsize = 16
+        ),
+        widget.Clock
+        (
+            foreground = dracula.fg,
+            background = dracula.bgl,
+            format = "%I:%M%P"
+        ),
+        spacer
+    ]
+
+    thermals = \
+    [
+        widget.TextBox
+        (
+            font = "Noto Color Emoji",
+            text = "🌡",
+            background = dracula.bgl,
+            padding = 0,
+            fontsize = 16
+        ),
+        widget.ThermalSensor
+        (
+            foreground_alert = dracula.magenta,
+            background = dracula.bgl,
+            metric = True,
+            threshold = 65,
+        ),
+        spacer
+    ]
+
+    tray = \
+    [
+        widget.Systray
+        (
+            icon_size = 20,
+            padding = 4
+        ),
+        spacer
+    ]
+
+
 widgets_list = \
 [
-    widget.Spacer(length=5),
-    widget.GroupBox
-    (
-        padding = 2,
-        margin_y = 6,
-        active = dracula.fg,
-        disable_drag = False,
-        highlight_method = 'line',
-        highlight_color = [dracula.blurple, dracula.blurple],
-        inactive = dracula.bgl,
-    ),
-    widget.CurrentLayoutIcon
-    (
-        # custom_icon_paths = [qtile_home + '/icons/layouts/'],
-        scale = 0.7
-    ),
-    widget.TaskList
-    (
-        icon_size = 22,
-        max_title_width = 350,
-        margin = 3,
-        padding_y = 2,
-        # title_width_method = 'uniform',
-        txt_floating = '🗗 ',
-        txt_maximized = '🗖 ',
-        txt_minimized = '🗕 ',
-        
-    ),
-
-    # Date
-    widget.TextBox
-    (
-        font = "FontAwesome",
-        text = "  ",
-        foreground = dracula.orange,
-        background = dracula.bgl,
-        padding = 0,
-        fontsize = 16,
-        mouse_callbacks = {"Button1": open_calendar}
-    ),
-    widget.Clock
-    (
-        foreground = dracula.fg,
-        background = dracula.bgl,
-        format = "%a %b %e, %Y",
-        update_interval = 60
-    ),
-    widget.Spacer(length=5),
-
-    # Time
-    widget.TextBox
-    (
-        font = "Noto Color Emoji",
-        text = clock_icon,
-        background = dracula.bgl,
-        padding = 0,
-        fontsize = 16
-    ),
-    widget.Clock
-    (
-        foreground = dracula.fg,
-        background = dracula.bgl,
-        format = "%I:%M%P"
-    ),
-    widget.Spacer(length=5),
-
-    # Thermals
-    widget.TextBox
-    (
-        font = "Noto Color Emoji",
-        text = "🌡",
-        background = dracula.bgl,
-        padding = 0,
-        fontsize = 16
-    ),
-    widget.ThermalSensor
-    (
-        foreground_alert = dracula.magenta,
-        background = dracula.bgl,
-        metric = True,
-        threshold = 65,
-    ),
-    widget.Spacer(length=5),
-
-    # Tray
-    widget.Systray
-    (
-        icon_size = 21,
-        padding = 4
-    ),
-    widget.Spacer(length=5),
+    *widgets.basics,
+    *widgets.date,
+    *widgets.time,
+    *widgets.thermals,
+    *widgets.tray,
 ]
 
 
@@ -649,7 +662,9 @@ follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
 
-floating_layout = layout.Floating(float_rules=\
+floating_layout = layout.Floating\
+(
+    float_rules=\
     [
         Match(wm_class='Arcolinux-welcome-app.py'),
         Match(wm_class='Arcolinux-tweak-tool.py'),
@@ -671,14 +686,20 @@ floating_layout = layout.Floating(float_rules=\
         Match(wm_class='arcolinux-logout'),
         Match(wm_class='xfce4-terminal'),
         Match(wm_class='ssh-askpass'),
+        Match(wm_class='redshift-gtk'),
+        Match(wm_class='solaar'),
+        Match(wm_class='blueberry.py'),
+        Match(wm_class='pavucontrol'),
         Match(title='branchdialog'),
         Match(title='Open File'),
         Match(title='pinentry'),
+        Match(func=lambda c: bool(c.is_transient_for()))
     ],  
-        fullscreen_border_width=0, 
-        border_width=1, 
-        border_focus=dracula.arcoblue,
-        border_normal=dracula.blurple,
+
+    fullscreen_border_width=0, 
+    border_width=1, 
+    border_focus=dracula.arcoblue,
+    border_normal=dracula.blurple,
 )
 
 
