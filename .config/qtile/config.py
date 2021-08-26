@@ -63,6 +63,7 @@ class dracula:
     fg =      '#f8f8f2'
     magenta = '#ff79c6'
     purple =  '#bd93f9'
+    dpurple = '#6d5890'
     blurple = '#4d5b86'
     arcoblue= '#6790eb'
     cyan =    '#8be9fd'
@@ -101,49 +102,11 @@ keys = [
     # Resize
     Key
     (
-        [mod, "control"], "l",
-        lazy.layout.grow_main().when(layout='monadtall'),
-        lazy.layout.increase_ratio().when(layout='tile'),
-        lazy.layout.grow_right().when(layout='columns'),
-        lazy.layout.delete().when(layout='matrix'),
-    ),
-    Key
-    (
-        [mod, "control"], "Right",
-        lazy.layout.grow_main().when(layout='monadtall'),
-        lazy.layout.increase_ratio().when(layout='tile'),
-        lazy.layout.grow_right().when(layout='columns'),
-        lazy.layout.delete().when(layout='matrix'),
-    ),
-    Key
-    (
         [mod, "control"], "h",
         lazy.layout.shrink_main().when(layout='monadtall'),
         lazy.layout.decrease_ratio().when(layout='tile'),
         lazy.layout.grow_left().when(layout='columns'),
         lazy.layout.add().when(layout='matrix'),
-    ),
-    Key
-    (
-        [mod, "control"], "Left",
-        lazy.layout.shrink_main().when(layout='monadtall'),
-        lazy.layout.decrease_ratio().when(layout='tile'),
-        lazy.layout.grow_left().when(layout='columns'),
-        lazy.layout.add().when(layout='matrix'),
-    ),
-    Key
-    (
-        [mod, "control"], "k",
-        lazy.layout.grow_main().when(layout='monadtall'),
-        lazy.layout.grow_up().when(layout='columns'),
-        lazy.layout.decrease_nmaster().when(layout='tile'),
-    ),
-    Key
-    (
-        [mod, "control"], "Up",
-        lazy.layout.grow_main().when(layout='monadtall'),
-        lazy.layout.grow_up().when(layout='columns'),
-        lazy.layout.decrease_nmaster().when(layout='tile'),
     ),
     Key
     (
@@ -154,10 +117,18 @@ keys = [
     ),
     Key
     (
-        [mod, "control"], "Down",
-        lazy.layout.shrink_main().when(layout='monadtall'),
-        lazy.layout.grow_down().when(layout='columns'),
-        lazy.layout.increase_nmaster().when(layout='tile'),
+        [mod, "control"], "k",
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.grow_up().when(layout='columns'),
+        lazy.layout.decrease_nmaster().when(layout='tile'),
+    ),
+    Key
+    (
+        [mod, "control"], "l",
+        lazy.layout.grow_main().when(layout='monadtall'),
+        lazy.layout.increase_ratio().when(layout='tile'),
+        lazy.layout.grow_right().when(layout='columns'),
+        lazy.layout.delete().when(layout='matrix'),
     ),
 
 
@@ -469,20 +440,16 @@ def open_calendar():
 
 clock_icon = subprocess.getoutput("cat ~/.cache/clock-icon")
 
-
 widget_defaults = dict\
 (
     font = 'Hack Nerd Font',
     fontsize = 15,
     padding = 3,
-    background = dracula.bg,
+    background = dracula.bgl,
     foreground = dracula.fg,
-    # highlight_method = 'border',
     highlight_method = 'block',
-    border = dracula.blurple,
     borderwidth = 2,
     rounded = False,
-    this_current_screen_border = dracula.purple,
     urgent_alert_method = 'text',
     urgent_text = dracula.magenta,
     urgent_border = dracula.magenta,
@@ -491,11 +458,11 @@ extension_defaults = widget_defaults.copy()
 
 
 class widgets:
-    spacer = widget.Spacer(length=5)
+    spacer = widget.Spacer(length=5, background=dracula.bg)
 
     basics = \
     [
-        spacer,
+        widget.Spacer(length=6, background=dracula.bg),
         widget.GroupBox
         (
             padding = 2,
@@ -503,13 +470,15 @@ class widgets:
             active = dracula.fg,
             disable_drag = False,
             highlight_method = 'line',
-            highlight_color = [dracula.blurple, dracula.blurple],
+            highlight_color = [dracula.purple, dracula.dpurple],
+            this_current_screen_border = dracula.dpurple,
             inactive = dracula.bgl,
+            background = dracula.bg,
         ),
         widget.CurrentLayoutIcon
         (
-            # custom_icon_paths = [qtile_home + '/icons/layouts/'],
-            scale = 0.7
+            scale = 0.7,
+            background = dracula.bg
         ),
         widget.TaskList
         (
@@ -521,7 +490,8 @@ class widgets:
             txt_floating = '🗗 ',
             txt_maximized = '🗖 ',
             txt_minimized = '🗕 ',
-            
+            border = dracula.dpurple,
+            background=dracula.bg
         ),
         spacer
     ]
@@ -531,17 +501,12 @@ class widgets:
         widget.TextBox
         (
             font = "FontAwesome",
-            text = "  ",
-            foreground = dracula.orange,
-            background = dracula.bgl,
-            padding = 0,
+            text = "📆",
             fontsize = 16,
             mouse_callbacks = {"Button1": open_calendar}
         ),
         widget.Clock
         (
-            foreground = dracula.fg,
-            background = dracula.bgl,
             format = "%a %b %e, %Y",
             update_interval = 60
         ),
@@ -554,14 +519,11 @@ class widgets:
         (
             font = "Noto Color Emoji",
             text = clock_icon,
-            background = dracula.bgl,
-            padding = 0,
-            fontsize = 16
+            fontsize = 16,
+            update_interval = 60,
         ),
         widget.Clock
         (
-            foreground = dracula.fg,
-            background = dracula.bgl,
             format = "%I:%M%P"
         ),
         spacer
@@ -573,14 +535,12 @@ class widgets:
         (
             font = "Noto Color Emoji",
             text = "🌡",
-            background = dracula.bgl,
             padding = 0,
             fontsize = 16
         ),
         widget.ThermalSensor
         (
             foreground_alert = dracula.magenta,
-            background = dracula.bgl,
             metric = True,
             threshold = 65,
         ),
@@ -592,7 +552,51 @@ class widgets:
         widget.Systray
         (
             icon_size = 20,
-            padding = 4
+            padding = 4,
+            background = dracula.bg
+        ),
+        spacer
+    ]
+
+    tray_box = \
+    [
+        widget.WidgetBox
+        (
+            widgets = [*tray],
+            close_button_location = 'right',
+            font = 'Hack Nerd font',
+            text_closed = ']',
+            text_open = ']',
+            fontsize = 16,
+            background = dracula.dpurple,
+        ),
+        widget.Spacer(length=9, background=dracula.bg)
+    ]
+
+    memory = \
+    [
+        widget.TextBox
+        (
+            font = "FontAwesome",
+            text = "",
+            fontsize = 16,
+            foreground = dracula.orange
+        ),
+        widget.Memory
+        (
+            measure_mem = 'G',
+            format = '{MemUsed:.1f}{mm}',
+            update_interval = 10,
+        ),
+        spacer        
+    ]
+
+    weather = \
+    [
+        widget.Wttr
+        (
+            format = '1',
+            location = {'California': 'Cali'},
         ),
         spacer
     ]
@@ -601,10 +605,12 @@ class widgets:
 widgets_list = \
 [
     *widgets.basics,
-    *widgets.date,
     *widgets.time,
+    *widgets.date,
+    *widgets.weather,
+    *widgets.memory,
     *widgets.thermals,
-    *widgets.tray,
+    *widgets.tray_box
 ]
 
 
@@ -724,51 +730,5 @@ wmname = "LG3D"
 #          fontsize = 12,
 #          foreground = colors[5],
 #          background = colors[1],
-#          ),
-# widget.TextBox(
-#          font="FontAwesome",
-#          text="  ",
-#          foreground=colors[6],
-#          background=colors[1],
-#          padding = 0,
-#          fontsize=16
-#          ),
-# widget.CPUGraph(
-#          border_color = colors[2],
-#          fill_color = colors[8],
-#          graph_color = colors[8],
-#          background=colors[1],
-#          border_width = 1,
-#          line_width = 1,
-#          core = "all",
-#          type = "box"
-#          ),
-# widget.Sep(
-#          linewidth = 1,
-#          padding = 10,
-#          foreground = colors[2],
-#          background = colors[1]
-#          ),
-# widget.TextBox(
-#          font="FontAwesome",
-#          text="  ",
-#          foreground=colors[4],
-#          background=colors[1],
-#          padding = 0,
-#          fontsize=16
-#          ),
-# widget.Memory(
-#          font="Noto Sans",
-#          format = '{MemUsed}M/{MemTotal}M',
-#          update_interval = 1,
-#          fontsize = 12,
-#          foreground = colors[5],
-#          background = colors[1],
-#         ),
-# widget.Sep(
-#          linewidth = 1,
-#          padding = 10,
-#          foreground = colors[2],
-#          background = colors[1]
 #          ),
 
