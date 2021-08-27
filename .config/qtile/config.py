@@ -435,10 +435,14 @@ layouts = \
 ##############################
 # {{{       WIDGETS        ---
 
+clock_icon = subprocess.getoutput("cat ~/.cache/clock-icon")
+
 def open_calendar():
     qtile.cmd_spawn('sb-cal')
 
-clock_icon = subprocess.getoutput("cat ~/.cache/clock-icon")
+def get_bat_percent():
+    batinfo = subprocess.getoutput("acpi | sed 's/Battery 0: //'")
+    subprocess.call(["notify-send", batinfo])
 
 widget_defaults = dict\
 (
@@ -500,10 +504,11 @@ class widgets:
     [
         widget.TextBox
         (
+            name = 'date_icon',
             font = "FontAwesome",
             text = "📆",
             fontsize = 16,
-            mouse_callbacks = {"Button1": open_calendar}
+            mouse_callbacks = {'Button1': open_calendar}
         ),
         widget.Clock
         (
@@ -517,6 +522,7 @@ class widgets:
     [
         widget.TextBox
         (
+            name = 'clock_icon',
             font = "Noto Color Emoji",
             text = clock_icon,
             fontsize = 16,
@@ -533,6 +539,7 @@ class widgets:
     [
         widget.TextBox
         (
+            name = 'thermal_icon',
             font = "Noto Color Emoji",
             text = "🌡",
             padding = 0,
@@ -551,7 +558,7 @@ class widgets:
     [
         widget.Systray
         (
-            icon_size = 20,
+            icon_size = 22,
             padding = 4,
             background = dracula.bg
         ),
@@ -577,6 +584,7 @@ class widgets:
     [
         widget.TextBox
         (
+            name = 'memory_icon',
             font = "FontAwesome",
             text = "",
             fontsize = 16,
@@ -601,6 +609,22 @@ class widgets:
         spacer
     ]
 
+    battery = \
+    [
+        widget.BatteryIcon
+        (
+            mouse_callbacks = {'Button1': get_bat_percent}
+        ), 
+        widget.Battery
+        (
+            format = None,
+            low_foreground = dracula.magenta,
+            low_percentage = 0.25,
+            notify_below = 0.25,
+        ),
+        spacer,
+    ]
+
 
 widgets_list = \
 [
@@ -610,6 +634,7 @@ widgets_list = \
     *widgets.weather,
     *widgets.memory,
     *widgets.thermals,
+    *widgets.battery,
     *widgets.tray_box
 ]
 

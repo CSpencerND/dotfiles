@@ -44,7 +44,7 @@ picom --config $HOME/.config/qtile/scripts/picom.conf -b --experimental-backends
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 # run dunst &
 run solaar -w hide -b solaar &
-run cbatticon &
+# run cbatticon &
 #starting user applications at boot time
 run volumeicon &
 run redshift-gtk &

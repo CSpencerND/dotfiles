@@ -1,4 +1,5 @@
 accountsservice
+acpi
 adobe-source-han-sans-cn-fonts
 adobe-source-han-sans-jp-fonts
 adobe-source-han-sans-kr-fonts
@@ -96,7 +97,6 @@ dosfstools
 downgrade
 dropbox
 duf-bin
-dunst
 e2fsprogs
 edid-decode-git
 edk2-shell

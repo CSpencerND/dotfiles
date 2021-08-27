@@ -19,6 +19,7 @@ case "$clock" in
 esac
 
 echo $icon > ~/.cache/clock-icon
+qtile cmd-obj -o widget clock_icon -f update -a $icon
 
 # case $BLOCK_BUTTON in
 # 	1) notify-send "This Month" "$(cal --color=always | sed "s/..7m/<b><span color=\"red\">/;s/..27m/<\/span><\/b>/")" && notify-send "Appointments" "$(calcurse -d3)" ;;
