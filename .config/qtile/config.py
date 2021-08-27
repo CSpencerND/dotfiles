@@ -437,12 +437,10 @@ layouts = \
 
 clock_icon = subprocess.getoutput("cat ~/.cache/clock-icon")
 
-def open_calendar():
-    qtile.cmd_spawn('sb-cal')
-
 def get_bat_percent():
     batinfo = subprocess.getoutput("acpi | sed 's/Battery 0: //'")
     subprocess.call(["notify-send", batinfo])
+
 
 widget_defaults = dict\
 (
@@ -462,11 +460,23 @@ extension_defaults = widget_defaults.copy()
 
 
 class widgets:
-    spacer = widget.Spacer(length=5, background=dracula.bg)
+    spacer = widget.Spacer(length=6, background=dracula.bg)
+
+    arco = \
+    [
+        widget.Image
+        (
+            filename = '~/.config/qtile/icons/Arch.png',
+            margin = 0,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('arcolinux-logout')
+            }
+        ),
+        widget.Spacer(length=4, background=dracula.bg)
+    ]
 
     basics = \
     [
-        widget.Spacer(length=6, background=dracula.bg),
         widget.GroupBox
         (
             padding = 2,
@@ -500,24 +510,6 @@ class widgets:
         spacer
     ]
 
-    date = \
-    [
-        widget.TextBox
-        (
-            name = 'date_icon',
-            font = "FontAwesome",
-            text = "📆",
-            fontsize = 16,
-            mouse_callbacks = {'Button1': open_calendar}
-        ),
-        widget.Clock
-        (
-            format = "%a %b %e, %Y",
-            update_interval = 60
-        ),
-        spacer
-    ]
-
     time = \
     [
         widget.TextBox
@@ -525,7 +517,7 @@ class widgets:
             name = 'clock_icon',
             font = "Noto Color Emoji",
             text = clock_icon,
-            fontsize = 16,
+            fontsize = 18,
             update_interval = 60,
         ),
         widget.Clock
@@ -535,49 +527,57 @@ class widgets:
         spacer
     ]
 
-    thermals = \
+    date = \
     [
         widget.TextBox
         (
-            name = 'thermal_icon',
-            font = "Noto Color Emoji",
-            text = "🌡",
-            padding = 0,
-            fontsize = 16
+            name = 'date_icon',
+            font = "FontAwesome",
+            text = "📆",
+            fontsize = 18,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('sb-cal')
+            }
         ),
-        widget.ThermalSensor
+        widget.Clock
         (
-            foreground_alert = dracula.magenta,
-            metric = True,
-            threshold = 65,
+            format = "%a %b %e, %Y",
+            update_interval = 60,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('sb-cal')
+            }
         ),
         spacer
     ]
 
-    tray = \
+    weather = \
     [
-        widget.Systray
+        widget.Wttr
         (
-            icon_size = 22,
-            padding = 4,
-            background = dracula.bg
+            format = '1',
+            location = {'California': 'Cali'},
         ),
         spacer
     ]
 
-    tray_box = \
+    keyboard = \
     [
-        widget.WidgetBox
+        widget.TextBox
         (
-            widgets = [*tray],
-            close_button_location = 'right',
-            font = 'Hack Nerd font',
-            text_closed = ']',
-            text_open = ']',
-            fontsize = 16,
-            background = dracula.dpurple,
+            name = 'kbd_icon',
+            font = 'Hack Nerd Font',
+            text = '',
+            fontsize = 22,
+            foreground = dracula.purple,
+            padding = 6
         ),
-        widget.Spacer(length=9, background=dracula.bg)
+        widget.TextBox
+        (
+            name = 'kbd_layout',
+            text = 'Main',
+            padding = 4
+        ),
+        spacer
     ]
 
     memory = \
@@ -585,10 +585,9 @@ class widgets:
         widget.TextBox
         (
             name = 'memory_icon',
-            font = "FontAwesome",
-            text = "",
-            fontsize = 16,
-            foreground = dracula.orange
+            font = "Noto Color Emoji",
+            text = "🧠",
+            fontsize = 18,
         ),
         widget.Memory
         (
@@ -599,12 +598,21 @@ class widgets:
         spacer        
     ]
 
-    weather = \
+    thermals = \
     [
-        widget.Wttr
+        widget.TextBox
         (
-            format = '1',
-            location = {'California': 'Cali'},
+            name = 'thermal_icon',
+            font = "Noto Color Emoji",
+            text = "🌡",
+            padding = 0,
+            fontsize = 19
+        ),
+        widget.ThermalSensor
+        (
+            foreground_alert = dracula.magenta,
+            metric = True,
+            threshold = 65,
         ),
         spacer
     ]
@@ -625,13 +633,41 @@ class widgets:
         spacer,
     ]
 
+    tray = \
+    [
+        widget.Systray
+        (
+            icon_size = 22,
+            padding = 4,
+            background = dracula.bg
+        ),
+        spacer
+    ]
+
+    tray_box = \
+    [
+        widget.WidgetBox
+        (
+            widgets = [*tray],
+            close_button_location = 'right',
+            font = 'Noto Color Emoji',
+            text_closed = '⚙',
+            text_open = '⚙',
+            fontsize = 19,
+            background = None,
+        ),
+        spacer
+    ]
+
 
 widgets_list = \
 [
+    *widgets.arco,
     *widgets.basics,
     *widgets.time,
     *widgets.date,
-    *widgets.weather,
+    # *widgets.weather,
+    *widgets.keyboard,
     *widgets.memory,
     *widgets.thermals,
     *widgets.battery,
@@ -652,8 +688,8 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=28, background=dracula.bg, opacity=0.9)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=28, background=dracula.bg, opacity=0.9))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=28, background=dracula.bg, opacity=0.85)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=28, background=dracula.bg, opacity=0.85))]
 screens = init_screens()
 
 # ---       WIDGETS        }}}

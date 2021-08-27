@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+qtile cmd-obj -o widget kbd_layout -f update -a Std && \
+notify-send -t 1 'Kmonad' 'Std mode'
