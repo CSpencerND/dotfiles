@@ -21,9 +21,9 @@ qtile_home = os.path.expanduser('~/.config/qtile')
 
 # Group Definitions
 groups = []
-group_names = ["1", "2", "3", "4", "5", "6", "7",]
-group_labels = ["1", "2", "3", "4", "5", "6", "7",]
-group_layouts = ["monadtall" for i in group_names]
+group_names = [str(i) for i in range(1, 8)]
+group_labels = group_names.copy()
+group_layouts = ["monadtall" for i in range(len(group_names))]
 
 for i in range(len(group_names)):
     groups.append\
@@ -56,8 +56,8 @@ groups.append(ScratchPad("scratchpad", dropdowns=\
 class dracula:
     black =   '#14151b'
     bg =      '#282a36'
-    arcobg =  '#383c4a'
-    bgl =     '#44475a'
+    bgl =     '#383c4a'
+    bgla =    '#44475a'
     grey =    '#4d4d4d'
     fga =     '#bfbfbf'
     fg =      '#f8f8f2'
@@ -441,6 +441,10 @@ def get_bat_percent():
     batinfo = subprocess.getoutput("acpi | sed 's/Battery 0: //'")
     subprocess.call(["notify-send", batinfo])
 
+def get_forecast():
+    forecast = subprocess.getoutput("openweather")
+    return forecast
+
 
 widget_defaults = dict\
 (
@@ -460,19 +464,21 @@ extension_defaults = widget_defaults.copy()
 
 
 class widgets:
-    spacer = widget.Spacer(length=6, background=dracula.bg)
+    spacer = widget.Spacer(length=6, background=None)
 
     arco = \
     [
+        spacer,
         widget.Image
         (
             filename = '~/.config/qtile/icons/Arch.png',
             margin = 0,
+            background = None,
             mouse_callbacks = {
                 'Button1': lambda: qtile.cmd_spawn('arcolinux-logout')
             }
         ),
-        widget.Spacer(length=4, background=dracula.bg)
+        widget.Spacer(length=4, background=None)
     ]
 
     basics = \
@@ -487,12 +493,12 @@ class widgets:
             highlight_color = [dracula.purple, dracula.dpurple],
             this_current_screen_border = dracula.dpurple,
             inactive = dracula.bgl,
-            background = dracula.bg,
+            background = None,
         ),
         widget.CurrentLayoutIcon
         (
             scale = 0.7,
-            background = dracula.bg
+            background = None
         ),
         widget.TaskList
         (
@@ -505,7 +511,7 @@ class widgets:
             txt_maximized = '🗖 ',
             txt_minimized = '🗕 ',
             border = dracula.dpurple,
-            background=dracula.bg
+            background = None
         ),
         spacer
     ]
@@ -515,10 +521,9 @@ class widgets:
         widget.TextBox
         (
             name = 'clock_icon',
-            font = "Noto Color Emoji",
+            font = "JoyPixels",
             text = clock_icon,
             fontsize = 18,
-            update_interval = 60,
         ),
         widget.Clock
         (
@@ -552,29 +557,68 @@ class widgets:
 
     weather = \
     [
-        widget.Wttr
+        # widget.GenPollText
+        # (
+        #     font = 'Weather Icons',
+        #     fontsize = 16,
+        #     func = get_forecast,
+        #     update_interval = 3600,
+        # ),
+        widget.TextBox
         (
-            format = '1',
-            location = {'California': 'Cali'},
+            name = 'current_icon',
+            font = "Weather Icons",
+            text = subprocess.getoutput("cat ~/.cache/weather/current_icon"),
+            fontsize = 18,
+        ),
+        widget.TextBox
+        (
+            name = 'current_temp',
+            text = subprocess.getoutput("cat ~/.cache/weather/current_temp"),
+        ),
+        widget.TextBox
+        (
+            name = 'trend',
+            font = "Weather Icons",
+            text = subprocess.getoutput("cat ~/.cache/weather/trend"),
+            fontsize = 18,
+        ),
+        widget.TextBox
+        (
+            name = 'forecast_icon',
+            font = "Weather Icons",
+            text = subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
+            fontsize = 18,
+        ),
+        widget.TextBox
+        (
+            name = 'forecast_temp',
+            text = subprocess.getoutput("cat ~/.cache/weather/forecast_temp"),
         ),
         spacer
     ]
 
     keyboard = \
     [
-        widget.TextBox
+        # widget.TextBox
+        # (
+        #     name = 'kbd_icon',
+        #     font = 'Hack Nerd Font',
+        #     text = '',
+        #     fontsize = 22,
+        #     foreground = dracula.cyan,
+        #     padding = 6
+        # ),
+        widget.Image
         (
-            name = 'kbd_icon',
-            font = 'Hack Nerd Font',
-            text = '',
-            fontsize = 22,
-            foreground = dracula.purple,
-            padding = 6
+            filename = '~/.config/qtile/icons/kmonad.png',
+            scale = False,
+            margin_y = 4
         ),
         widget.TextBox
         (
             name = 'kbd_layout',
-            text = 'Main',
+            text = 'Std',
             padding = 4
         ),
         spacer
@@ -585,7 +629,7 @@ class widgets:
         widget.TextBox
         (
             name = 'memory_icon',
-            font = "Noto Color Emoji",
+            font = "JoyPixels",
             text = "🧠",
             fontsize = 18,
         ),
@@ -603,7 +647,7 @@ class widgets:
         widget.TextBox
         (
             name = 'thermal_icon',
-            font = "Noto Color Emoji",
+            font = "JoyPixels",
             text = "🌡",
             padding = 0,
             fontsize = 19
@@ -639,7 +683,7 @@ class widgets:
         (
             icon_size = 22,
             padding = 4,
-            background = dracula.bg
+            background = None
         ),
         spacer
     ]
@@ -650,7 +694,7 @@ class widgets:
         (
             widgets = [*tray],
             close_button_location = 'right',
-            font = 'Noto Color Emoji',
+            font = 'JoyPixels',
             text_closed = '⚙',
             text_open = '⚙',
             fontsize = 19,
@@ -666,7 +710,7 @@ widgets_list = \
     *widgets.basics,
     *widgets.time,
     *widgets.date,
-    # *widgets.weather,
+    *widgets.weather,
     *widgets.keyboard,
     *widgets.memory,
     *widgets.thermals,

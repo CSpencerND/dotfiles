@@ -6,23 +6,23 @@ MOON=$(cat $XDG_CACHE_HOME/moonphase)
 get_icon() {
     case $1 in
         # Icons for weather-icons
-        01d) icon="☀";; # 🌞 
-        01n) icon="$MOON";; # 🌜 🌛 
-        02d) icon="🌤";; # 🌤  
-        02n) icon="";; #  
-        03*) icon="🌥";; #   🌥 
-        04*) icon="☁";; #   ☁
-        09d) icon="🌧";; #   🌧
-        09n) icon="🌧";; #   🌧
-        10d) icon="🌧";; #  🌧
-        10n) icon="🌧";; #   🌧
-        11d) icon="⛈";; #   🌩 ⛈
-        11n) icon="⛈";; #   🌩 ⛈
-        13d) icon="🌨";; #   🌨
-        13n) icon="🌨";; #   🌨
-        50d) icon="⛆";; #   ⛆
-        50n) icon="⛆";; #   ⛆
-        *) icon="🌞"; # 
+        01d) icon="";; # 🌞  ☀        Clear sky - day
+        01n) icon="$MOON";; # 🌜 🌛    Clear sky - night
+        02d) icon="";; # 🌤            Few clouds (11-25%) - day
+        02n) icon="";; #              Few clouds (11-25%) - night
+        03*) icon="";; #   🌥          Scattered clouds (25-50%) - day/night
+        04*) icon="";; #   ☁          Broken / Overcast clouds (51-84% / 85-100%) - day/night
+        09d) icon="";; #   🌧          Shower rain - day
+        09n) icon="";; #   🌧          Shower rain - night
+        10d) icon="";; #  🌧           Moderate / heavy rain - day
+        10n) icon="";; #   🌧          Moderate / heavy rain - night
+        11d) icon="";; #   🌩 ⛈        Thunderstorm - day
+        11n) icon="";; #   🌩 ⛈        Thunderstorm - night
+        13d) icon="";; #   🌨          Snow - day
+        13n) icon="";; #   🌨          Snow - night
+        50d) icon="";; #   ⛆          Fog - day
+        50n) icon="";; #   ⛆          Fog - night
+        *) icon=""; #                 ??
     esac
 
     echo $icon
@@ -96,5 +96,10 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
         daytime=" $(get_duration "$((sun_rise-now))")"
     fi
 
-    echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
+    # echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
+    echo $(get_icon "$current_icon") > ~/.cache/weather/current_icon
+    echo $current_temp$SYMBOL > ~/.cache/weather/current_temp
+    echo $trend > ~/.cache/weather/trend
+    echo $(get_icon "$forecast_icon") > ~/.cache/weather/forecast_icon
+    echo $forecast_temp$SYMBOL > ~/.cache/weather/forecast_temp
 fi

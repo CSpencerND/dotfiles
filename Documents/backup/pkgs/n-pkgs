@@ -233,7 +233,6 @@ nfs-utils
 nilfs-utils
 nitrogen
 noto-fonts
-noto-fonts-emoji
 nss-mdns
 ntfs-3g
 ntp
@@ -329,6 +328,7 @@ ttf-dejavu
 ttf-droid
 ttf-font-awesome
 ttf-hack
+ttf-joypixels
 ttf-ms-fonts
 ttf-roboto
 ttf-roboto-mono
