@@ -435,8 +435,6 @@ layouts = \
 ##############################
 # {{{       WIDGETS        ---
 
-clock_icon = subprocess.getoutput("cat ~/.cache/clock-icon")
-
 def get_bat_percent():
     batinfo = subprocess.getoutput("acpi | sed 's/Battery 0: //'")
     subprocess.call(["notify-send", batinfo])
@@ -522,7 +520,7 @@ class widgets:
         (
             name = 'clock_icon',
             font = "JoyPixels",
-            text = clock_icon,
+            text = subprocess.getoutput("cat ~/.cache/clock-icon"),
             fontsize = 18,
         ),
         widget.Clock

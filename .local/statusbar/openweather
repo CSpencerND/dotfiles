@@ -97,9 +97,20 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
     fi
 
     # echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
+
     echo $(get_icon "$current_icon") > ~/.cache/weather/current_icon
+    qtile cmd-obj -o widget current_icon -f update -a $(get_icon "$current_icon")
+
     echo $current_temp$SYMBOL > ~/.cache/weather/current_temp
+    qtile cmd-obj -o widget current_temp -f update -a $current_temp$SYMBOL
+
     echo $trend > ~/.cache/weather/trend
+    qtile cmd-obj -o widget trend -f update -a $trend
+
     echo $(get_icon "$forecast_icon") > ~/.cache/weather/forecast_icon
+    qtile cmd-obj -o widget forecast_icon -f update -a $(get_icon "$forecast_icon")
+
     echo $forecast_temp$SYMBOL > ~/.cache/weather/forecast_temp
+    qtile cmd-obj -o widget forecast_temp -f update -a $forecast_temp$SYMBOL
+
 fi
