@@ -1,8 +1,5 @@
 "*":
   core:
-    disabledPackages: [
-      "vim-mode-plus"
-    ]
     telemetryConsent: "no"
     themes: [
       "dracula-ui"

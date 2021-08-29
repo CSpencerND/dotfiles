@@ -4,39 +4,39 @@ MOON=$(cat $XDG_CACHE_HOME/moonphase)
 
 get_icon() {
     case $1 in
-        # Icons for weather-icons
-        01d) icon="";; # 🌞  ☀        Clear sky - day
-        01n) icon="$MOON";; # 🌜 🌛    Clear sky - night
-        02d) icon="";; # 🌤            Few clouds (11-25%) - day
-        02n) icon="";; #              Few clouds (11-25%) - night
-        03*) icon="";; #   🌥          Scattered clouds (25-50%) - day/night
-        04*) icon="";; #   ☁          Broken / Overcast clouds (51-84% / 85-100%) - day/night
-        09d) icon="";; #   🌧          Shower rain - day
-        09n) icon="";; #   🌧          Shower rain - night
-        10d) icon="";; #  🌧           Moderate / heavy rain - day
-        10n) icon="";; #   🌧          Moderate / heavy rain - night
-        11d) icon="";; #   🌩 ⛈        Thunderstorm - day
-        11n) icon="";; #   🌩 ⛈        Thunderstorm - night
-        13d) icon="";; #   🌨          Snow - day
-        13n) icon="";; #   🌨          Snow - night
-        50d) icon="";; #   ⛆          Fog - day
-        50n) icon="";; #   ⛆          Fog - night
-        *) icon=""; #                 ??
+        # Icons for emoji
+        01d) icon="☀️";;       #Clear sky - day
+        01n) icon="$MOON";;    #Clear sky - night
+        02d) icon="⛅️";;       #Few clouds (11-25%) - day
+        02n) icon="$MOON☁";;   #Few clouds (11-25%) - night
+        03*) icon="☁️";;       #Scattered clouds (25-50%) - day/night
+        04*) icon="☁️";;       #Broken / Overcast clouds (51-84% / 85-100%) - day/night
+        09d) icon="🌧";;       #Shower rain - day
+        09n) icon="$MOON🌧";;       #Shower rain - night
+        10d) icon="🌦";;       #Moderate / heavy rain - day
+        10n) icon="☔️";;       #Moderate / heavy rain - night
+        11d) icon="⛈";;        #Thunderstorm - day
+        11n) icon="⛈";;        #Thunderstorm - night
+        13d) icon="❄️";;       #Snow - day
+        13n) icon="❄️";;       #Snow - night
+        50d) icon="🌫";;       #Fog - day
+        50n) icon="$MOON🌫";;       #Fog - night
+        *) icon="☀️";          #??
     esac
 
     echo $icon
 }
 
-get_duration() {
-
-    osname=$(uname -s)
-
-    case $osname in
-        *BSD) date -r "$1" -u +%H:%M;;
-        *) date --date="@$1" -u +%H:%M;;
-    esac
-
-}
+# get_duration() {
+#
+#     osname=$(uname -s)
+#
+#     case $osname in
+#         *BSD) date -r "$1" -u +%H:%M;;
+#         *) date --date="@$1" -u +%H:%M;;
+#     esac
+#
+# }
 
 KEY="ef8c3512dedaf5aa46ed1ca846d4fade"
 CITY=""
@@ -75,9 +75,9 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 
 
     if [ "$current_temp" -gt "$forecast_temp" ]; then
-        trend=""
-    elif [ "$forecast_temp" -gt "$current_temp" ]; then
         trend=""
+    elif [ "$forecast_temp" -gt "$current_temp" ]; then
+        trend=""
     else
         trend=""
     fi
@@ -86,7 +86,7 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 #     sun_rise=$(echo "$current" | jq ".sys.sunrise")
 #     sun_set=$(echo "$current" | jq ".sys.sunset")
 #     now=$(date +%s)
-# 
+#
 #     if [ "$sun_rise" -gt "$now" ]; then
 #         daytime=" $(get_duration "$((sun_rise-now))")"
 #     elif [ "$sun_set" -gt "$now" ]; then

@@ -565,7 +565,7 @@ class widgets:
         widget.TextBox
         (
             name = 'current_icon',
-            font = "Weather Icons",
+            font = "JoyPixels",
             text = subprocess.getoutput("cat ~/.cache/weather/current_icon"),
             fontsize = 18,
         ),
@@ -577,14 +577,14 @@ class widgets:
         widget.TextBox
         (
             name = 'trend',
-            font = "Weather Icons",
+            font = "Material Icons",
             text = subprocess.getoutput("cat ~/.cache/weather/trend"),
             fontsize = 18,
         ),
         widget.TextBox
         (
             name = 'forecast_icon',
-            font = "Weather Icons",
+            font = "JoyPixels",
             text = subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
             fontsize = 18,
         ),

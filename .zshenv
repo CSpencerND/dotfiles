@@ -62,6 +62,7 @@ SAVEHIST=10000
 # Default Apps
 export VISUAL='lvim'
 export EDITOR=$VISUAL
+export SUDO_EDITOR=$VISUAL
 export TERMINAL="alacritty"
 export COLORTERM="truecolor"
 # export MANPAGER='lvim +Man!'
