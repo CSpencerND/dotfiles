@@ -449,8 +449,8 @@ widget_defaults = dict\
     font = 'Hack Nerd Font',
     fontsize = 15,
     padding = 3,
-    background = dracula.bgl,
-    foreground = dracula.fg,
+    # background = dracula.bgl,
+    foreground = dracula.purple,
     highlight_method = 'block',
     borderwidth = 2,
     rounded = False,
@@ -462,14 +462,14 @@ extension_defaults = widget_defaults.copy()
 
 
 class widgets:
-    spacer = widget.Spacer(length=6, background=None)
+    spacer = widget.Spacer(length=24, background=None)
 
     arco = \
     [
-        spacer,
+        widget.Spacer(length=6, background=None),
         widget.Image
         (
-            filename = '~/.config/qtile/icons/Arch.png',
+            filename = '~/.config/neofetch/arcolinux.png',
             margin = 0,
             background = None,
             mouse_callbacks = {
@@ -483,6 +483,7 @@ class widgets:
     [
         widget.GroupBox
         (
+            foreground = dracula.fg,
             padding = 2,
             margin_y = 6,
             active = dracula.fg,
@@ -500,6 +501,7 @@ class widgets:
         ),
         widget.TaskList
         (
+            foreground = dracula.fg,
             icon_size = 22,
             max_title_width = 350,
             margin = 3,
@@ -519,7 +521,7 @@ class widgets:
         widget.TextBox
         (
             name = 'clock_icon',
-            font = "JoyPixels",
+            # font = "JoyPixels",
             text = subprocess.getoutput("cat ~/.cache/clock-icon"),
             fontsize = 18,
         ),
@@ -535,8 +537,8 @@ class widgets:
         widget.TextBox
         (
             name = 'date_icon',
-            font = "FontAwesome",
-            text = "📆",
+            # font = "JoyPixels",
+            text = " ",
             fontsize = 18,
             mouse_callbacks = {
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
@@ -565,7 +567,7 @@ class widgets:
         widget.TextBox
         (
             name = 'current_icon',
-            font = "JoyPixels",
+            font = "Weather Icons",
             text = subprocess.getoutput("cat ~/.cache/weather/current_icon"),
             fontsize = 18,
         ),
@@ -584,7 +586,7 @@ class widgets:
         widget.TextBox
         (
             name = 'forecast_icon',
-            font = "JoyPixels",
+            font = "Weather Icons",
             text = subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
             fontsize = 18,
         ),
@@ -598,21 +600,20 @@ class widgets:
 
     keyboard = \
     [
-        # widget.TextBox
-        # (
-        #     name = 'kbd_icon',
-        #     font = 'Hack Nerd Font',
-        #     text = '',
-        #     fontsize = 22,
-        #     foreground = dracula.cyan,
-        #     padding = 6
-        # ),
-        widget.Image
+        widget.TextBox
         (
-            filename = '~/.config/qtile/icons/kmonad.png',
-            scale = False,
-            margin_y = 4
+            name = 'kbd_icon',
+            text = ' ',
+            fontsize = 22,
+            # foreground = dracula.cyan,
+            padding = 6
         ),
+        # widget.Image
+        # (
+        #     filename = '~/.config/qtile/icons/kmonad.png',
+        #     scale = False,
+        #     margin_y = 4
+        # ),
         widget.TextBox
         (
             name = 'kbd_layout',
@@ -627,8 +628,8 @@ class widgets:
         widget.TextBox
         (
             name = 'memory_icon',
-            font = "JoyPixels",
-            text = "🧠",
+            # font = "JoyPixels",
+            text = "",
             fontsize = 18,
         ),
         widget.Memory
@@ -645,13 +646,14 @@ class widgets:
         widget.TextBox
         (
             name = 'thermal_icon',
-            font = "JoyPixels",
+            # font = "JoyPixels",
             text = "🌡",
             padding = 0,
             fontsize = 19
         ),
         widget.ThermalSensor
         (
+            foreground = dracula.purple,
             foreground_alert = dracula.magenta,
             metric = True,
             threshold = 65,
@@ -672,7 +674,7 @@ class widgets:
             low_percentage = 0.25,
             notify_below = 0.25,
         ),
-        spacer,
+        widget.Spacer(length=6, background=None),
     ]
 
     tray = \
@@ -712,8 +714,8 @@ widgets_list = \
     *widgets.keyboard,
     *widgets.memory,
     *widgets.thermals,
+    *widgets.tray_box,
     *widgets.battery,
-    *widgets.tray_box
 ]
 
 

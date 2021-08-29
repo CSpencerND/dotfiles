@@ -1,4 +1,4 @@
-#m h dom mon dow command
+# m h dom mon dow command
 @hourly /home/$USER/.local/statusbar/sb-clock
-0 0,12 * * * /home/$USER/.local/statusbar/moonphase
-0 0,3,6,9,12,15,18,21 * * * /home/$USER/.local/statusbar/openweather
+@daily /home/$USER/.local/statusbar/moonphase
+@hourly /home/$USER/.local/statusbar/openweather-emoji

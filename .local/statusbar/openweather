@@ -75,9 +75,9 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 
 
     if [ "$current_temp" -gt "$forecast_temp" ]; then
-        trend=""
-    elif [ "$forecast_temp" -gt "$current_temp" ]; then
         trend=""
+    elif [ "$forecast_temp" -gt "$current_temp" ]; then
+        trend=""
     else
         trend=""
     fi
