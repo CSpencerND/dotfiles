@@ -62,5 +62,5 @@ run redshift-gtk &
 pactl load-module module-alsa-sink device=hw:1,1
 /home/cs/.local/bin/kbconfig
 
-/home/cs/.local/statusbar/openweather
+# /home/cs/.local/statusbar/openweather-emoji
 

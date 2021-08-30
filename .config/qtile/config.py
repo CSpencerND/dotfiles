@@ -21,9 +21,9 @@ qtile_home = os.path.expanduser('~/.config/qtile/')
 
 # Group Definitions
 groups = []
-group_names = [str(i) for i in range(1, 8)]
-group_labels = group_names.copy()
-group_layouts = ["monadtall" for i in range(len(group_names))]
+group_names = ["1", "2", "3", "4", "5"]
+group_labels = ["1", "2", "3", "4", "5"]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
 for i in range(len(group_names)):
     groups.append\
@@ -654,10 +654,28 @@ class widgets:
         (
             foreground_alert = dracula.magenta,
             metric = True,
-            threshold = 65,
+            threshold = 70,
         ),
         spacer
     ]
+
+    # system76 = \
+    # [
+    #     widget.TextBox
+    #     (
+    #         name = 'system76',
+    #         font = 'JoyPixels',
+    #         text = '📊',
+    #         padding = '0',
+    #         fontsize = 18,
+    #     ),
+    #     # widget.TextBox
+    #     # (
+    #     #     name = 'indicator',
+    #     #     text = subprocess.getoutput("cat ~/.cache/power-profile")
+    #     # ),
+    #     spacer,
+    # ]
 
     battery = \
     [
@@ -665,14 +683,15 @@ class widgets:
         (
             mouse_callbacks = {'Button1': get_bat_percent}
         ), 
-        widget.Battery
-        (
-            format = None,
-            low_foreground = dracula.magenta,
-            low_percentage = 0.25,
-            notify_below = 0.25,
-        ),
-        spacer,
+        # widget.Battery
+        # (
+        #     # format = '',
+        #     hide_threshold = 0,
+        #     low_foreground = dracula.magenta,
+        #     low_percentage = 0.20,
+        #     notify_below = 0.20,
+        # ),
+        # spacer,
     ]
 
     tray = \
