@@ -659,23 +659,23 @@ class widgets:
         spacer
     ]
 
-    # system76 = \
-    # [
-    #     widget.TextBox
-    #     (
-    #         name = 'system76',
-    #         font = 'JoyPixels',
-    #         text = '📊',
-    #         padding = '0',
-    #         fontsize = 18,
-    #     ),
-    #     # widget.TextBox
-    #     # (
-    #     #     name = 'indicator',
-    #     #     text = subprocess.getoutput("cat ~/.cache/power-profile")
-    #     # ),
-    #     spacer,
-    # ]
+    system76 = \
+    [
+        widget.TextBox
+        (
+            name = 'system76',
+            font = 'JoyPixels',
+            text = '⚡',
+            padding = 0,
+            fontsize = 18,
+        ),
+        widget.TextBox
+        (
+            name = 'indicator',
+            text = subprocess.getoutput("cat ~/.cache/power-profile")
+        ),
+        spacer,
+    ]
 
     battery = \
     [
@@ -691,7 +691,7 @@ class widgets:
         #     low_percentage = 0.20,
         #     notify_below = 0.20,
         # ),
-        # spacer,
+        spacer,
     ]
 
     tray = \
@@ -731,8 +731,9 @@ widgets_list = \
     *widgets.keyboard,
     *widgets.memory,
     *widgets.thermals,
+    *widgets.system76,
     *widgets.battery,
-    *widgets.tray_box
+    *widgets.tray_box,
 ]
 
 
