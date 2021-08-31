@@ -4,8 +4,8 @@ SCR_DIR=""
 SCR_FILE=""
 
 
-if [[ $1 = "-p" ]]; then
-  SCR_DIR="$HOME/.local/bin/polyscr"
+if [[ $1 = "-s" ]]; then
+  SCR_DIR="$HOME/.local/statusbar"
   SCR_FILE="$SCR_DIR/$2";
 else
   SCR_DIR="$HOME/.local/bin"
@@ -14,10 +14,18 @@ fi
 
 
 if [[ -f $SCR_FILE ]]; then
-    echo "File already exists."
+    echo "File already exists. Edit it? [Y/n]"
+    read response
+    if [[ $response = n ]]; then
+      exit 1
+    else
+      lvim $SCR_FILE
+    fi
 else 
     echo '#!/usr/bin/env bash' > $SCR_FILE
     chmod +x $SCR_FILE
-    nvim $SCR_FILE
+    lvim $SCR_FILE
+    wait
+    echo "Script created at $SCR_FILE"
 fi
 

@@ -469,7 +469,7 @@ class widgets:
         spacer,
         widget.Image
         (
-            filename = '~/.config/qtile/icons/Arch.png',
+            filename = '~/.config/qtile/icons/arcolinux-arc.png',
             margin = 0,
             background = None,
             mouse_callbacks = {

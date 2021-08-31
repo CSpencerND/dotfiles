@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+ct_options=$\
+(
+  echo \
+  "Full Charge
+Balanced
+Max Lifespan" | 
+  rofi -dmenu -p "Charge Threshold"
+)
+
+

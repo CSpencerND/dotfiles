@@ -23,6 +23,9 @@ super + b
 super + shift + Return
 	pcmanfm
 
+super + shift + p
+  s76-power-base
+
 #screeenshooter
 ctrl + Print
   xfce4-screenshooter

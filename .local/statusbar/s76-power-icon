@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+profile="$(system76-power profile | awk '/Power Profile/{print $3}')"
+
+case $profile in
+  Battery)     name="Low" ;;
+  Balanced)    name="Bal" ;;
+  Performance) name="Max" ;;
+  *)           exit 1 ;;
+esac
+
+echo $name > ~/.cache/power-profile
+qtile cmd-obj -o widget indicator -f update -a $name

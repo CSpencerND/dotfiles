@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+base=$\
+(
+  echo \
+  "Power Profile 
+Charge Threshold" | 
+  rofi -dmenu -p "System 76 Power"
+)
+
+
+[[ -z $base ]] && exit
+[[ $base = "Power Profile*" ]] && s76-power-pp
+[[ $base = "*Charge Threshold" ]] && s76-power-ct
+
