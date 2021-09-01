@@ -31,7 +31,6 @@ function run {
 
 #start sxhkd to replace Qtile native key-bindings
 run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
-
 #starting utility applications at boot time
 run variety &
 run nm-applet &
@@ -59,8 +58,9 @@ run redshift-gtk &
 #run spotify &
 #run atom &
 #run telegram-desktop &
-pactl load-module module-alsa-sink device=hw:1,1
-/home/cs/.local/bin/kbconfig
+pactl load-module module-alsa-sink device=hw:1,1 &
+/home/cs/.local/bin/kbconfig &
 
 /home/cs/.local/statusbar/openweather-emoji &
 
+/home/cs/.local/bin/s76-power-default
