@@ -8,6 +8,8 @@ weatherreport="$XDG_CACHE_HOME/weatherreport"
   curl -sf "wttr.in/$LOCATION" > "$weatherreport" || exit 1;
   # getforecast
 
-setsid -f "$TERMINAL" -e less -Srf $weatherreport #\
-  # && sleep .2 && xdotool key super+shift+m;
+setsid -f $TERMINAL -e less -Srf $weatherreport \
+  && qtile cmd-obj -o window -f set_size_floating -a 1280 810 \
+  & qtile cmd-obj -o window -f set_position_floating -a 333 28
 
+# sleep .2 &&

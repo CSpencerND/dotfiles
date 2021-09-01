@@ -568,11 +568,17 @@ class widgets:
             font = "JoyPixels",
             text = subprocess.getoutput("cat ~/.cache/weather/current_icon"),
             fontsize = 18,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
+            },
         ),
         widget.TextBox
         (
             name = 'current_temp',
             text = subprocess.getoutput("cat ~/.cache/weather/current_temp"),
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
+            },
         ),
         widget.TextBox
         (
@@ -580,6 +586,9 @@ class widgets:
             font = "Material Icons",
             text = subprocess.getoutput("cat ~/.cache/weather/trend"),
             fontsize = 18,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
+            },
         ),
         widget.TextBox
         (
@@ -587,11 +596,17 @@ class widgets:
             font = "JoyPixels",
             text = subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
             fontsize = 18,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
+            },
         ),
         widget.TextBox
         (
             name = 'forecast_temp',
             text = subprocess.getoutput("cat ~/.cache/weather/forecast_temp"),
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
+            },
         ),
         spacer
     ]
@@ -668,11 +683,17 @@ class widgets:
             text = '⚡',
             padding = 0,
             fontsize = 18,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('s76-power-base')
+            },
         ),
         widget.TextBox
         (
             name = 'indicator',
-            text = subprocess.getoutput("cat ~/.cache/power-profile")
+            text = subprocess.getoutput("cat ~/.cache/power-profile"),
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('s76-power-base')
+            },
         ),
         spacer,
     ]
@@ -683,14 +704,14 @@ class widgets:
         (
             mouse_callbacks = {'Button1': get_bat_percent}
         ), 
-        # widget.Battery
-        # (
-        #     # format = '',
-        #     hide_threshold = 0,
-        #     low_foreground = dracula.magenta,
-        #     low_percentage = 0.20,
-        #     notify_below = 0.20,
-        # ),
+        widget.Battery
+        (
+            format = '{percent:2.0%}',
+            mouse_callbacks = {'Button1': get_bat_percent},
+            low_foreground = dracula.magenta,
+            low_percentage = 0.20,
+            notify_below = 0.20,
+        ),
         spacer,
     ]
 
@@ -819,6 +840,7 @@ floating_layout = layout.Floating\
         Match(wm_class='solaar'),
         Match(wm_class='blueberry.py'),
         Match(wm_class='pavucontrol'),
+        Match(wm_class='urxvt'),
         Match(title='branchdialog'),
         Match(title='Open File'),
         Match(title='pinentry'),

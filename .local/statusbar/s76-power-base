@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-base=$\
+options=$\
 (
   echo \
   "Power Profile 
@@ -9,7 +9,7 @@ Charge Threshold" |
 )
 
 
-[[ -z $base ]] && exit
-[[ $base = "Power Profile*" ]] && s76-power-pp
-[[ $base = "*Charge Threshold" ]] && s76-power-ct
+[[ -z $options ]] && exit
+[[ $options = Power* ]] && s76-power-pp
+[[ $options = *Threshold ]] && s76-power-ct
 

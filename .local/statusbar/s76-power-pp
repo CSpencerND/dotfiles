@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pp_options=$\
+options=$\
 (
   echo \
   "Battery
@@ -10,4 +10,18 @@ Performance" |
 )
 
 
+[[ -z $options ]] && notify-send "$(system76-power profile)" && exit
 
+[[ $options = Bat* ]] && system76-power profile battery && \
+  echo Low > ~/.cache/power-profile && \
+  qtile cmd-obj -o widget indicator -f update -a Low
+
+[[ $options = *Bal* ]] && system76-power profile balanced && \
+  echo Bal > ~/.cache/power-profile && \
+  qtile cmd-obj -o widget indicator -f update -a Bal
+
+[[ $options = *Per* ]] && system76-power profile performance && \
+  echo Max > ~/.cache/power-profile && \
+  qtile cmd-obj -o widget indicator -f update -a Max
+
+notify-send "$(system76-power profile)"

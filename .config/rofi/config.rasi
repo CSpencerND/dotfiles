@@ -1,3 +1,7 @@
+configuration {
+    me-select-entry: "MousePrimary";
+    me-accept-entry: "MouseSecondary";
+  }
 * {
     background-color:            #282a36;
     border-color:                #bd93f9;
@@ -75,3 +79,4 @@
     text-color:       @prompt-foreground;
     font:             @prompt-font;
 }
+

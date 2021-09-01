@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ct_options=$\
+options=$\
 (
   echo \
   "Full Charge
@@ -10,3 +10,9 @@ Max Lifespan" |
 )
 
 
+[[ -z $options ]] && notify-send "$(system76-power charge-thresholds)" && exit
+[[ $options = Full* ]] && system76-power charge-thresholds --profile full_charge
+[[ $options = *Bal* ]] && system76-power charge-thresholds --profile balanced
+[[ $options = *Max* ]] && system76-power charge-thresholds --profile max_lifespan
+
+notify-send "$(system76-power charge-thresholds)"
