@@ -612,6 +612,18 @@ class widgets:
         spacer
     ]
 
+    stocks = \
+    [
+        widget.StockTicker
+        (
+            apikey = 'G0BJFWBFWXWJAJ9R',
+            symbol = 'GOOG',
+            function = 'TIME_SERIES_DAILY_ADJUSTED',
+            foreground = dracula.green,
+        ),
+        spacer
+    ]
+
     keyboard = \
     [
         # widget.TextBox
@@ -751,6 +763,7 @@ widgets_list = \
     *widgets.time,
     *widgets.date,
     *widgets.weather,
+    *widgets.stocks,
     *widgets.keyboard,
     *widgets.memory,
     *widgets.thermals,
