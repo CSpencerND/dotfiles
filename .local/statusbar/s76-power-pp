@@ -1,27 +1,25 @@
 #!/usr/bin/env bash
 
-options=$\
-(
-  echo \
-  "Battery
+options=$(echo "Battery
 Balanced
-Performance" | 
-  rofi -dmenu -p "Power Profile"
-)
-
+Performance" | rofi -dmenu -p "Power Profile" -location 3 -yoffset 28 -l 3)
 
 [[ -z $options ]] && notify-send "$(system76-power profile)" && exit
 
-[[ $options = Bat* ]] && system76-power profile battery && \
-  echo Low > ~/.cache/power-profile && \
-  qtile cmd-obj -o widget indicator -f update -a Low
+s76-run () {
+    until system76-power profile $1; do
+      sleep .2
+    done
+    until qtile cmd-obj -o widget indicator -f update -a $2; do
+      sleep .2
+    done
+    until echo $2 > ~/.cache/power-profile; do
+      sleep .2
+    done
+  notify-send "$(system76-power profile)"
+}
 
-[[ $options = *Bal* ]] && system76-power profile balanced && \
-  echo Bal > ~/.cache/power-profile && \
-  qtile cmd-obj -o widget indicator -f update -a Bal
+[[ $options = *Bat* ]] && s76-run battery Low
+[[ $options = *Bal* ]] && s76-run balanced Bal
+[[ $options = *Per* ]] && s76-run performance Max
 
-[[ $options = *Per* ]] && system76-power profile performance && \
-  echo Max > ~/.cache/power-profile && \
-  qtile cmd-obj -o widget indicator -f update -a Max
-
-notify-send "$(system76-power profile)"

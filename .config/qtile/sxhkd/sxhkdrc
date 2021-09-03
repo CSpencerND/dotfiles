@@ -3,10 +3,10 @@
 #################################################################
 
 super + slash
-  rofi -show-icons -modi drun -show drun
+  rofi -show drun
 
 super + space
-  rofi -show-icons -show window
+  rofi -show window
 
 super + e
   rofimoji
@@ -26,13 +26,12 @@ super + shift + Return
 super + shift + p
   s76-power-base
 
-#screeenshooter
-ctrl + Print
-  xfce4-screenshooter
+# Screenshots
+super + Print
+  flameshot gui
 
-#Gnome-Screenshot
-ctrl + shift + Print
-  gnome-screenshot -i
+Print
+  flameshot screen -r
 
 #reload sxhkd:
 super + backslash

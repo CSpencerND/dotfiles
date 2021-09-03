@@ -544,7 +544,7 @@ class widgets:
         ),
         widget.Clock
         (
-            format = "%a %b %e, %Y",
+            format = "%a %b%e, %Y",
             update_interval = 60,
             mouse_callbacks = {
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
@@ -702,7 +702,8 @@ class widgets:
     [
         widget.BatteryIcon
         (
-            mouse_callbacks = {'Button1': get_bat_percent}
+            mouse_callbacks = {'Button1': get_bat_percent},
+            padding = 0,
         ), 
         widget.Battery
         (

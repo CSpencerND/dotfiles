@@ -8,12 +8,15 @@
 //----------------------
 
 configuration {
-	modi: 			"drun,run";
-	width: 			750;
-	lines: 			12;
-	separator-style: 	"solid";
-  me-accept-entry: "MousePrimary";
-  me-select-entry: "MouseSecondary";
+	modi: 			      "drun,run,window";
+  show-icons:       true;
+  /* icon-theme:       "Sardi"; */
+	/* width: 			750; */
+	/* lines: 			12; */
+	/* separator-style: 	"solid"; */
+ 	hover-select: true;
+  me-accept-entry:  "MousePrimary";
+  me-select-entry:  "MouseSecondary";
 }
 
 //----------------------

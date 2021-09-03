@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+pacman -Qqem > ~/Documents/backup/pkgs/m-pkgs
+pacman -Qqen > ~/Documents/backup/pkgs/n-pkgs
+pacman -Qqe > ~/Documents/backup/pkgs/all-pkgs
+

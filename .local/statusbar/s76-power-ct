@@ -6,7 +6,7 @@ options=$\
   "Full Charge
 Balanced
 Max Lifespan" | 
-  rofi -dmenu -p "Charge Threshold"
+  rofi -dmenu -p "Charge Threshold" -location 3 -yoffset 28 -l 3
 )
 
 
