@@ -1,11 +1,13 @@
 # {{{       IMPORTS        ---
+import os
+import subprocess
 
-import os, re, socket, subprocess, time
-from libqtile.config import (
-    Key, Screen, Group, Drag, Click, Rule, Match, ScratchPad, DropDown
-)
+from libqtile import qtile, layout, bar, widget, hook
 from libqtile.command import lazy
-from libqtile import qtile, layout, bar, widget, hook, extension
+from libqtile.config import (
+    Key, Screen, Group, Drag, Match, ScratchPad, DropDown
+)
+
 # import arcobattery
 
 # ---       IMPORTS        }}}
@@ -92,7 +94,6 @@ def window_to_next_group(qtile):
 # Bring floating windows to front
 @lazy.function
 def float_to_front(qtile):
-    logging.info("bring floating windows to front")
     for group in qtile.groups:
         for window in group.windows:
             if window.floating:
@@ -296,7 +297,7 @@ keys = [
     ),
     Key
     (
-        [mod, "shift"], "f",
+        [mod, "control"], "f",
         float_to_front
     ),
 
@@ -323,7 +324,7 @@ keys = [
     ),
     Key
     (
-        [mod, "mod1"], "f",
+        [mod, "shift"], "f",
         lazy.layout.flip()
     ),
     Key
@@ -377,17 +378,17 @@ for i in group_names:
         [
             Key
             (
-                [mod           ], i, 
+                [mod           ], i,
                 lazy.group[i].toscreen()
             ),
             Key
             (
-                [mod, "shift"  ], i, 
+                [mod, "shift"  ], i,
                 lazy.window.togroup(i)
             ),
             Key
             (
-                [mod, "control"], i, 
+                [mod, "control"], i,
                 lazy.window.togroup(i),
                 lazy.group[i].toscreen()
             ),
@@ -411,13 +412,13 @@ layouts = \
 [
     layout.MonadTall
     (
-        new_client_position="top", 
+        new_client_position="top",
         **layout_theme
     ),
 
     layout.Tile
     (
-        ratio_increment=0.039, 
+        ratio_increment=0.039,
         **layout_theme
     ),
 
@@ -652,7 +653,7 @@ class widgets:
             format = '{MemUsed:.1f}{mm}',
             update_interval = 10,
         ),
-        spacer        
+        spacer
     ]
 
     thermals = \
@@ -704,7 +705,7 @@ class widgets:
         (
             mouse_callbacks = {'Button1': get_bat_percent},
             padding = 0,
-        ), 
+        ),
         widget.Battery
         (
             format = '{percent:2.0%}',
@@ -841,15 +842,14 @@ floating_layout = layout.Floating\
         Match(wm_class='solaar'),
         Match(wm_class='blueberry.py'),
         Match(wm_class='pavucontrol'),
-        Match(wm_class='urxvt'),
         Match(title='branchdialog'),
         Match(title='Open File'),
         Match(title='pinentry'),
         Match(func=lambda c: bool(c.is_transient_for()))
-    ],  
+    ],
 
-    fullscreen_border_width=0, 
-    border_width=1, 
+    fullscreen_border_width=0,
+    border_width=1,
     border_focus=dracula.arcoblue,
     border_normal=dracula.blurple,
 )
