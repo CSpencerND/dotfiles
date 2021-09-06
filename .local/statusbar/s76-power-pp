@@ -7,15 +7,31 @@ Performance" | rofi -dmenu -p "Power Profile" -location 3 -yoffset 28 -l 3)
 [[ -z $options ]] && notify-send "$(system76-power profile)" && exit
 
 s76-run () {
-    until system76-power profile $1; do
+    x=0
+    until [ "$x" -ge 3 ]; do
+      system76-power profile $1 && break
+      x=$((x+1))
       sleep .2
     done
-    until qtile cmd-obj -o widget indicator -f update -a $2; do
-      sleep .2
-    done
-    until echo $2 > ~/.cache/power-profile; do
-      sleep .2
-    done
+
+    if [ $? = 0 ]; then
+      y=0
+      until [ "$y" -ge 3 ]; do
+        qtile cmd-obj -o widget indicator -f update -a $2 && break
+        y=$((y+1))
+        sleep .2
+      done
+    fi
+
+    if [ $? = 0 ]; then
+      z=0
+      until [ "$z" -ge 3 ]; do
+        echo $2 > ~/.cache/power-profile && break
+        z=$((z+1))
+        sleep .2
+      done
+    fi
+
   notify-send "$(system76-power profile)"
 }
 

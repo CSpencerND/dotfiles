@@ -63,4 +63,4 @@ pactl load-module module-alsa-sink device=hw:1,1 &
 
 /home/cs/.local/statusbar/openweather-emoji &
 
-/home/cs/.local/bin/s76-power-default
+/home/cs/.local/bin/s76-power-default || notify-send "Power Profile" "Failure"

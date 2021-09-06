@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-pidof zenity && killall zenity || zenity --calendar &
+pidof zenity && { killall zenity && exit; } || { zenity --calendar \
+  & qtile cmd-obj -o window -f set_position_floating -a 1040 28; }

@@ -618,8 +618,14 @@ class widgets:
         (
             apikey = 'G0BJFWBFWXWJAJ9R',
             symbol = 'GOOG',
-            function = 'TIME_SERIES_DAILY_ADJUSTED',
+            function = 'TIME_SERIES_INTRADAY',
             foreground = dracula.green,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn(
+                    'firefox https://www.google.com/finance/quote/GOOG:NASDAQ\
+                    ?sa=X&ved=2ahUKEwja5LDekejyAhWAJTQIHaLjDtwQ3ecFegQIKhAa'
+                )
+            }
         ),
         spacer
     ]
@@ -658,12 +664,18 @@ class widgets:
             font = "JoyPixels",
             text = "🧠",
             fontsize = 18,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('mem-icon-click')
+            }
         ),
         widget.Memory
         (
             measure_mem = 'G',
             format = '{MemUsed:.1f}{mm}',
             update_interval = 10,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('mem-text-click')
+            }
         ),
         spacer
     ]
@@ -676,13 +688,19 @@ class widgets:
             font = "JoyPixels",
             text = "🌡",
             padding = 0,
-            fontsize = 19
+            fontsize = 19,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('cpu-icon-click')
+            }
         ),
         widget.ThermalSensor
         (
             foreground_alert = dracula.magenta,
             metric = True,
             threshold = 70,
+            mouse_callbacks = {
+                'Button1': lambda: qtile.cmd_spawn('cpu-text-click')
+            }
         ),
         spacer
     ]
