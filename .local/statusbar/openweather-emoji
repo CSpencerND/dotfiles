@@ -8,19 +8,21 @@ get_icon() {
         01d) icon="☀️";;       #Clear sky - day
         01n) icon="$MOON";;    #Clear sky - night
         02d) icon="⛅️";;       #Few clouds (11-25%) - day
-        02n) icon="$MOON ☁";;   #Few clouds (11-25%) - night
-        03*) icon="☁️";;       #Scattered clouds (25-50%) - day/night
-        04*) icon="☁️";;       #Broken / Overcast clouds (51-84% / 85-100%) - day/night
+        02n) icon="$MOON";;   #Few clouds (11-25%) - night
+        03d) icon="⛅️";;       #Scattered clouds (25-50%) - day/night
+        03n) icon="$MOON";;       #Scattered clouds (25-50%) - day/night
+        04d) icon="☁️";;       #Broken / Overcast clouds (51-84% / 85-100%) - day/night
+        04n) icon="$MOON";;     #Broken / Overcast clouds (51-84% / 85-100%) - day/night
         09d) icon="🌧";;       #Shower rain - day
-        09n) icon="$MOON 🌧";;       #Shower rain - night
+        09n) icon="$MOON🌧";;       #Shower rain - night
         10d) icon="🌦";;       #Moderate / heavy rain - day
-        10n) icon="☔️";;       #Moderate / heavy rain - night
+        10n) icon="$MOON☔️";;       #Moderate / heavy rain - night
         11d) icon="⛈";;        #Thunderstorm - day
         11n) icon="⛈";;        #Thunderstorm - night
         13d) icon="❄️";;       #Snow - day
         13n) icon="❄️";;       #Snow - night
         50d) icon="💨";;       #Fog - day
-        50n) icon="$MOON 💨";;       #Fog - night
+        50n) icon="$MOON💨";;       #Fog - night
         *) icon="☀️";          #??
     esac
 
@@ -98,18 +100,18 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
     # echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
 
     echo $(get_icon "$current_icon") > ~/.cache/weather/current_icon
-    qtile cmd-obj -o widget current_icon -f update -a $(get_icon "$current_icon")
+    qtile cmd-obj -o widget current_icon -f update -a "$(get_icon "$current_icon")"
 
     echo $current_temp$SYMBOL > ~/.cache/weather/current_temp
-    qtile cmd-obj -o widget current_temp -f update -a $current_temp$SYMBOL
+    qtile cmd-obj -o widget current_temp -f update -a "$current_temp$SYMBOL"
 
     echo $trend > ~/.cache/weather/trend
-    qtile cmd-obj -o widget trend -f update -a $trend
+    qtile cmd-obj -o widget trend -f update -a "$trend"
 
     echo $(get_icon "$forecast_icon") > ~/.cache/weather/forecast_icon
-    qtile cmd-obj -o widget forecast_icon -f update -a $(get_icon "$forecast_icon")
+    qtile cmd-obj -o widget forecast_icon -f update -a "$(get_icon "$forecast_icon")"
 
     echo $forecast_temp$SYMBOL > ~/.cache/weather/forecast_temp
-    qtile cmd-obj -o widget forecast_temp -f update -a $forecast_temp$SYMBOL
+    qtile cmd-obj -o widget forecast_temp -f update -a "$forecast_temp$SYMBOL"
 
 fi

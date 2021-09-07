@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-ps aux | grep /usr/bin/bpytop && { killall bpytop && exit; } || { setsid -f "$TERMINAL" -e bpytop -b "mem proc"\
+ps ax | grep bpytop | grep -v grep | awk '{print $1}' \
+  && { kill -9 $(ps ax | grep bpytop | grep -v grep | awk '{print $1}') && exit; } \
+  || { setsid -f "$TERMINAL" -e bpytop -b "mem proc" \
   && qtile cmd-obj -o window -f set_size_floating -a 1280 810 \
   & qtile cmd-obj -o window -f set_position_floating -a 333 28; }
+

@@ -523,6 +523,9 @@ class widgets:
             font = "JoyPixels",
             text = subprocess.getoutput("cat ~/.cache/clock-icon"),
             fontsize = 18,
+            mouse_callbacks = {
+                'Button3': lambda: qtile.cmd_spawn('sb-clock')
+            }
         ),
         widget.Clock
         (
@@ -570,7 +573,8 @@ class widgets:
             text = subprocess.getoutput("cat ~/.cache/weather/current_icon"),
             fontsize = 18,
             mouse_callbacks = {
-                'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
+                'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
+                'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
             },
         ),
         widget.TextBox

@@ -1,8 +1,13 @@
 #!/bin/zsh
 
-# fix obvious typos
+### Fix obvious typos
 alias cd..="cd .."
 alias pdw="pwd"
+
+### Navigation Shortcuts
+alias qtile-log='vi ~/.local/share/qtile/qtile.log'
+alias qtile-config='cd ~/.config/qtile/'
+alias cd-sb='cd ~/.local/statusbar'
 
 ### Colorize commands
 alias ls='ls --color=auto'
