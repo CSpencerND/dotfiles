@@ -15,12 +15,12 @@ lvim.keys.normal_mode["<TAB>"] = ":bnext<cr>"
 lvim.keys.normal_mode["<S-TAB>"] = ":bprevious<cr>"
 lvim.keys.visual_mode["p"] = [["_dP]]
 
-vim.g.tokyonight_style = "night"
+vim.g.tokyonight_style = "night" -- storm, night, day
+
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
-
 
 -- for finding syntax ids for non TS enabled languages
 vim.cmd [[
@@ -103,6 +103,7 @@ lvim.lang.python.linters = {{ exe = "flake8" }}
 
 -- Additional Plugins
 lvim.plugins = {
+  { "dracula/vim" },
   { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
   {
