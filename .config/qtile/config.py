@@ -14,7 +14,7 @@ from libqtile.config import (
 ##############################
 # {{{        VARS          ---
 
-#mod4 or mod = super key
+# mod4 or mod = super key
 mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
@@ -25,7 +25,9 @@ qtile_home = os.path.expanduser('~/.config/qtile/')
 groups = []
 group_names = ["1", "2", "3", "4", "5"]
 group_labels = ["1", "2", "3", "4", "5"]
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = [
+    "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"
+]
 
 for i in range(len(group_names)):
     groups.append\
@@ -74,6 +76,7 @@ class dracula:
     orange =  '#ffb86c'
     red =     '#ff5555'
 
+
 # ---        VARS          }}}
 ##############################
 # {{{     KEYBINDINGS      ---
@@ -85,11 +88,13 @@ def window_to_prev_group(qtile):
         i = qtile.groups.index(qtile.current_group)
         qtile.current_window.togroup(qtile.groups[i - 1].name)
 
+
 @lazy.function
 def window_to_next_group(qtile):
     if qtile.current_window is not None:
         i = qtile.groups.index(qtile.current_group)
         qtile.current_window.togroup(qtile.groups[i + 1].name)
+
 
 # Bring floating windows to front
 @lazy.function
@@ -98,6 +103,7 @@ def float_to_front(qtile):
         for window in group.windows:
             if window.floating:
                 window.cmd_bring_to_front()
+
 
 keys = [
     # Resize
@@ -378,12 +384,12 @@ for i in group_names:
         [
             Key
             (
-                [mod           ], i,
+                [mod], i,
                 lazy.group[i].toscreen()
             ),
             Key
             (
-                [mod, "shift"  ], i,
+                [mod, "shift"], i,
                 lazy.window.togroup(i)
             ),
             Key
@@ -436,9 +442,11 @@ layouts = \
 ##############################
 # {{{       WIDGETS        ---
 
+
 def get_bat_percent():
     batinfo = subprocess.getoutput("acpi | sed 's/Battery 0: //'")
     subprocess.call(["notify-send", batinfo])
+
 
 def get_forecast():
     forecast = subprocess.getoutput("openweather")
@@ -447,17 +455,17 @@ def get_forecast():
 
 widget_defaults = dict\
 (
-    font = 'Hack Nerd Font',
-    fontsize = 15,
-    padding = 3,
-    background = dracula.bgl,
-    foreground = dracula.fg,
-    highlight_method = 'block',
-    borderwidth = 2,
-    rounded = False,
-    urgent_alert_method = 'text',
-    urgent_text = dracula.magenta,
-    urgent_border = dracula.magenta,
+    font='Hack Nerd Font',
+    fontsize=15,
+    padding=3,
+    background=dracula.bgl,
+    foreground=dracula.fg,
+    highlight_method='block',
+    borderwidth=2,
+    rounded=False,
+    urgent_alert_method='text',
+    urgent_text=dracula.magenta,
+    urgent_border=dracula.magenta,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -470,10 +478,10 @@ class widgets:
         spacer,
         widget.Image
         (
-            filename = '~/.config/qtile/icons/arcolinux-arc.png',
-            margin = 0,
-            background = None,
-            mouse_callbacks = {
+            filename='~/.config/qtile/icons/arcolinux-arc.png',
+            margin=0,
+            background=None,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('arcolinux-logout')
             }
         ),
@@ -484,33 +492,33 @@ class widgets:
     [
         widget.GroupBox
         (
-            padding = 2,
-            margin_y = 6,
-            active = dracula.fg,
-            disable_drag = False,
-            highlight_method = 'line',
-            highlight_color = [dracula.purple, dracula.dpurple],
-            this_current_screen_border = dracula.dpurple,
-            inactive = dracula.bgl,
-            background = None,
+            padding=2,
+            margin_y=6,
+            active=dracula.fg,
+            disable_drag=False,
+            highlight_method='line',
+            highlight_color=[dracula.purple, dracula.dpurple],
+            this_current_screen_border=dracula.dpurple,
+            inactive=dracula.bgl,
+            background=None,
         ),
         widget.CurrentLayoutIcon
         (
-            scale = 0.7,
-            background = None
+            scale=0.7,
+            background=None
         ),
         widget.TaskList
         (
-            icon_size = 22,
-            max_title_width = 350,
-            margin = 3,
-            padding_y = 2,
+            icon_size=22,
+            max_title_width=350,
+            margin=3,
+            padding_y=2,
             # title_width_method = 'uniform',
-            txt_floating = '🗗 ',
-            txt_maximized = '🗖 ',
-            txt_minimized = '🗕 ',
-            border = dracula.dpurple,
-            background = None
+            txt_floating='🗗 ',
+            txt_maximized='🗖 ',
+            txt_minimized='🗕 ',
+            border=dracula.dpurple,
+            background=None
         ),
         spacer
     ]
@@ -519,17 +527,17 @@ class widgets:
     [
         widget.TextBox
         (
-            name = 'clock_icon',
-            font = "JoyPixels",
-            text = subprocess.getoutput("cat ~/.cache/clock-icon"),
-            fontsize = 18,
-            mouse_callbacks = {
+            name='clock_icon',
+            font="JoyPixels",
+            text=subprocess.getoutput("cat ~/.cache/clock-icon"),
+            fontsize=18,
+            mouse_callbacks={
                 'Button3': lambda: qtile.cmd_spawn('sb-clock')
             }
         ),
         widget.Clock
         (
-            format = "%I:%M%P"
+            format="%I:%M%P"
         ),
         spacer
     ]
@@ -538,19 +546,19 @@ class widgets:
     [
         widget.TextBox
         (
-            name = 'date_icon',
-            font = "FontAwesome",
-            text = "📆",
-            fontsize = 18,
-            mouse_callbacks = {
+            name='date_icon',
+            font="FontAwesome",
+            text="📆",
+            fontsize=18,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
             }
         ),
         widget.Clock
         (
-            format = "%a %b%e, %Y",
-            update_interval = 60,
-            mouse_callbacks = {
+            format="%a %b%e, %Y",
+            update_interval=60,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
             }
         ),
@@ -568,48 +576,49 @@ class widgets:
         # ),
         widget.TextBox
         (
-            name = 'current_icon',
-            font = "JoyPixels",
-            text = subprocess.getoutput("cat ~/.cache/weather/current_icon"),
-            fontsize = 18,
-            mouse_callbacks = {
+            name='current_icon',
+            font="JoyPixels",
+            text=subprocess.getoutput("cat ~/.cache/weather/current_icon"),
+            fontsize=18,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
+            },
+        ),
+        widget.TextBox
+        (
+            name='current_temp',
+            text=subprocess.getoutput("cat ~/.cache/weather/current_temp"),
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
+            },
+        ),
+        widget.TextBox
+        (
+            name='trend',
+            font="Material Icons",
+            text=subprocess.getoutput("cat ~/.cache/weather/trend"),
+            fontsize=18,
+            foreground=dracula.purple,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
                 'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
             },
         ),
         widget.TextBox
         (
-            name = 'current_temp',
-            text = subprocess.getoutput("cat ~/.cache/weather/current_temp"),
-            mouse_callbacks = {
+            name='forecast_icon',
+            font="JoyPixels",
+            text=subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
+            fontsize=18,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
         ),
         widget.TextBox
         (
-            name = 'trend',
-            font = "Material Icons",
-            text = subprocess.getoutput("cat ~/.cache/weather/trend"),
-            fontsize = 18,
-            mouse_callbacks = {
-                'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
-            },
-        ),
-        widget.TextBox
-        (
-            name = 'forecast_icon',
-            font = "JoyPixels",
-            text = subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
-            fontsize = 18,
-            mouse_callbacks = {
-                'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
-            },
-        ),
-        widget.TextBox
-        (
-            name = 'forecast_temp',
-            text = subprocess.getoutput("cat ~/.cache/weather/forecast_temp"),
-            mouse_callbacks = {
+            name='forecast_temp',
+            text=subprocess.getoutput("cat ~/.cache/weather/forecast_temp"),
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
         ),
@@ -620,11 +629,11 @@ class widgets:
     [
         widget.StockTicker
         (
-            apikey = 'G0BJFWBFWXWJAJ9R',
-            symbol = 'GOOG',
-            function = 'TIME_SERIES_INTRADAY',
-            foreground = dracula.green,
-            mouse_callbacks = {
+            apikey='G0BJFWBFWXWJAJ9R',
+            symbol='GOOG',
+            function='TIME_SERIES_INTRADAY',
+            foreground=dracula.green,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn(
                     'firefox https://www.google.com/finance/quote/GOOG:NASDAQ\
                     ?sa=X&ved=2ahUKEwja5LDekejyAhWAJTQIHaLjDtwQ3ecFegQIKhAa'
@@ -638,24 +647,24 @@ class widgets:
     [
         # widget.TextBox
         # (
-        #     name = 'kbd_icon',
-        #     font = 'Hack Nerd Font',
-        #     text = '',
-        #     fontsize = 22,
-        #     foreground = dracula.cyan,
-        #     padding = 6
+        #     name='kbd_icon',
+        #     font='Hack Nerd Font',
+        #     text='',
+        #     fontsize=22,
+        #     foreground=dracula.cyan,
+        #     padding=6
         # ),
         widget.Image
         (
-            filename = '~/.config/qtile/icons/kmonad.png',
-            scale = False,
-            margin_y = 4
+            filename='~/.config/qtile/icons/kmonad.png',
+            scale=False,
+            margin_y=4
         ),
         widget.TextBox
         (
-            name = 'kbd_layout',
-            text = 'Std',
-            padding = 4
+            name='kbd_layout',
+            text='Std',
+            padding=4
         ),
         spacer
     ]
@@ -664,20 +673,20 @@ class widgets:
     [
         widget.TextBox
         (
-            name = 'memory_icon',
-            font = "JoyPixels",
-            text = "🧠",
-            fontsize = 18,
-            mouse_callbacks = {
+            name='memory_icon',
+            font="JoyPixels",
+            text="🧠",
+            fontsize=18,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('mem-icon-click')
             }
         ),
         widget.Memory
         (
-            measure_mem = 'G',
-            format = '{MemUsed:.1f}{mm}',
-            update_interval = 10,
-            mouse_callbacks = {
+            measure_mem='G',
+            format='{MemUsed:.1f}{mm}',
+            update_interval=10,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('mem-text-click')
             }
         ),
@@ -688,21 +697,21 @@ class widgets:
     [
         widget.TextBox
         (
-            name = 'thermal_icon',
-            font = "JoyPixels",
-            text = "🌡",
-            padding = 0,
-            fontsize = 19,
-            mouse_callbacks = {
+            name='thermal_icon',
+            font="JoyPixels",
+            text="🌡",
+            padding=0,
+            fontsize=19,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('cpu-icon-click')
             }
         ),
         widget.ThermalSensor
         (
-            foreground_alert = dracula.magenta,
-            metric = True,
-            threshold = 70,
-            mouse_callbacks = {
+            foreground_alert=dracula.magenta,
+            metric=True,
+            threshold=70,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('cpu-text-click')
             }
         ),
@@ -713,20 +722,20 @@ class widgets:
     [
         widget.TextBox
         (
-            name = 'system76',
-            font = 'JoyPixels',
-            text = '⚡',
-            padding = 0,
-            fontsize = 18,
-            mouse_callbacks = {
+            name='system76',
+            font='JoyPixels',
+            text='⚡',
+            padding=0,
+            fontsize=18,
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('s76-power-base')
             },
         ),
         widget.TextBox
         (
-            name = 'indicator',
-            text = subprocess.getoutput("cat ~/.cache/power-profile"),
-            mouse_callbacks = {
+            name='indicator',
+            text=subprocess.getoutput("cat ~/.cache/power-profile"),
+            mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('s76-power-base')
             },
         ),
@@ -737,16 +746,16 @@ class widgets:
     [
         widget.BatteryIcon
         (
-            mouse_callbacks = {'Button1': get_bat_percent},
-            padding = 0,
+            mouse_callbacks={'Button1': get_bat_percent},
+            padding=0,
         ),
         widget.Battery
         (
-            format = '{percent:2.0%}',
-            mouse_callbacks = {'Button1': get_bat_percent},
-            low_foreground = dracula.magenta,
-            low_percentage = 0.20,
-            notify_below = 0.20,
+            format='{percent:2.0%}',
+            mouse_callbacks={'Button1': get_bat_percent},
+            low_foreground=dracula.magenta,
+            low_percentage=0.20,
+            notify_below=0.20,
         ),
         spacer,
     ]
@@ -755,9 +764,9 @@ class widgets:
     [
         widget.Systray
         (
-            icon_size = 22,
-            padding = 4,
-            background = None
+            icon_size=22,
+            padding=4,
+            background=None
         ),
         spacer
     ]
@@ -766,13 +775,13 @@ class widgets:
     [
         widget.WidgetBox
         (
-            widgets = [*tray],
-            close_button_location = 'right',
-            font = 'JoyPixels',
-            text_closed = '⚙',
-            text_open = '⚙',
-            fontsize = 19,
-            background = None,
+            widgets=[*tray],
+            close_button_location='right',
+            font='JoyPixels',
+            text_closed='⚙',
+            text_open='⚙',
+            fontsize=19,
+            background=None,
         ),
         spacer
     ]
@@ -799,17 +808,27 @@ def init_widgets_screen1():
     widgets_screen1 = widgets_list
     return widgets_screen1
 
+
 def init_widgets_screen2():
     widgets_screen2 = widgets_list
     return widgets_screen2
+
 
 widgets_screen1 = init_widgets_screen1()
 widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=28, background=dracula.bg, opacity=0.85)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=28, background=dracula.bg, opacity=0.85))]
+    return [
+             Screen(top=bar.Bar(
+                widgets=init_widgets_screen1(),
+                size=28, background=dracula.bg, opacity=0.85
+             )),
+             Screen(top=bar.Bar(
+                widgets=init_widgets_screen2(),
+                size=28, background=dracula.bg, opacity=0.85
+             ))
+           ]
 screens = init_screens()
 
 # ---       WIDGETS        }}}
@@ -828,13 +847,16 @@ dgroups_app_rules = []
 
 main = None
 
+
 @hook.subscribe.startup_once
 def start_once():
     subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
 
+
 @hook.subscribe.startup
 def start_always():
     subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
+
 
 @hook.subscribe.client_new
 def set_floating(window):

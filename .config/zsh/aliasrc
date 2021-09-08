@@ -35,7 +35,7 @@ alias apt-get='apt-get --show-progress'
 alias update="sudo pacman -Syyu"
 alias update-all="paru -Syu --noconfirm"
 alias pacman='sudo pacman --color auto'
-alias update-mirrors="sudo reflector -c 'United States' -a 6 --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector -c 'United States' -a 6 --sort score --save /etc/pacman.d/mirrorlist"
 alias upgraded="grep -iE 'installed|upgraded' /var/log/pacman.log"
 
 ### LS & TREE
