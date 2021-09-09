@@ -4,6 +4,7 @@
 lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
+lvim.transparent_window = true
 lvim.colorscheme = "dracula"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -106,43 +107,46 @@ lvim.plugins = {
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
-  {
-    "ray-x/lsp_signature.nvim",
-    config = function()
-      require"lsp_signature".on_attach()
-    end,
-    event = "InsertEnter"
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   config = function()
+  --     require"lsp_signature".on_attach()
+  --   end,
+  --   event = "InsertEnter"
+  -- },
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      require("colorizer").setup()
+      require("user.colorizer").config()
     end
   },
-  { "Yggdroot/indentLine" },
-  { "unblevable/quick-scope" },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    -- event = "BufReadPre",
+    config = function()
+      require "user.blankline"
+    end
+  },
+  {
+    "unblevable/quick-scope",
+    config = function()
+      require "user.quickscope"
+    end,
+  },
   {
     "karb94/neoscroll.nvim",
     config = function()
-      require("neoscroll").setup({
-        mappings = {
-          "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb"
-        },
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
-        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = nil, -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil, -- Function to run after the scrolling animation ends
-      })
+      require("user.neoscroll").config()
     end,
   },
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle"
-  }
+  },
+  {
+    "nvim-treesitter/playground",
+    event = "BufRead",
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -150,5 +154,4 @@ lvim.plugins = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
 vim.cmd "set wrap linebreak relativenumber"
-
 

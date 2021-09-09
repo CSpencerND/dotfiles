@@ -62,7 +62,7 @@ class dracula:
     bg =      '#282a36'
     bgl =     '#383c4a'
     bgla =    '#44475a'
-    grey =    '#4d4d4d'
+    comment = "#6272a4"
     fga =     '#bfbfbf'
     fg =      '#f8f8f2'
     magenta = '#ff79c6'
@@ -429,7 +429,8 @@ layouts = \
     ),
 
     layout.Columns
-    (   insert_position=0,
+    (
+        insert_position=0,
         border_normal_stack=dracula.blurple,
         border_focus_stack=dracula.magenta,
         **layout_theme
@@ -598,7 +599,7 @@ class widgets:
             font="Material Icons",
             text=subprocess.getoutput("cat ~/.cache/weather/trend"),
             fontsize=18,
-            foreground=dracula.purple,
+            foreground=dracula.cyan,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
                 'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
