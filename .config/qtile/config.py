@@ -599,7 +599,7 @@ class widgets:
             font="Material Icons",
             text=subprocess.getoutput("cat ~/.cache/weather/trend"),
             fontsize=18,
-            foreground=dracula.cyan,
+            foreground=dracula.yellow,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
                 'Button3': lambda: qtile.cmd_spawn('openweather-emoji')

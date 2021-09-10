@@ -85,6 +85,7 @@ cups-pk-helper
 darkhttpd
 dconf-editor
 ddrescue
+deadbeef
 dex
 dhclient
 dialog
@@ -202,7 +203,6 @@ linux-lts-headers
 logrotate
 lsb-release
 lsscsi
-lunarvim-git
 lutris
 lvm2
 lxappearance
@@ -312,6 +312,7 @@ splix
 squashfs-tools
 stack
 starship
+stylua-git
 sudo
 surfn-icons-git
 syslinux

@@ -6,22 +6,16 @@ lvim.format_on_save = false
 lvim.lint_on_save = false
 lvim.transparent_window = true
 lvim.colorscheme = "dracula"
+vim.g.tokyonight_style = "night" -- storm, night, day
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
--- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["<TAB>"] = ":bnext<cr>"
 lvim.keys.normal_mode["<S-TAB>"] = ":bprevious<cr>"
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.visual_mode["p"] = [["_dP]]
-
-vim.g.tokyonight_style = "night" -- storm, night, day
-
--- unmap a default keymapping
--- lvim.keys.normal_mode["<C-Up>"] = ""
--- edit a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
 -- for finding syntax ids for non TS enabled languages
 vim.cmd [[
@@ -53,7 +47,6 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
 }
 
--- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
@@ -63,47 +56,59 @@ lvim.builtin.bufferline.active = true
 lvim.builtin.lualine.style = "lvim" -- "none", "lvim", "default"
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {}
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.autotag.enable = true
+lvim.builtin.treesitter.playground.enable = true
 lvim.builtin.treesitter.highlight.enabled = true
-
-
--- generic LSP settings
--- you can set a custom on_attach function that will be used for all the language servers
--- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 lvim.lsp.diagnostics.virtual_text = false
--- lvim.lsp.on_attach_callback = function(client, bufnr)
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---   --Enable completion triggered by <c-x><c-o>
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
--- end
--- you can overwrite the null_ls setup table (useful for setting the root_dir function)
--- lvim.lsp.null_ls.setup = {
---   root_dir = require("lspconfig").util.root_pattern("Makefile", ".git", "node_modules"),
--- }
--- or if you need something more advanced
--- lvim.lsp.null_ls.setup.root_dir = function(fname)
---   if vim.bo.filetype == "javascript" then
---     return require("lspconfig/util").root_pattern("Makefile", ".git", "node_modules")(fname)
---       or require("lspconfig/util").path.dirname(fname)
---   elseif vim.bo.filetype == "php" then
---     return require("lspconfig/util").root_pattern("Makefile", ".git", "composer.json")(fname) or vim.fn.getcwd()
---   else
---     return require("lspconfig/util").root_pattern("Makefile", ".git")(fname) or require("lspconfig/util").path.dirname(fname)
---   end
--- end
+require("user.json_schemas").setup()
 
 
--- set a formatter if you want to override the default lsp one (if it exists)
-lvim.lang.python.formatters = {{ exe = "black" }}
--- set an additional linter
-lvim.lang.python.linters = {{ exe = "flake8" }}
+-- javascript
+lvim.lang.javascript.formatters = {
+  {
+    exe = "prettier",
+  },
+}
+
+lvim.lang.javascript.linters = {
+  {
+    exe = "eslint_d",
+  },
+}
+
+-- json
+lvim.lang.json.formatters = {
+  {
+    exe = "prettier",
+  },
+}
+
+-- lua
+lvim.lang.lua.formatters = {
+  {
+    exe = "stylua",
+  },
+}
+
+-- python
+lvim.lang.python.formatters = {
+  {
+    exe = "black",
+  },
+}
+
+lvim.lang.python.linters = {
+  {
+    exe = "flake8",
+  },
+}
 
 
 -- Additional Plugins
 lvim.plugins = {
+  { "mattn/emmet-vim" },
+  { "ckipp01/stylua-nvim" },
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
@@ -114,6 +119,11 @@ lvim.plugins = {
   --   end,
   --   event = "InsertEnter"
   -- },
+  {
+    "turbio/bracey.vim",
+    cmd = {"Bracey", "BracyStop", "BraceyReload", "BraceyEval"},
+    run = "npm install --prefix server",
+  },
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
@@ -146,6 +156,34 @@ lvim.plugins = {
   {
     "nvim-treesitter/playground",
     event = "BufRead",
+  },
+  {
+    "phaazon/hop.nvim",
+    event = "BufRead",
+    config = function()
+      require("user.hop").config()
+    end,
+  },
+  {
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require("user.numb").config()
+    end,
+  },
+  {
+    "rcarriga/nvim-notify",
+    event = "BufRead",
+    config = function()
+      require("user.notify").config()
+    end,
+  },
+  {
+    "vuki656/package-info.nvim",
+    config = function()
+      require "user.package-info"
+    end,
+    ft = "json",
   },
 }
 
