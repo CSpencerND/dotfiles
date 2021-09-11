@@ -11,7 +11,7 @@ s76-run () {
     until [ "$x" -ge 3 ]; do
       system76-power profile $1 && break
       x=$((x+1))
-      sleep .2
+      sleep .3
     done
 
     if [ $? = 0 ]; then
@@ -19,7 +19,7 @@ s76-run () {
       until [ "$y" -ge 3 ]; do
         qtile cmd-obj -o widget indicator -f update -a $2 && break
         y=$((y+1))
-        sleep .2
+        sleep .3
       done
     fi
 
@@ -28,7 +28,7 @@ s76-run () {
       until [ "$z" -ge 3 ]; do
         echo $2 > ~/.cache/power-profile && break
         z=$((z+1))
-        sleep .2
+        sleep .3
       done
     fi
 

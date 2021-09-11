@@ -4,9 +4,9 @@
 lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
-lvim.transparent_window = true
-lvim.colorscheme = "dracula"
-vim.g.tokyonight_style = "night" -- storm, night, day
+lvim.transparent_window = false
+lvim.colorscheme = "tokyonight"
+vim.g.tokyonight_style = "day" -- storm, night, day
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -112,6 +112,7 @@ lvim.plugins = {
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
+  { "arzg/vim-substrata" },
   -- {
   --   "ray-x/lsp_signature.nvim",
   --   config = function()
