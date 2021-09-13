@@ -5,7 +5,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
 lvim.transparent_window = false
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "substrata"
 vim.g.tokyonight_style = "day" -- storm, night, day
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -16,6 +16,12 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.visual_mode["p"] = [["_dP]]
+
+-- emmet
+vim.cmd [[
+  let g:user_emmet_mode="n"
+  let g:user_emmet_leader_key=","
+]]
 
 -- for finding syntax ids for non TS enabled languages
 vim.cmd [[
@@ -120,6 +126,10 @@ lvim.plugins = {
   --   end,
   --   event = "InsertEnter"
   -- },
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = "SymbolsOutline",
+  },
   {
     "turbio/bracey.vim",
     cmd = {"Bracey", "BracyStop", "BraceyReload", "BraceyEval"},
