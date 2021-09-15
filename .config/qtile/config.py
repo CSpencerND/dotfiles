@@ -511,7 +511,7 @@ class widgets:
         widget.TaskList
         (
             icon_size=22,
-            max_title_width=350,
+            # max_title_width=350,
             margin=3,
             padding_y=2,
             # title_width_method = 'uniform',
@@ -557,7 +557,7 @@ class widgets:
         ),
         widget.Clock
         (
-            format="%a %b%e, %Y",
+            format="%a %b %e, %Y",
             update_interval=60,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')

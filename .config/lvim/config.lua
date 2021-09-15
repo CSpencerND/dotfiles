@@ -5,8 +5,9 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
 lvim.transparent_window = false
-lvim.colorscheme = "substrata"
-vim.g.tokyonight_style = "day" -- storm, night, day
+lvim.colorscheme = "material"
+vim.g.material_style = "palenight"
+vim.g.tokyonight_style = "storm" -- storm, night, day
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -15,13 +16,13 @@ lvim.keys.normal_mode["<S-TAB>"] = ":bprevious<cr>"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 lvim.keys.normal_mode["Y"] = "y$"
+lvim.keys.normal_mode["<C-n>"] = ":lua require('material.functions').toggle_style()<cr>"
 lvim.keys.visual_mode["p"] = [["_dP]]
 
+
 -- emmet
-vim.cmd [[
-  let g:user_emmet_mode="n"
-  let g:user_emmet_leader_key=","
-]]
+vim.g.user_emmet_mode="n"
+vim.g.user_emmet_leader_key=","
 
 -- for finding syntax ids for non TS enabled languages
 vim.cmd [[
@@ -113,19 +114,15 @@ lvim.lang.python.linters = {
 
 -- Additional Plugins
 lvim.plugins = {
+  { "zeekay/vim-beautify" },
   { "mattn/emmet-vim" },
   { "ckipp01/stylua-nvim" },
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
   { "arzg/vim-substrata" },
-  -- {
-  --   "ray-x/lsp_signature.nvim",
-  --   config = function()
-  --     require"lsp_signature".on_attach()
-  --   end,
-  --   event = "InsertEnter"
-  -- },
+  { "kyazdani42/nvim-palenight.lua" },
+  { "marko-cerovac/material.nvim" },
   {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
@@ -195,6 +192,10 @@ lvim.plugins = {
       require "user.package-info"
     end,
     ft = "json",
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
   },
 }
 

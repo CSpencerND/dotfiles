@@ -22,7 +22,7 @@ get_icon() {
         13d) icon="🌨";;       #Snow - day
         13n) icon="🌨";;       #Snow - night
         50d) icon="💨";;       #Fog - day
-        50n) icon="$MOON💨";;       #Fog - night
+        50n) icon="💨";;       #Fog - night
         *) icon="☀️";          #??
     esac
 
