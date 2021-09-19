@@ -6,6 +6,7 @@ picom-git
 retroarch-git
 ruby-colorls
 shell-color-scripts
+soundux
 stylua-git
 system76-acpi-dkms
 system76-driver
@@ -15,3 +16,4 @@ system76-power-git
 ttf-material-icons-git
 ttf-weather-icons
 unclutter-xfixes-git
+xboxdrv-git

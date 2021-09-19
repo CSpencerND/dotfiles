@@ -30,8 +30,7 @@ group_layouts = [
 ]
 
 for i in range(len(group_names)):
-    groups.append\
-    (
+    groups.append(
         Group
         (
             name=group_names[i],
@@ -42,8 +41,8 @@ for i in range(len(group_names)):
 
 dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
 
-groups.append(ScratchPad("scratchpad", dropdowns=\
-        [
+groups.append(ScratchPad("scratchpad", dropdowns=[
+
             DropDown(
                 "pad", "alacritty -e lvim ~/.cache/scratchpad",
                 **dropdown_defaults
@@ -379,8 +378,7 @@ keys = [
 
 
 for i in group_names:
-    keys.extend\
-    (
+    keys.extend(
         [
             Key
             (
@@ -405,8 +403,8 @@ for i in group_names:
 ##############################
 # {{{       LAYOUTS        ---
 
-layout_theme = \
-{
+layout_theme = {
+
     "margin": 8,
     "border_width": 2,
     "single_border_width": 2,
@@ -414,8 +412,8 @@ layout_theme = \
     "border_normal": dracula.blurple
 }
 
-layouts = \
-[
+layouts = [
+
     layout.MonadTall
     (
         new_client_position="top",
@@ -454,8 +452,8 @@ def get_forecast():
     return forecast
 
 
-widget_defaults = dict\
-(
+widget_defaults = dict(
+
     font='Hack Nerd Font',
     fontsize=15,
     padding=3,
@@ -474,8 +472,8 @@ extension_defaults = widget_defaults.copy()
 class widgets:
     spacer = widget.Spacer(length=6, background=None)
 
-    arco = \
-    [
+    arco = [
+
         spacer,
         widget.Image
         (
@@ -489,8 +487,8 @@ class widgets:
         widget.Spacer(length=4, background=None)
     ]
 
-    basics = \
-    [
+    basics = [
+
         widget.GroupBox
         (
             padding=2,
@@ -524,8 +522,8 @@ class widgets:
         spacer
     ]
 
-    time = \
-    [
+    time = [
+
         widget.TextBox
         (
             name='clock_icon',
@@ -543,8 +541,8 @@ class widgets:
         spacer
     ]
 
-    date = \
-    [
+    date = [
+
         widget.TextBox
         (
             name='date_icon',
@@ -566,8 +564,8 @@ class widgets:
         spacer
     ]
 
-    weather = \
-    [
+    weather = [
+
         # widget.GenPollText
         # (
         #     font = 'Weather Icons',
@@ -626,8 +624,8 @@ class widgets:
         spacer
     ]
 
-    stocks = \
-    [
+    stocks = [
+
         widget.StockTicker
         (
             apikey='G0BJFWBFWXWJAJ9R',
@@ -644,8 +642,8 @@ class widgets:
         spacer
     ]
 
-    keyboard = \
-    [
+    keyboard = [
+
         # widget.TextBox
         # (
         #     name='kbd_icon',
@@ -670,8 +668,8 @@ class widgets:
         spacer
     ]
 
-    memory = \
-    [
+    memory = [
+
         widget.TextBox
         (
             name='memory_icon',
@@ -694,8 +692,8 @@ class widgets:
         spacer
     ]
 
-    thermals = \
-    [
+    thermals = [
+
         widget.TextBox
         (
             name='thermal_icon',
@@ -719,8 +717,8 @@ class widgets:
         spacer
     ]
 
-    system76 = \
-    [
+    system76 = [
+
         widget.TextBox
         (
             name='system76',
@@ -743,8 +741,8 @@ class widgets:
         spacer,
     ]
 
-    battery = \
-    [
+    battery = [
+
         widget.BatteryIcon
         (
             mouse_callbacks={'Button1': get_bat_percent},
@@ -761,8 +759,8 @@ class widgets:
         spacer,
     ]
 
-    tray = \
-    [
+    tray = [
+
         widget.Systray
         (
             icon_size=22,
@@ -772,8 +770,8 @@ class widgets:
         spacer
     ]
 
-    tray_box = \
-    [
+    tray_box = [
+
         widget.WidgetBox
         (
             widgets=[*tray],
@@ -788,8 +786,8 @@ class widgets:
     ]
 
 
-widgets_list = \
-[
+widgets_list = [
+
     *widgets.arco,
     *widgets.basics,
     *widgets.time,
@@ -825,11 +823,14 @@ def init_screens():
                 widgets=init_widgets_screen1(),
                 size=28, background=dracula.bg, opacity=0.85
              )),
+
              Screen(top=bar.Bar(
                 widgets=init_widgets_screen2(),
                 size=28, background=dracula.bg, opacity=0.85
              ))
            ]
+
+
 screens = init_screens()
 
 # ---       WIDGETS        }}}
@@ -837,6 +838,7 @@ screens = init_screens()
 # {{{        MISC          ---
 
 mouse = [
+
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
@@ -872,10 +874,9 @@ follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
 
-floating_layout = layout.Floating\
-(
-    float_rules=\
-    [
+floating_layout = layout.Floating(
+    float_rules=[
+
         Match(wm_class='Arcolinux-welcome-app.py'),
         Match(wm_class='Arcolinux-tweak-tool.py'),
         Match(wm_class='Arcolinux-calamares-tool.py'),
@@ -914,7 +915,7 @@ floating_layout = layout.Floating\
 
 
 auto_fullscreen = True
-focus_on_window_activation = "focus" # or smart
+focus_on_window_activation = "focus"  # or smart
 wmname = "LG3D"
 
 # ---        MISC          }}}
@@ -935,4 +936,3 @@ wmname = "LG3D"
 #          foreground = colors[5],
 #          background = colors[1],
 #          ),
-

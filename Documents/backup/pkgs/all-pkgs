@@ -299,6 +299,7 @@ rxvt-unicode
 rxvt-unicode-terminfo
 sardi-icons
 screen
+screenkey
 scrot
 sddm
 sddm-config-editor-git
@@ -309,6 +310,7 @@ shell-color-scripts
 smartmontools
 sof-firmware
 solaar
+soundux
 speedtest-cli-git
 splix
 squashfs-tools
@@ -413,6 +415,7 @@ wpa_supplicant
 wttr
 wvdial
 xapp
+xboxdrv-git
 xcb-util-cursor
 xclip
 xcursor-arch-cursor-complete

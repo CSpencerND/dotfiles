@@ -123,6 +123,7 @@ lvim.plugins = {
   { "arzg/vim-substrata" },
   { "kyazdani42/nvim-palenight.lua" },
   { "marko-cerovac/material.nvim" },
+  { "romgrk/doom-one.vim" },
   {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
