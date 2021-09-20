@@ -36,6 +36,7 @@ arcolinux-paru-git
 arcolinux-pipemenus-git
 arcolinux-qt5-git
 arcolinux-qtile-git
+arcolinux-reflector-simple-git
 arcolinux-rofi-git
 arcolinux-rofi-themes-git
 arcolinux-root-git
@@ -292,7 +293,7 @@ rxvt-unicode
 rxvt-unicode-terminfo
 sardi-icons
 screen
-screenkey
+screenkey-git
 scrot
 sddm
 sddm-config-editor-git

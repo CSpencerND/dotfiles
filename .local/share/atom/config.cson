@@ -13,8 +13,7 @@
   fonts:
     fontFamily: "Hack"
     secondaryFonts: "\"Hack Nerd Font\""
-  "linter-ui-default":
-    showPanel: true
+  "linter-ui-default": {}
   minimap:
     plugins:
       pigments: true

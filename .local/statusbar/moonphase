@@ -1,11 +1,16 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Shows the current moon phase.
 
 moonfile="$XDG_CACHE_HOME/moonphase"
 
 # [ "$(stat -c %y "$moonfile" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] ||
-curl -sf "wttr.in/?format=%m" > "$moonfile" || exit 1 ;
+x=0
+until [ "$x" -ge 3 ]; do
+  curl -sf "wttr.in/?format=%m" > "$moonfile" && break
+  x=$((x+1))
+  sleep 1
+done
 
 icon="$(cat "$moonfile")"
 

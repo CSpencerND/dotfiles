@@ -1,5 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
+./moonphase
+sleep 2
 MOON=$(cat $XDG_CACHE_HOME/moonphase)
 
 get_icon() {
@@ -14,7 +16,7 @@ get_icon() {
         04d) icon="";;       #Broken / Overcast clouds (51-84% / 85-100%) - day/night
         04n) icon="$MOON";;     #Broken / Overcast clouds (51-84% / 85-100%) - day/night
         09d) icon="🌧";;       #Shower rain - day
-        09n) icon="$MOON🌧";;       #Shower rain - night
+        09n) icon="🌧";;       #Shower rain - night
         10d) icon="🌦";;       #Moderate / heavy rain - day
         10n) icon="☔️";;       #Moderate / heavy rain - night
         11d) icon="⛈";;        #Thunderstorm - day
@@ -99,8 +101,20 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 
     # echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
 
-    echo $(get_icon "$current_icon") > ~/.cache/weather/current_icon
-    qtile cmd-obj -o widget current_icon -f update -a "$(get_icon "$current_icon")"
+    a=0
+    until [ "$a" -ge 5 ]; do
+      echo $(get_icon "$current_icon") > ~/.cache/weather/current_icon && break
+      a=$((a+1))
+      sleep .3
+    done
+
+    x=0
+    until [ "$x" -ge 5 ]; do
+      qtile cmd-obj -o widget current_icon -f update -a \
+      "$(get_icon "$current_icon")" && break
+      x=$((x+1))
+      sleep .3
+    done
 
     echo $current_temp$SYMBOL > ~/.cache/weather/current_temp
     qtile cmd-obj -o widget current_temp -f update -a "$current_temp$SYMBOL"
@@ -108,8 +122,20 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
     echo $trend > ~/.cache/weather/trend
     qtile cmd-obj -o widget trend -f update -a "$trend"
 
-    echo $(get_icon "$forecast_icon") > ~/.cache/weather/forecast_icon
-    qtile cmd-obj -o widget forecast_icon -f update -a "$(get_icon "$forecast_icon")"
+    b=0
+    until [ "$b" -ge 5 ]; do
+      echo $(get_icon "$forecast_icon") > ~/.cache/weather/forecast_icon && break
+      b=$((b+1))
+      sleep .3
+    done
+
+    y=0
+    until [ "$y" -ge 5 ]; do
+      qtile cmd-obj -o widget forecast_icon -f update -a \
+      "$(get_icon "$forecast_icon")" && break
+      y=$((y+1))
+      sleep .3
+    done
 
     echo $forecast_temp$SYMBOL > ~/.cache/weather/forecast_temp
     qtile cmd-obj -o widget forecast_temp -f update -a "$forecast_temp$SYMBOL"

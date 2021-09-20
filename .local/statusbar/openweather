@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 MOON=$(cat $XDG_CACHE_HOME/moonphase)
 
