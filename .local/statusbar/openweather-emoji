@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-./moonphase
-sleep 2
-MOON=$(cat $XDG_CACHE_HOME/moonphase)
 
 get_icon() {
+    # MOON=$(cat $XDG_CACHE_HOME/moonphase)
+    MOON=$(curl -sf "wttr.in/?format=%m")
     case $1 in
         # Icons for emoji
         01d) icon="☀️";;       #Clear sky - day
@@ -27,7 +26,6 @@ get_icon() {
         50n) icon="💨";;       #Fog - night
         *) icon="☀️";          #??
     esac
-
     echo $icon
 }
 
@@ -107,6 +105,7 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
       a=$((a+1))
       sleep .3
     done
+    sleep 1
 
     x=0
     until [ "$x" -ge 5 ]; do
@@ -128,6 +127,7 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
       b=$((b+1))
       sleep .3
     done
+    sleep 1
 
     y=0
     until [ "$y" -ge 5 ]; do

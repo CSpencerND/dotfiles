@@ -7,6 +7,7 @@ alias pdw="pwd"
 ### Navigation Shortcuts
 alias qtile-log='vi ~/.local/share/qtile/qtile.log'
 alias qtile-config='vi ~/.config/qtile/config.py'
+alias auto-config="vi ~/.config/qtile/scripts/autostart.sh"
 alias cd-sb='cd ~/.local/statusbar'
 
 ### Colorize commands

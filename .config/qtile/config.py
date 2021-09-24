@@ -305,6 +305,17 @@ keys = [
         [mod, "control"], "f",
         float_to_front
     ),
+    Key
+    (
+        [mod], "period",
+        lazy.next_screen(),
+    ),
+    Key
+    (
+        [mod], "comma",
+        lazy.next_screen(),
+    ),
+
 
     # Layout Functions
     Key
@@ -455,7 +466,7 @@ def get_forecast():
 widget_defaults = dict(
 
     font='Hack Nerd Font',
-    fontsize=15,
+    fontsize=14,
     padding=3,
     background=dracula.bgl,
     foreground=dracula.fg,
@@ -508,7 +519,7 @@ class widgets:
         ),
         widget.TaskList
         (
-            icon_size=22,
+            icon_size=20,
             # max_title_width=350,
             margin=3,
             padding_y=2,
@@ -529,7 +540,7 @@ class widgets:
             name='clock_icon',
             font="JoyPixels",
             text=subprocess.getoutput("cat ~/.cache/clock-icon"),
-            fontsize=18,
+            fontsize=16,
             mouse_callbacks={
                 'Button3': lambda: qtile.cmd_spawn('sb-clock')
             }
@@ -548,7 +559,7 @@ class widgets:
             name='date_icon',
             font="FontAwesome",
             text="📆",
-            fontsize=18,
+            fontsize=16,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
             }
@@ -578,7 +589,7 @@ class widgets:
             name='current_icon',
             font="JoyPixels",
             text=subprocess.getoutput("cat ~/.cache/weather/current_icon"),
-            fontsize=18,
+            fontsize=16,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
             },
@@ -596,7 +607,7 @@ class widgets:
             name='trend',
             font="Material Icons",
             text=subprocess.getoutput("cat ~/.cache/weather/trend"),
-            fontsize=18,
+            fontsize=16,
             foreground=dracula.yellow,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
@@ -608,7 +619,7 @@ class widgets:
             name='forecast_icon',
             font="JoyPixels",
             text=subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
-            fontsize=18,
+            fontsize=16,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
@@ -675,7 +686,7 @@ class widgets:
             name='memory_icon',
             font="JoyPixels",
             text="🧠",
-            fontsize=18,
+            fontsize=16,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('mem-icon-click')
             }
@@ -700,7 +711,7 @@ class widgets:
             font="JoyPixels",
             text="🌡",
             padding=0,
-            fontsize=19,
+            fontsize=18,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('cpu-icon-click')
             }
@@ -725,7 +736,7 @@ class widgets:
             font='JoyPixels',
             text='⚡',
             padding=0,
-            fontsize=18,
+            fontsize=16,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('s76-power-base')
             },
@@ -763,7 +774,7 @@ class widgets:
 
         widget.Systray
         (
-            icon_size=22,
+            icon_size=20,
             padding=4,
             background=None
         ),
@@ -779,7 +790,7 @@ class widgets:
             font='JoyPixels',
             text_closed='⚙',
             text_open='⚙',
-            fontsize=19,
+            fontsize=18,
             background=None,
         ),
         spacer
@@ -821,13 +832,13 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=28, background=dracula.bg, opacity=0.85
+                size=24, background=dracula.bg, opacity=0.85
              )),
 
-             Screen(top=bar.Bar(
-                widgets=init_widgets_screen2(),
-                size=28, background=dracula.bg, opacity=0.85
-             ))
+             # Screen(top=bar.Bar(
+             #    widgets=init_widgets_screen2(),
+             #    size=24, background=dracula.bg, opacity=0.85
+             # ))
            ]
 
 
@@ -858,7 +869,12 @@ def start_once():
 
 @hook.subscribe.startup
 def start_always():
-    subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
+    subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr', 'kbrate'])
+
+
+@hook.subscribe.startup_complete
+def start_after():
+    subprocess.Popen([home + '/.config/qtile/scripts/autostart-after.sh'])
 
 
 @hook.subscribe.client_new
