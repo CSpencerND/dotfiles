@@ -38,9 +38,10 @@ for i in range(len(group_names)):
             label=group_labels[i]
         )
     )
+# groups.append(Group(name="6", layout="columns", label="6"))
+
 
 dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
-
 groups.append(ScratchPad("scratchpad", dropdowns=[
 
             DropDown(
@@ -57,7 +58,7 @@ groups.append(ScratchPad("scratchpad", dropdowns=[
 
 # Theme
 class dracula:
-    black =   '#14151b'
+    black =  '#14151b'
     bg =      '#282a36'
     bgl =     '#383c4a'
     bgla =    '#44475a'
@@ -102,6 +103,19 @@ def float_to_front(qtile):
         for window in group.windows:
             if window.floating:
                 window.cmd_bring_to_front()
+
+
+# Change which monitor has the group
+def go_to_group(group):
+    def f(qtile):
+        if group in "1234":
+            qtile.cmd_to_screen(1)
+            qtile.groups_map[group].cmd_toscreen()
+        else:
+            qtile.cmd_to_screen(0)
+            qtile.groups_map[group].cmd_toscreen()
+
+    return f
 
 
 keys = [
@@ -269,6 +283,19 @@ keys = [
     ),
 
 
+    # Switch Screens
+    Key
+    (
+        [mod], "period",
+        lazy.next_screen(),
+    ),
+    Key
+    (
+        [mod], "comma",
+        lazy.prev_screen(),
+    ),
+
+
     # Window Functions
     Key
     (
@@ -304,16 +331,6 @@ keys = [
     (
         [mod, "control"], "f",
         float_to_front
-    ),
-    Key
-    (
-        [mod], "period",
-        lazy.next_screen(),
-    ),
-    Key
-    (
-        [mod], "comma",
-        lazy.next_screen(),
     ),
 
 
@@ -407,7 +424,22 @@ for i in group_names:
                 lazy.window.togroup(i),
                 lazy.group[i].toscreen()
             ),
+            Key
+            (
+                [mod, "shift", "mod1"], i,
+                lazy.function(go_to_group(i))
+            )
         ]
+    )
+
+for s, i in [(1, "1"), (1, "2"), (1, "3"), (1, "4"), (0, "5")]:
+    keys.append(
+        Key
+        (
+            [mod, "mod1"], i,
+            lazy.group[i].toscreen(s),
+            lazy.to_screen(s)
+        )
     )
 
 # ---     KEYBINDINGS      }}}

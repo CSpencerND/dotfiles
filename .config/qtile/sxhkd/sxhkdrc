@@ -20,6 +20,9 @@ super + Return
 super + b
   firefox
 
+super + d
+  discord
+
 super + shift + Return
 	pcmanfm
 
@@ -44,15 +47,15 @@ super + backslash
 
 #Raises volume
 XF86AudioRaiseVolume
-    amixer set Master 10%+
+  amixer set Master 10%+
 
 #Lowers volume
 XF86AudioLowerVolume
-    amixer set Master 10%-
+  amixer set Master 10%-
 
 #Mute
 XF86AudioMute
-    amixer -D pulse set Master 1+ toggle
+  amixer -D pulse set Master 1+ toggle
 
 #Playerctl works for Pragha, Spotify and others
 #Delete the line for playerctl if you want to use mpc
@@ -65,33 +68,33 @@ XF86AudioMute
 
 #PLAY
 XF86AudioPlay
-    playerctl play-pause
+  playerctl play-pause
 
 #Next
 XF86AudioNext
-    playerctl next
+  playerctl next
 
 #previous
 XF86AudioPrev
-    playerctl previous
+  playerctl previous
 
 #Stop
 XF86AudioStop
-    playerctl stop
+  playerctl stop
 
 #Brightness up
 XF86MonBrightnessUp
-    xbacklight -inc 10
+  xbacklight -inc 10
 
 #Brightness down
 XF86MonBrightnessDown
-    xbacklight -dec 10
+  xbacklight -dec 10
 
 #These actually work with the volume wheel! =D
 #Brightness up
 super + XF86AudioRaiseVolume
-    xbacklight -inc 10
+  xbacklight -inc 10
 
 #Brightness down
 super + XF86AudioLowerVolume
-    xbacklight -dec 10
+  xbacklight -dec 10

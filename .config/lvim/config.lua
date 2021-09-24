@@ -5,9 +5,10 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
 lvim.transparent_window = false
-lvim.colorscheme = "material"
+lvim.colorscheme = "onedarker"
 vim.g.material_style = "palenight"
 vim.g.tokyonight_style = "storm" -- storm, night, day
+
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -24,10 +25,12 @@ lvim.keys.visual_mode["p"] = [["_dP]]
 vim.g.user_emmet_mode="n"
 vim.g.user_emmet_leader_key=","
 
+
 -- for finding syntax ids for non TS enabled languages
 vim.cmd [[
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 ]]
+
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 lvim.builtin.telescope.on_config_done = function()
@@ -42,6 +45,7 @@ lvim.builtin.telescope.on_config_done = function()
   lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
 end
 
+
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
@@ -54,6 +58,7 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
 }
 
+
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
@@ -61,6 +66,7 @@ lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.bufferline.active = true
 lvim.builtin.lualine.style = "lvim" -- "none", "lvim", "default"
+
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = "maintained"
@@ -117,6 +123,7 @@ lvim.plugins = {
   { "zeekay/vim-beautify" },
   { "mattn/emmet-vim" },
   { "ckipp01/stylua-nvim" },
+  { "morhetz/gruvbox" },
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
@@ -199,6 +206,7 @@ lvim.plugins = {
     event = "BufRead",
   },
 }
+
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
