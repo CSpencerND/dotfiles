@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 screens_count=$(xrandr -q | grep " connected" | wc -l)
-source "~/.screenlayout/${screens_count}screens.sh"
+~/.screenlayout/${screens_count}screens.sh

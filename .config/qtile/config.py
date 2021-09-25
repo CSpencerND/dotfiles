@@ -97,6 +97,30 @@ def window_to_next_group(qtile):
         qtile.current_window.togroup(qtile.groups[i + 1].name)
 
 
+# Move Windows Between Screens
+@lazy.function
+def window_to_prev_screen(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    if i != 0:
+        group = qtile.screens[i - 1].group.name
+        qtile.current_window.togroup(group)
+
+
+@lazy.function
+def window_to_next_screen(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    if i + 1 != len(qtile.screens):
+        group = qtile.screens[i + 1].group.name
+        qtile.current_window.togroup(group)
+
+
+@lazy.function
+def switch_screens(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    group = qtile.screens[i - 1].group
+    qtile.current_screen.set_group(group)
+
+
 # Bring floating windows to front
 @lazy.function
 def float_to_front(qtile):
@@ -107,13 +131,14 @@ def float_to_front(qtile):
 
 
 # Change which monitor has the group
+@lazy.function
 def go_to_group(group):
     def f(qtile):
         if group in "1234":
-            qtile.cmd_to_screen(1)
+            qtile.cmd_to_screen(0)
             qtile.groups_map[group].cmd_toscreen()
         else:
-            qtile.cmd_to_screen(0)
+            qtile.cmd_to_screen(1)
             qtile.groups_map[group].cmd_toscreen()
 
     return f
@@ -295,6 +320,33 @@ keys = [
         [mod], "comma",
         lazy.prev_screen(),
     ),
+    Key
+    (
+        [mod, "shift"], "period",
+        window_to_next_screen
+    ),
+    Key
+    (
+        [mod, "shift"], "comma",
+        window_to_prev_screen
+    ),
+    Key
+    (
+        [mod, "control"], "period",
+        window_to_next_screen,
+        lazy.next_screen(),
+    ),
+    Key
+    (
+        [mod, "control"], "comma",
+        window_to_prev_screen,
+        lazy.prev_screen(),
+    ),
+    Key
+    (
+        [mod, "control"], "apostrophe",
+        switch_screens
+    ),
 
 
     # Window Functions
@@ -433,12 +485,12 @@ for i in group_names:
             Key
             (
                 [mod, "shift", "mod1"], i,
-                lazy.function(go_to_group(i))
+                go_to_group
             )
         ]
     )
 
-for s, i in [(1, "1"), (1, "2"), (1, "3"), (1, "4"), (0, "5")]:
+for s, i in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (1, "5")]:
     keys.append(
         Key
         (
@@ -543,11 +595,14 @@ class widgets:
             padding=2,
             margin_y=6,
             active=dracula.fg,
+            inactive=dracula.bgl,
             disable_drag=False,
             highlight_method='line',
             highlight_color=[dracula.purple, dracula.dpurple],
             this_current_screen_border=dracula.dpurple,
-            inactive=dracula.bgl,
+            this_screen_border=dracula.dpurple,
+            other_current_screen_border=dracula.purple,
+            other_screen_border=dracula.dpurple,
             background=None,
         ),
         widget.CurrentLayoutIcon
