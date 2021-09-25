@@ -63,6 +63,9 @@ babl
 base
 bash-completion
 bat
+betterdiscord-git
+betterdiscord-installer
+betterdiscordctl-git
 bibata-cursor-theme-bin
 bind
 binutils
@@ -255,6 +258,7 @@ os-prober
 p7zip
 pacman
 pamac-all
+parsec-bin
 partclone
 parted
 partimage

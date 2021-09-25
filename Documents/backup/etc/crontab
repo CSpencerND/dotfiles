@@ -1,6 +1,6 @@
 # m h dom mon dow command
-@hourly /home/$USER/.local/statusbar/sb-clock
-# @daily /home/$USER/.local/statusbar/moonphase
-@hourly /home/$USER/.local/statusbar/openweather-emoji
-@daily /home/$USER/.local/bin/pkg-dump
+@hourly /home/cs/.local/statusbar/sb-clock
+@daily /home/cs/.local/statusbar/moonphase
+@hourly /home/cs/.local/statusbar/openweather-emoji
+@daily /home/cs/.local/bin/pkg-dump
 0 */6 * * * /usr/bin/reflector -c US --protocol https --age 6 --sort rate --number 50

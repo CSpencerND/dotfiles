@@ -20,7 +20,6 @@ function run {
 
 # xrandr --output eDP1 --mode 1920x1080 --rate 60
 # xrandr --output HDMI1 --mode 1920x1080 --rate 60
-/home/cs/.config/qtile/scripts/screens.sh
 
 #change your keyboard if you need it
 #setxkbmap -layout be

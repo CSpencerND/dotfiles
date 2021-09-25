@@ -7,8 +7,9 @@ from libqtile.command import lazy
 from libqtile.config import (
     Key, Screen, Group, Drag, Match, ScratchPad, DropDown
 )
-
 # import arcobattery
+
+subprocess.call("setup_screens")
 
 # ---       IMPORTS        }}}
 ##############################
@@ -38,7 +39,7 @@ for i in range(len(group_names)):
             label=group_labels[i]
         )
     )
-# groups.append(Group(name="6", layout="columns", label="6"))
+# groups.append(Group(name="0", layout="columns", label="0"))
 
 
 dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
@@ -58,7 +59,7 @@ groups.append(ScratchPad("scratchpad", dropdowns=[
 
 # Theme
 class dracula:
-    black =  '#14151b'
+    black =   '#14151b'
     bg =      '#282a36'
     bgl =     '#383c4a'
     bgla =    '#44475a'
@@ -376,8 +377,13 @@ keys = [
     # Refresh / Logout
     Key
     (
-        [mod, "shift"], "r",
+        [mod], "r",
         lazy.restart()
+    ),
+    Key
+    (
+        [mod, "control"], "r",
+        lazy.reconfigure_screens()
     ),
     Key
     (
@@ -914,6 +920,9 @@ def set_floating(window):
     if (window.window.get_wm_transient_for()
             or window.window.get_wm_type() in floating_types):
         window.floating = True
+
+
+# hook.subscribe.screen_change(qtile.cmd_reconfigure_screens())
 
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
