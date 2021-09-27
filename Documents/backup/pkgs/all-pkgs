@@ -77,6 +77,7 @@ bluez-utils
 bpytop
 broadcom-wl
 btrfs-progs
+cadence
 cbatticon
 clonezilla
 conky-lua-archers
@@ -126,6 +127,7 @@ flex
 font-manager-git
 freetype2
 fsarchiver
+gamemode
 gawk
 gcc
 gettext
@@ -138,6 +140,7 @@ gmrun
 gnome-disk-utility
 gnome-keyring
 gnu-netcat
+goverlay-bin
 gpart
 gparted
 gpm
@@ -167,6 +170,7 @@ hardcode-fixer-git
 hardinfo
 haveged
 hdparm
+heroic-games-launcher-bin
 htop
 hw-probe
 hwinfo
@@ -187,6 +191,23 @@ kmonad-git
 kvantum-qt5
 laptop-detect
 less
+lib32-alsa-lib
+lib32-alsa-plugins
+lib32-giflib
+lib32-gnutls
+lib32-gst-plugins-base-libs
+lib32-gtk3
+lib32-libpulse
+lib32-libva
+lib32-libxcomposite
+lib32-libxinerama
+lib32-libxslt
+lib32-mpg123
+lib32-ocl-icd
+lib32-openal
+lib32-sqlite
+lib32-v4l-utils
+lib32-vulkan-intel
 libcups
 libdvdcss
 libfido2
@@ -249,6 +270,7 @@ ntp
 numlockx
 nvme-cli
 obs-studio
+ocl-icd
 oh-my-zsh-git
 openconnect
 openresolv
@@ -280,6 +302,7 @@ protonup-git
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
+pulseaudio-jack
 pycharm-community-edition
 python-pip
 python-psutil
@@ -290,6 +313,7 @@ qt5-webkit
 qt5ct
 qtile
 ranger
+realtime-privileges
 redshift
 reflector
 reiserfsprogs
@@ -322,6 +346,7 @@ splix
 squashfs-tools
 stack
 starship
+steam
 stylua-git
 sudo
 surfn-icons-git
@@ -409,11 +434,13 @@ vim-ultisnips
 vim-vital
 volumeicon
 vpnc
+vulkan-intel
 w3m
 webkit2gtk
 wget
 which
-wine
+wine-staging
+winetricks
 wireless-regdb
 wireless_tools
 wmctrl

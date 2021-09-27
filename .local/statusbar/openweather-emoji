@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 get_icon() {
     # MOON=$(cat $XDG_CACHE_HOME/moonphase)
     MOON=$(curl -sf "wttr.in/?format=%m")
@@ -13,17 +12,17 @@ get_icon() {
         03d) icon="⛅️";;       #Scattered clouds (25-50%) - day/night
         03n) icon="$MOON";;       #Scattered clouds (25-50%) - day/night
         04d) icon="";;       #Broken / Overcast clouds (51-84% / 85-100%) - day/night
-        04n) icon="$MOON";;     #Broken / Overcast clouds (51-84% / 85-100%) - day/night
+        04n) icon="${MOON}";;     #Broken / Overcast clouds (51-84% / 85-100%) - day/night
         09d) icon="🌧";;       #Shower rain - day
-        09n) icon="🌧";;       #Shower rain - night
+        09n) icon="${MOON}🌧";;       #Shower rain - night
         10d) icon="🌦";;       #Moderate / heavy rain - day
-        10n) icon="☔️";;       #Moderate / heavy rain - night
+        10n) icon="${MOON}☔️";;       #Moderate / heavy rain - night
         11d) icon="⛈";;        #Thunderstorm - day
-        11n) icon="⛈";;        #Thunderstorm - night
+        11n) icon="${MOON}⛈";;        #Thunderstorm - night
         13d) icon="🌨";;       #Snow - day
-        13n) icon="🌨";;       #Snow - night
+        13n) icon="${MOON}🌨";;       #Snow - night
         50d) icon="💨";;       #Fog - day
-        50n) icon="💨";;       #Fog - night
+        50n) icon="${MOON}💨";;       #Fog - night
         *) icon="☀️";          #??
     esac
     echo $icon
