@@ -77,7 +77,6 @@ bluez-utils
 bpytop
 broadcom-wl
 btrfs-progs
-cadence
 cbatticon
 clonezilla
 conky-lua-archers
@@ -170,6 +169,7 @@ hardcode-fixer-git
 hardinfo
 haveged
 hdparm
+helvum
 heroic-games-launcher-bin
 htop
 hw-probe
@@ -182,6 +182,7 @@ ipw2100-fw
 ipw2200-fw
 irssi
 iw
+jack_mixer
 jfsutils
 jq
 js-beautify-git
@@ -290,6 +291,8 @@ pavucontrol
 pcmanfm
 pcsclite
 picom-git
+pipewire-alsa
+pipewire-jack
 pkgconf
 playerctl
 polkit
@@ -302,7 +305,6 @@ protonup-git
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
-pulseaudio-jack
 pycharm-community-edition
 python-pip
 python-psutil

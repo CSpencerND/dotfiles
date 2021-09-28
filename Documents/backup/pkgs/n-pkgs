@@ -74,7 +74,6 @@ bluez-utils
 bpytop
 broadcom-wl
 btrfs-progs
-cadence
 cbatticon
 clonezilla
 conky-lua-archers
@@ -178,6 +177,7 @@ ipw2100-fw
 ipw2200-fw
 irssi
 iw
+jack_mixer
 jfsutils
 jq
 jsoncpp
@@ -281,6 +281,8 @@ patch
 pavucontrol
 pcmanfm
 pcsclite
+pipewire-alsa
+pipewire-jack
 pkgconf
 playerctl
 polkit
@@ -293,7 +295,6 @@ protonup-git
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
-pulseaudio-jack
 pycharm-community-edition
 python-pip
 python-psutil
