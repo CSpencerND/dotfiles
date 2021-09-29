@@ -82,6 +82,11 @@ class dracula:
 ##############################
 # {{{     KEYBINDINGS      ---
 
+# Possible replacement for the preceeding two functions {
+    # lambda: qtile.current_screen.cmd_next_group()
+# }
+
+
 # Move Windows To Groups By Direction
 @lazy.function
 def window_to_prev_group(qtile):

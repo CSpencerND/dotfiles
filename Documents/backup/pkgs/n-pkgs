@@ -273,6 +273,7 @@ os-prober
 p7zip
 pacman
 pamac-all
+paprefs
 partclone
 parted
 partimage
@@ -295,6 +296,7 @@ protonup-git
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
+pulsemixer
 pycharm-community-edition
 python-pip
 python-psutil
