@@ -5,6 +5,9 @@
 super + slash
   rofi -show drun
 
+super + shift + slash
+  xfce4-appfinder
+
 super + space
   rofi -show window
 

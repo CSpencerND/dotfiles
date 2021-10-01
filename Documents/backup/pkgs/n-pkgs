@@ -328,6 +328,7 @@ sddm-config-editor-git
 sdparm
 sed
 sg3_utils
+shell-color-scripts
 smartmontools
 sof-firmware
 solaar
@@ -499,6 +500,7 @@ xorg-xwud
 yad
 yay-bin
 zenity
+zoom
 zsh
 zsh-completions
 zsh-syntax-highlighting
