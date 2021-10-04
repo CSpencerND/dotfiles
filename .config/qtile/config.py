@@ -777,6 +777,16 @@ class widgets:
         spacer
     ]
 
+#     network = [
+
+#        widget.Net
+#        (
+#            interface="wlp0s20f3",
+#            format='{down} ↓↑ {up}',
+#        ),
+#        spacer
+#     ]
+
     memory = [
 
         widget.TextBox
@@ -904,6 +914,7 @@ widgets_list = [
     *widgets.weather,
     *widgets.stocks,
     *widgets.keyboard,
+    # *widgets.network,
     *widgets.memory,
     *widgets.thermals,
     *widgets.system76,

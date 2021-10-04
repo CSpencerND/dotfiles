@@ -19,7 +19,7 @@
     "dpi": "600",
     "dpi-sliding": 0,
     "hires-smooth-invert": false,
-    "hires-smooth-resolution": false,
+    "hires-smooth-resolution": true,
     "mouse-gestures": "0",
     "reprogrammable-keys": {
       "196": 196,
@@ -31,6 +31,6 @@
     },
     "smart-shift": 10
   },
-  "_version": "1.0.6",
+  "_version": "1.0.7",
   "battery-icons": "solaar"
 }
