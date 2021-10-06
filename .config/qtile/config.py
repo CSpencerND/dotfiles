@@ -155,7 +155,7 @@ keys = [
     (
         [mod, "control"], "h",
         lazy.layout.shrink_main().when(layout='monadtall'),
-        lazy.layout.decrease_ratio().when(layout='tile'),
+        # lazy.layout.decrease_ratio().when(layout='tile'),
         lazy.layout.grow_left().when(layout='columns'),
         lazy.layout.add().when(layout='matrix'),
     ),
@@ -164,20 +164,20 @@ keys = [
         [mod, "control"], "j",
         lazy.layout.shrink_main().when(layout='monadtall'),
         lazy.layout.grow_down().when(layout='columns'),
-        lazy.layout.increase_nmaster().when(layout='tile'),
+        # lazy.layout.increase_nmaster().when(layout='tile'),
     ),
     Key
     (
         [mod, "control"], "k",
         lazy.layout.grow_main().when(layout='monadtall'),
         lazy.layout.grow_up().when(layout='columns'),
-        lazy.layout.decrease_nmaster().when(layout='tile'),
+        # lazy.layout.decrease_nmaster().when(layout='tile'),
     ),
     Key
     (
         [mod, "control"], "l",
         lazy.layout.grow_main().when(layout='monadtall'),
-        lazy.layout.increase_ratio().when(layout='tile'),
+        # lazy.layout.increase_ratio().when(layout='tile'),
         lazy.layout.grow_right().when(layout='columns'),
         lazy.layout.delete().when(layout='matrix'),
     ),
@@ -526,11 +526,11 @@ layouts = [
         **layout_theme
     ),
 
-    layout.Tile
-    (
-        ratio_increment=0.039,
-        **layout_theme
-    ),
+    # layout.Tile
+    # (
+    #     ratio_increment=0.039,
+    #     **layout_theme
+    # ),
 
     layout.Columns
     (

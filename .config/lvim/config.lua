@@ -117,6 +117,10 @@ lvim.lang.python.linters = {
   },
 }
 
+-- cpp
+lvim.lang.c.formatters = { { exe = "clang_format" } }
+lvim.lang.cpp.formatters = lvim.lang.c.formatters
+
 
 -- Additional Plugins
 lvim.plugins = {
