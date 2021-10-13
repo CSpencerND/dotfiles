@@ -78,6 +78,7 @@ bpytop
 broadcom-wl
 btrfs-progs
 cbatticon
+chromium
 clonezilla
 conky-lua-archers
 crda
@@ -169,7 +170,6 @@ hardcode-fixer-git
 hardinfo
 haveged
 hdparm
-helvum
 heroic-games-launcher-bin
 htop
 hw-probe

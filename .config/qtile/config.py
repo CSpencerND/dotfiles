@@ -8,8 +8,9 @@ from libqtile.config import (
     Key, Screen, Group, Drag, Match, ScratchPad, DropDown
 )
 # import arcobattery
+import custom_groupbox
 
-subprocess.call("setup_screens")
+# subprocess.call("setup_screens")
 
 # ---       IMPORTS        }}}
 ##############################
@@ -566,7 +567,7 @@ widget_defaults = dict(
     background=dracula.bgl,
     foreground=dracula.fg,
     highlight_method='block',
-    borderwidth=2,
+    borderwidth=1,
     rounded=False,
     urgent_alert_method='text',
     urgent_text=dracula.magenta,
@@ -595,19 +596,19 @@ class widgets:
 
     basics = [
 
-        widget.GroupBox
+        # widget.GroupBox
+        custom_groupbox.GroupBox
         (
-            padding=2,
-            margin_y=6,
+            padding=3,
             active=dracula.fg,
             inactive=dracula.bgl,
             disable_drag=False,
             highlight_method='line',
             highlight_color=[dracula.purple, dracula.dpurple],
             this_current_screen_border=dracula.dpurple,
-            this_screen_border=dracula.dpurple,
+            this_screen_border=dracula.purple,
             other_current_screen_border=dracula.purple,
-            other_screen_border=dracula.dpurple,
+            other_screen_border=dracula.purple,
             background=None,
         ),
         widget.CurrentLayoutIcon
@@ -619,7 +620,7 @@ class widgets:
         (
             icon_size=20,
             # max_title_width=350,
-            margin=3,
+            margin=2,
             padding_y=2,
             # title_width_method = 'uniform',
             txt_floating='🗗 ',
@@ -941,7 +942,7 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=24, background=dracula.bg, opacity=0.85
+                size=26, background=dracula.bg, opacity=0.85
              )),
 
              # Screen(top=bar.Bar(

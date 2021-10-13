@@ -26,11 +26,17 @@ super + b
 super + d
   discord
 
+super + g
+  retroarch
+
 super + shift + Return
 	pcmanfm
 
 super + shift + p
   s76-power-base
+
+super + alt + p
+  picom-toggle.sh
 
 # Screenshots
 super + Print
