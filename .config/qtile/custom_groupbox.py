@@ -96,10 +96,16 @@ class _GroupBase(base._TextBox, base.PaddingMixin, base.MarginMixin):
         if width is not None:
             self.layout.width = width
 
-        pad_y = [
-            (self.bar.height - self.layout.height - self.borderwidth) / 2,
-            (self.bar.height - self.layout.height + self.borderwidth) / 2
-        ]
+        if block or line:
+            pad_y = [
+                (self.bar.height - self.layout.height - self.borderwidth) / 2,
+                (self.bar.height - self.layout.height + self.borderwidth) / 2
+            ]
+        else:
+            pad_y = [
+                (self.bar.height - self.layout.height - self.borderwidth) / 2 - 1,
+                (self.bar.height - self.layout.height + self.borderwidth) / 2 - 1
+            ]
 
         if bordercolor is None:
             # border colour is set to None when we don't want to draw a border at all
