@@ -9,6 +9,7 @@ from libqtile.config import (
 )
 # import arcobattery
 import custom_groupbox
+import custom_tasklist
 
 # subprocess.call("setup_screens")
 
@@ -566,12 +567,12 @@ widget_defaults = dict(
     padding=3,
     background=dracula.bgl,
     foreground=dracula.fg,
-    highlight_method='block',
-    borderwidth=1,
+    borderwidth=2,
     rounded=False,
     urgent_alert_method='text',
     urgent_text=dracula.magenta,
     urgent_border=dracula.magenta,
+    highlight_method='block',
 )
 extension_defaults = widget_defaults.copy()
 
@@ -599,16 +600,15 @@ class widgets:
         # widget.GroupBox
         custom_groupbox.GroupBox
         (
-            padding=3,
             active=dracula.fg,
             inactive=dracula.bgl,
             disable_drag=False,
-            highlight_method='line',
+            # block_highlight_text_color=None,
             highlight_color=[dracula.purple, dracula.dpurple],
             this_current_screen_border=dracula.dpurple,
-            this_screen_border=dracula.purple,
-            other_current_screen_border=dracula.purple,
-            other_screen_border=dracula.purple,
+            this_screen_border=dracula.dpurple,
+            other_current_screen_border=dracula.dpurple,
+            other_screen_border=dracula.dpurple,
             background=None,
         ),
         widget.CurrentLayoutIcon
@@ -616,18 +616,17 @@ class widgets:
             scale=0.7,
             background=None
         ),
-        widget.TaskList
+        # widget.TaskList
+        custom_tasklist.TaskList
         (
             icon_size=20,
-            # max_title_width=350,
-            margin=2,
-            padding_y=2,
-            # title_width_method = 'uniform',
             txt_floating='🗗 ',
             txt_maximized='🗖 ',
             txt_minimized='🗕 ',
             border=dracula.dpurple,
             background=None
+            # max_title_width=350,
+            # title_width_method = 'uniform',
         ),
         spacer
     ]

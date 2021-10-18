@@ -92,15 +92,14 @@ class _GroupBase(base._TextBox, base.PaddingMixin, base.MarginMixin):
         self.layout.font_family = self.font
         self.layout.font_size = self.fontsize
         self.layout.colour = textcolor
+
         if width is not None:
             self.layout.width = width
-        if line:
-            pad_y = [
-                (self.bar.height - self.layout.height - self.borderwidth) / 2,
-                (self.bar.height - self.layout.height + self.borderwidth) / 2
-            ]
-        else:
-            pad_y = self.padding_y
+
+        pad_y = [
+            (self.bar.height - self.layout.height - self.borderwidth) / 2,
+            (self.bar.height - self.layout.height + self.borderwidth) / 2
+        ]
 
         if bordercolor is None:
             # border colour is set to None when we don't want to draw a border at all
@@ -177,10 +176,9 @@ class GroupBox(_GroupBase):
             "Uses `*_border` color settings"
         ),
         (
-            "other_screen_highlight_method",
+            "unfocused_highlight_method",
             "border",
-            "Method of highlighting for non-focused screen \
-            ('border', 'block', 'text', or 'line')"
+            "Highlight for group on unfocused screen ('border', 'block', 'text', or 'line')"
             "Uses `*_border` color settings"
         ),
         ("rounded", True, "To round or not to round box borders"),
@@ -240,7 +238,8 @@ class GroupBox(_GroupBase):
             "spacing",
             None,
             "Spacing between groups"
-            "(if set to None, will be equal to margin_x)")
+            "(if set to None, will be equal to margin_x)"
+        ),
     ]
 
     def __init__(self, **config):
@@ -367,7 +366,6 @@ class GroupBox(_GroupBase):
             else:
                 text_color = self.inactive
 
-            # if the group is currently shown on a screen
             if g.screen:
                 if self.highlight_method == 'text':
                     border = None
@@ -375,8 +373,6 @@ class GroupBox(_GroupBase):
                 else:
                     if self.block_highlight_text_color:
                         text_color = self.block_highlight_text_color
-
-                    # is the group the one shown on the screen with the widget
                     if self.bar.screen.group.name == g.name:
                         if self.qtile.current_screen == self.bar.screen:
                             border = self.this_current_screen_border
@@ -385,17 +381,22 @@ class GroupBox(_GroupBase):
                             is_line = (self.highlight_method == 'line')
                         else:
                             border = self.this_screen_border
+                            if self.unfocused_highlight_method != 'border':
+                                to_highlight = True
+                                is_block = (self.unfocused_highlight_method == 'block')
+                                is_line = (self.unfocused_highlight_method == 'line')
                     else:
-
-                        # is the group on the currently focused screen
                         if self.qtile.current_screen == g.screen:
                             border = self.other_current_screen_border
                             to_highlight = True
-                            is_block = (self.other_screen_highlight_method == 'block')
-                            is_line = (self.other_screen_highlight_method == 'line')
+                            is_block = (self.highlight_method == 'block')
+                            is_line = (self.highlight_method == 'line')
                         else:
                             border = self.other_screen_border
-
+                            if self.unfocused_highlight_method != 'border':
+                                to_highlight = True
+                                is_block = (self.unfocused_highlight_method == 'block')
+                                is_line = (self.unfocused_highlight_method == 'line')
             elif self.group_has_urgent(g) and \
                     self.urgent_alert_method in ('border', 'block', 'line'):
                 border = self.urgent_border

@@ -47,7 +47,7 @@ font:
     family: Hack Nerd Font
     style: Bold Italic
 
-  size: 10
+  size: 8
 
   offset:
     x: 0
