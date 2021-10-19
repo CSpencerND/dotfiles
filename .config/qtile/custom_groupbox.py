@@ -86,8 +86,9 @@ class _GroupBase(base._TextBox, base.PaddingMixin, base.MarginMixin):
         hook.subscribe.current_screen_change(hook_response)
         hook.subscribe.changegroup(hook_response)
 
-    def drawbox(self, offset, text, bordercolor, textcolor, highlight_color=None,
-                width=None, rounded=False, block=False, line=False, highlighted=False):
+    def drawbox(self, offset, text, bordercolor, textcolor,
+                highlight_color=None, width=None, rounded=False,
+                block=False, line=False, highlighted=False):
         self.layout.text = text
         self.layout.font_family = self.font
         self.layout.font_size = self.fontsize
@@ -96,16 +97,25 @@ class _GroupBase(base._TextBox, base.PaddingMixin, base.MarginMixin):
         if width is not None:
             self.layout.width = width
 
-        if block or line:
-            pad_y = [
-                (self.bar.height - self.layout.height - self.borderwidth) / 2,
-                (self.bar.height - self.layout.height + self.borderwidth) / 2
-            ]
+        if self.padding_y == 0:
+            if block or line:
+                pad_y = [
+                    (self.bar.height - self.layout.height - self.borderwidth) / 2,
+                    (self.bar.height - self.layout.height + self.borderwidth) / 2
+                ]
+            else:
+                pad_y = [
+                    (self.bar.height - self.layout.height - self.borderwidth) / 2 - 1,
+                    (self.bar.height - self.layout.height + self.borderwidth) / 2 - 1
+                ]
         else:
-            pad_y = [
-                (self.bar.height - self.layout.height - self.borderwidth) / 2 - 1,
-                (self.bar.height - self.layout.height + self.borderwidth) / 2 - 1
-            ]
+            if line:
+                pad_y = [
+                    (self.bar.height - self.layout.height - self.borderwidth) / 2,
+                    (self.bar.height - self.layout.height + self.borderwidth) / 2
+                ]
+            else:
+                pad_y = self.padding_y
 
         if bordercolor is None:
             # border colour is set to None when we don't want to draw a border at all

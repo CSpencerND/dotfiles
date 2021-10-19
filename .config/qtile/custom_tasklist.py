@@ -49,8 +49,8 @@ class TaskList(base._Widget, base.PaddingMixin, base.MarginMixin):
             "font shadow color, default is None(no shadow)"
         ),
         ("borderwidth", 2, "Current group border width"),
-        ("center_aligned", True, "center vertical alignment"),
         ("border", "215578", "Border colour"),
+        ("center_aligned", True, "center vertical alignment"),
         ("rounded", True, "To round or not to round borders"),
         (
             "highlight_method",
@@ -366,10 +366,19 @@ class TaskList(base._Widget, base.PaddingMixin, base.MarginMixin):
         icon_padding = (self.icon_size + self.padding_x) if icon else 0
         padding_x = [self.padding_x + icon_padding, self.padding_x]
 
-        pad_y = [
-            (self.bar.height - self.layout.height - self.borderwidth) / 2,
-            (self.bar.height - self.layout.height + self.borderwidth) / 2
-        ]
+        if self.padding_y == 0:
+            if block:
+                pad_y = [
+                    (self.bar.height - self.layout.height - self.borderwidth) / 2,
+                    (self.bar.height - self.layout.height + self.borderwidth) / 2
+                ]
+            else:
+                pad_y = [
+                    (self.bar.height - self.layout.height - self.borderwidth) / 2 - 1,
+                    (self.bar.height - self.layout.height + self.borderwidth) / 2 - 1
+                ]
+        else:
+            pad_y = self.padding_y
 
         if bordercolor is None:
             # border colour is set to None when we don't want to draw a border at all

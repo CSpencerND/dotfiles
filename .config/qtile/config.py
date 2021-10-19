@@ -428,7 +428,7 @@ keys = [
     Key
     (
         [mod, "shift"], "s",
-        lazy.to_layout_index(2),
+        lazy.to_layout_index(1),
         lazy.layout.toggle_split()
     ),
 
@@ -610,6 +610,7 @@ class widgets:
             other_current_screen_border=dracula.dpurple,
             other_screen_border=dracula.dpurple,
             background=None,
+            padding_y=0,
         ),
         widget.CurrentLayoutIcon
         (
@@ -619,14 +620,15 @@ class widgets:
         # widget.TaskList
         custom_tasklist.TaskList
         (
-            icon_size=20,
+            icon_size=22,
             txt_floating='🗗 ',
             txt_maximized='🗖 ',
             txt_minimized='🗕 ',
             border=dracula.dpurple,
-            background=None
+            background=None,
             # max_title_width=350,
             # title_width_method = 'uniform',
+            padding_y=0,
         ),
         spacer
     ]
@@ -638,7 +640,7 @@ class widgets:
             name='clock_icon',
             font="JoyPixels",
             text=subprocess.getoutput("cat ~/.cache/clock-icon"),
-            fontsize=16,
+            fontsize=18,
             mouse_callbacks={
                 'Button3': lambda: qtile.cmd_spawn('sb-clock')
             }
@@ -657,7 +659,7 @@ class widgets:
             name='date_icon',
             font="FontAwesome",
             text="📆",
-            fontsize=16,
+            fontsize=18,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
             }
@@ -687,7 +689,7 @@ class widgets:
             name='current_icon',
             font="JoyPixels",
             text=subprocess.getoutput("cat ~/.cache/weather/current_icon"),
-            fontsize=16,
+            fontsize=18,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
             },
@@ -705,7 +707,7 @@ class widgets:
             name='trend',
             font="Material Icons",
             text=subprocess.getoutput("cat ~/.cache/weather/trend"),
-            fontsize=16,
+            fontsize=18,
             foreground=dracula.yellow,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
@@ -717,7 +719,7 @@ class widgets:
             name='forecast_icon',
             font="JoyPixels",
             text=subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
-            fontsize=16,
+            fontsize=18,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
@@ -794,7 +796,7 @@ class widgets:
             name='memory_icon',
             font="JoyPixels",
             text="🧠",
-            fontsize=16,
+            fontsize=18,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('mem-icon-click')
             }
@@ -844,7 +846,7 @@ class widgets:
             font='JoyPixels',
             text='⚡',
             padding=0,
-            fontsize=16,
+            fontsize=18,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('s76-power-base')
             },
