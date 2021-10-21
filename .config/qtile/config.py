@@ -11,7 +11,7 @@ from libqtile.config import (
 import custom_groupbox
 import custom_tasklist
 
-# subprocess.call("setup_screens")
+subprocess.call("setup_screens")
 
 # ---       IMPORTS        }}}
 ##############################
@@ -83,11 +83,6 @@ class dracula:
 # ---        VARS          }}}
 ##############################
 # {{{     KEYBINDINGS      ---
-
-# Possible replacement for the preceeding two functions {
-    # lambda: qtile.current_screen.cmd_next_group()
-# }
-
 
 # Move Windows To Groups By Direction
 @lazy.function
@@ -604,11 +599,11 @@ class widgets:
             inactive=dracula.bgl,
             disable_drag=False,
             # block_highlight_text_color=None,
-            highlight_color=[dracula.purple, dracula.dpurple],
+            # highlight_color=[dracula.purple, dracula.dpurple],
             this_current_screen_border=dracula.dpurple,
             this_screen_border=dracula.dpurple,
-            other_current_screen_border=dracula.dpurple,
-            other_screen_border=dracula.dpurple,
+            other_current_screen_border=dracula.blurple,
+            other_screen_border=dracula.blurple,
             background=None,
             padding_y=0,
         ),
@@ -911,6 +906,11 @@ widgets_list = [
 
     *widgets.arco,
     *widgets.basics,
+    # widget.OpenWeather(
+    #     zip=18328,
+    #     format="{main_feels_like}°{weather}",
+    #     metric=False,
+    # ),
     *widgets.time,
     *widgets.date,
     *widgets.weather,
