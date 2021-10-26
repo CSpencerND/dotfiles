@@ -26,11 +26,12 @@ qtile_home = os.path.expanduser('~/.config/qtile/')
 
 # Group Definitions
 groups = []
-group_names = ["1", "2", "3", "4", "5"]
-group_labels = ["1", "2", "3", "4", "5"]
+group_names = ["1", "2", "3", "4", "5", "6"]
+group_labels = ["1", "2", "3", "4", "5", "II"]
 group_layouts = [
-    "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"
+    "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "columns"
 ]
+affinities = [0, 0, 0, 0, 0, 1]
 
 for i in range(len(group_names)):
     groups.append(
@@ -38,11 +39,10 @@ for i in range(len(group_names)):
         (
             name=group_names[i],
             layout=group_layouts[i].lower(),
-            label=group_labels[i]
+            label=group_labels[i],
+            # screen_affinity=affinities[i]
         )
     )
-# groups.append(Group(name="0", layout="columns", label="0"))
-
 
 dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
 groups.append(ScratchPad("scratchpad", dropdowns=[

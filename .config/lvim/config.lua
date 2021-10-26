@@ -136,6 +136,10 @@ lvim.plugins = {
   { "marko-cerovac/material.nvim" },
   { "romgrk/doom-one.vim" },
   {
+    "sindrets/diffview.nvim",
+    event = "BufRead",
+  },
+  {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
   },
