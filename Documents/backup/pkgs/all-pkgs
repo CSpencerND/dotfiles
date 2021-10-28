@@ -150,6 +150,8 @@ groff
 grub
 grub-btrfs
 grub-customizer
+gruvbox-material-gtk-theme-git
+gruvbox-material-icon-theme-git
 gsfonts
 gst-libav
 gst-plugins-bad
@@ -157,6 +159,7 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
 gstreamer
+gtk-theme-arc-gruvbox-git
 gtk3
 gutenprint
 gvfs
@@ -298,6 +301,7 @@ pkgconf
 playerctl
 polkit
 polkit-gnome
+pop-theme
 poppler-glib
 poppler-qt5
 ppp

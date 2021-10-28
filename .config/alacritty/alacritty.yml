@@ -1,5 +1,7 @@
 import:
-  - /home/cs/.config/alacritty/dracula.yml
+  - /home/cs/.config/alacritty/gruvbox.yml
+# import:
+#   - /home/cs/.config/alacritty/dracula.yml
   
   
 env:

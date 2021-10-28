@@ -80,6 +80,26 @@ class dracula:
     red =     '#ff5555'
 
 
+class gruvbox:
+    black =   '#1d2021'
+    bg =      '#282828'
+    bgl =     '#3c3836'
+    bgla =    '#504945'
+    comment = "#665c54"
+    fga =     '#ebdbb2'
+    fg =      '#fbf1c7'
+    magenta = '#cc241d'#d65d0e
+    purple =  '#d65d0e'#fe8019
+    dpurple = '#d79921'#b57614
+    blurple = '#b57614'#d79921
+    arcoblue= '#6790eb'#fabd2f
+    cyan =    '#689d6a'
+    green =   '#98971a'
+    yellow =  '#fabd2f'
+    orange =  '#b16286'
+    red =     '#fb4934'
+
+
 # ---        VARS          }}}
 ##############################
 # {{{     KEYBINDINGS      ---
@@ -89,14 +109,20 @@ class dracula:
 def window_to_prev_group(qtile):
     if qtile.current_window is not None:
         i = qtile.groups.index(qtile.current_group)
-        qtile.current_window.togroup(qtile.groups[i - 1].name)
+        if qtile.groups[i - 1].name == "scratchpad":
+            qtile.current_window.togroup(qtile.groups[-2].name)
+        else:
+            qtile.current_window.togroup(qtile.groups[i - 1].name)
 
 
 @lazy.function
 def window_to_next_group(qtile):
     if qtile.current_window is not None:
         i = qtile.groups.index(qtile.current_group)
-        qtile.current_window.togroup(qtile.groups[i + 1].name)
+        if qtile.groups[i + 1].name == "scratchpad":
+            qtile.current_window.togroup(qtile.groups[0].name)
+        else:    
+            qtile.current_window.togroup(qtile.groups[i + 1].name)
 
 
 # Move Windows Between Screens
@@ -511,8 +537,8 @@ layout_theme = {
     "margin": 8,
     "border_width": 2,
     "single_border_width": 2,
-    "border_focus": dracula.purple,
-    "border_normal": dracula.blurple
+    "border_focus": gruvbox.purple,
+    "border_normal": gruvbox.bg
 }
 
 layouts = [
@@ -532,8 +558,8 @@ layouts = [
     layout.Columns
     (
         insert_position=0,
-        border_normal_stack=dracula.blurple,
-        border_focus_stack=dracula.magenta,
+        border_normal_stack=gruvbox.blurple,
+        border_focus_stack=gruvbox.magenta,
         **layout_theme
     ),
 
@@ -560,13 +586,13 @@ widget_defaults = dict(
     font='Hack Nerd Font',
     fontsize=14,
     padding=3,
-    background=dracula.bgl,
-    foreground=dracula.fg,
+    background=gruvbox.bgl,
+    foreground=gruvbox.fg,
     borderwidth=2,
     rounded=False,
     urgent_alert_method='text',
-    urgent_text=dracula.magenta,
-    urgent_border=dracula.magenta,
+    urgent_text=gruvbox.magenta,
+    urgent_border=gruvbox.magenta,
     highlight_method='block',
 )
 extension_defaults = widget_defaults.copy()
@@ -595,15 +621,15 @@ class widgets:
         # widget.GroupBox
         custom_groupbox.GroupBox
         (
-            active=dracula.fg,
-            inactive=dracula.bgl,
+            active=gruvbox.fg,
+            inactive=gruvbox.bgl,
             disable_drag=False,
             # block_highlight_text_color=None,
-            # highlight_color=[dracula.purple, dracula.dpurple],
-            this_current_screen_border=dracula.dpurple,
-            this_screen_border=dracula.dpurple,
-            other_current_screen_border=dracula.blurple,
-            other_screen_border=dracula.blurple,
+            # highlight_color=[gruvbox.purple, gruvbox.dpurple],
+            this_current_screen_border=gruvbox.dpurple,
+            this_screen_border=gruvbox.dpurple,
+            other_current_screen_border=gruvbox.blurple,
+            other_screen_border=gruvbox.blurple,
             background=None,
             padding_y=0,
         ),
@@ -619,7 +645,7 @@ class widgets:
             txt_floating='🗗 ',
             txt_maximized='🗖 ',
             txt_minimized='🗕 ',
-            border=dracula.dpurple,
+            border=gruvbox.dpurple,
             background=None,
             # max_title_width=350,
             # title_width_method = 'uniform',
@@ -703,7 +729,7 @@ class widgets:
             font="Material Icons",
             text=subprocess.getoutput("cat ~/.cache/weather/trend"),
             fontsize=18,
-            foreground=dracula.yellow,
+            foreground=gruvbox.yellow,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
                 'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
@@ -737,7 +763,7 @@ class widgets:
             apikey='G0BJFWBFWXWJAJ9R',
             symbol='GOOG',
             function='TIME_SERIES_INTRADAY',
-            foreground=dracula.green,
+            foreground=gruvbox.green,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn(
                     'firefox https://www.google.com/finance/quote/GOOG:NASDAQ\
@@ -756,7 +782,7 @@ class widgets:
         #     font='Hack Nerd Font',
         #     text='',
         #     fontsize=22,
-        #     foreground=dracula.cyan,
+        #     foreground=gruvbox.cyan,
         #     padding=6
         # ),
         widget.Image
@@ -823,7 +849,7 @@ class widgets:
         ),
         widget.ThermalSensor
         (
-            foreground_alert=dracula.magenta,
+            foreground_alert=gruvbox.magenta,
             metric=True,
             threshold=70,
             mouse_callbacks={
@@ -868,7 +894,7 @@ class widgets:
         (
             format='{percent:2.0%}',
             mouse_callbacks={'Button1': get_bat_percent},
-            low_foreground=dracula.magenta,
+            low_foreground=gruvbox.magenta,
             low_percentage=0.20,
             notify_below=0.20,
         ),
@@ -943,12 +969,12 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=26, background=dracula.bg, opacity=0.85
+                size=26, background=gruvbox.bg, opacity=0.85
              )),
 
              # Screen(top=bar.Bar(
              #    widgets=init_widgets_screen2(),
-             #    size=24, background=dracula.bg, opacity=0.85
+             #    size=24, background=gruvbox.bg, opacity=0.85
              # ))
            ]
 
@@ -1039,8 +1065,8 @@ floating_layout = layout.Floating(
 
     fullscreen_border_width=0,
     border_width=1,
-    border_focus=dracula.arcoblue,
-    border_normal=dracula.blurple,
+    border_focus=gruvbox.arcoblue,
+    border_normal=gruvbox.blurple,
 )
 
 

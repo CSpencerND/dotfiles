@@ -5,9 +5,10 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
 lvim.transparent_window = false
-lvim.colorscheme = "doom-one"
+lvim.colorscheme = "gruvbox"
 vim.g.material_style = "palenight"
 vim.g.tokyonight_style = "storm" -- storm, night, day
+vim.g.gruvbox_contrast_dark = "hard"
 
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -220,5 +221,7 @@ lvim.plugins = {
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
-vim.cmd "set wrap linebreak relativenumber"
+vim.cmd "set nowrap linebreak relativenumber"
+vim.cmd "set colorcolumn=80"
+vim.cmd "set tabstop=8 softtabstop=4 shiftwidth=4 expandtab"
 
