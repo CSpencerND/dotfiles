@@ -537,8 +537,8 @@ layout_theme = {
     "margin": 8,
     "border_width": 2,
     "single_border_width": 2,
-    "border_focus": gruvbox.purple,
-    "border_normal": gruvbox.bg
+    "border_focus": dracula.purple,
+    "border_normal": dracula.bg
 }
 
 layouts = [
@@ -558,8 +558,8 @@ layouts = [
     layout.Columns
     (
         insert_position=0,
-        border_normal_stack=gruvbox.blurple,
-        border_focus_stack=gruvbox.magenta,
+        border_normal_stack=dracula.blurple,
+        border_focus_stack=dracula.magenta,
         **layout_theme
     ),
 
@@ -586,13 +586,13 @@ widget_defaults = dict(
     font='Hack Nerd Font',
     fontsize=14,
     padding=3,
-    background=gruvbox.bgl,
-    foreground=gruvbox.fg,
+    background=dracula.bgl,
+    foreground=dracula.fg,
     borderwidth=2,
     rounded=False,
     urgent_alert_method='text',
-    urgent_text=gruvbox.magenta,
-    urgent_border=gruvbox.magenta,
+    urgent_text=dracula.magenta,
+    urgent_border=dracula.magenta,
     highlight_method='block',
 )
 extension_defaults = widget_defaults.copy()
@@ -621,15 +621,15 @@ class widgets:
         # widget.GroupBox
         custom_groupbox.GroupBox
         (
-            active=gruvbox.fg,
-            inactive=gruvbox.bgl,
+            active=dracula.fg,
+            inactive=dracula.bgl,
             disable_drag=False,
             # block_highlight_text_color=None,
-            # highlight_color=[gruvbox.purple, gruvbox.dpurple],
-            this_current_screen_border=gruvbox.dpurple,
-            this_screen_border=gruvbox.dpurple,
-            other_current_screen_border=gruvbox.blurple,
-            other_screen_border=gruvbox.blurple,
+            # highlight_color=[dracula.purple, dracula.dpurple],
+            this_current_screen_border=dracula.dpurple,
+            this_screen_border=dracula.dpurple,
+            other_current_screen_border=dracula.blurple,
+            other_screen_border=dracula.blurple,
             background=None,
             padding_y=0,
         ),
@@ -645,7 +645,7 @@ class widgets:
             txt_floating='🗗 ',
             txt_maximized='🗖 ',
             txt_minimized='🗕 ',
-            border=gruvbox.dpurple,
+            border=dracula.dpurple,
             background=None,
             # max_title_width=350,
             # title_width_method = 'uniform',
@@ -729,7 +729,7 @@ class widgets:
             font="Material Icons",
             text=subprocess.getoutput("cat ~/.cache/weather/trend"),
             fontsize=18,
-            foreground=gruvbox.yellow,
+            foreground=dracula.fg,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
                 'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
@@ -763,7 +763,7 @@ class widgets:
             apikey='G0BJFWBFWXWJAJ9R',
             symbol='GOOG',
             function='TIME_SERIES_INTRADAY',
-            foreground=gruvbox.green,
+            foreground=dracula.green,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn(
                     'firefox https://www.google.com/finance/quote/GOOG:NASDAQ\
@@ -782,7 +782,7 @@ class widgets:
         #     font='Hack Nerd Font',
         #     text='',
         #     fontsize=22,
-        #     foreground=gruvbox.cyan,
+        #     foreground=dracula.cyan,
         #     padding=6
         # ),
         widget.Image
@@ -849,7 +849,7 @@ class widgets:
         ),
         widget.ThermalSensor
         (
-            foreground_alert=gruvbox.magenta,
+            foreground_alert=dracula.magenta,
             metric=True,
             threshold=70,
             mouse_callbacks={
@@ -894,7 +894,7 @@ class widgets:
         (
             format='{percent:2.0%}',
             mouse_callbacks={'Button1': get_bat_percent},
-            low_foreground=gruvbox.magenta,
+            low_foreground=dracula.magenta,
             low_percentage=0.20,
             notify_below=0.20,
         ),
@@ -969,12 +969,12 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=26, background=gruvbox.bg, opacity=0.85
+                size=26, background=dracula.bg, opacity=0.85
              )),
 
              # Screen(top=bar.Bar(
              #    widgets=init_widgets_screen2(),
-             #    size=24, background=gruvbox.bg, opacity=0.85
+             #    size=24, background=dracula.bg, opacity=0.85
              # ))
            ]
 
@@ -1065,8 +1065,8 @@ floating_layout = layout.Floating(
 
     fullscreen_border_width=0,
     border_width=1,
-    border_focus=gruvbox.arcoblue,
-    border_normal=gruvbox.blurple,
+    border_focus=dracula.arcoblue,
+    border_normal=dracula.blurple,
 )
 
 

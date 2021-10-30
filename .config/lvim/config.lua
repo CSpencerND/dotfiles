@@ -5,7 +5,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
 lvim.transparent_window = false
-lvim.colorscheme = "gruvbox"
+lvim.colorscheme = "doom-one"
 vim.g.material_style = "palenight"
 vim.g.tokyonight_style = "storm" -- storm, night, day
 vim.g.gruvbox_contrast_dark = "hard"
@@ -112,13 +112,13 @@ lvim.lang.python.formatters = {
   },
 }
 
-lvim.lang.python.linters = {
-  {
-    exe = "flake8",
-  },
-}
+-- lvim.lang.python.linters = {
+--   {
+--     exe = "flake8",
+--   },
+-- }
 
--- cpp
+-- c/cpp
 lvim.lang.c.formatters = { { exe = "clang_format" } }
 lvim.lang.cpp.formatters = lvim.lang.c.formatters
 
