@@ -11,6 +11,9 @@ from libqtile.config import (
 import custom_groupbox
 import custom_tasklist
 
+from qtile_extras import widget
+from qtile_extras.widget.decorations import BorderDecoration
+
 subprocess.call("setup_screens")
 
 # ---       IMPORTS        }}}
@@ -600,11 +603,20 @@ widget_defaults = dict(
     urgent_border=theme.magenta,
     highlight_method='block',
 )
-extension_defaults = widget_defaults.copy()
+# extension_defaults = widget_defaults.copy()
 
+decor = dict(
+    decorations=[
+        BorderDecoration
+        (
+            border_width=[0, 0, 2, 0],
+            colour=theme.purple,
+        )
+    ]
+)
 
 class widgets:
-    spacer = widget.Spacer(length=6, background=None)
+    spacer = widget.Spacer(length=4, background=None)
 
     arco = [
 
@@ -669,11 +681,13 @@ class widgets:
             fontsize=18,
             mouse_callbacks={
                 'Button3': lambda: qtile.cmd_spawn('sb-clock')
-            }
+            },
+            **decor
         ),
         widget.Clock
         (
             format="%I:%M%P",
+            **decor
         ),
         spacer
     ]
@@ -689,6 +703,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
             },
+            **decor
         ),
         widget.Clock
         (
@@ -696,7 +711,8 @@ class widgets:
             update_interval=60,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
-            }
+            },
+            **decor
         ),
         spacer
     ]
@@ -719,6 +735,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
             },
+            **decor
         ),
         widget.TextBox
         (
@@ -727,6 +744,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
+            **decor
         ),
         widget.TextBox
         (
@@ -739,6 +757,7 @@ class widgets:
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
                 'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
             },
+            **decor
         ),
         widget.TextBox
         (
@@ -749,6 +768,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
+            **decor
         ),
         widget.TextBox
         (
@@ -757,6 +777,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
+            **decor
         ),
         spacer
     ]
@@ -774,7 +795,8 @@ class widgets:
                     'firefox https://www.google.com/finance/quote/GOOG:NASDAQ\
                     ?sa=X&ved=2ahUKEwja5LDekejyAhWAJTQIHaLjDtwQ3ecFegQIKhAa'
                 )
-            }
+            },
+            **decor
         ),
         spacer
     ]
@@ -794,13 +816,15 @@ class widgets:
         (
             filename='~/.config/qtile/icons/kmonad.png',
             scale=False,
-            margin_y=4
+            margin_y=4,
+            **decor
         ),
         widget.TextBox
         (
             name='kbd_layout',
             text='Std',
-            padding=4
+            padding=4,
+            **decor
         ),
         spacer
     ]
@@ -825,7 +849,8 @@ class widgets:
             fontsize=18,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('mem-icon-click')
-            }
+            },
+            **decor
         ),
         widget.Memory
         (
@@ -834,7 +859,8 @@ class widgets:
             update_interval=10,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('mem-text-click')
-            }
+            },
+            **decor
         ),
         spacer
     ]
@@ -850,7 +876,8 @@ class widgets:
             fontsize=18,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('cpu-icon-click')
-            }
+            },
+            **decor
         ),
         widget.ThermalSensor
         (
@@ -859,7 +886,8 @@ class widgets:
             threshold=70,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('cpu-text-click')
-            }
+            },
+            **decor
         ),
         spacer
     ]
@@ -876,6 +904,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('s76-power-base')
             },
+            **decor
         ),
         widget.TextBox
         (
@@ -884,6 +913,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('s76-power-base')
             },
+            **decor
         ),
         spacer,
     ]
@@ -894,6 +924,7 @@ class widgets:
         (
             mouse_callbacks={'Button1': get_bat_percent},
             padding=0,
+            **decor
         ),
         widget.Battery
         (
@@ -902,6 +933,7 @@ class widgets:
             low_foreground=theme.magenta,
             low_percentage=0.20,
             notify_below=0.20,
+            **decor
         ),
         spacer,
     ]
