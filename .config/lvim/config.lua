@@ -220,9 +220,15 @@ lvim.plugins = {
 
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- lvim.autocommands.custom_groups = {
---   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
--- }
-vim.cmd "set nowrap linebreak relativenumber"
-vim.cmd "set colorcolumn=80"
-vim.cmd "set tabstop=8 softtabstop=4 shiftwidth=4 expandtab"
+lvim.autocommands.custom_groups = {
+  {
+    "BufWinEnter", -- When to take effect
+    "*", -- filetype or name
+    "setlocal \z
+      tabstop=8 softtabstop=4 shiftwidth=4 expandtab \z
+      relativenumber linebreak nowrap \z
+      hidden \z
+      colorcolumn=80 \z
+    "
+  },
+}
