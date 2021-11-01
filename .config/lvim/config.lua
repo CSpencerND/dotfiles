@@ -5,11 +5,12 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
 lvim.transparent_window = false
-lvim.colorscheme = "doom-one"
+lvim.colorscheme = "dracula"
 vim.g.material_style = "palenight"
 vim.g.tokyonight_style = "storm" -- storm, night, day
 vim.g.gruvbox_contrast_dark = "hard"
 
+require("nvim-lsp-installer").settings { log_level = vim.log.levels.DEBUG }
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -33,18 +34,18 @@ map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<
 ]]
 
 
--- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
-lvim.builtin.telescope.on_config_done = function()
-  local actions = require "telescope.actions"
-  -- for input mode
-  lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
-  lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
-  lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
-  lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
-  -- for normal mode
-  lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
-  lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
-end
+-- -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
+-- lvim.builtin.telescope.on_config_done = function()
+--   local actions = require "telescope.actions"
+--   -- for input mode
+--   lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
+--   lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
+--   lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
+--   lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
+--   -- for normal mode
+--   lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
+--   lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
+-- end
 
 
 -- Use which-key to add extra bindings with the leader-key prefix
@@ -75,7 +76,8 @@ lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.playground.enable = true
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.lsp.diagnostics.virtual_text = false
-require("user.json_schemas").setup()
+lvim.lsp.automatic_servers_installation = true
+-- require("user.json_schemas").setup()
 
 
 -- javascript
@@ -85,11 +87,11 @@ lvim.lang.javascript.formatters = {
   },
 }
 
-lvim.lang.javascript.linters = {
-  {
-    exe = "eslint_d",
-  },
-}
+-- lvim.lang.javascript.linters = {
+--   {
+--     exe = "eslint",
+--   },
+-- }
 
 -- json
 lvim.lang.json.formatters = {
@@ -224,4 +226,3 @@ lvim.plugins = {
 vim.cmd "set nowrap linebreak relativenumber"
 vim.cmd "set colorcolumn=80"
 vim.cmd "set tabstop=8 softtabstop=4 shiftwidth=4 expandtab"
-

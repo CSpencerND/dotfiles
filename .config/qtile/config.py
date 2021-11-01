@@ -40,7 +40,7 @@ for i in range(len(group_names)):
             name=group_names[i],
             layout=group_layouts[i].lower(),
             label=group_labels[i],
-            # screen_affinity=affinities[i]
+            screen_affinity=affinities[i]
         )
     )
 
@@ -59,45 +59,50 @@ groups.append(ScratchPad("scratchpad", dropdowns=[
     )
 )
 
+
 # Theme
-class dracula:
-    black =   '#14151b'
-    bg =      '#282a36'
-    bgl =     '#383c4a'
-    bgla =    '#44475a'
-    comment = "#6272a4"
-    fga =     '#bfbfbf'
-    fg =      '#f8f8f2'
-    magenta = '#ff79c6'
-    purple =  '#bd93f9'
-    dpurple = '#6d5890'
-    blurple = '#4d5b86'
-    arcoblue= '#6790eb'
-    cyan =    '#8be9fd'
-    green =   '#50fa7b'
-    yellow =  '#f1fa8c'
-    orange =  '#ffb86c'
-    red =     '#ff5555'
+class themes:
+    class dracula:
+        black =   '#14151b'
+        bg =      '#282a36'
+        bgl =     '#383c4a'
+        bgla =    '#44475a'
+        comment = "#6272a4"
+        fga =     '#bfbfbf'
+        fg =      '#f8f8f2'
+        magenta = '#ff79c6'
+        purple =  '#bd93f9'
+        dpurple = '#6d5890'
+        blurple = '#4d5b86'
+        arcoblue= '#6790eb'
+        cyan =    '#8be9fd'
+        green =   '#50fa7b'
+        yellow =  '#f1fa8c'
+        orange =  '#ffb86c'
+        red =     '#ff5555'
 
 
-class gruvbox:
-    black =   '#1d2021'
-    bg =      '#282828'
-    bgl =     '#3c3836'
-    bgla =    '#504945'
-    comment = "#665c54"
-    fga =     '#ebdbb2'
-    fg =      '#fbf1c7'
-    magenta = '#cc241d'#d65d0e
-    purple =  '#d65d0e'#fe8019
-    dpurple = '#d79921'#b57614
-    blurple = '#b57614'#d79921
-    arcoblue= '#6790eb'#fabd2f
-    cyan =    '#689d6a'
-    green =   '#98971a'
-    yellow =  '#fabd2f'
-    orange =  '#b16286'
-    red =     '#fb4934'
+    class gruvbox:
+        black =   '#1d2021'
+        bg =      '#282828'
+        bgl =     '#3c3836'
+        bgla =    '#504945'
+        comment = "#665c54"
+        fga =     '#ebdbb2'
+        fg =      '#fbf1c7'
+        magenta = '#cc241d'#d65d0e
+        purple =  '#fe8019'#fe8019
+        dpurple = '#d79921'#b57614
+        blurple = '#b57614'#d79921
+        arcoblue= '#6790eb'#fabd2f
+        cyan =    '#689d6a'
+        green =   '#98971a'
+        yellow =  '#fabd2f'
+        orange =  '#b16286'
+        red =     '#fb4934'
+
+
+theme = themes.dracula
 
 
 # ---        VARS          }}}
@@ -518,7 +523,7 @@ for i in group_names:
         ]
     )
 
-for s, i in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (1, "5")]:
+for s, i in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
     keys.append(
         Key
         (
@@ -537,8 +542,8 @@ layout_theme = {
     "margin": 8,
     "border_width": 2,
     "single_border_width": 2,
-    "border_focus": dracula.purple,
-    "border_normal": dracula.bg
+    "border_focus": theme.purple,
+    "border_normal": theme.bg
 }
 
 layouts = [
@@ -558,8 +563,8 @@ layouts = [
     layout.Columns
     (
         insert_position=0,
-        border_normal_stack=dracula.blurple,
-        border_focus_stack=dracula.magenta,
+        border_normal_stack=theme.blurple,
+        border_focus_stack=theme.magenta,
         **layout_theme
     ),
 
@@ -586,13 +591,13 @@ widget_defaults = dict(
     font='Hack Nerd Font',
     fontsize=14,
     padding=3,
-    background=dracula.bgl,
-    foreground=dracula.fg,
+    background=theme.bgl,
+    foreground=theme.fg,
     borderwidth=2,
     rounded=False,
     urgent_alert_method='text',
-    urgent_text=dracula.magenta,
-    urgent_border=dracula.magenta,
+    urgent_text=theme.magenta,
+    urgent_border=theme.magenta,
     highlight_method='block',
 )
 extension_defaults = widget_defaults.copy()
@@ -621,15 +626,15 @@ class widgets:
         # widget.GroupBox
         custom_groupbox.GroupBox
         (
-            active=dracula.fg,
-            inactive=dracula.bgl,
+            active=theme.fg,
+            inactive=theme.bgl,
             disable_drag=False,
             # block_highlight_text_color=None,
-            # highlight_color=[dracula.purple, dracula.dpurple],
-            this_current_screen_border=dracula.dpurple,
-            this_screen_border=dracula.dpurple,
-            other_current_screen_border=dracula.blurple,
-            other_screen_border=dracula.blurple,
+            # highlight_color=[theme.purple, theme.dpurple],
+            this_current_screen_border=theme.dpurple,
+            this_screen_border=theme.dpurple,
+            other_current_screen_border=theme.blurple,
+            other_screen_border=theme.blurple,
             background=None,
             padding_y=0,
         ),
@@ -645,7 +650,7 @@ class widgets:
             txt_floating='🗗 ',
             txt_maximized='🗖 ',
             txt_minimized='🗕 ',
-            border=dracula.dpurple,
+            border=theme.dpurple,
             background=None,
             # max_title_width=350,
             # title_width_method = 'uniform',
@@ -668,7 +673,7 @@ class widgets:
         ),
         widget.Clock
         (
-            format="%I:%M%P"
+            format="%I:%M%P",
         ),
         spacer
     ]
@@ -683,7 +688,7 @@ class widgets:
             fontsize=18,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
-            }
+            },
         ),
         widget.Clock
         (
@@ -729,7 +734,7 @@ class widgets:
             font="Material Icons",
             text=subprocess.getoutput("cat ~/.cache/weather/trend"),
             fontsize=18,
-            foreground=dracula.fg,
+            foreground=theme.fg,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
                 'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
@@ -763,7 +768,7 @@ class widgets:
             apikey='G0BJFWBFWXWJAJ9R',
             symbol='GOOG',
             function='TIME_SERIES_INTRADAY',
-            foreground=dracula.green,
+            foreground=theme.green,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn(
                     'firefox https://www.google.com/finance/quote/GOOG:NASDAQ\
@@ -782,7 +787,7 @@ class widgets:
         #     font='Hack Nerd Font',
         #     text='',
         #     fontsize=22,
-        #     foreground=dracula.cyan,
+        #     foreground=theme.cyan,
         #     padding=6
         # ),
         widget.Image
@@ -849,7 +854,7 @@ class widgets:
         ),
         widget.ThermalSensor
         (
-            foreground_alert=dracula.magenta,
+            foreground_alert=theme.magenta,
             metric=True,
             threshold=70,
             mouse_callbacks={
@@ -894,7 +899,7 @@ class widgets:
         (
             format='{percent:2.0%}',
             mouse_callbacks={'Button1': get_bat_percent},
-            low_foreground=dracula.magenta,
+            low_foreground=theme.magenta,
             low_percentage=0.20,
             notify_below=0.20,
         ),
@@ -969,12 +974,12 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=26, background=dracula.bg, opacity=0.85
+                size=26, background=theme.bg, opacity=0.85
              )),
 
              # Screen(top=bar.Bar(
              #    widgets=init_widgets_screen2(),
-             #    size=24, background=dracula.bg, opacity=0.85
+             #    size=24, background=theme.bg, opacity=0.85
              # ))
            ]
 
@@ -1065,8 +1070,8 @@ floating_layout = layout.Floating(
 
     fullscreen_border_width=0,
     border_width=1,
-    border_focus=dracula.arcoblue,
-    border_normal=dracula.blurple,
+    border_focus=theme.arcoblue,
+    border_normal=theme.blurple,
 )
 
 
