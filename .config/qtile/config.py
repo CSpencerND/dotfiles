@@ -170,7 +170,7 @@ def float_to_front(qtile):
 @lazy.function
 def go_to_group(group):
     def f(qtile):
-        if group in "1234":
+        if group in "12345":
             qtile.cmd_to_screen(0)
             qtile.groups_map[group].cmd_toscreen()
         else:
@@ -319,8 +319,9 @@ keys = [
     ),
     Key
     (
-        [mod], "semicolon",
-        lazy.screen.toggle_group()),
+        [mod, "shift"], "semicolon",
+        go_to_group,
+    ),
     Key
     (
         [mod, "shift"], "i",
@@ -380,7 +381,7 @@ keys = [
     ),
     Key
     (
-        [mod, "control"], "apostrophe",
+        [mod, "control"], "semicolon",
         switch_screens
     ),
 
@@ -441,7 +442,7 @@ keys = [
     ),
     Key
     (
-        [mod], "r",
+        [mod, "shift"], "r",
         lazy.layout.reset()
     ),
     Key
@@ -466,11 +467,16 @@ keys = [
     Key
     (
         [mod], "r",
-        lazy.restart()
+        lazy.reload_config()
     ),
     Key
     (
         [mod, "control"], "r",
+        lazy.restart()
+    ),
+    Key
+    (
+        [mod, "mod1"], "r",
         lazy.reconfigure_screens()
     ),
     Key
@@ -518,20 +524,40 @@ for i in group_names:
                 lazy.window.togroup(i),
                 lazy.group[i].toscreen()
             ),
-            Key
-            (
-                [mod, "shift", "mod1"], i,
-                go_to_group
-            )
+            # Key
+            # (
+            #     [mod, "shift", "mod1"], i,
+            #     go_to_group
+            # )
         ]
     )
 
-for s, i in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
+for s, g in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
     keys.append(
         Key
         (
-            [mod, "mod1"], i,
-            lazy.group[i].toscreen(s),
+            [mod, "mod1"], g,
+            lazy.group[g].toscreen(s),
+        )
+    )
+
+for s, g in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
+    keys.append(
+        Key
+        (
+            [mod, "mod1", "shift"], g,
+            lazy.window.togroup(g),
+            lazy.group[g].toscreen(s),
+        )
+    )
+
+for s, g in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
+    keys.append(
+        Key
+        (
+            [mod, "mod1", "control"], g,
+            lazy.window.togroup(g),
+            lazy.group[g].toscreen(s),
             lazy.to_screen(s)
         )
     )

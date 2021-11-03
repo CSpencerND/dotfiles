@@ -293,6 +293,7 @@ poppler-glib
 poppler-qt5
 ppp
 pptpclient
+progress
 protonup-git
 pulseaudio
 pulseaudio-alsa
@@ -303,7 +304,6 @@ python-pip
 python-psutil
 python-pyparted
 python-pywal
-python2-pyxdg
 qt5-webkit
 qt5ct
 qtile

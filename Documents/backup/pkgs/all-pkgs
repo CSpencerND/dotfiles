@@ -306,6 +306,7 @@ poppler-glib
 poppler-qt5
 ppp
 pptpclient
+progress
 protonup-git
 pulseaudio
 pulseaudio-alsa
@@ -320,6 +321,7 @@ python2-pyxdg
 qt5-webkit
 qt5ct
 qtile
+qtile-extras-git
 ranger
 realtime-privileges
 redshift

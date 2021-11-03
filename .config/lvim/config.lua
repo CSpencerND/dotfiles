@@ -216,6 +216,12 @@ lvim.plugins = {
     "folke/todo-comments.nvim",
     event = "BufRead",
   },
+  {
+    "lewis6991/spellsitter.nvim",
+    config = function()
+      require('spellsitter').setup()
+    end
+  },
 }
 
 

@@ -11,6 +11,8 @@ mkinitcpio-openswap
 parsec-bin
 picom-git
 pop-theme
+python2-pyxdg
+qtile-extras-git
 retroarch-git
 ruby-colorls
 soundux
