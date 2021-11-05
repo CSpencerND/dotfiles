@@ -66,10 +66,10 @@ groups.append(ScratchPad("scratchpad", dropdowns=[
 # Theme
 class themes:
     class dracula:
-        black =   '#14151b'
+        black =   '#21222c'
         bg =      '#282a36'
         bgl =     '#383c4a'
-        bgla =    '#44475a'
+        bgla =    '#424450'
         comment = "#6272a4"
         fga =     '#bfbfbf'
         fg =      '#f8f8f2'
@@ -86,18 +86,18 @@ class themes:
 
 
     class gruvbox:
-        black =   '#1d2021'
+        black =   '#21222c'
         bg =      '#282828'
         bgl =     '#3c3836'
-        bgla =    '#504945'
+        bgla =    '#4c4642'
         comment = "#665c54"
         fga =     '#ebdbb2'
         fg =      '#fbf1c7'
-        magenta = '#cc241d'#d65d0e
-        purple =  '#fe8019'#fe8019
-        dpurple = '#d79921'#b57614
-        blurple = '#b57614'#d79921
-        arcoblue= '#6790eb'#fabd2f
+        magenta = '#cc241d'
+        purple =  '#d57615'
+        dpurple = '#cf6503'
+        blurple = '#deb204'
+        arcoblue= '#6790eb'
         cyan =    '#689d6a'
         green =   '#98971a'
         yellow =  '#fabd2f'
@@ -105,7 +105,27 @@ class themes:
         red =     '#fb4934'
 
 
-theme = themes.dracula
+    class monokai:
+        black =   '#211F22'
+        bg =      '#26292C'
+        bgl =     '#333842'
+        bgla =    '#424450'
+        comment = "#72696A"
+        fga =     '#B1B1B1'
+        fg =      '#FFF1F3'
+        magenta = '#ff79c6'
+        purple =  '#FC9867'
+        dpurple = '#b92d6f'
+        blurple = '#AB5DF2'
+        arcoblue= '#6790eb'
+        cyan =    '#78DCE8'
+        green =   '#A9DC76'
+        yellow =  '#FFD866'
+        orange =  '#FC9867'
+        red =     '#FD6883'
+
+
+theme = themes.monokai
 
 
 # ---        VARS          }}}
@@ -620,7 +640,7 @@ widget_defaults = dict(
     font='Hack Nerd Font',
     fontsize=14,
     padding=3,
-    background=theme.bgl,
+    background=theme.bgla,
     foreground=theme.fg,
     borderwidth=2,
     rounded=False,
@@ -725,7 +745,7 @@ class widgets:
             name='date_icon',
             font="FontAwesome",
             text="📆",
-            fontsize=18,
+            fontsize=17,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
             },
@@ -944,6 +964,23 @@ class widgets:
         spacer,
     ]
 
+    headset = [
+        widget.TextBox
+        (
+            text="🎧",
+            **decor
+        ),
+        widget.GenPollText
+        (
+            func=lambda: subprocess.getoutput(
+                "headsetcontrol -b | awk '/Battery: /{print $2}'"
+            ),
+            update_interval=864,
+            **decor
+        ),
+        spacer,
+    ]
+
     battery = [
 
         widget.BatteryIcon
@@ -1005,6 +1042,7 @@ widgets_list = [
     *widgets.weather,
     *widgets.stocks,
     *widgets.keyboard,
+    *widgets.headset,
     # *widgets.network,
     *widgets.memory,
     *widgets.thermals,
@@ -1032,7 +1070,7 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=26, background=theme.bg, opacity=0.85
+                size=28, background=theme.bg, opacity=0.85
              )),
 
              # Screen(top=bar.Bar(

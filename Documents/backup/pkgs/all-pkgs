@@ -64,7 +64,6 @@ base
 bash-completion
 bat
 betterdiscord-git
-betterdiscord-installer
 betterdiscordctl-git
 bibata-cursor-theme-bin
 bind
@@ -150,8 +149,6 @@ groff
 grub
 grub-btrfs
 grub-customizer
-gruvbox-material-gtk-theme-git
-gruvbox-material-icon-theme-git
 gsfonts
 gst-libav
 gst-plugins-bad
@@ -301,7 +298,6 @@ pkgconf
 playerctl
 polkit
 polkit-gnome
-pop-theme
 poppler-glib
 poppler-qt5
 ppp

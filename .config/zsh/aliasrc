@@ -5,8 +5,9 @@ alias cd..="cd .."
 alias pdw="pwd"
 
 ### Navigation Shortcuts
-alias qtile-log='vi ~/.local/share/qtile/qtile.log'
-alias qtile-config='vi ~/.config/qtile/config.py'
+alias lvc='vi ~/.config/lvim/config.lua'
+alias qtl='vi ~/.local/share/qtile/qtile.log'
+alias qtc='vi ~/.config/qtile/config.py'
 alias auto-config="vi ~/.config/qtile/scripts/autostart.sh"
 alias cd-sb='cd ~/.local/statusbar'
 
@@ -65,6 +66,8 @@ alias luamake=/home/cspencer/Installed/lua-language-server/3rd/luamake/luamake
 alias wget="wget -c --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias gedit="devour gedit"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
+alias hsc="headsetcontrol"
 
 # --------------------------- Important Commands -------------------------------
 alias hp="pactl load-module module-alsa-sink device=hw:1,1"

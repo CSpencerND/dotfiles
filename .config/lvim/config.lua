@@ -5,7 +5,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
 lvim.transparent_window = false
-lvim.colorscheme = "doom-one"
+lvim.colorscheme = "dracula"
 vim.g.material_style = "palenight"
 vim.g.tokyonight_style = "storm" -- storm, night, day
 vim.g.gruvbox_contrast_dark = "hard"
@@ -34,22 +34,25 @@ map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<
 ]]
 
 
--- -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- lvim.builtin.telescope.on_config_done = function()
---   local actions = require "telescope.actions"
---   -- for input mode
---   lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
---   lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
---   lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
---   lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
---   -- for normal mode
---   lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
---   lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
--- end
+local _, actions = pcall(require, "telescope.actions")
+lvim.builtin.telescope.defaults.mappings = {
+  -- for input mode
+  i = {
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+    ["<C-n>"] = actions.cycle_history_next,
+    ["<C-p>"] = actions.cycle_history_prev,
+  },
+  -- for normal mode
+  n = {
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+  },
+}
 
 
 -- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Trouble",
   r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -127,9 +130,39 @@ lvim.lang.cpp.formatters = lvim.lang.c.formatters
 
 -- Additional Plugins
 lvim.plugins = {
-  { "zeekay/vim-beautify" },
-  { "mattn/emmet-vim" },
-  { "ckipp01/stylua-nvim" },
+  {
+    "tanvirtin/monokai.nvim",
+    -- config = function()
+    --   require("monokai").setup {
+    --     palette = {
+    --         name = 'dracula-custom',
+    --         base1 = '#21222C',
+    --         base2 = '#282A36',
+    --         base3 = '#424450',
+    --         base4 = '#343746',
+    --         base5 = '#44475A',
+    --         base6 = '#6272A4',
+    --         base7 = '#6272A4',
+    --         border = '#6272A4',
+    --         brown = '#504945',
+    --         white = '#f8f8f2',
+    --         grey = '#6272A4',
+    --         black = '#191A21',
+    --         pink = '#FF79C6',
+    --         green = '#50FA7B',
+    --         aqua = '#8BE9FD',
+    --         yellow = '#F1FA8C',
+    --         orange = '#FFB86C',
+    --         purple = '#BD93F9',
+    --         red = '#FF5555',
+    --         diff_add = '#3d5213',
+    --         diff_remove = '#4a0f23',
+    --         diff_change = '#27406b',
+    --         diff_text = '#23324d',
+    --     },
+    --   }
+    -- end
+  },
   { "morhetz/gruvbox" },
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
@@ -138,6 +171,9 @@ lvim.plugins = {
   { "kyazdani42/nvim-palenight.lua" },
   { "marko-cerovac/material.nvim" },
   { "romgrk/doom-one.vim" },
+  { "zeekay/vim-beautify" },
+  { "mattn/emmet-vim" },
+  { "ckipp01/stylua-nvim" },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
@@ -232,6 +268,16 @@ lvim.autocommands.custom_groups = {
     "*", -- filetype or name
     "setlocal \z
       tabstop=8 softtabstop=4 shiftwidth=4 expandtab \z
+      relativenumber linebreak nowrap \z
+      hidden \z
+      colorcolumn=80 \z
+    "
+  },
+  {
+    "BufWinEnter", -- When to take effect
+    "*.lua", -- filetype or name
+    "setlocal \z
+      tabstop=8 softtabstop=2 shiftwidth=2 expandtab \z
       relativenumber linebreak nowrap \z
       hidden \z
       colorcolumn=80 \z

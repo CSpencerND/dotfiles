@@ -53,7 +53,7 @@ run redshift-gtk &
 # run dunst &
 # run discord &
 # run dropbox &
-pactl load-module module-alsa-sink device=hw:1,1 &
+# pactl load-module module-alsa-sink device=hw:1,1 &
 /home/cs/.local/bin/kbconfig &
 /home/cs/.local/bin/kbrate &
 # /home/cs/.local/statusbar/openweather-emoji &
