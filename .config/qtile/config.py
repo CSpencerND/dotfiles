@@ -635,6 +635,11 @@ def get_forecast():
     return forecast
 
 
+def tick_widget():
+    w = qtile.widgets_map["headset"]
+    w.update(w.poll())
+
+
 widget_defaults = dict(
 
     font='Hack Nerd Font',
@@ -875,6 +880,26 @@ class widgets:
         spacer
     ]
 
+    headset = [
+        widget.TextBox
+        (
+            text="🎧",
+            **decor
+        ),
+        widget.GenPollText
+        (
+            name="headset",
+            func=lambda: subprocess.getoutput(
+                "headsetcontrol -b | awk '/Battery: /{print $2}'"
+            ),
+            mouse_callbacks={'Button1': tick_widget},
+                            # {"Button1": lazy.widget["genpolltext"].function(lambda w: w.update(w.poll())}
+            update_interval=432,
+            **decor
+        ),
+        spacer,
+    ]
+
 #     network = [
 
 #        widget.Net
@@ -959,23 +984,6 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('s76-power-base')
             },
-            **decor
-        ),
-        spacer,
-    ]
-
-    headset = [
-        widget.TextBox
-        (
-            text="🎧",
-            **decor
-        ),
-        widget.GenPollText
-        (
-            func=lambda: subprocess.getoutput(
-                "headsetcontrol -b | awk '/Battery: /{print $2}'"
-            ),
-            update_interval=864,
             **decor
         ),
         spacer,
