@@ -20,10 +20,7 @@ subprocess.call("setup_screens")
 ##############################
 # {{{        VARS          ---
 
-# mod4 or mod = super key
 mod = "mod4"
-mod1 = "alt"
-mod2 = "control"
 home = os.path.expanduser('~')
 qtile_home = os.path.expanduser('~/.config/qtile/')
 
@@ -34,7 +31,6 @@ group_labels = ["1", "2", "3", "4", "5", "II"]
 group_layouts = [
     "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "columns"
 ]
-affinities = [0, 0, 0, 0, 0, 1]
 
 for i in range(len(group_names)):
     groups.append(
@@ -43,7 +39,6 @@ for i in range(len(group_names)):
             name=group_names[i],
             layout=group_layouts[i].lower(),
             label=group_labels[i],
-            screen_affinity=affinities[i]
         )
     )
 
@@ -170,11 +165,11 @@ def window_to_next_screen(qtile):
         qtile.current_window.togroup(group)
 
 
-@lazy.function
-def switch_screens(qtile):
-    i = qtile.screens.index(qtile.current_screen)
-    group = qtile.screens[i - 1].group
-    qtile.current_screen.set_group(group)
+# @lazy.function
+# def switch_screens(qtile):
+#     i = qtile.screens.index(qtile.current_screen)
+#     group = qtile.screens[i - 1].group
+#     qtile.current_screen.set_group(group)
 
 
 # Bring floating windows to front
@@ -187,17 +182,17 @@ def float_to_front(qtile):
 
 
 # Change which monitor has the group
-@lazy.function
-def go_to_group(group):
-    def f(qtile):
-        if group in "12345":
-            qtile.cmd_to_screen(0)
-            qtile.groups_map[group].cmd_toscreen()
-        else:
-            qtile.cmd_to_screen(1)
-            qtile.groups_map[group].cmd_toscreen()
+# @lazy.function
+# def go_to_group(group):
+#     def f(qtile):
+#         if group in "12345":
+#             qtile.cmd_to_screen(0)
+#             qtile.groups_map[group].cmd_toscreen()
+#         else:
+#             qtile.cmd_to_screen(1)
+#             qtile.groups_map[group].cmd_toscreen()
 
-    return f
+#     return f
 
 
 keys = [
@@ -337,11 +332,11 @@ keys = [
         [mod], "Left",
         lazy.screen.prev_group()
     ),
-    Key
-    (
-        [mod, "shift"], "semicolon",
-        go_to_group,
-    ),
+    # Key
+    # (
+    #     [mod, "shift"], "semicolon",
+    #     go_to_group,
+    # ),
     Key
     (
         [mod, "shift"], "i",
@@ -399,11 +394,11 @@ keys = [
         window_to_prev_screen,
         lazy.prev_screen(),
     ),
-    Key
-    (
-        [mod, "control"], "semicolon",
-        switch_screens
-    ),
+    # Key
+    # (
+    #     [mod, "control"], "semicolon",
+    #     switch_screens
+    # ),
 
 
     # Window Functions
@@ -552,35 +547,35 @@ for i in group_names:
         ]
     )
 
-for s, g in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
-    keys.append(
-        Key
-        (
-            [mod, "mod1"], g,
-            lazy.group[g].toscreen(s),
-        )
-    )
+# for s, g in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
+#     keys.append(
+#         Key
+#         (
+#             [mod, "mod1"], g,
+#             lazy.group[g].toscreen(s),
+#         )
+#     )
 
-for s, g in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
-    keys.append(
-        Key
-        (
-            [mod, "mod1", "shift"], g,
-            lazy.window.togroup(g),
-            lazy.group[g].toscreen(s),
-        )
-    )
+# for s, g in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
+#     keys.append(
+#         Key
+#         (
+#             [mod, "mod1", "shift"], g,
+#             lazy.window.togroup(g),
+#             lazy.group[g].toscreen(s),
+#         )
+#     )
 
-for s, g in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
-    keys.append(
-        Key
-        (
-            [mod, "mod1", "control"], g,
-            lazy.window.togroup(g),
-            lazy.group[g].toscreen(s),
-            lazy.to_screen(s)
-        )
-    )
+# for s, g in [(0, "1"), (0, "2"), (0, "3"), (0, "4"), (0, "5"), (1, "6")]:
+#     keys.append(
+#         Key
+#         (
+#             [mod, "mod1", "control"], g,
+#             lazy.window.togroup(g),
+#             lazy.group[g].toscreen(s),
+#             lazy.to_screen(s)
+#         )
+#     )
 
 # ---     KEYBINDINGS      }}}
 ##############################
