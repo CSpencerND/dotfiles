@@ -608,7 +608,7 @@ layouts = [
     (
         insert_position=0,
         border_on_single=True,
-        border_normal_stack=theme.blurple,
+        border_normal_stack=theme.bg,
         border_focus_stack=theme.magenta,
         **layout_theme
     ),
