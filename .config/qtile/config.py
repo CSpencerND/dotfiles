@@ -607,6 +607,7 @@ layouts = [
     layout.Columns
     (
         insert_position=0,
+        border_on_single=True,
         border_normal_stack=theme.blurple,
         border_focus_stack=theme.magenta,
         **layout_theme
@@ -1010,7 +1011,7 @@ class widgets:
         (
             icon_size=20,
             padding=4,
-            background=None
+            background=theme.bg
         ),
         spacer
     ]
@@ -1025,7 +1026,7 @@ class widgets:
             text_closed='⚙',
             text_open='⚙',
             fontsize=18,
-            background=None,
+            background=theme.bg,
         ),
         spacer
     ]
@@ -1044,12 +1045,12 @@ widgets_list = [
     *widgets.date,
     *widgets.weather,
     *widgets.stocks,
-    *widgets.keyboard,
-    *widgets.headset,
     # *widgets.network,
     *widgets.memory,
     *widgets.thermals,
     *widgets.system76,
+    *widgets.keyboard,
+    *widgets.headset,
     *widgets.battery,
     *widgets.tray_box,
 ]
@@ -1070,10 +1071,11 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
+    # theme.bg += ".99"
     return [
              Screen(top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=28, background=theme.bg, opacity=0.85
+                size=28, background=theme.bg, opacity=.82
              )),
 
              # Screen(top=bar.Bar(
