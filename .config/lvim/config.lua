@@ -174,6 +174,7 @@ lvim.plugins = {
   { "zeekay/vim-beautify" },
   { "mattn/emmet-vim" },
   { "ckipp01/stylua-nvim" },
+  { "mtdl9/vim-log-highlighting" },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",

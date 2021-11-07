@@ -33,7 +33,7 @@ function run {
 #start the conky to learn the shortcuts
 # (conky -c $HOME/.config/qtile/scripts/system-overview) &
 
-# picom --config $HOME/.config/qtile/scripts/picom.conf -b --experimental-backends &
+picom --config $HOME/.config/qtile/scripts/picom.conf -b --experimental-backends &
 run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
