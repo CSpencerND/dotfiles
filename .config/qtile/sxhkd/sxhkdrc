@@ -33,7 +33,10 @@ super + g
   retroarch
 
 super + shift + Return
-	pcmanfm
+	thunar
+
+super + alt + Return
+	pcman
 
 super + shift + p
   s76-power-base

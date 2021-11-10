@@ -14,7 +14,7 @@ import custom_tasklist
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
-subprocess.call("setup_screens")
+subprocess.Popen("setup_screens")
 
 # ---       IMPORTS        }}}
 ##############################
@@ -80,6 +80,26 @@ class themes:
         red =     '#ff5555'
 
 
+    class dracula_alt:
+        black =   '#21222c'
+        bg =      '#282a36'
+        bgl =     '#383c4a'
+        bgla =    '#424450'
+        comment = "#6272a4"
+        fga =     '#bfbfbf'
+        fg =      '#f8f8f2'
+        magenta = '#bd93f9'
+        purple =  '#ff79c6'
+        dpurple = '#6d5890'
+        blurple = '#4d5b86'
+        arcoblue= '#6790eb'
+        cyan =    '#8be9fd'
+        green =   '#50fa7b'
+        yellow =  '#f1fa8c'
+        orange =  '#ffb86c'
+        red =     '#ff5555'
+
+
     class gruvbox:
         black =   '#21222c'
         bg =      '#282828'
@@ -120,7 +140,7 @@ class themes:
         red =     '#FD6883'
 
 
-theme = themes.monokai
+theme = themes.dracula_alt
 
 
 # ---        VARS          }}}
@@ -598,12 +618,6 @@ layouts = [
         **layout_theme
     ),
 
-    # layout.Tile
-    # (
-    #     ratio_increment=0.039,
-    #     **layout_theme
-    # ),
-
     layout.Columns
     (
         insert_position=0,
@@ -612,8 +626,15 @@ layouts = [
         border_focus_stack=theme.magenta,
         **layout_theme
     ),
+    
+    layout.Matrix(**layout_theme),
 
-    layout.Matrix(**layout_theme)
+    # layout.Tile
+    # (
+    #     ratio_increment=0.039,
+    #     **layout_theme
+    # ),
+
 ]
 
 # ---       LAYOUTS        }}}
@@ -623,7 +644,7 @@ layouts = [
 
 def get_bat_percent():
     batinfo = subprocess.getoutput("acpi | sed 's/Battery 0: //'")
-    subprocess.call(["notify-send", batinfo])
+    subprocess.Popen(["notify-send", batinfo])
 
 
 def get_forecast():
@@ -648,7 +669,6 @@ widget_defaults = dict(
     urgent_alert_method='text',
     urgent_text=theme.magenta,
     urgent_border=theme.magenta,
-    highlight_method='block',
 )
 # extension_defaults = widget_defaults.copy()
 
@@ -685,6 +705,8 @@ class widgets:
         # widget.GroupBox
         custom_groupbox.GroupBox
         (
+            highlight_method='block',
+            unfocused_highlight_method="border",
             active=theme.fg,
             inactive=theme.bgl,
             disable_drag=False,
@@ -705,6 +727,7 @@ class widgets:
         # widget.TaskList
         custom_tasklist.TaskList
         (
+            highlight_method='block',
             icon_size=22,
             txt_floating='🗗 ',
             txt_maximized='🗖 ',
@@ -1107,7 +1130,7 @@ main = None
 
 @hook.subscribe.startup_once
 def start_once():
-    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
+    subprocess.Popen([home + '/.config/qtile/scripts/autostart.sh'])
 
 
 @hook.subscribe.startup

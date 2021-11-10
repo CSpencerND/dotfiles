@@ -1,7 +1,7 @@
-# import:
-#   - /home/cs/.config/alacritty/dracula.yml
 import:
-  - /home/cs/.config/alacritty/monokai_soda.yml
+  - /home/cs/.config/alacritty/dracula.yml
+# import:
+#   - /home/cs/.config/alacritty/monokai_soda.yml
 # import:
 #   - /home/cs/.config/alacritty/gruvbox.yml
   

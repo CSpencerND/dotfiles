@@ -130,8 +130,8 @@ lvim.lang.cpp.formatters = lvim.lang.c.formatters
 
 -- Additional Plugins
 lvim.plugins = {
-  {
-    "tanvirtin/monokai.nvim",
+  -- {
+  --   "tanvirtin/monokai.nvim",
     -- config = function()
     --   require("monokai").setup {
     --     palette = {
@@ -162,26 +162,22 @@ lvim.plugins = {
     --     },
     --   }
     -- end
-  },
-  { "morhetz/gruvbox" },
+  -- },
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
-  { "folke/tokyonight.nvim" },
-  { "arzg/vim-substrata" },
-  { "kyazdani42/nvim-palenight.lua" },
-  { "marko-cerovac/material.nvim" },
   { "romgrk/doom-one.vim" },
+  -- { "morhetz/gruvbox" },
+  -- { "folke/tokyonight.nvim" },
+  -- { "arzg/vim-substrata" },
+  -- { "kyazdani42/nvim-palenight.lua" },
+  -- { "marko-cerovac/material.nvim" },
   { "zeekay/vim-beautify" },
   { "mattn/emmet-vim" },
-  { "ckipp01/stylua-nvim" },
   { "mtdl9/vim-log-highlighting" },
+  { "ckipp01/stylua-nvim" },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
-  },
-  {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
   },
   {
     "turbio/bracey.vim",
@@ -202,63 +198,67 @@ lvim.plugins = {
     end
   },
   {
-    "unblevable/quick-scope",
-    config = function()
-      require "user.quickscope"
-    end,
-  },
-  {
     "karb94/neoscroll.nvim",
     config = function()
       require("user.neoscroll").config()
     end,
   },
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle"
-  },
-  {
-    "nvim-treesitter/playground",
-    event = "BufRead",
-  },
-  {
-    "phaazon/hop.nvim",
-    event = "BufRead",
-    config = function()
-      require("user.hop").config()
-    end,
-  },
-  {
-    "nacro90/numb.nvim",
-    event = "BufRead",
-    config = function()
-      require("user.numb").config()
-    end,
-  },
-  {
-    "rcarriga/nvim-notify",
-    event = "BufRead",
-    config = function()
-      require("user.notify").config()
-    end,
-  },
-  {
-    "vuki656/package-info.nvim",
-    config = function()
-      require "user.package-info"
-    end,
-    ft = "json",
-  },
-  {
-    "folke/todo-comments.nvim",
-    event = "BufRead",
-  },
-  {
-    "lewis6991/spellsitter.nvim",
-    config = function()
-      require('spellsitter').setup()
-    end
-  },
+  -- {
+  --   "simrat39/symbols-outline.nvim",
+  --   cmd = "SymbolsOutline",
+  -- },
+  -- {
+  --   "unblevable/quick-scope",
+  --   config = function()
+  --     require "user.quickscope"
+  --   end,
+  -- },
+  -- {
+  --   "folke/trouble.nvim",
+  --   cmd = "TroubleToggle"
+  -- },
+  -- {
+  --   "nvim-treesitter/playground",
+  --   event = "BufRead",
+  -- },
+  -- {
+  --   "phaazon/hop.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("user.hop").config()
+  --   end,
+  -- },
+  -- {
+  --   "nacro90/numb.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("user.numb").config()
+  --   end,
+  -- },
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("user.notify").config()
+  --   end,
+  -- },
+  -- {
+  --   "vuki656/package-info.nvim",
+  --   config = function()
+  --     require "user.package-info"
+  --   end,
+  --   ft = "json",
+  -- },
+  -- {
+  --   "folke/todo-comments.nvim",
+  --   event = "BufRead",
+  -- },
+  -- {
+  --   "lewis6991/spellsitter.nvim",
+  --   config = function()
+  --     require('spellsitter').setup()
+  --   end
+  -- },
 }
 
 
