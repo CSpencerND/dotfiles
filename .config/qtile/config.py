@@ -8,6 +8,7 @@ from libqtile.config import (
     Key, Screen, Group, Drag, Match, ScratchPad, DropDown
 )
 # import arcobattery
+import custom_groupbox_v2
 import custom_groupbox
 import custom_tasklist
 
@@ -140,7 +141,7 @@ class themes:
         red =     '#FD6883'
 
 
-theme = themes.dracula_alt
+theme = themes.dracula
 
 
 # ---        VARS          }}}
@@ -703,7 +704,7 @@ class widgets:
     basics = [
 
         # widget.GroupBox
-        custom_groupbox.GroupBox
+        custom_groupbox_v2.GroupBox
         (
             highlight_method='block',
             unfocused_highlight_method="border",
@@ -712,10 +713,10 @@ class widgets:
             disable_drag=False,
             # block_highlight_text_color=None,
             # highlight_color=[theme.purple, theme.dpurple],
-            this_current_screen_border=theme.dpurple,
-            this_screen_border=theme.dpurple,
-            other_current_screen_border=theme.blurple,
-            other_screen_border=theme.blurple,
+            this_current_screen_border=theme.purple,
+            this_screen_border=theme.purple,
+            other_current_screen_border=theme.arcoblue,
+            other_screen_border=theme.arcoblue,
             background=None,
             padding_y=0,
         ),
@@ -1084,13 +1085,13 @@ def init_widgets_screen1():
     return widgets_screen1
 
 
-def init_widgets_screen2():
-    widgets_screen2 = widgets_list
-    return widgets_screen2
+# def init_widgets_screen2():
+#     widgets_screen2 = widgets_list
+#     return widgets_screen2
 
 
 widgets_screen1 = init_widgets_screen1()
-widgets_screen2 = init_widgets_screen2()
+# widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
@@ -1101,10 +1102,10 @@ def init_screens():
                 size=28, background=theme.bg, opacity=.82
              )),
 
-             # Screen(top=bar.Bar(
-             #    widgets=init_widgets_screen2(),
-             #    size=24, background=theme.bg, opacity=0.85
-             # ))
+             Screen(top=bar.Bar(
+                widgets=[*widgets.basics],
+                size=28, background=theme.bg, opacity=.82
+             ))
            ]
 
 

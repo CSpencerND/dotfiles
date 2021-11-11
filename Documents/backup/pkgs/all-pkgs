@@ -135,6 +135,7 @@ ghostscript
 gimp
 git
 gksu
+gloobus-preview
 gmrun
 gnome-disk-utility
 gnome-keyring
@@ -308,6 +309,7 @@ protonup-git
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
+pulsemeeter-git
 pulsemixer
 pycharm-community-edition
 python-pip

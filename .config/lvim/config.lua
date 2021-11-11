@@ -5,7 +5,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.lint_on_save = false
 lvim.transparent_window = false
-lvim.colorscheme = "dracula"
+lvim.colorscheme = "doom-one"
 vim.g.material_style = "palenight"
 vim.g.tokyonight_style = "storm" -- storm, night, day
 vim.g.gruvbox_contrast_dark = "hard"
@@ -111,11 +111,11 @@ lvim.lang.lua.formatters = {
 }
 
 -- python
-lvim.lang.python.formatters = {
-  {
-    exe = "black",
-  },
-}
+-- lvim.lang.python.formatters = {
+--   {
+--     exe = "black",
+--   },
+-- }
 
 -- lvim.lang.python.linters = {
 --   {
@@ -273,6 +273,11 @@ lvim.autocommands.custom_groups = {
       hidden \z
       colorcolumn=80 \z
     "
+  },
+  {
+    "BufWinEnter", -- When to take effect
+    "*", -- filetype or name
+    "nnoremap <C-i> <C-i>"
   },
   {
     "BufWinEnter", -- When to take effect
