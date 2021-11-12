@@ -8,7 +8,6 @@ from libqtile.config import (
     Key, Screen, Group, Drag, Match, ScratchPad, DropDown
 )
 # import arcobattery
-import custom_groupbox_v2
 import custom_groupbox
 import custom_tasklist
 
@@ -704,19 +703,19 @@ class widgets:
     basics = [
 
         # widget.GroupBox
-        custom_groupbox_v2.GroupBox
+        custom_groupbox.GroupBox
         (
             highlight_method='block',
-            # unfocused_highlight_method="border",
+            unfocused_highlight_method="border",
             active=theme.fg,
             inactive=theme.bgl,
             disable_drag=False,
             # block_highlight_text_color=None,
             # highlight_color=[theme.purple, theme.dpurple],
-            this_current_screen_border=theme.purple,
-            this_screen_border=theme.purple,
-            other_current_screen_border=theme.arcoblue,
-            other_screen_border=theme.arcoblue,
+            this_current_screen_border=theme.dpurple,
+            this_screen_border=theme.dpurple,
+            other_current_screen_border=theme.blurple,
+            other_screen_border=theme.blurple,
             background=None,
             padding_y=0,
         ),
@@ -1102,10 +1101,10 @@ def init_screens():
                 size=28, background=theme.bg, opacity=.82
              )),
 
-             Screen(top=bar.Bar(
-                widgets=[*widgets.basics],
-                size=28, background=theme.bg, opacity=.82
-             ))
+             # Screen(top=bar.Bar(
+             #    widgets=[*widgets.basics],
+             #    size=28, background=theme.bg, opacity=.82
+             # ))
            ]
 
 
