@@ -20,6 +20,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["<C-n>"] = ":lua require('material.functions').toggle_style()<cr>"
+-- lvim.keys.normal_mode["<C-S-o"] = "<C-i>"
 lvim.keys.visual_mode["p"] = [["_dP]]
 
 
@@ -70,8 +71,16 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.bufferline.active = true
-lvim.builtin.lualine.style = "lvim" -- "none", "lvim", "default"
 
+
+local components = require("lvim.core.lualine.components")
+lvim.builtin.lualine.sections.lualine_c = { "diff" }
+lvim.builtin.lualine.style = "lvim" -- "none", "lvim", "default"
+lvim.builtin.lualine.sections.lualine_a = { "mode" }
+lvim.builtin.lualine.sections.lualine_y = {
+  -- components.spaces,
+  components.location
+}
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = "maintained"
@@ -267,12 +276,7 @@ lvim.autocommands.custom_groups = {
   {
     "BufWinEnter", -- When to take effect
     "*", -- filetype or name
-    "setlocal \z
-      tabstop=8 softtabstop=4 shiftwidth=4 expandtab \z
-      relativenumber linebreak nowrap \z
-      hidden \z
-      colorcolumn=80 \z
-    "
+    "setlocal colorcolumn=80"
   },
   {
     "BufWinEnter", -- When to take effect
@@ -282,11 +286,23 @@ lvim.autocommands.custom_groups = {
   {
     "BufWinEnter", -- When to take effect
     "*.lua", -- filetype or name
-    "setlocal \z
-      tabstop=8 softtabstop=2 shiftwidth=2 expandtab \z
-      relativenumber linebreak nowrap \z
-      hidden \z
-      colorcolumn=80 \z
-    "
+    "setlocal softtabstop=2 shiftwidth=2"
+      -- expandtab \z
+      -- tabstop=8 
+      -- relativenumber linebreak nowrap \z
+      -- hidden \z
+      -- colorcolumn=80 \z
+    -- "
   },
 }
+
+
+vim.opt.tabstop = 8
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.relativenumber = true
+vim.opt.linebreak = true
+vim.opt.wrap = true
+vim.opt.hidden = true
+-- vim.opt.colorcolumn = "80"

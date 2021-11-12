@@ -405,14 +405,14 @@ class GroupBox(_GroupBase):
                             else:
                                 border = self.other_screen_border
                     else:
-                        if self.bar.screen.group.name == g.name:
-                            if self.qtile.current_screen == self.bar.screen:
-                                border = self.this_current_screen_border
+                        if self.bar.screen.group.name == g.name: # Is this the main screen
+                            if self.qtile.current_screen == self.bar.screen: # Screen has focus
+                                border = "#ff0000"
                                 to_highlight = True
                                 is_block = (self.highlight_method == 'block')
                                 is_line = (self.highlight_method == 'line')
-                            else:
-                                border = self.this_screen_border
+                            else: # Other screen focused so uses unfocused method
+                                border = "#00ff00"
                                 if u_highlight_method != 'border':
                                     if u_highlight_method == 'text':
                                         border = None
@@ -421,14 +421,14 @@ class GroupBox(_GroupBase):
                                         to_highlight = True
                                         is_block = (u_highlight_method == 'block')
                                         is_line = (u_highlight_method == 'line')
-                        else:
-                            if self.qtile.current_screen == g.screen:
-                                border = self.other_current_screen_border
+                        else: # Is the other screen
+                            if self.qtile.current_screen == g.screen: # Has focus so uses primary method
+                                border = "#aa00ff"
                                 to_highlight = True
                                 is_block = (self.highlight_method == 'block')
                                 is_line = (self.highlight_method == 'line')
-                            else:
-                                border = self.other_screen_border
+                            else: # Does not have focus so uses unfocused method
+                                border = "#00ffff"
                                 if u_highlight_method != 'border': 
                                     if u_highlight_method == 'text':
                                         border = None

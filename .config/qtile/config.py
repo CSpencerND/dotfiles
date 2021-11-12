@@ -707,7 +707,7 @@ class widgets:
         custom_groupbox_v2.GroupBox
         (
             highlight_method='block',
-            unfocused_highlight_method="border",
+            # unfocused_highlight_method="border",
             active=theme.fg,
             inactive=theme.bgl,
             disable_drag=False,
