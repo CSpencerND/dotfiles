@@ -92,26 +92,22 @@ class _GroupBase(base._TextBox, base.PaddingMixin, base.MarginMixin):
         self.layout.font_family = self.font
         self.layout.font_size = self.fontsize
         self.layout.colour = textcolor
-
         if width is not None:
             self.layout.width = width
 
-        if self.padding_y == "fill":
-            if block or line:
+        if self.unfocused_highlight_method == None:
+            if self.highlight_method == 'line':
                 pad_y = [
                     (self.bar.height - self.layout.height - self.borderwidth) / 2,
                     (self.bar.height - self.layout.height + self.borderwidth) / 2
                 ]
             else:
-                pad_y = [
-                    (self.bar.height - self.layout.height - self.borderwidth) / 2 - 1,
-                    (self.bar.height - self.layout.height + self.borderwidth) / 2 - 1
-                ]
+                pad_y = self.padding_y
         else:
             if line:
                 pad_y = [
-                    (self.bar.height - self.layout.height - self.borderwidth) / 2,
-                    (self.bar.height - self.layout.height + self.borderwidth) / 2
+                    (self.bar.height - self.layout.height) / 2,
+                    (self.bar.height - self.layout.height) / 2
                 ]
             else:
                 pad_y = self.padding_y
@@ -193,7 +189,7 @@ class GroupBox(_GroupBase):
         (
             "unfocused_highlight_method",
             None,
-            "Highlight for group on unfocused screen ('border', 'block', 'text', or 'line')"
+            "Highlight for group on unfocused screen [optional] ('border', 'block', 'text', or 'line')"
             "Uses `*_border` color settings"
         ),
         ("rounded", True, "To round or not to round box borders"),
@@ -253,8 +249,7 @@ class GroupBox(_GroupBase):
             "spacing",
             None,
             "Spacing between groups"
-            "(if set to None, will be equal to margin_x)"
-        ),
+            "(if set to None, will be equal to margin_x)")
     ]
 
     def __init__(self, **config):
@@ -413,6 +408,8 @@ class GroupBox(_GroupBase):
                                 else:
                                     border = self.this_current_screen_border
                                     to_highlight = True
+                                    if self.block_highlight_text_color:
+                                        text_color = self.block_highlight_text_color
                             else:
                                 is_block = (self.unfocused_highlight_method == 'block')
                                 is_line = (self.unfocused_highlight_method == 'line')
@@ -422,6 +419,8 @@ class GroupBox(_GroupBase):
                                 else:
                                     border = self.this_screen_border
                                     to_highlight = True
+                                    if self.block_highlight_text_color:
+                                        text_color = self.block_highlight_text_color
                         else:
                             if self.qtile.current_screen == g.screen:
                                 is_block = (self.highlight_method == 'block')
@@ -432,6 +431,8 @@ class GroupBox(_GroupBase):
                                 else:
                                     border = self.other_current_screen_border
                                     to_highlight = True
+                                    if self.block_highlight_text_color:
+                                        text_color = self.block_highlight_text_color
                             else:
                                 is_block = (self.unfocused_highlight_method == 'block')
                                 is_line = (self.unfocused_highlight_method == 'line')
@@ -441,6 +442,8 @@ class GroupBox(_GroupBase):
                                 else:
                                     border = self.other_screen_border
                                     to_highlight = True
+                                    if self.block_highlight_text_color:
+                                        text_color = self.block_highlight_text_color
             elif self.group_has_urgent(g) and \
                     self.urgent_alert_method in ('border', 'block', 'line'):
                 border = self.urgent_border
