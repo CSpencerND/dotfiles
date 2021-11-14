@@ -1,3 +1,3 @@
 vim.cmd [[
-  au BufRead,BufNewFile *.kbd set filetype=lisp
+  au BufRead,BufNewFile *.kbd set filetype=kbd
 ]]

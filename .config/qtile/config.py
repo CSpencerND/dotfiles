@@ -47,7 +47,7 @@ dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
 groups.append(ScratchPad("scratchpad", dropdowns=[
 
             DropDown(
-                "pad", "alacritty -e lvim " + home + "/.cache/scratchpad",
+                "pad", "alacritty -e nvim " + home + "/.cache/scratchpad",
                 **dropdown_defaults
             ),
             DropDown(
