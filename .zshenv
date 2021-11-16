@@ -16,7 +16,6 @@ export PATH="$PATH:$HOME/.local/bin/polyscr"
 export PATH="$PATH:$HOME/.config/nvim/utils/bin"
 export PATH="$PATH:$HOME/.local/share/npm/bin"
 export PATH="$PATH:$HOME/node_modules/.bin"
-export PATH="$PATH:/opt/pycharm-community-2021.1.3/bin"
 
 # -------------------------- Cleanup Home -------------------------------------
 
@@ -39,6 +38,7 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg #gpg --homedir "$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export PATH="$XDG_DATA_HOME/go/bin:$PATH"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export JAVA_FONTS=/usr/share/fonts/TTF
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export TUXTYPE_CONF="$XDG_CONFIG_HOME/tuxtype/settings.txt"
@@ -48,6 +48,8 @@ export MYVIMRC=XDG_CONFIG_HOME/nvim/init.lua
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc 
+export SSB_HOME="$XDG_DATA_HOME"/zoom
+# export ALSA_CONFIG_DIR="$XDG_CONFIG_HOME/alsa/asoundrc"
 
 #zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"

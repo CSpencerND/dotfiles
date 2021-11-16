@@ -20,6 +20,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["<C-n>"] = ":lua require('material.functions').toggle_style()<cr>"
+lvim.keys.normal_mode["<leader>a"] = "ggVG"
 -- lvim.keys.normal_mode["<C-S-o"] = "<C-i>"
 lvim.keys.visual_mode["p"] = [["_dP]]
 

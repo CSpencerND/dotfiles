@@ -873,7 +873,7 @@ class widgets:
         spacer
     ]
 
-    keyboard = [
+    # keyboard = [
 
         # widget.TextBox
         # (
@@ -884,42 +884,22 @@ class widgets:
         #     foreground=theme.cyan,
         #     padding=6
         # ),
-        widget.Image
-        (
-            filename='~/.config/qtile/icons/kmonad.png',
-            scale=False,
-            margin_y=4,
-            **decor
-        ),
-        widget.TextBox
-        (
-            name='kbd_layout',
-            text='Std',
-            padding=4,
-            **decor
-        ),
-        spacer
-    ]
-
-    headset = [
-        widget.TextBox
-        (
-            text="🎧",
-            **decor
-        ),
-        widget.GenPollText
-        (
-            name="headset",
-            func=lambda: subprocess.getoutput(
-                "headsetcontrol -b | awk '/Battery: /{print $2}'"
-            ),
-            mouse_callbacks={'Button1': tick_widget},
-                            # {"Button1": lazy.widget["genpolltext"].function(lambda w: w.update(w.poll())}
-            update_interval=432,
-            **decor
-        ),
-        spacer,
-    ]
+    #     widget.Image
+    #     (
+    #         filename='~/.config/qtile/icons/kmonad.png',
+    #         scale=False,
+    #         margin_y=4,
+    #         **decor
+    #     ),
+    #     widget.TextBox
+    #     (
+    #         name='kbd_layout',
+    #         text='Std',
+    #         padding=4,
+    #         **decor
+    #     ),
+    #     spacer
+    # ]
 
 #     network = [
 
@@ -1010,6 +990,31 @@ class widgets:
         spacer,
     ]
 
+    headset = [
+
+        widget.TextBox
+        (
+            text="🎧",
+            **decor
+        ),
+        # widget.TextBox
+        # (
+        #     name="headset",
+        #     text=subprocess.getoutput("headsetcontrol -b | awk '/Battery: /{print $2}'"),
+        #     **decor,
+        # ),
+        widget.GenPollText
+        (
+            name="headset",
+            func=lambda: subprocess.getoutput("cat ~/.cache/headset_percent"),
+            mouse_callbacks={'Button1': tick_widget},
+                            # {"Button1": lazy.widget["genpolltext"].function(lambda w: w.update(w.poll())}
+            update_interval=108,
+            **decor
+        ),
+        spacer,
+    ]
+
     battery = [
 
         widget.BatteryIcon
@@ -1074,10 +1079,11 @@ widgets_list = [
     *widgets.memory,
     *widgets.thermals,
     *widgets.system76,
-    *widgets.keyboard,
-    # *widgets.headset,
+    # *widgets.keyboard,
+    *widgets.headset,
     *widgets.battery,
     *widgets.tray_box,
+    # *widgets.tray,
 ]
 
 
