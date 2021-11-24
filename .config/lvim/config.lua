@@ -21,6 +21,7 @@ lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["<C-n>"] = ":lua require('material.functions').toggle_style()<cr>"
 lvim.keys.normal_mode["<leader>a"] = "ggVG"
+lvim.keys.normal_mode["<leader>r"] = ":%s/"
 -- lvim.keys.normal_mode["<C-S-o"] = "<C-i>"
 lvim.keys.visual_mode["p"] = [["_dP]]
 
@@ -200,13 +201,13 @@ lvim.plugins = {
       require("user.colorizer").config()
     end
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    -- event = "BufReadPre",
-    config = function()
-      require "user.blankline"
-    end
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   -- event = "BufReadPre",
+  --   config = function()
+  --     require "user.blankline"
+  --   end
+  -- },
   {
     "karb94/neoscroll.nvim",
     config = function()

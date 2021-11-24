@@ -53,6 +53,11 @@ groups.append(ScratchPad("scratchpad", dropdowns=[
             DropDown(
                 "term", "alacritty",
                 **dropdown_defaults
+            ),
+            DropDown(
+                "top", "alacritty -e bpytop",
+                on_focus_lost_hide=False,
+                **dropdown_defaults
             )
         ]
     )
@@ -473,7 +478,7 @@ keys = [
     ),
     Key
     (
-        [mod], "n",
+        [mod, "control"], "n",
         lazy.layout.normalize()
     ),
     Key
@@ -537,6 +542,11 @@ keys = [
     (
         [mod], "p",
         lazy.group["scratchpad"].dropdown_toggle("pad")
+    ),
+    Key
+    (
+        [mod], "t",
+        lazy.group["scratchpad"].dropdown_toggle("top")
     ),
 ]
 
@@ -657,6 +667,9 @@ def tick_widget():
     w = qtile.widgets_map["headset"]
     w.update(w.poll())
 
+
+def toggle_notif():
+    subprocess.Popen(["open_deadd"])
 
 widget_defaults = dict(
 
@@ -1061,6 +1074,19 @@ class widgets:
         spacer
     ]
 
+    notifs = [
+        widget.TextBox
+        (
+            name="notifs",
+            text=" ",
+            mouse_callbacks={"Button1": toggle_notif},
+            background=theme.bg,
+            # icon_size=20,
+            # padding=4,
+        ),
+        spacer
+    ]
+
 
 widgets_list = [
 
@@ -1084,6 +1110,7 @@ widgets_list = [
     *widgets.battery,
     *widgets.tray_box,
     # *widgets.tray,
+    *widgets.notifs,
 ]
 
 

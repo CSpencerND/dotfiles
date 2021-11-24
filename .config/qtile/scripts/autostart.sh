@@ -37,7 +37,9 @@ picom --config $HOME/.config/qtile/scripts/picom.conf -b --experimental-backends
 run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-/usr/lib/xfce4/notifyd/xfce4-notifyd &
+# /usr/lib/xfce4/notifyd/xfce4-notifyd &
+run /usr/bin/deadd-notification-center &
+# run dunst &
 
 run variety &
 run nm-applet &
@@ -50,7 +52,6 @@ run volumeicon &
 run redshift-gtk &
 # run cbatticon &
 
-# run dunst &
 # run discord &
 # run dropbox &
 # pactl load-module module-alsa-sink device=hw:1,1 &
