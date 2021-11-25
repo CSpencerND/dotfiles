@@ -1136,10 +1136,10 @@ def init_screens():
                 size=28, background=theme.bg, opacity=.82
              )),
 
-             Screen(top=bar.Bar(
-                widgets=[*widgets.basics],
-                size=28, background=theme.bg, opacity=.82
-             ))
+             # Screen(top=bar.Bar(
+                # widgets=[*widgets.basics],
+                # size=28, background=theme.bg, opacity=.82
+             # ))
            ]
 
 
@@ -1221,6 +1221,7 @@ floating_layout = layout.Floating(
         Match(wm_class='solaar'),
         Match(wm_class='blueberry.py'),
         Match(wm_class='pavucontrol'),
+        Match(wm_class='qalculate-gtk'),
         Match(title='branchdialog'),
         Match(title='Open File'),
         Match(title='pinentry'),

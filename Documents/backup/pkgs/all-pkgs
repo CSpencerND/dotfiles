@@ -90,6 +90,7 @@ darkhttpd
 dconf-editor
 ddrescue
 deadbeef
+deadd-notification-center-bin
 dex
 dhclient
 dialog
@@ -123,6 +124,7 @@ firefox
 firefox-ublock-origin
 flameshot-git
 flex
+fnm-bin
 font-manager-git
 freetype2
 fsarchiver
@@ -244,6 +246,7 @@ mdadm
 memtest86+
 mesa
 mintstick-git
+mkchromecast-git
 mkinitcpio
 mkinitcpio-nfs-utils
 mkinitcpio-openswap
@@ -317,6 +320,7 @@ python-psutil
 python-pyparted
 python-pywal
 python2-pyxdg
+qalculate-gtk
 qt5-webkit
 qt5ct
 qtile
@@ -461,7 +465,7 @@ xboxdrv-git
 xcb-util-cursor
 xclip
 xcursor-arch-cursor-complete
-xdg-desktop-portal-gtk
+xdg-desktop-portal-gnome
 xdg-user-dirs
 xdo
 xdotool
@@ -492,6 +496,7 @@ xorg-bdftopcf
 xorg-iceauth
 xorg-mkfontscale
 xorg-server
+xorg-server-xephyr
 xorg-sessreg
 xorg-setxkbmap
 xorg-smproxy

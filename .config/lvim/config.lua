@@ -10,7 +10,7 @@ vim.g.material_style = "palenight"
 vim.g.tokyonight_style = "storm" -- storm, night, day
 vim.g.gruvbox_contrast_dark = "hard"
 
-require("nvim-lsp-installer").settings { log_level = vim.log.levels.DEBUG }
+-- require("nvim-lsp-installer").settings { log_level = vim.log.levels.DEBUG }
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -32,9 +32,9 @@ vim.g.user_emmet_leader_key=","
 
 
 -- for finding syntax ids for non TS enabled languages
-vim.cmd [[
-map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
-]]
+-- vim.cmd [[
+-- map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+-- ]]
 
 
 local _, actions = pcall(require, "telescope.actions")
@@ -67,12 +67,50 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 
 
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+-- LSP
+lvim.lsp.diagnostics.virtual_text = false
+lvim.lsp.automatic_servers_installation = true
+-- require("user.json_schemas").setup()
+
+
+-- Builtins
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
-lvim.builtin.nvimtree.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = true
+lvim.builtin.telescope.defaults.path_display = { "smart" }
+lvim.builtin.project.patterns = { ".git" }
+lvim.builtin.project.detection_methods = { "pattern" }
+-- lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy statusline
+-- if lvim.builtin.fancy_statusline.active then
+  -- require("user.lualine").config()
+-- end
+
+-- lvim.builtin.nvimtree.side = "left"
+-- lvim.builtin.nvimtree.show_icons.git = 0
+
+
+-- Treesitter
+lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.autotag = {
+  enable = true,
+  disable = { "xml" },
+}
+lvim.builtin.treesitter.playground.enable = true
+lvim.builtin.treesitter.indent.disable = { "python" }
+-- lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.rainbow = {
+  enable = true,
+  colors = {
+    "Gold",
+    "Orchid",
+    "DodgerBlue",
+    -- "Cornsilk",
+    -- "Salmon",
+    -- "LawnGreen",
+  },
+  disable = { "html" },
+}
 
 
 local components = require("lvim.core.lualine.components")
@@ -80,18 +118,9 @@ lvim.builtin.lualine.sections.lualine_c = { "diff" }
 lvim.builtin.lualine.style = "lvim" -- "none", "lvim", "default"
 lvim.builtin.lualine.sections.lualine_a = { "mode" }
 lvim.builtin.lualine.sections.lualine_y = {
-  -- components.spaces,
+  components.spaces,
   components.location
 }
-
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = "maintained"
-lvim.builtin.treesitter.autotag.enable = true
-lvim.builtin.treesitter.playground.enable = true
-lvim.builtin.treesitter.highlight.enabled = true
-lvim.lsp.diagnostics.virtual_text = false
-lvim.lsp.automatic_servers_installation = true
--- require("user.json_schemas").setup()
 
 
 -- javascript
@@ -122,17 +151,19 @@ lvim.lang.lua.formatters = {
 }
 
 -- python
--- lvim.lang.python.formatters = {
---   {
---     exe = "black",
---   },
--- }
+lvim.lang.python.formatters = {
+  {
+    exe = "black",
+  },
+}
 
--- lvim.lang.python.linters = {
---   {
---     exe = "flake8",
---   },
--- }
+lvim.lang.python.linters = {
+  {
+    exe = "flake8",
+  },
+}
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup({{exe = "black", filetypes = {"python"} }})
 
 -- c/cpp
 lvim.lang.c.formatters = { { exe = "clang_format" } }
@@ -174,6 +205,7 @@ lvim.plugins = {
     --   }
     -- end
   -- },
+  { "psf/black" },
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
   { "romgrk/doom-one.vim" },
@@ -203,7 +235,7 @@ lvim.plugins = {
   },
   -- {
   --   "lukas-reineke/indent-blankline.nvim",
-  --   -- event = "BufReadPre",
+  --   event = "BufReadPre",
   --   config = function()
   --     require "user.blankline"
   --   end

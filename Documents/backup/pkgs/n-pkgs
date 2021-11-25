@@ -305,6 +305,7 @@ python-pip
 python-psutil
 python-pyparted
 python-pywal
+qalculate-gtk
 qt5-webkit
 qt5ct
 qtile
@@ -435,7 +436,7 @@ xapp
 xcb-util-cursor
 xclip
 xcursor-arch-cursor-complete
-xdg-desktop-portal-gtk
+xdg-desktop-portal-gnome
 xdg-user-dirs
 xdo
 xdotool
@@ -466,6 +467,7 @@ xorg-bdftopcf
 xorg-iceauth
 xorg-mkfontscale
 xorg-server
+xorg-server-xephyr
 xorg-sessreg
 xorg-setxkbmap
 xorg-smproxy
