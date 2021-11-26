@@ -9,7 +9,7 @@ from libqtile.config import (
 )
 # import arcobattery
 import groupbox_git
-import custom_groupbox
+# import custom_groupbox
 import custom_tasklist
 
 from qtile_extras import widget
