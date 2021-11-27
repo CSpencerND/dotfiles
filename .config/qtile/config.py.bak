@@ -13,7 +13,7 @@ import groupbox_git
 import custom_tasklist
 
 from qtile_extras import widget
-from qtile_extras.widget.decorations import BorderDecoration, RectDecoration
+from qtile_extras.widget.decorations import BorderDecoration
 
 subprocess.Popen("setup_screens")
 
@@ -676,10 +676,10 @@ widget_defaults = dict(
     font='Hack Nerd Font',
     fontsize=14,
     padding=3,
-    # background=theme.bgla,
+    background=theme.bgla,
     foreground=theme.fg,
     borderwidth=2,
-    rounded=True,
+    rounded=False,
     urgent_alert_method='text',
     urgent_text=theme.magenta,
     urgent_border=theme.magenta,
@@ -688,42 +688,13 @@ widget_defaults = dict(
 
 decor = dict(
     decorations=[
-        # BorderDecoration
-        # (
-            # border_width=[0, 0, 2, 0],
-            # colour=theme.purple,
-        # ),
-        RectDecoration
+        BorderDecoration
         (
-            colour=theme.blurple,
-            filled=True,
-            radius=10,
-        ),
+            border_width=[0, 0, 2, 0],
+            colour=theme.purple,
+        )
     ]
 )
-
-decor_left = dict(
-    decorations=[
-        RectDecoration
-        (
-            colour=theme.blurple,
-            filled=True,
-            radius=[10, 0, 0, 10],
-        ),
-    ]
-)
-
-decor_right = dict(
-    decorations=[
-        RectDecoration
-        (
-            colour=theme.blurple,
-            filled=True,
-            radius=[0, 10, 10, 0],
-        ),
-    ]
-)
-
 
 class widgets:
     spacer = widget.Spacer(length=4, background=None)
@@ -749,9 +720,8 @@ class widgets:
         # custom_groupbox.GroupBox
         groupbox_git.GroupBox
         (
-            highlight_method='block',
-            unfocused_highlight_method='border',
-            borderwidth=1,
+            highlight_method='line',
+            unfocused_highlight_method='text',
             active=theme.fg,
             inactive='#5b5b5b',
             disable_drag=False,
@@ -762,7 +732,7 @@ class widgets:
             other_current_screen_border=theme.cyan,
             other_screen_border=theme.cyan,
             background=None,
-            padding_y=4,
+            padding_y=0,
         ),
         widget.CurrentLayoutIcon
         (
@@ -777,7 +747,7 @@ class widgets:
             txt_floating='🗗 ',
             txt_maximized='🗖 ',
             txt_minimized='🗕 ',
-            border=theme.purple,
+            border=theme.dpurple,
             background=None,
             # max_title_width=350,
             # title_width_method = 'uniform',
@@ -797,12 +767,12 @@ class widgets:
             mouse_callbacks={
                 'Button3': lambda: qtile.cmd_spawn('sb-clock')
             },
-            **decor_left
+            **decor
         ),
         widget.Clock
         (
             format="%I:%M%P",
-            **decor_right
+            **decor
         ),
         spacer
     ]
@@ -818,7 +788,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
             },
-            **decor_left
+            **decor
         ),
         widget.Clock
         (
@@ -827,7 +797,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('sb-cal')
             },
-            **decor_right
+            **decor
         ),
         spacer
     ]
@@ -850,7 +820,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
             },
-            **decor_left
+            **decor
         ),
         widget.TextBox
         (
@@ -859,8 +829,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
-            background=theme.blurple,
-            # **decor
+            **decor
         ),
         widget.TextBox
         (
@@ -873,8 +842,7 @@ class widgets:
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
                 'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
             },
-            background=theme.blurple,
-            # **decor
+            **decor
         ),
         widget.TextBox
         (
@@ -885,8 +853,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
-            background=theme.blurple,
-            # **decor
+            **decor
         ),
         widget.TextBox
         (
@@ -895,7 +862,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
             },
-            **decor_right
+            **decor
         ),
         spacer
     ]
@@ -907,7 +874,7 @@ class widgets:
             apikey='G0BJFWBFWXWJAJ9R',
             symbol='GOOG',
             function='TIME_SERIES_INTRADAY',
-            foreground=theme.cyan,
+            foreground=theme.green,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn(
                     'firefox https://www.google.com/finance/quote/GOOG:NASDAQ\
@@ -968,7 +935,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('mem-icon-click')
             },
-            **decor_left
+            **decor
         ),
         widget.Memory
         (
@@ -978,7 +945,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('mem-text-click')
             },
-            **decor_right
+            **decor
         ),
         spacer
     ]
@@ -995,7 +962,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('cpu-icon-click')
             },
-            **decor_left
+            **decor
         ),
         widget.ThermalSensor
         (
@@ -1005,7 +972,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('cpu-text-click')
             },
-            **decor_right
+            **decor
         ),
         spacer
     ]
@@ -1022,7 +989,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('s76-power-base')
             },
-            **decor_left
+            **decor
         ),
         widget.TextBox
         (
@@ -1031,7 +998,7 @@ class widgets:
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn('s76-power-base')
             },
-            **decor_right
+            **decor
         ),
         spacer,
     ]
@@ -1041,7 +1008,7 @@ class widgets:
         widget.TextBox
         (
             text="🎧",
-            **decor_left
+            **decor
         ),
         # widget.TextBox
         # (
@@ -1056,7 +1023,7 @@ class widgets:
             mouse_callbacks={'Button1': tick_widget},
                             # {"Button1": lazy.widget["genpolltext"].function(lambda w: w.update(w.poll())}
             update_interval=108,
-            **decor_right
+            **decor
         ),
         spacer,
     ]
@@ -1067,7 +1034,7 @@ class widgets:
         (
             mouse_callbacks={'Button1': get_bat_percent},
             padding=0,
-            **decor_left
+            **decor
         ),
         widget.Battery
         (
@@ -1076,7 +1043,7 @@ class widgets:
             low_foreground=theme.magenta,
             low_percentage=0.20,
             notify_below=0.20,
-            **decor_right
+            **decor
         ),
         spacer,
     ]
@@ -1166,7 +1133,7 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=init_widgets_screen1(),
-                size=28, background=theme.bg, opacity=.82, margin=[8, 8, 0, 8]
+                size=28, background=theme.bg, opacity=.82
              )),
 
              # Screen(top=bar.Bar(
