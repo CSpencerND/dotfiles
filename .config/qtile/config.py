@@ -38,25 +38,25 @@ for i in range(len(group_names)):
         )
     )
 
-# dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
-# groups.append(ScratchPad("scratchpad", dropdowns=[
-#
-#             DropDown(
-#                 "pad", "alacritty -e nvim " + home + "/.cache/scratchpad",
-#                 **dropdown_defaults
-#             ),
-#             DropDown(
-#                 "term", "alacritty",
-#                 **dropdown_defaults
-#             ),
-#             DropDown(
-#                 "top", "alacritty -e bpytop",
-#                 on_focus_lost_hide=False,
-#                 **dropdown_defaults
-#             )
-#         ]
-#     )
-# )
+dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
+groups.append(ScratchPad("scratchpad", dropdowns=[
+
+            DropDown(
+                "pad", "kitty -e nvim " + home + "/.cache/scratchpad",
+                **dropdown_defaults
+            ),
+            DropDown(
+                "term", "kitty",
+                **dropdown_defaults
+            ),
+            DropDown(
+                "top", "kitty -e bpytop",
+                on_focus_lost_hide=False,
+                **dropdown_defaults
+            )
+        ]
+    )
+)
 
 
 # Theme
@@ -432,21 +432,21 @@ keys = [
         [mod, "shift"], "b",
         lazy.hide_show_bar()
     ),
-    # Key
-    # (
-    #     [mod], "apostrophe",
-    #     lazy.group["scratchpad"].dropdown_toggle("term")
-    # ),
-    # Key
-    # (
-    #     [mod], "p",
-    #     lazy.group["scratchpad"].dropdown_toggle("pad")
-    # ),
-    # Key
-    # (
-    #     [mod], "t",
-    #     lazy.group["scratchpad"].dropdown_toggle("top")
-    # ),
+    Key
+    (
+        [mod], "apostrophe",
+        lazy.group["scratchpad"].dropdown_toggle("term")
+    ),
+    Key
+    (
+        [mod], "p",
+        lazy.group["scratchpad"].dropdown_toggle("pad")
+    ),
+    Key
+    (
+        [mod], "t",
+        lazy.group["scratchpad"].dropdown_toggle("top")
+    ),
 ]
 
 
@@ -827,7 +827,7 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=widgets_list,
-                size=28, background=theme.bg, opacity=1, margin=[8, 8, 0, 8]
+                size=28, background=theme.bg, opacity=.82, margin=[8, 8, 0, 8]
              )),
            ]
 

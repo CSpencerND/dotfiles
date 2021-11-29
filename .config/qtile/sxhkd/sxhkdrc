@@ -21,7 +21,7 @@ super + x
   arcolinux-logout
 
 super + Return
-  alacritty
+  kitty
 
 super + b
   firefox
