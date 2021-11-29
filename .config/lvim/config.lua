@@ -10,7 +10,7 @@ vim.g.material_style = "palenight"
 vim.g.tokyonight_style = "storm" -- storm, night, day
 vim.g.gruvbox_contrast_dark = "hard"
 
--- require("nvim-lsp-installer").settings { log_level = vim.log.levels.DEBUG }
+require("nvim-lsp-installer").settings { log_level = vim.log.levels.DEBUG }
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -67,12 +67,6 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 
 
--- LSP
-lvim.lsp.diagnostics.virtual_text = false
-lvim.lsp.automatic_servers_installation = true
--- require("user.json_schemas").setup()
-
-
 -- Builtins
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
@@ -99,20 +93,34 @@ lvim.builtin.treesitter.autotag = {
 lvim.builtin.treesitter.playground.enable = true
 lvim.builtin.treesitter.indent.disable = { "python" }
 -- lvim.builtin.treesitter.highlight.enabled = true
-lvim.builtin.treesitter.rainbow = {
-  enable = true,
-  colors = {
-    "Gold",
-    "Orchid",
-    "DodgerBlue",
-    -- "Cornsilk",
-    -- "Salmon",
-    -- "LawnGreen",
-  },
-  disable = { "html" },
+
+
+-- LSP
+require("lvim.lsp.manager").setup("pylsp")
+require("lvim.lsp.manager").setup("sumneko_lua")
+require("lvim.lsp.manager").setup("eslint")
+require("lvim.lsp.manager").setup("yamlls")
+require("lvim.lsp.manager").setup("tsserver")
+require("lvim.lsp.manager").setup("jsonls")
+require("lvim.lsp.manager").setup("cssls")
+require("lvim.lsp.manager").setup("html")
+require("lvim.lsp.manager").setup("clangd")
+require("lvim.lsp.manager").setup("emmet_ls")
+
+lvim.lsp.diagnostics.virtual_text = false
+lvim.lsp.automatic_servers_installation = true
+-- require("user.json_schemas").setup()
+
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+    { exe = "black" },
+    { exe = "prettier" },
+    { exe = "stylua" },
+    { exe = "clang_format" },
 }
 
 
+-- Lualine
 local components = require("lvim.core.lualine.components")
 lvim.builtin.lualine.sections.lualine_c = { "diff" }
 lvim.builtin.lualine.style = "lvim" -- "none", "lvim", "default"
@@ -123,88 +131,9 @@ lvim.builtin.lualine.sections.lualine_y = {
 }
 
 
--- javascript
-lvim.lang.javascript.formatters = {
-  {
-    exe = "prettier",
-  },
-}
-
--- lvim.lang.javascript.linters = {
---   {
---     exe = "eslint",
---   },
--- }
-
--- json
-lvim.lang.json.formatters = {
-  {
-    exe = "prettier",
-  },
-}
-
--- lua
-lvim.lang.lua.formatters = {
-  {
-    exe = "stylua",
-  },
-}
-
--- python
-lvim.lang.python.formatters = {
-  {
-    exe = "black",
-  },
-}
-
-lvim.lang.python.linters = {
-  {
-    exe = "flake8",
-  },
-}
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup({{exe = "black", filetypes = {"python"} }})
-
--- c/cpp
-lvim.lang.c.formatters = { { exe = "clang_format" } }
-lvim.lang.cpp.formatters = lvim.lang.c.formatters
-
-
 -- Additional Plugins
 lvim.plugins = {
-  -- {
-  --   "tanvirtin/monokai.nvim",
-    -- config = function()
-    --   require("monokai").setup {
-    --     palette = {
-    --         name = 'dracula-custom',
-    --         base1 = '#21222C',
-    --         base2 = '#282A36',
-    --         base3 = '#424450',
-    --         base4 = '#343746',
-    --         base5 = '#44475A',
-    --         base6 = '#6272A4',
-    --         base7 = '#6272A4',
-    --         border = '#6272A4',
-    --         brown = '#504945',
-    --         white = '#f8f8f2',
-    --         grey = '#6272A4',
-    --         black = '#191A21',
-    --         pink = '#FF79C6',
-    --         green = '#50FA7B',
-    --         aqua = '#8BE9FD',
-    --         yellow = '#F1FA8C',
-    --         orange = '#FFB86C',
-    --         purple = '#BD93F9',
-    --         red = '#FF5555',
-    --         diff_add = '#3d5213',
-    --         diff_remove = '#4a0f23',
-    --         diff_change = '#27406b',
-    --         diff_text = '#23324d',
-    --     },
-    --   }
-    -- end
-  -- },
+  { "bergercookie/asm-lsp" },
   { "psf/black" },
   { "dracula/vim" },
   { "lunarvim/colorschemes" },

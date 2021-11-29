@@ -527,6 +527,7 @@ def toggle_notif():
 
 
 widget_defaults = dict(
+
     font='Hack Nerd Font',
     fontsize=14,
     padding=3,
@@ -539,11 +540,9 @@ widget_defaults = dict(
     urgent_border=theme.bright,
 )
 
-spacer = widget.TextBox(text="|", foreground=theme.bgla)
-
 widgets_list = [
+
     groupbox_git.GroupBox
-    # widget.GroupBox
     (
         foreground=theme.fg,
         highlight_method='block',
@@ -568,7 +567,6 @@ widgets_list = [
     ),
 
     custom_tasklist.TaskList
-    # widget.TaskList
     (
         foreground=theme.fg,
         highlight_method='block',
@@ -581,15 +579,12 @@ widgets_list = [
         padding_y=0,
     ),
 
-    spacer,
 
     widget.TextBox
     (
-        foreground=theme.alt,
-        font="Weather Icons",
         name='clock_icon',
         text=subprocess.getoutput("cat ~/.cache/clock-icon"),
-        fontsize=22,
+        fontsize=18,
         mouse_callbacks={
             'Button3': lambda: qtile.cmd_spawn('sb-clock')
         },
@@ -597,16 +592,15 @@ widgets_list = [
 
     widget.Clock
     (
-        foreground=theme.alt,
-        format=" %I:%M%P",
+        format="%I:%M%P",
     ),
 
-    spacer,
+    widget.TextBox("|"),
 
     widget.TextBox
     (
         name='date_icon',
-        text=" ",
+        text="📆",
         fontsize=17,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('sb-cal')
@@ -620,12 +614,10 @@ widgets_list = [
             'Button1': lambda: qtile.cmd_spawn('sb-cal')
         },
     ),
-    spacer,
+    widget.TextBox("|"),
 
     widget.TextBox
     (
-        foreground=theme.alt,
-        font="Weather Icons",
         name='current_icon',
         text=subprocess.getoutput("cat ~/.cache/weather/current_icon"),
         fontsize=18,
@@ -635,7 +627,6 @@ widgets_list = [
     ),
     widget.TextBox
     (
-        foreground=theme.alt,
         name='current_temp',
         text=subprocess.getoutput("cat ~/.cache/weather/current_temp"),
         mouse_callbacks={
@@ -644,20 +635,18 @@ widgets_list = [
     ),
     widget.TextBox
     (
-        foreground=theme.alt,
         name='trend',
         font="Material Icons",
         text=subprocess.getoutput("cat ~/.cache/weather/trend"),
         fontsize=18,
+        foreground=theme.fg,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
-            'Button3': lambda: qtile.cmd_spawn('openweather')
+            'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
         },
     ),
     widget.TextBox
     (
-        foreground=theme.alt,
-        font="Weather Icons",
         name='forecast_icon',
         text=subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
         fontsize=18,
@@ -667,21 +656,20 @@ widgets_list = [
     ),
     widget.TextBox
     (
-        foreground=theme.alt,
         name='forecast_temp',
         text=subprocess.getoutput("cat ~/.cache/weather/forecast_temp"),
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
         },
     ),
-    spacer,
+    widget.TextBox("|"),
 
     widget.StockTicker
     (
-        foreground=theme.main,
         apikey='G0BJFWBFWXWJAJ9R',
         symbol='GOOG',
         function='TIME_SERIES_INTRADAY',
+        foreground=theme.alt,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(
                 'firefox https://www.google.com/finance/quote/GOOG:NASDAQ\
@@ -689,13 +677,12 @@ widgets_list = [
             )
         },
     ),
-    spacer,
+    widget.TextBox("|"),
 
     widget.TextBox
     (
-        foreground=theme.alt,
         name='memory_icon',
-        text=" ",
+        text="🧠",
         fontsize=18,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('mem-icon-click')
@@ -703,7 +690,6 @@ widgets_list = [
     ),
     widget.Memory
     (
-        foreground=theme.alt,
         measure_mem='G',
         format='{MemUsed:.1f}{mm}',
         update_interval=10,
@@ -711,21 +697,20 @@ widgets_list = [
             'Button1': lambda: qtile.cmd_spawn('mem-text-click')
         },
     ),
-    spacer,
+    widget.TextBox("|"),
 
     widget.TextBox
     (
         name='thermal_icon',
         text="🌡",
         padding=0,
-        fontsize=15,
+        fontsize=18,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('cpu-icon-click')
         },
     ),
     widget.ThermalSensor
     (
-        foreground=theme.main,
         foreground_alert=theme.bright,
         metric=True,
         threshold=70,
@@ -733,13 +718,12 @@ widgets_list = [
             'Button1': lambda: qtile.cmd_spawn('cpu-text-click')
         },
     ),
-    spacer,
+    widget.TextBox("|"),
 
     widget.TextBox
     (
-        foreground=theme.alt,
         name='system76',
-        text='',
+        text='⚡',
         padding=0,
         fontsize=18,
         mouse_callbacks={
@@ -748,19 +732,17 @@ widgets_list = [
     ),
     widget.TextBox
     (
-        foreground=theme.alt,
         name='indicator',
         text=subprocess.getoutput("cat ~/.cache/power-profile"),
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('s76-power-base')
         },
     ),
-    spacer,
+    widget.TextBox("|"),
 
     widget.TextBox
     (
-        text=" ",
-        fontsize=18,
+        text="🎧",
     ),
     widget.GenPollText
     (
@@ -769,30 +751,22 @@ widgets_list = [
         mouse_callbacks={'Button1': tick_widget},
         update_interval=108,
     ),
-    spacer,
+    widget.TextBox("|"),
 
-    # widget.BatteryIcon
-    # (
-    #     mouse_callbacks={'Button1': get_bat_percent},
-    #     padding=0,
-    # ),
-
-    widget.TextBox
+    widget.BatteryIcon
     (
-        foreground=theme.alt,
-        text="",
-        fontsize=22,
+        mouse_callbacks={'Button1': get_bat_percent},
+        padding=0,
     ),
     widget.Battery
     (
-        foreground=theme.alt,
         format='{percent:2.0%}',
         mouse_callbacks={'Button1': get_bat_percent},
         low_foreground=theme.bright,
         low_percentage=0.20,
         notify_below=0.20,
     ),
-    spacer,
+    widget.TextBox("|"),
 
     widget.WidgetBox
     (
@@ -810,11 +784,10 @@ widgets_list = [
         fontsize=18,
         background=theme.bg,
     ),
-    spacer,
+    widget.TextBox("|"),
 
     widget.TextBox
     (
-        foreground=theme.alt,
         name="notifs",
         text=" ",
         mouse_callbacks={"Button1": toggle_notif},

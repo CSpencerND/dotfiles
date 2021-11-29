@@ -16,9 +16,12 @@ arch-install-scripts
 archiso
 arcolinux-alacritty-git
 arcolinux-bin-git
+arcolinux-candy-beauty-git
 arcolinux-config-all-desktops-git
 arcolinux-conky-collection-git
 arcolinux-dconf-all-desktops-git
+arcolinux-dwm-git
+arcolinux-dwm-slstatus-git
 arcolinux-fonts-git
 arcolinux-grub-theme-vimix-git
 arcolinux-gtk3-sardi-arc-git
@@ -26,6 +29,7 @@ arcolinux-hblock-git
 arcolinux-keyring
 arcolinux-kvantum-git
 arcolinux-kvantum-theme-arc-git
+arcolinux-leftwm-git
 arcolinux-local-applications-git
 arcolinux-local-xfce4-git
 arcolinux-meta-logout
@@ -34,6 +38,7 @@ arcolinux-neofetch-git
 arcolinux-nitrogen-git
 arcolinux-paru-git
 arcolinux-pipemenus-git
+arcolinux-polybar-git
 arcolinux-qt5-git
 arcolinux-qtile-git
 arcolinux-reflector-simple-git
@@ -48,6 +53,7 @@ arcolinux-tweak-tool-git
 arcolinux-variety-autostart-git
 arcolinux-variety-git
 arcolinux-volumeicon-git
+arcolinux-wallpapers-candy-git
 arcolinux-wallpapers-git
 arcolinux-welcome-app-git
 arcolinux-xfce-git
@@ -148,6 +154,7 @@ grub
 grub-btrfs
 grub-customizer
 gsfonts
+gsimplecal
 gst-libav
 gst-plugins-bad
 gst-plugins-base
@@ -186,6 +193,8 @@ jsoncpp
 kitty-terminfo
 kvantum-qt5
 laptop-detect
+leftwm
+leftwm-theme-git
 less
 lib32-alsa-lib
 lib32-alsa-plugins
@@ -245,10 +254,12 @@ modemmanager
 mtools
 mtpfs
 nano
+nasm
 nbd
 ndisc6
 neofetch
 neovim
+nerd-fonts-source-code-pro
 network-manager-applet
 networkmanager
 networkmanager-openconnect
@@ -284,12 +295,14 @@ patch
 pavucontrol
 pcmanfm
 pcsclite
+picom-jonaburg-git
 pipewire-alsa
 pipewire-jack
 pkgconf
 playerctl
 polkit
 polkit-gnome
+polybar
 poppler-glib
 poppler-qt5
 ppp
@@ -317,6 +330,7 @@ reiserfsprogs
 ripgrep
 ristretto
 rofi
+rofi-theme-fonts
 rofimoji
 rp-pppoe
 rsync
@@ -366,6 +380,8 @@ ttf-droid
 ttf-font-awesome
 ttf-hack
 ttf-joypixels
+ttf-material-design-iconic-font
+ttf-meslo-nerd-font-powerlevel10k
 ttf-ms-fonts
 ttf-roboto
 ttf-roboto-mono
@@ -502,6 +518,7 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 yad
+yasm
 yay-bin
 zenity
 zoom
