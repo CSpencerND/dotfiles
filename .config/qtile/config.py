@@ -624,7 +624,7 @@ widgets_list = [
 
     widget.TextBox
     (
-        foreground=theme.alt,
+        foreground=theme.soft,
         font="Weather Icons",
         name='current_icon',
         text=subprocess.getoutput("cat ~/.cache/weather/current_icon"),
@@ -635,7 +635,7 @@ widgets_list = [
     ),
     widget.TextBox
     (
-        foreground=theme.alt,
+        foreground=theme.soft,
         name='current_temp',
         text=subprocess.getoutput("cat ~/.cache/weather/current_temp"),
         mouse_callbacks={
@@ -644,7 +644,7 @@ widgets_list = [
     ),
     widget.TextBox
     (
-        foreground=theme.alt,
+        foreground=theme.soft,
         name='trend',
         font="Material Icons",
         text=subprocess.getoutput("cat ~/.cache/weather/trend"),
@@ -656,7 +656,7 @@ widgets_list = [
     ),
     widget.TextBox
     (
-        foreground=theme.alt,
+        foreground=theme.soft,
         font="Weather Icons",
         name='forecast_icon',
         text=subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
@@ -667,7 +667,7 @@ widgets_list = [
     ),
     widget.TextBox
     (
-        foreground=theme.alt,
+        foreground=theme.soft,
         name='forecast_temp',
         text=subprocess.getoutput("cat ~/.cache/weather/forecast_temp"),
         mouse_callbacks={
@@ -715,6 +715,7 @@ widgets_list = [
 
     widget.TextBox
     (
+        foreground=theme.soft,
         name='thermal_icon',
         text="🌡",
         padding=0,
@@ -725,8 +726,8 @@ widgets_list = [
     ),
     widget.ThermalSensor
     (
-        foreground=theme.main,
-        foreground_alert=theme.bright,
+        foreground=theme.soft,
+        foreground_alert=theme.alert,
         metric=True,
         threshold=70,
         mouse_callbacks={
@@ -759,7 +760,7 @@ widgets_list = [
 
     widget.TextBox
     (
-        text=" ",
+        text="🎧",
         fontsize=18,
     ),
     widget.GenPollText
