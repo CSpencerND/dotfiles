@@ -187,6 +187,7 @@ hw-probe
 hwinfo
 imagemagick
 intel-ucode
+intel-undervolt
 intltool
 inxi
 ipw2100-fw
@@ -199,6 +200,7 @@ jq
 js-beautify-git
 jsoncpp
 jwasm
+kitty
 kitty-terminfo
 kmonad-git
 kvantum-qt5

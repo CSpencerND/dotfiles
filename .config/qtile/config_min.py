@@ -10,7 +10,7 @@ from libqtile.config import (
 import groupbox_git
 import custom_tasklist
 
-subprocess.Popen("setup_screens")
+# subprocess.Popen("setup_screens")
 
 # ---       IMPORTS        }}}
 ##############################
@@ -38,25 +38,25 @@ for i in range(len(group_names)):
         )
     )
 
-# dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
-# groups.append(ScratchPad("scratchpad", dropdowns=[
-#
-#             DropDown(
-#                 "pad", "alacritty -e nvim " + home + "/.cache/scratchpad",
-#                 **dropdown_defaults
-#             ),
-#             DropDown(
-#                 "term", "alacritty",
-#                 **dropdown_defaults
-#             ),
-#             DropDown(
-#                 "top", "alacritty -e bpytop",
-#                 on_focus_lost_hide=False,
-#                 **dropdown_defaults
-#             )
-#         ]
-#     )
-# )
+dropdown_defaults = dict(height=0.5, width=0.5, x=0.25)
+groups.append(ScratchPad("scratchpad", dropdowns=[
+
+            DropDown(
+                "pad", "kitty -e nvim " + home + "/.cache/scratchpad",
+                **dropdown_defaults
+            ),
+            DropDown(
+                "term", "kitty",
+                **dropdown_defaults
+            ),
+            DropDown(
+                "top", "kitty -e bpytop",
+                on_focus_lost_hide=False,
+                **dropdown_defaults
+            )
+        ]
+    )
+)
 
 
 # Theme
@@ -432,21 +432,21 @@ keys = [
         [mod, "shift"], "b",
         lazy.hide_show_bar()
     ),
-    # Key
-    # (
-    #     [mod], "apostrophe",
-    #     lazy.group["scratchpad"].dropdown_toggle("term")
-    # ),
-    # Key
-    # (
-    #     [mod], "p",
-    #     lazy.group["scratchpad"].dropdown_toggle("pad")
-    # ),
-    # Key
-    # (
-    #     [mod], "t",
-    #     lazy.group["scratchpad"].dropdown_toggle("top")
-    # ),
+    Key
+    (
+        [mod], "apostrophe",
+        lazy.group["scratchpad"].dropdown_toggle("term")
+    ),
+    Key
+    (
+        [mod], "p",
+        lazy.group["scratchpad"].dropdown_toggle("pad")
+    ),
+    Key
+    (
+        [mod], "t",
+        lazy.group["scratchpad"].dropdown_toggle("top")
+    ),
 ]
 
 
@@ -527,7 +527,6 @@ def toggle_notif():
 
 
 widget_defaults = dict(
-
     font='Hack Nerd Font',
     fontsize=14,
     padding=3,
@@ -540,9 +539,11 @@ widget_defaults = dict(
     urgent_border=theme.bright,
 )
 
-widgets_list = [
+spacer = widget.TextBox(text="|", foreground=theme.bgla)
 
+widgets_list = [
     groupbox_git.GroupBox
+    # widget.GroupBox
     (
         foreground=theme.fg,
         highlight_method='block',
@@ -567,6 +568,7 @@ widgets_list = [
     ),
 
     custom_tasklist.TaskList
+    # widget.TaskList
     (
         foreground=theme.fg,
         highlight_method='block',
@@ -579,12 +581,15 @@ widgets_list = [
         padding_y=0,
     ),
 
+    spacer,
 
     widget.TextBox
     (
+        foreground=theme.alt,
+        font="Weather Icons",
         name='clock_icon',
         text=subprocess.getoutput("cat ~/.cache/clock-icon"),
-        fontsize=18,
+        fontsize=22,
         mouse_callbacks={
             'Button3': lambda: qtile.cmd_spawn('sb-clock')
         },
@@ -592,15 +597,16 @@ widgets_list = [
 
     widget.Clock
     (
-        format="%I:%M%P",
+        foreground=theme.alt,
+        format=" %I:%M%P",
     ),
 
-    widget.TextBox("|"),
+    spacer,
 
     widget.TextBox
     (
         name='date_icon',
-        text="📆",
+        text=" ",
         fontsize=17,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('sb-cal')
@@ -614,10 +620,12 @@ widgets_list = [
             'Button1': lambda: qtile.cmd_spawn('sb-cal')
         },
     ),
-    widget.TextBox("|"),
+    spacer,
 
     widget.TextBox
     (
+        foreground=theme.soft,
+        font="Weather Icons",
         name='current_icon',
         text=subprocess.getoutput("cat ~/.cache/weather/current_icon"),
         fontsize=18,
@@ -627,6 +635,7 @@ widgets_list = [
     ),
     widget.TextBox
     (
+        foreground=theme.soft,
         name='current_temp',
         text=subprocess.getoutput("cat ~/.cache/weather/current_temp"),
         mouse_callbacks={
@@ -635,18 +644,20 @@ widgets_list = [
     ),
     widget.TextBox
     (
+        foreground=theme.soft,
         name='trend',
         font="Material Icons",
         text=subprocess.getoutput("cat ~/.cache/weather/trend"),
         fontsize=18,
-        foreground=theme.fg,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('wttr-bttn'),
-            'Button3': lambda: qtile.cmd_spawn('openweather-emoji')
+            'Button3': lambda: qtile.cmd_spawn('openweather')
         },
     ),
     widget.TextBox
     (
+        foreground=theme.soft,
+        font="Weather Icons",
         name='forecast_icon',
         text=subprocess.getoutput("cat ~/.cache/weather/forecast_icon"),
         fontsize=18,
@@ -656,20 +667,21 @@ widgets_list = [
     ),
     widget.TextBox
     (
+        foreground=theme.soft,
         name='forecast_temp',
         text=subprocess.getoutput("cat ~/.cache/weather/forecast_temp"),
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('wttr-bttn')
         },
     ),
-    widget.TextBox("|"),
+    spacer,
 
     widget.StockTicker
     (
+        foreground=theme.main,
         apikey='G0BJFWBFWXWJAJ9R',
         symbol='GOOG',
         function='TIME_SERIES_INTRADAY',
-        foreground=theme.alt,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(
                 'firefox https://www.google.com/finance/quote/GOOG:NASDAQ\
@@ -677,12 +689,13 @@ widgets_list = [
             )
         },
     ),
-    widget.TextBox("|"),
+    spacer,
 
     widget.TextBox
     (
+        foreground=theme.alt,
         name='memory_icon',
-        text="🧠",
+        text=" ",
         fontsize=18,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('mem-icon-click')
@@ -690,6 +703,7 @@ widgets_list = [
     ),
     widget.Memory
     (
+        foreground=theme.alt,
         measure_mem='G',
         format='{MemUsed:.1f}{mm}',
         update_interval=10,
@@ -697,33 +711,36 @@ widgets_list = [
             'Button1': lambda: qtile.cmd_spawn('mem-text-click')
         },
     ),
-    widget.TextBox("|"),
+    spacer,
 
     widget.TextBox
     (
+        foreground=theme.soft,
         name='thermal_icon',
         text="🌡",
         padding=0,
-        fontsize=18,
+        fontsize=15,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('cpu-icon-click')
         },
     ),
     widget.ThermalSensor
     (
-        foreground_alert=theme.bright,
+        foreground=theme.soft,
+        foreground_alert=theme.alert,
         metric=True,
         threshold=70,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('cpu-text-click')
         },
     ),
-    widget.TextBox("|"),
+    spacer,
 
     widget.TextBox
     (
+        foreground=theme.alt,
         name='system76',
-        text='⚡',
+        text='',
         padding=0,
         fontsize=18,
         mouse_callbacks={
@@ -732,17 +749,19 @@ widgets_list = [
     ),
     widget.TextBox
     (
+        foreground=theme.alt,
         name='indicator',
         text=subprocess.getoutput("cat ~/.cache/power-profile"),
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('s76-power-base')
         },
     ),
-    widget.TextBox("|"),
+    spacer,
 
     widget.TextBox
     (
         text="🎧",
+        fontsize=18,
     ),
     widget.GenPollText
     (
@@ -751,22 +770,30 @@ widgets_list = [
         mouse_callbacks={'Button1': tick_widget},
         update_interval=108,
     ),
-    widget.TextBox("|"),
+    spacer,
 
-    widget.BatteryIcon
+    # widget.BatteryIcon
+    # (
+    #     mouse_callbacks={'Button1': get_bat_percent},
+    #     padding=0,
+    # ),
+
+    widget.TextBox
     (
-        mouse_callbacks={'Button1': get_bat_percent},
-        padding=0,
+        foreground=theme.alt,
+        text="",
+        fontsize=22,
     ),
     widget.Battery
     (
+        foreground=theme.alt,
         format='{percent:2.0%}',
         mouse_callbacks={'Button1': get_bat_percent},
         low_foreground=theme.bright,
         low_percentage=0.20,
         notify_below=0.20,
     ),
-    widget.TextBox("|"),
+    spacer,
 
     widget.WidgetBox
     (
@@ -784,10 +811,11 @@ widgets_list = [
         fontsize=18,
         background=theme.bg,
     ),
-    widget.TextBox("|"),
+    spacer,
 
     widget.TextBox
     (
+        foreground=theme.alt,
         name="notifs",
         text=" ",
         mouse_callbacks={"Button1": toggle_notif},
@@ -800,7 +828,7 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=widgets_list,
-                size=28, background=theme.bg, opacity=1, margin=[8, 8, 0, 8]
+                size=28, background=theme.bg, opacity=.82, margin=[8, 8, 0, 8]
              )),
            ]
 
