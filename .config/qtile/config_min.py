@@ -478,7 +478,7 @@ for i in group_names:
 # {{{       LAYOUTS        ---
 
 layout_theme = {
-    "margin": 8,
+    "margin": 10,
     "border_width": 2,
     "single_border_width": 2,
     "border_focus": theme.main,
@@ -729,7 +729,7 @@ widgets_list = [
         foreground=theme.soft,
         foreground_alert=theme.alert,
         metric=True,
-        threshold=70,
+        threshold=75,
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn('cpu-text-click')
         },
@@ -828,7 +828,29 @@ def init_screens():
     return [
              Screen(top=bar.Bar(
                 widgets=widgets_list,
-                size=28, background=theme.bg, opacity=.82, margin=[8, 8, 0, 8]
+                size=28, background=theme.bg, opacity=.80, margin=[8, 8, 0, 8]
+             )),
+             Screen(top=bar.Bar(
+                widgets=[
+                    groupbox_git.GroupBox
+                    # widget.GroupBox
+                    (
+                        foreground=theme.fg,
+                        highlight_method='block',
+                        unfocused_highlight_method='border',
+                        borderwidth=1,
+                        active=theme.fg,
+                        inactive='#5b5b5b',
+                        disable_drag=False,
+                        highlight_color=theme.bgla,  # [theme.main, theme.main],
+                        this_current_screen_border=theme.main,
+                        this_screen_border=theme.main,
+                        other_current_screen_border=theme.alt,
+                        other_screen_border=theme.alt,
+                        background=None,
+                        padding_y=4,
+                    )],
+                size=28, background=theme.bg, opacity=.80, margin=[8, 8, 0, 8]
              )),
            ]
 

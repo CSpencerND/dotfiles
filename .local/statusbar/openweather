@@ -19,7 +19,7 @@ get_icon() {
         09n) icon="${MOON} ";;       #Shower rain - night
         10d) icon="";; #  🌧           Moderate / heavy rain - day
         # 10n) icon="";; #   🌧          Moderate / heavy rain - night
-        10n) icon="${MOON}'";;       #Moderate / heavy rain - night
+        10n) icon="${MOON}";;       #Moderate / heavy rain - night
         11d) icon="";; #   🌩 ⛈        Thunderstorm - day
         # 11n) icon="";; #   🌩 ⛈        Thunderstorm - night
         11n) icon="${MOON} ";;        #Thunderstorm - night

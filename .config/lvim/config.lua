@@ -106,6 +106,8 @@ require("lvim.lsp.manager").setup("cssls")
 require("lvim.lsp.manager").setup("html")
 require("lvim.lsp.manager").setup("clangd")
 require("lvim.lsp.manager").setup("emmet_ls")
+require("lvim.lsp.manager").setup("bashls")
+require("lvim.lsp.manager").setup("hls")
 
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.automatic_servers_installation = true
@@ -116,7 +118,7 @@ formatters.setup {
     { exe = "black" },
     { exe = "prettier" },
     { exe = "stylua" },
-    { exe = "clang_format" },
+    { exe = "uncrustify", args = {} },
 }
 
 

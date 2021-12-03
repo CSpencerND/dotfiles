@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Exec=solaar -b solaar -w hide
-Hidden=false
+Hidden=true
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name[en_US]=Solaar
