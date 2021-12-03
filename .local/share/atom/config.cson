@@ -6,6 +6,7 @@
       "dracula-syntax"
     ]
   editor:
+    fontFamily: "Hack Nerd Font"
     showIndentGuide: true
     softWrap: true
   "exception-reporting":
@@ -21,4 +22,4 @@
   welcome:
     showOnStartup: false
 "atom-workspace":
-  "ctrl-alt-v": "vim-mode:toggle-enabled"
+  "super-v": "vim-mode:toggle-enabled"

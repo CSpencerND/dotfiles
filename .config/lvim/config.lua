@@ -118,7 +118,7 @@ formatters.setup {
     { exe = "black" },
     { exe = "prettier" },
     { exe = "stylua" },
-    { exe = "uncrustify", args = {} },
+    { exe = "clang_format" },
 }
 
 
@@ -135,7 +135,6 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 -- Additional Plugins
 lvim.plugins = {
-  { "bergercookie/asm-lsp" },
   { "psf/black" },
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
