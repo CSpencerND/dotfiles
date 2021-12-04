@@ -13,7 +13,6 @@ run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
 picom --config $HOME/.config/qtile/scripts/picom.conf -b --experimental-backends &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# /usr/lib/xfce4/notifyd/xfce4-notifyd &
 run /usr/bin/deadd-notification-center &
 
 run variety &
