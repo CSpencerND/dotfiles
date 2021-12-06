@@ -482,7 +482,7 @@ layout_theme = {
     "border_width": 2,
     "single_border_width": 2,
     "border_focus": theme.main,
-    "border_normal": theme.bg
+    "border_normal": theme.dima
 }
 
 layouts = [

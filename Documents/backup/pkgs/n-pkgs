@@ -111,6 +111,7 @@ edid-decode-git
 edk2-shell
 efibootmgr
 ethtool
+evtest
 exfatprogs
 exo
 expac

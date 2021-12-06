@@ -115,6 +115,7 @@ edid-decode-git
 edk2-shell
 efibootmgr
 ethtool
+evtest
 exfatprogs
 exo
 expac
@@ -368,6 +369,7 @@ sdparm
 sed
 sg3_utils
 shell-color-scripts
+skippy-xd-git
 smartmontools
 sof-firmware
 solaar
