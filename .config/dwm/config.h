@@ -11,7 +11,10 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const Bool viewontag         = True;     /* Switch view on tag switch */
+static const Bool viewontag         = False;     /* Switch view on tag switch */
+
+#define ICONSIZE 16   /* icon size */
+#define ICONSPACING 5 /* space between icon and title */
 
 static const char *fonts[]          = { "Hack Nerd Font:size=12" };
 static const char dmenufont[]       = "Hack Nerd Font:size=12";
@@ -182,9 +185,9 @@ static Key keys[] = {
     TAGKEYS(XK_6, 5)
 
     // unused
-    // { MODKEY,            XK_p,       spawn,          {.v = dmenucmd } },
-    // { MODKEY,            XK_Return,  zoom,           {0} },
-    // { MODKEY,            XK_Tab,     view,           {0} },
+    // { MODKEY,            XK_p,               spawn,          {.v = dmenucmd } },
+    { MODKEY,               XK_apostrophe,      zoom,           {0} },
+    { MODKEY,               XK_semicolon,       view,           {0} },
     // { MODKEY|ShiftMask,  XK_Return,  spawn,          {.v = filecmd } },
     // { MODKEY,            XK_t,       setlayout,      {.v = &layouts[0]} },
     // { MODKEY,            XK_g,       setlayout,      {.v = &layouts[1]} },
