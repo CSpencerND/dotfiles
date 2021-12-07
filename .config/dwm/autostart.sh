@@ -25,8 +25,8 @@ run "volumeicon"
 run "solaar -w hide -b solaar"
 run "redshift-gtk"
 run "cbatticon"
-run slstatus &
-skippy-xd --start-daemon &
+exec slstatus &
+# skippy-xd --start-daemon &
 
 /home/cs/.local/bin/kbconfig &
 /home/cs/.local/bin/kbrate &

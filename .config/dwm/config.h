@@ -13,7 +13,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = False;     /* Switch view on tag switch */
 
-#define ICONSIZE 16   /* icon size */
+#define ICONSIZE 24   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 
 static const char *fonts[]          = { "Hack Nerd Font:size=12" };
@@ -118,8 +118,6 @@ static Key keys[] = {
     /* modifier             key                 function        argument */
 
     // window move
-    // { MODKEY,               XK_j,               focusstack,     {.i = +1 } },
-    // { MODKEY,               XK_k,               focusstack,     {.i = -1 } },
     { MODKEY,               XK_j,               focusstackvis,  {.i = +1 } },
     { MODKEY,               XK_k,               focusstackvis,  {.i = -1 } },
     { MODKEY|ControlMask,   XK_j,               focusstackhid,  {.i = +1 } },
@@ -156,6 +154,8 @@ static Key keys[] = {
     { MODKEY,               XK_period,          focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,     XK_comma,           tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,     XK_period,          tagmon,         {.i = +1 } },
+    { MODKEY|ControlMask,   XK_comma,           travelmon,      {.i = -1 } },
+    { MODKEY|ControlMask,   XK_period,          travelmon,      {.i = +1 } },
 
     // layout
     { MODKEY,               XK_bracketleft,     cyclelayout,    {.i = -1 } },
@@ -165,7 +165,7 @@ static Key keys[] = {
     { MODKEY,               XK_t,               togglescratch,  {.ui = 0 } },
 
     // misc
-    { MODKEY,               XK_b,               togglebar,      {0} },
+    { MODKEY|ShiftMask,     XK_b,               togglebar,      {0} },
     { MODKEY,               XK_equal,           incnmaster,     {.i = +1 } },
     { MODKEY,               XK_minus,           incnmaster,     {.i = -1 } },
 
@@ -185,10 +185,8 @@ static Key keys[] = {
     TAGKEYS(XK_6, 5)
 
     // unused
-    // { MODKEY,            XK_p,               spawn,          {.v = dmenucmd } },
     { MODKEY,               XK_apostrophe,      zoom,           {0} },
     { MODKEY,               XK_semicolon,       view,           {0} },
-    // { MODKEY|ShiftMask,  XK_Return,  spawn,          {.v = filecmd } },
     // { MODKEY,            XK_t,       setlayout,      {.v = &layouts[0]} },
     // { MODKEY,            XK_g,       setlayout,      {.v = &layouts[1]} },
     // { MODKEY,            XK_m,       setlayout,      {.v = &layouts[2]} },
