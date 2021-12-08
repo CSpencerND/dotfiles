@@ -2,22 +2,28 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 15;        /* gaps between windows */
+static const unsigned int gappx     = 12;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 4;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 0;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+
 static const Bool viewontag         = False;     /* Switch view on tag switch */
 
-#define ICONSIZE 24   /* icon size */
-#define ICONSPACING 5 /* space between icon and title */
+#define ICONSIZE 22   /* icon size */
+#define ICONSPACING 2 /* space between icon and title */
 
-static const char *fonts[]          = { "Hack Nerd Font:size=12" };
-static const char dmenufont[]       = "Hack Nerd Font:size=12";
+static const char *fonts[] = { 
+        "Weather Icons:pixelsize=10:antialias=true:autohint=true",
+        "Hack Nerd Font:size=10",
+        "JoyPixels:pixelsize=10:antialias=true:autohint=true"
+        "monospace:size=10" 
+};
+static const char dmenufont[]       = "Hack Nerd Font:size=10";
 
 static const char fg_norm[]         = "#f8f8f2";
 static const char bg_norm[]         = "#282a36";
@@ -30,6 +36,7 @@ static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { fg_norm, bg_norm, bor_norm },
     [SchemeSel]  = { fg_sel, bg_sel,  bor_sel },
+    [SchemeHid]  = { bor_sel,  bg_norm, bor_sel },
 };
 static const unsigned int baralpha = 0xcc;
 static const unsigned int borderalpha = OPAQUE;
@@ -174,8 +181,10 @@ static Key keys[] = {
     { MODKEY|ShiftMask,     XK_x,               quit,           {0} },
 
     // ????
-    { MODKEY,               XK_0,               view,           {.ui = ~0 } },
-    { MODKEY|ShiftMask,     XK_0,               tag,            {.ui = ~0 } },
+    { MODKEY,               XK_semicolon,       view,           {0} },
+    { MODKEY|ShiftMask,     XK_semicolon,       view,           {.ui = ~0 } },
+    { MODKEY,               XK_apostrophe,      zoom,           {0} },
+    { MODKEY|ShiftMask,     XK_apostrophe,      tag,            {.ui = ~0 } },
 
     TAGKEYS(XK_1, 0)
     TAGKEYS(XK_2, 1)
@@ -185,8 +194,6 @@ static Key keys[] = {
     TAGKEYS(XK_6, 5)
 
     // unused
-    { MODKEY,               XK_apostrophe,      zoom,           {0} },
-    { MODKEY,               XK_semicolon,       view,           {0} },
     // { MODKEY,            XK_t,       setlayout,      {.v = &layouts[0]} },
     // { MODKEY,            XK_g,       setlayout,      {.v = &layouts[1]} },
     // { MODKEY,            XK_m,       setlayout,      {.v = &layouts[2]} },
@@ -205,7 +212,7 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = filecmd } },
 	{ ClkStatusText,        0,              Button3,        spawn,          {.v = calendar } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button1,        togglefloating, {0} },
+	{ ClkClientWin,         MODKEY,         Button3,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button2,        toggleview,     {0} },

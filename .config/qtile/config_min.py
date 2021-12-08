@@ -66,7 +66,8 @@ class themes:
         bg      = '#282a36'
         bgl     = '#383c4a'
         bgla    = '#424450'
-        comment = "#6272a4"
+        bgls    = '#646672'
+        comment = '#6272a4'
         fg      = '#f8f8f2'
         bright  = '#ff79c6'
         main    = '#bd93f9'
@@ -539,7 +540,7 @@ widget_defaults = dict(
     urgent_border=theme.bright,
 )
 
-spacer = widget.TextBox(text="|", foreground=theme.bgla)
+spacer = widget.TextBox(text="|", foreground=theme.bgls)
 
 widgets_list = [
     groupbox_git.GroupBox
@@ -717,7 +718,7 @@ widgets_list = [
     (
         foreground=theme.soft,
         name='thermal_icon',
-        text="🌡",
+        text="",
         padding=0,
         fontsize=15,
         mouse_callbacks={

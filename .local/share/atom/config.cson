@@ -1,4 +1,12 @@
 "*":
+  "atom-beautify":
+    c:
+      configPath: "~/.local/share/atom/packages/atom-beautify/src/beautifiers/uncrustify/default.cfg"
+    cpp:
+      configPath: "~/.local/share/atom/packages/atom-beautify/src/beautifiers/uncrustify/default.cfg"
+    executables:
+      uncrustify:
+        path: "~/.local/bin/uncrustify"
   core:
     telemetryConsent: "no"
     themes: [
@@ -7,6 +15,7 @@
     ]
   editor:
     fontFamily: "Hack Nerd Font"
+    fontSize: 13
     showIndentGuide: true
     softWrap: true
   "exception-reporting":

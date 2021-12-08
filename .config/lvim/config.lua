@@ -107,7 +107,7 @@ require("lvim.lsp.manager").setup("html")
 require("lvim.lsp.manager").setup("clangd")
 require("lvim.lsp.manager").setup("emmet_ls")
 require("lvim.lsp.manager").setup("bashls")
-require("lvim.lsp.manager").setup("hls")
+-- require("lvim.lsp.manager").setup("hls")
 
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.automatic_servers_installation = true
@@ -135,6 +135,7 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 -- Additional Plugins
 lvim.plugins = {
+  { "cofyc/vim-uncrustify" },
   { "psf/black" },
   { "dracula/vim" },
   { "lunarvim/colorschemes" },
