@@ -52,7 +52,7 @@ typedef struct {
     const char *name;
     const void *cmd;
 } Sp;
-const char *spcmd1[] = { "kitty", "-e", "bpytop", NULL };
+const char *spcmd1[] = { "kitty", "-e", "btop", NULL };
 static Sp scratchpads[] = {
     /* name     cmd  */
     {"sptop",   spcmd1},
@@ -77,15 +77,17 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 #include "layouts.c"
+#include "tatami.c"
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
     { "[]=",      tile },    /* first entry is default */
     { "HHH",      grid },
     { "[M]",      monocle },
+    { "|+|",      tatami },
     // { "H[]",      deck },
     // { "TTT",      bstack },
     // { "===",      bstackhoriz},
