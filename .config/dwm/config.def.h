@@ -18,7 +18,7 @@ static const Bool viewontag         = False;     /* Switch view on tag switch */
 #define ICONSPACING 2 /* space between icon and title */
 
 static const char *fonts[] = { 
-        "Weather Icons:pixelsize=10:antialias=true:autohint=true",
+        "Weather Icons:pixelsize=14:antialias=true:autohint=true",
         "Hack Nerd Font:size=10",
         "JoyPixels:pixelsize=10:antialias=true:autohint=true"
         "monospace:size=10" 
