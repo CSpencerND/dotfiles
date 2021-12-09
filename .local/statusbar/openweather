@@ -3,6 +3,7 @@
 get_icon() {
     # MOON=$(cat $XDG_CACHE_HOME/moonphase)
     MOON=$(curl -sf "wttr.in/?format=%m")
+    echo $MOON > ~/.cache/moonphase
     case $1 in
         # Icons for weather-icons
         01d) icon="";; # 🌞  ☀        Clear sky - day
