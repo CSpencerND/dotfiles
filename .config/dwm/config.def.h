@@ -154,7 +154,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,      XK_m,               setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,               XK_f,               togglefloating, {0} },
 	{ MODKEY,               XK_c,               killclient,     {0} },
-	{ MODKEY|ControlMask,   XK_space,           spawn,          SHCMD("skippy-xd") },
+	{ MODKEY,               XK_v,               spawn,          SHCMD("skippy-xd") },
 
 	// shift-tools
 	{ MODKEY,               XK_Tab,             shiftview,      {.i = +1 } },

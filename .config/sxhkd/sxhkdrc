@@ -2,9 +2,6 @@
 #     GENERAL
 #################################################################
 
-super + control + space
-  skippy-xd --activate-window-picker 
-
 super + slash
   rofi -show drun
 
