@@ -121,7 +121,7 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 #         daytime=" $(get_duration "$((sun_rise-now))")"
 #     fi
 
-    echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL" > ~/.cache/weather/weather_str
+    echo "$(get_icon "$current_icon") $current_temp$SYMBOL $trend $(get_icon "$forecast_icon") $forecast_temp$SYMBOL" > ~/.cache/weather/weather_str
 
     # a=0
     # until [ "$a" -ge 5 ]; do
