@@ -96,7 +96,7 @@ lvim.builtin.treesitter.indent.disable = { "python" }
 
 
 -- LSP
-require("lvim.lsp.manager").setup("pylsp")
+require("lvim.lsp.manager").setup("pyright")
 require("lvim.lsp.manager").setup("sumneko_lua")
 require("lvim.lsp.manager").setup("eslint")
 require("lvim.lsp.manager").setup("yamlls")

@@ -10,26 +10,43 @@ done
 icon="$(cat ~/.cache/moonphase)"
 
 case "$icon" in
-	 ) name="New" ;;
-	 ) name="Waxing Crescent" ;;
-	 ) name="First Quarter" ;;
-	 ) name="Waxing Gibbous" ;;
-	 ) name="Full" ;;
-	 ) name="Waning Gibbous" ;;
-	 ) name="Last Quarter" ;;
-	 ) name="Waning Crescent" ;;
+	🌑) name="New" ;;
+	🌒) name="Waxing Crescent" ;;
+	🌓) name="First Quarter" ;;
+	🌔) name="Waxing Gibbous" ;;
+	🌕) name="Full" ;;
+	🌖) name="Waning Gibbous" ;;
+	🌗) name="Last Quarter" ;;
+	🌘) name="Waning Crescent" ;;
 	*) exit 1 ;;
 esac
 
+case "$name" in
+    "New"             ) icon="  " ;;
+    "Waxing Crescent" ) icon="  " ;;
+    "First Quarter"   ) icon="  " ;;
+    "Waxing Gibbous"  ) icon="  " ;;
+    "Full"            ) icon="  " ;;
+    "Waning Gibbous"  ) icon="  " ;;
+    "Last Quarter"    ) icon="  " ;;
+    "Waning Crescent" ) icon="  " ;;
+    # *) exit 1 ;;
+esac
+
+echo "${icon-?}" > ~/.cache/moonphase
+
+
+
+
 # case "$icon" in
-# 	🌑) name="New" ;;
-# 	🌒) name="Waxing Crescent" ;;
-# 	🌓) name="First Quarter" ;;
-# 	🌔) name="Waxing Gibbous" ;;
-# 	🌕) name="Full" ;;
-# 	🌖) name="Waning Gibbous" ;;
-# 	🌗) name="Last Quarter" ;;
-# 	🌘) name="Waning Crescent" ;;
+# 	 ) name="New" ;;
+# 	 ) name="Waxing Crescent" ;;
+# 	 ) name="First Quarter" ;;
+# 	 ) name="Waxing Gibbous" ;;
+# 	 ) name="Full" ;;
+# 	 ) name="Waning Gibbous" ;;
+# 	 ) name="Last Quarter" ;;
+# 	 ) name="Waning Crescent" ;;
 # 	*) exit 1 ;;
 # esac
-
+    

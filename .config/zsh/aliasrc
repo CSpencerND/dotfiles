@@ -8,7 +8,7 @@ alias pdw="pwd"
 alias lvc='vi ~/.config/lvim/config.lua'
 alias qtl='vi ~/.local/share/qtile/qtile.log'
 alias qtc='vi ~/.config/qtile/config.py'
-alias auto-config="vi ~/.config/qtile/scripts/autostart.sh"
+alias dwmc="cd ~/.config/dwm && rm config.h && vi config.def.h"
 alias cd-sb='cd ~/.local/statusbar'
 
 ### Colorize commands
@@ -30,7 +30,7 @@ alias du='du -sh'
 alias df='df -h'
 alias free='free -mt' 
 alias vi='lvim'
-alias vim='nvim'
+
 # alias nvim='nvim -u ~/.config/nvim/init.lua'
 alias top='btop'
 alias apt-get='apt-get --show-progress'
