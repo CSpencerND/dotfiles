@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 get_icon() {
+    /home/cs/.local/statusbar/moonphase
     # MOON=$(curl -sf "wttr.in/?format=%m")
     # echo $MOON > ~/.cache/moonphase
     MOON=$(cat ~/.cache/moonphase)

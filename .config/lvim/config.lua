@@ -115,12 +115,23 @@ lvim.lsp.automatic_servers_installation = true
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-    { exe = "black" },
+    -- { exe = "black" },
+    { exe = "autopep8" },
     { exe = "prettier" },
     { exe = "stylua" },
     { exe = "clang_format" },
 }
 
+-- local formatting = null_ls.builtins.formatting
+-- local diagnostics = null_ls.builtins.diagnostics
+-- null_ls.setup({
+--   debug = false,
+--   sources = {
+--     formatting.prettier,
+--     formatting.black.with({ extra_args = { "--fast" } }),
+--     formatting.stylua,
+--   }
+-- })
 
 -- Lualine
 local components = require("lvim.core.lualine.components")
