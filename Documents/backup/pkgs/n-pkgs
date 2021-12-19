@@ -33,6 +33,7 @@ arcolinux-leftwm-git
 arcolinux-local-applications-git
 arcolinux-local-xfce4-git
 arcolinux-meta-logout
+arcolinux-meta-steam-intel
 arcolinux-mirrorlist-git
 arcolinux-neofetch-git
 arcolinux-nitrogen-git
@@ -79,6 +80,7 @@ bluez-libs
 bluez-utils
 bpytop
 broadcom-wl
+btop
 btrfs-progs
 cbatticon
 chromium
@@ -110,6 +112,7 @@ e2fsprogs
 edid-decode-git
 edk2-shell
 efibootmgr
+eslint
 ethtool
 evtest
 exfatprogs
@@ -397,6 +400,7 @@ udiskie
 udisks2
 ueberzug
 unace
+uncrustify
 unrar
 unzip
 upower

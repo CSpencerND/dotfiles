@@ -33,6 +33,7 @@ arcolinux-leftwm-git
 arcolinux-local-applications-git
 arcolinux-local-xfce4-git
 arcolinux-meta-logout
+arcolinux-meta-steam-intel
 arcolinux-mirrorlist-git
 arcolinux-neofetch-git
 arcolinux-nitrogen-git
@@ -81,6 +82,7 @@ bluez-libs
 bluez-utils
 bpytop
 broadcom-wl
+btop
 btrfs-progs
 cbatticon
 chromium
@@ -114,6 +116,7 @@ e2fsprogs
 edid-decode-git
 edk2-shell
 efibootmgr
+eslint
 ethtool
 evtest
 exfatprogs
@@ -183,6 +186,7 @@ haveged
 hdparm
 headsetcontrol-git
 heroic-games-launcher-bin
+hollywood
 htop
 hw-probe
 hwinfo
@@ -327,6 +331,7 @@ ppp
 pptpclient
 progress
 protonup-git
+protonup-qt
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
@@ -426,6 +431,7 @@ udisks2
 ueberzug
 unace
 unclutter-xfixes-git
+uncrustify
 unrar
 unzip
 upower
