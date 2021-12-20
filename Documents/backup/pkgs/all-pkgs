@@ -509,7 +509,6 @@ xf86-video-intel
 xf86-video-nouveau
 xf86-video-openchrome
 xf86-video-vesa
-xf86-video-vmware
 xfce4-appfinder
 xfce4-notifyd
 xfce4-panel
