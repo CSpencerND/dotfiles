@@ -197,7 +197,7 @@ jq
 jsoncpp
 kitty
 kitty-terminfo
-kvantum-qt5
+kvantum
 laptop-detect
 leftwm
 leftwm-theme-git
@@ -263,6 +263,7 @@ mtpfs
 nano
 nasm
 nbd
+ncdu
 ndisc6
 neofetch
 neovim

@@ -30,6 +30,7 @@ alias du='du -sh'
 alias df='df -h'
 alias free='free -mt' 
 alias vi='lvim'
+alias nv='nvim'
 
 # alias nvim='nvim -u ~/.config/nvim/init.lua'
 alias top='btop'

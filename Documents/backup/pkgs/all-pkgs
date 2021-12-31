@@ -208,7 +208,7 @@ jwasm
 kitty
 kitty-terminfo
 kmonad-git
-kvantum-qt5
+kvantum
 laptop-detect
 leftwm
 leftwm-theme-git
@@ -276,6 +276,7 @@ mtpfs
 nano
 nasm
 nbd
+ncdu
 ndisc6
 neofetch
 neovim

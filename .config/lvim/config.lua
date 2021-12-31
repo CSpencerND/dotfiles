@@ -22,6 +22,7 @@ lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["<C-n>"] = ":lua require('material.functions').toggle_style()<cr>"
 lvim.keys.normal_mode["<leader>a"] = "ggVG"
 lvim.keys.normal_mode["<leader>r"] = ":%s/"
+lvim.keys.normal_mode["<leader>sv"] = ":source ~/.config/lvim/config.lua<CR>"
 -- lvim.keys.normal_mode["<C-S-o"] = "<C-i>"
 lvim.keys.visual_mode["p"] = [["_dP]]
 
@@ -286,8 +287,8 @@ lvim.autocommands.custom_groups = {
 
 
 vim.opt.tabstop = 8
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.relativenumber = true
 vim.opt.linebreak = true
