@@ -144,6 +144,9 @@ lvim.builtin.lualine.sections.lualine_y = {
   components.location
 }
 
+-- Bracey
+-- vim.g.bracey_browser_command = "firefox"
+vim.g.bracey_refresh_on_save = 1
 
 -- Additional Plugins
 lvim.plugins = {
