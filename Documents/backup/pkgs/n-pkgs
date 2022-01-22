@@ -199,7 +199,6 @@ kitty
 kitty-terminfo
 kvantum
 laptop-detect
-leftwm
 leftwm-theme-git
 less
 lib32-alsa-lib
@@ -455,6 +454,7 @@ winetricks
 wireless-regdb
 wireless_tools
 wmctrl
+wmname
 wpa_supplicant
 wttr
 wvdial

@@ -27,7 +27,13 @@ super + b
   firefox
 
 super + d
+  discord
+  
+super shift + d
   reload_discord
+
+super + control + d
+  pkill Discord
 
 super + g
   retroarch

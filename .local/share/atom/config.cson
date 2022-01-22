@@ -15,7 +15,6 @@
     ]
   editor:
     fontFamily: "Hack Nerd Font"
-    fontSize: 13
     showIndentGuide: true
     softWrap: true
   "exception-reporting":
