@@ -122,7 +122,13 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 #         daytime=" $(get_duration "$((sun_rise-now))")"
 #     fi
 
-    echo "$(get_icon "$current_icon") $current_temp$SYMBOL $trend $(get_icon "$forecast_icon") $forecast_temp$SYMBOL" > ~/.cache/weather/weather_str
+    report="$(get_icon "$current_icon") $current_temp$SYMBOL $trend $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
+    check_str=$(echo $report | awk '{print $1}')
+    if [ $check_str = Unknown ]; then
+        echo 'no good bruddah' > ~/.cache/weather/weather_str
+    else
+        echo $report > ~/.cache/weather/weather_str
+    fi
 
     # a=0
     # until [ "$a" -ge 5 ]; do
