@@ -43,8 +43,8 @@
 (deflayer vim
           _    _    _   _     _    _    _    _    _    _    _    _    _          ssrq slck pause 
           _    1    2    3    4    5    6    7    8    9    0    _    _    _     ins  home pgup  nlck kp/  kp*  kp-
-          _    _    @w   _    _    _    @y   pgup home _    @p   _    _    _     del  end  pgdn  kp7  kp8  kp9  kp+
-          @esc end  _    pgdn _    _    left down up   rght _    _    _                          kp4  kp5  kp6
-          _    _    del  _    lsft @b   _    _    _    _    _    _                    up         kp1  kp2  kp3  kprt
+          _    _    _    _    _    _    home pgdn pgup end  _    _    _    _     del  end  pgdn  kp7  kp8  kp9  kp+
+          @esc _    _    _    _    _    left down up   rght _    _    _                          kp4  kp5  kp6
+          _    _    del  _    lsft _    _    _    @b   @w   _    _                    up         kp1  kp2  kp3  kprt
           _    _    _           _            _    _    _    _                    left down rght  kp0  kp.
 ) ;;;;;;; Vim Layer ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

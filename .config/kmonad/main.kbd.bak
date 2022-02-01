@@ -16,10 +16,10 @@
 
 
 #|------- Main Layer -----------|#
-(defalias esc (tap-next-release esc lalt)
-          vi (layer-add vim)
-          nsv (cmd-button "/home/cs/.local/bin/layout-vim")
-          sv #(@vi @nsv)
+(defalias vi (layer-toggle vim) 
+          esc (tap-next-release esc @vi)
+          z (tap-next-release z lalt)
+          / (tap-next-release / rctl)
 )
 
 (deflayer main
@@ -27,26 +27,24 @@
           grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
           tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn  kp7  kp8  kp9  kp+
           @esc a    s    d    f    g    h    j    k    l    ;    '    ret                        kp4  kp5  kp6
-          lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
-          @sv  lmet lctl           spc            bspc rmet cmp  rctl            left down rght  kp0  kp.
+          lsft @z   x    c    v    b    n    m    ,    .    @/   rsft                 up         kp1  kp2  kp3  kprt
+          lalt lmet lctl           spc            bspc rmet cmp  rctl            left down rght  kp0  kp.
 ) ;;;;;;; Main Layer ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 #|------- Vim Layer -------------|#
-(defalias mn (layer-rem vim)
-          w (around rctl right)
+(defalias w (around rctl right)
           b (around rctl left)
-          nsn (cmd-button "/home/cs/.local/bin/layout-normal")
-          sn #(@mn @nsn)
+          y (around rctl c)
+          p (around rctl v)
 )
 
 
 (deflayer vim
-          caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
-          grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
-          tab  q    @w   e    r    t    home pgdn pgup end  p    [    ]    \     del  end  pgdn  kp7  kp8  kp9  kp+
-          @esc a    s    d    f    g    left down up   rght ;    '    ret                        kp4  kp5  kp6
-          lsft z    del  c    v    @b   n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
-          @sn  lmet lctl           spc            bspc rmet cmp  rctl            left down rght  kp0  kp.
+          _    _    _   _     _    _    _    _    _    _    _    _    _          ssrq slck pause 
+          _    1    2    3    4    5    6    7    8    9    0    _    _    _     ins  home pgup  nlck kp/  kp*  kp-
+          _    _    @w   _    _    _    @y   pgup home _    @p   _    _    _     del  end  pgdn  kp7  kp8  kp9  kp+
+          @esc end  _    pgdn _    _    left down up   rght _    _    _                          kp4  kp5  kp6
+          _    _    del  _    lsft @b   _    _    _    _    _    _                    up         kp1  kp2  kp3  kprt
+          _    _    _           _            _    _    _    _                    left down rght  kp0  kp.
 ) ;;;;;;; Vim Layer ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-

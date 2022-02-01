@@ -1,10 +1,12 @@
 #!/bin/bash
 
 function run {
- if ! pgrep $1; then
-    $@&
-  fi
+	if ! pgrep $1; then
+		$@ &
+	fi
 }
+
+leds.sh
 
 /home/cs/.local/bin/setup_screens
 
@@ -34,4 +36,3 @@ slstatus &
 # /home/cs/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &
 # /home/cs/.local/statusbar/openweather &
 # /home/cs/.local/statusbar/openweather-emoji &
-
