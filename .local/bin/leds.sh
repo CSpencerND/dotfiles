@@ -44,6 +44,9 @@ for key in ${num_keys[@]}; do
 done
 
 $led -g modifiers $cyan
+$led -g numeric $cyan
+$led -g arrows $yellow
+
 $led -k win_left $yellow
 $led -k win_right $yellow
 
