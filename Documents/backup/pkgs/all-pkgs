@@ -138,6 +138,7 @@ fnm-bin
 font-manager-git
 freetype2
 fsarchiver
+g810-led-git
 gamemode
 gawk
 gcc
@@ -146,6 +147,7 @@ ghc
 ghostscript
 gimp
 git
+github-cli
 gksu
 gloobus-preview
 gmrun
@@ -376,6 +378,7 @@ sdparm
 sed
 sg3_utils
 shell-color-scripts
+shfmt
 skippy-xd-git
 smartmontools
 sof-firmware
@@ -388,6 +391,7 @@ stack
 starship
 steam
 stylua-git
+sublime-text-4
 sudo
 surfn-icons-git
 syslinux

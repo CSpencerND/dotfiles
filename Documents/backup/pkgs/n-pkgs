@@ -141,6 +141,7 @@ ghc
 ghostscript
 gimp
 git
+github-cli
 gksu
 gloobus-preview
 gmrun
@@ -175,7 +176,6 @@ gvfs-nfs
 gvfs-smb
 gzip
 hardcode-fixer-git
-hardinfo
 haveged
 hdparm
 heroic-games-launcher-bin
@@ -355,6 +355,7 @@ sdparm
 sed
 sg3_utils
 shell-color-scripts
+shfmt
 smartmontools
 sof-firmware
 solaar
@@ -364,6 +365,7 @@ squashfs-tools
 stack
 starship
 steam
+sublime-text-4
 sudo
 surfn-icons-git
 syslinux

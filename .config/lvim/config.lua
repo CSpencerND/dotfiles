@@ -158,6 +158,7 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 -- Additional Plugins
 lvim.plugins = {
+	{ "artanikin/vim-synthwave84" },
 	{ "cofyc/vim-uncrustify" },
 	{ "psf/black" },
 	{ "dracula/vim" },
