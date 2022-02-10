@@ -6,6 +6,8 @@ function run {
   fi
 }
 
+leds.sh
+
 /home/cs/.local/bin/setup_screens
 
 run "sxhkd"
