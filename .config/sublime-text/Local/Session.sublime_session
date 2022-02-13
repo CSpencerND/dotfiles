@@ -1,0 +1,1005 @@
+{
+	"folder_history":
+	[
+		"/home/cs/Code/Practice/ztm/Animation-Nation",
+		"/home/cs/Code/rob/api_project",
+		"/home/cs/Code/Practice/codecademy/JavaScript"
+	],
+	"last_version": 4126,
+	"last_window_id": 18,
+	"log_indexing": false,
+	"next_update_check": 1644760219,
+	"settings":
+	{
+		"new_window_full_screen": false,
+		"new_window_height": 1027.0,
+		"new_window_maximized": false,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"build_system_choices":
+			[
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"remove",
+						"Package Control: Remove Package"
+					],
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"beautif",
+						"HTMLBeautify"
+					],
+					[
+						"live server",
+						"Live Server: Stop"
+					],
+					[
+						"preferences: live ser",
+						"Preferences: Live Server Settings"
+					],
+					[
+						"live",
+						"Live Server: Stop"
+					],
+					[
+						"javascript",
+						"Javascript Beautify"
+					],
+					[
+						"ter",
+						"Terminal: Open in project folder"
+					],
+					[
+						"terminal",
+						"Terminal: Open"
+					],
+					[
+						"instal",
+						"Package Control: Install Package"
+					],
+					[
+						"install pa",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: install",
+						"Package Control: Install Package"
+					],
+					[
+						"install p",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 0.0
+			},
+			"console":
+			{
+				"height": 166.0,
+				"history":
+				[
+					"clear"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/home/cs/.config/sublime-text/Packages/Color Highlight/Color Highlight.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/User/Color Highlight.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/User/ColorHighlighter.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/Color Highlighter/ColorHighlighter.sublime-settings",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/Art/cspencernd/style.css",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/Art/cspencernd/index.html",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/index.html",
+				"/home/cs/.config/sublime-text/Packages/Terminal/Terminal.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/User/Terminal.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
+				"/home/cs/Code/Practice/codecademy/JavaScript/buildALibrary.js",
+				"/home/cs/Code/rob/api_project/returnly.py"
+			],
+			"find":
+			{
+				"height": 0.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"scrollbar_highlights": true,
+				"show_context": true,
+				"use_buffer2": true,
+				"use_gitignore": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"menu_visible": true,
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"output.mdpopups":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": true,
+			"show_open_files": true,
+			"show_tabs": true,
+			"side_bar_visible": false,
+			"side_bar_width": 209.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			}
+		},
+		"new_window_width": 1313.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "/home/cs/Code/Practice/ztm/Animation-Nation/Art/cspencernd/style.css",
+					"redo_stack":
+					[
+						[
+							76,
+							1,
+							"visual_lower_case",
+							null,
+							"AQAAAGMBAAAAAAAAagEAAAAAAAAHAAAAI2JkOTNmOQ",
+							"AQAAAAAAAAABAAAAaQEAAAAAAABpAQAAAAAAAAAAAAAAAPC/"
+						]
+					],
+					"settings":
+					{
+						"buffer_size": 828,
+						"line_ending": "Unix"
+					},
+					"undo_stack":
+					[
+					]
+				}
+			],
+			"build_system": "",
+			"build_system_choices":
+			[
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"remove",
+						"Package Control: Remove Package"
+					],
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"beautif",
+						"HTMLBeautify"
+					],
+					[
+						"live server",
+						"Live Server: Stop"
+					],
+					[
+						"preferences: live ser",
+						"Preferences: Live Server Settings"
+					],
+					[
+						"live",
+						"Live Server: Stop"
+					],
+					[
+						"javascript",
+						"Javascript Beautify"
+					],
+					[
+						"ter",
+						"Terminal: Open in project folder"
+					],
+					[
+						"terminal",
+						"Terminal: Open"
+					],
+					[
+						"instal",
+						"Package Control: Install Package"
+					],
+					[
+						"install pa",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: install",
+						"Package Control: Install Package"
+					],
+					[
+						"install p",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 0.0
+			},
+			"console":
+			{
+				"height": 166.0,
+				"history":
+				[
+					"clear"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"expanded_folders":
+			[
+				"/home/cs/Code/Practice/ztm/Animation-Nation",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/Art",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/Art/Concentric",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/Art/cspencernd"
+			],
+			"file_history":
+			[
+				"/home/cs/.config/sublime-text/Packages/User/ColorHighlighter.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/Color Highlighter/ColorHighlighter.sublime-settings",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/Art/cspencernd/style.css",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/Art/cspencernd/index.html",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/index.html",
+				"/home/cs/.config/sublime-text/Packages/Terminal/Terminal.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/User/Terminal.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
+				"/home/cs/Code/Practice/codecademy/JavaScript/buildALibrary.js",
+				"/home/cs/Code/rob/api_project/returnly.py"
+			],
+			"find":
+			{
+				"height": 0.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"scrollbar_highlights": true,
+				"show_context": true,
+				"use_buffer2": true,
+				"use_gitignore": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"folders":
+			[
+				{
+					"path": "/home/cs/Code/Practice/ztm/Animation-Nation"
+				}
+			],
+			"groups":
+			[
+				{
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/home/cs/Code/Practice/ztm/Animation-Nation/Art/cspencernd/style.css",
+							"selected": true,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 828,
+								"regions":
+								{
+									"col_00FFFFFF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												389,
+												393
+											]
+										],
+										"scope": "col_00FFFFFF"
+									},
+									"col_272935FF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												45,
+												52
+											]
+										],
+										"scope": "col_272935FF"
+									},
+									"col_800080FF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												326,
+												332
+											]
+										],
+										"scope": "col_800080FF"
+									},
+									"col_8BE9FDFF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												416,
+												423
+											]
+										],
+										"scope": "col_8BE9FDFF"
+									},
+									"col_BD93F9FF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												355,
+												362
+											],
+											[
+												562,
+												569
+											]
+										],
+										"scope": "col_BD93F9FF"
+									},
+									"col_F1FA8CFF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												479,
+												486
+											]
+										],
+										"scope": "col_F1FA8CFF"
+									},
+									"col_F8F8F2FF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												16,
+												23
+											]
+										],
+										"scope": "col_F8F8F2FF"
+									},
+									"col_FF00FFFF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												243,
+												250
+											]
+										],
+										"scope": "col_FF00FFFF"
+									},
+									"col_FF79C6FF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												273,
+												280
+											]
+										],
+										"scope": "col_FF79C6FF"
+									},
+									"col_FFFF00FF":
+									{
+										"flags": 16,
+										"regions":
+										[
+											[
+												450,
+												456
+											]
+										],
+										"scope": "col_FFFF00FF"
+									}
+								},
+								"selection":
+								[
+									[
+										361,
+										361
+									]
+								],
+								"settings":
+								{
+									"bracket_highlighter.busy": false,
+									"bracket_highlighter.locations":
+									{
+										"close":
+										{
+											"1":
+											[
+												385,
+												386
+											]
+										},
+										"icon":
+										{
+											"1":
+											[
+												"Packages/BracketHighlighter/icons/curly_bracket.png",
+												"region.purplish"
+											]
+										},
+										"open":
+										{
+											"1":
+											[
+												333,
+												334
+											]
+										},
+										"unmatched":
+										{
+										}
+									},
+									"bracket_highlighter.regions":
+									[
+										"bh_curly",
+										"bh_curly_center",
+										"bh_curly_open",
+										"bh_curly_close",
+										"bh_curly_content",
+										"bh_default",
+										"bh_default_center",
+										"bh_default_open",
+										"bh_default_close",
+										"bh_default_content",
+										"bh_single_quote",
+										"bh_single_quote_center",
+										"bh_single_quote_open",
+										"bh_single_quote_close",
+										"bh_single_quote_content",
+										"bh_c_define",
+										"bh_c_define_center",
+										"bh_c_define_open",
+										"bh_c_define_close",
+										"bh_c_define_content",
+										"bh_round",
+										"bh_round_center",
+										"bh_round_open",
+										"bh_round_close",
+										"bh_round_content",
+										"bh_regex",
+										"bh_regex_center",
+										"bh_regex_open",
+										"bh_regex_close",
+										"bh_regex_content",
+										"bh_tag",
+										"bh_tag_center",
+										"bh_tag_open",
+										"bh_tag_close",
+										"bh_tag_content",
+										"bh_double_quote",
+										"bh_double_quote_center",
+										"bh_double_quote_open",
+										"bh_double_quote_close",
+										"bh_double_quote_content",
+										"bh_square",
+										"bh_square_center",
+										"bh_square_open",
+										"bh_square_close",
+										"bh_square_content",
+										"bh_unmatched",
+										"bh_unmatched_center",
+										"bh_unmatched_open",
+										"bh_unmatched_close",
+										"bh_unmatched_content",
+										"bh_angle",
+										"bh_angle_center",
+										"bh_angle_open",
+										"bh_angle_close",
+										"bh_angle_content"
+									],
+									"color_scheme": "Packages/User/Color Highlighter/themes/Dracula.tmTheme",
+									"git_gutter_is_enabled": true,
+									"syntax": "Packages/CSS/CSS.sublime-syntax",
+									"tab_size": 2,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 382.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"stack_multiselect": false,
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"output.mdpopups":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"position": "0,0,0,0,0,1346,38,1905,543,1920,1800,0",
+			"project": "",
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+			},
+			"show_minimap": true,
+			"show_open_files": true,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 209.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 15,
+			"workspace_name": ""
+		},
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"buffers":
+			[
+			],
+			"build_system": "",
+			"build_system_choices":
+			[
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"remove",
+						"Package Control: Remove Package"
+					],
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"beautif",
+						"HTMLBeautify"
+					],
+					[
+						"live server",
+						"Live Server: Stop"
+					],
+					[
+						"preferences: live ser",
+						"Preferences: Live Server Settings"
+					],
+					[
+						"live",
+						"Live Server: Stop"
+					],
+					[
+						"javascript",
+						"Javascript Beautify"
+					],
+					[
+						"ter",
+						"Terminal: Open in project folder"
+					],
+					[
+						"terminal",
+						"Terminal: Open"
+					],
+					[
+						"instal",
+						"Package Control: Install Package"
+					],
+					[
+						"install pa",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: install",
+						"Package Control: Install Package"
+					],
+					[
+						"install p",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 0.0
+			},
+			"console":
+			{
+				"height": 166.0,
+				"history":
+				[
+					"clear"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/home/cs/.config/sublime-text/Packages/Color Highlight/Color Highlight.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/User/Color Highlight.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/User/ColorHighlighter.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/Color Highlighter/ColorHighlighter.sublime-settings",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/Art/cspencernd/style.css",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/Art/cspencernd/index.html",
+				"/home/cs/Code/Practice/ztm/Animation-Nation/index.html",
+				"/home/cs/.config/sublime-text/Packages/Terminal/Terminal.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/User/Terminal.sublime-settings",
+				"/home/cs/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
+				"/home/cs/Code/Practice/codecademy/JavaScript/buildALibrary.js",
+				"/home/cs/Code/rob/api_project/returnly.py"
+			],
+			"find":
+			{
+				"height": 0.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"scrollbar_highlights": true,
+				"show_context": true,
+				"use_buffer2": true,
+				"use_gitignore": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"groups":
+			[
+				{
+					"sheets":
+					[
+					]
+				},
+				{
+					"sheets":
+					[
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					],
+					[
+						1,
+						0,
+						2,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					0.578944768661,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"output.mdpopups":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"position": "0,0,0,0,0,12,35,1325,1062,1920,1800,0",
+			"project": "",
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+			},
+			"show_minimap": true,
+			"show_open_files": true,
+			"show_tabs": true,
+			"side_bar_visible": false,
+			"side_bar_width": 209.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 18,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}
