@@ -56,8 +56,8 @@ local defaults = {
     ["<C-Right>"] = ":vertical resize +2<CR>",
 
     -- Tab switch buffer
-    ["<S-l>"] = ":BufferNext<CR>",
-    ["<S-h>"] = ":BufferPrevious<CR>",
+    ["<S-l>"] = ":BufferLineCycleNext<CR>",
+    ["<S-h>"] = ":BufferLineCyclePrev<CR>",
 
     -- Move current line / block with Alt-j/k a la vscode.
     ["<A-j>"] = ":m .+1<CR>==",
@@ -119,6 +119,8 @@ end
 -- Append key mappings to lunarvim's defaults for a given mode
 -- @param keymaps The table of key mappings containing a list per mode (normal_mode, insert_mode, ..)
 function M.append_to_defaults(keymaps)
+  local default = M.get_defaults()
+  lvim.keys = lvim.keys or default
   for mode, mappings in pairs(keymaps) do
     for k, v in pairs(mappings) do
       defaults[mode][k] = v
@@ -132,6 +134,21 @@ function M.clear(keymaps)
   local default = M.get_defaults()
   for mode, mappings in pairs(keymaps) do
     local translated_mode = mode_adapters[mode] or mode
+    for key, _ in pairs(mappings) do
+      -- some plugins may override default bindings that the user hasn't manually overriden
+      if default[mode][key] ~= nil or (default[translated_mode] ~= nil and default[translated_mode][key] ~= nil) then
+        pcall(vim.api.nvim_del_keymap, translated_mode, key)
+      end
+    end
+  end
+end
+
+-- Unsets all keybindings defined in keymaps
+-- @param keymaps The table of key mappings containing a list per mode (normal_mode, insert_mode, ..)
+function M.clear(keymaps)
+  local default = M.get_defaults()
+  for mode, mappings in pairs(keymaps) do
+    local translated_mode = mode_adapters[mode] and mode_adapters[mode] or mode
     for key, _ in pairs(mappings) do
       -- some plugins may override default bindings that the user hasn't manually overriden
       if default[mode][key] ~= nil or (default[translated_mode] ~= nil and default[translated_mode][key] ~= nil) then

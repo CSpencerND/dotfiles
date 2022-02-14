@@ -266,7 +266,6 @@ meld
 memtest86+
 mesa
 mintstick-git
-mkchromecast-git
 mkinitcpio
 mkinitcpio-nfs-utils
 mkinitcpio-openswap
@@ -320,6 +319,7 @@ patch
 pavucontrol
 pcmanfm
 pcsclite
+peek
 phoronix-test-suite
 picom-jonaburg-git
 pipewire-alsa

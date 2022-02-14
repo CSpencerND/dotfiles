@@ -23,7 +23,7 @@ return {
       prefix = "",
       format = function(d)
         local t = vim.deepcopy(d)
-        local code = d.code or d.user_data.lsp.code
+        local code = d.code or (d.user_data and d.user_data.lsp.code)
         if code then
           t.message = string.format("%s [%s]", t.message, code):gsub("1. ", "")
         end
@@ -73,6 +73,7 @@ return {
     "emmet_ls",
     "eslint",
     "eslintls",
+    "golangci_lint_ls",
     "grammarly",
     "graphql",
     "jedi_language_server",
@@ -83,6 +84,7 @@ return {
     "quick_lint_js",
     "remark_ls",
     "rome",
+    "scry",
     "solang",
     "solidity_ls",
     "sorbet",
@@ -93,7 +95,9 @@ return {
     "stylelint_lsp",
     "tailwindcss",
     "tflint",
-    "volar",
+    "verible",
+    "vuels",
+    "zeta_note",
     "zk",
   },
 }
