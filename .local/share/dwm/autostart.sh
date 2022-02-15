@@ -14,7 +14,8 @@ sxhkd &
 picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-run "/usr/bin/deadd-notification-center"
+# run "/usr/bin/deadd-notification-center"
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 run "variety"
 run "nm-applet"
