@@ -91,7 +91,7 @@ formatters.setup {
     -- { command = "isort", filetypes = { "python" } },
     {
         command = "prettier",
-        filetypes = {"typescript", "typescriptreact", "javascript", "javascriptreact", "json", "css", "html"}
+        filetypes = {"typescript", "typescriptreact", "javascript", "javascriptreact", "json", "css", "html"},
     }
 }
 
@@ -218,7 +218,7 @@ lvim.plugins = {
 
 vim.opt.tabstop = 8
 vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.relativenumber = true
 vim.opt.linebreak = true

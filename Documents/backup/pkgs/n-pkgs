@@ -18,7 +18,6 @@ arcolinux-alacritty-git
 arcolinux-bin-git
 arcolinux-candy-beauty-git
 arcolinux-config-all-desktops-git
-arcolinux-conky-collection-git
 arcolinux-dconf-all-desktops-git
 arcolinux-dwm-git
 arcolinux-dwm-slstatus-git
@@ -29,7 +28,6 @@ arcolinux-hblock-git
 arcolinux-keyring
 arcolinux-kvantum-git
 arcolinux-kvantum-theme-arc-git
-arcolinux-leftwm-git
 arcolinux-local-applications-git
 arcolinux-local-xfce4-git
 arcolinux-meta-logout
@@ -43,8 +41,6 @@ arcolinux-polybar-git
 arcolinux-qt5-git
 arcolinux-qtile-git
 arcolinux-reflector-simple-git
-arcolinux-rofi-git
-arcolinux-rofi-themes-git
 arcolinux-root-git
 arcolinux-sddm-sugar-candy-git
 arcolinux-system-config-git
@@ -53,7 +49,6 @@ arcolinux-termite-themes-git
 arcolinux-tweak-tool-git
 arcolinux-variety-autostart-git
 arcolinux-variety-git
-arcolinux-volumeicon-git
 arcolinux-wallpapers-candy-git
 arcolinux-wallpapers-git
 arcolinux-welcome-app-git
@@ -78,14 +73,13 @@ blueberry
 bluez
 bluez-libs
 bluez-utils
-bpytop
 broadcom-wl
 btop
 btrfs-progs
 cbatticon
 chromium
 clonezilla
-conky-lua-archers
+codespell
 crda
 cryptsetup
 cups
@@ -178,13 +172,11 @@ gzip
 hardcode-fixer-git
 haveged
 hdparm
-heroic-games-launcher-bin
 htop
 hw-probe
 hwinfo
 imagemagick
 intel-ucode
-intel-undervolt
 intltool
 inxi
 ipw2100-fw
@@ -197,9 +189,7 @@ jq
 jsoncpp
 kitty
 kitty-terminfo
-kvantum
 laptop-detect
-leftwm-theme-git
 less
 lib32-alsa-lib
 lib32-alsa-plugins
@@ -267,7 +257,6 @@ ncdu
 ndisc6
 neofetch
 neovim
-nerd-fonts-source-code-pro
 network-manager-applet
 networkmanager
 networkmanager-openconnect
@@ -356,6 +345,7 @@ sdparm
 sed
 sg3_utils
 shell-color-scripts
+shellcheck
 shfmt
 smartmontools
 sof-firmware
@@ -446,7 +436,6 @@ vim-tabular
 vim-tagbar
 vim-ultisnips
 vim-vital
-volumeicon
 vpnc
 vulkan-intel
 w3m
@@ -531,7 +520,6 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 yad
-yasm
 yay-bin
 zenity
 zoom
