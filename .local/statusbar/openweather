@@ -54,16 +54,16 @@ get_icon() {
     echo $icon
 }
 
-get_duration() {
+# get_duration() {
 
-    osname=$(uname -s)
+#     osname=$(uname -s)
 
-    case $osname in
-        *BSD) date -r "$1" -u +%H:%M;;
-        *) date --date="@$1" -u +%H:%M;;
-    esac
+#     case $osname in
+#         *BSD) date -r "$1" -u +%H:%M;;
+#         *) date --date="@$1" -u +%H:%M;;
+#     esac
 
-}
+# }
 
 KEY="ef8c3512dedaf5aa46ed1ca846d4fade"
 CITY=""
@@ -102,11 +102,11 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 
 
     if [ "$current_temp" -gt "$forecast_temp" ]; then
-        trend=""
+        trend=" "
     elif [ "$forecast_temp" -gt "$current_temp" ]; then
-        trend=""
+        trend=" "
     else
-        trend=""
+        trend=" "
     fi
 
 
@@ -122,7 +122,7 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 #         daytime=" $(get_duration "$((sun_rise-now))")"
 #     fi
 
-    report="$(get_icon "$current_icon") $current_temp$SYMBOL $trend $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
+    report="$(get_icon "$current_icon") $current_temp$SYMBOL$trend$(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
     check_str=$(echo $report | awk '{print $1}')
     if [ $check_str = Unknown ]; then
         echo 'no good bruddah' > ~/.cache/weather/weather_str

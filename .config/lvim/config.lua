@@ -9,7 +9,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "doom-one"
+lvim.colorscheme = "dracula"
 lvim.lsp.diagnostics.virtual_text = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -86,12 +86,18 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- generic LSP settings
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-    {command = "black", filetypes = {"python"}},
-    {command = "lua-format", filetypes = {"lua"}},
+    {
+        command = "black",
+        args = {"--target-version", "py310"},
+        filetypes = {"python"}
+    }, {command = "lua-format", filetypes = {"lua"}},
     -- { command = "isort", filetypes = { "python" } },
     {
         command = "prettier",
-        filetypes = {"typescript", "typescriptreact", "javascript", "javascriptreact", "json", "css", "html"},
+        filetypes = {
+            "typescript", "typescriptreact", "javascript", "javascriptreact",
+            "json", "css", "html"
+        }
     }
 }
 

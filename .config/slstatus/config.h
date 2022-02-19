@@ -38,7 +38,7 @@ static const struct arg args[] = {
 	{ run_command,  "^c#bd93f9^  %s",   "cat /home/cs/.cache/headset_percent" },
         { seperator,    "^c#646672^ %s",        " | " },
 
-        { run_command, "^c#8be9fd^ %s%", "/home/cs/.local/statusbar/bat-perc.py"},
+        { run_command, "^c#8be9fd^ %s%", "/home/cs/.local/statusbar/bat-perc.o"},
         // { battery_perc, "^c#8be9fd^  %s%%", "BAT0" },
         // { seperator,    "%s",                  "  " },
 

@@ -14,24 +14,28 @@ def main():
     with open("/sys/class/power_supply/AC/online", "r") as f:
         charging = f.read().strip()
 
-    # determine icon based on battery level
+    # determine icon based on battery level and status
+
     n: int = int(perc)
 
     if charging == "1":
         icon = " "
+
     else:
         if n > 10 and n < 40:
             icon = "  "
+
         elif n > 39 and n < 60:
             icon = "  "
+
         elif n > 59 and n < 90:
             icon = "  "
+
         elif n > 89:
             icon = "  "
 
-    # create string to output
-    bat_str: str = f"{icon} {perc}%  "
-    print(bat_str)
+    # output the data
+    print(f"{icon} {perc}%  ")
 
 
 if __name__ == "__main__":
