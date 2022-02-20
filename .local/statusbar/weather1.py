@@ -2,8 +2,7 @@
 
 import requests as re
 import numpy as np
-import os.path as osp
-from pprint import pformat as pf
+from pprint import pprint as pp
 
 
 def get_location() -> str:
@@ -46,62 +45,62 @@ def get_icon(code: str, moon: str) -> str:
 
     icon: str = " "
 
-    # if using Nerd Fonts
+    # Nerd Fonts
     match code:
 
         case "01d":
-            icon = "   "
+            icon = " "
 
         case "01n":
             icon = moon
 
         case "02d":
-            icon = "   "
+            icon = " "
 
         case "02n":
             icon = moon
 
         case "03d":
-            icon = "    "
+            icon = "  "
 
         case "03n":
             icon = moon
 
         case "04d":
-            icon = "   "
+            icon = " "
 
         case "04n":
-            icon = f"{moon}    "
+            icon = f"{moon}  "
 
         case "09d":
-            icon = "   "
+            icon = " "
 
         case "09n":
-            icon = f"{moon}    "
+            icon = f"{moon}  "
 
         case "10d":
-            icon = "    "
+            icon = "  "
 
         case "10n":
-            icon = f"{moon}    "
+            icon = f"{moon}  "
 
         case "11d":
-            icon = "    "
+            icon = "  "
 
         case "11n":
-            icon = f"{moon}    "
+            icon = f"{moon}  "
 
         case "13d":
-            icon = "    "
+            icon = "  "
 
         case "13n":
-            icon = f"{moon}    "
+            icon = f"{moon}  "
 
         case "50d":
-            icon = "    "
+            icon = "  "
 
         case "50n":
-            icon = f"{moon}    "
+            icon = f"{moon}  "
 
         case _:
             return icon
@@ -116,25 +115,25 @@ def get_moon(data: dict) -> str:
 
     match code:
 
-        case n if n in np.arange(0.06, 0.19):  # 13
+        case n if n in np.arange(0.01, 0.14):  # 13
             icon = "  "
 
-        case n if n in np.arange(0.19, 0.31):  # 12
+        case n if n in np.arange(0.14, 0.28):  # 14
             icon = "  "
 
-        case n if n in np.arange(0.31, 0.44):  # 13
+        case n if n in np.arange(0.28, 0.42):  # 14
             icon = "  "
 
-        case n if n in np.arange(0.44, 0.56):  # 12
+        case n if n in np.arange(0.42, 0.58):  # 16
             icon = "  "
 
-        case n if n in np.arange(0.56, 0.69):  # 13
+        case n if n in np.arange(0.58, 0.72):  # 14
             icon = "  "
 
-        case n if n in np.arange(0.69, 0.81):  # 12
+        case n if n in np.arange(0.72, 0.86):  # 14
             icon = "  "
 
-        case n if n in np.arange(0.81, 0.94):  # 13
+        case n if n in np.arange(0.86, 1):  # 14
             icon = "  "
 
         case _:
@@ -145,35 +144,23 @@ def get_moon(data: dict) -> str:
 
 def main() -> int:
 
-    # location and weather data
     location: str = get_location()
     data: dict = get_weather(location)
 
-    # current and 3 hour forecast temperature
+    moon: str = get_moon(data)
+
     current: int = round(data["hourly"][0]["temp"])
     forecast: int = round(data["hourly"][2]["temp"])
 
-    # codes for weather icons
     current_code: str = data["hourly"][0]["weather"][0]["icon"]
     forecast_code: str = data["hourly"][3]["weather"][0]["icon"]
 
-    # moon phase icon
-    moon: str = get_moon(data)
-
-    # icons for weather and trend
     current_icon: str = get_icon(current_code, moon)
-    forecast_icon: str = get_icon(forecast_code, moon)
     trend: str = get_trend(current, forecast)
+    forecast_icon: str = get_icon(forecast_code, moon)
 
-    weather_str: str = f"{current_icon}{current}°{trend}{forecast_icon}{forecast}°"
-
-    # Write {data} to file
-    with open(osp.expanduser("~/.cache/weather/data.py"), "w") as f:
-        f.write(pf(data))
-
-    # Write {weather_str} to file
-    with open(osp.expanduser("~/.cache/weather/pyweather"), "w") as f:
-        f.write(weather_str)
+    print(f"{current_icon}{current}°{trend}{forecast_icon}{forecast}°")
+    pp(data)
 
     return 0
 
@@ -181,7 +168,7 @@ def main() -> int:
 if __name__ == "__main__":
     main()
 
-    # if using Weather Icons
+    # Weather Icons
     # match code:
     # case "01d": icon = ""
     # case "01n": icon = moon

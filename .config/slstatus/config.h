@@ -22,7 +22,7 @@ static const struct arg args[] = {
 	// { weather,      "^c#f1fa8c^ %s",        NULL },
         // { seperator,    "^c#646672^ %s",        "|" },
 
-	{ run_command,  "^c#f1fa8c^ %s",        "cat /home/cs/.cache/weather/weather_str" },
+	{ run_command,  "^c#f1fa8c^ %s",        "cat /home/cs/.cache/weather/pyweather" },
         { seperator,    "^c#646672^ %s",        " | " },
 
 	{ cpu_perc,     "^c#bd93f9^   %s%%",    NULL },

@@ -12,5 +12,6 @@
 	"line_padding_bottom"          : 3,
 	"line_padding_top"             : 3,
 	"overlay_scroll_bars"          : "enabled",
-	"font_face": "Hack Nerd Font",
+	"font_face": "Weather Icons",
+	"font_size": 11,
 }

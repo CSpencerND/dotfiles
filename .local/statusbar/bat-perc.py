@@ -35,7 +35,8 @@ def main():
             icon = "  "
 
     # output the data
-    print(f"{icon} {perc}%  ")
+    bat_str: str = f"{icon} {perc}%  "
+    print(bat_str)
 
 
 if __name__ == "__main__":
