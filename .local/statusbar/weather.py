@@ -43,30 +43,32 @@ def get_trend(current: int, forecast: int) -> str:
     return trend
 
 
-def get_icon(code: str, moon: str) -> str:
+def get_icon(code: str, moon: str, is_hot: bool = False) -> str:
 
-    icon: str = " "
+    # TODO add meteorological events and possibly wind conditions
+
+    icon: str = "   "
 
     # if using Nerd Fonts
     match code:
 
-        case "01d":
-            icon = "   "
+        case code if code == "01d" and is_hot:
+            icon = "   "
 
         case "01n":
-            icon = moon
+            icon = f"{moon}    "
 
         case "02d":
             icon = "   "
 
         case "02n":
-            icon = moon
+            icon = f"{moon}    "
 
         case "03d":
-            icon = "    "
+            icon = "   "
 
         case "03n":
-            icon = moon
+            icon = f"{moon}    "
 
         case "04d":
             icon = "   "
@@ -81,25 +83,25 @@ def get_icon(code: str, moon: str) -> str:
             icon = f"{moon}    "
 
         case "10d":
-            icon = "    "
+            icon = "   "
 
         case "10n":
             icon = f"{moon}    "
 
         case "11d":
-            icon = "    "
+            icon = "   "
 
         case "11n":
             icon = f"{moon}    "
 
         case "13d":
-            icon = "    "
+            icon = "   "
 
         case "13n":
             icon = f"{moon}    "
 
         case "50d":
-            icon = "    "
+            icon = "   "
 
         case "50n":
             icon = f"{moon}    "
@@ -136,6 +138,7 @@ def get_moon(data: dict) -> str:
     return icon
 
 
+# TODO: refoactor main; clean it up; might make more functions
 def main() -> None:
 
     # location and weather data
@@ -154,8 +157,8 @@ def main() -> None:
     moon: str = get_moon(data)
 
     # icons for weather and trend
-    current_icon: str = get_icon(current_code, moon)
-    forecast_icon: str = get_icon(forecast_code, moon)
+    current_icon: str = get_icon(current_code, moon, current > 79)
+    forecast_icon: str = get_icon(forecast_code, moon, forecast > 79)
     trend: str = get_trend(current, forecast)
 
     # create output string
