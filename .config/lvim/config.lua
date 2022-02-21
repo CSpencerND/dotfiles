@@ -158,7 +158,7 @@ lvim.plugins = {
     }, {
         "karb94/neoscroll.nvim",
         config = function() require("user.neoscroll").config() end
-    }
+    }, {"tpope/vim-surround"}
     -- {
     --   "simrat39/symbols-outline.nvim",
     --   cmd = "SymbolsOutline",

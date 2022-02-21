@@ -31,7 +31,7 @@ static const struct arg args[] = {
 	{ ram_perc,     "^c#8be9fd^    %s%%",    NULL },
         { seperator,    "^c#646672^ %s",        " | " },
 
-	{ temp,         "^c#f1fa8c^  %s°",     "/sys/class/thermal/thermal_zone1/temp" },
+	{ temp,         "^c#f1fa8c^   %s°",     "/sys/class/thermal/thermal_zone1/temp" },
         { seperator,    "^c#646672^ %s",        " | " },
 
 	// { run_command,  "^c#bd93f9^  %s  ",   "cat /home/cs/.cache/headset_percent" },
