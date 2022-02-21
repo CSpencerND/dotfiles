@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import requests as re
-import numpy as np
 import os.path as osp
 from pprint import pformat as pf
 
@@ -33,11 +32,11 @@ def get_weather(location: str) -> dict:
 def get_trend(current: int, forecast: int) -> str:
 
     if current > forecast:
-        trend = " "
+        trend = "   "
     elif forecast > current:
-        trend = " "
+        trend = "   "
     else:
-        trend = " "
+        trend = "   "
 
     return trend
 
@@ -114,31 +113,29 @@ def get_moon(data: dict) -> str:
     code: float = data["daily"][0]["moon_phase"]
     icon: str = "  "
 
-    match code:
+    if code > 0.06 and code < 0.19:  # 13
+        icon = "  "
 
-        case n if n in np.arange(0.06, 0.19):  # 13
-            icon = "  "
+    elif code > 0.19 and code < 0.31:  # 12
+        icon = "  "
 
-        case n if n in np.arange(0.19, 0.31):  # 12
-            icon = "  "
+    elif code > 0.31 and code < 0.44:  # 13
+        icon = "  "
 
-        case n if n in np.arange(0.31, 0.44):  # 13
-            icon = "  "
+    elif code > 0.44 and code < 0.56:  # 12
+        icon = "  "
 
-        case n if n in np.arange(0.44, 0.56):  # 12
-            icon = "  "
+    elif code > 0.56 and code < 0.69:  # 13
+        icon = "  "
 
-        case n if n in np.arange(0.56, 0.69):  # 13
-            icon = "  "
+    elif code > 0.69 and code < 0.81:  # 12
+        icon = "  "
 
-        case n if n in np.arange(0.69, 0.81):  # 12
-            icon = "  "
+    elif code > 0.81 and code < 0.94:  # 13
+        icon = "  "
 
-        case n if n in np.arange(0.81, 0.94):  # 13
-            icon = "  "
-
-        case _:
-            return icon
+    else:
+        return icon
 
     return icon
 
