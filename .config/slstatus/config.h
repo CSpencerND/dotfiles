@@ -13,10 +13,10 @@ static const char unknown_str[] = "n/a";
 static const struct arg args[] = {
 	/* function     format                      argument */
 
-	{ datetime,     " ^c#bd93f9^   %s",      "%H:%M" },
+	{ datetime,     " ^c#bd93f9^    %s",      "%H:%M" },
         { seperator,    "^c#646682^ %s",        " | " },
 
-	{ datetime,     "^c#8be9fd^   %s",      "%a %b %e" },
+	{ datetime,     "^c#8be9fd^    %s",      "%a %b %e" },
         { seperator,    "^c#646672^ %s",        " | " },
 
 	// { weather,      "^c#f1fa8c^ %s",        NULL },
@@ -25,17 +25,17 @@ static const struct arg args[] = {
 	{ run_command,  "^c#f1fa8c^ %s",        "cat /home/cs/.cache/weather/pyweather" },
         { seperator,    "^c#646672^ %s",        " | " },
 
-	{ cpu_perc,     "^c#bd93f9^   %s%%",    NULL },
+	{ cpu_perc,     "^c#bd93f9^    %s%%",    NULL },
         { seperator,    "^c#646672^ %s",        " | " },
 
-	{ ram_perc,     "^c#8be9fd^   %s%%",    NULL },
+	{ ram_perc,     "^c#8be9fd^    %s%%",    NULL },
         { seperator,    "^c#646672^ %s",        " | " },
 
 	{ temp,         "^c#f1fa8c^  %s°",     "/sys/class/thermal/thermal_zone1/temp" },
         { seperator,    "^c#646672^ %s",        " | " },
 
 	// { run_command,  "^c#bd93f9^  %s  ",   "cat /home/cs/.cache/headset_percent" },
-	{ run_command,  "^c#bd93f9^  %s",   "cat /home/cs/.cache/headset_percent" },
+	{ run_command,  "^c#bd93f9^   %s",   "cat /home/cs/.cache/headset_percent" },
         { seperator,    "^c#646672^ %s",        " | " },
 
         // { run_command, "^c#8be9fd^ %s%", "/home/cs/.local/statusbar/bat-perc.o"},
