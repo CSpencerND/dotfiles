@@ -2,6 +2,7 @@
 
 import requests as re
 import os.path as osp
+from os import makedirs as mkdir
 from pprint import pformat as pf
 
 
@@ -31,12 +32,13 @@ def get_weather(location: str) -> dict:
 
 def get_trend(current: int, forecast: int) -> str:
 
+    trend: str = "   "
+
     if current > forecast:
         trend = "   "
+
     elif forecast > current:
         trend = "   "
-    else:
-        trend = "   "
 
     return trend
 
@@ -102,9 +104,6 @@ def get_icon(code: str, moon: str) -> str:
         case "50n":
             icon = f"{moon}    "
 
-        case _:
-            return icon
-
     return icon
 
 
@@ -134,13 +133,10 @@ def get_moon(data: dict) -> str:
     elif code > 0.81 and code < 0.94:  # 13
         icon = "  "
 
-    else:
-        return icon
-
     return icon
 
 
-def main() -> int:
+def main() -> None:
 
     # location and weather data
     location: str = get_location()
@@ -162,17 +158,21 @@ def main() -> int:
     forecast_icon: str = get_icon(forecast_code, moon)
     trend: str = get_trend(current, forecast)
 
+    # create output string
     weather_str: str = f"{current_icon}{current}°{trend}{forecast_icon}{forecast}°"
 
-    # Write {data} to file
+    # create directory if it does not exist
+    if not osp.isdir(osp.expanduser("~/.cache/weather/")):
+        mkdir(osp.expanduser("~/.cache/weather/"))
+        print("Created directory at ~/.cache/weather/")
+
+    # write {data} to file
     with open(osp.expanduser("~/.cache/weather/data.py"), "w") as f:
         f.write(pf(data))
 
-    # Write {weather_str} to file
+    # write {weather_str} to file
     with open(osp.expanduser("~/.cache/weather/pyweather"), "w") as f:
         f.write(weather_str)
-
-    return 0
 
 
 if __name__ == "__main__":
