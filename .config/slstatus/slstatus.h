@@ -79,9 +79,9 @@ const char *uid(void);
 /* volume */
 const char *vol_perc(const char *card);
 
-/* weather */
-// const char *weather(void);
-
 /* wifi */
 const char *wifi_perc(const char *interface);
 const char *wifi_essid(const char *interface);
+
+/* custom */
+const char *battery_icon(void);

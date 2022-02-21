@@ -4,7 +4,7 @@
 int main()
 {
     int perc;
-    char *state;
+    char state[12];
     char *icon = "  ";
 
     // get current battery level
@@ -22,7 +22,7 @@ int main()
     {
         icon = " ";
     }
-    else if (strcmp(state, "Charging") == 0)
+    else if (!strcmp(state, "Charging"))
     {
         icon = " ";
     }
