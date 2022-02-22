@@ -6,28 +6,29 @@ from os import makedirs as mkdir
 from pprint import pformat as pf
 
 
-def get_location() -> str:
+def get_data() -> dict:
+    def _get_location() -> str:
 
-    location_url: str = "https://location.services.mozilla.com/v1/geolocate?key=geoclue"
+        location_url: str = (
+            "https://location.services.mozilla.com/v1/geolocate?key=geoclue"
+        )
 
-    r = re.get(location_url).json()
+        location: dict = re.get(location_url).json()
 
-    lat: int = r["location"]["lat"]
-    lon: int = r["location"]["lng"]
+        lat: int = location["location"]["lat"]
+        lon: int = location["location"]["lng"]
 
-    return f"lat={lat}&lon={lon}"
+        return f"lat={lat}&lon={lon}"
 
-
-def get_weather(location: str) -> dict:
-
+    location: str = _get_location()
     api_key: str = "appid=ef8c3512dedaf5aa46ed1ca846d4fade"
     base_url: str = "https://api.openweathermap.org/data/2.5/onecall?units=imperial"
     excludes: str = "exclude=current,minutely,alerts"
     full_url: str = f"{base_url}&{api_key}&{location}&{excludes}"
 
-    r = re.get(full_url).json()
+    data = re.get(full_url).json()
 
-    return r
+    return data
 
 
 def get_trend(current: int, forecast: int) -> str:
@@ -44,67 +45,37 @@ def get_trend(current: int, forecast: int) -> str:
 
 
 def get_icon(code: str, moon: str, is_hot: bool = False) -> str:
+    # TODO: add meteorological events and possibly wind conditions
 
-    # TODO add meteorological events and possibly wind conditions
-
+    # icons for nerd fonts
     icon: str = "   "
+    icons: dict = {
+        "01n": f"{moon}    ",
+        "02d": "   ",
+        "02n": f"{moon}    ",
+        "03d": "   ",
+        "03n": f"{moon}    ",
+        "04d": "   ",
+        "04n": f"{moon}    ",
+        "09d": "   ",
+        "09n": f"{moon}    ",
+        "10d": "   ",
+        "10n": f"{moon}    ",
+        "11d": "   ",
+        "11n": f"{moon}    ",
+        "13d": "   ",
+        "13n": f"{moon}    ",
+        "50d": "   ",
+        "50n": f"{moon}    ",
+    }
 
-    # if using Nerd Fonts
-    match code:
+    for k, v in icons.items():
 
-        case code if code == "01d" and is_hot:
+        if code == "01d" and is_hot:
             icon = "   "
 
-        case "01n":
-            icon = f"{moon}    "
-
-        case "02d":
-            icon = "   "
-
-        case "02n":
-            icon = f"{moon}    "
-
-        case "03d":
-            icon = "   "
-
-        case "03n":
-            icon = f"{moon}    "
-
-        case "04d":
-            icon = "   "
-
-        case "04n":
-            icon = f"{moon}    "
-
-        case "09d":
-            icon = "   "
-
-        case "09n":
-            icon = f"{moon}    "
-
-        case "10d":
-            icon = "   "
-
-        case "10n":
-            icon = f"{moon}    "
-
-        case "11d":
-            icon = "   "
-
-        case "11n":
-            icon = f"{moon}    "
-
-        case "13d":
-            icon = "   "
-
-        case "13n":
-            icon = f"{moon}    "
-
-        case "50d":
-            icon = "   "
-
-        case "50n":
-            icon = f"{moon}    "
+        elif code == k:
+            icon = v
 
     return icon
 
@@ -112,57 +83,33 @@ def get_icon(code: str, moon: str, is_hot: bool = False) -> str:
 def get_moon(data: dict) -> str:
 
     code: float = data["daily"][0]["moon_phase"]
-    icon: str = "  "
+    icon: str = " "
 
-    if code > 0.06 and code < 0.19:  # 13
-        icon = "  "
+    if 0.06 < code < 0.19:  # 13
+        icon = " "
 
-    elif code > 0.19 and code < 0.31:  # 12
-        icon = "  "
+    elif 0.19 < code < 0.31:  # 12
+        icon = " "
 
-    elif code > 0.31 and code < 0.44:  # 13
-        icon = "  "
+    elif 0.31 < code < 0.44:  # 13
+        icon = " "
 
-    elif code > 0.44 and code < 0.56:  # 12
-        icon = "  "
+    elif 0.44 < code < 0.56:  # 12
+        icon = " "
 
-    elif code > 0.56 and code < 0.69:  # 13
-        icon = "  "
+    elif 0.56 < code < 0.69:  # 13
+        icon = " "
 
-    elif code > 0.69 and code < 0.81:  # 12
-        icon = "  "
+    elif 0.69 < code < 0.81:  # 12
+        icon = " "
 
-    elif code > 0.81 and code < 0.94:  # 13
-        icon = "  "
+    elif 0.81 < code < 0.94:  # 13
+        icon = " "
 
     return icon
 
 
-# TODO: refoactor main; clean it up; might make more functions
-def main() -> None:
-
-    # location and weather data
-    location: str = get_location()
-    data: dict = get_weather(location)
-
-    # current and 3 hour forecast temperature
-    current: int = round(data["hourly"][0]["temp"])
-    forecast: int = round(data["hourly"][2]["temp"])
-
-    # codes for weather icons
-    current_code: str = data["hourly"][0]["weather"][0]["icon"]
-    forecast_code: str = data["hourly"][3]["weather"][0]["icon"]
-
-    # moon phase icon
-    moon: str = get_moon(data)
-
-    # icons for weather and trend
-    current_icon: str = get_icon(current_code, moon, current > 79)
-    forecast_icon: str = get_icon(forecast_code, moon, forecast > 79)
-    trend: str = get_trend(current, forecast)
-
-    # create output string
-    weather_str: str = f"{current_icon}{current}°{trend}{forecast_icon}{forecast}°"
+def write_data(data: dict, weather: str) -> None:
 
     # create directory if it does not exist
     if not osp.isdir(osp.expanduser("~/.cache/weather/")):
@@ -175,30 +122,57 @@ def main() -> None:
 
     # write {weather_str} to file
     with open(osp.expanduser("~/.cache/weather/pyweather"), "w") as f:
-        f.write(weather_str)
+        f.write(weather)
+
+
+def main() -> None:
+
+    # weather data
+    data: dict = get_data()
+
+    # moon phase icon
+    moon: str = get_moon(data)
+
+    # current and 3-hour forecast temperature
+    current: int = round(data["hourly"][0]["temp"])
+    forecast: int = round(data["hourly"][2]["temp"])
+
+    # codes for weather icons
+    current_code: str = data["hourly"][0]["weather"][0]["icon"]
+    forecast_code: str = data["hourly"][2]["weather"][0]["icon"]
+
+    # icons for weather and trend
+    current_icon: str = get_icon(current_code, moon, current > 79)
+    forecast_icon: str = get_icon(forecast_code, moon, forecast > 79)
+    trend: str = get_trend(current, forecast)
+
+    # create and write data
+    weather: str = f"{current_icon}{current}°{trend}{forecast_icon}{forecast}°"
+    write_data(data, weather)
+    # print(weather)
 
 
 if __name__ == "__main__":
     main()
 
-    # if using Weather Icons
-    # match code:
-    # case "01d": icon = ""
-    # case "01n": icon = moon
-    # case "02d": icon = ""
-    # case "02n": icon = moon
-    # case "03d": icon = ""
-    # case "03n": icon = moon
-    # case "04d": icon = ""
-    # case "04n": icon = f"{moon} "
-    # case "09d": icon = ""
-    # case "09n": icon = f"{moon} "
-    # case "10d": icon = ""
-    # case "10n": icon = f"{moon} "
-    # case "11d": icon = ""
-    # case "11n": icon = f"{moon} "
-    # case "13d": icon = ""
-    # case "13n": icon = f"{moon} "
-    # case "50d": icon = ""
-    # case "50n": icon = f"{moon} "
-    # case _: return icon
+    # icons for weather icons
+    # icons: dict = {
+    #     "01d": "",
+    #     "01n": moon,
+    #     "02d": "",
+    #     "02n": moon,
+    #     "03d": "",
+    #     "03n": moon,
+    #     "04d": "",
+    #     "04n": f"{moon} ",
+    #     "09d": "",
+    #     "09n": f"{moon} ",
+    #     "10d": "",
+    #     "10n": f"{moon} ",
+    #     "11d": "",
+    #     "11n": f"{moon} ",
+    #     "13d": "",
+    #     "13n": f"{moon} ",
+    #     "50d": "",
+    #     "50n": f"{moon} ",
+    # }
