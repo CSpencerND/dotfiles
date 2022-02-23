@@ -45,12 +45,16 @@ def get_trend(current: int, forecast: int) -> str:
     return trend
 
 
-def get_icon(code: str, moon: str, is_hot: bool = False) -> str:
-    # TODO: add meteorological events and possibly wind conditions
+def get_icon(code: str, moon: str, is_hot: bool, wind: int) -> str:
+
+    is_breezy: bool = 6 < wind < 13
+    is_windy: bool = 13 < wind
 
     # icons for nerd fonts
     icon: str = "   "
-    icons: dict = {
+
+    main_icons: dict = {
+        "01d": "   ",
         "01n": f"{moon}    ",
         "02d": "   ",
         "02n": f"{moon}    ",
@@ -58,10 +62,31 @@ def get_icon(code: str, moon: str, is_hot: bool = False) -> str:
         "03n": f"{moon}    ",
         "04d": "   ",
         "04n": f"{moon}    ",
-        "09d": "   ",
-        "09n": f"{moon}    ",
+        "09d": "   ",
+        "09n": f"{moon}    ",
         "10d": "   ",
         "10n": f"{moon}    ",
+        "11d": "   ",
+        "11n": f"{moon}    ",
+        "13d": "   ",
+        "13n": f"{moon}    ",
+        "50d": "   ",
+        "50n": f"{moon}    ",
+    }
+
+    breezy_icons: dict = {
+        "01d": "   ",
+        "01n": f"{moon}    ",
+        "02d": "   ",
+        "02n": f"{moon}    ",
+        "03d": "   ",
+        "03n": f"{moon}    ",
+        "04d": "   ",
+        "04n": f"{moon}    ",
+        "09d": "   ",
+        "09n": f"{moon}    ",
+        "10d": "   ",
+        "10n": f"{moon}    ",
         "11d": "   ",
         "11n": f"{moon}    ",
         "13d": "   ",
@@ -70,13 +95,44 @@ def get_icon(code: str, moon: str, is_hot: bool = False) -> str:
         "50n": f"{moon}    ",
     }
 
-    for k, v in icons.items():
+    windy_icons: dict = {
+        "01d": "   ",
+        "01n": f"{moon}    ",
+        "02d": "   ",
+        "02n": f"{moon}    ",
+        "03d": "   ",
+        "03n": f"{moon}    ",
+        "04d": "   ",
+        "04n": f"{moon}    ",
+        "09d": "   ",
+        "09n": f"{moon}    ",
+        "10d": "   ",
+        "10n": f"{moon}    ",
+        "11d": "   ",
+        "11n": f"{moon}    ",
+        "13d": "   ",
+        "13n": f"{moon}    ",
+        "50d": "   ",
+        "50n": f"{moon}    ",
+    }
 
-        if code == "01d" and is_hot:
-            icon = "   "
+    if is_breezy:
+        for c, i in breezy_icons.items():
+            if code == c:
+                return i
 
-        elif code == k:
-            icon = v
+    elif is_windy:
+        for c, i in windy_icons.items():
+            if code == c:
+                return i
+
+    elif code == "01d" and is_hot:
+            return "   "
+
+    else:
+        for c, i in main_icons.items():
+            if code == c:
+                return i
 
     return icon
 
@@ -137,15 +193,19 @@ def main() -> None:
     # current and 3-hour forecast temperature
     current: int = round(data["hourly"][0]["temp"])
     forecast: int = round(data["hourly"][2]["temp"])
-
+    
     # codes for weather icons
     current_code: str = data["hourly"][0]["weather"][0]["icon"]
     forecast_code: str = data["hourly"][2]["weather"][0]["icon"]
 
+    # current and 3-hour forecast wind speed
+    current_wind: int = round(data["hourly"][0]["wind_speed"])
+    forecast_wind: int = round(data["hourly"][2]["wind_speed"])
+
     # icons for event, weather, and trend
     event: str = get_event()
-    current_icon: str = get_icon(current_code, moon, current > 79)
-    forecast_icon: str = get_icon(forecast_code, moon, forecast > 79)
+    current_icon: str = get_icon(current_code, moon, current > 79, current_wind)
+    forecast_icon: str = get_icon(forecast_code, moon, forecast > 79, forecast_wind)
     trend: str = get_trend(current, forecast)
 
     # create and write data
