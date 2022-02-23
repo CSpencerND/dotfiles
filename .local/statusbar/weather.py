@@ -4,6 +4,7 @@ import requests as re
 import os.path as osp
 from os import makedirs as mkdir
 from pprint import pformat as pf
+from events import get_event
 
 
 def get_data() -> dict:
@@ -141,13 +142,14 @@ def main() -> None:
     current_code: str = data["hourly"][0]["weather"][0]["icon"]
     forecast_code: str = data["hourly"][2]["weather"][0]["icon"]
 
-    # icons for weather and trend
+    # icons for event, weather, and trend
+    event: str = get_event()
     current_icon: str = get_icon(current_code, moon, current > 79)
     forecast_icon: str = get_icon(forecast_code, moon, forecast > 79)
     trend: str = get_trend(current, forecast)
 
     # create and write data
-    weather: str = f"{current_icon}{current}°{trend}{forecast_icon}{forecast}°"
+    weather: str = f"{event}{current_icon}{current}°{trend}{forecast_icon}{forecast}°"
     write_data(data, weather)
     # print(weather)
 
