@@ -4,6 +4,11 @@
 alias cd..="cd .."
 alias pdw="pwd"
 
+### Lazy Backup Git
+alias baks="backup status"
+alias baka="backup add -u"
+alias bakc="backup commit -m"
+
 ### Navigation Shortcuts
 alias lvc='vi ~/.config/lvim/config.lua'
 alias qtl='vi ~/.local/share/qtile/qtile.log'
@@ -20,26 +25,6 @@ alias rgrep='rgrep --color=auto'
 alias rg='rg -uu'
 alias diff='diff --color=auto'
 alias ip='ip --color=auto'
-
-### Various
-alias rm='rm -Iv'
-alias cp='cp -ivr'
-alias mv='mv -iv'
-alias mkdir='mkdir -pv'
-alias du='du -sh'
-alias df='df -h'
-alias free='free -mt' 
-alias vi='lvim'
-alias nv='nvim'
-
-# alias nvim='nvim -u ~/.config/nvim/init.lua'
-alias top='btop'
-alias apt-get='apt-get --show-progress'
-alias update="sudo pacman -Syyu"
-alias update-all="paru -Syu --noconfirm"
-alias pacman='sudo pacman --color auto'
-alias mirrors="sudo reflector -c 'United States' -a 6 --save /etc/pacman.d/mirrorlist"
-alias upgraded="grep -iE 'installed|upgraded' /var/log/pacman.log"
 
 ### LS & TREE
 alias ll='ls -lAG'
@@ -61,6 +46,128 @@ command -v bat > /dev/null && \
 # 	alias batcat='batcat --theme=ansi-dark' && \
 # 	alias cat='batcat --pager=never' && \
 # 	alias less='batcat'
+
+### Various
+alias rm='rm -Iv'
+alias cp='cp -ivr'
+alias mv='mv -iv'
+alias mkdir='mkdir -pv'
+alias du='du -sh'
+alias df='df -h'
+alias free='free -mt' 
+alias vi='lvim'
+alias nv='nvim'
+alias top='btop'
+
+### Pacman
+alias update="sudo pacman -Syyu"
+alias update-all="paru -Syu --noconfirm"
+alias pacman='sudo pacman --color auto'
+alias upgraded="grep -iE 'installed|upgraded' /var/log/pacman.log"
+alias ram='rate-mirrors --allow-root arch | sudo tee /etc/pacman.d/mirrorlist'
+
+#Cleanup orphaned packages
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+
+#mounting the folder Public for exchange between host and guest on virtualbox
+alias vbm="sudo /usr/local/bin/arcolinux-vbox-share"
+
+#enabling vmware services
+alias start-vmware="sudo systemctl enable --now vmtoolsd.service"
+alias sv="sudo systemctl enable --now vmtoolsd.service"
+
+#youtube download
+alias yta-aac="yt-dlp --extract-audio --audio-format aac "
+alias yta-best="yt-dlp --extract-audio --audio-format best "
+alias yta-flac="yt-dlp --extract-audio --audio-format flac "
+alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
+alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
+
+#Recent Installed Packages
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
+
+#iso and version used to install ArcoLinux
+alias iso="cat /etc/dev-rel | awk -F '=' '/ISO/ {print $2}'"
+
+#clear
+alias clean="clear; seq 1 $(tput cols) | sort -R | sparklines | lolcat"
+
+#search content with ripgrep
+alias rg="rg --sort path"
+
+#get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+
+#nano for important configuration files
+#know what you do in these files
+alias nlxdm="sudo $EDITOR /etc/lxdm/lxdm.conf"
+alias nlightdm="sudo $EDITOR /etc/lightdm/lightdm.conf"
+alias npacman="sudo $EDITOR /etc/pacman.conf"
+alias ngrub="sudo $EDITOR /etc/default/grub"
+alias nconfgrub="sudo $EDITOR /boot/grub/grub.cfg"
+alias nmkinitcpio="sudo $EDITOR /etc/mkinitcpio.conf"
+alias nmirrorlist="sudo $EDITOR /etc/pacman.d/mirrorlist"
+alias narcomirrorlist='sudo nano /etc/pacman.d/arcolinux-mirrorlist'
+alias nsddm="sudo $EDITOR /etc/sddm.conf"
+alias nsddmk="sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf"
+alias nfstab="sudo $EDITOR /etc/fstab"
+alias nnsswitch="sudo $EDITOR /etc/nsswitch.conf"
+alias nsamba="sudo $EDITOR /etc/samba/smb.conf"
+alias ngnupgconf="sudo nano /etc/pacman.d/gnupg/gpg.conf"
+alias nhosts="sudo $EDITOR /etc/hosts"
+alias nb="$EDITOR ~/.bashrc"
+alias nz="$EDITOR ~/.zshrc"
+alias nf="EDITOR ~/.config/fish/config.fish"
+
+#gpg
+#verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+#receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+alias fix-gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+alias fix-keyserver="[ -d ~/.gnupg ] || mkdir ~/.gnupg ; cp /etc/pacman.d/gnupg/gpg.conf ~/.gnupg/ ; echo 'done'"
+
+#fixes
+alias fix-permissions="sudo chown -R $USER:$USER ~/.config ~/.local"
+alias keyfix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias key-fix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias keys-fix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias fixkey="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias fixkeys="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias fix-key="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias fix-keys="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias fix-sddm-config="/usr/local/bin/arcolinux-fix-sddm-config"
+alias fix-pacman-conf="/usr/local/bin/arcolinux-fix-pacman-conf"
+alias fix-pacman-keyserver="/usr/local/bin/arcolinux-fix-pacman-gpg-conf"
+
+#maintenance
+alias big="expac -H M '%m\t%n' | sort -h | nl"
+alias downgrada="sudo downgrade --ala-url https://ant.seedhost.eu/arcolinux/"
+
+#hblock (stop tracking with hblock)
+#use unhblock to stop using hblock
+alias unhblock="hblock -S none -D none"
+
+#systeminfo
+alias probe="sudo -E hw-probe -all -upload"
+alias sysfailed="systemctl list-units --failed"
+
+#shutdown or reboot
+alias ssn="sudo shutdown now"
+alias sr="sudo reboot"
+
+#update betterlockscreen images
+alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
+
+#give the list of all installed desktops - xsessions desktops
+alias xd="ls /usr/share/xsessions"
+
+
+
+
+
 
 ### Misc
 alias luamake=/home/cspencer/Installed/lua-language-server/3rd/luamake/luamake
