@@ -5,7 +5,7 @@ led="g815-led"
 
 purple=bd33f9
 magenta=ff39c6
-cyan=8be9fd
+cyan=8ba9fd
 yellow=ff9900
 
 vim_key_color=$yellow
@@ -27,7 +27,7 @@ syntax_keys=(
 # commands
 $led -a $purple
 
-for key in ${vim_keys[@]}; do
+for key in "${vim_keys[@]}"; do
 	$led -k $key $vim_key_color
 done
 
@@ -35,11 +35,11 @@ done
 # 	$led -fx breathing "$key" $vim_key_color 0a
 # done
 
-for key in ${syntax_keys[@]}; do
+for key in "${syntax_keys[@]}"; do
 	$led -k $key $syntax_key_color
 done
 
-for key in ${num_keys[@]}; do
+for key in "${num_keys[@]}"; do
 	$led -k $key $num_key_color
 done
 
