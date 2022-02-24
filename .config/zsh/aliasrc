@@ -5,10 +5,11 @@ alias cd..="cd .."
 alias pdw="pwd"
 
 ### Lazy Backup Git
-alias baks="backup status"
-alias baka="backup add -u"
-alias bakc="backup commit -m"
-alias bakp="backup push"
+alias bks="backup status"
+alias bka="backup add"
+alias bkau="backup add -u"
+alias bkc="backup commit -m"
+alias bkp="backup push"
 
 ### Navigation Shortcuts
 alias lvc='vi ~/.config/lvim/config.lua'

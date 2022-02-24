@@ -191,7 +191,7 @@ glog() {
 # Plugin source helper
 _source_plugin() {
 	local plugin_name="$1"
-	for basedir in $HOME/.local/share/zsh/plugins /usr/share
+	for basedir in $HOME/.local/share/zsh/plugins # /usr/share
 	do
 		plugin="$basedir/$plugin_name/$plugin_name.zsh"
 		[ -f "$plugin" ] && source "$plugin" && return 0
@@ -202,6 +202,7 @@ _source_plugin() {
 
 # ZSH Autosuggestions
 _source_plugin zsh-autosuggestions && ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+_source_plugin alias-tips
 
 # ZSH Syntax Highlighting
 if _source_plugin zsh-syntax-highlighting
