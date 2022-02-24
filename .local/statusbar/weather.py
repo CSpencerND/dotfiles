@@ -165,7 +165,7 @@ def write_data(data: dict, weather: str) -> None:
 
     # write {data} to file
     with open(osp.expanduser("~/.cache/weather/data.py"), "w") as f:
-        f.write(pf(data))
+        f.write(f"data = {pf(data)}")
 
     # write {weather_str} to file
     with open(osp.expanduser("~/.cache/weather/pyweather"), "w") as f:
