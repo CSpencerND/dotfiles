@@ -8,6 +8,7 @@ alias pdw="pwd"
 alias baks="backup status"
 alias baka="backup add -u"
 alias bakc="backup commit -m"
+alias bakp="backup push"
 
 ### Navigation Shortcuts
 alias lvc='vi ~/.config/lvim/config.lua'
