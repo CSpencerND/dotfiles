@@ -51,8 +51,6 @@ def get_icon(code: str, moon: str, is_hot: bool, wind: int) -> str:
     is_windy: bool = 13 < wind
 
     # icons for nerd fonts
-    icon: str = "   "
-
     main_icons: dict = {
         "01d": "   ",
         "01n": f"{moon}    ",
@@ -117,24 +115,16 @@ def get_icon(code: str, moon: str, is_hot: bool, wind: int) -> str:
     }
 
     if is_breezy:
-        for c, i in breezy_icons.items():
-            if code == c:
-                return i
+        return breezy_icons[code]
 
     elif is_windy:
-        for c, i in windy_icons.items():
-            if code == c:
-                return i
+        return windy_icons[code]
 
-    elif code == "01d" and is_hot:
-            return "   "
+    elif is_hot and code == "01d":
+        return "   "
 
     else:
-        for c, i in main_icons.items():
-            if code == c:
-                return i
-
-    return icon
+        return main_icons.get(code, "   ")
 
 
 def get_moon(data: dict) -> str:
@@ -193,7 +183,7 @@ def main() -> None:
     # current and 3-hour forecast temperature
     current: int = round(data["hourly"][0]["temp"])
     forecast: int = round(data["hourly"][2]["temp"])
-    
+
     # codes for weather icons
     current_code: str = data["hourly"][0]["weather"][0]["icon"]
     forecast_code: str = data["hourly"][2]["weather"][0]["icon"]

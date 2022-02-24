@@ -1,17 +1,65 @@
 {
+	"always_show_minimap_viewport" : true,
+
+	"bold_folder_labels"           : true,
+
+	"caret_extra_width": 1,
+    "caret_style": "phase",
+    "close_windows_when_empty": false,
+    
 	"color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
-	"dark_color_scheme": "Celeste.sublime-color-scheme",
-	"light_color_scheme": "Celeste.sublime-color-scheme",
+
+    "drag_text": false,
+    "draw_minimap_border": true,
+    "draw_white_space": "none",
+
+    // "enable_tab_scrolling": false,
+    "ensure_newline_at_eof_on_save": true,
+
+	"font_face": "Hack Nerd Font",
+	"font_size": 11,
+	"font_options"                 : ["no_round"],
+
+    "highlight_line": true,
+    "highlight_modified_tabs": true,
+
 	"ignored_packages": [
 	],
-	"theme": "Adaptive.sublime-theme",
-	"always_show_minimap_viewport" : true,
-	"bold_folder_labels"           : true,
-	"font_options"                 : ["gray_antialias", "subpixel_antialias"], // On retina Mac & Windows
 	"indent_guide_options"         : ["draw_normal", "draw_active"], // Highlight active indent
+
 	"line_padding_bottom"          : 3,
 	"line_padding_top"             : 3,
+
+    // "match_brackets_content": false,
+    "match_selection": false,
+    "match_tags": false,
+    // "mini_diff": false,
+
+	"material_theme_accent_graphite": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_small_tab"                : true,
+	"material_theme_tabs_autowidth"           : true, // Enable autowidth for tabs
+	"material_theme_tabs_separator"           : true,
+	"material_theme_big_fileicons"            : true,
+
+    "open_files_in_new_window": false,
 	"overlay_scroll_bars"          : "enabled",
-	"font_face": "Weather Icons",
-	"font_size": 11,
+
+	"preview_on_click": false,
+    "scroll_past_end": true,
+    "scroll_speed": 5.0,
+    // "show_definitions": false,
+    "show_encoding": true,
+    // "show_errors_inline": false,
+    // "show_full_path": false,
+    "sidebar_default": true,
+    // "swallow_startup_errors": true,
+
+	"theme": "Material-Theme-Darker.sublime-theme",
+
+	"translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+
+    "use_simple_full_screen": true,
+    "word_wrap": false,
 }
