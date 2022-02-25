@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-import requests as re
+import requests as req
 import os.path as osp
+from re import search
 from os import makedirs as mkdir
 from pprint import pformat as pf
+
 from events import get_event
 
 
@@ -14,7 +16,7 @@ def get_data() -> dict:
             "https://location.services.mozilla.com/v1/geolocate?key=geoclue"
         )
 
-        location: dict = re.get(location_url).json()
+        location: dict = req.get(location_url).json()
 
         lat: int = location["location"]["lat"]
         lon: int = location["location"]["lng"]
@@ -27,7 +29,7 @@ def get_data() -> dict:
     excludes: str = "exclude=current,minutely,alerts"
     full_url: str = f"{base_url}&{api_key}&{location}&{excludes}"
 
-    data = re.get(full_url).json()
+    data = req.get(full_url).json()
 
     return data
 
@@ -45,8 +47,10 @@ def get_trend(current: int, forecast: int) -> str:
     return trend
 
 
-def get_icon(code: str, moon: str, is_hot: bool, wind: int) -> str:
+def get_icon(code: str, moon: str, is_hot: bool, wind: int, desc: str) -> str:
 
+    is_day: bool = True if search("d$", code) else False
+    is_freezing_rain: bool = desc == "freezing rain"
     is_breezy: bool = 6 < wind < 13
     is_windy: bool = 13 < wind
 
@@ -123,6 +127,12 @@ def get_icon(code: str, moon: str, is_hot: bool, wind: int) -> str:
     elif is_hot and code == "01d":
         return "   "
 
+    elif is_freezing_rain:
+        if is_day:
+            return "   "
+        else:
+            return "   "
+
     else:
         return main_icons.get(code, "   ")
 
@@ -180,6 +190,10 @@ def main() -> None:
     # moon phase icon
     moon: str = get_moon(data)
 
+    # weather description
+    current_desc: str = data["hourly"][0]["weather"][1]["description"]
+    forecast_desc: str = data["hourly"][2]["weather"][1]["description"]
+
     # current and 3-hour forecast temperature
     current: int = round(data["hourly"][0]["temp"])
     forecast: int = round(data["hourly"][2]["temp"])
@@ -194,8 +208,12 @@ def main() -> None:
 
     # icons for event, weather, and trend
     event: str = get_event()
-    current_icon: str = get_icon(current_code, moon, current > 79, current_wind)
-    forecast_icon: str = get_icon(forecast_code, moon, forecast > 79, forecast_wind)
+    current_icon: str = get_icon(
+        current_code, moon, current > 79, current_wind, current_desc
+    )
+    forecast_icon: str = get_icon(
+        forecast_code, moon, forecast > 79, forecast_wind, forecast_desc
+    )
     trend: str = get_trend(current, forecast)
 
     # create and write data
