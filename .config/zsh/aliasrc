@@ -16,7 +16,7 @@ alias lvc='vi ~/.config/lvim/config.lua'
 alias qtl='vi ~/.local/share/qtile/qtile.log'
 alias qtc='vi ~/.config/qtile/config.py'
 alias dwmc="cd ~/.config/dwm && rm config.h && vi config.def.h"
-alias cd-sb='cd ~/.local/statusbar'
+alias cdsb='cd ~/.local/statusbar'
 
 ### Colorize commands
 alias ls='ls --color=auto'

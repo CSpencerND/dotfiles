@@ -49,10 +49,11 @@ def get_trend(current: int, forecast: int) -> str:
 
 def get_icon(code: str, moon: str, is_hot: bool, wind: int, desc: str) -> str:
 
-    is_day: bool = True if search("d$", code) else False
-    is_freezing_rain: bool = desc == "freezing rain"
     is_breezy: bool = 6 < wind < 13
     is_windy: bool = 13 < wind
+    is_day: bool = True if search("d$", code) else False
+    is_freezing_rain: bool = desc == "freezing rain"
+    is_hail: bool = desc == "hail"
 
     # icons for nerd fonts
     main_icons: dict = {
@@ -129,10 +130,15 @@ def get_icon(code: str, moon: str, is_hot: bool, wind: int, desc: str) -> str:
 
     elif is_freezing_rain:
         if is_day:
-            return "   "
+            return "    "
         else:
-            return "   "
+            return "    "
 
+    elif is_hail:
+        if is_day:
+            return "    "
+        else:
+            return "    "
     else:
         return main_icons.get(code, "   ")
 
