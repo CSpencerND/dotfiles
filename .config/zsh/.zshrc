@@ -3,7 +3,7 @@
 #Cuz it looks nice :)
 # colorscript random
 
-alias clear='clear; echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo; echo'
+alias clear='clear -x; echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo; echo'
 clear
 
 # Load aliases and shortcuts if existent:
@@ -32,6 +32,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -s '^o' 'ranger^M'
+bindkey -s '^l' 'clear^M'
 
 # enable terminal linewrap
 setterm -linewrap on 2> /dev/null
