@@ -1,7 +1,10 @@
 #!/bin/zsh
 
 #Cuz it looks nice :)
-colorscript random
+# colorscript random
+
+alias clear='clear; echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo; echo'
+clear
 
 # Load aliases and shortcuts if existent:
 [ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"

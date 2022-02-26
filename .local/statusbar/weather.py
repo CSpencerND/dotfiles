@@ -34,7 +34,36 @@ def get_data() -> dict:
     return data
 
 
-def weather_desc(data: dict) -> list:
+def get_moon(data: dict) -> str:
+
+    code: float = data["daily"][0]["moon_phase"]
+    icon: str = " "
+
+    if 0.06 < code < 0.19:  # 13
+        icon = " "
+
+    elif 0.19 < code < 0.31:  # 12
+        icon = " "
+
+    elif 0.31 < code < 0.44:  # 13
+        icon = " "
+
+    elif 0.44 < code < 0.56:  # 12
+        icon = " "
+
+    elif 0.56 < code < 0.69:  # 13
+        icon = " "
+
+    elif 0.69 < code < 0.81:  # 12
+        icon = " "
+
+    elif 0.81 < code < 0.94:  # 13
+        icon = " "
+
+    return icon
+
+
+def get_description(data: dict) -> list:
 
     if len(data["hourly"][0]["weather"]) > 1:
         current_desc: str = data["hourly"][0]["weather"][1]["description"]
@@ -158,35 +187,6 @@ def get_icon(code: str, moon: str, is_hot: bool, wind: int, desc: str) -> str:
         return main_icons.get(code, "   ")
 
 
-def get_moon(data: dict) -> str:
-
-    code: float = data["daily"][0]["moon_phase"]
-    icon: str = " "
-
-    if 0.06 < code < 0.19:  # 13
-        icon = " "
-
-    elif 0.19 < code < 0.31:  # 12
-        icon = " "
-
-    elif 0.31 < code < 0.44:  # 13
-        icon = " "
-
-    elif 0.44 < code < 0.56:  # 12
-        icon = " "
-
-    elif 0.56 < code < 0.69:  # 13
-        icon = " "
-
-    elif 0.69 < code < 0.81:  # 12
-        icon = " "
-
-    elif 0.81 < code < 0.94:  # 13
-        icon = " "
-
-    return icon
-
-
 def write_data(data: dict, weather: str) -> None:
 
     # create directory if it does not exist
@@ -212,8 +212,8 @@ def main() -> None:
     moon: str = get_moon(data)
 
     # weather description
-    current_desc: str = weather_desc(data)[0]
-    forecast_desc: str = weather_desc(data)[1]
+    current_desc: str = get_description(data)[0]
+    forecast_desc: str = get_description(data)[1]
 
     # current and 3-hour forecast temperature
     current: int = round(data["hourly"][0]["temp"])
