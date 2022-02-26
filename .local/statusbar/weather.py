@@ -34,6 +34,21 @@ def get_data() -> dict:
     return data
 
 
+def weather_desc(data: dict) -> list:
+
+    if len(data["hourly"][0]["weather"]) > 1:
+        current_desc: str = data["hourly"][0]["weather"][1]["description"]
+    else:
+        current_desc: str = data["hourly"][0]["weather"][0]["description"]
+
+    if len(data["hourly"][2]["weather"]) > 1:
+        forecast_desc: str = data["hourly"][2]["weather"][1]["description"]
+    else:
+        forecast_desc: str = data["hourly"][2]["weather"][0]["description"]
+
+    return [current_desc, forecast_desc]
+
+
 def get_trend(current: int, forecast: int) -> str:
 
     trend: str = "   "
@@ -197,8 +212,8 @@ def main() -> None:
     moon: str = get_moon(data)
 
     # weather description
-    current_desc: str = data["hourly"][0]["weather"][1]["description"]
-    forecast_desc: str = data["hourly"][2]["weather"][1]["description"]
+    current_desc: str = weather_desc(data)[0]
+    forecast_desc: str = weather_desc(data)[1]
 
     # current and 3-hour forecast temperature
     current: int = round(data["hourly"][0]["temp"])
