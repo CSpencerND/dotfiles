@@ -2,6 +2,12 @@
 #     GENERAL
 #################################################################
 
+super + F1
+    ~/.screenlayout/1screens.sh && ~/.fehbg
+
+super + F2
+    ~/.screenlayout/2screens.sh && ~/.fehbg
+
 super + slash
   rofi -show drun
 

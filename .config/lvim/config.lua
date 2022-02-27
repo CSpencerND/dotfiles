@@ -87,11 +87,16 @@ lvim.builtin.treesitter.highlight.enabled = true
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
     {
+        command = "lua-format", filetypes = {"lua"}
+    },
+    {
+        command = "rustfmt", filetypes = {"rust"}
+    },
+    {
         command = "black",
         args = {"--target-version", "py310"},
         filetypes = {"python"}
-    }, {command = "lua-format", filetypes = {"lua"}},
-    -- { command = "isort", filetypes = { "python" } },
+    },
     {
         command = "prettier",
         filetypes = {
