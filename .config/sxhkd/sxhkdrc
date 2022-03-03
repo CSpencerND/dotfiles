@@ -30,7 +30,7 @@ super + Return
   kitty
 
 super + b
-  firefox
+  brave
 
 super + d
   discord
