@@ -190,6 +190,7 @@ jsoncpp
 kitty
 kitty-terminfo
 laptop-detect
+leftwm
 less
 lib32-alsa-lib
 lib32-alsa-plugins
@@ -227,8 +228,10 @@ linux-headers
 linux-lts
 linux-lts-headers
 logrotate
+lolcat
 lsb-release
 lsscsi
+lua-format
 lutris
 lvm2
 lxappearance
@@ -244,6 +247,7 @@ mesa
 mintstick-git
 mkinitcpio
 mkinitcpio-nfs-utils
+mkinitcpio-openswap
 mlocate
 mobile-broadband-provider-info
 modemmanager
@@ -308,6 +312,7 @@ ppp
 pptpclient
 progress
 protonup-git
+protonup-qt
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
@@ -321,6 +326,7 @@ qalculate-gtk
 qt5-webkit
 qt5ct
 qtile
+qtile-extras-git
 ranger
 realtime-privileges
 redshift
@@ -347,6 +353,7 @@ sg3_utils
 shell-color-scripts
 shellcheck
 shfmt
+skippy-xd-git
 smartmontools
 sof-firmware
 solaar
@@ -365,7 +372,6 @@ systemd-manager
 tcpdump
 terminus-font
 termite
-termite-terminfo
 testdisk
 texinfo
 thunar

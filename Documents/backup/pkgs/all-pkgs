@@ -240,6 +240,7 @@ linux-headers
 linux-lts
 linux-lts-headers
 logrotate
+lolcat
 lsb-release
 lsscsi
 lua-format
