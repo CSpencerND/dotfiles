@@ -14,7 +14,7 @@ static const struct arg args[] = {
 	/* function     format                      argument */
 
 	// { datetime,     " ^c#bd93f9^    %s",      "%H:%M" },
-	{ datetime,     "^c#bd93f9^  %s",      "%l:%M" },
+	{ datetime,     "^c#bd93f9^  %s",      "%I:%M" },
         { seperator,    "^c#646682^ %s",        "|" },
 
 	{ datetime,     "^c#8be9fd^  %s",      "%a, %b %d" },
