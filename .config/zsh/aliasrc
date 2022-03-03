@@ -7,7 +7,7 @@ alias pdw="pwd"
 ### Lazy Backup Git
 alias bks="backup status"
 alias bka="backup add"
-alias bkau="backup add -u"
+alias bkau="backup add -u && backup status"
 alias bkc="backup commit -m"
 alias bkp="backup push"
 
@@ -15,7 +15,8 @@ alias bkp="backup push"
 alias lvc='vi ~/.config/lvim/config.lua'
 alias qtl='vi ~/.local/share/qtile/qtile.log'
 alias qtc='vi ~/.config/qtile/config.py'
-alias dwmc="cd ~/.config/dwm && rm config.h && vi config.def.h"
+alias cddwm="cd ~/.config/dwm && rm config.h && vi config.def.h"
+alias cdsl="cd ~/.config/dwm && rm config.h && vi config.def.h"
 alias cdsb='cd ~/.local/statusbar'
 
 ### Colorize commands
