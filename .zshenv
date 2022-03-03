@@ -14,8 +14,12 @@ export PATH="$PATH:$HOME/.local/statusbar"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/bin/polyscr"
 export PATH="$PATH:$HOME/.config/nvim/utils/bin"
-export PATH="$PATH:$HOME/.local/share/npm/bin"
-export PATH="$PATH:$HOME/node_modules/.bin"
+# export PATH="$PATH:$HOME/.local/share/npm/lib/node_modules/.bin"
+# export PATH="$PATH:$HOME/node_modules/.bin"
+
+# GDK
+export GDK_SCALE=1.5
+export GDK_DPI_SCALE=0.75
 
 # -------------------------- Cleanup Home -------------------------------------
 
@@ -33,13 +37,19 @@ export CONDARC="$XDG_CONFIG_HOME/conda/condarc"
 export PATH="$HOME/miniconda3/condabin:$PATH" # can't be changed?
 export PATH="$HOME/miniconda3/bin:$PATH" # can't be changed?
 
+# Node / NPM
+export PATH="$PATH:$HOME/.local/share/npm/bin"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+# export NPM_CONFIG_PREFIX="$HOME"/node_modules
+export NPM_CONFIG_PREFIX="$XDG_DATA_HOME"/npm
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history 
+
 # Misc
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg #gpg --homedir "$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export PATH="$XDG_DATA_HOME/go/bin:$PATH"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export JAVA_FONTS=/usr/share/fonts/TTF
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export TUXTYPE_CONF="$XDG_CONFIG_HOME/tuxtype/settings.txt"
 # export WGETRC="$XDG_CONFIG_HOME/wgetrc"
