@@ -24,40 +24,40 @@ battery_icon(void)
     // determine icon based on battery level and status
     if (!strcmp(state, "Unknown"))
     {
-        strcpy(icon, "  ");
+        strcpy(icon, " ");
     }
     else if (!strcmp(state, "Charging"))
     {
-        strcpy(icon, "  ");
+        strcpy(icon, " ");
     }
     else if (!strcmp(state, "Full"))
     {
-        strcpy(icon, "  ");
+        strcpy(icon, " ");
     }
     else if (!strcmp(state, "Discharging"))
     {
         if (perc < 12)
         {
-            strcpy(icon, "    ");
+            strcpy(icon, "  ");
         }
         else if (perc > 12 && perc < 37)
         {
-            strcpy(icon, "    ");
+            strcpy(icon, "  ");
         }
         else if (perc > 37 && perc < 63)
         {
-            strcpy(icon, "    ");
+            strcpy(icon, "  ");
         }
         else if (perc > 63 && perc < 88)
         {
-            strcpy(icon, "    ");
+            strcpy(icon, "  ");
         }
         else if (perc > 88)
         {
-            strcpy(icon, "    ");
+            strcpy(icon, "  ");
         }
     }
 
     // output the data
-    return bprintf("%s%d%%  ", icon, perc);
+    return bprintf("%s%d%% ", icon, perc);
 }

@@ -37,28 +37,28 @@ def get_data() -> dict:
 def get_moon(data: dict) -> str:
 
     code: float = data["daily"][0]["moon_phase"]
-    icon: str = " "
+    icon: str = ""
 
     if 0.06 < code < 0.19:  # 13
-        icon = " "
+        icon = ""
 
     elif 0.19 < code < 0.31:  # 12
-        icon = " "
+        icon = ""
 
     elif 0.31 < code < 0.44:  # 13
-        icon = " "
+        icon = ""
 
     elif 0.44 < code < 0.56:  # 12
-        icon = " "
+        icon = ""
 
     elif 0.56 < code < 0.69:  # 13
-        icon = " "
+        icon = ""
 
     elif 0.69 < code < 0.81:  # 12
-        icon = " "
+        icon = ""
 
     elif 0.81 < code < 0.94:  # 13
-        icon = " "
+        icon = ""
 
     return icon
 
@@ -80,13 +80,13 @@ def get_description(data: dict) -> list:
 
 def get_trend(current: int, forecast: int) -> str:
 
-    trend: str = "   "
+    trend: str = " 勉  "
 
     if current > forecast:
-        trend = "   "
+        trend = " 免  "
 
     elif forecast > current:
-        trend = "   "
+        trend = " 勤  "
 
     return trend
 
@@ -101,66 +101,66 @@ def get_icon(code: str, moon: str, is_hot: bool, wind: int, desc: str) -> str:
 
     # icons for nerd fonts
     main_icons: dict = {
-        "01d": "   ",
-        "01n": f"{moon}    ",
-        "02d": "   ",
-        "02n": f"{moon}    ",
-        "03d": "   ",
-        "03n": f"{moon}    ",
-        "04d": "   ",
-        "04n": f"{moon}    ",
-        "09d": "   ",
-        "09n": f"{moon}    ",
-        "10d": "   ",
-        "10n": f"{moon}    ",
-        "11d": "   ",
-        "11n": f"{moon}    ",
-        "13d": "   ",
-        "13n": f"{moon}    ",
-        "50d": "   ",
-        "50n": f"{moon}    ",
+        "01d": "  ",
+        "01n": f"{moon}   ",
+        "02d": "  ",
+        "02n": f"{moon}   ",
+        "03d": "  ",
+        "03n": f"{moon}   ",
+        "04d": "  ",
+        "04n": f"{moon}   ",
+        "09d": "  ",
+        "09n": f"{moon}   ",
+        "10d": "  ",
+        "10n": f"{moon}   ",
+        "11d": "  ",
+        "11n": f"{moon}   ",
+        "13d": "  ",
+        "13n": f"{moon}   ",
+        "50d": "  ",
+        "50n": f"{moon}   ",
     }
 
     breezy_icons: dict = {
-        "01d": "    ",
-        "01n": f"{moon}    ",
-        "02d": "    ",
-        "02n": f"{moon}     ",
-        "03d": "    ",
-        "03n": f"{moon}     ",
-        "04d": "    ",
-        "04n": f"{moon}     ",
-        "09d": "    ",
-        "09n": f"{moon}     ",
-        "10d": "    ",
-        "10n": f"{moon}     ",
-        "11d": "    ",
-        "11n": f"{moon}     ",
-        "13d": "    ",
-        "13n": f"{moon}     ",
-        "50d": "    ",
-        "50n": f"{moon}     ",
+        "01d": "  ",
+        "01n": f"{moon}   ",
+        "02d": "  ",
+        "02n": f"{moon}   ",
+        "03d": "  ",
+        "03n": f"{moon}   ",
+        "04d": "  ",
+        "04n": f"{moon}   ",
+        "09d": "  ",
+        "09n": f"{moon}   ",
+        "10d": "  ",
+        "10n": f"{moon}   ",
+        "11d": "  ",
+        "11n": f"{moon}   ",
+        "13d": "  ",
+        "13n": f"{moon}   ",
+        "50d": "  ",
+        "50n": f"{moon}   ",
     }
 
     windy_icons: dict = {
-        "01d": "    ",
-        "01n": f"{moon}    ",
-        "02d": "    ",
-        "02n": f"{moon}     ",
-        "03d": "    ",
-        "03n": f"{moon}     ",
-        "04d": "    ",
-        "04n": f"{moon}     ",
-        "09d": "    ",
-        "09n": f"{moon}     ",
-        "10d": "    ",
-        "10n": f"{moon}     ",
-        "11d": "    ",
-        "11n": f"{moon}     ",
-        "13d": "    ",
-        "13n": f"{moon}     ",
-        "50d": "    ",
-        "50n": f"{moon}     ",
+        "01d": "  ",
+        "01n": f"{moon}  ",
+        "02d": "  ",
+        "02n": f"{moon}   ",
+        "03d": "  ",
+        "03n": f"{moon}   ",
+        "04d": "  ",
+        "04n": f"{moon}   ",
+        "09d": "  ",
+        "09n": f"{moon}   ",
+        "10d": "  ",
+        "10n": f"{moon}   ",
+        "11d": "  ",
+        "11n": f"{moon}   ",
+        "13d": "  ",
+        "13n": f"{moon}   ",
+        "50d": "  ",
+        "50n": f"{moon}   ",
     }
 
     if is_breezy:
@@ -170,21 +170,21 @@ def get_icon(code: str, moon: str, is_hot: bool, wind: int, desc: str) -> str:
         return windy_icons[code]
 
     elif is_hot and code == "01d":
-        return "   "
+        return " "
 
     elif is_freezing_rain:
         if is_day:
-            return "    "
+            return "  "
         else:
-            return "    "
+            return "  "
 
     elif is_hail:
         if is_day:
-            return "    "
+            return "  "
         else:
-            return "    "
+            return "  "
     else:
-        return main_icons.get(code, "   ")
+        return main_icons.get(code, " ")
 
 
 def write_data(data: dict, weather: str) -> None:
