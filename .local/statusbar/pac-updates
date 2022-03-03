@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+rate-mirrors --allow-root arch | tee /etc/pacman.d/mirrorlist && \
+    pacman -Sy &&\
+    checkupdates | wc -l > /home/cs/.cache/pac-updates-count
