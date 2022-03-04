@@ -101,8 +101,8 @@ def get_icon(code: str, moon: str, is_hot: bool, wind: int, desc: str) -> str:
 
     # icons for nerd fonts
     main_icons: dict = {
-        "01d": "  ",
-        "01n": f"{moon}   ",
+        "01d": " ",
+        "01n": f"{moon}  ",
         "02d": "  ",
         "02n": f"{moon}   ",
         "03d": "  ",
@@ -123,7 +123,7 @@ def get_icon(code: str, moon: str, is_hot: bool, wind: int, desc: str) -> str:
 
     breezy_icons: dict = {
         "01d": "  ",
-        "01n": f"{moon}   ",
+        "01n": f"{moon}  ",
         "02d": "  ",
         "02n": f"{moon}   ",
         "03d": "  ",
