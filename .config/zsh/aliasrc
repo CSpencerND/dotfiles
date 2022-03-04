@@ -15,8 +15,8 @@ alias bkp="backup push"
 alias lvc='vi ~/.config/lvim/config.lua'
 alias qtl='vi ~/.local/share/qtile/qtile.log'
 alias qtc='vi ~/.config/qtile/config.py'
-alias cddwm="cd ~/.config/dwm && rm config.h && vi config.def.h"
-alias cdsl="cd ~/.config/dwm && rm config.h && vi config.def.h"
+alias cddwm="cd ~/.config/dwm"
+alias cdsl="cd ~/.config/slstatus"
 alias cdsb='cd ~/.local/statusbar'
 
 ### Colorize commands
