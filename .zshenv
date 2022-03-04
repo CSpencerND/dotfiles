@@ -19,7 +19,7 @@ export PATH="$PATH:$HOME/.config/nvim/utils/bin"
 
 # GDK
 export GDK_SCALE=1.5
-export GDK_DPI_SCALE=0.75
+export GDK_DPI_SCALE=0.65
 
 # -------------------------- Cleanup Home -------------------------------------
 
