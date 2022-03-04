@@ -1,7 +1,7 @@
 // #include "./themes/dracula.h"   /* Importing Theme */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 12;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 12;       /* vert inner gap between windows */
@@ -22,12 +22,11 @@ static const Bool viewontag         = False;     /* Switch view on tag switch */
 #define ICONSPACING 2 /* space between icon and title */
 
 static const char *fonts[] = {
-	"Weather Icons:pixelsize=12:antialias=true:autohint=true",
-	"Hack Nerd Font:size=10",
+	"Hack Nerd Font:size=11",
 	// "JoyPixels:pixelsize=10:antialias=true:autohint=true"
-	"monospace:size=10"
+	"monospace:size=11"
 };
-static const char dmenufont[]       = "Hack Nerd Font:size=10";
+static const char dmenufont[]       = "Hack Nerd Font:size=11";
 
 static const char fg_norm[]         = "#f8f8f2";
 static const char bg_norm[]         = "#282a36";
@@ -57,7 +56,7 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = { "kitty", "-e", "btop", NULL };
+const char *spcmd1[] = { "kitty", "-T", "sptop", "-e", "btop", NULL };
 static Sp scratchpads[] = {
 	/* name     cmd  */
 	{"sptop",   spcmd1},
@@ -72,11 +71,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 *  use tags mask to point an application to a specific workspace
 	 */
-	/* class                instance    title       tags mask   isfloating   monitor */
-	{ "Gimp",               NULL,       NULL,       0,          0,           -1 },
-	{ "Xfce4-terminal",     NULL,       NULL,       0,          1,           -1 },
-	{ "firefox",            NULL,       NULL,       0,          0,           -1 },
-	{ NULL,                 "sptop",    NULL,       SPTAG(0),   1,           -1 },
+	/* class      instance     title        tags mask   isfloating   monitor */
+	{ NULL,       NULL,        "sptop",     SPTAG(0),   1,           -1 },
 };
 
 /* layout(s) */

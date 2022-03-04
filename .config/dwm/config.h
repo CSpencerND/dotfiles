@@ -18,7 +18,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 
 static const Bool viewontag         = False;     /* Switch view on tag switch */
 
-#define ICONSIZE 22   /* icon size */
+#define ICONSIZE 28   /* icon size */
 #define ICONSPACING 2 /* space between icon and title */
 
 static const char *fonts[] = {
@@ -71,8 +71,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 *  use tags mask to point an application to a specific workspace
 	 */
-	/* class      instance     title        tags mask   isfloating   monitor */
-	{ NULL,       NULL,        "sptop",     SPTAG(0),   1,           -1 },
+	/* class      instance     title         tags mask   isfloating   monitor */
+	{ NULL,       NULL,        "sptop",      SPTAG(0),   1,           -1 },
+	{ NULL,       NULL,        "Qalculate!", 0,          1,           -1 },
 };
 
 /* layout(s) */
