@@ -61,7 +61,7 @@ font:
 draw_bold_text_with_bright_colors: false
 
 
-background_opacity: 1
+window.opacity: 1
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

@@ -22,11 +22,11 @@ static const Bool viewontag         = False;     /* Switch view on tag switch */
 #define ICONSPACING 2 /* space between icon and title */
 
 static const char *fonts[] = {
-	"Hack Nerd Font:size=11",
+	"Hack Nerd Font:size=7",
 	// "JoyPixels:pixelsize=10:antialias=true:autohint=true"
-	"monospace:size=11"
+	"monospace:size=7"
 };
-static const char dmenufont[]       = "Hack Nerd Font:size=11";
+static const char dmenufont[]       = "Hack Nerd Font:size=7";
 
 static const char fg_norm[]         = "#f8f8f2";
 static const char bg_norm[]         = "#282a36";
