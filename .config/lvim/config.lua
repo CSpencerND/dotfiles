@@ -12,6 +12,8 @@ lvim.builtin.nvimtree.show_icons.git = 1
 lvim.builtin.bufferline.active = true
 lvim.builtin.bufferline.options = {always_show_bufferline = true}
 
+-- vim.g.bracey_browser_command = "brave"
+
 require "user.keymaps"
 require "user.bufferline"
 require "user.plugins"
@@ -39,7 +41,7 @@ formatters.setup {
         command = "prettier",
         filetypes = {
             "typescript", "typescriptreact", "javascript", "javascriptreact",
-            "json", "css", "less", "html"
+            "json", "css", "less", "scss", "html"
         }
     }
 }

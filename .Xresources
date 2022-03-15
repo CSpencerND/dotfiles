@@ -14,6 +14,29 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
+! st
+st.font: Hack Nerd Font:pixelsize=20:antialias=true:autohint=true
+st.alpha: 0.9
+st.termname: st-256color
+st.color0: #1d2021
+st.color1: #cc241d
+st.color2: #98971a
+st.color3: #f1fa8c
+st.color4: #bd93f9 
+st.color5: #ff79c6
+st.color6: #8be9fd
+st.color7: #a89984
+st.color8: #928374
+st.color9: #fb4934
+st.color10: #b8bb26
+st.color11: #fabd2f
+st.color12: #83a598
+st.color13: #d3869b
+st.color14: #8ec07c
+st.color15: #ebdbb2
+st.background: #282a36 
+st.foreground: #f8f8f2 
+st.cursorColor: #f8f8f2 
 
 ! general settings
 URxvt.saveLines:        50000

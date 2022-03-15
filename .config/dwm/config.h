@@ -1,7 +1,7 @@
 // #include "./themes/dracula.h"   /* Importing Theme */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 12;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 12;       /* vert inner gap between windows */
@@ -32,9 +32,11 @@ static const char fg_norm[]         = "#f8f8f2";
 static const char bg_norm[]         = "#282a36";
 static const char bor_norm[]        = "#6272a4";
 static const char fg_sel[]          = "#424450";
-static const char bg_sel[]          = "#bd93f9";
+static const char bg_sel[]          = "#ff79c6";
+// static const char bg_sel[]          = "#bd93f9";
 // static const char bor_sel[]         = "#bd93f9";
-static const char bor_sel[]         = "#ff79c6";
+static const char bor_sel[]         = "#bd93f9";
+// static const char bor_sel[]         = "#ff79c6";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -56,10 +58,16 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = { "kitty", "-T", "sptop", "-e", "btop", NULL };
+// const char *spcmd1[] = { "kitty", "-T", "sptop", "-e", "btop", NULL };
+// const char *spcmd2[] = { "kitty", "-T", "spvim", "-e", "lvim", "~/.cache/scratchpad", NULL };
+const char *spcmd1[] = { "st", "-t", "sptop", "-g", "120x34", "-e", "btop", NULL };
+const char *spcmd2[] = { "st", "-t", "spvim", "-g", "120x34", "-e", "lvim", "~/.cache/scratchpad", NULL };
+const char *spcmd3[] = { "st", "-t", "spranger", "-g", "120x34", "-e", "ranger", NULL };
 static Sp scratchpads[] = {
 	/* name     cmd  */
 	{"sptop",   spcmd1},
+	{"spvim",   spcmd2},
+	{"spranger",   spcmd3},
 };
 
 /* tagging */
@@ -73,6 +81,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance     title         tags mask   isfloating   monitor */
 	{ NULL,       NULL,        "sptop",      SPTAG(0),   1,           -1 },
+	{ NULL,       NULL,        "spvim",      SPTAG(1),   1,           -1 },
+	{ NULL,       NULL,        "spranger",   SPTAG(2),   1,           -1 },
 	{ NULL,       NULL,        "Qalculate!", 0,          1,           -1 },
 };
 
@@ -121,7 +131,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "dmenu_run" };
-static const char *calendar[]  = { "gsimplecal", NULL };
+// static const char *calendar[]  = { "gsimplecal", NULL };
 // static const char *filecmd[]  = { "thunar", NULL };
 // static const char *taskmanager[]  = { "xfce4-taskmanager", NULL };
 // static const char *termcmd[]  = { "kitty", NULL };
@@ -179,6 +189,8 @@ static Key keys[] = {
 
 	// scratchpad
 	{ MODKEY,               XK_t,               togglescratch,  {.ui = 0 } },
+	{ MODKEY,               XK_p,               togglescratch,  {.ui = 1 } },
+	{ MODKEY,               XK_o,               togglescratch,  {.ui = 2 } },
 
 	// misc
 	{ MODKEY|ShiftMask,     XK_b,               togglebar,      {0} },
@@ -227,7 +239,7 @@ static Button buttons[] = {
 	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	// { ClkStatusText,        0,              Button6,        spawn,          {.v = taskmanager } },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = calendar } },
+	// { ClkStatusText,        0,              Button2,        spawn,          {.v = calendar } },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },

@@ -2,15 +2,15 @@ def get_event() -> str:
     from datetime import datetime
 
     icons: dict = {
-        "Lunar Eclipse": "  ",
-        "Solar Eclipse": "    ",
-        "Meteor Shower": "   ",
-        "Spring": "   ",
-        "Summer": "履   ",
-        "Autumn": "   ",
-        "Winter": "   ",
-        "Savings Start": "   ",
-        "Savings End": "   ",
+        "Lunar Eclipse": " ",
+        "Solar Eclipse": "  ",
+        "Meteor Shower": " ",
+        "Spring": " ",
+        "Summer": "履 ",
+        "Autumn": " ",
+        "Winter": " ",
+        "Savings Start": " ",
+        "Savings End": " ",
     }
 
     # source = https://www.timeanddate.com/eclipse/in/@z-us-18328?iso=20221108
