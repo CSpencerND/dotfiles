@@ -31,14 +31,13 @@ lvim.plugins = {
     {
         "unblevable/quick-scope",
         config = function() require "user.quickscope" end
+    }, {"folke/trouble.nvim", cmd = "TroubleToggle"}, {
+        "folke/todo-comments.nvim",
+        config = function() require("user.todo_comments").config() end
     }
     -- {
     --   "simrat39/symbols-outline.nvim",
     --   cmd = "SymbolsOutline",
-    -- },
-    -- {
-    --   "folke/trouble.nvim",
-    --   cmd = "TroubleToggle"
     -- },
     -- {
     --   "nvim-treesitter/playground",
