@@ -39,25 +39,25 @@ def get_moon(data: dict) -> str:
     code: float = data["daily"][0]["moon_phase"]
     icon: str = ""
 
-    if 0.06 < code < 0.19:  # 13
+    if 0.06 <= code < 0.19:  # 13
         icon = ""
 
-    elif 0.19 < code < 0.31:  # 12
+    elif 0.19 <= code < 0.31:  # 12
         icon = ""
 
-    elif 0.31 < code < 0.44:  # 13
+    elif 0.31 <= code < 0.44:  # 13
         icon = ""
 
-    elif 0.44 < code < 0.56:  # 12
+    elif 0.44 <= code < 0.56:  # 12
         icon = ""
 
-    elif 0.56 < code < 0.69:  # 13
+    elif 0.56 <= code < 0.69:  # 13
         icon = ""
 
-    elif 0.69 < code < 0.81:  # 12
+    elif 0.69 <= code < 0.81:  # 12
         icon = ""
 
-    elif 0.81 < code < 0.94:  # 13
+    elif 0.81 <= code < 0.94:  # 13
         icon = ""
 
     return icon
