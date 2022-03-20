@@ -10,7 +10,7 @@
       "mouse-gestures": false,
       "smart-shift": false
     },
-    "_serial": "1C541CAE",
+    "_serial": "082B9AEB",
     "_unitId": "1C541CAE",
     "divert-keys": {
       "196": 0,
@@ -33,6 +33,6 @@
     },
     "smart-shift": 10
   },
-  "_version": "1.1.0",
+  "_version": "1.1.1",
   "battery-icons": "solaar"
 }

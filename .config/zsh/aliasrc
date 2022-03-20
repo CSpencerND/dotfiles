@@ -63,8 +63,8 @@ alias nv='nvim'
 alias top='btop'
 
 ### Pacman
-alias update="sudo pacman -Syyu && pacmod"
-alias update-all="paru -Syu --noconfirm && pacmod"
+alias update="sudo pacman -Syyu && pacmod || pacmod"
+alias update-all="paru -Syu --noconfirm && pacmod || pacmod"
 alias pacman='sudo pacman --color auto'
 alias upgraded="grep -iE 'installed|upgraded' /var/log/pacman.log"
 alias ram='rate-mirrors --allow-root arch | sudo tee /etc/pacman.d/mirrorlist && pacmod'
