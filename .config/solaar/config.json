@@ -1,5 +1,29 @@
 {
-  "4090:082B9AEB": {
+  "4090:1C541CAE": {
+    "_absent": [
+      "hi-res-scroll",
+      "lowres-smooth-scroll",
+      "thumb-scroll-mode",
+      "thumb-scroll-invert",
+      "onboard_profiles",
+      "report_rate",
+      "pointer_speed",
+      "speed-change",
+      "backlight",
+      "backlight-timed",
+      "fn-swap",
+      "persistent-remappable-keys",
+      "disable-keyboard-keys",
+      "divert-crown",
+      "crown-smooth",
+      "divert-gkeys",
+      "m-key-leds",
+      "mr-key-led",
+      "multiplatform",
+      "gesture2-gestures",
+      "gesture2-divert",
+      "gesture2-params"
+    ],
     "_modelId": "B02540900000",
     "_name": "MX Anywhere 3",
     "_sensitive": {
@@ -10,7 +34,7 @@
       "mouse-gestures": false,
       "smart-shift": false
     },
-    "_serial": "082B9AEB",
+    "_serial": "1C541CAE",
     "_unitId": "1C541CAE",
     "divert-keys": {
       "196": 0,
@@ -33,6 +57,48 @@
     },
     "smart-shift": 10
   },
-  "_version": "1.1.1",
+  "C33F00000000:35384701": {
+    "_absent": [
+      "hi-res-scroll",
+      "lowres-smooth-scroll",
+      "hires-smooth-invert",
+      "hires-smooth-resolution",
+      "smart-shift",
+      "thumb-scroll-mode",
+      "thumb-scroll-invert",
+      "pointer_speed",
+      "dpi",
+      "dpi-sliding",
+      "speed-change",
+      "mouse-gestures",
+      "backlight",
+      "backlight-timed",
+      "fn-swap",
+      "reprogrammable-keys",
+      "persistent-remappable-keys",
+      "divert-keys",
+      "disable-keyboard-keys",
+      "divert-crown",
+      "crown-smooth",
+      "multiplatform",
+      "change-host",
+      "gesture2-gestures",
+      "gesture2-divert",
+      "gesture2-params"
+    ],
+    "_modelId": "C33F00000000",
+    "_name": "G815 Mechanical Keyboard",
+    "_unitId": "35384701",
+    "divert-gkeys": false,
+    "m-key-leds": {
+      "1": false,
+      "2": false,
+      "4": false
+    },
+    "mr-key-led": false,
+    "onboard_profiles": 1,
+    "report_rate": 1
+  },
+  "_version": "1.1.2",
   "battery-icons": "solaar"
 }

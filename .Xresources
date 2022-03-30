@@ -5,7 +5,7 @@
 
 Xcursor.theme: volontes_cursors
 Xcursor.size: 16
-Xft.dpi: 196
+! Xft.dpi: 196
 ! Xft.dpi: 132
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault

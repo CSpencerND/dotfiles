@@ -5,22 +5,22 @@
 * Contributor(s): DrPugsley
 */
 
-window {
-    font-size: 12px !important;
-}
+/* window { */
+/*     font-size: 12px !important; */
+/* } */
 
-menubar,
-menubutton,
-menulist,
-menu,
-menuitem,
-textbox,
-toolbar,
-tab,
-tree,
-tooltip {
-    font-size: 12px !important;
-}
+/* menubar, */
+/* menubutton, */
+/* menulist, */
+/* menu, */
+/* menuitem, */
+/* textbox, */
+/* toolbar, */
+/* tab, */
+/* tree, */
+/* tooltip { */
+/*     font-size: 12px !important; */
+/* } */
 
 [uidensity='compact']:root {
     --tab-max-height: 28px !important;

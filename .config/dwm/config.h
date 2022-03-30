@@ -22,9 +22,9 @@ static const Bool viewontag         = False;     /* Switch view on tag switch */
 #define ICONSPACING 2 /* space between icon and title */
 
 static const char *fonts[] = {
-	"Hack Nerd Font:size=7",
+	"Hack Nerd Font:size=12",
 	// "JoyPixels:pixelsize=10:antialias=true:autohint=true"
-	"monospace:size=7"
+	"monospace:size=12"
 };
 static const char dmenufont[]       = "Hack Nerd Font:size=7";
 
@@ -59,9 +59,9 @@ typedef struct {
 	const void *cmd;
 } Sp;
 // const char *spcmd1[] = { "kitty", "-T", "sptop", "-e", "btop", NULL };
-// const char *spcmd2[] = { "kitty", "-T", "spvim", "-e", "lvim", "~/.cache/scratchpad", NULL };
+// const char *spcmd2[] = { "kitty", "-T", "spvim", "-e", "nvim", "~/.cache/scratchpad", NULL };
 const char *spcmd1[] = { "st", "-t", "sptop", "-g", "120x34", "-e", "btop", NULL };
-const char *spcmd2[] = { "st", "-t", "spvim", "-g", "120x34", "-e", "lvim", "~/.cache/scratchpad", NULL };
+const char *spcmd2[] = { "st", "-t", "spvim", "-g", "120x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
 const char *spcmd3[] = { "st", "-t", "spranger", "-g", "120x34", "-e", "ranger", NULL };
 static Sp scratchpads[] = {
 	/* name     cmd  */

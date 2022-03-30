@@ -9,6 +9,9 @@ alsa-firmware
 alsa-lib
 alsa-plugins
 alsa-utils
+android-sdk-cmdline-tools-latest
+android-sdk-platform-tools
+android-tools
 appstream
 arandr
 arc-gtk-theme
@@ -56,6 +59,7 @@ arcolinux-welcome-app-git
 arcolinux-xfce-git
 arcolinux-zsh-git
 asciinema
+aspell
 atom
 autoconf
 automake

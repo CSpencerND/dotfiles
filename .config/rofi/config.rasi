@@ -53,8 +53,8 @@ configuration {
     alternate-active-foreground: @active-foreground;
     active-background:           @background;
     selected-active-background:  rgba(76, 86, 106, 100%);
-    font:                        "Jetbrains Mono 18";
-    prompt-font:                 "Jetbrains Mono 18";
+    font:                        "Jetbrains Mono 12";
+    prompt-font:                 "Jetbrains Mono 12";
 }
 #window {
     background-color: @background;
