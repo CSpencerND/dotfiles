@@ -88,6 +88,10 @@
     ],
     "_modelId": "C33F00000000",
     "_name": "G815 Mechanical Keyboard",
+    "_sensitive": {
+      "onboard_profiles": false,
+      "report_rate": false
+    },
     "_unitId": "35384701",
     "divert-gkeys": false,
     "m-key-leds": {
