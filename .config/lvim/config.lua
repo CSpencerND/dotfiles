@@ -43,7 +43,7 @@ formatters.setup {
             "typescript", "typescriptreact", "javascript", "javascriptreact",
             "json", "css", "less", "scss", "html"
         }
-    }, {command = "codespell"},
+    } -- {command = "codespell"},
 }
 
 -- set additional linters

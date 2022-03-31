@@ -15,7 +15,7 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 ! st
-st.font: Hack Nerd Font:pixelsize=20:antialias=true:autohint=true
+st.font: Hack Nerd Font:pixelsize=16:antialias=true:autohint=true
 st.alpha: 0.9
 st.termname: st-256color
 st.color0: #1d2021
