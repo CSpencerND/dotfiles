@@ -41,7 +41,7 @@ formatters.setup {
         command = "prettier",
         filetypes = {
             "typescript", "typescriptreact", "javascript", "javascriptreact",
-            "json", "css", "less", "scss", "html"
+            "json", "css", "less", "scss", "html", "markdown"
         }
     } -- {command = "codespell"},
 }
