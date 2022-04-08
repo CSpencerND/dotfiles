@@ -87,7 +87,6 @@ cbatticon
 chromium
 clonezilla
 codespell
-crda
 cryptsetup
 cups
 cups-filters
@@ -455,6 +454,8 @@ vim-tagbar
 vim-ultisnips
 vim-vital
 vpnc
+vscodium
+vscodium-marketplace
 vulkan-intel
 w3m
 webkit2gtk

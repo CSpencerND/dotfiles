@@ -482,6 +482,8 @@ vim-tagbar
 vim-ultisnips
 vim-vital
 vpnc
+vscodium
+vscodium-marketplace
 vulkan-intel
 w3m
 webkit2gtk
@@ -560,6 +562,7 @@ xfdesktop
 xfsprogs
 xfwm4
 xfwm4-themes
+xiccd
 xl2tpd
 xorg-bdftopcf
 xorg-iceauth

@@ -32,6 +32,9 @@ super + Return
 super + b
   firefox
 
+super + alt + b
+  blueberry
+
 super + d
   discord
   

@@ -60,9 +60,9 @@ typedef struct {
 } Sp;
 // const char *spcmd1[] = { "kitty", "-T", "sptop", "-e", "btop", NULL };
 // const char *spcmd2[] = { "kitty", "-T", "spvim", "-e", "nvim", "~/.cache/scratchpad", NULL };
-const char *spcmd1[] = { "st", "-t", "sptop", "-g", "120x34", "-e", "btop", NULL };
-const char *spcmd2[] = { "st", "-t", "spvim", "-g", "120x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
-const char *spcmd3[] = { "st", "-t", "spranger", "-g", "120x34", "-e", "ranger", NULL };
+const char *spcmd1[] = { "st", "-t", "sptop", "-g", "100x34", "-e", "btop", NULL };
+const char *spcmd2[] = { "st", "-t", "spvim", "-g", "100x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
+const char *spcmd3[] = { "st", "-t", "spranger", "-g", "100x34", "-e", "ranger", NULL };
 static Sp scratchpads[] = {
 	/* name     cmd  */
 	{"sptop",   spcmd1},
@@ -84,6 +84,8 @@ static const Rule rules[] = {
 	{ NULL,       NULL,        "spvim",      SPTAG(1),   1,           -1 },
 	{ NULL,       NULL,        "spranger",   SPTAG(2),   1,           -1 },
 	{ NULL,       NULL,        "Qalculate!", 0,          1,           -1 },
+	{ NULL,       NULL,        "Bluetooth",  0,          1,           -1 },
+	{ NULL,       NULL,        "Volume Control",  0,          1,           -1 },
 };
 
 /* layout(s) */
