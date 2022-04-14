@@ -1,10 +1,11 @@
 -- Additional Plugins
 lvim.plugins = {
-    {"ThePrimeagen/harpoon"}, {"artanikin/vim-synthwave84"},
-    {"cofyc/vim-uncrustify"}, {"psf/black"}, {"dracula/vim"},
-    {"lunarvim/colorschemes"}, {"romgrk/doom-one.vim"}, {"zeekay/vim-beautify"},
-    {"mattn/emmet-vim"}, {"mtdl9/vim-log-highlighting"},
-    {"ckipp01/stylua-nvim"}, {"sindrets/diffview.nvim", event = "BufRead"}, {
+    {"shinglyu/vim-codespell"}, {"ThePrimeagen/harpoon"},
+    {"artanikin/vim-synthwave84"}, {"cofyc/vim-uncrustify"}, {"psf/black"},
+    {"dracula/vim"}, {"lunarvim/colorschemes"}, {"romgrk/doom-one.vim"},
+    {"zeekay/vim-beautify"}, {"mattn/emmet-vim"},
+    {"mtdl9/vim-log-highlighting"}, {"ckipp01/stylua-nvim"},
+    {"sindrets/diffview.nvim", event = "BufRead"}, {
         "turbio/bracey.vim",
         cmd = {"Bracey", "BracyStop", "BraceyReload", "BraceyEval"},
         run = "npm install --prefix server"

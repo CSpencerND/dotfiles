@@ -33,17 +33,13 @@ lvim.builtin.treesitter.highlight.enabled = true
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
     {command = "lua-format", filetypes = {"lua"}},
-    {command = "rustfmt", filetypes = {"rust"}}, {
-        command = "black",
-        args = {"--target-version", "py310"},
-        filetypes = {"python"}
-    }, {
-        command = "prettier",
-        filetypes = {
+    {command = "rustfmt", filetypes = {"rust"}},
+    {command = "black", filetypes = {"python"}, args = {"--target-version", "py310"}},
+    {command = "prettier", filetypes = {
             "typescript", "typescriptreact", "javascript", "javascriptreact",
             "json", "css", "less", "scss", "html", "markdown"
         }
-    } -- {command = "codespell"},
+    }
 }
 
 -- set additional linters
