@@ -2,12 +2,6 @@
 #     GENERAL
 #################################################################
 
-super + F1
-    ~/.screenlayout/1screens.sh && ~/.fehbg
-
-super + F2
-    ~/.screenlayout/2screens.sh && ~/.fehbg
-
 super + slash
   rofi -show drun
 
@@ -20,9 +14,6 @@ super + space
 super + e
   rofimoji
 
-super + Escape
-  xkill
-
 super + x
   arcolinux-logout
 
@@ -31,9 +22,6 @@ super + Return
 
 super + b
   firefox
-
-super + alt + b
-  blueberry
 
 super + d
   discord
@@ -47,8 +35,31 @@ super + control + d
 super + g
   retroarch
 
-super + n
-  kill -s USR1 $(pidof deadd-notification-center)
+# utilities {{{
+super + ctrl + b
+  blueberry
+
+super + ctrl + p
+  pavucontrol
+
+super + alt + p
+  picom-toggle.sh
+
+# utilitites}}}
+
+# management {{{
+super + F1
+    ~/.screenlayout/1screens.sh && ~/.fehbg
+
+super + F2
+    ~/.screenlayout/2screens.sh && ~/.fehbg
+
+super + Escape
+  xkill
+# management }}}
+
+# super + n
+#   kill -s USR1 $(pidof deadd-notification-center)
 
 super + shift + Return
   thunar
@@ -58,9 +69,6 @@ super + alt + Return
 
 super + shift + p
   s76-power-base
-
-super + alt + p
-  picom-toggle.sh
 
 # Screenshots
 super + Print

@@ -60,9 +60,9 @@ typedef struct {
 } Sp;
 // const char *spcmd1[] = { "kitty", "-T", "sptop", "-e", "btop", NULL };
 // const char *spcmd2[] = { "kitty", "-T", "spvim", "-e", "nvim", "~/.cache/scratchpad", NULL };
-const char *spcmd1[] = { "st", "-t", "sptop", "-g", "100x34", "-e", "btop", NULL };
-const char *spcmd2[] = { "st", "-t", "spvim", "-g", "100x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
-const char *spcmd3[] = { "st", "-t", "spranger", "-g", "100x34", "-e", "ranger", NULL };
+const char *spcmd1[] = { "st", "-t", "sptop", "-g", "96x24", "-e", "btop", NULL };
+const char *spcmd2[] = { "st", "-t", "spvim", "-g", "96x24", "-e", "nvim", "~/.cache/scratchpad", NULL };
+const char *spcmd3[] = { "st", "-t", "spranger", "-g", "96x24", "-e", "ranger", NULL };
 static Sp scratchpads[] = {
 	/* name     cmd  */
 	{"sptop",   spcmd1},
@@ -155,6 +155,9 @@ static Key keys[] = {
 	// window size
 	{ MODKEY,               XK_h,               setmfact,       {.f = -0.05} },
 	{ MODKEY,               XK_l,               setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,     XK_h,               setcfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,     XK_l,               setcfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,     XK_space,           setcfact,       {.f =  0.00} },
 
 	// window control
 	{ MODKEY,               XK_m,               hide,           {0} },
@@ -201,6 +204,7 @@ static Key keys[] = {
 
 	// quit / restart
 	{ MODKEY,               XK_r,               self_restart,   {0} },
+	{ MODKEY|ShiftMask,     XK_r,               quit,           {1} },
 	{ MODKEY|ShiftMask,     XK_x,               quit,           {0} },
 
 	// ????

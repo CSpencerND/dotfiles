@@ -11,7 +11,7 @@ leds.sh
 /home/cs/.local/bin/setup_screens
 
 sxhkd &
-picom --config ~/.config/picom/picom.conf -b --experimental-backends &
+# picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 # run "/usr/bin/deadd-notification-center"
