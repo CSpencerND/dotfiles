@@ -89,7 +89,6 @@ cbatticon
 chromium
 clonezilla
 codespell
-crda
 cryptsetup
 cups
 cups-filters
@@ -438,7 +437,7 @@ udiskie
 udisks2
 ueberzug
 unace
-unclutter-xfixes-git
+unclutter
 uncrustify
 unrar
 unzip

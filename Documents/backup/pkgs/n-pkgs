@@ -70,6 +70,7 @@ babl
 base
 bash-completion
 bat
+betterdiscordctl-git
 bibata-cursor-theme-bin
 bind
 binutils
@@ -296,7 +297,6 @@ openvpn
 os-prober
 p7zip
 pacman
-pamac-all
 paprefs
 parole
 partclone
@@ -411,6 +411,7 @@ udiskie
 udisks2
 ueberzug
 unace
+unclutter
 uncrustify
 unrar
 unzip

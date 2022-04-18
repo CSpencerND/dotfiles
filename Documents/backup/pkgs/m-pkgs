@@ -1,6 +1,4 @@
 betterdiscord-git
-betterdiscordctl-git
-crda
 dragon-drag-and-drop-git
 fnm-bin
 g810-led-git
@@ -10,6 +8,7 @@ headsetcontrol-git
 hollywood
 js-beautify-git
 kmonad-git
+pamac-all
 parsec-bin
 pulsemeeter-git
 python2-pyxdg
@@ -25,6 +24,5 @@ system76-scheduler-git
 termite-terminfo
 ttf-material-icons-git
 ttf-weather-icons
-unclutter-xfixes-git
 xboxdrv-git
 xiccd
