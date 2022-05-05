@@ -39,6 +39,7 @@ arcolinux-meta-steam-intel
 arcolinux-mirrorlist-git
 arcolinux-neofetch-git
 arcolinux-nitrogen-git
+arcolinux-pamac-all
 arcolinux-paru-git
 arcolinux-pipemenus-git
 arcolinux-polybar-git
@@ -95,6 +96,7 @@ cups-filters
 cups-pdf
 cups-pk-helper
 darkhttpd
+dash
 dconf-editor
 ddrescue
 deadbeef
@@ -102,7 +104,7 @@ dex
 dhclient
 dialog
 diffutils
-discord_arch_electron
+discord
 dmenu
 dmraid
 dnsmasq
@@ -307,10 +309,8 @@ openvpn
 os-prober
 p7zip
 pacman
-pamac-all
 paprefs
 parole
-parsec-bin
 partclone
 parted
 partimage
@@ -320,7 +320,6 @@ pavucontrol
 pcmanfm
 pcsclite
 peek
-phoronix-test-suite
 picom-jonaburg-git
 pipewire-alsa
 pipewire-jack
@@ -396,6 +395,7 @@ sudo
 surfn-icons-git
 syslinux
 system-config-printer
+system-monitoring-center
 system76-acpi-dkms
 system76-driver-git
 system76-firmware

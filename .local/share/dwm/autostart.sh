@@ -17,6 +17,8 @@ run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 # run "/usr/bin/deadd-notification-center"
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
+# ~/.fehbg
+feh --no-fehbg --bg-fill '/home/cs/.local/share/backgrounds/554543.jpg' 
 run "variety"
 run "nm-applet"
 run "pamac-tray"

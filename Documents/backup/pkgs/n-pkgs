@@ -39,6 +39,7 @@ arcolinux-meta-steam-intel
 arcolinux-mirrorlist-git
 arcolinux-neofetch-git
 arcolinux-nitrogen-git
+arcolinux-pamac-all
 arcolinux-paru-git
 arcolinux-pipemenus-git
 arcolinux-polybar-git
@@ -94,6 +95,7 @@ cups-filters
 cups-pdf
 cups-pk-helper
 darkhttpd
+dash
 dconf-editor
 ddrescue
 deadbeef
@@ -101,7 +103,7 @@ dex
 dhclient
 dialog
 diffutils
-discord_arch_electron
+discord
 dmenu
 dmraid
 dnsmasq
@@ -308,7 +310,6 @@ pavucontrol
 pcmanfm
 pcsclite
 peek
-phoronix-test-suite
 picom-jonaburg-git
 pipewire-alsa
 pipewire-jack
