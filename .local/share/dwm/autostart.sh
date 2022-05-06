@@ -6,19 +6,16 @@ function run {
 	fi
 }
 
-leds.sh
-
-/home/cs/.local/bin/setup_screens
-
-sxhkd &
+# /home/cs/.local/bin/setup_screens &
+# feh --no-fehbg --bg-fill '/home/cs/.local/share/backgrounds/554543.jpg' &
+# sxhkd &
 # picom --config ~/.config/picom/picom.conf -b --experimental-backends &
+# /home/cs/.local/bin/kbconfig &
+# /home/cs/.local/bin/kbrate &
 
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-# run "/usr/bin/deadd-notification-center"
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
-# ~/.fehbg
-feh --no-fehbg --bg-fill '/home/cs/.local/share/backgrounds/554543.jpg' 
 run "variety"
 run "nm-applet"
 run "pamac-tray"
@@ -31,9 +28,6 @@ run "redshift-gtk"
 run "cbatticon"
 slstatus &
 # skippy-xd --start-daemon &
-
-/home/cs/.local/bin/kbconfig &
-/home/cs/.local/bin/kbrate &
 
 /home/cs/.local/statusbar/weather.py &
 # /home/cs/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &
