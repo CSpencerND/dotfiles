@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-~/.local/bin/setup_screens &
+# ~/.local/bin/setup_screens &
+
+~/.screenlayout/2screens.sh &
 feh --no-fehbg --bg-fill '/home/cs/.local/share/backgrounds/554543.jpg' &
 sxhkd &
-leds.sh &
 /home/cs/.local/bin/kbconfig &
 /home/cs/.local/bin/kbrate &
+leds.sh &
+
+# picom --config ~/.config/picom/picom.conf -b --experimental-backends &

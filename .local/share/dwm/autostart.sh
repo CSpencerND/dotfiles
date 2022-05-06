@@ -6,12 +6,14 @@ function run {
 	fi
 }
 
-# /home/cs/.local/bin/setup_screens &
+# ~/.local/bin/setup_screens &
 # feh --no-fehbg --bg-fill '/home/cs/.local/share/backgrounds/554543.jpg' &
 # sxhkd &
-# picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 # /home/cs/.local/bin/kbconfig &
 # /home/cs/.local/bin/kbrate &
+# leds.sh &
+
+# picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 /usr/lib/xfce4/notifyd/xfce4-notifyd &

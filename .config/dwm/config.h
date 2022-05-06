@@ -81,12 +81,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 *  use tags mask to point an application to a specific workspace
 	 */
-	/* class      instance     title         tags mask   isfloating   monitor */
-	{ NULL,       NULL,        "sptop",      SPTAG(0),   1,           -1 },
-	{ NULL,       NULL,        "spvim",      SPTAG(1),   1,           -1 },
-	{ NULL,       NULL,        "spranger",   SPTAG(2),   1,           -1 },
-	{ NULL,       NULL,        "Qalculate!", 0,          1,           -1 },
-	{ NULL,       NULL,        "Bluetooth",  0,          1,           -1 },
+	/* class      instance     title              tags mask   isfloating   monitor */
+	{ NULL,       NULL,        "sptop",           SPTAG(0),   1,           -1 },
+	{ NULL,       NULL,        "spvim",           SPTAG(1),   1,           -1 },
+	{ NULL,       NULL,        "spranger",        SPTAG(2),   1,           -1 },
+	{ NULL,       NULL,        "Qalculate!",      0,          1,           -1 },
+	{ NULL,       NULL,        "Bluetooth",       0,          1,           -1 },
 	{ NULL,       NULL,        "Volume Control",  0,          1,           -1 },
 };
 

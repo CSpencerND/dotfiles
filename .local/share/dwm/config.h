@@ -99,10 +99,16 @@ static char *colors[][ColCount] = {
 
 
 
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd0[] = { "st", "-t", "spterm", "-g", "120x34", NULL };
+const char *spcmd1[] = { "st", "-t", "sptop", "-g", "120x34", "-e", "btop", NULL };
+const char *spcmd2[] = { "st", "-t", "spvim", "-g", "120x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
+const char *spcmd3[] = { "st", "-t", "spranger", "-g", "120x34", "-e", "ranger", NULL };
 static Sp scratchpads[] = {
-   /* name          cmd  */
-   {"spterm",      spcmd1},
+	/* name       cmd  */
+        {"spterm",    spcmd0},
+	{"sptop",     spcmd1},
+	{"spvim",     spcmd2},
+	{"spranger",  spcmd3},
 };
 
 /* Tags
@@ -173,7 +179,15 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
 	// RULE(.class = "Gimp", .tags = 1 << 4)
 	// RULE(.class = "Firefox", .tags = 1 << 7)
-	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
+
+	RULE(.title = "Qalculate!", .isfloating = 1)
+	RULE(.title = "Bluetooth", .isfloating = 1)
+	RULE(.title = "Volume Control", .isfloating = 1)
+
+	// RULE(.title = "spterm", .tags = SPTAG(0), .isfloating = 1)
+	RULE(.title = "spvim", .tags = SPTAG(1), .isfloating = 1)
+	RULE(.title = "sptop", .tags = SPTAG(2), .isfloating = 1)
+	RULE(.title = "spranger", .tags = SPTAG(3), .isfloating = 1)
 };
 
 
@@ -243,7 +257,6 @@ static const char *dmenucmd[] = {
 };
 static const char *termcmd[]  = { "kitty", NULL };
 
-// #include "shift-tools-scratchpads.c"
 
 static Key keys[] = {
 	/* modifier                     key            function                argument */
@@ -296,12 +309,12 @@ static Key keys[] = {
 	// { MODKEY,               XK_r,               togglermaster,  {0} },
 
 	// scratchpad
-	// { MODKEY,               XK_t,               togglescratch,  {.ui = 0 } },
-	// { MODKEY,               XK_p,               togglescratch,  {.ui = 1 } },
-	// { MODKEY,               XK_o,               togglescratch,  {.ui = 2 } },
 	{ MODKEY,               XK_grave,           togglescratch,  {.ui = 0 } },
-	{ MODKEY|ControlMask,   XK_grave,           setscratch,     {.ui = 0 } },
-	{ MODKEY|ShiftMask,     XK_grave,           removescratch,  {.ui = 0 } },
+	// { MODKEY|ControlMask,   XK_grave,           setscratch,     {.ui = 0 } },
+	// { MODKEY|ShiftMask,     XK_grave,           removescratch,  {.ui = 0 } },
+	{ MODKEY,               XK_t,               togglescratch,  {.ui = 1 } },
+	{ MODKEY,               XK_p,               togglescratch,  {.ui = 2 } },
+	{ MODKEY,               XK_o,               togglescratch,  {.ui = 3 } },
 
         // misc
 	{ MODKEY|ShiftMask,     XK_b,               togglebar,      {0} },
@@ -313,10 +326,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_x,               quit,           {0} },
 
 	// gaps
-	{ MODKEY,               XK_a,      incrgaps,       {.i = -1 } },
-	{ MODKEY,               XK_z,      incrgaps,       {.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_a,      togglegaps,     {0} },
-	{ MODKEY|ShiftMask,     XK_z,      defaultgaps,    {0} },
+	{ MODKEY,               XK_a,               incrgaps,       {.i = -1 } },
+	{ MODKEY,               XK_z,               incrgaps,       {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_a,               togglegaps,     {0} },
+	{ MODKEY|ShiftMask,     XK_z,               defaultgaps,    {0} },
 
 	// ????
 	{ MODKEY,               XK_semicolon,       view,           {0} },
@@ -339,18 +352,19 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,                   Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
+
 	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,              Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,              Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,              Button3,        resizemouse,    {0} },
 	{ ClkClientWin,         MODKEY|ShiftMask,    Button3,        dragcfact,      {0} },
 	{ ClkClientWin,         MODKEY|ShiftMask,    Button1,        dragmfact,      {0} },
+
 	{ ClkTagBar,            0,                   Button1,        view,           {0} },
 	{ ClkTagBar,            0,                   Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,              Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,              Button3,        toggletag,      {0} },
 };
-
 
 
 
