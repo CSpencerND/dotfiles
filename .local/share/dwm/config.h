@@ -5,7 +5,7 @@ static void shiftmon(const Arg *arg);
 
 /* appearance */
 static const unsigned int borderpx       = 3;   /* border pixel of windows */
-static const unsigned int snap           = 32;  /* snap pixel */
+static const unsigned int snap           = 8;  /* snap pixel */
 static const int scalepreview            = 2;        /* Tag preview scaling */
 static const unsigned int gappih         = 12;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 12;  /* vert inner gap between windows */
@@ -96,16 +96,22 @@ static char *colors[][ColCount] = {
 
 
 
-const char *spcmd0[] = { "st", "-c", "scratchpad", "-t", "spterm", "-g", "120x34", NULL };
-const char *spcmd1[] = { "st", "-c", "scratchpad", "-t", "sptop", "-g", "120x34", "-e", "btop", NULL };
-const char *spcmd2[] = { "st", "-c", "scratchpad", "-t", "spvim", "-g", "120x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
-const char *spcmd3[] = { "st", "-c", "scratchpad", "-t", "spranger", "-g", "120x34", "-e", "ranger", NULL };
+const char *spcmd0[] = { "st", "-c", "basic", "-g", "120x34", NULL };
+const char *spcmd1[] = { "st", "-c", "task", "-g", "120x34", "-e", "btop", NULL };
+const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
+const char *spcmd3[] = { "st", "-c", "explore", "-g", "120x34", "-e", "ranger", NULL };
+
+// const char *spcmd0[] = { "kitty", "--class", "basic",    NULL };
+// const char *spcmd1[] = { "kitty", "--class", "task",     "-e", "btop", NULL };
+// const char *spcmd2[] = { "kitty", "--class", "note",     "-e", "nvim", "~/.cache/scratchpad", NULL };
+// const char *spcmd3[] = { "kitty", "--class", "explore",  "-e", "ranger", NULL };
+
 static Sp scratchpads[] = {
 	/* name       cmd  */
-        {"spterm",    spcmd0},
-	{"sptop",     spcmd1},
-	{"spvim",     spcmd2},
-	{"spranger",  spcmd3},
+        { "basic",    spcmd0 },
+	{ "task",     spcmd1 },
+	{ "note",     spcmd2 },
+	{ "explore",  spcmd3 },
 };
 
 /* Tags
@@ -170,20 +176,19 @@ static const Rule rules[] = {
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
-	RULE(.wintype = WTYPE "DIALOG", .isfloating = 1)
-	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
-	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
-	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
+	RULE(.wintype = WTYPE "DIALOG",   .isfloating = 1)
+	RULE(.wintype = WTYPE "UTILITY",  .isfloating = 1)
+	RULE(.wintype = WTYPE "TOOLBAR",  .isfloating = 1)
+	RULE(.wintype = WTYPE "SPLASH",   .isfloating = 1)
 
-	RULE(.title = "Qalculate!", .isfloating = 1)
-	RULE(.title = "Bluetooth", .isfloating = 1)
+	RULE(.title = "Qalculate!",     .isfloating = 1)
+	RULE(.title = "Bluetooth",      .isfloating = 1)
 	RULE(.title = "Volume Control", .isfloating = 1)
 
-	// RULE(.class = "scratchpad", .isfloating = 1)
-	RULE(.title = "spterm", .tags = SPTAG(0), .isfloating = 1)
-	RULE(.title = "spvim", .tags = SPTAG(1), .isfloating = 1)
-	RULE(.title = "sptop", .tags = SPTAG(2), .isfloating = 1)
-	RULE(.title = "spranger", .tags = SPTAG(3), .isfloating = 1)
+	RULE(.class = "basic",   .tags = SPTAG(0), .isfloating = 1)
+	RULE(.class = "task",    .tags = SPTAG(1), .isfloating = 1)
+	RULE(.class = "note",    .tags = SPTAG(2), .isfloating = 1)
+	RULE(.class = "explore", .tags = SPTAG(3), .isfloating = 1)
 };
 
 
@@ -305,8 +310,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_period,          focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,     XK_comma,           tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,     XK_period,          tagmon,         {.i = +1 } },
-	{ MODKEY|ControlMask,   XK_comma,           shiftmon,      {.i = -1 } },
-	{ MODKEY|ControlMask,   XK_period,          shiftmon,      {.i = +1 } },
+	{ MODKEY|ControlMask,   XK_comma,           shiftmon,       {.i = -1 } },
+	{ MODKEY|ControlMask,   XK_period,          shiftmon,       {.i = +1 } },
 	{ MODKEY|Mod1Mask,      XK_comma,           tagswapmon,     {.i = +1 } },
 	{ MODKEY|Mod1Mask,      XK_period,          tagswapmon,     {.i = -1 } },
 	{ MODKEY|ShiftMask,     XK_b,               togglebar,      {0} },

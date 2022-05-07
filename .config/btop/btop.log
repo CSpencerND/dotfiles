@@ -30,3 +30,7 @@
 2021/12/11 (05:09:06) | ===> btop++ v.1.1.2
 2021/12/11 (05:09:06) | WARNING: Got an invalid integer value for config name: net_download
 2021/12/11 (05:09:06) | WARNING: Got an invalid integer value for config name: net_upload
+
+2022/05/07 (12:12:30) | ===> btop++ v.1.2.6
+2022/05/07 (12:12:30) | ERROR: No tty detected!
+btop++ needs an interactive shell to run.

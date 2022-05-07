@@ -1,16 +1,33 @@
-void
-shiftview(const Arg *arg)
-{
-	Arg shifted;
-	unsigned int seltagset = selmon->tagset[selmon->seltags] & ~SPTAGMASK;
-	if (arg->i > 0) // left circular shift
-		shifted.ui = (seltagset << arg->i)
-		   | (seltagset >> (NUMTAGS - arg->i));
-	else // right circular shift
-		shifted.ui = seltagset >> -arg->i
-		   | seltagset << (NUMTAGS + arg->i);
+// void shiftview(const Arg *arg)
+// {
+//     Arg shifted;
+//     unsigned int seltagset = selmon->tagset[selmon->seltags] & ~SPTAGMASK;
+//     if (arg->i > 0) // left circular shift
+//         shifted.ui = (seltagset << arg->i) | (seltagset >> (NUMTAGS - arg->i));
+//     else // right circular shift
+//         shifted.ui = seltagset >> -arg->i | seltagset << (NUMTAGS + arg->i);
 
-	view(&shifted);
+//     view(&shifted);
+// }
+
+void shiftview(const Arg *arg)
+{
+    Arg shifted;
+    shifted.ui = selmon->tagset[selmon->seltags] & ~SPTAGMASK;
+
+    if (arg->i > 0)
+    { /* left circular shift */
+        shifted.ui =
+            (shifted.ui << arg->i) | (shifted.ui >> (LENGTH(tags) - arg->i));
+        shifted.ui &= ~SPTAGMASK;
+    }
+    else
+    { /* right circular shift */
+        shifted.ui =
+            (shifted.ui >> (-arg->i) | shifted.ui << (LENGTH(tags) + arg->i));
+        shifted.ui &= ~SPTAGMASK;
+    }
+    view(&shifted);
 }
 
 /* Sends a window to the next/prev tag */
@@ -96,4 +113,3 @@ void shiftswaptags(const Arg *arg)
     // are going
     // view(&shifted);
 }
-
