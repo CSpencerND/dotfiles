@@ -179,11 +179,11 @@ static const Rule rules[] = {
 	RULE(.title = "Bluetooth", .isfloating = 1)
 	RULE(.title = "Volume Control", .isfloating = 1)
 
-	RULE(.class = "scratchpad", .isfloating = 1)
-	// RULE(.title = "spterm", .tags = SPTAG(0), .isfloating = 1)
-	// RULE(.title = "spvim", .tags = SPTAG(1), .isfloating = 1)
-	// RULE(.title = "sptop", .tags = SPTAG(2), .isfloating = 1)
-	// RULE(.title = "spranger", .tags = SPTAG(3), .isfloating = 1)
+	// RULE(.class = "scratchpad", .isfloating = 1)
+	RULE(.title = "spterm", .tags = SPTAG(0), .isfloating = 1)
+	RULE(.title = "spvim", .tags = SPTAG(1), .isfloating = 1)
+	RULE(.title = "sptop", .tags = SPTAG(2), .isfloating = 1)
+	RULE(.title = "spranger", .tags = SPTAG(3), .isfloating = 1)
 };
 
 
