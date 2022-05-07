@@ -1,37 +1,34 @@
 /* See LICENSE file for copyright and license details. */
 
+/* custom function */
+static void shiftmon(const Arg *arg);
+
 /* appearance */
 static const unsigned int borderpx       = 3;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
-
+static const int scalepreview            = 2;        /* Tag preview scaling */
 static const unsigned int gappih         = 12;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 12;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 12;  /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov         = 12;  /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
-
-static const int showbar                 = 1;   /* 0 means no bar */
-static const int topbar                  = 1;   /* 0 means bottom bar */
-
 static const char autostartblocksh[]     = "autostart_blocking.sh";
 static const char autostartsh[]          = "autostart.sh";
 static const char dwmdir[]               = "dwm";
 static const char localshare[]           = ".local/share";
-
+static const int showbar                 = 1;   /* 0 means no bar */
+static const int topbar                  = 1;   /* 0 means bottom bar */
+#define ICONSIZE 28    /* icon size */
+#define ICONSPACING 2  /* space between icon and title */
 /* Status is to be shown on: -1 (all monitors), 0 (a specific monitor by index), 'A' (active monitor) */
 static const int statusmon               = 'A';
 static const unsigned int systrayspacing = 4;   /* systray spacing */
 static const int showsystray             = 0;   /* 0 means no systray */
-static const int scalepreview            = 4;        /* tag preview scaling */
-
-#define ICONSIZE 28    /* icon size */
-#define ICONSPACING 2  /* space between icon and title */
 
 /* Indicators: see patch/bar_indicators.h for options */
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
-
 static const char *fonts[] = {
 	"Hack Nerd Font:size=12",
 	// "JoyPixels:pixelsize=10:antialias=true:autohint=true"
@@ -46,7 +43,7 @@ static char normbgcolor[]                = "#282a36";
 static char normbordercolor[]            = "#44475a";
 static char normfloatcolor[]             = "#6272a4";
 
-static char selfgcolor[]                 = "#44475a";
+static char selfgcolor[]                 = "#282a36";
 static char selbgcolor[]                 = "#bd93f9";
 static char selbordercolor[]             = "#bd93f9";
 static char selfloatcolor[]              = "#bd93f9";
@@ -56,7 +53,7 @@ static char titlenormbgcolor[]           = "#282a36";
 static char titlenormbordercolor[]       = "#44475a";
 static char titlenormfloatcolor[]        = "#6272a4";
 
-static char titleselfgcolor[]            = "#44475a";
+static char titleselfgcolor[]            = "#282a36";
 static char titleselbgcolor[]            = "#ff79c6";
 static char titleselbordercolor[]        = "#ff79c6";
 static char titleselfloatcolor[]         = "#ff79c6";
@@ -66,7 +63,7 @@ static char tagsnormbgcolor[]            = "#282a36";
 static char tagsnormbordercolor[]        = "#44475a";
 static char tagsnormfloatcolor[]         = "#6272a4";
 
-static char tagsselfgcolor[]             = "#44475a";
+static char tagsselfgcolor[]             = "#282a36";
 static char tagsselbgcolor[]             = "#ff79c6";
 static char tagsselbordercolor[]         = "#ff79c6";
 static char tagsselfloatcolor[]          = "#ff79c6";
@@ -99,10 +96,10 @@ static char *colors[][ColCount] = {
 
 
 
-const char *spcmd0[] = { "st", "-t", "spterm", "-g", "120x34", NULL };
-const char *spcmd1[] = { "st", "-t", "sptop", "-g", "120x34", "-e", "btop", NULL };
-const char *spcmd2[] = { "st", "-t", "spvim", "-g", "120x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
-const char *spcmd3[] = { "st", "-t", "spranger", "-g", "120x34", "-e", "ranger", NULL };
+const char *spcmd0[] = { "st", "-c", "scratchpad", "-t", "spterm", "-g", "120x34", NULL };
+const char *spcmd1[] = { "st", "-c", "scratchpad", "-t", "sptop", "-g", "120x34", "-e", "btop", NULL };
+const char *spcmd2[] = { "st", "-c", "scratchpad", "-t", "spvim", "-g", "120x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
+const char *spcmd3[] = { "st", "-c", "scratchpad", "-t", "spranger", "-g", "120x34", "-e", "ranger", NULL };
 static Sp scratchpads[] = {
 	/* name       cmd  */
         {"spterm",    spcmd0},
@@ -177,17 +174,16 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-	// RULE(.class = "Gimp", .tags = 1 << 4)
-	// RULE(.class = "Firefox", .tags = 1 << 7)
 
 	RULE(.title = "Qalculate!", .isfloating = 1)
 	RULE(.title = "Bluetooth", .isfloating = 1)
 	RULE(.title = "Volume Control", .isfloating = 1)
 
+	RULE(.class = "scratchpad", .isfloating = 1)
 	// RULE(.title = "spterm", .tags = SPTAG(0), .isfloating = 1)
-	RULE(.title = "spvim", .tags = SPTAG(1), .isfloating = 1)
-	RULE(.title = "sptop", .tags = SPTAG(2), .isfloating = 1)
-	RULE(.title = "spranger", .tags = SPTAG(3), .isfloating = 1)
+	// RULE(.title = "spvim", .tags = SPTAG(1), .isfloating = 1)
+	// RULE(.title = "sptop", .tags = SPTAG(2), .isfloating = 1)
+	// RULE(.title = "spranger", .tags = SPTAG(3), .isfloating = 1)
 };
 
 
@@ -205,12 +201,12 @@ static const Rule rules[] = {
  *    name - does nothing, intended for visual clue and for logging / debugging
  */
 static const BarRule barrules[] = {
-	/* monitor   bar    alignment         widthfunc                drawfunc                clickfunc                name */
-	{ -1,        0,     BAR_ALIGN_LEFT,   width_tags,              draw_tags,              click_tags,              "tags" },
-	{  0,        0,     BAR_ALIGN_RIGHT,  width_systray,           draw_systray,           click_systray,           "systray" },
-	{ -1,        0,     BAR_ALIGN_LEFT,   width_ltsymbol,          draw_ltsymbol,          click_ltsymbol,          "layout" },
-	{ statusmon, 0,     BAR_ALIGN_RIGHT,  width_status2d,          draw_status2d,          click_status2d,          "status2d" },
-	{ -1,        0,     BAR_ALIGN_NONE,   width_wintitle,          draw_wintitle,          click_wintitle,          "wintitle" },
+	/* monitor   bar    alignment         widthfunc                drawfunc                clickfunc                hoverfunc                name */
+	{ -1,        0,     BAR_ALIGN_LEFT,   width_tags,              draw_tags,              click_tags,              hover_tags,              "tags" },
+	{  0,        0,     BAR_ALIGN_RIGHT,  width_systray,           draw_systray,           click_systray,           NULL,                    "systray" },
+	{ -1,        0,     BAR_ALIGN_LEFT,   width_ltsymbol,          draw_ltsymbol,          click_ltsymbol,          NULL,                    "layout" },
+	{ statusmon, 0,     BAR_ALIGN_RIGHT,  width_status2d,          draw_status2d,          click_status2d,          NULL,                    "status2d" },
+	{ -1,        0,     BAR_ALIGN_NONE,   width_wintitle,          draw_wintitle,          click_wintitle,          NULL,                    "wintitle" },
 };
 
 /* layout(s) */
@@ -224,8 +220,13 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "TTT",      bstack },
+	{ "[D]",      deck },
+	{ "HHH",      grid },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
+	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
 
@@ -244,19 +245,23 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = {
-	"dmenu_run",
-	"-m", dmenumon,
-	"-fn", dmenufont,
-	"-nb", normbgcolor,
-	"-nf", normfgcolor,
-	"-sb", selbgcolor,
-	"-sf", selfgcolor,
-	NULL
-};
+// static const char *dmenucmd[] = {
+// 	"dmenu_run",
+// 	"-fn", dmenufont,
+// 	"-nb", normbgcolor,
+// 	"-nf", normfgcolor,
+// 	"-sb", selbgcolor,
+// 	"-sf", selfgcolor,
+// 	NULL
+// };
 static const char *termcmd[]  = { "kitty", NULL };
 
+void
+shiftmon(const Arg *arg)
+{
+    tagmon(arg);
+    focusmon(arg);
+}
 
 static Key keys[] = {
 	/* modifier                     key            function                argument */
@@ -266,6 +271,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_k,               focusstack,     {.i = -1} },
 	{ MODKEY|ShiftMask,     XK_j,               rotatestack,    {.i = +1} },
 	{ MODKEY|ShiftMask,     XK_k,               rotatestack,    {.i = -1} },
+	{ MODKEY|ControlMask,   XK_j,               movestack,      {.i = +1} },
+	{ MODKEY|ControlMask,   XK_k,               movestack,      {.i = -1} },
 
 	// window size
 	{ MODKEY,               XK_h,               setmfact,       {.f = -0.05} },
@@ -298,28 +305,38 @@ static Key keys[] = {
 	{ MODKEY,               XK_period,          focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,     XK_comma,           tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,     XK_period,          tagmon,         {.i = +1 } },
-	{ MODKEY|ControlMask,   XK_comma,           travelmon,      {.i = -1 } },
-	{ MODKEY|ControlMask,   XK_period,          travelmon,      {.i = +1 } },
+	{ MODKEY|ControlMask,   XK_comma,           shiftmon,      {.i = -1 } },
+	{ MODKEY|ControlMask,   XK_period,          shiftmon,      {.i = +1 } },
 	{ MODKEY|Mod1Mask,      XK_comma,           tagswapmon,     {.i = +1 } },
 	{ MODKEY|Mod1Mask,      XK_period,          tagswapmon,     {.i = -1 } },
+	{ MODKEY|ShiftMask,     XK_b,               togglebar,      {0} },
 
 	// layout
 	{ MODKEY,               XK_bracketleft,     cyclelayout,    {.i = -1 } },
 	{ MODKEY,               XK_bracketright,    cyclelayout,    {.i = +1 } },
-	// { MODKEY,               XK_r,               togglermaster,  {0} },
-
-	// scratchpad
-	{ MODKEY,               XK_grave,           togglescratch,  {.ui = 0 } },
-	// { MODKEY|ControlMask,   XK_grave,           setscratch,     {.ui = 0 } },
-	// { MODKEY|ShiftMask,     XK_grave,           removescratch,  {.ui = 0 } },
-	{ MODKEY,               XK_t,               togglescratch,  {.ui = 1 } },
-	{ MODKEY,               XK_p,               togglescratch,  {.ui = 2 } },
-	{ MODKEY,               XK_o,               togglescratch,  {.ui = 3 } },
-
-        // misc
-	{ MODKEY|ShiftMask,     XK_b,               togglebar,      {0} },
 	{ MODKEY,               XK_equal,           incnmaster,     {.i = +1 } },
 	{ MODKEY,               XK_minus,           incnmaster,     {.i = -1 } },
+
+	// scratchpads
+	{ MODKEY,               XK_apostrophe,      togglescratch,  {.ui = 0 } },
+	{ MODKEY|ControlMask,   XK_apostrophe,      setscratch,     {.ui = 0 } },
+	{ MODKEY|Mod1Mask,      XK_apostrophe,      removescratch,  {.ui = 0 } },
+
+	{ MODKEY,               XK_t,               togglescratch,  {.ui = 1 } },
+	{ MODKEY|ControlMask,   XK_t,               setscratch,     {.ui = 1 } },
+	{ MODKEY|Mod1Mask,      XK_t,               removescratch,  {.ui = 1 } },
+
+	{ MODKEY,               XK_semicolon,       togglescratch,  {.ui = 2 } },
+	{ MODKEY|ControlMask,   XK_semicolon,       setscratch,     {.ui = 2 } },
+	{ MODKEY|Mod1Mask,      XK_semicolon,       removescratch,  {.ui = 2 } },
+
+	{ MODKEY,               XK_o,               togglescratch,  {.ui = 3 } },
+	{ MODKEY|ControlMask,   XK_o,               setscratch,     {.ui = 3 } },
+	{ MODKEY|Mod1Mask,      XK_o,               removescratch,  {.ui = 3 } },
+
+	{ MODKEY,               XK_grave,           togglescratch,  {.ui = 4 } },
+	{ MODKEY|ControlMask,   XK_grave,           setscratch,     {.ui = 4 } },
+	{ MODKEY|Mod1Mask,      XK_grave,           removescratch,  {.ui = 4 } },
 
 	// quit / restart
 	{ MODKEY|ShiftMask,     XK_r,               quit,           {1} },
@@ -332,10 +349,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_z,               defaultgaps,    {0} },
 
 	// ????
-	{ MODKEY,               XK_semicolon,       view,           {0} },
-	{ MODKEY|ShiftMask,     XK_semicolon,       view,           {.ui = ~0 } },
-	{ MODKEY,               XK_apostrophe,      zoom,           {0} },
-	{ MODKEY|ShiftMask,     XK_apostrophe,      tag,            {.ui = ~0 } },
+	{ MODKEY,               XK_0,               view,   {.ui = ~SPTAGMASK } },
+	{ MODKEY|ShiftMask,     XK_0,               tag,    {.ui = ~SPTAGMASK } },
+
+	{ MODKEY,               XK_Home,            view,           {0} },
+	{ MODKEY|ShiftMask,     XK_Home,            view,           {.ui = ~0 } },
+	{ MODKEY,               XK_End,             zoom,           {0} },
+	{ MODKEY|ShiftMask,     XK_End,             tag,            {.ui = ~0 } },
 
 	TAGKEYS(                        XK_1,                                  0)
 	TAGKEYS(                        XK_2,                                  1)
@@ -349,8 +369,8 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask           button          function        argument */
-	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,                   Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkLtSymbol,          0,                   Button1,        cyclelayout,    {.i = -1 } },
+	{ ClkLtSymbol,          0,                   Button3,        cyclelayout,    {.i = +1 } },
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
 
 	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = termcmd } },
@@ -365,6 +385,4 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,              Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,              Button3,        toggletag,      {0} },
 };
-
-
 
