@@ -6,7 +6,7 @@ static void shiftmon(const Arg *arg);
 /* appearance */
 static const unsigned int borderpx       = 3;   /* border pixel of windows */
 static const unsigned int snap           = 8;  /* snap pixel */
-static const int scalepreview            = 2;        /* Tag preview scaling */
+static const int scalepreview            = 3;        /* Tag preview scaling */
 static const unsigned int gappih         = 12;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 12;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 12;  /* horiz outer gap between windows and screen edge */
