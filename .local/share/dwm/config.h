@@ -18,6 +18,8 @@ static const char dwmdir[]               = "dwm";
 static const char localshare[]           = ".local/share";
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
+static const int horizpadbar             = 0;   /* horizontal padding for statusbar */
+static const int vertpadbar              = 6;   /* vertical padding for statusbar */
 #define ICONSIZE 28    /* icon size */
 #define ICONSPACING 2  /* space between icon and title */
 /* Status is to be shown on: -1 (all monitors), 0 (a specific monitor by index), 'A' (active monitor) */

@@ -12,7 +12,8 @@ void showtagpreview(int tag, int x, int y)
                 XMoveWindow(dpy, m->tagwin, x, y);
                 XSync(dpy, False);
                 XMapWindow(dpy, m->tagwin);
-                XRaiseWindow(dpy, m->tagwin);
+                // XRaiseWindow(dpy, m->tagwin);
+                XMapRaised(dpy, m->tagwin);
         }
         else
                 XUnmapWindow(dpy, m->tagwin);

@@ -54,7 +54,7 @@ static const struct arg args[] = {
         // { seperator,    "^b#21222c^%s",        " " },
         { seperator,    "^b#181818^%s",        " " },
 
-        { temp,         "^c#282a36^^b#ffb86c^ 﨏 ^c#ffb86c^^b#282a36^ %s° ",     "/sys/class/thermal/thermal_zone1/temp" },
+        { temp,         "^c#282a36^^b#f1fa8c^ 﨏 ^c#f1fa8c^^b#282a36^ %s° ",     "/sys/class/thermal/thermal_zone1/temp" },
         // { temp,         "^c#282a36^^b#f1fa8c^ 﨏 ^c#f1fa8c^^b#282a36^ %s° ",     "/sys/class/thermal/thermal_zone1/temp" },
         // { seperator,    "^b#21222c^%s",        " " },
         { seperator,    "^b#181818^%s",        " " },
