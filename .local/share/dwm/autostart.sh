@@ -13,7 +13,7 @@ function run {
 # /home/cs/.local/bin/kbrate &
 # leds.sh &
 
-# picom --config ~/.config/picom/picom.conf -b --experimental-backends &
+picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
