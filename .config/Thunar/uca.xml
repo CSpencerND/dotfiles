@@ -180,4 +180,13 @@
 	<patterns>*</patterns>
 	<directories/>
 </action>
+<action>
+	<icon>com.github.maoschanz.DynamicWallpaperEditor</icon>
+	<name>SetWithFeh</name>
+	<unique-id>1652102563906764-1</unique-id>
+	<command>feh --no-fehbg --bg-fill  %f</command>
+	<description>set wallpaper</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>
