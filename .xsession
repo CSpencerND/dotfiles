@@ -9,4 +9,4 @@ sxhkd &
 /home/cs/.local/bin/kbrate &
 leds.sh &
 
-# picom --config ~/.config/picom/picom.conf -b --experimental-backends &
+picom --config ~/.config/picom/picom.conf -b --experimental-backends &
