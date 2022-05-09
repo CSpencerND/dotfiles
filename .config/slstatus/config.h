@@ -9,6 +9,8 @@ static const char unknown_str[] = "n/a";
 /* maximum output string length */
 #define MAXLEN 2048
 
+// static const char darkest[8]  = "#191A21";
+// static const char darker[8]   = "#21222c";
 // static const char dark[8]     = "#282a36";
 // static const char grey[8]     = "#383c4a";
 // static const char light[8]    = "#f8f8f2";
@@ -33,35 +35,35 @@ static const struct arg args[] = {
         // { run_command,    "^c#f1fa8c^ ^b#383c4a^ %s ",        "cat /home/cs/.cache/weather/pyweather" },
 
 
-        { datetime,     "^c#282a36^^b#bd93f9^  ^c#bd93f9^^b#282a36^ %s ",            "%I:%M" },
+        { datetime,     "^c#383c4a^^b#bd93f9^  ^c#bd93f9^^b#383c4a^ %s ",            "%I:%M" },
         // { seperator,    "^b#21222c^%s",        " " },
-        { seperator,    "^b#181818^%s",        " " },
+        { seperator,    "^b#282a36^%s",        " " },
 
-        { datetime,     "^c#282a36^^b#8be9fd^  ^c#8be9fd^^b#282a36^ %s ",        "%a, %b %d" },
+        { datetime,     "^c#383c4a^^b#8be9fd^  ^c#8be9fd^^b#383c4a^ %s ",        "%a, %b %d" },
         // { seperator,    "^b#21222c^%s",        " " },
-        { seperator,    "^b#181818^%s",        " " },
+        { seperator,    "^b#282a36^%s",        " " },
 
         // { run_command,  "^c#282a36^^b#f1fa8c^ %s ",   "cat /home/cs/.cache/weather/pyweather" },
-        { run_command,  "^c#f1fa8c^^b#282a36^ %s ",   "cat /home/cs/.cache/weather/pyweather" },
+        { run_command,  "^c#f1fa8c^^b#383c4a^ %s ",   "cat /home/cs/.cache/weather/pyweather" },
         // { seperator,    "^b#21222c^%s",        " " },
-        { seperator,    "^b#181818^%s",        " " },
+        { seperator,    "^b#282a36^%s",        " " },
 
-        { run_command,  "^c#282a36^^b#bd93f9^  ^c#bd93f9^^b#282a36^ %s ", "cat /home/cs/.cache/pac-updates-count" },
+        { run_command,  "^c#383c4a^^b#bd93f9^  ^c#bd93f9^^b#383c4a^ %s ", "cat /home/cs/.cache/pac-updates-count" },
         // { seperator,    "^b#21222c^%s",        " " },
-        { seperator,    "^b#181818^%s",        " " },
+        { seperator,    "^b#282a36^%s",        " " },
 
-        { ram_perc,     "^c#282a36^^b#8be9fd^  ^c#8be9fd^^b#282a36^ %s%% ",    NULL },
+        { ram_perc,     "^c#383c4a^^b#8be9fd^  ^c#8be9fd^^b#383c4a^ %s%% ",    NULL },
         // { seperator,    "^b#21222c^%s",        " " },
-        { seperator,    "^b#181818^%s",        " " },
+        { seperator,    "^b#282a36^%s",        " " },
 
-        { temp,         "^c#282a36^^b#f1fa8c^ 﨏 ^c#f1fa8c^^b#282a36^ %s° ",     "/sys/class/thermal/thermal_zone1/temp" },
+        { temp,         "^c#383c4a^^b#f1fa8c^ 﨏 ^c#f1fa8c^^b#383c4a^ %s° ",     "/sys/class/thermal/thermal_zone1/temp" },
         // { temp,         "^c#282a36^^b#f1fa8c^ 﨏 ^c#f1fa8c^^b#282a36^ %s° ",     "/sys/class/thermal/thermal_zone1/temp" },
         // { seperator,    "^b#21222c^%s",        " " },
-        { seperator,    "^b#181818^%s",        " " },
+        { seperator,    "^b#282a36^%s",        " " },
 
-        { run_command,  "^c#282a36^^b#bd93f9^  ^c#bd93f9^^b#282a36^ %s ",   "cat /home/cs/.cache/headset_percent" },
+        { run_command,  "^c#383c4a^^b#bd93f9^  ^c#bd93f9^^b#383c4a^ %s ",   "cat /home/cs/.cache/headset_percent" },
         // { seperator,    "^b#21222c^%s",        " " },
-        { seperator,    "^b#181818^%s",        " " },
+        { seperator,    "^b#282a36^%s",        " " },
 
         // { battery_icon, "^c#8be9fd^^b#282a36^ %s", NULL },
         { battery_icon, "%s", NULL },

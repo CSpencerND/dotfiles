@@ -7,19 +7,25 @@ static void shiftmon(const Arg *arg);
 static const unsigned int borderpx       = 3;   /* border pixel of windows */
 static const unsigned int snap           = 8;  /* snap pixel */
 static const int scalepreview            = 3;        /* Tag preview scaling */
+
 static const unsigned int gappih         = 12;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 12;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 12;  /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov         = 12;  /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
-static const char autostartblocksh[]     = "autostart_blocking.sh";
-static const char autostartsh[]          = "autostart.sh";
-static const char dwmdir[]               = "dwm";
-static const char localshare[]           = ".local/share";
+
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
-static const int horizpadbar             = 0;   /* horizontal padding for statusbar */
-static const int vertpadbar              = 6;   /* vertical padding for statusbar */
+
+static const int horizpadbar             = -3;   /* horizontal padding for statusbar */
+static const int vertpadbar              = 3;   /* vertical padding for statusbar */
+static const unsigned int barborderpx    = 6;   /* border pixel of windows */
+
+static const char dwmdir[]               = "dwm";
+static const char localshare[]           = ".local/share";
+static const char autostartblocksh[]     = "autostart_blocking.sh";
+static const char autostartsh[]          = "autostart.sh";
+
 #define ICONSIZE 28    /* icon size */
 #define ICONSPACING 2  /* space between icon and title */
 /* Status is to be shown on: -1 (all monitors), 0 (a specific monitor by index), 'A' (active monitor) */
@@ -38,11 +44,25 @@ static const char *fonts[] = {
 };
 static const char dmenufont[]            = "monospace:size=10";
 
-static char c000000[]                    = "#000000"; // placeholder value
+static char c000000[]                    = "#21222c"; // placeholder value
+
+// static const char darkest[8]             = "#191A21";
+// static const char darker[8]              = "#21222c";
+// static const char dark[8]                = "#282a36";
+// static const char grey[8]                = "#383c4a";
+// static const char light[8]               = "#f8f8f2";
+// static const char magenta[8]             = "#ff79c6";
+// static const char purple[8]              = "#bd93f9";
+// static const char blue[8]                = "#6272a4";
+// static const char cyan[8]                = "#8be9fd";
+// static const char green[8]               = "#50fa7b";
+// static const char yellow[8]              = "#f1fa8c";
+// static const char orange[8]              = "#ffb86c";
+// static const char red[8]                 = "#ff5555";
 
 static char normfgcolor[]                = "#f8f8f2";
 static char normbgcolor[]                = "#282a36";
-static char normbordercolor[]            = "#44475a";
+static char normbordercolor[]            = "#282a36";
 static char normfloatcolor[]             = "#6272a4";
 
 static char selfgcolor[]                 = "#282a36";

@@ -11,8 +11,6 @@ void showtagpreview(int tag, int x, int y)
                           m->mw / scalepreview, m->mh / scalepreview, 0, 0);
                 XMoveWindow(dpy, m->tagwin, x, y);
                 XSync(dpy, False);
-                XMapWindow(dpy, m->tagwin);
-                // XRaiseWindow(dpy, m->tagwin);
                 XMapRaised(dpy, m->tagwin);
         }
         else
@@ -75,9 +73,10 @@ void createpreview(Monitor *m)
 {
         if (m->tagwin)
         {
-                XUnmapWindow(dpy, m->tagwin);
-                XDestroyWindow(dpy, m->tagwin);
-                m->tagwin = 0;
+                // XUnmapWindow(dpy, m->tagwin);
+                // XDestroyWindow(dpy, m->tagwin);
+                // m->tagwin = 0;
+                return;
         }
 
         XSetWindowAttributes wa = {.override_redirect = True,

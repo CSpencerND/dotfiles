@@ -60,5 +60,5 @@ battery_icon(void)
 
     // output the data
     // return bprintf("%s%d%%", icon, perc);
-    return bprintf("^c#282a36^^b#8be9fd^ %s^c#8be9fd^^b#282a36^ %d%%", icon, perc);
+    return bprintf("^c#383c4a^^b#8be9fd^ %s^c#8be9fd^^b#383c4a^ %d%% ", icon, perc);
 }
