@@ -7,6 +7,7 @@ static void shiftmon(const Arg *arg);
 static const unsigned int borderpx       = 3;   /* border pixel of windows */
 static const unsigned int snap           = 8;  /* snap pixel */
 static const int scalepreview            = 3;        /* Tag preview scaling */
+static const int tag_preview             = 0;
 
 static const unsigned int gappih         = 12;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 12;  /* vert inner gap between windows */
@@ -206,6 +207,7 @@ static const Rule rules[] = {
 	RULE(.title = "Qalculate!",     .isfloating = 1)
 	RULE(.title = "Bluetooth",      .isfloating = 1)
 	RULE(.title = "Volume Control", .isfloating = 1)
+	RULE(.class = "eww",            .isfloating = 1)
 
 	RULE(.class = "basic",   .tags = SPTAG(0), .isfloating = 1)
 	RULE(.class = "task",    .tags = SPTAG(1), .isfloating = 1)
@@ -400,7 +402,8 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,                   Button3,        cyclelayout,    {.i = +1 } },
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
 
-	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = termcmd } },
+
 	{ ClkClientWin,         MODKEY,              Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,              Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,              Button3,        resizemouse,    {0} },

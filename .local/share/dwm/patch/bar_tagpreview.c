@@ -4,6 +4,13 @@
 void showtagpreview(int tag, int x, int y)
 {
         Monitor *m = selmon;
+
+        if (!m->previewshow || !tag_preview)
+        {
+                XUnmapWindow(dpy, m->tagwin);
+                return;
+        }
+
         if (m->tagmap[tag])
         {
                 XSetWindowBackgroundPixmap(dpy, m->tagwin, m->tagmap[tag]);
@@ -42,7 +49,7 @@ void tagpreviewswitchtag(void)
                                 XFreePixmap(dpy, m->tagmap[i]);
                                 m->tagmap[i] = 0;
                         }
-                        if (occ & 1 << i)
+                        if (occ & 1 << i && tag_preview)
                         {
                                 image = imlib_create_image(sw, sh);
                                 if (image == NULL)
@@ -73,9 +80,9 @@ void createpreview(Monitor *m)
 {
         if (m->tagwin)
         {
-                // XUnmapWindow(dpy, m->tagwin);
-                // XDestroyWindow(dpy, m->tagwin);
-                // m->tagwin = 0;
+                XUnmapWindow(dpy, m->tagwin);
+                XDestroyWindow(dpy, m->tagwin);
+                m->tagwin = 0;
                 return;
         }
 

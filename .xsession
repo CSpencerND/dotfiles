@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-# ~/.local/bin/setup_screens &
+~/.local/bin/setup_screens &
+# ~/.screenlayout/1screens.sh &
+# ~/.screenlayout/2screens.sh &
 
-~/.screenlayout/2screens.sh &
 feh --no-fehbg --bg-fill '/home/cs/.local/share/backgrounds/554543.jpg' &
 sxhkd &
 /home/cs/.local/bin/kbconfig &

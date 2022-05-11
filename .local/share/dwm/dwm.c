@@ -73,6 +73,8 @@
 #define TEXTW(X) (drw_fontset_getwidth(drw, (X), False) + lrpad)
 #define HIDDEN(C) ((getstate(C->win) == IconicState))
 
+static const in hello[] = "my ass"
+
 /* enums */
 enum
 {
