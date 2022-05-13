@@ -52,9 +52,9 @@ static const struct arg args[] = {
         // { seperator,    "^b#21222c^%s",        " " },
         { seperator,    "^b#282a36^%s",        " " },
 
-        { ram_perc,     "^c#383c4a^^b#8be9fd^  ^c#8be9fd^^b#383c4a^ %s%% ",    NULL },
+        // { ram_perc,     "^c#383c4a^^b#8be9fd^  ^c#8be9fd^^b#383c4a^ %s%% ",    NULL },
         // { seperator,    "^b#21222c^%s",        " " },
-        { seperator,    "^b#282a36^%s",        " " },
+        // { seperator,    "^b#282a36^%s",        " " },
 
         { temp,         "^c#383c4a^^b#f1fa8c^ 﨏 ^c#f1fa8c^^b#383c4a^ %s° ",     "/sys/class/thermal/thermal_zone1/temp" },
         // { temp,         "^c#282a36^^b#f1fa8c^ 﨏 ^c#f1fa8c^^b#282a36^ %s° ",     "/sys/class/thermal/thermal_zone1/temp" },
