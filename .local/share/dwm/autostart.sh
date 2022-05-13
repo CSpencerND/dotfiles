@@ -28,8 +28,15 @@ run "blueberry-tray"
 run "volumeicon"
 run "solaar -w hide -b solaar"
 run "redshift-gtk"
-run "cbatticon"
-slstatus &
+run "cbatticon -x /home/cs/.local/bin/bat-notif.sh"
+
+screens_count=$(xrandr -q | grep " connected" | wc -l)
+if [[ $screens_count == 1 ]]; then
+    slstatus-sm &   
+else
+    slstatus &
+fi
+
 # skippy-xd --start-daemon &
 
 /home/cs/.local/statusbar/weather.py &
