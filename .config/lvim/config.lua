@@ -1,7 +1,7 @@
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "catppuccin"
+lvim.colorscheme = "dracula"
 lvim.lsp.diagnostics.virtual_text = false
 
 lvim.builtin.dashboard.active = true
