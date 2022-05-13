@@ -7,7 +7,7 @@ static void shiftmon(const Arg *arg);
 static const unsigned int borderpx       = 3;   /* border pixel of windows */
 static const unsigned int snap           = 8;  /* snap pixel */
 static const int scalepreview            = 3;        /* Tag preview scaling */
-static const int tag_preview             = 0;
+static const int tag_preview             = 1;
 
 static const unsigned int gappih         = 12;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 12;  /* vert inner gap between windows */
@@ -121,7 +121,7 @@ static char *colors[][ColCount] = {
 
 const char *spcmd0[] = { "st", "-c", "basic", "-g", "120x34", NULL };
 const char *spcmd1[] = { "st", "-c", "task", "-g", "120x34", "-e", "btop", NULL };
-const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "nvim", "~/.cache/scratchpad", NULL };
+const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "lvim", "~/.cache/scratchpad", NULL };
 const char *spcmd3[] = { "st", "-c", "explore", "-g", "120x34", "-e", "ranger", NULL };
 
 // const char *spcmd0[] = { "kitty", "--class", "basic",    NULL };
@@ -204,11 +204,16 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "TOOLBAR",  .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH",   .isfloating = 1)
 
-	RULE(.title = "Qalculate!",     .isfloating = 1)
-	RULE(.title = "Bluetooth",      .isfloating = 1)
-	RULE(.title = "Volume Control", .isfloating = 1)
-	RULE(.class = "eww",            .isfloating = 1)
+	RULE(.title = "Qalculate!",                .isfloating = 1)
+	RULE(.title = "Bluetooth",                 .isfloating = 1)
+	RULE(.title = "Volume Control",            .isfloating = 1)
+	RULE(.class = "eww",                       .isfloating = 1)
+	RULE(.class = "Archlinux-logout.py",       .isfloating = 1)
+	RULE(.class = "Thunar",                    .isfloating = 1)
+	RULE(.class = "Xfce4-appfinder",           .isfloating = 1)
+	RULE(.class = "System-monitoring-center",  .isfloating = 1)
 
+        // scratchpads
 	RULE(.class = "basic",   .tags = SPTAG(0), .isfloating = 1)
 	RULE(.class = "task",    .tags = SPTAG(1), .isfloating = 1)
 	RULE(.class = "note",    .tags = SPTAG(2), .isfloating = 1)
@@ -239,9 +244,9 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const float mfact        = 0.50; /* factor of master area size [0.05..0.95] */
+static const int nmaster        = 1;    /* number of clients in master area */
+static const int resizehints    = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 
@@ -283,10 +288,10 @@ static const Layout layouts[] = {
 // 	"-sf", selfgcolor,
 // 	NULL
 // };
-static const char *termcmd[]  = { "kitty", NULL };
 
-void
-shiftmon(const Arg *arg)
+// static const char *termcmd[]      = { "kitty", NULL };
+
+void shiftmon(const Arg *arg)
 {
     tagmon(arg);
     focusmon(arg);
@@ -393,6 +398,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_5,                                  4)
 };
 
+static const char *filecmd[]      = { "thunar", NULL };
+// static const char *taskmanager[]  = { "xfce4-taskmanager", NULL };
+static const char *appfinder[]    = { "xfce4-appfinder", NULL };
+static const char *taskmanager[]  = { "system-monitoring-center", NULL };
+static const char *calendar[]     = { "gsimplecal", NULL };
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
@@ -402,7 +412,15 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,                   Button3,        cyclelayout,    {.i = +1 } },
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
 
-	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = filecmd } },
+	{ ClkStatusText,        0,                   Button3,        spawn,          {.v = appfinder } },
+	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = taskmanager } },
+
+	// { ClkStatusText,        0,                   Button4,        spawn,          {.v = } },
+	// { ClkStatusText,        0,                   Button5,        spawn,          {.v = } },
+
+	{ ClkStatusText,        0,                   Button9,        spawn,          {.v = calendar } },
+	// { ClkStatusText,        0,                   Button8,        spawn,          {.v = } },
 
 	{ ClkClientWin,         MODKEY,              Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,              Button2,        togglefloating, {0} },
