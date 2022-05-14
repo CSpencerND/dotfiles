@@ -123,6 +123,7 @@ const char *spcmd0[] = { "st", "-c", "basic", "-g", "120x34", NULL };
 const char *spcmd1[] = { "st", "-c", "task", "-g", "120x34", "-e", "btop", NULL };
 const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "lvim", "~/.cache/scratchpad", NULL };
 const char *spcmd3[] = { "st", "-c", "explore", "-g", "120x34", "-e", "ranger", NULL };
+const char *spcmd4[] = { "pavucontrol", NULL };
 
 // const char *spcmd0[] = { "kitty", "--class", "basic",    NULL };
 // const char *spcmd1[] = { "kitty", "--class", "task",     "-e", "btop", NULL };
@@ -135,6 +136,7 @@ static Sp scratchpads[] = {
 	{ "task",     spcmd1 },
 	{ "note",     spcmd2 },
 	{ "explore",  spcmd3 },
+	{ "audio",    spcmd4 },
 };
 
 /* Tags
@@ -212,12 +214,15 @@ static const Rule rules[] = {
 	RULE(.class = "Thunar",                    .isfloating = 1)
 	RULE(.class = "Xfce4-appfinder",           .isfloating = 1)
 	RULE(.class = "System-monitoring-center",  .isfloating = 1)
+	RULE(.class = "Spicy",                     .isfloating = 1)
+	// RULE(.title = "popos-21.10-intel",         .isfloating = 1)
 
         // scratchpads
 	RULE(.class = "basic",   .tags = SPTAG(0), .isfloating = 1)
 	RULE(.class = "task",    .tags = SPTAG(1), .isfloating = 1)
 	RULE(.class = "note",    .tags = SPTAG(2), .isfloating = 1)
 	RULE(.class = "explore", .tags = SPTAG(3), .isfloating = 1)
+	RULE(.class = "audio",   .tags = SPTAG(4), .isfloating = 1)
 };
 
 
@@ -353,24 +358,17 @@ static Key keys[] = {
 
 	// scratchpads
 	{ MODKEY,               XK_apostrophe,      togglescratch,  {.ui = 0 } },
-	{ MODKEY|ControlMask,   XK_apostrophe,      setscratch,     {.ui = 0 } },
-	{ MODKEY|Mod1Mask,      XK_apostrophe,      removescratch,  {.ui = 0 } },
-
 	{ MODKEY,               XK_t,               togglescratch,  {.ui = 1 } },
-	{ MODKEY|ControlMask,   XK_t,               setscratch,     {.ui = 1 } },
-	{ MODKEY|Mod1Mask,      XK_t,               removescratch,  {.ui = 1 } },
-
 	{ MODKEY,               XK_semicolon,       togglescratch,  {.ui = 2 } },
-	{ MODKEY|ControlMask,   XK_semicolon,       setscratch,     {.ui = 2 } },
-	{ MODKEY|Mod1Mask,      XK_semicolon,       removescratch,  {.ui = 2 } },
-
 	{ MODKEY,               XK_o,               togglescratch,  {.ui = 3 } },
-	{ MODKEY|ControlMask,   XK_o,               setscratch,     {.ui = 3 } },
-	{ MODKEY|Mod1Mask,      XK_o,               removescratch,  {.ui = 3 } },
+	{ MODKEY,               XK_p,               togglescratch,  {.ui = 4 } },
 
-	{ MODKEY,               XK_grave,           togglescratch,  {.ui = 4 } },
-	{ MODKEY|ControlMask,   XK_grave,           setscratch,     {.ui = 4 } },
-	{ MODKEY|Mod1Mask,      XK_grave,           removescratch,  {.ui = 4 } },
+	{ MODKEY,               XK_grave,           togglescratch,  {.ui = 5 } },
+	{ MODKEY|ControlMask,   XK_grave,           setscratch,     {.ui = 5 } },
+	{ MODKEY|Mod1Mask,      XK_grave,           removescratch,  {.ui = 5 } },
+
+	// { MODKEY|ControlMask,   XK_p,               setscratch,     {.ui = 4 } },
+	// { MODKEY|Mod1Mask,      XK_p,               removescratch,  {.ui = 4 } },
 
 	// quit / restart
 	{ MODKEY|ShiftMask,     XK_r,               quit,           {1} },
@@ -403,6 +401,7 @@ static const char *filecmd[]      = { "thunar", NULL };
 static const char *appfinder[]    = { "xfce4-appfinder", NULL };
 static const char *taskmanager[]  = { "system-monitoring-center", NULL };
 static const char *calendar[]     = { "gsimplecal", NULL };
+static const char *batinfo[]     = { "bat-notif.sh", NULL };
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
@@ -413,13 +412,15 @@ static Button buttons[] = {
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
 
 	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = filecmd } },
+	{ ClkStatusText,        MODKEY,              Button1,        spawn,          {.v = batinfo } },
 	{ ClkStatusText,        0,                   Button3,        spawn,          {.v = appfinder } },
+	{ ClkStatusText,        MODKEY,              Button3,        spawn,          {.v = calendar } },
 	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = taskmanager } },
 
 	// { ClkStatusText,        0,                   Button4,        spawn,          {.v = } },
 	// { ClkStatusText,        0,                   Button5,        spawn,          {.v = } },
 
-	{ ClkStatusText,        0,                   Button9,        spawn,          {.v = calendar } },
+	// { ClkStatusText,        0,                   Button9,        spawn,          {.v = calendar } },
 	// { ClkStatusText,        0,                   Button8,        spawn,          {.v = } },
 
 	{ ClkClientWin,         MODKEY,              Button1,        movemouse,      {0} },

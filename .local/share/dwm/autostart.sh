@@ -13,9 +13,6 @@ function run {
 # /home/cs/.local/bin/kbrate &
 # leds.sh &
 
-picom --config ~/.config/picom/picom.conf -b --experimental-backends &
-# picom -b &
-
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
@@ -25,7 +22,7 @@ run "pamac-tray"
 # run "xfce4-power-manager"
 run "numlockx on"
 run "blueberry-tray"
-run "volumeicon"
+# run "volumeicon"
 run "solaar -w hide -b solaar"
 run "redshift-gtk"
 # run "cbatticon -x /home/cs/.local/bin/bat-notif.sh"
@@ -38,6 +35,9 @@ else
 fi
 
 # skippy-xd --start-daemon &
+
+picom --config ~/.config/picom/picom.conf -b --experimental-backends &
+# picom -b &
 
 /home/cs/.local/statusbar/weather.py &
 # /home/cs/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &

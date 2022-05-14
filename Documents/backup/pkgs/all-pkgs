@@ -17,6 +17,7 @@ arandr
 arc-gtk-theme
 arch-install-scripts
 archiso
+archlinux-tweak-tool-git
 arcolinux-alacritty-git
 arcolinux-bin-git
 arcolinux-candy-beauty-git
@@ -51,9 +52,9 @@ arcolinux-sddm-sugar-candy-git
 arcolinux-system-config-git
 arcolinux-systemd-services-git
 arcolinux-termite-themes-git
-arcolinux-tweak-tool-git
 arcolinux-variety-autostart-git
 arcolinux-variety-git
+arcolinux-volumeicon-git
 arcolinux-wallpapers-candy-git
 arcolinux-wallpapers-git
 arcolinux-welcome-app-git
@@ -160,7 +161,6 @@ gnu-netcat
 goverlay-bin
 gpart
 gparted
-gpick
 gpm
 gptfdisk
 grep
@@ -203,6 +203,8 @@ ipw2100-fw
 ipw2200-fw
 irssi
 iw
+jack2-dbus
+jack2-docs
 jack_mixer
 jfsutils
 jq
@@ -210,7 +212,7 @@ js-beautify-git
 jsoncpp
 kitty
 kitty-terminfo
-kmonad-git
+kmonad-bin
 laptop-detect
 leftwm
 less
@@ -220,6 +222,7 @@ lib32-giflib
 lib32-gnutls
 lib32-gst-plugins-base-libs
 lib32-gtk3
+lib32-jack2
 lib32-libpulse
 lib32-libva
 lib32-libxcomposite
@@ -228,6 +231,7 @@ lib32-libxslt
 lib32-mpg123
 lib32-ocl-icd
 lib32-openal
+lib32-pipewire
 lib32-sqlite
 lib32-v4l-utils
 lib32-vulkan-intel
@@ -322,9 +326,9 @@ pavucontrol
 pcmanfm
 pcsclite
 peek
-picom-jonaburg-git
+picom-git
 pipewire-alsa
-pipewire-jack
+pipewire-media-session
 pkgconf
 playerctl
 polkit
@@ -353,6 +357,8 @@ qt5-webkit
 qt5ct
 qtile
 qtile-extras-git
+quickemu-git
+quickgui-bin
 ranger
 realtime-privileges
 redshift
@@ -482,6 +488,8 @@ vim-tabular
 vim-tagbar
 vim-ultisnips
 vim-vital
+virtualbox
+volumeicon
 vpnc
 vscodium
 vscodium-marketplace
