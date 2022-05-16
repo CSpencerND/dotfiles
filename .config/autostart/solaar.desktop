@@ -4,7 +4,8 @@ Exec=solaar -b solaar -w hide
 Hidden=true
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
-Name[en_US]=Solaar
 Name=Solaar
-Comment[en_US]=
+Name[en_US]=Solaar
 Comment=
+Comment[en_US]=
+
