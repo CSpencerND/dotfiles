@@ -39,9 +39,9 @@ static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
 static const char *fonts[] = {
-	"Hack Nerd Font:size=11",
+	"Hack Nerd Font:size=10",
 	// "JoyPixels:pixelsize=10:antialias=true:autohint=true"
-	"monospace:size=11"
+	"monospace:size=10"
 };
 static const char dmenufont[]            = "monospace:size=10";
 
@@ -201,28 +201,28 @@ static const Rule rules[] = {
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
-	RULE(.wintype = WTYPE "DIALOG",   .isfloating = 1)
-	RULE(.wintype = WTYPE "UTILITY",  .isfloating = 1)
-	RULE(.wintype = WTYPE "TOOLBAR",  .isfloating = 1)
-	RULE(.wintype = WTYPE "SPLASH",   .isfloating = 1)
+	RULE(.wintype = WTYPE "DIALOG",                        .isfloating = 1)
+	RULE(.wintype = WTYPE "UTILITY",                       .isfloating = 1)
+	RULE(.wintype = WTYPE "TOOLBAR",                       .isfloating = 1)
+	RULE(.wintype = WTYPE "SPLASH",                        .isfloating = 1)
 
-	RULE(.title = "Qalculate!",                .isfloating = 1)
-	RULE(.title = "Bluetooth",                 .isfloating = 1)
-	RULE(.title = "Volume Control",            .isfloating = 1)
-	RULE(.class = "eww",                       .isfloating = 1)
-	RULE(.class = "Archlinux-logout.py",       .isfloating = 1)
-	RULE(.class = "Thunar",                    .isfloating = 1)
-	RULE(.class = "Xfce4-appfinder",           .isfloating = 1)
-	RULE(.class = "System-monitoring-center",  .isfloating = 1)
-	RULE(.class = "Spicy",                     .isfloating = 1)
-	// RULE(.title = "popos-21.10-intel",         .isfloating = 1)
+	RULE(.title = "Qalculate!",                            .isfloating = 1)
+	RULE(.title = "Bluetooth",                             .isfloating = 1)
+	RULE(.title = "Volume Control",                        .isfloating = 1)
+	RULE(.class = "eww",                                   .isfloating = 1)
+	RULE(.class = "Archlinux-logout.py",                   .isfloating = 1)
+	RULE(.class = "Thunar",                                .isfloating = 1)
+	RULE(.class = "System-monitoring-center",              .isfloating = 1)
+	RULE(.class = "Spicy",                                 .isfloating = 1)
+	RULE(.class = "Solaar",                                .isfloating = 1)
+	RULE(.class = "Xfce4*",                                .isfloating = 1)
 
         // scratchpads
-	RULE(.class = "basic",   .tags = SPTAG(0), .isfloating = 1)
-	RULE(.class = "task",    .tags = SPTAG(1), .isfloating = 1)
-	RULE(.class = "note",    .tags = SPTAG(2), .isfloating = 1)
-	RULE(.class = "explore", .tags = SPTAG(3), .isfloating = 1)
-	RULE(.class = "audio",   .tags = SPTAG(4), .isfloating = 1)
+	RULE(.class = "basic",   .tags = SPTAG(0),             .isfloating = 1)
+	RULE(.class = "task",    .tags = SPTAG(1),             .isfloating = 1)
+	RULE(.class = "note",    .tags = SPTAG(2),             .isfloating = 1)
+	RULE(.class = "explore", .tags = SPTAG(3),             .isfloating = 1)
+	RULE(.class = "audio",   .tags = SPTAG(4),             .isfloating = 1)
 };
 
 
