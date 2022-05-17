@@ -134,10 +134,11 @@ enum
         ClkTagBar,
         ClkLtSymbol,
         ClkStatusText,
+        ClkButton,
         ClkWinTitle,
         ClkClientWin,
+        ClkLast,
         ClkRootWin,
-        ClkLast
 }; /* clicks */
 
 enum

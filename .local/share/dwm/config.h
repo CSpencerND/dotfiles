@@ -26,6 +26,8 @@ static const char dwmdir[]               = "dwm";
 static const char localshare[]           = ".local/share";
 static const char autostartblocksh[]     = "autostart_blocking.sh";
 static const char autostartsh[]          = "autostart.sh";
+static const char *layoutmenu_cmd        = "layoutmenu.sh";
+
 
 #define ICONSIZE 28    /* icon size */
 #define ICONSPACING 2  /* space between icon and title */
@@ -38,6 +40,9 @@ static const int showsystray             = 1;   /* 0 means no systray */
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
+
+static const char buttonbar[]            = " ";
+
 static const char *fonts[] = {
 	"Hack Nerd Font:size=10",
 	// "JoyPixels:pixelsize=10:antialias=true:autohint=true"
@@ -61,7 +66,7 @@ static char c000000[]                    = "#21222c"; // placeholder value
 // static const char orange[8]              = "#ffb86c";
 // static const char red[8]                 = "#ff5555";
 
-static char normfgcolor[]                = "#f8f8f2";
+static char normfgcolor[]                = "#8be9fd";
 static char normbgcolor[]                = "#282a36";
 static char normbordercolor[]            = "#282a36";
 static char normfloatcolor[]             = "#6272a4";
@@ -102,7 +107,6 @@ static char urgbordercolor[]             = "#ff5555";
 static char urgfloatcolor[]              = "#ff5555";
 
 
-
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
 	[SchemeNorm]         = { normfgcolor,      normbgcolor,      normbordercolor,      normfloatcolor },
@@ -115,9 +119,6 @@ static char *colors[][ColCount] = {
 	[SchemeHidSel]       = { hidselfgcolor,    hidselbgcolor,    c000000,              c000000 },
 	[SchemeUrg]          = { urgfgcolor,       urgbgcolor,       urgbordercolor,       urgfloatcolor },
 };
-
-
-
 
 const char *spcmd0[] = { "st", "-c", "basic", "-g", "120x34", NULL };
 const char *spcmd1[] = { "st", "-c", "task", "-g", "120x34", "-e", "btop", NULL };
@@ -215,7 +216,7 @@ static const Rule rules[] = {
 	RULE(.class = "System-monitoring-center",              .isfloating = 1)
 	RULE(.class = "Spicy",                                 .isfloating = 1)
 	RULE(.class = "Solaar",                                .isfloating = 1)
-	RULE(.class = "Xfce4*",                                .isfloating = 1)
+	RULE(.class = "Xfce",                                  .isfloating = 1)
 
         // scratchpads
 	RULE(.class = "basic",   .tags = SPTAG(0),             .isfloating = 1)
@@ -241,6 +242,7 @@ static const Rule rules[] = {
  */
 static const BarRule barrules[] = {
 	/* monitor   bar  alignment         widthfunc        drawfunc        clickfunc        hoverfunc    name */
+	{ -1,        0,   BAR_ALIGN_LEFT,   width_stbutton,  draw_stbutton,  click_stbutton,  NULL,        "statusbutton" },
 	{ -1,        0,   BAR_ALIGN_LEFT,   width_tags,      draw_tags,      click_tags,      hover_tags,  "tags" },
 	{  0,        0,   BAR_ALIGN_RIGHT,  width_systray,   draw_systray,   click_systray,   NULL,        "systray" },
 	{ -1,        0,   BAR_ALIGN_LEFT,   width_ltsymbol,  draw_ltsymbol,  click_ltsymbol,  NULL,        "layout" },
@@ -396,19 +398,24 @@ static Key keys[] = {
 	TAGKEYS(                        XK_5,                                  4)
 };
 
-static const char *filecmd[]      = { "thunar", NULL };
-// static const char *taskmanager[]  = { "xfce4-taskmanager", NULL };
-static const char *appfinder[]    = { "xfce4-appfinder", NULL };
-static const char *taskmanager[]  = { "system-monitoring-center", NULL };
-static const char *calendar[]     = { "gsimplecal", NULL };
+static const char *filecmd[]     = { "thunar", NULL };
+// static const char *taskmanager[] = { "xfce4-taskmanager", NULL };
+static const char *appfinder[]   = { "xfce4-appfinder", NULL };
+static const char *taskmanager[] = { "system-monitoring-center", NULL };
+static const char *calendar[]    = { "gsimplecal", NULL };
 static const char *batinfo[]     = { "bat-notif.sh", NULL };
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask           button          function        argument */
+
+	{ ClkButton,            0,                   Button1,        spawn,          {.v = appfinder } },
+
 	{ ClkLtSymbol,          0,                   Button1,        cyclelayout,    {.i = -1 } },
-	{ ClkLtSymbol,          0,                   Button3,        cyclelayout,    {.i = +1 } },
+	{ ClkLtSymbol,          0,                   Button3,        layoutmenu,     {0} },
+	// { ClkLtSymbol,          0,                   Button3,        cyclelayout,    {.i = +1 } },
+
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
 
 	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = filecmd } },

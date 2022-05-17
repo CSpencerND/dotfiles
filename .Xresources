@@ -14,6 +14,14 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
+xmenu.font: Hack Nerd Font:pixelsize=12:antialias=true:autohint=true
+xmenu.background: #282a36
+xmenu.foreground: #f8f8f2 
+xmenu.selbackground: #bd93f9
+xmenu.selforeground: #282a36
+xmenu.border: #bd93f9
+xmenu.borderWidth: 1
+
 ! st
 st.font: Hack Nerd Font:pixelsize=16:antialias=true:autohint=true
 st.alpha: 0.9
