@@ -3,6 +3,7 @@
 ### Fix obvious typos
 alias cd..="cd .."
 alias pdw="pwd"
+alias se="sudoedit"
 
 ### Lazy Backup Git
 alias bks="backup status"

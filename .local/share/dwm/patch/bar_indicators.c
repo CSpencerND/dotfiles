@@ -39,7 +39,7 @@ drawindicator(Monitor *m, Client *c, unsigned int occ, int x, int y, int w, int 
 		drw_rect(drw, x + boxw, y + h - boxw/2, w - ( 2 * boxw + 1), boxw/2, filled, invert);
 		break;
 	case INDICATOR_BOTTOM_BAR_SLIM:
-		drw_rect(drw, x + boxw, y + h - 1, w - ( 2 * boxw + 1), 1, 0, invert);
+		drw_rect(drw, x + boxs + 1, y + h - 2, w - 3 , 1, 0, invert);
 		break;
 	case INDICATOR_BOX:
 		drw_rect(drw, x + boxw, y, w - 2 * boxw, h, 0, invert);

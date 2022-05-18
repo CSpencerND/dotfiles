@@ -397,6 +397,7 @@ squashfs-tools
 stack
 starship
 steam
+sticky-git
 stylua-git
 sublime-text-4
 sudo
@@ -514,6 +515,7 @@ xclip
 xcursor-arch-cursor-complete
 xdg-desktop-portal-gnome
 xdg-user-dirs
+xdg-xmenu-git
 xdo
 xdotool
 xf86-input-elographics

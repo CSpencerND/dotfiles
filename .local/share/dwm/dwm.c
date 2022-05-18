@@ -287,6 +287,7 @@ typedef struct
         unsigned int tags;
         int isfloating;
         int monitor;
+        int unmanaged;
 } Rule;
 
 #define RULE(...) {.monitor = -1, __VA_ARGS__},
@@ -403,9 +404,10 @@ static const char broken[] = "broken";
 static char stext[1024];
 
 static int screen;
-static int sw, sh; /* X display screen geometry width, height */
-static int bh;     /* bar geometry */
-static int lrpad;  /* sum of left and right padding for text */
+static int sw, sh;        /* X display screen geometry width, height */
+static int bh;            /* bar geometry */
+static int unmanaged = 0; /* whether or not the client should be managed */
+static int lrpad;         /* sum of left and right padding for text */
 /* Some clients (e.g. alacritty) helpfully send configure requests with a new
  * size or position when they detect that they have been moved to another
  * monitor. This can cause visual glitches when moving (or resizing) client
@@ -489,6 +491,7 @@ void applyrules(Client *c)
                 {
                         c->isfloating = r->isfloating;
                         c->tags |= r->tags;
+                        unmanaged = r->unmanaged;
                         if ((r->tags & SPTAGMASK) && r->isfloating)
                         {
                                 c->x = c->mon->wx +
@@ -1613,6 +1616,18 @@ void manage(Window w, XWindowAttributes *wa)
                 applyrules(c);
         }
 
+        if (unmanaged && unmanaged != 4)
+        {
+                XMapWindow(dpy, c->win);
+                if (unmanaged == 1)
+                        XRaiseWindow(dpy, c->win);
+                else if (unmanaged == 2)
+                        XLowerWindow(dpy, c->win);
+                free(c);
+                unmanaged = 0;
+                return;
+        }
+
         if (c->x + WIDTH(c) > c->mon->mx + c->mon->mw)
                 c->x = c->mon->mx + c->mon->mw - WIDTH(c);
         if (c->y + HEIGHT(c) > c->mon->my + c->mon->mh)
@@ -1644,6 +1659,13 @@ void manage(Window w, XWindowAttributes *wa)
                      EnterWindowMask | FocusChangeMask | PropertyChangeMask |
                              StructureNotifyMask);
         grabbuttons(c, 0);
+
+
+        if (unmanaged == 4)
+        {
+                setfullscreen(c, !c->isfullscreen);
+                unmanaged = 0;
+        }
 
         if (!c->isfloating)
                 c->isfloating = c->oldstate = trans != None || c->isfixed;

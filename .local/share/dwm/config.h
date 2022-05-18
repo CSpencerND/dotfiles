@@ -37,7 +37,7 @@ static const unsigned int systrayspacing = 4;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 
 /* Indicators: see patch/bar_indicators.h for options */
-static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
+static int tagindicatortype              = INDICATOR_BOTTOM_BAR_SLIM;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
 
@@ -211,7 +211,7 @@ static const Rule rules[] = {
 	RULE(.title = "Bluetooth",                             .isfloating = 1)
 	RULE(.title = "Volume Control",                        .isfloating = 1)
 	RULE(.class = "eww",                                   .isfloating = 1)
-	RULE(.class = "Archlinux-logout.py",                   .isfloating = 1)
+	RULE(.class = "Archlinux-logout.py",                   .unmanaged  = 4)
 	RULE(.class = "Thunar",                                .isfloating = 1)
 	RULE(.class = "System-monitoring-center",              .isfloating = 1)
 	RULE(.class = "Spicy",                                 .isfloating = 1)
@@ -404,6 +404,7 @@ static const char *appfinder[]   = { "xfce4-appfinder", NULL };
 static const char *taskmanager[] = { "system-monitoring-center", NULL };
 static const char *calendar[]    = { "gsimplecal", NULL };
 static const char *batinfo[]     = { "bat-notif.sh", NULL };
+static const char *logout[]      = { "archlinux-logout", NULL};
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
@@ -411,6 +412,7 @@ static Button buttons[] = {
 	/* click                event mask           button          function        argument */
 
 	{ ClkButton,            0,                   Button1,        spawn,          {.v = appfinder } },
+	{ ClkButton,            0,                   Button3,        spawn,          {.v = logout } },
 
 	{ ClkLtSymbol,          0,                   Button1,        cyclelayout,    {.i = -1 } },
 	{ ClkLtSymbol,          0,                   Button3,        layoutmenu,     {0} },
@@ -418,11 +420,10 @@ static Button buttons[] = {
 
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
 
-	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = filecmd } },
-	{ ClkStatusText,        MODKEY,              Button1,        spawn,          {.v = batinfo } },
-	{ ClkStatusText,        0,                   Button3,        spawn,          {.v = appfinder } },
-	{ ClkStatusText,        MODKEY,              Button3,        spawn,          {.v = calendar } },
-	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = taskmanager } },
+	{ ClkStatusText,        0,                   Button1,        spawn,          {.v = batinfo } },
+	{ ClkStatusText,        0,                   Button3,        spawn,          {.v = calendar } },
+	{ ClkStatusText,        MODKEY,              Button1,        spawn,          {.v = filecmd } },
+	{ ClkStatusText,        MODKEY,              Button3,        spawn,          {.v = taskmanager } },
 
 	// { ClkStatusText,        0,                   Button4,        spawn,          {.v = } },
 	// { ClkStatusText,        0,                   Button5,        spawn,          {.v = } },

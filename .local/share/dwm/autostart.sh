@@ -16,7 +16,7 @@ function run {
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
-run "variety"
+# run "variety"
 run "nm-applet"
 run "pamac-tray"
 # run "xfce4-power-manager"

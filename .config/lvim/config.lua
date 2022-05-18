@@ -1,7 +1,7 @@
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "dracula"
+lvim.colorscheme = "catppuccin"
 lvim.lsp.diagnostics.virtual_text = false
 
 lvim.builtin.dashboard.active = true
@@ -55,7 +55,7 @@ linters.setup {
         command = "codespell",
         ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
         filetypes = {"javascript", "python"}
-    }
+    },
 }
 
 vim.opt.tabstop = 8
