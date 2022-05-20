@@ -1,5 +1,7 @@
 -- Additional Plugins
 lvim.plugins = {
+    {"mlaursen/vim-react-snippets"},
+    {"elkowar/yuck.vim"}, {"catppuccin/nvim", as = "catppuccin"},
     {"shinglyu/vim-codespell"}, {"ThePrimeagen/harpoon"},
     {"artanikin/vim-synthwave84"}, {"cofyc/vim-uncrustify"}, {"psf/black"},
     {"dracula/vim"}, {"lunarvim/colorschemes"}, {"romgrk/doom-one.vim"},
@@ -25,10 +27,11 @@ lvim.plugins = {
             vim.g.indent_blankline_show_trailing_blankline_indent = false
             vim.g.indent_blankline_show_first_indent_level = true
         end
-    }, {
-        "karb94/neoscroll.nvim",
-        config = function() require("user.neoscroll").config() end
-    }, {"tpope/vim-surround"},
+    }, -- {
+    --     "karb94/neoscroll.nvim",
+    --     config = function() require("user.neoscroll").config() end
+    -- },
+    {"tpope/vim-surround"},
     {
         "unblevable/quick-scope",
         config = function() require "user.quickscope" end
