@@ -20,7 +20,7 @@ static const int topbar                  = 1;   /* 0 means bottom bar */
 
 static const int horizpadbar             = -3;   /* horizontal padding for statusbar */
 static const int vertpadbar              = 3;   /* vertical padding for statusbar */
-static const unsigned int barborderpx    = 6;   /* border pixel of windows */
+static const unsigned int barborderpx    = 6;   /* border pixel of status bar */
 
 static const char dwmdir[]               = "dwm";
 static const char localshare[]           = ".local/share";
@@ -124,7 +124,6 @@ const char *spcmd0[] = { "st", "-c", "basic", "-g", "120x34", NULL };
 const char *spcmd1[] = { "st", "-c", "task", "-g", "120x34", "-e", "btop", NULL };
 const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "lvim", "~/.cache/scratchpad", NULL };
 const char *spcmd3[] = { "st", "-c", "explore", "-g", "120x34", "-e", "ranger", NULL };
-const char *spcmd4[] = { "pavucontrol", NULL };
 
 // const char *spcmd0[] = { "kitty", "--class", "basic",    NULL };
 // const char *spcmd1[] = { "kitty", "--class", "task",     "-e", "btop", NULL };
@@ -137,7 +136,6 @@ static Sp scratchpads[] = {
 	{ "task",     spcmd1 },
 	{ "note",     spcmd2 },
 	{ "explore",  spcmd3 },
-	{ "audio",    spcmd4 },
 };
 
 /* Tags
@@ -202,10 +200,13 @@ static const Rule rules[] = {
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
-	RULE(.wintype = WTYPE "DIALOG",                        .isfloating = 1)
-	RULE(.wintype = WTYPE "UTILITY",                       .isfloating = 1)
-	RULE(.wintype = WTYPE "TOOLBAR",                       .isfloating = 1)
-	RULE(.wintype = WTYPE "SPLASH",                        .isfloating = 1)
+	RULE(.wintype = WTYPE "DIALOG",                        .isfloating = 1, .unmanaged = 3)
+	RULE(.wintype = WTYPE "UTILITY",                       .isfloating = 1, .unmanaged = 3)
+	RULE(.wintype = WTYPE "TOOLBAR",                       .isfloating = 1, .unmanaged = 3)
+	RULE(.wintype = WTYPE "DOCK",                          .isfloating = 1, .unmanaged = 3)
+	RULE(.wintype = WTYPE "POPUP",                         .isfloating = 1, .unmanaged = 3)
+	RULE(.wintype = WTYPE "DROPDOWN",                      .isfloating = 1, .unmanaged = 3)
+	RULE(.wintype = WTYPE "DND",                           .isfloating = 1, .unmanaged = 3)
 
 	RULE(.title = "Qalculate!",                            .isfloating = 1)
 	RULE(.title = "Bluetooth",                             .isfloating = 1)
@@ -217,13 +218,13 @@ static const Rule rules[] = {
 	RULE(.class = "Spicy",                                 .isfloating = 1)
 	RULE(.class = "Solaar",                                .isfloating = 1)
 	RULE(.class = "Xfce",                                  .isfloating = 1)
+	RULE(.class = "Hotkeys.py",                            .isfloating = 1)
 
         // scratchpads
 	RULE(.class = "basic",   .tags = SPTAG(0),             .isfloating = 1)
 	RULE(.class = "task",    .tags = SPTAG(1),             .isfloating = 1)
 	RULE(.class = "note",    .tags = SPTAG(2),             .isfloating = 1)
 	RULE(.class = "explore", .tags = SPTAG(3),             .isfloating = 1)
-	RULE(.class = "audio",   .tags = SPTAG(4),             .isfloating = 1)
 };
 
 
@@ -318,13 +319,13 @@ static Key keys[] = {
 	// window size
 	{ MODKEY,               XK_h,               setmfact,       {.f = -0.05} },
 	{ MODKEY,               XK_l,               setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,     XK_h,               setcfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,     XK_l,               setcfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,     XK_space,           setcfact,       {.f =  0.00} },
+	{ MODKEY|ControlMask,   XK_h,               setcfact,       {.f = -0.05} },
+	{ MODKEY|ControlMask,   XK_l,               setcfact,       {.f = +0.05} },
+	{ MODKEY|ControlMask,   XK_n,               setcfact,       {.f =  0.00} },
 
 	// window control
 	{ MODKEY|ShiftMask,     XK_m,               togglefullscreen,  {0} },
-	{ MODKEY|Mod1Mask,      XK_m,               setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,               XK_m,               setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,               XK_f,               togglefloating, {0} },
 	{ MODKEY,               XK_c,               killclient,     {0} },
 	{ MODKEY,               XK_v,               spawn,          SHCMD("skippy-xd") },

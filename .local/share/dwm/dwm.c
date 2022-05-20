@@ -1942,8 +1942,11 @@ void resizeclient(Client *c, int x, int y, int w, int h)
         c->h = wc.height = h;
         if (c == selmon->sel)
                 wc.border_width = c->bw;
+
+        // allow floating clients to still have borders
         else if (c->isfloating)
                 wc.border_width = c->bw;
+
         else
         {
                 wc.border_width = 0;
@@ -2238,12 +2241,13 @@ void setfullscreen(Client *c, int fullscreen)
 
 void setlayout(const Arg *arg)
 {
-        if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
-        {
-                selmon->pertag->sellts[selmon->pertag->curtag] ^= 1;
-                selmon->sellt = selmon->pertag->sellts[selmon->pertag->curtag];
-        }
-        if (arg && arg->v)
+        // if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
+        // {
+        selmon->pertag->sellts[selmon->pertag->curtag] ^= 1;
+        selmon->sellt = selmon->pertag->sellts[selmon->pertag->curtag];
+        // }
+        // if (arg && arg->v)
+	if (arg && arg->v && arg->v != selmon->lt[selmon->sellt ^ 1])
                 selmon->pertag->ltidxs[selmon->pertag->curtag][selmon->sellt] =
                         (Layout *)arg->v;
         selmon->lt[selmon->sellt] =

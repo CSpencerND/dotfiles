@@ -72,7 +72,7 @@ showAll = true
 [normal]
 tint = black
 tintOpacity = 0
-opacity = 200
+opacity = 227
 
 [highlight]
 tint = #282a36
