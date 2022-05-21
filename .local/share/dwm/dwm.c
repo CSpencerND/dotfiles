@@ -59,7 +59,7 @@
 #define INTERSECT(x, y, w, h, m)                                               \
         (MAX(0, MIN((x) + (w), (m)->wx + (m)->ww) - MAX((x), (m)->wx)) *       \
          MAX(0, MIN((y) + (h), (m)->wy + (m)->wh) - MAX((y), (m)->wy)))
-#define ISVISIBLE(C) ((C->tags & C->mon->tagset[C->mon->seltags]))
+#define ISVISIBLE(C) ((C->tags & C->mon->tagset[C->mon->seltags]) || C->issticky)
 #define LENGTH(X) (sizeof X / sizeof X[0])
 #define MOUSEMASK (BUTTONMASK | PointerMotionMask)
 #define WIDTH(X) ((X)->w + 2 * (X)->bw)
@@ -226,6 +226,7 @@ struct Client
         unsigned int tags;
         int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
         int issteam;
+	int issticky;
         Client *next;
         Client *snext;
         Monitor *mon;
@@ -1940,13 +1941,16 @@ void resizeclient(Client *c, int x, int y, int w, int h)
         c->w = wc.width = w;
         c->oldh = c->h;
         c->h = wc.height = h;
-        if (c == selmon->sel)
+
+        // floating clients borders
+        if (c->isfloating)
+                wc.border_width = borderpxf;
+
+        // tiled clients borders
+        else if (c == selmon->sel)
                 wc.border_width = c->bw;
 
-        // allow floating clients to still have borders
-        else if (c->isfloating)
-                wc.border_width = c->bw;
-
+        // unselected clients borders
         else
         {
                 wc.border_width = 0;

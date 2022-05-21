@@ -2,11 +2,11 @@
 
 cat <<EOF | xmenu
 []= Tiled	0
-[M] Monocle	1
-TTT bStack	2
-[D] Deck	3
-HHH Grid	4
-|M| cMaster	5
->M> cfMaster	6
+TTT bStack	1
+[D] Deck	2
+HHH Grid	3
+|M| cMaster	4
+>M> cfMaster	5
+[M] Monocle	6
 ><> Floating	7
 EOF

@@ -4,7 +4,9 @@
 static void shiftmon(const Arg *arg);
 
 /* appearance */
-static const unsigned int borderpx       = 3;   /* border pixel of windows */
+static const unsigned int borderpx       = 2;   /* border pixel of windows */
+static const unsigned int borderpxf      = 1;   /* border pixel of floating windows */
+
 static const unsigned int snap           = 8;  /* snap pixel */
 static const int scalepreview            = 3;        /* Tag preview scaling */
 static const int tag_preview             = 1;
@@ -262,12 +264,12 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "[M]",      monocle },
 	{ "TTT",      bstack },
 	{ "[D]",      deck },
 	{ "HHH",      grid },
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
+	{ "[M]",      monocle },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
@@ -321,14 +323,16 @@ static Key keys[] = {
 	{ MODKEY,               XK_l,               setmfact,       {.f = +0.05} },
 	{ MODKEY|ControlMask,   XK_h,               setcfact,       {.f = -0.05} },
 	{ MODKEY|ControlMask,   XK_l,               setcfact,       {.f = +0.05} },
-	{ MODKEY|ControlMask,   XK_n,               setcfact,       {.f =  0.00} },
+	{ MODKEY,               XK_n,               setcfact,       {.f =  0.00} },
+	{ MODKEY,               XK_n,               setmfact,       {.f =  mfact+1} },
 
 	// window control
 	{ MODKEY|ShiftMask,     XK_m,               togglefullscreen,  {0} },
-	{ MODKEY,               XK_m,               setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,               XK_m,               setlayout,      {.v = &layouts[6]} },
 	{ MODKEY,               XK_f,               togglefloating, {0} },
 	{ MODKEY,               XK_c,               killclient,     {0} },
 	{ MODKEY,               XK_v,               spawn,          SHCMD("skippy-xd") },
+	{ MODKEY,               XK_s,               togglesticky,   {0} },
 
 	// shift-tools
 	{ MODKEY,               XK_Tab,             shiftview,      {.i = +1 } },
@@ -351,7 +355,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,   XK_period,          shiftmon,       {.i = +1 } },
 	{ MODKEY|Mod1Mask,      XK_comma,           tagswapmon,     {.i = +1 } },
 	{ MODKEY|Mod1Mask,      XK_period,          tagswapmon,     {.i = -1 } },
-	{ MODKEY|ShiftMask,     XK_b,               togglebar,      {0} },
+	{ MODKEY,               XK_b,               togglebar,      {0} },
 
 	// layout
 	{ MODKEY,               XK_bracketleft,     cyclelayout,    {.i = -1 } },
@@ -364,17 +368,13 @@ static Key keys[] = {
 	{ MODKEY,               XK_t,               togglescratch,  {.ui = 1 } },
 	{ MODKEY,               XK_semicolon,       togglescratch,  {.ui = 2 } },
 	{ MODKEY,               XK_o,               togglescratch,  {.ui = 3 } },
+
 	{ MODKEY,               XK_p,               togglescratch,  {.ui = 4 } },
-
-	{ MODKEY,               XK_grave,           togglescratch,  {.ui = 5 } },
-	{ MODKEY|ControlMask,   XK_grave,           setscratch,     {.ui = 5 } },
-	{ MODKEY|Mod1Mask,      XK_grave,           removescratch,  {.ui = 5 } },
-
-	// { MODKEY|ControlMask,   XK_p,               setscratch,     {.ui = 4 } },
-	// { MODKEY|Mod1Mask,      XK_p,               removescratch,  {.ui = 4 } },
+	{ MODKEY|ControlMask,   XK_p,               setscratch,     {.ui = 4 } },
+	{ MODKEY|Mod1Mask,      XK_p,               removescratch,  {.ui = 4 } },
 
 	// quit / restart
-	{ MODKEY|ShiftMask,     XK_r,               quit,           {1} },
+	{ MODKEY|ShiftMask,     XK_r,               self_restart,   {0} },
 	{ MODKEY|ShiftMask,     XK_x,               quit,           {0} },
 
 	// gaps
@@ -384,9 +384,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_z,               defaultgaps,    {0} },
 
 	// ????
-	{ MODKEY,               XK_0,               view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,     XK_0,               tag,            {.ui = ~0 } },
-
 	{ MODKEY,               XK_Home,            view,           {0} },
 	{ MODKEY|ShiftMask,     XK_Home,            view,           {.ui = ~0 } },
 	{ MODKEY,               XK_End,             zoom,           {0} },
