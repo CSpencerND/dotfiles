@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# while true; do
+#     dwm-ulti 2> ~/.cache/dwm.log
+# done
+while type dwm-ulti >/dev/null; do dwm-ulti && continue || break; done

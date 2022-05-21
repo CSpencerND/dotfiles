@@ -375,7 +375,7 @@ static Key keys[] = {
 
 	// quit / restart
 	{ MODKEY|ShiftMask,     XK_r,               self_restart,   {0} },
-	{ MODKEY|ShiftMask,     XK_x,               quit,           {0} },
+	// { MODKEY|ShiftMask,     XK_x,               quit,           {0} },
 
 	// gaps
 	{ MODKEY,               XK_a,               incrgaps,       {.i = -1 } },
