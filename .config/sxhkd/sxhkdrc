@@ -2,17 +2,21 @@
 #     GENERAL
 #################################################################
 
-super + g; {w, d, v, p, b}
-    {firefox, discord, pavucontrol, picom-toggle.sh, blueberry}
+super + g; {w, d, v, p, b, Escape}
+    {firefox, discord, pavucontrol, picom-toggle.sh, blueberry, exit}
 
 super + slash
     rofi -show drun
+
+super + Return
+    kitty
 
 super + shift + slash
     xfce4-appfinder
 
 super + space
-    rofi -show window
+    hotkeys.sh
+    # rofi -show window
 
 super + e
     rofimoji
@@ -20,11 +24,8 @@ super + e
 super + x
     archlinux-logout
 
-super + Return
-    kitty
-
-super shift + d
-    reload_discord
+# super shift + d
+#     reload_discord
 
 # management {{{
 super + F1
