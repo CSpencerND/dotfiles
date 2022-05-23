@@ -25,7 +25,8 @@ super + x
     archlinux-logout
 
 super + shift + x
-    pkill dwm-ulti
+    pkill -u $USER
+    # pkill dwm-ulti
 
 # super shift + d
 #     reload_discord

@@ -23,6 +23,19 @@ static const char unknown_str[] = "n/a";
 // static const char orange[8]   = "#ffb86c";
 // static const char red[8]      = "#ff5555";
 
+// #define darker             "#161320"
+#define dark               "#1e1e2e"
+#define grey               "#383c4a"
+#define light              "#d9e0ee"
+#define magenta            "#e8a2af"
+#define purple             "#ddb6f2"
+#define blue               "#96cdfb"
+#define cyan               "#89dceb"
+// #define green              "#abe9b3"
+// #define yellow             "#fae3b0"
+// #define orange             "#f8bd96"
+#define red                "#f28fad"
+
 static const struct arg args[] = {
         /* function       format                      argument */
 

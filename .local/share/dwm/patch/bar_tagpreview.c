@@ -1,5 +1,4 @@
 #include <Imlib2.h>
-#include <X11/Xlib.h>
 
 void showtagpreview(int tag, int x, int y)
 {
@@ -92,6 +91,8 @@ void createpreview(Monitor *m)
                                            ButtonPressMask | ExposureMask};
         XClassHint ch = {"preview", "preview"};
 
+        // for (m = mons; m; m = m->next)
+        // {
         m->tagwin = XCreateWindow(
                 dpy, root, m->wx, m->my, m->mw / scalepreview,
                 m->mh / scalepreview, 0, DefaultDepth(dpy, screen),
@@ -100,4 +101,5 @@ void createpreview(Monitor *m)
         XMapRaised(dpy, m->tagwin);
         XUnmapWindow(dpy, m->tagwin);
         XSetClassHint(dpy, m->tagwin, &ch);
+        // }
 }

@@ -771,11 +771,13 @@ void cleanupmon(Monitor *mon)
                 free(bar);
         }
         free(mon->pertag);
+
         for (size_t i = 0; i < NUMTAGS; i++)
                 if (mon->tagmap[i])
                         XFreePixmap(dpy, mon->tagmap[i]);
         XUnmapWindow(dpy, mon->tagwin);
         XDestroyWindow(dpy, mon->tagwin);
+
         free(mon);
 }
 
@@ -1942,8 +1944,11 @@ void resizeclient(Client *c, int x, int y, int w, int h)
         c->oldh = c->h;
         c->h = wc.height = h;
 
+        if (c->isfullscreen)
+                wc.border_width = 0;
+
         // floating clients borders
-        if (c->isfloating)
+        else if (c->isfloating)
                 wc.border_width = borderpxf;
 
         // tiled clients borders
@@ -2523,7 +2528,7 @@ void toggleview(const Arg *arg)
 {
         unsigned int newtagset =
                 selmon->tagset[selmon->seltags] ^ (arg->ui & TAGMASK);
-        ;
+
         int i;
 
         if (newtagset)

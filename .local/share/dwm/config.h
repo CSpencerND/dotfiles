@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <string.h>
 
 /* custom function */
 static void shiftmon(const Arg *arg);
@@ -52,61 +53,121 @@ static const char *fonts[] = {
 };
 static const char dmenufont[]            = "monospace:size=10";
 
-static char c000000[]                    = "#21222c"; // placeholder value
+static char c000000[8]                    = "#21222c"; // placeholder value
 
-// static const char darkest[8]             = "#191A21";
-// static const char darker[8]              = "#21222c";
-// static const char dark[8]                = "#282a36";
-// static const char grey[8]                = "#383c4a";
-// static const char light[8]               = "#f8f8f2";
-// static const char magenta[8]             = "#ff79c6";
-// static const char purple[8]              = "#bd93f9";
-// static const char blue[8]                = "#6272a4";
-// static const char cyan[8]                = "#8be9fd";
-// static const char green[8]               = "#50fa7b";
-// static const char yellow[8]              = "#f1fa8c";
-// static const char orange[8]              = "#ffb86c";
-// static const char red[8]                 = "#ff5555";
+/*
+ * Dracula
+ */
+// static char darkest[8]            = "#191A21";
+// static char darker[8]             = "#21222c";
+// static char dark[8]               = "#282a36";
+// static char grey[8]               = "#383c4a";
+// static char light[8]              = "#f8f8f2";
+// static char magenta[8]            = "#ff79c6";
+// static char purple[8]             = "#bd93f9";
+// static char blue[8]               = "#6272a4";
+// static char cyan[8]               = "#8be9fd";
+// static char green[8]              = "#50fa7b";
+// static char yellow[8]             = "#f1fa8c";
+// static char orange[8]             = "#ffb86c";
+// static char red[8]                = "#ff5555";
 
-static char normfgcolor[]                = "#8be9fd";
-static char normbgcolor[]                = "#282a36";
-static char normbordercolor[]            = "#282a36";
-static char normfloatcolor[]             = "#6272a4";
+/*
+ * Catppuccin
+ */
+// static char darker[8]             = "#161320";
+static char dark[8]               = "#1e1e2e";
+static char grey[8]               = "#575268";
+static char light[8]              = "#d9e0ee";
+// static char magenta[8]            = "#e8a2af";
+static char magenta[8]            = "#ddb6f2";
+static char purple[8]             = "#ddb6f2";
+static char blue[8]               = "#96cdfb";
+static char cyan[8]               = "#89dceb";
+// static char green[8]              = "#abe9b3";
+// static char yellow[8]             = "#fae3b0";
+// static char orange[8]             = "#f8bd96";
+static char red[8]                = "#f28fad";
 
-static char selfgcolor[]                 = "#282a36";
-static char selbgcolor[]                 = "#bd93f9";
-static char selbordercolor[]             = "#bd93f9";
-static char selfloatcolor[]              = "#bd93f9";
+#define normfgcolor               cyan
+#define normbgcolor               dark
+#define normbordercolor           dark
+#define normfloatcolor            blue
 
-static char titlenormfgcolor[]           = "#f8f8f2";
-static char titlenormbgcolor[]           = "#282a36";
-static char titlenormbordercolor[]       = "#44475a";
-static char titlenormfloatcolor[]        = "#6272a4";
+#define selfgcolor                dark
+#define selbgcolor                purple
+#define selbordercolor            purple
+#define selfloatcolor             purple
+                                         
+#define titlenormfgcolor          light
+#define titlenormbgcolor          dark
+#define titlenormbordercolor      grey
+#define titlenormfloatcolor       blue
+                                         
+#define titleselfgcolor           dark
+#define titleselbgcolor           magenta
+#define titleselbordercolor       magenta
+#define titleselfloatcolor        magenta
+                                         
+#define tagsnormfgcolor           grey
+#define tagsnormbgcolor           dark
+#define tagsnormbordercolor       grey
+#define tagsnormfloatcolor        blue
+                                         
+#define tagsselfgcolor            dark
+#define tagsselbgcolor            magenta
+#define tagsselbordercolor        magenta
+#define tagsselfloatcolor         magenta
+                                         
+#define hidnormfgcolor            purple
+#define hidselfgcolor             magenta
+#define hidnormbgcolor            dark
+#define hidselbgcolor             dark
+                                         
+#define urgfgcolor                light
+#define urgbgcolor                dark
+#define urgbordercolor            red
+#define urgfloatcolor             red
 
-static char titleselfgcolor[]            = "#282a36";
-static char titleselbgcolor[]            = "#ff79c6";
-static char titleselbordercolor[]        = "#ff79c6";
-static char titleselfloatcolor[]         = "#ff79c6";
+// static char normfgcolor[8]                = "#8be9fd";
+// static char normbgcolor[8]                = "#282a36";
+// static char normbordercolor[8]            = "#282a36";
+// static char normfloatcolor[8]             = "#6272a4";
 
-static char tagsnormfgcolor[]            = "#f8f8f2";
-static char tagsnormbgcolor[]            = "#282a36";
-static char tagsnormbordercolor[]        = "#44475a";
-static char tagsnormfloatcolor[]         = "#6272a4";
+// static char selfgcolor[8]                 = "#282a36";
+// static char selbgcolor[8]                 = "#bd93f9";
+// static char selbordercolor[8]             = "#bd93f9";
+// static char selfloatcolor[8]              = "#bd93f9";
 
-static char tagsselfgcolor[]             = "#282a36";
-static char tagsselbgcolor[]             = "#ff79c6";
-static char tagsselbordercolor[]         = "#ff79c6";
-static char tagsselfloatcolor[]          = "#ff79c6";
+// static char titlenormfgcolor[8]           = "#f8f8f2";
+// static char titlenormbgcolor[8]           = "#282a36";
+// static char titlenormbordercolor[8]       = "#44475a";
+// static char titlenormfloatcolor[8]        = "#6272a4";
 
-static char hidnormfgcolor[]             = "#bd93f9";
-static char hidselfgcolor[]              = "#ff79c6";
-static char hidnormbgcolor[]             = "#282a36";
-static char hidselbgcolor[]              = "#282a36";
+// static char titleselfgcolor[8]            = "#282a36";
+// static char titleselbgcolor[8]            = "#ff79c6";
+// static char titleselbordercolor[8]        = "#ff79c6";
+// static char titleselfloatcolor[8]         = "#ff79c6";
 
-static char urgfgcolor[]                 = "#f8f8f2";
-static char urgbgcolor[]                 = "#282a36";
-static char urgbordercolor[]             = "#ff5555";
-static char urgfloatcolor[]              = "#ff5555";
+// static char tagsnormfgcolor[8]            = "#6272a4";
+// static char tagsnormbgcolor[8]            = "#282a36";
+// static char tagsnormbordercolor[8]        = "#44475a";
+// static char tagsnormfloatcolor[8]         = "#6272a4";
+
+// static char tagsselfgcolor[8]             = "#282a36";
+// static char tagsselbgcolor[8]             = "#ff79c6";
+// static char tagsselbordercolor[8]         = "#ff79c6";
+// static char tagsselfloatcolor[8]          = "#ff79c6";
+
+// static char hidnormfgcolor[8]             = "#bd93f9";
+// static char hidselfgcolor[8]              = "#ff79c6";
+// static char hidnormbgcolor[8]             = "#282a36";
+// static char hidselbgcolor[8]              = "#282a36";
+
+// static char urgfgcolor[8]                 = "#f8f8f2";
+// static char urgbgcolor[8]                 = "#282a36";
+// static char urgbordercolor[8]             = "#ff5555";
+// static char urgfloatcolor[8]              = "#ff5555";
 
 
 static char *colors[][ColCount] = {
@@ -202,13 +263,13 @@ static const Rule rules[] = {
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
-	RULE(.wintype = WTYPE "DIALOG",                        .isfloating = 1, .unmanaged = 3)
-	RULE(.wintype = WTYPE "UTILITY",                       .isfloating = 1, .unmanaged = 3)
-	RULE(.wintype = WTYPE "TOOLBAR",                       .isfloating = 1, .unmanaged = 3)
-	RULE(.wintype = WTYPE "DOCK",                          .isfloating = 1, .unmanaged = 3)
-	RULE(.wintype = WTYPE "POPUP",                         .isfloating = 1, .unmanaged = 3)
-	RULE(.wintype = WTYPE "DROPDOWN",                      .isfloating = 1, .unmanaged = 3)
-	RULE(.wintype = WTYPE "DND",                           .isfloating = 1, .unmanaged = 3)
+	RULE(.wintype = WTYPE "DIALOG",                        .isfloating = 1,)
+	RULE(.wintype = WTYPE "UTILITY",                       .isfloating = 1,)
+	RULE(.wintype = WTYPE "TOOLBAR",                       .isfloating = 1,)
+	RULE(.wintype = WTYPE "DOCK",                          .isfloating = 1,)
+	RULE(.wintype = WTYPE "POPUP",                         .isfloating = 1,)
+	RULE(.wintype = WTYPE "DROPDOWN",                      .isfloating = 1,)
+	RULE(.wintype = WTYPE "DND",                           .isfloating = 1,)
 
 	RULE(.title = "Qalculate!",                            .isfloating = 1)
 	RULE(.title = "Bluetooth",                             .isfloating = 1)
@@ -387,7 +448,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_Home,            view,           {0} },
 	{ MODKEY|ShiftMask,     XK_Home,            view,           {.ui = ~0 } },
 	{ MODKEY,               XK_End,             zoom,           {0} },
-	{ MODKEY|ShiftMask,     XK_End,             tag,            {.ui = ~0 } },
+ 	{ MODKEY|ShiftMask,     XK_End,             tag,            {.ui = ~0 } },
 
 	TAGKEYS(                        XK_1,                                  0)
 	TAGKEYS(                        XK_2,                                  1)

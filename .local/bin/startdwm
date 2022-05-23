@@ -3,4 +3,7 @@
 # while true; do
 #     dwm-ulti 2> ~/.cache/dwm.log
 # done
-while type dwm-ulti >/dev/null; do dwm-ulti && continue || break; done
+
+while type dwm-ulti >/dev/null; do
+    dwm-ulti >>~/.cache/dwm-out.log 2>~/.cache/dwm-err.log && continue || break;
+done
