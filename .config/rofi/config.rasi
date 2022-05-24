@@ -1,15 +1,19 @@
 configuration{
     modi: "run,drun,window";
     lines: 5;
-    font: "Iosevka 12";
+    font: "Hack Nerd Font 14";
     show-icons: true;
-    icon-theme: "Paper Mono";
+    icon-theme: "Oranchelo";
     terminal: "st";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
     display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 﩯  window";
+    display-Network: " 󰤨  Network";
+    sidebar-mode: true;
 }
 
 @theme "dracula"
@@ -21,7 +25,8 @@ element-text, element-icon , mode-switcher {
 
 window {
     height: 360px;
-    border: 3px;
+    width: 640px;
+    border: 1px;
     border-color: @border-col;
     background-color: @bg-col;
 }
@@ -96,4 +101,3 @@ button selected {
   background-color: @bg-col;
   text-color: @blue;
 }
-// @theme "/home/cs/.config/rofi/themes/everblush.rasi"
