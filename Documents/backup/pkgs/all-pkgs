@@ -266,6 +266,7 @@ m4
 make
 man-db
 man-pages
+mariadb
 mc
 mdadm
 meld
@@ -283,7 +284,7 @@ mpv
 mtools
 mtpfs
 mugshot
-mysql57
+mycli
 nano
 nasm
 nbd
@@ -357,7 +358,6 @@ qalculate-gtk
 qt5-webkit
 qt5ct
 qtile
-qtile-extras-git
 quickemu-git
 quickgui-bin
 ranger

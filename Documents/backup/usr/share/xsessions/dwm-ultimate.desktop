@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DwmUltimate
+Comment=Dynamic window manager
+Exec=dwm-ulti
+Icon=dwm
+Type=XSession
