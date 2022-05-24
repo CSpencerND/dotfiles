@@ -1,0 +1,47 @@
+# Dracula themed dark color settings for colorls
+#
+# Main Colors
+unrecognized_file: '#f8bd96' # Orange
+recognized_file:   '#d9e0ee' # Foreground
+executable_file:   '#abe9b3' # Green
+dir:               '#bda6f2' # Purple
+
+# Link
+dead_link: '#f28f9d'         # Red
+link:      '#89dceb'         # Cyan
+
+# Special Files
+socket:    '#abe9b3'         # Green
+blockdev:  '#abe9b3'         # Green
+chardev:   '#abe9b3'         # Green
+
+# Access Modes
+write:     '#f892df'         # Pink
+read:      '#bd93f9'         # Purple
+exec:      '#89dceb'         # Cyan
+no_access: '#f28f9d'         # Red
+
+# Age
+hour_old:    '#95a5d7'       # Comment - 20% lighter
+day_old:     '#6272a4'       # Comment
+no_modifier: '#44475a'       # Current Line
+
+# File Size
+file_large:  '#f28f9d'       # Red
+file_medium: '#f8bd96'       # Orange
+file_small:  '#abe9b3'       # Green
+
+# Random
+report: '#abe9b3'            # Green
+user:   '#8be9fd'            # Cyan
+tree:   '#44475a'            # Current Line
+empty:  '#6272a4'            # Comment
+error:  '#f28f9d'            # Red
+normal: '#d9e0ee'            # Foreground
+
+# Git
+addition:     '#8be9fd'      # Cyan
+modification: '#faf3b0'      # Yellow
+deletion:     '#f28f9d'      # Red
+untracked:    '#f8bd96'      # Orange
+unchanged:    '#abe9b3'      # Green
