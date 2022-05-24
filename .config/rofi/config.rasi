@@ -1,7 +1,6 @@
 configuration{
     modi: "run,drun,window";
-    lines: 5;
-    font: "Hack Nerd Font 14";
+    font: "Hack Nerd Font 12";
     show-icons: true;
     icon-theme: "Oranchelo";
     terminal: "st";
@@ -16,7 +15,7 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "dracula"
+@theme "catppuccin"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
@@ -24,8 +23,8 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 360px;
-    width: 640px;
+    width: 768px;
+    height: 432px;
     border: 1px;
     border-color: @border-col;
     background-color: @bg-col;
@@ -67,13 +66,15 @@ listview {
     padding: 6px 0px 0px;
     margin: 10px 0px 0px 20px;
     columns: 2;
+    lines: 5;
     background-color: @bg-col;
 }
 
 element {
     padding: 5px;
     background-color: @bg-col;
-    text-color: @fg-col  ;
+    text-color: @fg-col;
+    children: [element-icon, element-text];
 }
 
 element-icon {
