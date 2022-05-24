@@ -1,7 +1,9 @@
 -- Additional Plugins
 lvim.plugins = {
+    {"metakirby5/codi.vim"},
     {"mlaursen/vim-react-snippets"},
-    {"elkowar/yuck.vim"}, {"catppuccin/nvim", as = "catppuccin"},
+    -- {"elkowar/yuck.vim"},
+    {"catppuccin/nvim", as = "catppuccin"},
     {"shinglyu/vim-codespell"}, {"ThePrimeagen/harpoon"},
     {"artanikin/vim-synthwave84"}, {"cofyc/vim-uncrustify"}, {"psf/black"},
     {"dracula/vim"}, {"lunarvim/colorschemes"}, {"romgrk/doom-one.vim"},

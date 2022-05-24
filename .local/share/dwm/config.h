@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#include <string.h>
+#include "themes/catppuccin.h"
 
 /* custom function */
 static void shiftmon(const Arg *arg);
@@ -51,43 +51,8 @@ static const char *fonts[] = {
 	// "JoyPixels:pixelsize=10:antialias=true:autohint=true"
 	"monospace:size=10"
 };
-static const char dmenufont[]            = "monospace:size=10";
 
 static char c000000[8]                    = "#21222c"; // placeholder value
-
-/*
- * Dracula
- */
-// static char darkest[8]            = "#191A21";
-// static char darker[8]             = "#21222c";
-// static char dark[8]               = "#282a36";
-// static char grey[8]               = "#383c4a";
-// static char light[8]              = "#f8f8f2";
-// static char magenta[8]            = "#ff79c6";
-// static char purple[8]             = "#bd93f9";
-// static char blue[8]               = "#6272a4";
-// static char cyan[8]               = "#8be9fd";
-// static char green[8]              = "#50fa7b";
-// static char yellow[8]             = "#f1fa8c";
-// static char orange[8]             = "#ffb86c";
-// static char red[8]                = "#ff5555";
-
-/*
- * Catppuccin
- */
-// static char darker[8]             = "#161320";
-static char dark[8]               = "#1e1e2e";
-static char grey[8]               = "#575268";
-static char light[8]              = "#d9e0ee";
-// static char magenta[8]            = "#e8a2af";
-static char magenta[8]            = "#ddb6f2";
-static char purple[8]             = "#ddb6f2";
-static char blue[8]               = "#96cdfb";
-static char cyan[8]               = "#89dceb";
-// static char green[8]              = "#abe9b3";
-// static char yellow[8]             = "#fae3b0";
-// static char orange[8]             = "#f8bd96";
-static char red[8]                = "#f28fad";
 
 #define normfgcolor               cyan
 #define normbgcolor               dark
@@ -185,13 +150,10 @@ static char *colors[][ColCount] = {
 
 const char *spcmd0[] = { "st", "-c", "basic", "-g", "120x34", NULL };
 const char *spcmd1[] = { "st", "-c", "task", "-g", "120x34", "-e", "btop", NULL };
-const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "lvim", "~/.cache/scratchpad", NULL };
+const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "lvim", "~/Documents/pad", NULL };
 const char *spcmd3[] = { "st", "-c", "explore", "-g", "120x34", "-e", "ranger", NULL };
 
 // const char *spcmd0[] = { "kitty", "--class", "basic",    NULL };
-// const char *spcmd1[] = { "kitty", "--class", "task",     "-e", "btop", NULL };
-// const char *spcmd2[] = { "kitty", "--class", "note",     "-e", "nvim", "~/.cache/scratchpad", NULL };
-// const char *spcmd3[] = { "kitty", "--class", "explore",  "-e", "ranger", NULL };
 
 static Sp scratchpads[] = {
 	/* name       cmd  */
@@ -291,7 +253,6 @@ static const Rule rules[] = {
 };
 
 
-
 /* Bar rules allow you to configure what is shown where on the bar, as well as
  * introducing your own bar modules.
  *
@@ -321,7 +282,6 @@ static const int resizehints    = 0;    /* 1 means respect size hints in tiled r
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 
-
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -342,25 +302,11 @@ static const Layout layouts[] = {
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-
+	{ MODKEY|Mod1Mask,              KEY,      toggletag,      {.ui = 1 << TAG} },
 
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
-/* commands */
-// static const char *dmenucmd[] = {
-// 	"dmenu_run",
-// 	"-fn", dmenufont,
-// 	"-nb", normbgcolor,
-// 	"-nf", normfgcolor,
-// 	"-sb", selbgcolor,
-// 	"-sf", selfgcolor,
-// 	NULL
-// };
-
-// static const char *termcmd[]      = { "kitty", NULL };
 
 void shiftmon(const Arg *arg)
 {
@@ -434,9 +380,9 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,   XK_p,               setscratch,     {.ui = 4 } },
 	{ MODKEY|Mod1Mask,      XK_p,               removescratch,  {.ui = 4 } },
 
-	// quit / restart
+	// quit / restart - if restart doesn't work, try quit
 	{ MODKEY|ShiftMask,     XK_r,               self_restart,   {0} },
-	// { MODKEY|ShiftMask,     XK_x,               quit,           {0} },
+	{ MODKEY|ControlMask,   XK_r,               quit,           {0} },
 
 	// gaps
 	{ MODKEY,               XK_a,               incrgaps,       {.i = -1 } },
@@ -458,7 +404,6 @@ static Key keys[] = {
 };
 
 static const char *filecmd[]     = { "thunar", NULL };
-// static const char *taskmanager[] = { "xfce4-taskmanager", NULL };
 static const char *appfinder[]   = { "xfce4-appfinder", NULL };
 static const char *taskmanager[] = { "system-monitoring-center", NULL };
 static const char *calendar[]    = { "gsimplecal", NULL };

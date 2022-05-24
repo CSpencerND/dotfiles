@@ -58,7 +58,10 @@ battery_icon(void)
         }
     }
 
+    // get the colors
+    #define c1 "#302D41"
+    #define c2 "#89dceb"
+
     // output the data
-    // return bprintf("%s%d%%", icon, perc);
-    return bprintf("^c#383c4a^^b#8be9fd^ %s^c#8be9fd^^b#383c4a^ %d%% ", icon, perc);
+    return bprintf("^c%s^^b%s^ %s^c%s^^b%s^ %d%% ", c1, c2, icon, c2, c1, perc);
 }
