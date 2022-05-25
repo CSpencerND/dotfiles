@@ -13,10 +13,10 @@ alias bkc="backup commit -m"
 alias bkp="backup push"
 
 ### Navigation Shortcuts
-alias lvc='vi ~/.config/lvim/config.lua'
+alias lvc='vi ~/.local/share/lunarvim/lvim/lua/user/'
 alias qtc='vi ~/.config/qtile/config.py'
 alias cddwm="cd ~/.local/share/dwm"
-alias cdsl="cd ~/.config/slstatus"
+alias cdsl="cd ~/.local/share/slstatus"
 alias cdsb='cd ~/.local/statusbar'
 
 ### Colorize commands
