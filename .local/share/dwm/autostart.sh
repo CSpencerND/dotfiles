@@ -6,13 +6,6 @@ function run {
 	fi
 }
 
-# ~/.local/bin/setup_screens &
-# feh --no-fehbg --bg-fill '/home/cs/.local/share/backgrounds/554543.jpg' &
-# sxhkd &
-# /home/cs/.local/bin/kbconfig &
-# /home/cs/.local/bin/kbrate &
-# leds.sh &
-
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
@@ -34,10 +27,7 @@ else
     slstatus &
 fi
 
-# skippy-xd --start-daemon &
-
 picom --config ~/.config/picom/picom.conf -b --experimental-backends &
-# picom -b &
 
 /home/cs/.local/statusbar/weather.py &
 # /home/cs/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &
