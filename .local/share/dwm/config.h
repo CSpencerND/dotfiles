@@ -52,105 +52,64 @@ static const char *fonts[] = {
 	"monospace:size=10"
 };
 
-static char c000000[8]                    = "#21222c"; // placeholder value
-
-#define normfgcolor               cyan
-#define normbgcolor               dark
-#define normbordercolor           dark
-#define normfloatcolor            blue
-
-#define selfgcolor                dark
-#define selbgcolor                purple
-#define selbordercolor            purple
-#define selfloatcolor             purple
-                                         
-#define titlenormfgcolor          light
-#define titlenormbgcolor          dark
-#define titlenormbordercolor      grey
-#define titlenormfloatcolor       blue
-                                         
-#define titleselfgcolor           dark
-#define titleselbgcolor           magenta
-#define titleselbordercolor       magenta
-#define titleselfloatcolor        magenta
-                                         
-#define tagsnormfgcolor           grey
-#define tagsnormbgcolor           dark
-#define tagsnormbordercolor       grey
-#define tagsnormfloatcolor        blue
-                                         
-#define tagsselfgcolor            dark
-#define tagsselbgcolor            magenta
-#define tagsselbordercolor        magenta
-#define tagsselfloatcolor         magenta
-                                         
-#define hidnormfgcolor            purple
-#define hidselfgcolor             magenta
-#define hidnormbgcolor            dark
-#define hidselbgcolor             dark
-                                         
-#define urgfgcolor                light
-#define urgbgcolor                dark
-#define urgbordercolor            red
-#define urgfloatcolor             red
-
-// static char normfgcolor[8]                = "#8be9fd";
-// static char normbgcolor[8]                = "#282a36";
-// static char normbordercolor[8]            = "#282a36";
-// static char normfloatcolor[8]             = "#6272a4";
-
-// static char selfgcolor[8]                 = "#282a36";
-// static char selbgcolor[8]                 = "#bd93f9";
-// static char selbordercolor[8]             = "#bd93f9";
-// static char selfloatcolor[8]              = "#bd93f9";
-
-// static char titlenormfgcolor[8]           = "#f8f8f2";
-// static char titlenormbgcolor[8]           = "#282a36";
-// static char titlenormbordercolor[8]       = "#44475a";
-// static char titlenormfloatcolor[8]        = "#6272a4";
-
-// static char titleselfgcolor[8]            = "#282a36";
-// static char titleselbgcolor[8]            = "#ff79c6";
-// static char titleselbordercolor[8]        = "#ff79c6";
-// static char titleselfloatcolor[8]         = "#ff79c6";
-
-// static char tagsnormfgcolor[8]            = "#6272a4";
-// static char tagsnormbgcolor[8]            = "#282a36";
-// static char tagsnormbordercolor[8]        = "#44475a";
-// static char tagsnormfloatcolor[8]         = "#6272a4";
-
-// static char tagsselfgcolor[8]             = "#282a36";
-// static char tagsselbgcolor[8]             = "#ff79c6";
-// static char tagsselbordercolor[8]         = "#ff79c6";
-// static char tagsselfloatcolor[8]          = "#ff79c6";
-
-// static char hidnormfgcolor[8]             = "#bd93f9";
-// static char hidselfgcolor[8]              = "#ff79c6";
-// static char hidnormbgcolor[8]             = "#282a36";
-// static char hidselbgcolor[8]              = "#282a36";
-
-// static char urgfgcolor[8]                 = "#f8f8f2";
-// static char urgbgcolor[8]                 = "#282a36";
-// static char urgbordercolor[8]             = "#ff5555";
-// static char urgfloatcolor[8]              = "#ff5555";
-
-
 static char *colors[][ColCount] = {
-	/*                       fg                bg                border                float */
-	[SchemeNorm]         = { normfgcolor,      normbgcolor,      normbordercolor,      normfloatcolor },
-	[SchemeSel]          = { selfgcolor,       selbgcolor,       selbordercolor,       selfloatcolor },
-	[SchemeTitleNorm]    = { titlenormfgcolor, titlenormbgcolor, titlenormbordercolor, titlenormfloatcolor },
-	[SchemeTitleSel]     = { titleselfgcolor,  titleselbgcolor,  titleselbordercolor,  titleselfloatcolor },
-	[SchemeTagsNorm]     = { tagsnormfgcolor,  tagsnormbgcolor,  tagsnormbordercolor,  tagsnormfloatcolor },
-	[SchemeTagsSel]      = { tagsselfgcolor,   tagsselbgcolor,   tagsselbordercolor,   tagsselfloatcolor },
-	[SchemeHidNorm]      = { hidnormfgcolor,   hidnormbgcolor,   c000000,              c000000 },
-	[SchemeHidSel]       = { hidselfgcolor,    hidselbgcolor,    c000000,              c000000 },
-	[SchemeUrg]          = { urgfgcolor,       urgbgcolor,       urgbordercolor,       urgfloatcolor },
+
+                /* fg
+                 * bg
+                 * border
+                 * float
+                 */
+
+	[SchemeNorm] = {
+                button_color,
+                main_color,
+                main_color,
+                minor_color
+        },
+
+	[SchemeSel] = {
+                unused,
+                unused,
+                border_color,
+                border_color
+        },
+
+	[SchemeTitleNorm] = {
+                unused,
+                main_color,
+                unused,
+                unused
+        },
+
+	[SchemeTagsNorm] = {
+                minor_color,
+                main_color,
+                unused,
+                unused
+        },
+
+	[SchemeTitleSel] = {
+                main_color,
+                highlight_color,
+                unused,
+                unused
+        },
+
+	[SchemeTagsSel] = {
+                main_color,
+                highlight_color,
+                unused,
+                unused
+        },
+
+	[SchemeHidNorm] = {unused,unused,unused,unused},
+	[SchemeHidSel] = {unused,unused,unused,unused},
+	[SchemeUrg] = {unused,unused,unused,unused},
 };
 
 const char *spcmd0[] = { "st", "-c", "basic", "-g", "120x34", NULL };
 const char *spcmd1[] = { "st", "-c", "task", "-g", "120x34", "-e", "btop", NULL };
-const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "lvim", "~/Documents/pad", NULL };
+const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "lvim", "~/Documents/notes/", NULL };
 const char *spcmd3[] = { "st", "-c", "explore", "-g", "120x34", "-e", "ranger", NULL };
 
 // const char *spcmd0[] = { "kitty", "--class", "basic",    NULL };
