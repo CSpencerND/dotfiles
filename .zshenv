@@ -72,7 +72,14 @@ SAVEHIST=10000
 # -----------------------------------------------------------------------------
 
 # Default Apps
-export VISUAL='lvim'
+if [ -x "$(command -v lvim)" ]; then
+    export VISUAL='lvim'
+elif [ -x "$(command -v nvim)" ]; then
+    export VISUAL='nvim'
+else
+    export VISUAL='vim'
+fi
+
 export EDITOR=$VISUAL
 export SUDO_EDITOR=$VISUAL
 export TERMINAL="kitty"

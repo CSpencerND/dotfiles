@@ -13,7 +13,7 @@ alias bkc="backup commit -m"
 alias bkp="backup push"
 
 ### Navigation Shortcuts
-alias lvc='vi ~/.local/share/lunarvim/lvim/lua/user/'
+# alias lvp='cd ~/.local/share/lunarvim/lvim/lua/user/'
 alias qtc='vi ~/.config/qtile/config.py'
 alias cddwm="cd ~/.local/share/dwm"
 alias cdsl="cd ~/.local/share/slstatus"
@@ -58,8 +58,14 @@ alias mkdir='mkdir -pv'
 alias du='du -sh'
 alias df='df -h'
 alias free='free -mt' 
-alias vi='lvim'
-alias nv='nvim'
+
+if [ -x "$(command -v lvim)" ]; then
+    alias vi='lvim'
+elif [ -x "$(command -v nvim)" ]; then
+    alias vi="nvim"
+    alias nv='nvim'
+fi
+
 alias top='btop'
 
 ### Pacman
