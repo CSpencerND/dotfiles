@@ -8,5 +8,5 @@ feh --no-fehbg --bg-fill '/home/cs/.config/variety/Favorites/nice-town.jpeg' &
 variety &
 sxhkd &
 /home/cs/.local/bin/kbconfig &
-/home/cs/.local/bin/kbrate &
-leds.sh &
+# /home/cs/.local/bin/kbrate &
+# leds.sh &
