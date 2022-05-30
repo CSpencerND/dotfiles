@@ -22,7 +22,7 @@ symbol = "[ ](yellow)"
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style)"
-truncation_length = 4
+truncation_length = 5
 truncation_symbol = "…/"
 style = "purple"
 read_only = ""

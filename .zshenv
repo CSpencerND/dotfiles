@@ -80,6 +80,7 @@ else
     export VISUAL='vim'
 fi
 
+# export VISUAL='lvim'
 export EDITOR=$VISUAL
 export SUDO_EDITOR=$VISUAL
 export TERMINAL="kitty"

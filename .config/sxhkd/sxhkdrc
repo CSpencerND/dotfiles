@@ -5,6 +5,9 @@
 super + g; {w, d, v, p, b, Escape}
     {firefox, discord, pavucontrol, picom-toggle.sh, blueberry, exit}
 
+super + w; {n, p, f, t}
+    {variety -n, variety -p, variety -f, variety -t}
+
 super + slash
     rofi -show drun
 

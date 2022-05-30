@@ -63,8 +63,8 @@ if [ -x "$(command -v lvim)" ]; then
     alias vi='lvim'
 elif [ -x "$(command -v nvim)" ]; then
     alias vi="nvim"
-    alias nv='nvim'
 fi
+alias nv='nvim'
 
 alias top='btop'
 
@@ -73,7 +73,7 @@ alias update="sudo pacman -Syyu && pacmod || pacmod"
 alias update-all="paru -Syu --noconfirm && pacmod || pacmod"
 alias pacman='sudo pacman --color auto'
 alias upgraded="grep -iE 'installed|upgraded' /var/log/pacman.log"
-alias ram='rate-mirrors --allow-root arch | sudo tee /etc/pacman.d/mirrorlist && pacmod'
+alias ram='rate-mirrors --allow-root --disable-comments --protocol https arch | sudo tee /etc/pacman.d/mirrorlist && pacmod'
 
 #Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'

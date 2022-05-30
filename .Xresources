@@ -83,9 +83,6 @@ URxvt.colorUL:      	 #87afd7
 !!! copy/paste colorcodes in
 !!! begin
 
-! special
-*.foreground:   #F9F9F9
-
 URxvt.background:   [80]#222222
 !URxvt.background:	#000000
 !URxvt.background:  rgba:2222/2222/2222/AAAA
@@ -94,38 +91,40 @@ URxvt.background:   [80]#222222
 
 *.cursorColor:  #c8c8c8
 
-! black
-*.color0:       #3f3f3f
-*.color8:       #545454
+*background: #1E1E2E
+*foreground: #D9E0EE
 
-! red
-*.color1:       #cc0000
-*.color9:       #fc5454
+! Gray
+*color0: #6E6C7E
+*color8: #988BA2
 
-! green
-*.color2:       #4e9a06
-*.color10:      #8ae234
+! Red
+*color1: #F28FAD
+*color9: #F28FAD
 
-! yellow
-*.color3:       #c4a000
-*.color11:      #fce94f
+! Green
+*color2: #ABE9B3
+*color10: #ABE9B3
 
-! blue
-*.color4:       #3465a4
-*.color12:      #94bff3
+! Yellow
+*color3: #FAE3B0
+*color11:  #FAE3B0
 
-! magenta
-*.color5:       #85678f
-*.color13:      #b294bb
+! Blue
+*color4: #96CDFB
+*color12: #96CDFB
 
-! cyan
-*.color6:       #06989a
-*.color14:      #93e0e3
+! Maguve
+*color5: #DDB6F2
+*color13: #DDB6F2
 
-! white
-*.color7:       #dcdccc
-*.color15:      #ffffff
+! Pink
+*color6: #F5C2E7
+*color14: #F5C2E7
 
+! Whites
+*color7: #C3BAC6
+*color15: #D9E0EE
 
 !!! end
 !!! get your color schemes from here
