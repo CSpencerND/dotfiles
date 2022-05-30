@@ -87,6 +87,7 @@ broadcom-wl
 btop
 btrfs-progs
 catfish
+catppuccin-gtk-theme
 cbatticon
 chromium
 clonezilla
@@ -158,6 +159,7 @@ gmrun
 gnome-disk-utility
 gnome-keyring
 gnu-netcat
+go
 goverlay-bin
 gpart
 gparted
@@ -285,13 +287,13 @@ mtools
 mtpfs
 mugshot
 mycli
+mysql-workbench
 nano
 nasm
 nbd
 ncdu
 ndisc6
 neofetch
-neovim
 network-manager-applet
 networkmanager
 networkmanager-openconnect
@@ -394,6 +396,7 @@ sof-firmware
 solaar-git
 speedtest-cli-git
 splix
+sqls-bin
 squashfs-tools
 stack
 starship
@@ -413,6 +416,7 @@ system76-firmware-daemon
 system76-power-git
 system76-scheduler-git
 systemd-manager
+tabnine
 tcpdump
 terminus-font
 termite

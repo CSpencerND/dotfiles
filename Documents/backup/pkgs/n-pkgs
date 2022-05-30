@@ -152,6 +152,7 @@ gmrun
 gnome-disk-utility
 gnome-keyring
 gnu-netcat
+go
 goverlay-bin
 gpart
 gparted
@@ -272,13 +273,13 @@ mpv
 mtools
 mtpfs
 mugshot
+mysql-workbench
 nano
 nasm
 nbd
 ncdu
 ndisc6
 neofetch
-neovim
 network-manager-applet
 networkmanager
 networkmanager-openconnect
