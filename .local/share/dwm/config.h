@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#include "themes/catppuccin.h"
+#include "themes/rose-pine.h"
 
 /* custom function */
 static void shiftmon(const Arg *arg);
@@ -32,7 +32,7 @@ static const char autostartsh[]          = "autostart.sh";
 static const char *layoutmenu_cmd        = "layoutmenu.sh";
 
 
-#define ICONSIZE 28    /* icon size */
+#define ICONSIZE 25    /* icon size */
 #define ICONSPACING 2  /* space between icon and title */
 /* Status is to be shown on: -1 (all monitors), 0 (a specific monitor by index), 'A' (active monitor) */
 static const int statusmon               = 'A';
@@ -82,7 +82,7 @@ static char *colors[][ColCount] = {
         },
 
 	[SchemeTagsNorm] = {
-                minor_color,
+                misc_color,
                 main_color,
                 unused,
                 unused
@@ -116,7 +116,7 @@ const char *spcmd3[] = { "st", "-c", "explore", "-g", "120x34", "-e", "ranger", 
 
 static Sp scratchpads[] = {
 	/* name       cmd  */
-        { "basic",    spcmd0 },
+    { "basic",    spcmd0 },
 	{ "task",     spcmd1 },
 	{ "note",     spcmd2 },
 	{ "explore",  spcmd3 },
