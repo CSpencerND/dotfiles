@@ -28,6 +28,8 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = {"haskell"}
 lvim.builtin.treesitter.highlight.enabled = true
+-- lvim.builtin.treesitter.context_commentstring.enable_autocmd = false
+-- lvim.lsp.document_highlight = false
 
 -- generic LSP settings
 local formatters = require "lvim.lsp.null-ls.formatters"
@@ -67,3 +69,4 @@ vim.opt.linebreak = true
 -- vim.opt.wrap = true
 vim.opt.hidden = true
 vim.opt.colorcolumn = "80"
+
