@@ -163,6 +163,7 @@ go
 goverlay-bin
 gpart
 gparted
+gpick
 gpm
 gptfdisk
 grep
@@ -261,6 +262,7 @@ lolcat
 lsb-release
 lsscsi
 lua-format
+luarocks
 lutris
 lvm2
 lxappearance
