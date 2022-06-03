@@ -173,6 +173,7 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer
 gtk3
+gucharmap
 gutenprint
 gvfs
 gvfs-afc

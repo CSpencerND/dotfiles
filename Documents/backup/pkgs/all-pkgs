@@ -181,6 +181,7 @@ gst-plugins-ugly
 gstreamer
 gtk-theme-arc-gruvbox-git
 gtk3
+gucharmap
 gutenprint
 gvfs
 gvfs-afc

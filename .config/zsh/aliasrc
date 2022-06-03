@@ -60,7 +60,8 @@ alias df='df -h'
 alias free='free -mt' 
 
 if [ -x "$(command -v lvim)" ]; then
-    alias vi='lvim'
+    alias lv='lvim'
+    alias vi="nvim"
 elif [ -x "$(command -v nvim)" ]; then
     alias vi="nvim"
 fi

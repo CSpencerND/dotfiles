@@ -72,9 +72,10 @@ SAVEHIST=10000
 # -----------------------------------------------------------------------------
 
 # Default Apps
-if [ -x "$(command -v lvim)" ]; then
-    export VISUAL='lvim'
-elif [ -x "$(command -v nvim)" ]; then
+# if [ -x "$(command -v lvim)" ]; then
+#     export VISUAL='lvim'
+# elif [ -x "$(command -v nvim)" ]; then
+if [ -x "$(command -v nvim)" ]; then
     export VISUAL='nvim'
 else
     export VISUAL='vim'
