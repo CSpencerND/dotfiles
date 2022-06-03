@@ -33,8 +33,9 @@ require "user.surround"
 require "user.telescope"
 require "user.todo-comments"
 require "user.toggleterm"
+require "user.ts-context"
 require "user.zen-mode"
-require "user.winbar"
+-- require "user.winbar"
 require "user.gps"
 
 -- Colorscheme

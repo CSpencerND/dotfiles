@@ -9,15 +9,10 @@ local icons = require "user.icons"
 -- local fg = vim.api.nvim_get_hl_by_name('DiffAdd', 0).background
 -- local bg = vim.api.nvim_get_hl_by_name('DiffAdd', 0).foreground
 
-local space = ""
-
-if vim.fn.has "mac" == 1 then
-  space = " "
-end
+local space = " "
 
 -- Customized config
 gps.setup {
-
   disable_icons = false, -- Setting it to true will disable all icons
 
   icons = {

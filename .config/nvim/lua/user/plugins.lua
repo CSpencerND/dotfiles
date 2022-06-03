@@ -115,7 +115,7 @@ return packer.startup(function(use)
         { "p00f/nvim-ts-rainbow" },
         "windwp/nvim-ts-autotag",
         "mizlan/iswap.nvim",
-        -- "nvim-treesitter/playground",
+        "nvim-treesitter/playground",
     }
 
     -------------------------------------------------------------------------------

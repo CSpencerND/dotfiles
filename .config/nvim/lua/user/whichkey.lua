@@ -393,6 +393,7 @@ local mappings = {
         name = "Treesitter",
         h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
+        t = { "<cmd>TSContextToggle<cr>", "Context Toggle" },
     },
 }
 

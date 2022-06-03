@@ -3,6 +3,11 @@ if not status_ok then
     return
 end
 
+local gps_ok, gps = pcall(require, "nvim-gps")
+if not gps_ok then
+    return
+end
+
 local icons_ok, icons = pcall(require, "user.icons")
 if not icons_ok then
     return
@@ -10,7 +15,7 @@ end
 
 -------------------------------------------------------------------------------
 
-local window_width_limit = 45
+local window_width_limit = 50
 
 local conditions = {
     buffer_not_empty = function()
@@ -20,6 +25,10 @@ local conditions = {
         return vim.fn.winwidth(0) > window_width_limit
     end,
 }
+
+local gps_cond = function()
+    return conditions.hide_in_width() and gps.is_available()
+end
 
 local function diff_source()
     local gitsigns = vim.b.gitsigns_status_dict
@@ -67,12 +76,10 @@ local lsp = {
         -- return "[" .. table.concat(buf_client_names, ", ") .. "]"
     end,
     icon = " ",
-    color = { gui = "bold", fg = "#c6c3ea", bg = "#1c1c2c" },
+    color = { gui = "bold", fg = "#d6d3ea", bg = "#2a273f" },
     cond = conditions.hide_in_width,
     separator = { left = "", right = "" },
 }
-
--------------------------------------------------------------------------------
 
 local branch = {
     "b:gitsigns_head",
@@ -92,17 +99,18 @@ local diff = {
     },
     cond = nil,
     color = { bg = "#26233a" },
+    separator = { left = "", right = "" },
 }
 
 local treesitter = {
     function()
         local b = vim.api.nvim_get_current_buf()
         if next(vim.treesitter.highlighter.active[b]) then
-            return " "
+            return ""
         end
         return ""
     end,
-    color = { fg = "#a6da95" },
+    color = { fg = "#86daa5", }, -- bg = "#1c1c2c"
     cond = conditions.hide_in_width,
 }
 
@@ -126,14 +134,16 @@ local scrollbar = {
         return chars[index]
     end,
     padding = { left = 0, right = 0 },
-    color = { fg = "#f6c177", bg = "#181825" },
+    color = { fg = "#f6c177", bg = "#21202e" },
     cond = nil,
 }
+
+-------------------------------------------------------------------------------
 
 lualine.setup {
     options = {
         -- theme = "rose-pine",
-        theme = "auto",
+        theme = require("user.statustheme"),
         icons_enabled = true,
 
         -- component_separators = "",
@@ -150,12 +160,21 @@ lualine.setup {
         globalstatus = false,
     },
     sections = {
-        lualine_a = { "mode" },
-        lualine_b = { branch },
-        lualine_c = { diff },
+        lualine_a = {
+            {
+                "mode",
+                fmt = function(str)
+                    return str:sub(1, 3)
+                end,
+            },
+        },
+        lualine_b = { branch, diff },
+        lualine_c = {
+            { gps.get_location, cond = gps_cond, color = { bg = "#1c1c2c" } },
+        },
         lualine_x = { "diagnostics", treesitter, lsp }, -- lsp },
         lualine_y = {
-            { "filetype", color = { bg = "#36334a", gui = "bold" } },
+            { "filetype", color = { bg = "#393552", gui = "bold" } },
         },
         lualine_z = { "location", scrollbar }, -- progress
     },
