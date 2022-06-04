@@ -1,5 +1,5 @@
 #define DARKER  "#161320"
-#define DARK    "#1e1e2e"
+#define DARK    "#1e1e2a"
 #define GREY    "#302D41"
 #define LGREY   "#575268"
 #define LIGHT   "#d9e0ee"

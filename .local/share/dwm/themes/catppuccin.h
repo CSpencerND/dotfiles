@@ -1,4 +1,4 @@
-static char dark[8]               = "#1e1e2e";
+static char dark[8]               = "#1e1e2a";
 static char grey[8]               = "#302d41";
 static char lgrey[8]              = "#575268";
 static char light[8]              = "#d9e0ee";
