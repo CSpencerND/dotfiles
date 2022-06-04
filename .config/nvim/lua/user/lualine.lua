@@ -76,7 +76,7 @@ local lsp = {
         -- return "[" .. table.concat(buf_client_names, ", ") .. "]"
     end,
     icon = " ",
-    color = { gui = "bold", fg = "#d6d3ea", bg = "#2a273f" },
+    color = { gui = "bold", fg = "#d6d3ea", bg = "#2a2737" },
     cond = conditions.hide_in_width,
     separator = { left = "", right = "" },
 }
@@ -84,7 +84,7 @@ local lsp = {
 local branch = {
     "b:gitsigns_head",
     icon = " ",
-    color = { gui = "bold", bg = "#36334a" },
+    color = { gui = "bold", bg = "#363347" },
     cond = conditions.hide_in_width,
     separator = { left = "", right = "" },
 }
@@ -98,7 +98,7 @@ local diff = {
         removed = icons.git.Remove .. " ",
     },
     cond = nil,
-    color = { bg = "#26233a" },
+    color = { bg = "#262337" },
     separator = { left = "", right = "" },
 }
 
@@ -110,7 +110,7 @@ local treesitter = {
         end
         return ""
     end,
-    color = { fg = "#86daa5", }, -- bg = "#1c1c2c"
+    color = { fg = "#86daa5", }, -- bg = "#1c1c29"
     cond = conditions.hide_in_width,
 }
 
@@ -134,7 +134,7 @@ local scrollbar = {
         return chars[index]
     end,
     padding = { left = 0, right = 0 },
-    color = { fg = "#f6c177", bg = "#21202e" },
+    color = { fg = "#f6c177", bg = "#21202a" },
     cond = nil,
 }
 
@@ -170,11 +170,11 @@ lualine.setup {
         },
         lualine_b = { branch, diff },
         lualine_c = {
-            -- { gps.get_location, cond = gps_cond, color = { bg = "#1c1c2c", fg =  "#1c1c2c" } },
+            -- { gps.get_location, cond = gps_cond, color = { bg = "#1c1c29", fg =  "#1c1c29" } },
         },
         lualine_x = { "diagnostics", treesitter, lsp }, -- lsp },
         lualine_y = {
-            { "filetype", color = { bg = "#393552", gui = "bold" } },
+            { "filetype", color = { bg = "#393547", gui = "bold" } },
         },
         lualine_z = { "location", scrollbar }, -- progress
     },

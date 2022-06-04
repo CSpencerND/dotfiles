@@ -13,7 +13,7 @@ rose.setup {
     disable_italics = false,
     ---@usage string hex value or named color from rosepinetheme.com/palette
     groups = {
-        background = "#1e1e2e", -- base
+        background = "#1e1e2a", -- base
         panel = "surface",
         border = "highlight_med",
         comment = "muted",
