@@ -110,7 +110,7 @@ return packer.startup(function(use)
 
     use { -- Treesitter / Syntax Highlighting
         { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
-        "romgrk/nvim-treesitter-context",
+        -- "romgrk/nvim-treesitter-context",
         "JoosepAlviste/nvim-ts-context-commentstring",
         { "p00f/nvim-ts-rainbow" },
         "windwp/nvim-ts-autotag",
@@ -171,15 +171,15 @@ return packer.startup(function(use)
             "folke/trouble.nvim",
             cmd = "TroubleToggle",
         },
-        {
-            "christianchiarulli/nvim-gps",
-            branch = "text_hl",
-            requires = "nvim-treesitter/nvim-treesitter",
-        },
         -- {
-        --     "SmiteshP/nvim-gps",
-        --     requires = "nvim-treesitter/nvim-treesitter"
+        --     "christianchiarulli/nvim-gps",
+        --     branch = "text_hl",
+        --     requires = "nvim-treesitter/nvim-treesitter",
         -- },
+        {
+            "SmiteshP/nvim-gps",
+            requires = "nvim-treesitter/nvim-treesitter"
+        },
     }
 
     use { -- Navigation

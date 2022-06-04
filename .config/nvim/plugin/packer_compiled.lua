@@ -314,7 +314,7 @@ _G.packer_plugins = {
   ["nvim-gps"] = {
     loaded = true,
     path = "/home/cs/.local/share/nvim/site/pack/packer/start/nvim-gps",
-    url = "https://github.com/christianchiarulli/nvim-gps"
+    url = "https://github.com/SmiteshP/nvim-gps"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
@@ -345,11 +345,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/cs/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
-  },
-  ["nvim-treesitter-context"] = {
-    loaded = true,
-    path = "/home/cs/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
-    url = "https://github.com/romgrk/nvim-treesitter-context"
   },
   ["nvim-ts-autotag"] = {
     loaded = true,

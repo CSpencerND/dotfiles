@@ -3,10 +3,10 @@ if not status_ok then
     return
 end
 
-local gps_ok, gps = pcall(require, "nvim-gps")
-if not gps_ok then
-    return
-end
+-- local gps_ok, gps = pcall(require, "nvim-gps")
+-- if not gps_ok then
+--     return
+-- end
 
 local icons_ok, icons = pcall(require, "user.icons")
 if not icons_ok then
@@ -26,9 +26,9 @@ local conditions = {
     end,
 }
 
-local gps_cond = function()
-    return conditions.hide_in_width() and gps.is_available()
-end
+-- local gps_cond = function()
+--     return conditions.hide_in_width() and gps.is_available()
+-- end
 
 local function diff_source()
     local gitsigns = vim.b.gitsigns_status_dict
@@ -164,13 +164,13 @@ lualine.setup {
             {
                 "mode",
                 fmt = function(str)
-                    return str:sub(1, 3)
+                    return " " .. str:lower() -- :sub(1, 3)
                 end,
             },
         },
         lualine_b = { branch, diff },
         lualine_c = {
-            { gps.get_location, cond = gps_cond, color = { bg = "#1c1c2c" } },
+            -- { gps.get_location, cond = gps_cond, color = { bg = "#1c1c2c", fg =  "#1c1c2c" } },
         },
         lualine_x = { "diagnostics", treesitter, lsp }, -- lsp },
         lualine_y = {
