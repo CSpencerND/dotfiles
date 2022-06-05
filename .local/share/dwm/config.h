@@ -10,7 +10,7 @@ static const unsigned int borderpxf      = 1;   /* border pixel of floating wind
 
 static const unsigned int snap           = 8;  /* snap pixel */
 static const int scalepreview            = 3;        /* Tag preview scaling */
-static const int tag_preview             = 1;
+static const int tag_preview             = 0;
 
 static const unsigned int gappih         = 12;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 12;  /* vert inner gap between windows */
