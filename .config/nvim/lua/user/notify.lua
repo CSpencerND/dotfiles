@@ -7,10 +7,12 @@ local icons = require "user.icons"
 
 notify.setup {
     -- Animation style (see below for details)
-    stages = "slide",
+    stages = "fade",
 
     -- Function called when a new window is opened, use for changing win settings/config
-    on_open = nil,
+    on_open = function(win)
+        vim.api.nvim_win_set_option(win, "wrap", true)
+    end,
 
     -- Function called when a window is closed
     on_close = nil,

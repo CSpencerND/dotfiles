@@ -156,7 +156,7 @@ local mappings = {
         "<cmd>lua require('telescope').extensions.projects.projects()<cr>",
         "Projects",
     },
-    -- ["R"] = { '<cmd>lua require("renamer").rename()<cr>', "Rename" },
+    ["R"] = { '<cmd>lua require("renamer").rename()<cr>', "Rename" },
     ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
     ["gy"] = "Link",
 
@@ -208,24 +208,24 @@ local mappings = {
         },
     },
 
-    s = {
+    S = {
         name = "Split",
         s = { "<cmd>split<cr>", "HSplit" },
         v = { "<cmd>vsplit<cr>", "VSplit" },
     },
 
-    r = {
-        name = "Replace",
-        r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-        w = {
-            "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
-            "Replace Word",
-        },
-        f = {
-            "<cmd>lua require('spectre').open_file_search()<cr>",
-            "Replace Buffer",
-        },
-    },
+    -- r = {
+    --     name = "Replace",
+    --     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+    --     w = {
+    --         "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+    --         "Replace Word",
+    --     },
+    --     f = {
+    --         "<cmd>lua require('spectre').open_file_search()<cr>",
+    --         "Replace Buffer",
+    --     },
+    -- },
 
     d = {
         name = "Debug",
@@ -330,7 +330,7 @@ local mappings = {
         l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
         o = { "<cmd>SymbolsOutline<cr>", "Outline" },
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+
         R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = {
@@ -343,32 +343,32 @@ local mappings = {
         },
     },
 
-    -- s = {
-    --   name = "Surround",
-    --   ["."] = { "<cmd>lua require('surround').repeat_last()<cr>", "Repeat" },
-    --   a = { "<cmd>lua require('surround').surround_add(true)<cr>", "Add" },
-    --   d = { "<cmd>lua require('surround').surround_delete()<cr>", "Delete" },
-    --   r = { "<cmd>lua require('surround').surround_replace()<cr>", "Replace" },
-    --   q = { "<cmd>lua require('surround').toggle_quotes()<cr>", "Quotes" },
-    --   b = { "<cmd>lua require('surround').toggle_brackets()<cr>", "Brackets" },
-    -- },
+    s = {
+      name = "Surround",
+      ["."] = { "<cmd>lua require('surround').repeat_last()<cr>", "Repeat" },
+      a = { "<cmd>lua require('surround').surround_add(true)<cr>", "Add" },
+      d = { "<cmd>lua require('surround').surround_delete()<cr>", "Delete" },
+      r = { "<cmd>lua require('surround').surround_replace()<cr>", "Replace" },
+      q = { "<cmd>lua require('surround').toggle_quotes()<cr>", "Quotes" },
+      b = { "<cmd>lua require('surround').toggle_brackets()<cr>", "Brackets" },
+    },
 
-    S = {
+    -- S = {
         -- name = "Session",
         -- s = { "<cmd>SaveSession<cr>", "Save" },
         -- l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
         -- d = { "<cmd>LoadCurrentDirSession!<cr>", "Load Last Dir" },
         -- f = { "<cmd>Telescope sessions save_current=false<cr>", "Find Session" },
-        name = "SnipRun",
-        c = { "<cmd>SnipClose<cr>", "Close" },
-        f = { "<cmd>%SnipRun<cr>", "Run File" },
-        i = { "<cmd>SnipInfo<cr>", "Info" },
-        m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
-        r = { "<cmd>SnipReset<cr>", "Reset" },
-        t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
-        x = { "<cmd>SnipTerminate<cr>", "Terminate" },
-    },
-
+    --     name = "SnipRun",
+    --     c = { "<cmd>SnipClose<cr>", "Close" },
+    --     f = { "<cmd>%SnipRun<cr>", "Run File" },
+    --     i = { "<cmd>SnipInfo<cr>", "Info" },
+    --     m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
+    --     r = { "<cmd>SnipReset<cr>", "Reset" },
+    --     t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
+    --     x = { "<cmd>SnipTerminate<cr>", "Terminate" },
+    -- },
+    --
     t = {
         name = "Terminal",
         ["1"] = { ":1ToggleTerm<cr>", "1" },
@@ -393,6 +393,10 @@ local mappings = {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         t = { "<cmd>TSContextToggle<cr>", "Context Toggle" },
     },
+
+    -- TODO: Create a function for this. Takes 2 string args; the find and the replace
+    r = { ":%s/", "Find and Replace" },
+
 }
 
 local vopts = {

@@ -55,7 +55,7 @@ local get_gps = function()
     end
 
     if not require("user.functions").isempty(gps_location) then
-        return require("user.icons").ui.ChevronRight .. " " .. gps_location
+        return "%#Comment#" .. require("user.icons").ui.ChevronRight .. "%*" .. " " .. gps_location
     else
         return ""
     end
