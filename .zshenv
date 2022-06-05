@@ -14,6 +14,7 @@ export PATH="$PATH:$HOME/.local/statusbar"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/bin/polyscr"
 export PATH="$PATH:$HOME/.config/nvim/utils/bin"
+export PATH="$PATH:$XDG_DATA_HOME/gem/ruby/3.0.0/bin"
 # export PATH="$PATH:$HOME/.local/share/npm/lib/node_modules/.bin"
 # export PATH="$PATH:$HOME/node_modules/.bin"
 
@@ -60,6 +61,7 @@ export STACK_ROOT="$XDG_DATA_HOME"/stack
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc 
 export SSB_HOME="$XDG_DATA_HOME"/zoom
 # export ALSA_CONFIG_DIR="$XDG_CONFIG_HOME/alsa/asoundrc"
+export ANDROID_HOME="$XDG_DATA_HOME"/android
 
 #zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
