@@ -105,6 +105,20 @@ local g_opts = {
     nowait = true, -- use `nowait` when creating keymaps
 }
 
+local r_opts = {
+    mode = "n", -- NORMAL mode
+    prefix = "r",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+}
+
+local r_mappings = {
+    r = { "<cmd>lua require('renamer').rename()<cr>", "Renamer" },
+    s = { ":%s/", "sed" },
+}
+
 local m_mappings = {
     a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
     c = { "<cmd>BookmarkClear<cr>", "Clear" },
@@ -156,7 +170,6 @@ local mappings = {
         "<cmd>lua require('telescope').extensions.projects.projects()<cr>",
         "Projects",
     },
-    ["R"] = { '<cmd>lua require("renamer").rename()<cr>', "Rename" },
     ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
     ["gy"] = "Link",
 
@@ -214,18 +227,18 @@ local mappings = {
         v = { "<cmd>vsplit<cr>", "VSplit" },
     },
 
-    -- r = {
-    --     name = "Replace",
-    --     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-    --     w = {
-    --         "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
-    --         "Replace Word",
-    --     },
-    --     f = {
-    --         "<cmd>lua require('spectre').open_file_search()<cr>",
-    --         "Replace Buffer",
-    --     },
-    -- },
+    ["R"] = {
+        name = "Replace",
+        r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+        w = {
+            "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+            "Replace Word",
+        },
+        f = {
+            "<cmd>lua require('spectre').open_file_search()<cr>",
+            "Replace Buffer",
+        },
+    },
 
     d = {
         name = "Debug",
@@ -393,10 +406,6 @@ local mappings = {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         t = { "<cmd>TSContextToggle<cr>", "Context Toggle" },
     },
-
-    -- TODO: Create a function for this. Takes 2 string args; the find and the replace
-    r = { ":%s/", "Find and Replace" },
-
 }
 
 local vopts = {
@@ -420,3 +429,4 @@ which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
 which_key.register(m_mappings, m_opts)
 which_key.register(g_mappings, g_opts)
+which_key.register(r_mappings, r_opts)
