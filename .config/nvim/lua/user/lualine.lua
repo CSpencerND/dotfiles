@@ -76,7 +76,7 @@ local lsp = {
         -- return "[" .. table.concat(buf_client_names, ", ") .. "]"
     end,
     icon = " ",
-    color = { gui = "bold", fg = "#d6d3ea", bg = "#2a2737" },
+    color = { gui = "bold", fg = "#d6d3ea", bg = "#2d2b3a" },
     cond = conditions.hide_in_width,
     separator = { left = "", right = "" },
 }
@@ -98,7 +98,7 @@ local diff = {
         removed = icons.git.Remove .. " ",
     },
     cond = nil,
-    color = { bg = "#262337" },
+    color = { bg = "#2d2b3a" },
     separator = { left = "", right = "" },
 }
 
