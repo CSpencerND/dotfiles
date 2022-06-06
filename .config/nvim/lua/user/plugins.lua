@@ -165,10 +165,12 @@ return packer.startup(function(use)
         "Mephistophiles/surround.nvim",
         "RRethy/vim-illuminate",
         "windwp/nvim-spectre",
-        "filipdutescu/renamer.nvim",
         "simrat39/symbols-outline.nvim",
-        "simrat39/symbols-outline.nvim",
-        "filipdutescu/renamer.nvim",
+        {
+            "filipdutescu/renamer.nvim",
+            branch = "master",
+            requires = { { "nvim-lua/plenary.nvim" } },
+        },
         {
             "folke/trouble.nvim",
             cmd = "TroubleToggle",
