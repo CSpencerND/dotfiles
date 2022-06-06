@@ -1,5 +1,5 @@
 #define DARK    "#232136"
-#define GREY    "#2a283e" // #2a273f #2a283e #393552
+#define GREY    "#2f2d37" // #2f2d3e #2a283e #393552
 #define LIGHT   "#d9e0ee"
 #define MAGENTA "#ea9a97"
 #define PURPLE  "#c4a7e7"
