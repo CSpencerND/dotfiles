@@ -43,11 +43,11 @@ local setup = {
         scroll_up = "<c-u>", -- binding to scroll up inside the popup
     },
     window = {
-        border = "rounded", -- none, single, double, shadow
+        border = "none", -- none, single, double, shadow, rounded
         position = "bottom", -- bottom, top
+        winblend = 0,
         margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
         padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-        winblend = 0,
     },
     layout = {
         height = { min = 4, max = 25 }, -- min and max height of the columns
@@ -103,20 +103,6 @@ local g_opts = {
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
-}
-
-local r_opts = {
-    mode = "n", -- NORMAL mode
-    prefix = "r",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
-}
-
-local r_mappings = {
-    r = { "<cmd>lua require('renamer').rename()<cr>", "Renamer" },
-    s = { ":%s/", "sed" },
 }
 
 local m_mappings = {
@@ -227,7 +213,7 @@ local mappings = {
         v = { "<cmd>vsplit<cr>", "VSplit" },
     },
 
-    ["R"] = {
+    R = {
         name = "Replace",
         r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
         w = {
@@ -238,6 +224,11 @@ local mappings = {
             "<cmd>lua require('spectre').open_file_search()<cr>",
             "Replace Buffer",
         },
+    },
+
+    r = {
+        r = { "<cmd>lua require('renamer').rename()<cr>", "Renamer" },
+        s = { ":%s/", "sed" },
     },
 
     d = {
@@ -279,6 +270,10 @@ local mappings = {
         R = { "<cmd>Telescope registers<cr>", "Registers" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         C = { "<cmd>Telescope commands<cr>", "Commands" },
+        p = {
+          "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
+          "Colorscheme with Preview",
+        },
     },
 
     g = {
@@ -357,21 +352,27 @@ local mappings = {
     },
 
     s = {
-      name = "Surround",
-      ["."] = { "<cmd>lua require('surround').repeat_last()<cr>", "Repeat" },
-      a = { "<cmd>lua require('surround').surround_add(true)<cr>", "Add" },
-      d = { "<cmd>lua require('surround').surround_delete()<cr>", "Delete" },
-      r = { "<cmd>lua require('surround').surround_replace()<cr>", "Replace" },
-      q = { "<cmd>lua require('surround').toggle_quotes()<cr>", "Quotes" },
-      b = { "<cmd>lua require('surround').toggle_brackets()<cr>", "Brackets" },
+        name = "Surround",
+        ["."] = { "<cmd>lua require('surround').repeat_last()<cr>", "Repeat" },
+        a = { "<cmd>lua require('surround').surround_add(true)<cr>", "Add" },
+        d = { "<cmd>lua require('surround').surround_delete()<cr>", "Delete" },
+        r = {
+            "<cmd>lua require('surround').surround_replace()<cr>",
+            "Replace",
+        },
+        q = { "<cmd>lua require('surround').toggle_quotes()<cr>", "Quotes" },
+        b = {
+            "<cmd>lua require('surround').toggle_brackets()<cr>",
+            "Brackets",
+        },
     },
 
     -- S = {
-        -- name = "Session",
-        -- s = { "<cmd>SaveSession<cr>", "Save" },
-        -- l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
-        -- d = { "<cmd>LoadCurrentDirSession!<cr>", "Load Last Dir" },
-        -- f = { "<cmd>Telescope sessions save_current=false<cr>", "Find Session" },
+    -- name = "Session",
+    -- s = { "<cmd>SaveSession<cr>", "Save" },
+    -- l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
+    -- d = { "<cmd>LoadCurrentDirSession!<cr>", "Load Last Dir" },
+    -- f = { "<cmd>Telescope sessions save_current=false<cr>", "Find Session" },
     --     name = "SnipRun",
     --     c = { "<cmd>SnipClose<cr>", "Close" },
     --     f = { "<cmd>%SnipRun<cr>", "Run File" },
@@ -429,4 +430,3 @@ which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
 which_key.register(m_mappings, m_opts)
 which_key.register(g_mappings, g_opts)
-which_key.register(r_mappings, r_opts)

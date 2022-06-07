@@ -49,7 +49,6 @@ return packer.startup(function(use)
         "nvim-lua/popup.nvim",
         "kyazdani42/nvim-tree.lua",
         "akinsho/bufferline.nvim",
-        "tamton-aquib/staline.nvim",
         "folke/which-key.nvim",
         "akinsho/toggleterm.nvim",
         "goolord/alpha-nvim",
