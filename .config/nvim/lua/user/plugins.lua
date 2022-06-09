@@ -209,6 +209,7 @@ return packer.startup(function(use)
         "tpope/vim-repeat",
         "metakirby5/codi.vim",
         "folke/zen-mode.nvim",
+        "Djancyp/cheat-sheet",
     }
 
     use { -- Utilities
