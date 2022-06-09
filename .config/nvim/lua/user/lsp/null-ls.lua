@@ -15,7 +15,7 @@ null_ls.setup {
         -- formatting
         formatting.stylua,
         formatting.rustfmt,
-        formatting.prettier.with { extra_args = { } },
+        formatting.prettier,
         formatting.black, -- .with({ extra_args = { "--fast" } }),
         formatting.shfmt,
         formatting.codespell.with { filetypes = { "markdown", "txt" } },

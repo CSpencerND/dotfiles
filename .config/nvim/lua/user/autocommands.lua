@@ -78,9 +78,9 @@ vim.api.nvim_create_autocmd(
     }
 )
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+vim.api.nvim_create_autocmd({ "BufWinEnter", "BufRead", "BufNewFile" }, {
     callback = function()
-        vim.cmd "set formatoptions-=cro"
+        vim.cmd "setlocal formatoptions-=r formatoptions-=c formatoptions-=o"
     end,
 })
 

@@ -197,6 +197,7 @@ return packer.startup(function(use)
             -- branch = "main", -- timely updates
             requires = { "kyazdani42/nvim-web-devicons" }, -- optional
         },
+        "MattesGroeger/vim-bookmarks",
     }
 
     use { -- Vim Perks
