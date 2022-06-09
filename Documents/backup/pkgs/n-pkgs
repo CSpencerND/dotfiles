@@ -62,7 +62,6 @@ arcolinux-xfce-git
 arcolinux-zsh-git
 asciinema
 aspell
-atom
 autoconf
 automake
 autorandr
@@ -386,7 +385,6 @@ stack
 starship
 steam
 sticky-git
-sublime-text-4
 sudo
 surfn-icons-git
 syslinux

@@ -111,3 +111,7 @@ super + XF86AudioRaiseVolume
 #Brightness down
 super + XF86AudioLowerVolume
     xbacklight -dec 10
+
+#Play/Pause
+super + F12
+    playerctl play-pause
