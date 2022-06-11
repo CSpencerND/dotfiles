@@ -18,7 +18,7 @@ null_ls.setup {
         formatting.prettier,
         formatting.black, -- .with({ extra_args = { "--fast" } }),
         formatting.shfmt,
-        formatting.codespell.with { filetypes = { "markdown", "txt" } },
+        formatting.codespell.with { filetypes = { "markdown", "txt", "html" } },
 
         -- diagnostics
         diagnostics.flake8,
