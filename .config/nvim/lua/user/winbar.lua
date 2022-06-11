@@ -74,20 +74,18 @@ M.get_winbar = function()
         return
     end
     local f = require "user.functions"
-    -- local value = get_filename()
-    local value = " "
+    local value = get_filename()
 
     local gps_added = false
     if not f.isempty(value) then
         local gps_value = get_gps()
-        value = "    " .. gps_value
+        value = value .. " " .. gps_value
         if not f.isempty(gps_value) then
             gps_added = true
         end
     end
 
     if not f.isempty(value) and f.get_buf_option "mod" then
-        -- value = " "
         local mod = "%#LineNr#" .. require("user.icons").ui.Circle .. "%*"
         if gps_added then
             value = value .. " " .. mod
