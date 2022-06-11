@@ -52,11 +52,14 @@ super + shift + p
     s76-power-base
 
 # Screenshots
+Print
+    flameshot screen
+
+control + Print
+    flameshot screen -c
+
 super + Print
     flameshot gui
-
-Print
-    flameshot screen -r
 
 #reload sxhkd:
 super + backslash
