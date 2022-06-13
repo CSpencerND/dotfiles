@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-# if [ -e /dev/input/by-id/usb-Logitech_G815_RGB_MECHANICAL_GAMING_KEYBOARD_015938683232-event-kbd ]; then
-  # /usr/bin/kmonad /home/"$USER"/.config/kmonad/main.kbd &
-# else
-#   echo "Logitech Keyboard Not Found"
-# fi
+if [ -e /dev/input/by-id/usb-Logitech_G815_RGB_MECHANICAL_GAMING_KEYBOARD_015938683232-event-kbd ]; then
+	/usr/bin/kmonad /home/"$USER"/.config/kmonad/full.kbd &
+	/home/"$USER"/.local/bin/leds.sh &
+elif [ -e /dev/input/by-id/usb-System76_Launch_Configurable_Keyboard__launch_1_-event-kbd ]; then
+	/usr/bin/kmonad /home/"$USER"/.config/kmonad/tkl.kbd &
+fi
 
-/usr/bin/kmonad /home/"$USER"/.config/kmonad/main.kbd &
 sleep 2
 /home/"$USER"/.local/bin/kbrate
-/home/"$USER"/.local/bin/leds.sh
