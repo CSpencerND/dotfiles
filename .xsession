@@ -8,5 +8,4 @@ xbacklight -set 100
 
 variety &
 sxhkd &
-/home/cs/.local/bin/kbconfig &
-# /home/cs/.local/bin/kbrate &
+/home/cs/.local/bin/kbconfig || /home/cs/.local/bin/kbrate &

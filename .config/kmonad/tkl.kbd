@@ -1,4 +1,4 @@
-(defcfg   input (device-file "/dev/input/by-id/usb-System76_Launch_Configurable_Keyboard__launch_1_-if02-event-kbd")
+(defcfg   input (device-file "/dev/input/by-id/usb-System76_Launch_Configurable_Keyboard__launch_1_-event-kbd")
           output (uinput-sink "My KMonad output")
           fallthrough true
           allow-cmd true
