@@ -40,7 +40,7 @@ nvim_tree.setup {
         },
     },
     hijack_directories = {
-        enable = false,
+        enable = true,
     },
     -- update_to_buf_dir = {
     --   enable = false,

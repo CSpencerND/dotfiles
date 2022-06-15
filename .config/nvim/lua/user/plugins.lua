@@ -150,7 +150,8 @@ return packer.startup(function(use)
         "mfussenegger/nvim-dap",
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
-        "Pocco81/DAPInstall.nvim",
+        "ravenxrz/DAPInstall.nvim",
+        -- "Pocco81/dap-buddy.nvim",
     }
 
     -------------------------------------------------------------------------------
