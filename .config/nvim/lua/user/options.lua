@@ -50,7 +50,7 @@ vim.opt.fillchars.eob = " "
 vim.opt.shortmess:append "c"
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
+-- vim.cmd [[set iskeyword+=-]] -- makes vim treat hyphenated word as a whole word
 
 vim.filetype.add {
     extension = {
