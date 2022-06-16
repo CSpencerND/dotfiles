@@ -41,7 +41,7 @@ super + F1
 super + F2
     ~/.screenlayout/2screens.sh && ~/.fehbg
 
-super + Escape
+super + shift + Escape
     xkill
 # management }}}
 
