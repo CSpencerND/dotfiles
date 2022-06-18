@@ -18,6 +18,7 @@ local servers = {
     "yamlls",
     "bashls",
     "clangd",
+    "tailwindcss",
 }
 
 local settings = {

@@ -157,6 +157,7 @@ return packer.startup(function(use)
     -------------------------------------------------------------------------------
 
     use { -- Basic Editor Stuff
+        "mg979/vim-visual-multi",
         "windwp/nvim-autopairs",
         "numToStr/Comment.nvim",
         "lukas-reineke/indent-blankline.nvim",

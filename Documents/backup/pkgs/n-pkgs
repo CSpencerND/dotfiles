@@ -98,7 +98,6 @@ darkhttpd
 dash
 dconf-editor
 ddrescue
-deadbeef
 dex
 dhclient
 dialog
@@ -354,6 +353,7 @@ realtime-privileges
 redshift
 reflector
 reiserfsprogs
+rhythmbox
 ripgrep
 ristretto
 rofi
