@@ -72,10 +72,12 @@ alias top='btop'
 
 ### Pacman
 alias update="sudo pacman -Syyu && pacmod || pacmod"
-alias update-all="paru -Syu --noconfirm && pacmod || pacmod"
+alias upall="paru -Syu --noconfirm && pacmod || pacmod"
 alias pacman='sudo pacman --color auto'
 alias upgraded="grep -iE 'installed|upgraded' /var/log/pacman.log"
 alias ram='rate-mirrors --allow-root --disable-comments --protocol https arch | sudo tee /etc/pacman.d/mirrorlist && pacmod'
+alias paruskip='paru -S --mflags --skipinteg'
+alias yayskip='yay -S --mflags --skipinteg'
 
 #Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
