@@ -89,6 +89,7 @@ catfish
 catppuccin-gtk-theme
 cbatticon
 chromium
+chrony
 clonezilla
 codespell
 cryptsetup
@@ -367,6 +368,7 @@ quickemu-git
 quickgui-bin
 ranger
 realtime-privileges
+reaper
 redshift
 reflector
 reiserfsprogs
@@ -500,10 +502,12 @@ vim-vital
 virtualbox
 volumeicon
 vpnc
+vscode-tailwindcss-language-server-bin
 vscodium
 vscodium-marketplace
 vulkan-intel
 w3m
+webcord
 webkit2gtk
 wget
 which

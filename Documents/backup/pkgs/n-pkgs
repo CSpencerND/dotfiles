@@ -87,6 +87,7 @@ btrfs-progs
 catfish
 cbatticon
 chromium
+chrony
 clonezilla
 codespell
 cryptsetup
@@ -350,6 +351,7 @@ quickemu-git
 quickgui-bin
 ranger
 realtime-privileges
+reaper
 redshift
 reflector
 reiserfsprogs
