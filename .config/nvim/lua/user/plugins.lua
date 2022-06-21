@@ -104,6 +104,10 @@ return packer.startup(function(use)
         "tamago324/nlsp-settings.nvim", -- language server settings defined in json for formatters and linters
         "jose-elias-alvarez/null-ls.nvim",
         "ray-x/lsp_signature.nvim",
+        -- {
+        --     "ray-x/lsp_signature.nvim",
+        --     commit = "4852d99f9511d090745d3cc1f09a75772b9e07e9",
+        -- },
         "nvim-lua/lsp-status.nvim",
     }
 
