@@ -1,14 +1,13 @@
 #!/bin/zsh
 
+# whether to skip timeshift autosnap on updates
+export SKIPAUTOSNAP=false
+
 #Cuz it looks nice :)
 # colorscript random
 
 alias clear='clear -x; echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo; echo'
 clear
-
-# Load aliases and shortcuts if existent:
-[ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
-# export LC_CTYPE=en_US.UTF-8
 
 # Enable colors and change prompt:
 autoload -U colors && colors
@@ -16,6 +15,32 @@ autoload -U colors && colors
 # Configure color-scheme
 COLOR_SCHEME=dark # dark/light
 
+# -----------------------------------------------------------------------------
+
+# Default Apps
+export VISUAL="nvim"
+export EDITOR=$VISUAL
+export SUDO_EDITOR=$VISUAL
+export TERMINAL="kitty"
+export COLORTERM="truecolor"
+export MANPAGER="'$VISUAL' +Man!"
+export MANWIDTH=999
+export PAGER="less"
+
+# colorize man pages
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+export LESSHISTFILE=-
+
+# -----------------------------------------------------------------------------
+
+# Load aliases and shortcuts if existent:
+[ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
 
 # ZSH completion system
 zmodload zsh/complist

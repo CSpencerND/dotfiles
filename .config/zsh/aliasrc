@@ -14,11 +14,11 @@ alias bkp="backup push"
 
 ### Navigation Shortcuts
 # alias lvp='cd ~/.local/share/lunarvim/lvim/lua/user/'
-alias qtc="vi ~/.config/qtile/config.py"
 alias cddwm="cd ~/.local/share/dwm"
 alias cdsl="cd ~/.local/share/slstatus"
 alias cdsb="cd ~/.local/statusbar"
-alias nvz="nv ~/.zshenv"
+alias nvz="$EDITOR ~/.config/zsh/.zshrc"
+alias qtc="$EDITOR ~/.config/qtile/config.py"
 
 ### Colorize commands
 alias ls='ls --color=auto'

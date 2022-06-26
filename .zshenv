@@ -71,37 +71,4 @@ HIST_STAMPS=mm/dd/yyyy
 HISTSIZE=10000
 SAVEHIST=10000
 
-# -----------------------------------------------------------------------------
-
-# Default Apps
-# if [ -x "$(command -v lvim)" ]; then
-#     export VISUAL='lvim'
-# elif [ -x "$(command -v nvim)" ]; then
-if [ -x "$(command -v nvim)" ]; then
-    export VISUAL='nvim'
-else
-    export VISUAL='vim'
-fi
-
-# export VISUAL='lvim'
-export EDITOR=$VISUAL
-export SUDO_EDITOR=$VISUAL
-export TERMINAL="kitty"
-export COLORTERM="truecolor"
-# export MANPAGER='lvim +Man!'
-# export MANWIDTH=999
-# export PAGER="less"
-
-# colorize man pages
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
-export LESSHISTFILE=-
-
-# -----------------------------------------------------------------------------
-
 unclutter --timeout 3 -b
