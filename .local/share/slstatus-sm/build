@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+touch ./components/battery_icon.c
+touch ./config.h
+make

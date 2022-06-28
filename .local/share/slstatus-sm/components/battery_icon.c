@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "../util.h"
+#include "../theme.h"
 
 const char *
 battery_icon(void)
@@ -59,6 +60,5 @@ battery_icon(void)
     }
 
     // output the data
-    // return bprintf("%s%d%%", icon, perc);
-    return bprintf("^c#383c4a^^b#8be9fd^ %s^c#8be9fd^^b#383c4a^ %d%% ", icon, perc);
+    return bprintf("^c%s^^b%s^ %s^c%s^^b%s^ %d%% ", GREY, BAT, icon, BAT, GREY, perc);
 }

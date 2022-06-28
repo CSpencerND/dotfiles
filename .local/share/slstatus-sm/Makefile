@@ -6,34 +6,34 @@ include config.mk
 
 REQ = util
 COM =\
-	components/battery\
-	components/cpu\
 	components/datetime\
-	components/disk\
-	components/entropy\
-	components/hostname\
-	components/ip\
-	components/kernel_release\
-	components/keyboard_indicators\
-	components/keymap\
-	components/load_avg\
-	components/netspeeds\
-	components/num_files\
-	components/ram\
 	components/run_command\
 	components/seperator\
-	components/swap\
 	components/temperature\
-	components/uptime\
-	components/user\
-	components/volume\
-	components/wifi\
-	components/battery_icon
+	components/battery_icon\
+	# components/battery\
+	# components/cpu\
+	# components/disk\
+	# components/entropy\
+	# components/hostname\
+	# components/ip\
+	# components/kernel_release\
+	# components/keyboard_indicators\
+	# components/keymap\
+	# components/load_avg\
+	# components/netspeeds\
+	# components/num_files\
+	# components/ram\
+	# components/swap\
+	# components/uptime\
+	# components/user\
+	# components/volume\
+	# components/wifi\
 
 all: slstatus
 
 $(COM:=.o): config.mk $(REQ:=.h)
-slstatus.o: slstatus.c slstatus.h arg.h config.h config.mk $(REQ:=.h)
+slstatus.o: slstatus.c slstatus.h arg.h config.h theme.h config.mk $(REQ:=.h)
 
 .c.o:
 	$(CC) -o $@ -c $(CPPFLAGS) $(CFLAGS) $<
