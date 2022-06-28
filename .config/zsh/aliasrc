@@ -5,7 +5,13 @@ alias cd..="cd .."
 alias pdw="pwd"
 alias se="sudoedit"
 
-### Lazy Backup Git
+### Git
+alias gts="git status"
+alias gta="git add"
+alias gtc="git commit"
+alias gtp="git push"
+
+### Backup Git
 alias bks="backup status"
 alias bka="backup add"
 alias bkau="backup add -u && backup status"

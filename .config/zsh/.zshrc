@@ -133,66 +133,66 @@ ext ()
 }
 
 ### GIT
-lazygit() {
-	USAGE="
-lazygit [OPTION]... <msg>
-
-    GIT but lazy
-
-    Options:
-        --fixup <commit>        runs 'git commit --fixup <commit> [...]'
-        --amend                 runs 'git commit --amend --no-edit [...]'
-        -f, --force             runs 'git push --force-with-lease [...]'
-        -h, --help              show this help text
-"
-	while [ $# -gt 0 ]
-	do
-		key="$1"
-
-		case $key in
-			--fixup)
-				COMMIT="$2"
-				shift # past argument
-				shift # past value
-				;;
-			--amend)
-				AMEND=true
-				shift # past argument
-				;;
-			-f|--force)
-				FORCE=true
-				shift # past argument
-				;;
-			-h|--help)
-				echo "$USAGE"
-				EXIT=true
-				break
-				;;
-			*)
-				MESSAGE="$1"
-				shift # past argument
-				;;
-		esac
-	done
-	unset key
-	if [ -z "$EXIT" ]
-	then
-		git status .
-		git add .
-		if [ -n "$AMEND" ]
-		then
-			git commit --amend --no-edit
-		elif [ -n "$COMMIT" ]
-		then
-			git commit --fixup "$COMMIT"
-			GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash "$COMMIT"^
-		else
-			git commit -m "$MESSAGE"
-		fi
-		git push origin HEAD $([ -n "$FORCE" ] && echo '--force-with-lease')
-	fi
-	unset USAGE COMMIT MESSAGE AMEND FORCE
-}
+# lazygit() {
+# 	USAGE="
+# lazygit [OPTION]... <msg>
+#
+#     GIT but lazy
+#
+#     Options:
+#         --fixup <commit>        runs 'git commit --fixup <commit> [...]'
+#         --amend                 runs 'git commit --amend --no-edit [...]'
+#         -f, --force             runs 'git push --force-with-lease [...]'
+#         -h, --help              show this help text
+# "
+# 	while [ $# -gt 0 ]
+# 	do
+# 		key="$1"
+#
+# 		case $key in
+# 			--fixup)
+# 				COMMIT="$2"
+# 				shift # past argument
+# 				shift # past value
+# 				;;
+# 			--amend)
+# 				AMEND=true
+# 				shift # past argument
+# 				;;
+# 			-f|--force)
+# 				FORCE=true
+# 				shift # past argument
+# 				;;
+# 			-h|--help)
+# 				echo "$USAGE"
+# 				EXIT=true
+# 				break
+# 				;;
+# 			*)
+# 				MESSAGE="$1"
+# 				shift # past argument
+# 				;;
+# 		esac
+# 	done
+# 	unset key
+# 	if [ -z "$EXIT" ]
+# 	then
+# 		git status .
+# 		git add .
+# 		if [ -n "$AMEND" ]
+# 		then
+# 			git commit --amend --no-edit
+# 		elif [ -n "$COMMIT" ]
+# 		then
+# 			git commit --fixup "$COMMIT"
+# 			GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash "$COMMIT"^
+# 		else
+# 			git commit -m "$MESSAGE"
+# 		fi
+# 		git push origin HEAD $([ -n "$FORCE" ] && echo '--force-with-lease')
+# 	fi
+# 	unset USAGE COMMIT MESSAGE AMEND FORCE
+# }
 
 glog() {
 	setterm -linewrap off 2> /dev/null
