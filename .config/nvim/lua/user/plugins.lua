@@ -94,8 +94,8 @@ return packer.startup(function(use)
     }
 
     use { -- Snippets
-        "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
+        "L3MON4D3/LuaSnip",
     }
 
     use { -- Language Server
@@ -125,6 +125,10 @@ return packer.startup(function(use)
 
     use { -- Language specific
         "mlaursen/vim-react-snippets",
+        {
+            "dsznajder/vscode-es7-javascript-react-snippets",
+            run = "yarn install --frozen-lockfile && yarn compile",
+        },
         "mattn/emmet-vim",
         "tpope/vim-dadbod",
         -- "kristijanhusak/vim-dadbod-completion",
