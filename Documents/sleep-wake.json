@@ -1,0 +1,39 @@
+{
+    "Jun": {
+        "24": {
+            "sleep": 0800,
+            "wake": 1500,
+            "feeling" 2,
+        },
+        "25": {
+            "sleep": 1030,
+            "wake": 1900,
+            "feeling" 3,
+        },
+        "26": {
+            "sleep": 1200,
+            "wake": 2000,
+            "feeling" 3,
+        },
+        "27": {
+            "sleep": 1300,
+            "wake": 2100,
+            "feeling": 0,
+        },
+        "28": {
+            "sleep": 1430,
+            "wake": 2130,
+            "feeling" 1,
+        },
+        "29": {
+            "sleep": 1530,
+            "wake": 2130,
+            "feeling" 2,
+        },
+        "30": {
+            "sleep": 1600,
+            "wake": ,
+            "feeling" ,
+        },
+    }
+}
