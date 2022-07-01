@@ -32,8 +32,44 @@
         },
         "30": {
             "sleep": 1600,
+            "wake": 2230,
+            "feeling" 1,
+        },
+    },
+    "July": {
+        "1": {
+            "sleep": 1400,
+            "wake": ,
+            "feeling" ,
+        },
+        "2": {
+            "sleep": ,
+            "wake": ,
+            "feeling" ,
+        },
+        "3": {
+            "sleep": ,
+            "wake": ,
+            "feeling" ,
+        },
+        "4": {
+            "sleep": ,
+            "wake": ,
+            "feeling": ,
+        },
+        "5": {
+            "sleep": ,
+            "wake": ,
+            "feeling" ,
+        },
+        "6": {
+            "sleep": ,
+            "wake": ,
+            "feeling" ,
+        },
+        "7": {
+            "sleep": ,
             "wake": ,
             "feeling" ,
         },
     }
-}

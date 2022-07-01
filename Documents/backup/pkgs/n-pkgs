@@ -185,6 +185,7 @@ gzip
 hardcode-fixer-git
 haveged
 hdparm
+hplip
 htop
 hw-probe
 hwinfo
