@@ -38,38 +38,38 @@
     },
     "July": {
         "1": {
-            "sleep": 1400,
-            "wake": ,
-            "feeling" ,
+            "sleep": 1630,
+            "wake": swap,
+            "feeling":1 ,
         },
         "2": {
+            "wake": 0100,
+            "feeling": ,
             "sleep": ,
-            "wake": ,
-            "feeling" ,
         },
         "3": {
-            "sleep": ,
-            "wake": ,
-            "feeling" ,
-        },
-        "4": {
-            "sleep": ,
             "wake": ,
             "feeling": ,
+            "sleep": ,
+        },
+        "4": {
+            "wake": ,
+            "feeling": ,
+            "sleep": ,
         },
         "5": {
-            "sleep": ,
             "wake": ,
-            "feeling" ,
+            "feeling": ,
+            "sleep": ,
         },
         "6": {
-            "sleep": ,
             "wake": ,
-            "feeling" ,
+            "feeling": ,
+            "sleep": ,
         },
         "7": {
-            "sleep": ,
             "wake": ,
-            "feeling" ,
+            "feeling": ,
+            "sleep": ,
         },
     }
