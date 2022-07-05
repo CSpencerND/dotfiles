@@ -338,7 +338,6 @@ pcsclite
 peek
 picom-git
 pipewire-alsa
-pipewire-media-session
 pkgconf
 playerctl
 polkit
