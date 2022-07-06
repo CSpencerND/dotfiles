@@ -54,13 +54,13 @@
         },
         "4": {
             "wake": 0300,
-            "feeling": 2,
+            "feeling": 1,
             "sleep": 1930,
         },
         "5": {
             "wake": 0300,
-            "feeling": ,
-            "sleep": ,
+            "feeling": 2,
+            "sleep": 2200,
         },
         "6": {
             "wake": ,
