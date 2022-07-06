@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+export XDG_CURRENT_DESKTOP="dwm"
+
 # XDG Compliance
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
