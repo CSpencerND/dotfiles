@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# whether to skip timeshift autosnap on updates
+# whether to skip timeshift autosnap on updates (doesn't seem to work)
 export SKIPAUTOSNAP=false
 
 #Cuz it looks nice :)
