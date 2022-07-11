@@ -73,18 +73,18 @@
             "sleep": 2230,
         },
         "8": {
-            "wake": ,
-            "feeling": ,
-            "sleep": ,
+            "wake": 0630,
+            "feeling": 2,
+            "sleep": 0100,
         },
         "9": {
-            "wake": ,
-            "feeling": ,
-            "sleep": ,
+            "wake": 0830,
+            "feeling": 2,
+            "sleep": 0100,
         },
         "10": {
-            "wake": ,
-            "feeling": ,
+            "wake": 0830,
+            "feeling": 1,
             "sleep": ,
         },
         "11": {
