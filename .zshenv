@@ -64,6 +64,7 @@ export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export SSB_HOME="$XDG_DATA_HOME"/zoom
 # export ALSA_CONFIG_DIR="$XDG_CONFIG_HOME/alsa/asoundrc"
 export ANDROID_HOME="$XDG_DATA_HOME"/android
+export CONAN_USER_HOME="$XDG_CONFIG_HOME"/conan
 
 #zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"

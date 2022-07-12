@@ -60,6 +60,7 @@ arcolinux-wallpapers-git
 arcolinux-welcome-app-git
 arcolinux-xfce-git
 arcolinux-zsh-git
+ardour
 asciinema
 aspell
 autoconf
@@ -88,6 +89,7 @@ catfish
 cbatticon
 chromium
 chrony
+clementine
 clonezilla
 codespell
 cryptsetup
@@ -300,7 +302,6 @@ ntfs-3g
 ntp
 numlockx
 nvme-cli
-obs-studio
 ocl-icd
 oh-my-zsh-git
 openconnect
@@ -311,7 +312,6 @@ os-prober
 p7zip
 pacman
 paprefs
-parole
 partclone
 parted
 partimage
@@ -321,7 +321,7 @@ pavucontrol
 pcmanfm
 pcsclite
 peek
-picom-git
+pipewire
 pipewire-alsa
 pkgconf
 playerctl
@@ -395,6 +395,7 @@ system-config-printer
 system-monitoring-center
 systemd-manager
 tcpdump
+tenacity-git
 terminus-font
 termite
 testdisk

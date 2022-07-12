@@ -85,11 +85,11 @@
         "10": {
             "wake": 0830,
             "feeling": 1,
-            "sleep": ,
+            "sleep": 2200,
         },
         "11": {
-            "wake": ,
-            "feeling": ,
+            "wake": 2200,
+            "feeling": 2,
             "sleep": ,
         },
         "12": {
