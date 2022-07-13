@@ -30,6 +30,7 @@ arcolinux-fonts-git
 arcolinux-grub-theme-vimix-git
 arcolinux-gtk3-sardi-arc-git
 arcolinux-hblock-git
+arcolinux-i3wm-git
 arcolinux-keyring
 arcolinux-kvantum-git
 arcolinux-local-applications-git
@@ -47,6 +48,8 @@ arcolinux-polybar-git
 arcolinux-qt5-git
 arcolinux-qtile-git
 arcolinux-reflector-simple-git
+arcolinux-rofi-git
+arcolinux-rofi-themes-git
 arcolinux-root-git
 arcolinux-sddm-sugar-candy-git
 arcolinux-system-config-git
@@ -66,6 +69,7 @@ aspell
 autoconf
 automake
 autorandr
+autotiling
 avahi
 awesome-terminal-fonts
 babl
@@ -158,6 +162,7 @@ gksu
 gloobus-preview
 glow
 gmrun
+gnome-bluetooth
 gnome-disk-utility
 gnome-keyring
 gnu-netcat
@@ -202,6 +207,9 @@ hplip
 htop
 hw-probe
 hwinfo
+i3-gaps
+i3blocks
+i3status
 imagemagick
 intel-ucode
 intltool
@@ -326,7 +334,6 @@ openvpn
 os-prober
 p7zip
 pacman
-paprefs
 partclone
 parted
 partimage
@@ -339,6 +346,9 @@ peek
 picom-jonaburg-fix
 pipewire
 pipewire-alsa
+pipewire-jack
+pipewire-pulse
+pipewire-zeroconf
 pkgconf
 playerctl
 polkit
@@ -351,11 +361,6 @@ pptpclient
 progress
 protonup-git
 protonup-qt
-pulseaudio
-pulseaudio-alsa
-pulseaudio-bluetooth
-pulsemeeter-git
-pulsemixer
 pycharm-community-edition
 python-pip
 python-psutil
@@ -363,6 +368,7 @@ python-pyparted
 python-pywal
 python2-pyxdg
 qalculate-gtk
+qpwgraph
 qt5-webkit
 qt5ct
 qtile
@@ -454,6 +460,7 @@ ttf-roboto-mono
 ttf-ubuntu-font-family
 ttf-weather-icons
 tumbler
+tuxguitar
 udftools
 udiskie
 udisks2
