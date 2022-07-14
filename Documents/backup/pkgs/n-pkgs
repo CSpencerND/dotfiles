@@ -30,7 +30,6 @@ arcolinux-fonts-git
 arcolinux-grub-theme-vimix-git
 arcolinux-gtk3-sardi-arc-git
 arcolinux-hblock-git
-arcolinux-i3wm-git
 arcolinux-keyring
 arcolinux-kvantum-git
 arcolinux-local-applications-git
@@ -48,8 +47,6 @@ arcolinux-polybar-git
 arcolinux-qt5-git
 arcolinux-qtile-git
 arcolinux-reflector-simple-git
-arcolinux-rofi-git
-arcolinux-rofi-themes-git
 arcolinux-root-git
 arcolinux-sddm-sugar-candy-git
 arcolinux-system-config-git
@@ -69,7 +66,6 @@ aspell
 autoconf
 automake
 autorandr
-autotiling
 avahi
 awesome-terminal-fonts
 babl
@@ -196,9 +192,7 @@ hplip
 htop
 hw-probe
 hwinfo
-i3-gaps
 i3blocks
-i3status
 imagemagick
 intel-ucode
 intltool
@@ -477,7 +471,6 @@ vim-tagbar
 vim-ultisnips
 vim-vital
 virtualbox
-volumeicon
 vpnc
 vscodium
 vscodium-marketplace
