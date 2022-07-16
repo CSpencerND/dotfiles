@@ -1,190 +1,187 @@
 {
     "Jun": {
         "24": {
-            "sleep": 0800,
-            "wake": 1500,
-            "feeling" 2,
+            "sleep": "8:00 am",
+            "wake": "3:00 pm",
+            "feeling": 2
         },
         "25": {
-            "sleep": 1030,
-            "wake": 1900,
-            "feeling" 3,
+            "sleep": "10:30 am",
+            "wake": "7:00 pm",
+            "feeling": 3
         },
         "26": {
-            "sleep": 1200,
-            "wake": 2000,
-            "feeling" 3,
+            "sleep": "12:00 pm",
+            "wake": "8:00 pm",
+            "feeling": 3
         },
         "27": {
-            "sleep": 1300,
-            "wake": 2100,
-            "feeling": 0,
+            "sleep": "1:00 pm",
+            "wake": "9:00 pm",
+            "feeling": 0
         },
         "28": {
-            "sleep": 1430,
-            "wake": 2130,
-            "feeling" 1,
+            "sleep": "2:30 pm",
+            "wake": "9:30 pm",
+            "feeling": 1
         },
         "29": {
-            "sleep": 1530,
-            "wake": 2130,
-            "feeling" 2,
+            "sleep": "3:30 pm",
+            "wake": "9:30 pm",
+            "feeling": 2
         },
         "30": {
-            "sleep": 1600,
-            "wake": 2230,
-            "feeling" 1,
+            "sleep": "4:00 pm",
+            "wake": "10:30 pm",
+            "feeling": 1
         },
     },
     "July": {
         "1": {
-            "sleep": 1630,
-            "wake": swap,
-            "feeling":1 ,
+            "sleep": "4:30 pm",
         },
         "2": {
-            "wake": 0100,
+            "wake": "1:00 am",
             "feeling": 2,
-            "sleep": 2000,
+            "sleep": "8:00 pm"
         },
         "3": {
-            "wake": 0330,
+            "wake": "3:30 am",
             "feeling": 2,
-            "sleep": 2000,
+            "sleep": "8:00 pm"
         },
         "4": {
-            "wake": 0300,
+            "wake": "3:00 am",
             "feeling": 1,
-            "sleep": 1930,
+            "sleep": "7:30 pm"
         },
         "5": {
-            "wake": 0300,
+            "wake": "3:00 am",
             "feeling": 2,
-            "sleep": 2200,
+            "sleep": "10:00 pm"
         },
         "6": {
-            "wake": 0330,
+            "wake": "3:30 am",
             "feeling": 2,
-            "sleep": 2130,
+            "sleep": "9:30 pm"
         },
         "7": {
-            "wake": 0500,
+            "wake": "5:00 am",
             "feeling": 2,
-            "sleep": 2230,
+            "sleep": "10:30 pm"
         },
         "8": {
-            "wake": 0630,
+            "wake": "6:30 am",
             "feeling": 2,
-            "sleep": 0100,
         },
         "9": {
-            "wake": 0830,
-            "feeling": 2,
-            "sleep": 0100,
+            "sleep": "1:00 am",
+            "wake": "8:30 am",
+            "feeling": 2
         },
         "10": {
-            "wake": 0830,
+            "sleep": "1:00 am",
+            "wake": "8:30 am",
             "feeling": 1,
-            "sleep": 2200,
+            "sleep": "10:00 pm"
         },
         "11": {
-            "wake": 2200,
+            "wake": "10:00 am",
             "feeling": 3,
-            "sleep": 0130,
         },
         "12": {
-            "wake": 0900,
+            "sleep": "1:30 am",
+            "wake": "9:00 am",
             "feeling": 2,
-            "sleep": swap,
         },
         "13": {
-            "sleep": 0330,
-            "wake": ,
-            "feeling": ,
+            "sleep": "3:30 am",
+            "wake": "1:00 pm",
+            "feeling": 3
         },
         "14": {
-            "sleep": ,
-            "wake": ,
-            "feeling": ,
+            "sleep": "6:00 am",
+            "wake": "12:30 pm",
+            "feeling": 1
         },
         "15": {
-            "sleep": ,
-            "wake": ,
-            "feeling": ,
+            "sleep": "4:00 am",
+            "wake": "1:30 pm",
+            "feeling": 2
         },
         "16": {
             "sleep": ,
             "wake": ,
-            "feeling": ,
+            "feeling": 
         },
         "17": {
             "sleep": ,
             "wake": ,
-            "feeling": ,
+            "feeling": 
         },
         "18": {
             "sleep": ,
             "wake": ,
-            "feeling": ,
+            "feeling": 
         },
         "19": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "20": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "21": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "22": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "23": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "24": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "25": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "26": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "27": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "28": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "29": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
         "30": {
             "wake": ,
             "feeling": ,
-            "sleep": ,
+            "sleep": 
         },
     }
