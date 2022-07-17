@@ -33,3 +33,5 @@ picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 # /home/cs/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &
 # /home/cs/.local/statusbar/openweather &
 # /home/cs/.local/statusbar/openweather-emoji &
+
+nvim ~/Documents/sleep-wake.json
