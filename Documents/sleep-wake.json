@@ -112,12 +112,12 @@
         "16": {
             "sleep": "5:00 am",
             "wake": "12:30 pm",
-            "feeling": 
+            "feeling": 2
         },
         "17": {
-            "sleep": ,
-            "wake": ,
-            "feeling": 
+            "sleep": "6:00 am",
+            "wake": "1:30 pm",
+            "feeling": 2
         },
         "18": {
             "sleep": ,
