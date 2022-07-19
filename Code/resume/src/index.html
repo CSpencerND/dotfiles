@@ -6,12 +6,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="dark" />
         <link href="../dist/output.css" rel="stylesheet" />
+        <style>
+            @media print {
+                @page {
+                    margin: 0;
+                }
+            }
+        </style>
     </head>
     <body class="bg-zinc-900 text-zinc-50">
         <main
-            class="container mx-auto grid grid-cols-[auto_1fr] h-screen max-w-3xl"
+            class="container mx-auto grid grid-cols-[auto_1fr] h-screen max-w-3xl print:mx-0 print:max-w-[initial]"
         >
-            <div class="[&>*]:m-6 bg-zinc-800">
+            <div class="[&>*]:m-6 bg-zinc-800 print:p-9 print:pr-0">
                 <h1 class="text-2xl">
                     Christopher <br />
                     Spencer
@@ -38,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="bg-zinc-700 [&>*]:m-6">
+            <div class="bg-zinc-700 [&>*]:m-6 print:p-9 print:pl-0">
                 <article>
                     <h2 class="text-xl">Education</h2>
 
