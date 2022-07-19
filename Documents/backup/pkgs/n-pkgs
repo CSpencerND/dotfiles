@@ -89,8 +89,8 @@ catfish
 cbatticon
 chromium
 chrony
-clementine
 clonezilla
+cmus
 codespell
 cryptsetup
 cups
@@ -345,6 +345,7 @@ python-psutil
 python-pyparted
 python-pywal
 qalculate-gtk
+qmmp
 qpwgraph
 qt5-webkit
 qt5ct
@@ -357,7 +358,6 @@ reaper
 redshift
 reflector
 reiserfsprogs
-rhythmbox
 ripgrep
 ristretto
 rofi

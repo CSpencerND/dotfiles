@@ -95,6 +95,14 @@
      * }
      */
 
+    .std-timeline {
+        @apply relative bg-zinc-400 top-[0.567rem];
+    }
+    .std-timeline-point {
+        @apply bg-zinc-400 absolute top-0 left-1/2 -translate-x-1/2 w-[6px] h-[6px] rounded-full;
+    }
+
+    /******************************* themeing ********************************/
     /* NOTE: I think light themes are heavily dependent on the branding
      * Dark themes can be more generic and still look good and make sense
      */
@@ -118,7 +126,6 @@
     .outline-action {
         @apply outline-cyan-500;
     }
-
 }
 
 /*

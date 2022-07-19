@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full w-full">
+<html lang="en">
     <head>
         <title></title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="../dist/output.css" rel="stylesheet" />
     </head>
-    <body
-        class="container h-full grid place-items-center mx-auto bg-zinc-900 text-zinc-50"
-    >
+    <body class="bg-zinc-900 text-zinc-50">
         <main
-            class="bg-zinc-800 grid grid-cols-[auto_1fr] h-full max-h-[95vh] print:max-h-screen"
+            class="container mx-auto grid grid-cols-[auto_1fr] h-screen max-w-3xl"
         >
-            <div class="[&>*]:m-6">
+            <div class="[&>*]:m-6 bg-zinc-800">
                 <h1 class="text-2xl">
                     Christopher <br />
                     Spencer
@@ -38,157 +36,127 @@
                 <article class="space-y-3">
                     <h2 class="text-xl">Work History</h2>
 
-                    <section class="grid grid-cols-[2px_1fr] space-x-3.5">
-                        <!-- space-x-6 -->
-                        <div
-                            class="relative bg-zinc-400 top-3 max-h-[96%]"
-                        ></div>
+                    <section class="grid grid-cols-[1px_1fr]">
+                        <div class="std-timeline">
+                            <div class="std-timeline-point"></div>
+                        </div>
 
-                        <div class="space-y-3">
-                            <div class="flex gap-3">
-                                <div>
-                                    <p
-                                        class="text-zinc-400 list-item list-disc"
+                        <div class="mb-3 ml-3">
+                            <p class="text-zinc-400">current</p>
+                            <div class="ml-3">
+                                <h3 class="py-3">
+                                    <span class="font-bold text-violet-300">
+                                        Web & Software Development - Freelance
+                                    </span>
+                                    <span class="text-zinc-400 pl-2"
+                                        >Remote</span
                                     >
-                                        current
-                                    </p>
-                                    <div class="ml-3">
-                                        <h3 class="py-3">
-                                            <span
-                                                class="font-bold text-violet-300"
-                                            >
-                                                Web & Software Development -
-                                                Freelance
-                                            </span>
-                                            <span class="text-zinc-400 pl-2"
-                                                >Remote</span
-                                            >
-                                        </h3>
+                                </h3>
 
-                                        <p>
-                                            Successfully built and deployed
-                                            fully functional website.
-                                        </p>
-                                        <p>
-                                            Contributed to open-source projects,
-                                            and assisted with troubleshooting
-                                            and bug fixes.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3">
-                                <div>
-                                    <p
-                                        class="text-zinc-400 list-item list-disc"
-                                    >
-                                        2020
-                                    </p>
-                                    <div class="ml-3">
-                                        <h3 class="py-3">
-                                            <span
-                                                class="font-bold text-violet-300"
-                                                >Assistant Manager - Beyond
-                                                Vape</span
-                                            >
-                                            <span class="text-zinc-400 pl-2"
-                                                >New York, NY</span
-                                            >
-                                        </h3>
-
-                                        <p>
-                                            Opened and closed the shop, and
-                                            managed inventory.
-                                        </p>
-                                        <p>
-                                            Consistently met and exceeded sales
-                                            goals.
-                                        </p>
-                                        <p>
-                                            Exhibited quality customer service
-                                            and technical support.
-                                        </p>
-                                        <p>
-                                            Hand picked products to stock in the
-                                            store.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3">
-                                <div>
-                                    <p
-                                        class="text-zinc-400 list-item list-disc"
-                                    >
-                                        2017
-                                    </p>
-                                    <div class="ml-3">
-                                        <h3 class="py-3">
-                                            <span
-                                                class="font-bold text-violet-300"
-                                                >Stock Manager - Journeys</span
-                                            >
-                                            <span class="text-zinc-400 pl-2"
-                                                >Brooklyn, NY</span
-                                            >
-                                        </h3>
-
-                                        <p>
-                                            Responsible for managing inventory
-                                            as well as sending and receiving
-                                            transfers to and from other
-                                            locations.
-                                        </p>
-                                        <p>
-                                            Efficiently and neatly organized the
-                                            stock room.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3">
-                                <div>
-                                    <p
-                                        class="text-zinc-400 list-item list-disc"
-                                    >
-                                        2015
-                                    </p>
-                                    <div class="ml-3">
-                                        <h3 class="py-3">
-                                            <span
-                                                class="font-bold text-violet-300"
-                                                >Cold Line Supervisor -
-                                                Munchery</span
-                                            >
-                                            <span class="text-zinc-400 pl-2"
-                                                >New York, NY</span
-                                            >
-                                        </h3>
-
-                                        <p>
-                                            Handled packaging meals with great
-                                            care and precision.
-                                        </p>
-                                        <p>
-                                            Enforced high standard of quality
-                                            control.
-                                        </p>
-                                        <!-- <p> -->
-                                        <!--     Successfully conducted team to -->
-                                        <!--     accomplish daily goals. -->
-                                        <!-- </p> -->
-                                    </div>
-                                    <p
-                                        class="pt-3 text-zinc-400 list-item list-disc"
-                                    >
-                                        2014
-                                    </p>
-                                </div>
+                                <p>
+                                    Successfully built and deployed fully
+                                    functional website.
+                                </p>
+                                <p>
+                                    Contributed to open-source projects, and
+                                    assisted with troubleshooting and bug fixes.
+                                </p>
                             </div>
                         </div>
+
+                        <div class="std-timeline">
+                            <div class="std-timeline-point"></div>
+                        </div>
+
+                        <div class="mb-3 ml-3">
+                            <p class="text-zinc-400">2020</p>
+                            <div class="ml-3">
+                                <h3 class="py-3">
+                                    <span class="font-bold text-violet-300"
+                                        >Assistant Manager - Beyond Vape</span
+                                    >
+                                    <span class="text-zinc-400 pl-2"
+                                        >New York, NY</span
+                                    >
+                                </h3>
+
+                                <p>
+                                    Opened and closed the shop, and managed
+                                    inventory.
+                                </p>
+                                <p>
+                                    Consistently met and exceeded sales goals.
+                                </p>
+                                <p>
+                                    Exhibited quality customer service and
+                                    technical support.
+                                </p>
+                                <p>
+                                    Hand picked products to stock in the store.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="std-timeline">
+                            <div class="std-timeline-point"></div>
+                        </div>
+
+                        <div class="mb-3 ml-3">
+                            <p class="text-zinc-400">2017</p>
+                            <div class="ml-3">
+                                <h3 class="py-3">
+                                    <span class="font-bold text-violet-300"
+                                        >Stock Manager - Journeys</span
+                                    >
+                                    <span class="text-zinc-400 pl-2"
+                                        >Brooklyn, NY</span
+                                    >
+                                </h3>
+
+                                <p>
+                                    Responsible for managing inventory as well
+                                    as sending and receiving transfers to and
+                                    from other locations.
+                                </p>
+                                <p>
+                                    Efficiently and neatly organized the stock
+                                    room.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="std-timeline mb-[1.125rem]">
+                            <div class="std-timeline-point"></div>
+                            <div class="std-timeline-point top-[initial] bottom-0"></div>
+                        </div>
+
+                        <div class="ml-3">
+                            <p class="text-zinc-400">2015</p>
+                            <div class="ml-3">
+                                <h3 class="py-3">
+                                    <span class="font-bold text-violet-300"
+                                        >Cold Line Supervisor - Munchery</span
+                                    >
+                                    <span class="text-zinc-400 pl-2"
+                                        >New York, NY</span
+                                    >
+                                </h3>
+
+                                <p>
+                                    Handled packaging meals with great care and
+                                    precision.
+                                </p>
+                                <p>
+                                    Enforced high standard of quality control.
+                                </p>
+                                <!-- <p> -->
+                                <!--     Successfully conducted team to -->
+                                <!--     accomplish daily goals. -->
+                                <!-- </p> -->
+                            </div>
+                            <p class="pt-3 text-zinc-400">2014</p>
+                        </div>
+
                     </section>
                 </article>
 
