@@ -16,31 +16,55 @@
     </head>
     <body class="bg-zinc-900 text-zinc-50">
         <main
-            class="container mx-auto grid grid-cols-[auto_1fr] h-screen max-w-3xl print:mx-0 print:max-w-[initial]"
+            class="container mx-auto grid grid-cols-[1fr_2fr] h-screen max-w-3xl print:mx-0 print:max-w-[initial]"
         >
-            <div class="[&>*]:m-6 bg-zinc-800 print:p-9 print:pr-0">
+            <div class="[&>*]:m-6 [&>*]:mb-9 bg-zinc-800 print:py-9">
                 <h1 class="text-2xl">
                     Christopher <br />
                     Spencer
                 </h1>
 
                 <div class="">
-                    <h1 class="text-xl">Contact</h1>
-                    2102 Spring Rd <br />
+                    Dingmans Ferry, PA <br />
                     (347) 706-5294 <br />
                     cspencernd@gmail.com
                 </div>
 
-                <div>
-                    <h2>Proficiencies</h2>
+                <hr class="h-[1px] bg-zinc-400 border-none" />
+
+                <div class="max-w-full">
+                    <h2 class="text-xl mb-3">Summary</h2>
+                    <p>Meticulously organized. Strong critical thinker.</p>
+                    <p>Highly competitive.</p>
+                    <p class="mb-3">Collaborative and empathetic.</p>
+                    <p class="mb-3">
+                        Adept at research and gathering information.
+                    </p>
+                    <p class="mb-3">Mindful of accuracy and efficiency.</p>
+                    <p>
+                        Always looking for new challenges and attempts to
+                        achieve high level of skill with every endeavour.
+                    </p>
                 </div>
+
+                <hr class="h-[1px] bg-zinc-400 border-none" />
+
+                <div>
+                    <h2 class="text-xl mb-3">Proficiencies</h2>
+                    <ul>
+                        <li>Web Development</li>
+                        <li>Typing - 70 WPM</li>
+                    </ul>
+                </div>
+
+                <hr class="h-[1px] bg-zinc-400 border-none print:hidden" />
 
                 <div>
                     <a
                         href="print.html"
                         class="underline text-violet-300 hover:text-violet-400 transition print:hidden"
                     >
-                        Printer Friendly Version
+                        Printer Friendly PDF
                     </a>
                 </div>
             </div>
@@ -49,26 +73,25 @@
                 <article>
                     <h2 class="text-xl">Education</h2>
 
-                    <h3 class="py-3">
-                        <span class="font-bold text-violet-300">
-                            Codecademy
-                        </span>
-                        <span class="text-zinc-400 pl-2">Remote</span>
-                    </h3>
+                    <section class="pl-6">
+                        <h3 class="pt-3">
+                            <span class="font-bold text-violet-300">
+                                Zero To Mastery Academy
+                            </span>
+                            <span class="text-zinc-400 pl-2">Remote</span>
+                        </h3>
+                        <p>
+                            HMTL, CSS, JavaScript, React, Node.JS, PostgresQL.
+                        </p>
 
-                    <h3 class="py-3">
-                        <span class="font-bold text-violet-300">
-                            Zero To Mastery Academy
-                        </span>
-                        <span class="text-zinc-400 pl-2">Remote</span>
-                    </h3>
-
-                    <h3 class="py-3">
-                        <span class="font-bold text-violet-300">
-                            National Personal Training Institute
-                        </span>
-                        <span class="text-zinc-400 pl-2">Brooklyn, NY</span>
-                    </h3>
+                        <h3 class="pt-3">
+                            <span class="font-bold text-violet-300">
+                                National Personal Training Institute
+                            </span>
+                            <span class="text-zinc-400 pl-2">Brooklyn, NY</span>
+                        </h3>
+                        <p>Human anatomy, kinesiology, and exercise science.</p>
+                    </section>
                 </article>
 
                 <hr class="h-[1px] bg-zinc-400 border-none" />

@@ -125,63 +125,63 @@
             "feeling": 1
         },
         "19": {
-            "wake": ,
-            "feeling": ,
-            "sleep": 
+            "wake": "9:30 am",
+            "sleep": "5:30 pm",
+            "feeling": 2
         },
         "20": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "21": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "22": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "23": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "24": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "25": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "26": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "27": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "28": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "29": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
         "30": {
             "wake": ,
-            "feeling": ,
             "sleep": 
+            "feeling": ,
         },
     }
