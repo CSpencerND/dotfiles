@@ -656,9 +656,41 @@ video {
   bottom: 0px;
 }
 
+.m-6 {
+  margin: 1.5rem;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.m-12 {
+  margin: 3rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mx-6 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .mb-3 {
@@ -671,6 +703,10 @@ video {
 
 .mb-\[1\.125rem\] {
   margin-bottom: 1.125rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .grid {
@@ -689,6 +725,10 @@ video {
   height: 100%;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -703,6 +743,14 @@ video {
 
 .grid-cols-\[1px_1fr\] {
   grid-template-columns: 1px 1fr;
+}
+
+.grid-cols-\[auto_1fr\] {
+  grid-template-columns: auto 1fr;
+}
+
+.place-items-center {
+  place-items: center;
 }
 
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
@@ -765,82 +813,6 @@ video {
 
 .pl-2 {
   padding-left: 0.5rem;
-}
-
-.font-sans {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-.font-serif {
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-}
-
-.font-\[\'Open_Sans\'\] {
-  font-family: 'Open Sans';
-}
-
-.font-\[\'Lato\'\] {
-  font-family: 'Lato';
-}
-
-.font-\[\"Roboto\"\] {
-  font-family: "Roboto";
-}
-
-.font-\[\"Open_Sans\"\] {
-  font-family: "Open Sans";
-}
-
-.font-\[\"Helvetica\"\] {
-  font-family: "Helvetica";
-}
-
-.font-\[\"Lato\"\] {
-  font-family: "Lato";
-}
-
-.font-\[\'Roboto\'\] {
-  font-family: 'Roboto';
-}
-
-.font-\[\'Helvetica\'\] {
-  font-family: 'Helvetica';
-}
-
-.font-\[\'Avenir\'\] {
-  font-family: 'Avenir';
-}
-
-.font-\[\'Avant_Garde\'\] {
-  font-family: 'Avant Garde';
-}
-
-.font-\[\'Museo\'\] {
-  font-family: 'Museo';
-}
-
-.font-\[\'Georgia\'\] {
-  font-family: 'Georgia';
-}
-
-.font-\[\'Garamond\'\] {
-  font-family: 'Garamond';
-}
-
-.font-\[\'Cormorant_Garamond\'\] {
-  font-family: 'Cormorant Garamond';
-}
-
-.font-\[\'Avenir_Next\'\] {
-  font-family: 'Avenir Next';
-}
-
-.font-\[\'Fira\'\] {
-  font-family: 'Fira';
-}
-
-.font-\[\'Noto_Sans\'\] {
-  font-family: 'Noto Sans';
 }
 
 .text-2xl {
@@ -1037,4 +1009,16 @@ video {
 
 .\[\&\>\*\]\:mb-6>* {
   margin-bottom: 1.5rem;
+}
+
+.\[\&\>\*\]\:mb-1>* {
+  margin-bottom: 0.25rem;
+}
+
+.\[\&\>\*\]\:pb-1>* {
+  padding-bottom: 0.25rem;
+}
+
+.\[\&\>\*\]\:pb-3>* {
+  padding-bottom: 0.75rem;
 }
