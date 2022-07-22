@@ -278,6 +278,8 @@ mlocate
 mobile-broadband-provider-info
 modemmanager
 mousepad
+mpc
+mpd
 mpv
 mtools
 mtpfs
@@ -287,6 +289,7 @@ nano
 nasm
 nbd
 ncdu
+ncmpcpp
 ndisc6
 neofetch
 network-manager-applet
