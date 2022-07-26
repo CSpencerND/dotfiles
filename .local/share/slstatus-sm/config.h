@@ -46,7 +46,7 @@ static const struct arg args[] = {
         {   // thermals
             temp,
             "^c"BG"^^b"THRML"^ 﨏 ^c"THRML"^^b"BG"^ %s° ",
-            "/sys/class/thermal/thermal_zone1/temp"
+            "/sys/class/thermal/thermal_zone0/temp"
         },
         SEP,
 
