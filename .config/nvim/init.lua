@@ -28,6 +28,9 @@ require "user.git-blame"
 require "user.hop"
 require "user.illuminate"
 require "user.indentline"
+require "user.jaq"
+-- require("mason").setup()
+require "user.mason"
 require "user.matchup"
 require "user.notify"
 require "user.numb"
@@ -46,13 +49,15 @@ require "user.winbar"
 require "user.gps"
 
 -- Colorscheme
--- vim.cmd([[set background=light]])
+-- vim.o.background = "light"
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+vim.g.sonokai_style = "andromeda"
+
 vim.cmd([[
     try
         " idk why rose-pine doesn't work properly unless I call it after another
+        " colorscheme catppuccin "<-- here!
         colorscheme catppuccin "<-- here!
-        " colorscheme onedarkest "<-- here!
-        " colorscheme rose-pine "<-- here!
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme default
         set background=dark

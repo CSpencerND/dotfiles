@@ -8,42 +8,32 @@ if not snip_status_ok then
     return
 end
 
+local compare = require "cmp.config.compare"
+
 require("luasnip/loaders/from_vscode").lazy_load()
 
+-- local check_backspace = function()
+--     local col = vim.fn.col "." - 1
+--     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+-- end
+
 local check_backspace = function()
-    local col = vim.fn.col "." - 1
-    return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0
+        and vim.api
+                .nvim_buf_get_lines(0, line - 1, line, true)[1]
+                :sub(col, col)
+                :match "%s"
+            == nil
 end
 
+local icons = require "user.icons"
 --   פּ ﯟ   some other good icons
-local kind_icons = {
-    Text = "",
-    Method = "m",
-    Function = "",
-    Constructor = "",
-    Field = "",
-    Variable = "",
-    Class = "",
-    Interface = "",
-    Module = "",
-    Property = "",
-    Unit = "",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "",
-    Event = "",
-    Operator = "",
-    TypeParameter = "",
-}
+local kind_icons = icons.kind
 -- find more here: https://www.nerdfonts.com/cheat-sheet
+
+vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
+vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
 
 cmp.setup {
     snippet = {
@@ -98,33 +88,88 @@ cmp.setup {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
             -- Kind icons
-            vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-            -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+            -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+            vim_item.kind = kind_icons[vim_item.kind]
+
+            if entry.source.name == "emoji" then
+                vim_item.kind = icons.misc.Smiley
+                vim_item.kind_hl_group = "CmpItemKindEmoji"
+            end
+
+            if entry.source.name == "crates" then
+                vim_item.kind = icons.misc.Package
+                vim_item.kind_hl_group = "CmpItemKindCrate"
+            end
+
+            -- NOTE: order matters
             vim_item.menu = ({
                 nvim_lsp = "[LSP]",
                 nvim_lua = " ",
                 npm = " ",
                 crate = " ",
-                luasnip = "[Snippet]",
-                buffer = "[Buffer]",
+                luasnip = "[Snip]",
+                buffer = "[Buf]",
                 path = "[Path]",
+                emoji = "",
             })[entry.source.name]
             return vim_item
         end,
     },
     sources = {
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-        { name = "luasnip" },
-        -- { name = "cmp_tabnine" },
-        { name = "npm" },
-        -- { name = "dap" },
-        -- { name = "emoji" },
-        -- { name = "dadbod-completion" },
-        { name = "crates" },
-        { name = "buffer" },
-        { name = "path" },
+        -- { name = "nvim_lsp" },
+        {
+            name = "nvim_lsp",
+            filter = function(entry, ctx)
+                vim.pretty_print()
+                local kind =
+                    require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+                -- vim.bo.filetype
+                if
+                    kind == "Snippet"
+                    and ctx.prev_context.filetype == "java"
+                then
+                    return true
+                end
+            end,
+            group_index = 2,
+        },
+
+        { name = "nvim_lua", group_index = 2 },
+        { name = "luasnip", group_index = 2 },
+        { name = "buffer", group_index = 2 },
+        { name = "path", group_index = 2 },
+        { name = "npm", group_index = 2 },
+        -- { name = "crates", group_index = 2 },
+        { name = "emoji", group_index = 2 },
+
+        -- { name = "nvim_lua" },
+        -- { name = "luasnip" },
+        -- { name = "npm" },
+        -- { name = "crates" },
+        -- { name = "buffer" },
+        -- { name = "path" },
     },
+
+    sorting = {
+        priority_weight = 2,
+        comparators = {
+            -- require("copilot_cmp.comparators").prioritize,
+            -- require("copilot_cmp.comparators").score,
+            compare.offset,
+            compare.exact,
+            -- compare.scopes,
+            compare.score,
+            compare.recently_used,
+            compare.locality,
+            -- compare.kind,
+            compare.sort_text,
+            compare.length,
+            compare.order,
+            -- require("copilot_cmp.comparators").prioritize,
+            -- require("copilot_cmp.comparators").score,
+        },
+    },
+
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
@@ -141,9 +186,5 @@ cmp.setup {
     },
     experimental = {
         ghost_text = true,
-        -- entries = "native",
-    },
-    view = {
-        native_menu = false,
     },
 }

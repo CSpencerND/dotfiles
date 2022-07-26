@@ -69,6 +69,7 @@ return packer.startup(function(use)
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-emoji",
         "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-emoji",
         "rcarriga/cmp-dap",
         -- use({
         -- 	"tzachar/cmp-tabnine",
@@ -101,6 +102,8 @@ return packer.startup(function(use)
     use { -- Language Server
         "neovim/nvim-lspconfig", -- enable LSP
         "williamboman/nvim-lsp-installer", -- simple to use language server installer
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
         "tamago324/nlsp-settings.nvim", -- language server settings defined in json for formatters and linters
         "jose-elias-alvarez/null-ls.nvim",
         "ray-x/lsp_signature.nvim",
@@ -193,6 +196,7 @@ return packer.startup(function(use)
         --     "SmiteshP/nvim-gps",
         --     requires = "nvim-treesitter/nvim-treesitter",
         -- },
+        "is0n/jaq-nvim",
     }
 
     use { -- Navigation
@@ -240,6 +244,7 @@ return packer.startup(function(use)
         { "dracula/vim", as = "dracula" },
         { "catppuccin/nvim", as = "catppuccin" },
         { "rose-pine/neovim", as = "rose-pine" },
+        { "sainnhe/sonokai" },
     }
     -- Automatically set up your configuration after cloning packer.nvim
     if PACKER_BOOTSTRAP then
