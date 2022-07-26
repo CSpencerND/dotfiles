@@ -47,7 +47,8 @@ static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
 static const char buttonbar[]            = " ";
 
 static const char *fonts[] = {
-	"Hack Nerd Font:size=10",
+	// "Hack Nerd Font:size=10",
+	"CaskaydiaCove Nerd Font:size=10",
 	// "JoyPixels:pixelsize=10:antialias=true:autohint=true"
 	"monospace:size=10"
 };
