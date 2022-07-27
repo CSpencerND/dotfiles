@@ -21,6 +21,8 @@ run "redshift-gtk"
 # run "cbatticon -x /home/cs/.local/bin/bat-notif.sh"
 
 screens_count=$(xrandr -q | grep " connected" | wc -l)
+
+/home/"$USER"/.local/statusbar/thermals.sh
 if [[ $screens_count == 1 ]]; then
     slstatus-sm &   
 else
@@ -29,7 +31,7 @@ fi
 
 picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 
-/home/cs/.local/statusbar/weather.py &
-# /home/cs/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &
-# /home/cs/.local/statusbar/openweather &
-# /home/cs/.local/statusbar/openweather-emoji &
+/home/"$USER"/.local/statusbar/weather.py &
+# /home/"$USER"/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &
+# /home/"$USER"/.local/statusbar/openweather &
+# /home/"$USER"/.local/statusbar/openweather-emoji &

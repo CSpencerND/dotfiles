@@ -19,12 +19,12 @@ if [[ -f $SCR_FILE ]]; then
     if [[ $response = n ]]; then
       exit 1
     else
-      lvim $SCR_FILE
+      nvim $SCR_FILE
     fi
 else 
     echo '#!/usr/bin/env bash' > $SCR_FILE
     chmod +x $SCR_FILE
-    lvim $SCR_FILE
+    nvim $SCR_FILE
     wait
     echo "Script created at $SCR_FILE"
 fi
