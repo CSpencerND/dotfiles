@@ -224,6 +224,7 @@ return packer.startup(function(use)
         "metakirby5/codi.vim",
         "folke/zen-mode.nvim",
         "Djancyp/cheat-sheet",
+        { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
     }
 
     use { -- Utilities

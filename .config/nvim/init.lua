@@ -28,6 +28,7 @@ require "user.git-blame"
 require "user.hop"
 require "user.illuminate"
 require "user.indentline"
+require "user.lsp-inlayhints"
 require "user.jaq"
 -- require("mason").setup()
 require "user.mason"
