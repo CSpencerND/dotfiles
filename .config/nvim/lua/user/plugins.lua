@@ -225,6 +225,12 @@ return packer.startup(function(use)
         "folke/zen-mode.nvim",
         "Djancyp/cheat-sheet",
         { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
+        {
+            "declancm/cinnamon.nvim",
+            config = function()
+                require("cinnamon").setup()
+            end,
+        },
     }
 
     use { -- Utilities

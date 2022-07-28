@@ -656,41 +656,9 @@ video {
   bottom: 0px;
 }
 
-.m-6 {
-  margin: 1.5rem;
-}
-
-.m-auto {
-  margin: auto;
-}
-
-.m-12 {
-  margin: 3rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-
-.my-6 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.mx-6 {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-}
-
-.mx-12 {
-  margin-left: 3rem;
-  margin-right: 3rem;
-}
-
-.my-12 {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
 }
 
 .mb-3 {
@@ -705,10 +673,6 @@ video {
   margin-bottom: 1.125rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .grid {
   display: grid;
 }
@@ -721,12 +685,8 @@ video {
   height: 1px;
 }
 
-.h-full {
-  height: 100%;
-}
-
-.h-auto {
-  height: auto;
+.max-h-screen {
+  max-height: 100vh;
 }
 
 .max-w-3xl {
@@ -743,14 +703,6 @@ video {
 
 .grid-cols-\[1px_1fr\] {
   grid-template-columns: 1px 1fr;
-}
-
-.grid-cols-\[auto_1fr\] {
-  grid-template-columns: auto 1fr;
-}
-
-.place-items-center {
-  place-items: center;
 }
 
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
@@ -1068,84 +1020,15 @@ video {
   }
 }
 
-@media (min-width: 768px) {
-  .md\:block {
-    display: block;
-  }
-}
-
 .\[\&\>\*\]\:m-6>* {
   margin: 1.5rem;
-}
-
-.\[\&\>\*\]\:mx-auto>* {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.\[\&\>\*\]\:mb-6>* {
-  margin-bottom: 1.5rem;
-}
-
-.\[\&\>\*\]\:mb-1>* {
-  margin-bottom: 0.25rem;
-}
-
-.\[\&\>\*\]\:pb-1>* {
-  padding-bottom: 0.25rem;
 }
 
 .\[\&\>\*\]\:pb-3>* {
   padding-bottom: 0.75rem;
 }
 
-@media print {
-  .print\:\[\&\>\*\]\:mx-auto>* {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
 @media (max-width: 767px) {
-  .max-md\:\[\&\>\*\]\:container>* {
-    width: 100%;
-  }
-
-  @media (min-width: 640px) {
-    .max-md\:\[\&\>\*\]\:container>* {
-      max-width: 640px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .max-md\:\[\&\>\*\]\:container>* {
-      max-width: 768px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .max-md\:\[\&\>\*\]\:container>* {
-      max-width: 1024px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .max-md\:\[\&\>\*\]\:container>* {
-      max-width: 1280px;
-    }
-  }
-
-  @media (min-width: 1536px) {
-    .max-md\:\[\&\>\*\]\:container>* {
-      max-width: 1536px;
-    }
-  }
-
-  .max-md\:\[\&\>\*\]\:mx-auto>* {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .max-md\:\[\&\>\*\]\:py-6>* {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
