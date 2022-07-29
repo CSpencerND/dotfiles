@@ -26,6 +26,10 @@ alias cdsb="cd ~/.local/statusbar"
 alias nvz="$EDITOR ~/.config/zsh/.zshrc"
 alias qtc="$EDITOR ~/.config/qtile/config.py"
 
+### Programming Shortcuts
+BROWSER="chromium"
+alias live="live-server --browser=$BROWSER ."
+
 ### Colorize commands
 alias ls='ls --color=auto'
 alias grep='grep -i --color=auto'
@@ -58,6 +62,7 @@ command -v bat > /dev/null && \
 # 	alias less='batcat'
 
 ### Various
+alias sz='source ~/.config/zsh/.zshrc'
 alias rm='rm -Iv'
 alias cp='cp -ivr'
 alias mv='mv -iv'
