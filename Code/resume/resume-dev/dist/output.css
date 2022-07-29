@@ -673,20 +673,20 @@ video {
   margin-bottom: 1.125rem;
 }
 
-.grid {
-  display: grid;
+.-mb-3 {
+  margin-bottom: -0.75rem;
 }
 
-.h-screen {
-  height: 100vh;
+.grid {
+  display: grid;
 }
 
 .h-\[1px\] {
   height: 1px;
 }
 
-.max-h-screen {
-  max-height: 100vh;
+.h-screen {
+  height: 100vh;
 }
 
 .max-w-3xl {
