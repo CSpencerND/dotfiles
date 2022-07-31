@@ -108,6 +108,7 @@ dhclient
 dialog
 diffutils
 discord
+discord-screenaudio
 dmenu
 dmraid
 dnsmasq

@@ -57,9 +57,9 @@ vim.g.sonokai_style = "andromeda"
 
 vim.cmd([[
     try
-        " idk why rose-pine doesn't work properly unless I call it after another
-        " colorscheme catppuccin "<-- here!
-        colorscheme catppuccin "<-- here!
+        " colorscheme catppuccin
+        colorscheme horizon
+        " colorscheme synthwave84
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme default
         set background=dark

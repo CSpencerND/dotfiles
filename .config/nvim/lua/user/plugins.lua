@@ -252,6 +252,8 @@ return packer.startup(function(use)
         { "catppuccin/nvim", as = "catppuccin" },
         { "rose-pine/neovim", as = "rose-pine" },
         { "sainnhe/sonokai" },
+        {"lunarvim/horizon.nvim"},
+        {"lunarvim/synthwave84.nvim"},
     }
     -- Automatically set up your configuration after cloning packer.nvim
     if PACKER_BOOTSTRAP then
