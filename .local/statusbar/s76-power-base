@@ -5,7 +5,7 @@ options=$\
   echo \
   "Power Profile 
 Charge Threshold" | 
-  rofi -dmenu -p "System 76 Power" -location 3 -yoffset 28 -l 2
+  rofi -dmenu -p "System 76 Power" # -location 3 -yoffset 28 -l 2
 )
 
 

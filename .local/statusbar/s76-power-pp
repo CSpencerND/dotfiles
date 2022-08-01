@@ -2,7 +2,8 @@
 
 options=$(echo "Battery
 Balanced
-Performance" | rofi -dmenu -p "Power Profile" -location 3 -yoffset 28 -l 3)
+Performance" | rofi -dmenu -p "Power Profile" # -location 3 -yoffset 28 -l 3
+)
 
 [[ -z $options ]] && notify-send "$(system76-power profile)" && exit
 
