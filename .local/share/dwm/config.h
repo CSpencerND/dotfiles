@@ -207,6 +207,7 @@ static const Rule rules[] = {
 	RULE(.class = "Ardour",                                .isfloating = 1)
 	RULE(.class = "Waveform11",                            .isfloating = 1)
 	RULE(.class = "REAPER",                                .isfloating = 1)
+	RULE(.class = "TuxGuitar",                             .isfloating = 1)
 
         // scratchpads
 	RULE(.class = "basic",   .tags = SPTAG(0),             .isfloating = 1)
