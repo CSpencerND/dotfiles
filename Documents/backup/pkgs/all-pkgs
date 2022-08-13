@@ -319,6 +319,7 @@ networkmanager-vpnc
 nfs-utils
 nilfs-utils
 nitrogen
+nodejs
 noto-fonts
 nss-mdns
 ntfs-3g
@@ -373,8 +374,6 @@ qpwgraph
 qt5-webkit
 qt5ct
 qtile
-quickemu-git
-quickgui-bin
 ranger
 realtime-privileges
 reaper
@@ -445,7 +444,7 @@ timeshift
 timeshift-autosnap
 tmux
 tpm2-tss
-tracktion-waveform
+tracktion-waveform-beta
 tree
 ttf-cascadia-code
 ttf-dejavu
@@ -511,7 +510,6 @@ vim-tabular
 vim-tagbar
 vim-ultisnips
 vim-vital
-virtualbox
 vpnc
 vscode-tailwindcss-language-server-bin
 vscodium

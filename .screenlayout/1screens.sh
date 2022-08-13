@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# 1080 proper
+# xrandr --newmode "1920x1080_120.00" 369.50 1920 2080 2288 2656 1080 1083 1088 1160 -hsync +vsync
+# xrandr --addmode eDP1 1920x1080_120.00
+# xrandr --output eDP1 --mode 1920x1080_120.00
+
 # 1080 scaled
 # xrandr --newmode "1920x1080_120.00" 369.50 1920 2080 2288 2656 1080 1083 1088 1160 -hsync +vsync && \
 # xrandr --addmode eDP1 1920x1080_120.00 && \
