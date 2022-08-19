@@ -67,7 +67,6 @@ return packer.startup(function(use)
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-emoji",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-emoji",
         "rcarriga/cmp-dap",
@@ -251,10 +250,12 @@ return packer.startup(function(use)
         { "dracula/vim", as = "dracula" },
         { "catppuccin/nvim", as = "catppuccin" },
         { "rose-pine/neovim", as = "rose-pine" },
-        { "sainnhe/sonokai" },
-        {"lunarvim/horizon.nvim"},
-        {"lunarvim/synthwave84.nvim"},
+        "sainnhe/sonokai",
+        "lunarvim/horizon.nvim",
+        "lunarvim/synthwave84.nvim",
+        "morhetz/gruvbox"
     }
+    -- use { "ellisonleao/gruvbox.nvim" }
     -- Automatically set up your configuration after cloning packer.nvim
     if PACKER_BOOTSTRAP then
         require("packer").sync()

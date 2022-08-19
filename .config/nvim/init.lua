@@ -51,14 +51,17 @@ require "user.winbar"
 require "user.gps"
 
 -- Colorscheme
--- vim.o.background = "light"
+--[[ vim.o.background = "light" ]]
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 vim.g.sonokai_style = "andromeda"
+vim.g.gruvbox_contrast_dark = "medium"
 
 vim.cmd([[
     try
         " colorscheme catppuccin
-        colorscheme horizon
+        " colorscheme horizon
+        colorscheme rose-pine
+        " colorscheme gruvbox
         " colorscheme synthwave84
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme default

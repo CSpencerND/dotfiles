@@ -113,8 +113,8 @@ local m_mappings = {
     k = { "<cmd>BookmarkPrev<cr>", "Prev" },
     -- s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
     s = {
-      "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
-      "Show",
+        "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
+        "Show",
     },
     x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
     h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon Mark" },
@@ -140,7 +140,8 @@ local mappings = {
     ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
     ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
     ["/"] = {
-        '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>',
+        --[[ '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', ]]
+        "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
         "Comment",
     },
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
@@ -270,8 +271,8 @@ local mappings = {
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         C = { "<cmd>Telescope commands<cr>", "Commands" },
         p = {
-          "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
-          "Colorscheme with Preview",
+            "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
+            "Colorscheme with Preview",
         },
     },
 
