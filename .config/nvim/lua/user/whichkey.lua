@@ -140,7 +140,6 @@ local mappings = {
     ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
     ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
     ["/"] = {
-        --[[ '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', ]]
         "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
         "Comment",
     },
