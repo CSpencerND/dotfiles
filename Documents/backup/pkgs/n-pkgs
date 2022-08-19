@@ -139,6 +139,7 @@ font-manager-git
 freetype2
 fsarchiver
 gamemode
+garcon
 gawk
 gcc
 gettext
@@ -186,6 +187,7 @@ gvfs-nfs
 gvfs-smb
 gzip
 hardcode-fixer-git
+hardinfo-git
 haveged
 hdparm
 hplip
@@ -317,6 +319,7 @@ openvpn
 os-prober
 p7zip
 pacman
+parole
 partclone
 parted
 partimage
@@ -550,6 +553,7 @@ xfce4-wavelan-plugin
 xfce4-weather-plugin
 xfce4-whiskermenu-plugin
 xfce4-xkb-plugin
+xfconf
 xfdesktop
 xfsprogs
 xfwm4

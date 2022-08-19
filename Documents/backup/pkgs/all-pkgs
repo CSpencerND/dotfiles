@@ -148,6 +148,7 @@ freetype2
 fsarchiver
 g810-led-git
 gamemode
+garcon
 gawk
 gcc
 gettext
@@ -196,7 +197,7 @@ gvfs-nfs
 gvfs-smb
 gzip
 hardcode-fixer-git
-hardinfo
+hardinfo-git
 haveged
 hdparm
 headsetcontrol-git
@@ -335,6 +336,7 @@ openvpn
 os-prober
 p7zip
 pacman
+parole
 partclone
 parted
 partimage
@@ -397,6 +399,7 @@ screenkey-git
 scrot
 sddm
 sddm-config-editor-git
+sddm-theme-sugar-candy-git
 sdparm
 sed
 sg3_utils
@@ -590,6 +593,7 @@ xfce4-wavelan-plugin
 xfce4-weather-plugin
 xfce4-whiskermenu-plugin
 xfce4-xkb-plugin
+xfconf
 xfdesktop
 xfsprogs
 xfwm4

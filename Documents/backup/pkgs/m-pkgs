@@ -8,7 +8,6 @@ firmware-manager-git
 fnm-bin
 g810-led-git
 gtk-theme-arc-gruvbox-git
-hardinfo
 headsetcontrol-git
 hollywood
 js-beautify-git
@@ -20,6 +19,7 @@ picom-jonaburg-fix
 python2-pyxdg
 retroarch-git
 ruby-colorls
+sddm-theme-sugar-candy-git
 solaar-git
 sqls-bin
 stylua-git
