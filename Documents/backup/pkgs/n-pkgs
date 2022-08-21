@@ -9,6 +9,7 @@ alsa-firmware
 alsa-lib
 alsa-plugins
 alsa-utils
+amberol
 android-sdk-cmdline-tools-latest
 android-sdk-platform-tools
 android-tools
@@ -92,6 +93,7 @@ chrony
 clonezilla
 cmus
 codespell
+cool-retro-term
 cryptsetup
 cups
 cups-filters
