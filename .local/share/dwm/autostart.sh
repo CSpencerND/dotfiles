@@ -11,7 +11,7 @@ run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 # run "variety"
 run "nm-applet"
-run "pamac-tray"
+# run "pamac-tray"
 # run "xfce4-power-manager"
 run "numlockx on"
 run "blueberry-tray"

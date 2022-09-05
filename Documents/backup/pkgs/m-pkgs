@@ -3,16 +3,13 @@ catppuccin-gtk-theme
 colorpicker
 discord-screenaudio
 dragon-drag-and-drop-git
-eww-git
 firmware-manager-git
 fnm-bin
 g810-led-git
 gtk-theme-arc-gruvbox-git
 headsetcontrol-git
-hollywood
 js-beautify-git
 keyboard-configurator
-kmonad-bin
 museeks-bin
 mycli
 picom-jonaburg-fix
@@ -30,7 +27,6 @@ system76-firmware-daemon
 system76-power-git
 system76-scheduler-git
 tabnine
-termite-terminfo
 tracktion-waveform-beta
 ttf-material-icons-git
 ttf-weather-icons

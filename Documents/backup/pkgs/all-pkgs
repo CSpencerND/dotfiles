@@ -9,9 +9,6 @@ alsa-firmware
 alsa-lib
 alsa-plugins
 alsa-utils
-amberol
-android-sdk-cmdline-tools-latest
-android-sdk-platform-tools
 android-tools
 appstream
 arandr
@@ -80,10 +77,10 @@ bind
 binutils
 bison
 blueberry
+blueman
 bluez
 bluez-libs
 bluez-utils
-brave-bin
 broadcom-wl
 btop
 btrfs-progs
@@ -92,8 +89,6 @@ catppuccin-gtk-theme
 cbatticon
 chromium
 chrony
-clonezilla
-cmus
 codespell
 colorpicker
 cool-retro-term
@@ -103,7 +98,6 @@ cups-filters
 cups-pdf
 cups-pk-helper
 darkhttpd
-dash
 dconf-editor
 ddrescue
 dex
@@ -118,16 +112,15 @@ dnsmasq
 dosfstools
 downgrade
 dragon-drag-and-drop-git
-dropbox
 duf-bin
 e2fsprogs
 edid-decode-git
 edk2-shell
 efibootmgr
 eslint
+etcher-bin
 ethtool
 evtest
-eww-git
 exfatprogs
 exo
 expac
@@ -154,7 +147,6 @@ garcon
 gawk
 gcc
 gettext
-ghc
 ghostscript
 gimp
 git
@@ -167,7 +159,6 @@ gnome-bluetooth
 gnome-disk-utility
 gnome-keyring
 gnu-netcat
-go
 goverlay-bin
 gpart
 gparted
@@ -196,19 +187,17 @@ gvfs-afc
 gvfs-gphoto2
 gvfs-mtp
 gvfs-nfs
-gvfs-smb
 gzip
 hardcode-fixer-git
 hardinfo-git
 haveged
 hdparm
 headsetcontrol-git
-hollywood
 hplip
 htop
 hw-probe
 hwinfo
-i3blocks
+iftop
 imagemagick
 intel-ucode
 intltool
@@ -227,10 +216,8 @@ jsoncpp
 keyboard-configurator
 kitty
 kitty-terminfo
-kmonad-bin
 laptop-detect
 lazygit
-leftwm
 less
 lib32-alsa-lib
 lib32-alsa-plugins
@@ -258,7 +245,6 @@ libgsf
 libmtp
 libopenraw
 libpwquality
-libreoffice-fresh
 libtool
 libusb-compat
 lightdm
@@ -280,6 +266,7 @@ luarocks
 lutris
 lvm2
 lxappearance
+lzop
 m4
 make
 man-db
@@ -299,7 +286,6 @@ mobile-broadband-provider-info
 modemmanager
 mousepad
 mpc
-mpd
 mpv
 mtools
 mtpfs
@@ -314,6 +300,7 @@ ncdu
 ncmpcpp
 ndisc6
 neofetch
+nethogs
 network-manager-applet
 networkmanager
 networkmanager-openconnect
@@ -339,6 +326,7 @@ openvpn
 os-prober
 p7zip
 pacman
+pacseek
 parole
 partclone
 parted
@@ -381,7 +369,6 @@ qt5ct
 qtile
 ranger
 realtime-privileges
-reaper
 redshift
 reflector
 reiserfsprogs
@@ -417,7 +404,6 @@ speedtest-cli-git
 splix
 sqls-bin
 squashfs-tools
-stack
 starship
 steam
 sticky-git
@@ -436,10 +422,7 @@ system76-scheduler-git
 systemd-manager
 tabnine
 tcpdump
-tenacity-git
 terminus-font
-termite
-termite-terminfo
 testdisk
 texinfo
 thunar

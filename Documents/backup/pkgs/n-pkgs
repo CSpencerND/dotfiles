@@ -9,9 +9,6 @@ alsa-firmware
 alsa-lib
 alsa-plugins
 alsa-utils
-amberol
-android-sdk-cmdline-tools-latest
-android-sdk-platform-tools
 android-tools
 appstream
 arandr
@@ -79,10 +76,10 @@ bind
 binutils
 bison
 blueberry
+blueman
 bluez
 bluez-libs
 bluez-utils
-brave-bin
 broadcom-wl
 btop
 btrfs-progs
@@ -90,8 +87,6 @@ catfish
 cbatticon
 chromium
 chrony
-clonezilla
-cmus
 codespell
 cool-retro-term
 cryptsetup
@@ -100,7 +95,6 @@ cups-filters
 cups-pdf
 cups-pk-helper
 darkhttpd
-dash
 dconf-editor
 ddrescue
 dex
@@ -113,13 +107,13 @@ dmraid
 dnsmasq
 dosfstools
 downgrade
-dropbox
 duf-bin
 e2fsprogs
 edid-decode-git
 edk2-shell
 efibootmgr
 eslint
+etcher-bin
 ethtool
 evtest
 exfatprogs
@@ -145,7 +139,6 @@ garcon
 gawk
 gcc
 gettext
-ghc
 ghostscript
 gimp
 git
@@ -158,7 +151,6 @@ gnome-bluetooth
 gnome-disk-utility
 gnome-keyring
 gnu-netcat
-go
 goverlay-bin
 gpart
 gparted
@@ -186,7 +178,6 @@ gvfs-afc
 gvfs-gphoto2
 gvfs-mtp
 gvfs-nfs
-gvfs-smb
 gzip
 hardcode-fixer-git
 hardinfo-git
@@ -196,7 +187,7 @@ hplip
 htop
 hw-probe
 hwinfo
-i3blocks
+iftop
 imagemagick
 intel-ucode
 intltool
@@ -215,7 +206,6 @@ kitty
 kitty-terminfo
 laptop-detect
 lazygit
-leftwm
 less
 lib32-alsa-lib
 lib32-alsa-plugins
@@ -243,7 +233,6 @@ libgsf
 libmtp
 libopenraw
 libpwquality
-libreoffice-fresh
 libtool
 libusb-compat
 lightdm
@@ -265,6 +254,7 @@ luarocks
 lutris
 lvm2
 lxappearance
+lzop
 m4
 make
 man-db
@@ -284,7 +274,6 @@ mobile-broadband-provider-info
 modemmanager
 mousepad
 mpc
-mpd
 mpv
 mtools
 mtpfs
@@ -297,6 +286,7 @@ ncdu
 ncmpcpp
 ndisc6
 neofetch
+nethogs
 network-manager-applet
 networkmanager
 networkmanager-openconnect
@@ -322,6 +312,7 @@ openvpn
 os-prober
 p7zip
 pacman
+pacseek
 parole
 partclone
 parted
@@ -362,7 +353,6 @@ qt5ct
 qtile
 ranger
 realtime-privileges
-reaper
 redshift
 reflector
 reiserfsprogs
@@ -393,7 +383,6 @@ sof-firmware
 speedtest-cli-git
 splix
 squashfs-tools
-stack
 starship
 steam
 sticky-git
@@ -404,9 +393,7 @@ system-config-printer
 system-monitoring-center
 systemd-manager
 tcpdump
-tenacity-git
 terminus-font
-termite
 testdisk
 texinfo
 thunar
