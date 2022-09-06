@@ -9,7 +9,8 @@ super + w; {n, p, f, t}
     {variety -n, variety -p, variety -f, variety -t}
 
 super + slash
-    rofi -show drun
+    rofi -show drun -theme "$HOME/.config/rofi/themes/app-launcher.rasi"
+    # rofi -show drun
 
 super + Return
     kitty
