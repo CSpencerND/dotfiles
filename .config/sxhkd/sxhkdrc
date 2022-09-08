@@ -23,7 +23,7 @@ super + space
     # rofi -show window
 
 super + e
-    rofimoji
+    rofi -modi emoji -show emoji -theme "$HOME/.config/rofi/themes/emojimenu.rasi"
 
 super + x
     archlinux-logout
