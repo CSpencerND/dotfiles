@@ -199,6 +199,7 @@ alias wget="wget -c --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias gedit="devour gedit"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
+alias install-grub-efi="sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi"
 alias hsc="headsetcontrol"
 
 # --------------------------- Important Commands -------------------------------
