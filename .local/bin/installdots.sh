@@ -1,6 +1,8 @@
 #!/bin/bash
 echo "This script hasn't been tested. Use at your own risk."
 
+rate-mirrors --allow-root arch | tee /etc/pacman.d/mirrorlist
+sudo pacman -S archlinux-keyring
 sudo pacman -Syu
 sudo pacman -S --needed paru-bin
 sudo paru -S --needed - <(curl -s https://raw.githubusercontent.com/CSpencerND/dotfiles/main/Documents/backup/pkgs/all-pkgs)
@@ -16,4 +18,3 @@ xargs -I{} mv {} .config-backup/{}
 
 backup checkout
 backup config --local status.showUntrackedFiles no
-
