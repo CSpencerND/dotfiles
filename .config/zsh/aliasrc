@@ -3,7 +3,6 @@
 ### Fix obvious typos
 alias cd..="cd .."
 alias pdw="pwd"
-alias se="sudoedit"
 
 ### Git
 alias gts="git status"
@@ -29,12 +28,13 @@ alias qtc="$EDITOR ~/.config/qtile/config.py"
 ### Programming Shortcuts
 BROWSER="chromium"
 alias live="live-server --browser=$BROWSER ."
+alias se="sudoedit"
 
 ### Colorize commands
 alias ls='ls --color=auto'
 alias grep='grep -i --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias fgrep='grep -F --color=auto'
+alias egrep='grep -E --color=auto'
 alias rgrep='rgrep --color=auto'
 alias rg='rg -uu'
 alias diff='diff --color=auto'

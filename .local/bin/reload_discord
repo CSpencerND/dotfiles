@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-pgrep Discord && pkill -9 Discord
+killall Discord
 discord &

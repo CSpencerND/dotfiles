@@ -32,8 +32,11 @@ super + shift + x
     pkill -u $USER
     # pkill dwm-ulti
 
-# super shift + d
-#     reload_discord
+super shift + d
+    reload_discord
+
+super control + d
+    killall Discord
 
 # management {{{
 super + F1
