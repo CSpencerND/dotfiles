@@ -2,6 +2,7 @@
 echo "This script hasn't been tested. Use at your own risk."
 
 rate-mirrors --allow-root arch | tee /etc/pacman.d/mirrorlist
+pacman -Sy
 sudo pacman -S archlinux-keyring
 sudo pacman -Syu
 sudo pacman -S --needed paru-bin
