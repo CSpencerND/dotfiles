@@ -205,6 +205,7 @@ jq
 jsoncpp
 kitty
 kitty-terminfo
+kvantum
 laptop-detect
 lazygit
 less
@@ -355,6 +356,7 @@ qtile
 ranger
 realtime-privileges
 redshift
+refind
 reflector
 reiserfsprogs
 ripgrep
@@ -381,7 +383,7 @@ shfmt
 skippy-xd-git
 smartmontools
 sof-firmware
-speedtest-cli-git
+speedtest++
 splix
 squashfs-tools
 starship

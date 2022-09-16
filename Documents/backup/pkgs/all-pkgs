@@ -217,6 +217,7 @@ jsoncpp
 keyboard-configurator
 kitty
 kitty-terminfo
+kvantum
 laptop-detect
 lazygit
 less
@@ -371,6 +372,7 @@ qtile
 ranger
 realtime-privileges
 redshift
+refind
 reflector
 reiserfsprogs
 retroarch-git
@@ -401,7 +403,7 @@ skippy-xd-git
 smartmontools
 sof-firmware
 solaar-git
-speedtest-cli-git
+speedtest++
 splix
 sqls-bin
 squashfs-tools
