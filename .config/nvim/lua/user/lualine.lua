@@ -144,6 +144,7 @@ lualine.setup {
     options = {
         -- theme = "rose-pine",
         theme = require("user.statustheme"),
+        --[[ theme = "tokyonight", ]]
         icons_enabled = true,
 
         -- component_separators = "",

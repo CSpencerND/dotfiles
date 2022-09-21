@@ -104,7 +104,10 @@ return packer.startup(function(use)
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "tamago324/nlsp-settings.nvim", -- language server settings defined in json for formatters and linters
-        "jose-elias-alvarez/null-ls.nvim",
+        {
+            "jose-elias-alvarez/null-ls.nvim",
+            commit = "ff40739e5be6581899b43385997e39eecdbf9465",
+        },
         "ray-x/lsp_signature.nvim",
         -- {
         --     "ray-x/lsp_signature.nvim",
@@ -253,9 +256,10 @@ return packer.startup(function(use)
         "sainnhe/sonokai",
         "lunarvim/horizon.nvim",
         "lunarvim/synthwave84.nvim",
-        "morhetz/gruvbox"
+        "morhetz/gruvbox",
+        "folke/tokyonight.nvim",
     }
-    -- use { "ellisonleao/gruvbox.nvim" }
+
     -- Automatically set up your configuration after cloning packer.nvim
     if PACKER_BOOTSTRAP then
         require("packer").sync()

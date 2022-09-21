@@ -59,7 +59,8 @@ vim.g.gruvbox_contrast_dark = "medium"
 vim.cmd([[
     try
         " colorscheme catppuccin
-        colorscheme horizon
+        " colorscheme horizon
+        colorscheme tokyonight-night
         " colorscheme rose-pine
         " colorscheme gruvbox
         " colorscheme synthwave84
