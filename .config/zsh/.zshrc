@@ -417,8 +417,6 @@ eval "$(lua ~/.local/share/zsh/plugins/z.lua/z.lua --init zsh)"
 eval "$(starship init zsh)"
 
 # fnm
-# eval "`fnm env`"
 eval "$(fnm env)"
-# eval "$(fnm env --use-on-cd)"
 
 export PYTHONSTARTUP=~/.config/pyrc

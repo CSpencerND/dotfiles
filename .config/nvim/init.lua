@@ -9,18 +9,15 @@ require "user.options"
 require "user.gitsigns"
 require "user.lualine"
 require "user.functions"
-----------------------
+------------------------
 
-require "user.catppuccin"
-require "user.rose-pine"
+-- require "user.catppuccin"
+-- require "user.rose-pine"
 require "user.quickscope"
-
 require "user.alpha"
 require "user.autocommands"
 require "user.autopairs"
-require "user.bookmark"
 require "user.bufferline"
-require "user.cinnamon"
 require "user.colorizer"
 require "user.comment"
 require "user.dap"
@@ -29,10 +26,8 @@ require "user.git-blame"
 require "user.hop"
 require "user.illuminate"
 require "user.indentline"
-require "user.lsp-inlayhints"
 require "user.jaq"
--- require("mason").setup()
-require "user.mason"
+-- require "user.mason"
 require "user.matchup"
 require "user.notify"
 require "user.numb"
@@ -45,16 +40,20 @@ require "user.surround"
 require "user.telescope"
 require "user.todo-comments"
 require "user.toggleterm"
--- require "user.ts-context"
 require "user.zen-mode"
 require "user.winbar"
 require "user.gps"
 
+-- [[ require "user.bookmark" ]]
+-- require("mason").setup()
+-- require "user.ts-context"
+-- require "user.lsp-inlayhints"
+
 -- Colorscheme
 --[[ vim.o.background = "light" ]]
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-vim.g.sonokai_style = "andromeda"
-vim.g.gruvbox_contrast_dark = "medium"
+-- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+-- vim.g.sonokai_style = "andromeda"
+-- vim.g.gruvbox_contrast_dark = "medium"
 
 vim.cmd([[
     try
@@ -74,4 +73,3 @@ vim.cmd([[hi DiagnosticError guibg=NONE]])
 vim.cmd([[hi DiagnosticInfo guibg=NONE]])
 vim.cmd([[hi DiagnosticHint guibg=NONE]])
 vim.cmd([[hi DiagnosticWarn guibg=NONE]])
-

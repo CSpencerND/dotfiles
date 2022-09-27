@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2012 Lukas Knuth
- * 
+ *
  * This file is part of Backslide.
  *
  * Backslide is free software: you can redistribute it and/or modify
@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Backslide.  If not, see <http://www.gnu.org/licenses/>.
 */
-const Lang = imports.lang;
 const GLib = imports.gi.GLib;
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 const Pref = Me.imports.settings;
@@ -31,34 +30,30 @@ const _ = Gettext.gettext;
  * This also includes jumping to next/previous wallpaper.
  * All Wallpaper-functionality is bundled in this class.
  */
-var Wallpaper = new Lang.Class({
-    Name: "Wallpaper",
-
-    _settings: {},
-    _notify: {},
-    _image_queue: [],
-    _is_random: false,
-    _preview_callback: null,
+var Wallpaper = class Wallpaper {
 
     /**
      * Constructs a new class to do all the wallpaper-related work.
      * @private
      */
-    _init: function(){
+    constructor(){
         this._settings = new Pref.Settings();
         this._notify = new Notify.Notification();
+        this._image_queue = [];
+        this._is_random = false;
+        this._preview_callback = null;
         // Catch changes happening in the config-tool and update the list
-        this._settings.bindKey(Pref.KEY_IMAGE_LIST, Lang.bind(this, function(){
+        this._settings.bindKey(Pref.KEY_IMAGE_LIST, () => {
             this._image_queue.length = 0; // Clear the array, see http://stackoverflow.com/a/1234337/717341
             this._loadQueue();
             this._removeDuplicate();
             this._triggerPreviewCallback();
-        }));
+        });
         this._is_random = this._settings.isRandom();
         // Load images:
         this._loadQueue();
         this._removeDuplicate();
-    },
+    }
 
     /**
      * <p>Set the function to be called, when the next image changes (due to a
@@ -69,7 +64,7 @@ var Wallpaper = new Lang.Class({
      *  This function will be passed an argument with the path of the next
      *  wallpaper.
      */
-    setPreviewCallback: function(callback){
+    setPreviewCallback(callback){
         // Validate:
         if (callback === undefined || callback === null || typeof callback !== "function"){
             throw TypeError("'callback' should be a function!");
@@ -78,14 +73,14 @@ var Wallpaper = new Lang.Class({
         this._preview_callback = callback;
         // Callback:
         this._triggerPreviewCallback();
-    },
+    }
 
     /**
      * Load the image-list from the settings, populate the Stack and
      *  randomize it, if necessary.
      * @private
      */
-    _loadQueue: function(){
+    _loadQueue(){
         let list = this._settings.getImageList();
         // Add current if empty:
         if (list.length === 0){
@@ -105,14 +100,14 @@ var Wallpaper = new Lang.Class({
         for (let i in list){
             this._image_queue.push(list[i]);
         }
-    },
+    }
 
     /**
      * If the first item from the current image-queue matches the wallpaper which is
      *  currently set, the item will be removed from the list.
      * @private
      */
-    _removeDuplicate: function(){
+    _removeDuplicate(){
         // Check if it's only one image in the list:
         if (this._image_queue.length <= 1){
             return;
@@ -121,51 +116,51 @@ var Wallpaper = new Lang.Class({
         if (this._settings.getWallpaper() === this._image_queue[0]){
             this._image_queue.shift();
         }
-    },
+    }
 
     /**
      * Checks whether a preview-callback exists and calls it with the next wallpaper.
      * @see #setPreviewCallback
      * @private
      */
-    _triggerPreviewCallback: function(){
+    _triggerPreviewCallback(){
         if (this._preview_callback !== null){
             let next_wallpaper = this._image_queue[0];
             this._preview_callback(next_wallpaper);
         }
-    },
+    }
 
     /**
      * Sorts the image-list for iterative access.
      */
-    order: function(){
+    order(){
         this._is_random = false;
         this._image_queue.length = 0; // Clear the array, see http://stackoverflow.com/a/1234337/717341
         this._loadQueue();
         this._removeDuplicate();
         // Callback:
         this._triggerPreviewCallback();
-    },
+    }
 
     /**
      * Shuffle the image-list for random access.
      */
-    shuffle: function(){
+    shuffle(){
         this._is_random = true;
         // Shuffle the current queue
         this._fisherYates(this._image_queue);
         // Callback:
         this._triggerPreviewCallback();
-    },
+    }
 
     /**
-     * Implementation of the "Fisher–Yates shuffle"-algorithm, taken from
+     * Implementation of the "Fisher-Yates shuffle"-algorithm, taken from
      *  http://stackoverflow.com/q/2450954/717341
      * @param array the array to shuffle.
      * @return {Boolean} false if the arrays length is 0.
      * @private
      */
-    _fisherYates: function(array) {
+    _fisherYates(array) {
         var i = array.length, j, tempi, tempj;
         if ( i == 0 ) return false;
         while ( --i ) {
@@ -176,12 +171,12 @@ var Wallpaper = new Lang.Class({
             array[j] = tempi;
         }
         return true;
-    },
+    }
 
     /**
      * Slide to the next wallpaper in the list.
      */
-    next: function(){
+    next(){
         // Check if there where any items left in the stack:
         if (this._image_queue.length <= 2){
             this._loadQueue(); // Load new wallpapers
@@ -197,7 +192,7 @@ var Wallpaper = new Lang.Class({
             // File is not found. Check the *whole* list for any non-existing files and remove them.
             this.removeInvalidWallpapers(); // This will trigger a reload of the whole list.
         }
-    },
+    }
 
     /**
      * This function will remove any invalid wallpaper(s) (image not found).
@@ -205,7 +200,7 @@ var Wallpaper = new Lang.Class({
      *  which will be removed.
      * @param path [optional] the path to the one invalid wallpaper.
      */
-    removeInvalidWallpapers: function(path){
+    removeInvalidWallpapers(path){
         let list = this._settings.getImageList();
         let found = [];
         if (path === undefined || path === null || typeof path !== "string"){
@@ -243,4 +238,4 @@ var Wallpaper = new Lang.Class({
         }
     }
 
-});
+}

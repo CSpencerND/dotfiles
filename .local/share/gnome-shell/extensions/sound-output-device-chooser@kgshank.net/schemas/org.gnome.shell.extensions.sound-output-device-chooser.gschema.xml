@@ -45,7 +45,7 @@
     </key>
 
     <key name="ports-settings" type="s">
-      <default>"[]"</default>
+      <default>"{\"version\":3,\"ports\":[]}"</default>
       <summary>Preference to hide/show different ports always</summary>
       <description></description>
     </key>
@@ -70,9 +70,32 @@
     
     <key name="new-profile-indentification" type="b">
         <default>true</default>
-        <summary>Preference to enable new logic to identify port profiles</summary>
+        <summary>(Deprecated)Old preference name with a typo. To be removed in the next shell version</summary>
         <description></description>
     </key>
     
+    <key name="new-profile-identification" type="b">
+        <default>true</default>
+        <summary>Preference to enable python script to identify port profiles</summary>
+        <description></description>
+    </key>
+    
+    <key name="cannot-activate-hidden-device" type="b">
+        <default>true</default>
+        <summary>Preference to avoid activation of hidden devices in Port Settings</summary>
+        <description></description>
+    </key>
+
+    <key name="omit-device-origins" type="b">
+        <default>false</default>
+        <summary>Preference to omit device origin at Volume Menu</summary>
+        <description></description>
+    </key>
+
+    <key name="integrate-with-slider" type="b">
+        <default>false</default>
+        <summary>Preference to integrate selector with slider</summary>
+        <description></description>
+    </key>
   </schema>
 </schemalist>

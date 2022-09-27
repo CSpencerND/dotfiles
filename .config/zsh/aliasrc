@@ -9,6 +9,7 @@ alias gts="git status"
 alias gta="git add"
 alias gtc="git commit"
 alias gtp="git push"
+alias lg="lazygit"
 
 ### Backup Git
 alias bks="backup status"
@@ -27,7 +28,7 @@ alias qtc="$EDITOR ~/.config/qtile/config.py"
 
 ### Programming Shortcuts
 BROWSER="chromium"
-alias live="live-server --browser=$BROWSER ."
+alias live="live-server ."
 alias se="sudoedit"
 
 ### Colorize commands
@@ -80,6 +81,11 @@ fi
 alias nv='nvim'
 
 alias top='btop'
+
+### DNF
+alias dnf="sudo dnf"
+alias dnfi="sudo dnf install"
+alias dnfy="sudo dnf -y install"
 
 ### Pacman
 alias update="sudo pacman -Syyu && pacmod || pacmod"
@@ -201,6 +207,7 @@ alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
 alias install-grub-efi="sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi"
 alias hsc="headsetcontrol"
+alias codium="flatpak run com.vscodium.codium"
 
 # --------------------------- Important Commands -------------------------------
 alias hp="pactl load-module module-alsa-sink device=hw:1,1"

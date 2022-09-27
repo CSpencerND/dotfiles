@@ -1,15 +1,144 @@
-3.38.2
-======
-* window-list: Honor changes in skip-taskbar property [Sergio; !130]
-* window-list, workspace-indicator: Improve previews in workspace thumbs
-  [Florian; #260, !142]
-* window-list, workspace-indicator: Adjust to 3.38 changes [Florian; !133]
-* auto-move: Improve behavior on multi-monitor setups [Florian; !135]
-* windowNavigator: Adjust to 3.38 changes [Thun; #259]
-* Misc. bug fixes [Ray; !145]
+42.beta
+=======
+* workspace-indicator: Fix cancelling editing with Esc [Florian; !208]
+* window-list: Update window tracking to avoid missing icons [Florian; !207]
+* Use libadwaita for preferences [Florian; !209, !213]
+* Adapt to Clutter grab API changes [Florian; !212]
+* Misc. bug fixes and cleanups [Jan, Florian; !210, !214]
 
 Contributors:
-  Sergio Costas, Florian Müllner, Thun Pin, Ray Strode
+  Jan Beich, Florian Müllner, Naala Nanba
+
+Translators:
+  Boyuan Yang [zh_CN], Matej Urbančič [sl], Naala Nanba [ab],
+  Alexander Shopov [bg], Emin Tufan Çetin [tr]
+
+42.alpha
+========
+* native-window-placement: Fix distorted layout in app grid [Sebastian; !189]
+* window-list: Fix on-screen keyboard [Florian; !199]
+* Misc. bug fixes and cleanups [Neal; Just; !195, !197]
+
+Contributors:
+  Piotr Drąg, Neal Gompa, Sebastian Keller, Florian Müllner, Just Perfection
+
+Translators:
+  Goran Vidović [hr], Sveinn í Felli [is], Yuri Chornoivan [uk],
+  Fabio Tomat [fur], Quentin PAGÈS [oc], Hugo Carvalho [pt],
+  Yaron Shahrabani [he], Jordi Mas i Hernandez [ca], MohammadSaleh Kamyab [fa],
+  Fran Dieguez [gl], Daniel Mustieles [es], Aleksandr Melman [ru],
+  Aurimas Černius [lt], Asier Sarasua Garmendia [eu], Kukuh Syafaat [id],
+  Rafael Fontenelle [pt_BR]
+
+41.0
+====
+* Bump version
+
+41.rc.1
+=======
+* Fix pre-generating stylesheets in tarball [Florian; !190]
+
+Contributors:
+  Florian Müllner
+
+41.rc
+=====
+* window-list: Adapt to overview-on-startup [Florian; !185]
+* apps-menu: Use a custom 'toggle-menu' shortcut [Florian; !173]
+* Misc. bug fixes and cleanups [Florian; !186]
+
+Contributors:
+  Florian Müllner
+
+41.beta
+=======
+* window-list: Extend reactive area of minimap to screen edges [Adam; !171]
+* drive-menu: Improve detection of network mounts [Florian; !27, !176]
+* Use distinct gettext domain for e.g.o uploads [Florian; #335]
+* Misc. bug fixes and cleanups [Florian; !172, !174, !177, !167, !178, !180,
+  !181, !182, !183]
+
+Contributors:
+  Marco Trevisan (Treviño), Adam Goode, Florian Müllner
+
+Translators:
+  Hugo Carvalho [pt], Juliano de Souza Camargo [pt], Alexander Shopov [bg]
+
+40.1
+====
+* Disable welcome dialog in classic session [Florian; !169]
+* windowsNavigator: Adjust to a late gnome-shell change [Florian; !170]
+
+Contributors:
+  Florian Müllner
+
+Translators:
+  Ngọc Quân Trần [vi], Anders Jonsson [sv], Carmen Bianca BAKKER [eo],
+  Pawan Chitrakar [ne], Quentin PAGÈS [oc]
+
+40.0
+====
+
+Translators:
+  Jiri Grönroos [fi]
+
+40.rc
+=====
+* native-window-placement: Adjust to gnome-shell changes [Florian; !164]
+* windows-navigator: Adjust to gnome-shell changes [Florian; !163]
+* window-list, workspace-indicator: Only show previews for up to six workspaces
+  [Florian; !165]
+* window-list, workspace-indicator: Improve workspace preview appearance
+  [Florian; !166]
+
+Contributors:
+  Florian Müllner
+
+Translators:
+  Fran Dieguez [gl]
+
+40.beta
+=======
+* Add tooltips to workspace thumbnails [Florian; !155]
+* Drop arrows from top bar menus [Florian; !156]
+* drive-menu: Mark mounts that can be unmounted as removable [Michael; !152]
+* Remove horizontal-workspaces extension [Florian; !158]
+* Adjust to shell overview changes [Florian; !159, !160]
+* Fix crashes [Daniel; !157]
+* Misc. bug fixes and cleanups [Florian; !154, !161]
+
+Contributors:
+  Michael Lawton, Florian Müllner, Daniel van Vugt
+
+Translators:
+  Аляксей [be], A S Alam [pa]
+
+40.alpha.1
+==========
+* Don't depend on sassc when building from tarball [Florian; !150]
+* Port extensions preferences to GTK4 [Florian; !148]
+* Misc. bug fixes and cleanups [Florian, Jonas; !149, !151, !153]
+
+Contributors:
+  Jonas Dreßler, Florian Müllner
+
+40.alpha
+========
+* window-list: Honor changes in skip-taskbar property [Sergio; !130]
+* window-list, workspace-indicator: Adjust to 3.38 changes [Florian; !133]
+* window-list, workspace-indicator: Improve previews in workspace thumbs
+  [Florian; #260, !142]
+* auto-move: Improve behavior on multi-monitor setups [Florian; !135]
+* windowNavigator: Adjust to 3.38 changes [Thun; #259]
+* Misc. bug fixes and cleanups [Florian, Jonas Å, Jordan, Ray; !131, !136,
+  !137, !140, !141, !144, !146, !145]
+
+Contributors:
+  Sergio Costas, Florian Müllner, Jordan Petridis, Thun Pin, Ray Strode,
+  Jonas Ådahl
+
+Translators:
+  Fabio Tomat [fur], Jordi Mas [ca]
 
 3.38.1
 ======

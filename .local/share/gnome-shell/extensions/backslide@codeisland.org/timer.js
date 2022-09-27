@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2012 Lukas Knuth
- * 
+ *
  * This file is part of Backslide.
  *
  * Backslide is free software: you can redistribute it and/or modify
@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Backslide.  If not, see <http://www.gnu.org/licenses/>.
 */
-const Lang = imports.lang;
 const GLib = imports.gi.GLib;
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 const Pref = Me.imports.settings;
@@ -42,18 +41,8 @@ const Pref = Me.imports.settings;
  *         http://git.gnome.org/browse/gjs/tree/test/js/testMainloop.js
  *     </li>
  * </ul>
- * @type {Lang.Class}
  */
-var Timer = new Lang.Class({
-    Name: "Timer",
-
-    _settings: {},
-    _delay: Pref.DELAY_MINUTES_DEFAULT,
-    _interval_id: null,
-    _callback: null,
-
-    _start_timestamp: {},
-    _elapsed_minutes: 0,
+var Timer = class Timer {
 
     /**
      * Create a new timer (doesn't start it). To be usefull, you also need to specify a
@@ -61,30 +50,30 @@ var Timer = new Lang.Class({
      * @see #setCallback
      * @private
      */
-    _init: function(){
+    constructor(){
         this._settings = new Pref.Settings();
         this._delay = this._settings.getDelay();
         this._elapsed_minutes = this._settings.getElapsedTime();
         // Listen to changes and restart with new delay.
-        this._settings.bindKey(Pref.KEY_DELAY, Lang.bind(this, function(value){
+        this._settings.bindKey(Pref.KEY_DELAY, (value) => {
             var minutes = value.get_int32();
             if (Pref.valid_minutes(minutes)){
                 this._delay = minutes;
                 this.restart();
             }
-        }));
-    },
+        });
+    }
 
     /**
      * Set the callback-function for an exceeded delay.
      * @param callback the function to call when the delay has exceeded.
      */
-    setCallback: function(callback){
+    setCallback(callback){
         if (callback === undefined || callback === null || typeof callback !== "function"){
             throw TypeError("'callback' needs to be a function.");
         }
         this._callback = callback;
-    },
+    }
 
     /**
      * Start or restart a new timer. The delay is taken from the settings. Calling this method
@@ -93,7 +82,7 @@ var Timer = new Lang.Class({
      *  anything.
      * @see #setCallback
      */
-    begin: function(){
+    begin(){
         this.stop();
         this._start_timestamp = new Date();
         if (this._elapsed_minutes >= this._delay){
@@ -104,14 +93,15 @@ var Timer = new Lang.Class({
             this._elapsed_minutes = 0;
         }
         this._interval_id = GLib.timeout_add_seconds(
-            GLib.PRIORITY_DEFAULT, (this._delay-this._elapsed_minutes)*60, Lang.bind(this, this._callbackInternal)
+            GLib.PRIORITY_DEFAULT, (this._delay-this._elapsed_minutes)*60,
+            this._callbackInternal.bind(this)
         );
-    },
+    }
 
     /**
      * Stop the current timer. Repeated calls to this method don't have any effect.
      */
-    stop: function(){
+    stop(){
         if (this._interval_id !== null){
             if (GLib.source_remove(this._interval_id) ){
                 this._interval_id = null;
@@ -122,23 +112,23 @@ var Timer = new Lang.Class({
                 this._settings.setElapsedTime(this._elapsed_minutes);
             }
         }
-    },
+    }
 
     /**
      * A convenient way to restart the timer.
      */
-    restart: function(){
+    restart(){
         this._start_timestamp = new Date();
         this._elapsed_minutes = 0; // Reset the elapsed minutes.
         this.stop();
         this.begin();
-    },
+    }
 
     /**
      * The internal callback-function.
      * @private
      */
-    _callbackInternal: function(){
+    _callbackInternal(){
         this._callback();
         this._start_timestamp = new Date(); // Reset the time-stamp, see issue12
         if (this._elapsed_minutes > 0){
@@ -152,4 +142,4 @@ var Timer = new Lang.Class({
             return true; // Keep on looping.
         }
     }
-});
+}

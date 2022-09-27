@@ -17,8 +17,7 @@
 /* jshint moz:true */
 
 const ByteArray = imports.byteArray;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
+const { Gio, GLib } = imports.gi;
 const ExtensionUtils = imports.misc.extensionUtils;
 
 const Me = ExtensionUtils.getCurrentExtension();
@@ -34,41 +33,6 @@ else {
     logWrap = global.log
 }
 
-/**
- * getSettings:
- * 
- * @schema: (optional): the GSettings schema id Builds and return a GSettings
- *          schema for
- * @schema, using schema files in extensions dir/schemas. If
- * @schema is not provided, it is taken from metadata["settings-schema"].
- */
-function getSettings(schema) {
-    // let extension = ExtensionUtils.getCurrentExtension();
-
-    schema = schema || Me.metadata["settings-schema"];
-
-    const GioSSS = Gio.SettingsSchemaSource;
-
-    // check if this extension was built with "make zip-file", and thus
-    // has the schema files in a sub-folder
-    // otherwise assume that extension has been installed in the
-    // same prefix as gnome-shell (and therefore schemas are available
-    // in the standard folders)
-    let schemaDir = Me.dir.get_child("schemas");
-    let schemaSource;
-    if (schemaDir.query_exists(null))
-        schemaSource = GioSSS.new_from_directory(schemaDir.get_path(), GioSSS.get_default(), false);
-    else
-        schemaSource = GioSSS.get_default();
-
-    let schemaObj = schemaSource.lookup(schema, true);
-    if (!schemaObj)
-        throw new Error("Schema " + schema + " could not be found for extension "
-            + Me.metadata.uuid + ". Please check your installation.");
-
-    let _settings = new Gio.Settings({ settings_schema: schemaObj });
-    return _settings;
-}
 
 let cards;
 
@@ -92,19 +56,18 @@ function getProfiles(control, uidevice) {
         if (!cards || Object.keys(cards).length == 0 || !cards[stream.card_index]) {
             refreshCards();
         }
-
         if (cards && cards[stream.card_index]) {
             _log("Getting profile form stream id " + uidevice.port_name);
             let profiles;
             if ((profiles = getProfilesForPort(uidevice.port_name, cards[stream.card_index]))) {
                 return profiles;
-            }           
+            }
         }
     }
     else {
         /* Device is not active device, lets try match with port name */
         refreshCards();
-        for(let card of Object.values(cards)) {
+        for (let card of Object.values(cards)) {
             let profiles;
             _log("Getting profile from cards " + uidevice.port_name + " for card id " + card.id);
             if ((profiles = getProfilesForPort(uidevice.port_name, card))) {
@@ -112,7 +75,6 @@ function getProfiles(control, uidevice) {
             }
         }
     }
-
     return [];
 }
 
@@ -138,10 +100,19 @@ function isCmdFound(cmd) {
 function refreshCards() {
     cards = {};
     ports = [];
-    // if(_settings == null) {getSettings(Prefs.SETTINGS_SCHEMA);}
-    let _settings = getSettings(Prefs.SETTINGS_SCHEMA);
+    let _settings = ExtensionUtils.getSettings();
     let error = false;
-    let newProfLogic = _settings.get_boolean(Prefs.NEW_PROFILE_ID);
+    let newProfLogic = _settings.get_boolean(Prefs.NEW_PROFILE_ID_DEPRECATED);
+
+    /** This block should be removed in the next release along the setting schema correct */
+    if (!newProfLogic) {
+        _settings.set_boolean(Prefs.NEW_PROFILE_ID, false);
+        _settings.reset(Prefs.NEW_PROFILE_ID_DEPRECATED);
+    }
+    else {
+        newProfLogic = _settings.get_boolean(Prefs.NEW_PROFILE_ID);
+    }
+
     if (newProfLogic) {
         _log("New logic");
         let pyLocation = Me.dir.get_child("utils/pa_helper.py").get_path();
@@ -243,13 +214,24 @@ function parseOutput(out) {
                     }
                     break;
                 case "PROFILES":
-                    if ((matches = /.*?((?:output|input)[^+]*?):\s(.*?)\s\(sinks:/.exec(line))) {
-                        cards[cardIndex].profiles.push({ "name": matches[1], "human_name": matches[2] });
+                    if ((matches = /.*?((?:output|input)[^+]*?):\s(.*?)\s\(sinks:.*?(?:available:\s*(.*?))*\)/.exec(line))) {
+                        let availability = matches[3] ? matches[3] : "yes" //If no availability in out, assume profile is available
+
+                        cards[cardIndex].profiles.push({
+                            "name": matches[1],
+                            "human_name": matches[2],
+                            "available": (availability === "yes") ? 1 : 0
+                        });
                     }
                     break;
                 case "PORTS":
                     if ((matches = /\t*(.*?):\s(.*)\s\(.*?priority:/.exec(line))) {
-                        port = { "name": matches[1], "human_name": matches[2], "card_name": cards[cardIndex].name, "card_description": cards[cardIndex].card_description };
+                        port = {
+                            "name": matches[1],
+                            "human_name": matches[2],
+                            "card_name": cards[cardIndex].name,
+                            "card_description": cards[cardIndex].card_description
+                        };
                         cards[cardIndex].ports.push(port);
                         ports.push(port);
                     }
@@ -264,7 +246,9 @@ function parseOutput(out) {
     }
     if (ports) {
         ports.forEach(p => {
-            p.direction = p.profiles.filter(pr => pr.indexOf("+input:") == -1).some(pr => (pr.indexOf("output:") >= 0)) ? "Output" : "Input";
+            p.direction = p.profiles
+                .filter(pr => pr.indexOf("+input:") == -1)
+                .some(pr => (pr.indexOf("output:") >= 0)) ? "Output" : "Input";
         });
     }
 }
@@ -334,7 +318,11 @@ function getProfilesForPort(portName, card) {
         let port = card.ports.find(port => (portName === port.name));
         if (port) {
             if (port.profiles) {
-                return card.profiles.filter(profile => (profile.name.indexOf("+input:") == -1 && port.profiles.includes(profile.name)))
+                return card.profiles.filter(profile => (
+                    profile.name.indexOf("+input:") == -1
+                    && profile.available === 1
+                    && port.profiles.includes(profile.name)
+                ));
             }
         }
     }
@@ -361,4 +349,9 @@ function dump(obj) {
         }
         catch (e) { _log(propName + "!!!Error!!!"); }
     }
+}
+
+function getActor(item) {
+    //.actor is needed for backward compatablity
+    return (item.actor) ? item.actor : item;
 }

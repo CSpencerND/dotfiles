@@ -173,7 +173,7 @@ lualine.setup {
         lualine_c = {
             -- { gps.get_location, cond = gps_cond, color = { bg = "#1c1c29", fg =  "#1c1c29" } },
         },
-        lualine_x = { "diagnostics", treesitter, lsp }, -- lsp },
+        lualine_x = { "diagnostics", lsp }, -- lsp },
         lualine_y = {
             { "filetype", color = { bg = "#393547", gui = "bold" } },
         },

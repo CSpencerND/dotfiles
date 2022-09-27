@@ -4,43 +4,27 @@
 // we use async/await here to not block the mainloop, not to parallelize
 /* eslint-disable no-await-in-loop */
 
-const { Gio, GLib, GObject, Gtk } = imports.gi;
+const { Adw, Gio, GLib, GObject, Gtk } = imports.gi;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 
 const Me = ExtensionUtils.getCurrentExtension();
 const Util = Me.imports.util;
 
-Gio._promisify(Gio._LocalFilePrototype,
-    'enumerate_children_async', 'enumerate_children_finish');
-Gio._promisify(Gio._LocalFilePrototype,
-    'query_info_async', 'query_info_finish');
-Gio._promisify(Gio.FileEnumerator.prototype,
-    'next_files_async', 'next_files_finish');
+Gio._promisify(Gio.File.prototype, 'enumerate_children_async');
+Gio._promisify(Gio.File.prototype, 'query_info_async');
+Gio._promisify(Gio.FileEnumerator.prototype, 'next_files_async');
 
-const UserThemePrefsWidget = GObject.registerClass(
-class UserThemePrefsWidget extends Gtk.ScrolledWindow {
-    _init() {
-        super._init({
-            hscrollbar_policy: Gtk.PolicyType.NEVER,
-        });
+class UserThemePrefsWidget extends Adw.PreferencesGroup {
+    static {
+        GObject.registerClass(this);
+    }
 
-        const box = new Gtk.Box();
-        this.add(box);
-
-        this._list = new Gtk.ListBox({
-            selection_mode: Gtk.SelectionMode.NONE,
-            halign: Gtk.Align.CENTER,
-            valign: Gtk.Align.START,
-            hexpand: true,
-            margin: 60,
-        });
-        this._list.get_style_context().add_class('frame');
-        this._list.set_header_func(this._updateHeader.bind(this));
-        box.add(this._list);
+    constructor() {
+        super({ title: 'Themes' });
 
         this._actionGroup = new Gio.SimpleActionGroup();
-        this._list.insert_action_group('theme', this._actionGroup);
+        this.insert_action_group('theme', this._actionGroup);
 
         this._settings = ExtensionUtils.getSettings();
         this._actionGroup.add_action(
@@ -93,8 +77,7 @@ class UserThemePrefsWidget extends Gtk.ScrolledWindow {
         const row = new ThemeRow(name);
         this._rows.set(name, row);
 
-        this._list.add(row);
-        row.show_all();
+        this.add(row);
     }
 
     async _enumerateDir(dir) {
@@ -121,69 +104,34 @@ class UserThemePrefsWidget extends Gtk.ScrolledWindow {
 
         return fileInfos.map(info => info.get_name());
     }
+}
 
-    _updateHeader(row, before) {
-        if (!before || row.get_header())
-            return;
-        row.set_header(new Gtk.Separator());
+class ThemeRow extends Adw.ActionRow {
+    static {
+        GObject.registerClass(this);
     }
-});
 
-const ThemeRow = GObject.registerClass(
-class ThemeRow extends Gtk.ListBoxRow {
-    _init(name) {
-        this._name = new GLib.Variant('s', name);
-
-        super._init({
+    constructor(name) {
+        const check = new Gtk.CheckButton({
             action_name: 'theme.name',
-            action_target: this._name,
+            action_target: new GLib.Variant('s', name),
         });
 
-        const box = new Gtk.Box({
-            spacing: 12,
-            margin: 12,
+        super({
+            title: name || 'Default',
+            activatable_widget: check,
         });
-        this.add(box);
-
-        box.add(new Gtk.Label({
-            label: name || 'Default',
-            hexpand: true,
-            xalign: 0,
-            max_width_chars: 25,
-            width_chars: 25,
-        }));
-
-        this._checkmark = new Gtk.Image({
-            icon_name: 'emblem-ok-symbolic',
-            pixel_size: 16,
-        });
-        box.add(this._checkmark);
-
-        box.show_all();
-
-        const id = this.connect('parent-set', () => {
-            this.disconnect(id);
-
-            const actionGroup = this.get_action_group('theme');
-            actionGroup.connect('action-state-changed::name',
-                this._syncCheckmark.bind(this));
-            this._syncCheckmark();
-        });
+        this.add_prefix(check);
     }
+}
 
-    _syncCheckmark() {
-        const actionGroup = this.get_action_group('theme');
-        const state = actionGroup.get_action_state('name');
-        this._checkmark.opacity = this._name.equal(state);
-    }
-});
-
+/** */
 function init() {
 }
 
+/**
+ * @returns {Gtk.Widget} - the prefs widget
+ */
 function buildPrefsWidget() {
-    let widget = new UserThemePrefsWidget();
-    widget.show_all();
-
-    return widget;
+    return new UserThemePrefsWidget();
 }

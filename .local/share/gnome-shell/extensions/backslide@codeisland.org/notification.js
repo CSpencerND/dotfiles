@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2012 Lukas Knuth
- * 
+ *
  * This file is part of Backslide.
  *
  * Backslide is free software: you can redistribute it and/or modify
@@ -16,23 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with Backslide.  If not, see <http://www.gnu.org/licenses/>.
 */
-const Lang = imports.lang;
 const MessageTray = imports.ui.messageTray;
 const St = imports.gi.St;
 const Main = imports.ui.main;
 
 /**
  * A simple to use class for showing notifications.
- * @type {Lang.Class}
  */
-var Notification = new Lang.Class({
-    Name: "Notification",
+var Notification = class Notification {
 
-    _source: {},
-
-    _init: function(){
+    constructor(){
         this._source = new SimpleSource("BackSlide", "dialog-error");
-    },
+    }
 
     /**
      * Issue a simple notification.
@@ -40,7 +35,7 @@ var Notification = new Lang.Class({
      * @param banner_text the text for the banner
      * @param body the body-text (larger).
      */
-    notify: function(title, banner_text, body){
+    notify(title, banner_text, body){
         Main.messageTray.add(this._source.source);
         let notification = new MessageTray.Notification(this._source, title, banner_text,
             {
@@ -50,14 +45,12 @@ var Notification = new Lang.Class({
         );
         this._source.notify(notification);
     }
-});
+}
 
 /**
  * A simple source-implementation for notifying new Notifications.
- * @type {Lang.Class}
  */
-const SimpleSource = new Lang.Class({
-    Name: "SimpleSource",
+var SimpleSource = class SimpleSource {
 
     /**
      * Create a new simple source for notifications.
@@ -65,12 +58,12 @@ const SimpleSource = new Lang.Class({
      * @param icon_name the image to show with the notifications.
      * @private
      */
-    _init: function(title, icon_name){
+    constructor(title, icon_name){
         this.source = new MessageTray.Source(title, icon_name);
         this._icon_name = icon_name;
-    },
+    }
 
-    createNotificationIcon: function() {
+    createNotificationIcon() {
         let iconBox = new St.Icon({
             icon_name: this._icon_name,
             icon_size: 48
@@ -79,9 +72,9 @@ const SimpleSource = new Lang.Class({
             iconBox.icon_type = St.IconType.FULLCOLOR; // Backwards compatibility with 3.4
         }
         return iconBox;
-    },
+    }
 
-    open: function() {
+    open() {
         this.destroy();
     }
-});
+}

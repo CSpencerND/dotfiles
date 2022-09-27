@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2012 Lukas Knuth
- * 
+ *
  * This file is part of Backslide.
  *
  * Backslide is free software: you can redistribute it and/or modify
@@ -27,9 +27,9 @@ const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gio = imports.gi.Gio;
 const Pixbuf = imports.gi.GdkPixbuf;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
 const Pref = Me.imports.settings;
-const Utils = Me.imports.utils;
 
 const Gettext = imports.gettext.domain('backslide');
 const _ = Gettext.gettext;
@@ -43,7 +43,7 @@ const PATH_COL = 1;
  * Called right after the file was loaded.
  */
 function init(){
-    Utils.initTranslations();
+    ExtensionUtils.initTranslations();
     settings = new Pref.Settings();
 }
 
@@ -140,7 +140,7 @@ function buildPrefsWidget(){
     let image_grid = new Gtk.IconView({
         spacing: 2,
         columns: 3,
-        expand: true,
+        hexpand: true,
         item_padding: 2,
         selection_mode: Gtk.SelectionMode.MULTIPLE,
         model: grid_model,
@@ -151,21 +151,21 @@ function buildPrefsWidget(){
     });
 
     // Set up DnD
-    image_grid.drag_dest_set(Gtk.DestDefaults.ALL, null, Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
-    let target_list = Gtk.TargetList.new([]);
-    target_list.add_uri_targets(0);
-    image_grid.drag_dest_set_target_list(target_list);
-    image_grid.connect('drag-data-received', function(widget, drag_context, x, y, data, info, time, user_data){
-        let uris = data.get_uris();
-        for (let i = 0; i < uris.length; i++) {
-            let uri = uris [i];
-            addURI(grid_model, uri);
-        }
-    });
+    // image_grid.drag_dest_set(Gtk.DestDefaults.ALL, null, Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
+    // let target_list = Gtk.TargetList.new([]);
+    // target_list.add_uri_targets(0);
+    // image_grid.drag_dest_set_target_list(target_list);
+    // image_grid.connect('drag-data-received', function(widget, drag_context, x, y, data, info, time, user_data){
+    //     let uris = data.get_uris();
+    //     for (let i = 0; i < uris.length; i++) {
+    //         let uri = uris [i];
+    //         addURI(grid_model, uri);
+    //     }
+    // });
 
     let grid_scroll = new Gtk.ScrolledWindow();
-    grid_scroll.add(image_grid);
-    frame.add(grid_scroll);
+    grid_scroll.set_child(image_grid);
+    frame.append(grid_scroll);
 
 
 /*    grid_scroll.drag_dest_set(Gtk.DestDefaults.ALL, null, Gdk.DragAction.MOVE);
@@ -192,14 +192,12 @@ function buildPrefsWidget(){
     let toolbar = new Gtk.Box({
         orientation: Gtk.Orientation.VERTICAL
     });
-    frame.add(toolbar);
+    frame.append(toolbar);
 
     // Move the selected wallpaper up in the list.
     let move_up_button = new Gtk.Button({
-        image: new Gtk.Image({
-            icon_name: 'go-up',
-            tooltip_text: _("Move selected Wallpapers up in the list.")
-        })
+        icon_name: 'go-up',
+        tooltip_text: _("Move selected Wallpapers up in the list.")
     });
     move_up_button.connect('clicked', function(){
         let selection = image_grid.get_selected_items();
@@ -214,15 +212,13 @@ function buildPrefsWidget(){
             }
         }
     });
-    toolbar.add(move_up_button);
+    toolbar.append(move_up_button);
 
     // Move the selected wallpaper down in the list.
     let move_down_button = new Gtk.Button({
-        image: new Gtk.Image({
-            icon_name: 'go-down',
-            tooltip_text: _("Move selected Wallpapers down in the list.")
-        }),
-        margin_bottom: 4
+        icon_name: 'go-down',
+        tooltip_text: _("Move selected Wallpapers down in the list."),
+        'margin-bottom': 4
     });
     move_down_button.connect('clicked', function(){
         let selection = image_grid.get_selected_items();
@@ -237,14 +233,12 @@ function buildPrefsWidget(){
             }
         }
     });
-    toolbar.add(move_down_button);
+    toolbar.append(move_down_button);
 
     // Add a Wallpaper to the list.
     let add_button = new Gtk.Button({
-        image: new Gtk.Image({
-            icon_name: 'list-add',
-            tooltip_text: _("Add new Wallpapers")
-        })
+        icon_name: 'list-add',
+        tooltip_text: _("Add new Wallpapers")
     });
     add_button.connect('clicked', function(){
         var filter = new Gtk.FileFilter();
@@ -252,29 +246,31 @@ function buildPrefsWidget(){
         let chooser = new Gtk.FileChooserDialog({
             title: _("Select the new wallpapers."),
             action: Gtk.FileChooserAction.OPEN,
+            transient_for: frame.get_root(),
             filter: filter,
             select_multiple: true
         });
-        chooser.add_button(Gtk.STOCK_CANCEL, 0);
-        chooser.add_button(Gtk.STOCK_OPEN, 1);
+        chooser.add_button("_Cancel", 0);
+        chooser.add_button("_Open", 1);
         chooser.set_default_response(1);
-        if (chooser.run() === 1){
-            let files = chooser.get_filenames();
+        chooser.connect('response', function(_, response){
+          if (response === 1) {
+            let files = chooser.get_files();
             // Add the selected files:
-            for (let i = 0; i < files.length; i++){
-                addPath(grid_model, files[i]);
+            for (let i = 0; i < files.get_n_items(); i++){
+                addPath(grid_model, files.get_item(i).get_path());
             }
-        }
-        chooser.destroy();
+          }
+          chooser.destroy();
+        });
+        chooser.show();
     });
-    toolbar.add(add_button);
+    toolbar.append(add_button);
 
     // Remove a Wallpaper from the list:
     let remove_button = new Gtk.Button({
-        image: new Gtk.Image({
-            icon_name: 'list-remove',
-            tooltip_text: _("Remove selected Wallpapers")
-        })
+        icon_name: 'list-remove',
+        tooltip_text: _("Remove selected Wallpapers")
     });
     remove_button.connect('clicked', function(){
         let selection = image_grid.get_selected_items();
@@ -285,7 +281,7 @@ function buildPrefsWidget(){
             }
         }
     });
-    toolbar.add(remove_button);
+    toolbar.append(remove_button);
 
     // Check if we can move up/down and deactivate buttons if not.
     let button_state_callback = function(){
@@ -322,7 +318,7 @@ function buildPrefsWidget(){
 
     // Store the changes in the settings, when the window is closed or the settings change:
     // Workaround, see https://bugzilla.gnome.org/show_bug.cgi?id=687510
-    frame.connect('screen_changed', function(widget){
+    frame.connect('unrealize', function(widget){
         if (!ready) return;
         // Save the list:
         let [ success, iterator ] = grid_model.get_iter_first();
@@ -336,6 +332,5 @@ function buildPrefsWidget(){
         settings.setImageList(list);
     });
 
-    frame.show_all();
     return frame;
 }

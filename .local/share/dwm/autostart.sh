@@ -1,13 +1,26 @@
 #!/bin/bash
 
+mpv --no-video ~/Music/ps2_start_up.mp3 &
+# feh --no-fehbg --bg-fill '/home/cs/.config/variety/Favorites/nice-town.jpeg' &
+/home/cs/.local/bin/setup_screens || /home/cs/.screenlayout/2screens.sh
+[[ $(cat /sys/class/power_supply/AC/online) == 1 ]] && xbacklight -set 100 &
+# ~/.screenlayout/1screens.sh &
+
+variety &
+sxhkd &
+
+# /home/cs/.local/bin/kbconfig || /home/cs/.local/bin/kbrate &
+xset r rate 250 60 &
+
 function run {
 	if ! pgrep $1; then
 		$@ &
 	fi
 }
 
-run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-/usr/lib/xfce4/notifyd/xfce4-notifyd &
+# run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+run "/usr/libexec/polkit-gnome-authentication-agent-1"
+run "/usr/lib/xfce4/notifyd/xfce4-notifyd"
 
 # run "variety"
 run "nm-applet"

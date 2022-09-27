@@ -26,7 +26,8 @@ super + e
     rofi -modi emoji -show emoji -theme "$HOME/.config/rofi/themes/emojimenu.rasi"
 
 super + x
-    archlinux-logout
+    powermenu
+    # archlinux-logout
 
 super + shift + x
     pkill -u $USER

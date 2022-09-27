@@ -19,7 +19,6 @@
 /**
   * This is where all the widgets for the menu life.
   */
-const Lang = imports.lang;
 const PopupMenu = imports.ui.popupMenu;
 const St = imports.gi.St;
 const GObject = imports.gi.GObject;
@@ -37,7 +36,6 @@ const Pref = Me.imports.settings;
 
 /**
  * A Button to open the "gnome-shell-extension-prefs"-tool to configure this extension.
- * @type {Lang.Class}
  */
 var OpenPrefsWidget = GObject.registerClass({},
 class OpenPrefsWidget extends GObject.Object {
@@ -60,7 +58,7 @@ class OpenPrefsWidget extends GObject.Object {
         this._label.align = St.Align.MIDDLE;
 
         // Connect:
-        this.item.connect('activate', Lang.bind(this, this._onClick));
+        this.item.connect('activate', this._onClick.bind(this));
     }
 
     _onClick(){
@@ -81,7 +79,6 @@ class OpenPrefsWidget extends GObject.Object {
 
 /**
  * Shows a preview of the next wallpaper to be set.
- * @type {Lang.Class}
  */
 var NextWallpaperWidget = GObject.registerClass({},
 class NextWallpaperWidget extends GObject.Object {
@@ -178,7 +175,6 @@ const START_TIMER_STATE = "start";
  *     <li>"timer-state-changed" -> Emitted, when the timers state changed (start/stop)</li>
  *     <li>"order-state-changed" -> Emitted, when the wallpaper-order changes</li>
  * </ul>
- * @type {Lang.Class}
  */
 var WallpaperControlWidget = GObject.registerClass({
     Signals: { 'next-wallpaper': {},
@@ -269,7 +265,6 @@ class WallpaperControlWidget extends GObject.Object {
 
 /**
  * A simple button, styled to be used inside the "WallpaperControlWidget".
- * @type {Lang.Class}
  */
 var ControlButton = GObject.registerClass({},
 class ControlButton extends GObject.Object {
@@ -307,7 +302,6 @@ class ControlButton extends GObject.Object {
  * A "ControlButton" which also maintains multiple states with different icons.
  * For every state-change (click) the given callback-function will be called with
  *  a parameter, indicating the current (new) state.
- * @type {Lang.Class}
  */
 var StateControlButton = GObject.registerClass({},
 class StateControlButton extends GObject.Object {
@@ -360,7 +354,7 @@ class StateControlButton extends GObject.Object {
         if (callback !== undefined || callback !== null){
             this._callback = callback;
         }
-        this.actor.connect('clicked', Lang.bind(this, this._clicked));
+        this.actor.connect('clicked', this._clicked.bind(this));
     }
 
     /**
@@ -416,7 +410,6 @@ class StateControlButton extends GObject.Object {
 
 /**
  * A "ControlButton" which can be active or inactive. To be used in "WallpaperControlWidget".
- * @type {Lang.Class}
  */
 var ControlToggleButton = GObject.registerClass({},
 class ControlToggleButton extends GObject.Object {
@@ -446,7 +439,7 @@ class ControlToggleButton extends GObject.Object {
         if (callback != undefined || callback != null){
             this._callback = callback;
         }
-        this.actor.connect('clicked', Lang.bind(this, this._onToggle));
+        this.actor.connect('clicked', this._onToggle.bind(this));
     }
 
     _onToggle(){
@@ -521,7 +514,6 @@ class SliderItem extends GObject.Object {
 
 /**
  * Widget for setting the delay for the next Wallpaper-change.
- * @type {Lang.Class}
  */
 
 
@@ -582,7 +574,6 @@ class DelaySlider extends SliderItem {
 
 /**
  * A simple label which only displays the given text.
- * @type {Lang.Class}
  */
 var LabelWidget = GObject.registerClass({},
 class LabelWidget extends GObject.Object {

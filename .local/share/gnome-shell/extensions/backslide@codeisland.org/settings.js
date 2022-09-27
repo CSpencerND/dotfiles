@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2012 Lukas Knuth
- * 
+ *
  * This file is part of Backslide.
  *
  * Backslide is free software: you can redistribute it and/or modify
@@ -17,13 +17,13 @@
  * along with Backslide.  If not, see <http://www.gnu.org/licenses/>.
 */
 const Gio = imports.gi.Gio;
-const Lang = imports.lang;
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 var KEY_DELAY = "delay";
 var KEY_RANDOM = "random";
 var KEY_IMAGE_LIST = "image-list";
 var KEY_WALLPAPER = "picture-uri";
+var KEY_WALLPAPER_DARK = "picture-uri-dark";
 var KEY_ELAPSED_TIME = "elapsed-time";
 var KEY_CHANGE_LOCKSCREEN = "change-lockscreen";
 
@@ -38,31 +38,22 @@ var valid_minutes = function(minutes) {
 
 /**
  * This class takes care of reading/writing the settings from/to the GSettings backend.
- * @type {Lang.Class}
  */
-var Settings = new Lang.Class({
-    Name: 'Settings',
+var Settings = class Settings {
 
-    _schemaName: "org.gnome.shell.extensions.backslide",
-    /**
-     * The GSettings-object to read/write from/to.
-     * @private
-     */
-    _setting: {},
-    _background_setting: {},
-    _screensaver_setting: {},
+    static _schemaName = "org.gnome.shell.extensions.backslide";
 
     /**
      * Creates a new Settings-object to access the settings of this extension.
      * @private
      */
-    _init: function(){
+    constructor() {
         let schemaDir = Me.dir.get_child('schemas').get_path();
 
         let schemaSource = Gio.SettingsSchemaSource.new_from_directory(
             schemaDir, Gio.SettingsSchemaSource.get_default(), false
         );
-        let schema = schemaSource.lookup(this._schemaName, false);
+        let schema = schemaSource.lookup(Settings._schemaName, false);
 
         this._setting = new Gio.Settings({
             settings_schema: schema
@@ -73,13 +64,13 @@ var Settings = new Lang.Class({
         this._screensaver_setting = new Gio.Settings({
             schema: "org.gnome.desktop.screensaver"
         });
-        this.bindKey(KEY_DELAY, Lang.bind(this, function(value){
+        this.bindKey(KEY_DELAY, (value) => {
             var minutes = value.get_int32();
             if (!valid_minutes(minutes)) {
                 this.setDelay(DELAY_MINUTES_DEFAULT);
             }
-        }));
-    },
+        });
+    }
 
     /**
      * <p>Binds the given 'callback'-function to the "changed"-signal on the given
@@ -92,7 +83,7 @@ var Settings = new Lang.Class({
      * @param key the key to watch for changes.
      * @param callback the callback-function to call.
      */
-    bindKey: function(key, callback){
+    bindKey(key, callback){
         // Validate:
         if (key === undefined || key === null || typeof key !== "string"){
             throw TypeError("The 'key' should be a string. Got: '"+key+"'");
@@ -104,27 +95,27 @@ var Settings = new Lang.Class({
         this._setting.connect("changed::"+key, function(source, key){
             callback( source.get_value(key) );
         });
-    },
+    }
 
     /**
      * Get the delay (in minutes) between the wallpaper-changes.
      * @returns int the delay in minutes.
      */
-    getDelay: function(){
+    getDelay(){
         var minutes = this._setting.get_int(KEY_DELAY);
         if (!valid_minutes(minutes)) {
                 this.setDelay(DELAY_MINUTES_DEFAULT);
                 return DELAY_MINUTES_DEFAULT;
         }
         return minutes;
-    },
+    }
 
     /**
      * Set the new delay in minutes.
      * @param delay the new delay (in minutes).
      * @throws TypeError if the given delay is not a number or less than 1
      */
-    setDelay: function(delay){
+    setDelay(delay){
         // Validate:
         if (delay === undefined || delay === null || typeof delay !== "number" || !valid_minutes(delay)){
             throw TypeError("delay should be a number, in range [" + DELAY_MINUTES_MIN + ", " + DELAY_MINUTES_MAX + "]. Got: "+delay);
@@ -141,22 +132,22 @@ var Settings = new Lang.Class({
         } else {
             throw this._errorWritable(key);
         }
-    },
+    }
 
     /**
      * Whether the order of the image-list should be random.
      * @returns boolean true if random, false otherwise.
      */
-    isRandom: function(){
+    isRandom(){
         return this._setting.get_boolean(KEY_RANDOM);
-    },
+    }
 
     /**
      * Specify, whether the order of the image-list should be random or not.
      * @param isRandom true if random, false otherwise.
      * @throws TypeError if "isRandom" is not a boolean value.
      */
-    setRandom: function(isRandom){
+    setRandom(isRandom){
         // validate:
         if (isRandom === undefined || isRandom === null || typeof isRandom !== "boolean"){
             throw TypeError("isRandom should be a boolean variable. Got: "+isRandom);
@@ -172,22 +163,22 @@ var Settings = new Lang.Class({
         } else {
             throw this._errorWritable(key);
         }
-    },
+    }
 
     /**
      * The list path's to the wallpaper-files.
      * @returns array list of wallpaper path's.
      */
-    getImageList: function(){
+    getImageList(){
         return this._setting.get_strv(KEY_IMAGE_LIST);
-    },
+    }
 
     /**
      * Set the list of wallpaper-path's.
      * @param list the new list (array) of image-path's.
      * @throws TypeError if 'list' is not an array.
      */
-    setImageList: function(list){
+    setImageList(list){
         // Validate:
         let what = Object.prototype.toString; // See http://stackoverflow.com/questions/4775722
         if (list === undefined || list === null || what.call(list) !== "[object Array]"){
@@ -204,16 +195,16 @@ var Settings = new Lang.Class({
         } else {
             throw this._errorWritable(key);
         }
-    },
+    }
 
     /**
      * Get the Unix-styled, absolute path to the currently set wallpaper-file.
      * @return string the Unix-styled, absolute path to the wallpaper-file.
      */
-    getWallpaper: function(){
+    getWallpaper(){
         let full = this._background_setting.get_string(KEY_WALLPAPER);
         return full.substring("file://".length); // Cut out the "file://"-stuff
-    },
+    }
 
     /**
      * Set the new Wallpaper.
@@ -222,7 +213,7 @@ var Settings = new Lang.Class({
      * @throws string if there was a problem setting the new wallpaper.
      * @throws TypeError if the given path was invalid
      */
-    setWallpaper: function(path){
+    setWallpaper(path){
         // Validate
         if (path === undefined || path === null || typeof path !== "string"){
             throw TypeError("path should be a valid, absolute, linux styled path. Got: '"+path+"'");
@@ -247,23 +238,43 @@ var Settings = new Lang.Class({
                 throw this._errorWritable(key);
             }
         }
+        // Set for the dark mode (GNOME 42):
+        key = KEY_WALLPAPER_DARK;
+        if (this._background_setting.is_writable(key)){
+            // Set a new Background-Image (should show up immediately):
+            if (!this._background_setting.set_string(key, "file://"+path) ){
+                throw this._errorSet(key);
+            }
+        } else {
+            // ignore error here
+        }
+        if (this.getChangeLockscreen()){
+            if (this._screensaver_setting.is_writable(key)){
+                // Set a new Screensaver-Image:
+                if (!this._screensaver_setting.set_string(key, "file://"+path) ){
+                    throw this._errorSet(key);
+                }
+            } else {
+                // ignore error here
+            }
+        }
         Gio.Settings.sync(); // Necessary: http://stackoverflow.com/questions/9985140
-    },
+    }
 
     /**
      * Get the time (in minutes), which has already elapsed from the last set timeout-interval.
      * @return int the elapsed time in minutes.
      */
-    getElapsedTime: function(){
+    getElapsedTime(){
         return this._setting.get_int(KEY_ELAPSED_TIME);
-    },
+    }
 
     /**
      * Set the time (in minutes) which has elapsed from the last set timeout-interval.
      * @param time the time (in minutes) that has elapsed.
      * @throws TypeError if 'time' wasn't a number or less than 0.
      */
-    setElapsedTime: function(time){
+    setElapsedTime(time){
         // Validate:
         if (time === undefined || time === null || typeof time != "number" || time < 0){
             throw TypeError("'time' needs to be a number, greater than 0. Given: "+time);
@@ -278,15 +289,15 @@ var Settings = new Lang.Class({
         } else {
             throw this._errorWritable(key);
         }
-    },
+    }
 
-    getChangeLockscreen : function(){
+    getChangeLockscreen(){
         return this._setting.get_boolean(KEY_CHANGE_LOCKSCREEN);
-    },
-    _errorWritable: function(key){
+    }
+    _errorWritable(key){
         return "The key '"+key+"' is not writable.";
-    },
-    _errorSet: function(key){
+    }
+    _errorSet(key){
         return "Couldn't set the key '"+key+"'";
     }
-});
+}

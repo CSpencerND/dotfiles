@@ -44,7 +44,8 @@ static int tagindicatortype              = INDICATOR_BOTTOM_BAR_SLIM;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
 
-static const char buttonbar[]            = " ";
+static const char buttonbar[]            = " ";
+// static const char buttonbar[]            = " ";
 
 static const char *fonts[] = {
 	// "Hack Nerd Font:size=10",
@@ -369,7 +370,7 @@ static Key keys[] = {
 };
 
 static const char *filecmd[]     = { "thunar", NULL };
-static const char *appfinder[]   = { "xfce4-appfinder", NULL };
+static const char *appfinder[]   = { "rofi", "-show", "drun", "-theme", "/home/cs/.config/rofi/themes/app-launcher.rasi", NULL };
 static const char *taskmanager[] = { "system-monitoring-center", NULL };
 static const char *calendar[]    = { "gsimplecal", NULL };
 static const char *batinfo[]     = { "bat-notif.sh", NULL };

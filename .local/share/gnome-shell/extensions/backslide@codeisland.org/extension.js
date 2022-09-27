@@ -18,29 +18,26 @@
 */
 // Import global libraries
 const Main = imports.ui.main;
-const Lang = imports.lang;
 const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
 const St = imports.gi.St;
 // Import own libs:
-const Me = imports.misc.extensionUtils.getCurrentExtension();
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
 const Widget = Me.imports.widgets;
 const Wall = Me.imports.wallpaper;
 const Pref = Me.imports.settings;
 const Time = Me.imports.timer;
-const Utils = Me.imports.utils;
 // Import translation stuff
 const Gettext = imports.gettext.domain('backslide');
 const _ = Gettext.gettext;
 
 /**
  * The new entry in the gnome3 status-area.
- * @type {Lang.Class}
  */
-const BackSlideEntry = new Lang.Class({
-    Name: 'BackSlideEntry',
+var BackSlideEntry = class BackSlideEntry {
 
-    _init: function(){
+    constructor() {
         // Attach to status-area:
         this.button = new PanelMenu.Button(0.0, 'backslide');
         // Add the Icon
@@ -134,23 +131,20 @@ const BackSlideEntry = new Lang.Class({
           delay_slider.connect('notify::value', valueChanged);
         }
 
-        settings.bindKey(Pref.KEY_DELAY, Lang.bind(this, function(value){
+        settings.bindKey(Pref.KEY_DELAY, (value) => {
             var minutes = value.get_int32();
             if (Pref.valid_minutes(minutes)) {
                 delay_slider.setMinutes(minutes);
             }
-        }));
+        });
     }
-});
+}
 
 /**
  * Called when the extension is first loaded (only once)
  */
 function init() {
-    Utils.initTranslations();
-    wallpaper_control = new Wall.Wallpaper();
-    settings = new Pref.Settings();
-    timer = new Time.Timer();
+    ExtensionUtils.initTranslations();
 }
 
 let wallpaper_control;
@@ -162,6 +156,9 @@ let menu_entry;
  * Called when the extension is activated (maybe multiple times)
  */
 function enable() {
+    wallpaper_control = new Wall.Wallpaper();
+    settings = new Pref.Settings();
+    timer = new Time.Timer();
     menu_entry = new BackSlideEntry();
     Main.panel.addToStatusArea('backslide', menu_entry.button);
     timer.begin();
@@ -171,6 +168,10 @@ function enable() {
  * Called when the extension is deactivated (maybe multiple times)
  */
 function disable() {
-    menu_entry.button.destroy();
+    wallpaper_control = null;
+    settings = null;
     timer.stop();
+    timer = null;
+    menu_entry.button.destroy();
+    menu_entry = null;
 }

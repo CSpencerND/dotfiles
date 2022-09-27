@@ -31,7 +31,7 @@
     </key>
 
     <key name="disable-down-arrow" type="b">
-      <default>false</default>
+      <default>true</default>
         <summary>Remove down arrow in top bar</summary>
     </key>
 
@@ -81,6 +81,15 @@
             If true, a notification is shown when content is copied to clipboard.
         </description>
     </key>
+
+    <key name="confirm-clear" type="b">
+      <default>true</default>
+        <summary>Show confirmation dialog on Clear History</summary>
+        <description>
+            If true, a confirmation dialog is shown when attempting to Clear History.
+        </description>
+    </key>
+    
     <key name="strip-text" type="b">
       <default>false</default>
       <summary>Remove whitespace around text</summary>

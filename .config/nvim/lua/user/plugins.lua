@@ -66,7 +66,8 @@ return packer.startup(function(use)
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lsp",
+        -- "hrsh7th/cmp-nvim-lsp",
+	{ "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" },
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-emoji",
         "rcarriga/cmp-dap",
@@ -99,14 +100,16 @@ return packer.startup(function(use)
     }
 
     use { -- Language Server
-        "neovim/nvim-lspconfig", -- enable LSP
-        "williamboman/nvim-lsp-installer", -- simple to use language server installer
+        -- "neovim/nvim-lspconfig", -- enable LSP
+	{ "neovim/nvim-lspconfig", commit = "148c99bd09b44cf3605151a06869f6b4d4c24455" },
+        -- "williamboman/nvim-lsp-installer", -- simple to use language server installer
+	{ "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" },
         "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        -- "williamboman/mason-lspconfig.nvim",
         "tamago324/nlsp-settings.nvim", -- language server settings defined in json for formatters and linters
         {
             "jose-elias-alvarez/null-ls.nvim",
-            commit = "ff40739e5be6581899b43385997e39eecdbf9465",
+            --[[ commit = "ff40739e5be6581899b43385997e39eecdbf9465", ]]
         },
         "ray-x/lsp_signature.nvim",
         -- {
@@ -226,7 +229,7 @@ return packer.startup(function(use)
         "metakirby5/codi.vim",
         "folke/zen-mode.nvim",
         "Djancyp/cheat-sheet",
-        { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
+        -- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
         {
             "declancm/cinnamon.nvim",
             config = function()
