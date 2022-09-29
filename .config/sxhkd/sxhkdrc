@@ -2,8 +2,8 @@
 #     GENERAL
 #################################################################
 
-super + g; {w, d, v, p, b, Escape}
-    {firefox, discord, pavucontrol, picom-toggle.sh, blueberry, exit}
+super + g; {w, d, v, p, b, c, q Escape}
+    {firefox, discord, pavucontrol, picom-toggle.sh, blueberry, gnome-calendar, gnome-calculator, exit}
 
 super + w; {n, p, f, t}
     {variety -n, variety -p, variety -f, variety -t}

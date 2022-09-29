@@ -109,10 +109,10 @@ static char *colors[][ColCount] = {
 	[SchemeUrg] = {unused,unused,unused,unused},
 };
 
-const char *spcmd0[] = { "st", "-c", "basic", "-g", "120x34", NULL };
-const char *spcmd1[] = { "st", "-c", "task", "-g", "120x34", "-e", "btop", NULL };
-const char *spcmd2[] = { "st", "-c", "note", "-g", "120x34", "-e", "nvim", "~/Documents/notes/", NULL };
-const char *spcmd3[] = { "st", "-c", "explore", "-g", "120x34", "-e", "ranger", NULL };
+const char *spcmd0[] = { "/usr/local/bin/st", "-c", "basic", "-g", "120x34", NULL };
+const char *spcmd1[] = { "/usr/local/bin/st", "-c", "task", "-g", "120x34", "-e", "btop", NULL };
+const char *spcmd2[] = { "/usr/local/bin/st", "-c", "note", "-g", "120x34", "-e", "nvim", "~/Documents/notes/", NULL };
+const char *spcmd3[] = { "/usr/local/bin/st", "-c", "explore", "-g", "120x34", "-e", "ranger", NULL };
 
 // const char *spcmd0[] = { "kitty", "--class", "basic",    NULL };
 
