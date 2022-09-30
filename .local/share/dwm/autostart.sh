@@ -20,7 +20,7 @@ function run {
 
 # run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 run "/usr/libexec/polkit-gnome-authentication-agent-1"
-run "/usr/lib/xfce4/notifyd/xfce4-notifyd"
+run "/usr/lib64/xfce4/notifyd/xfce4-notifyd"
 
 # run "variety"
 run "nm-applet"
