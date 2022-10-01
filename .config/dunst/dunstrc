@@ -51,7 +51,7 @@
     browser = /usr/bin/firefox -new-tab
 
 [log_notifs]
-    script = /home/"$USER"/.local/bin/dunst-logger
+    script = ~/.local/bin/dunst-logger
 
 [urgency_low]
     background = "#11121D"

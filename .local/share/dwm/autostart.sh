@@ -3,7 +3,7 @@
 mpv --no-video ~/Music/ps2_start_up.mp3 &
 # feh --no-fehbg --bg-fill '/home/cs/.config/variety/Favorites/nice-town.jpeg' &
 /home/cs/.local/bin/setup_screens || /home/cs/.screenlayout/2screens.sh
-[[ $(cat /sys/class/power_supply/AC/online) == 1 ]] && xbacklight -set 100 &
+# [[ $(cat /sys/class/power_supply/AC/online) == 1 ]] && xbacklight -set 100 &
 # ~/.screenlayout/1screens.sh &
 
 variety &
@@ -21,7 +21,7 @@ function run {
 # run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 run "/usr/libexec/polkit-gnome-authentication-agent-1"
 # run "/usr/lib64/xfce4/notifyd/xfce4-notifyd"
-run "dunst"
+run "dunst -conf $HOME/.config/dunst/dunstrc"
 
 # run "variety"
 run "nm-applet"
