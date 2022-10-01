@@ -2,7 +2,7 @@
 #     GENERAL
 #################################################################
 
-super + g; {w, d, v, p, b, c, q Escape}
+super + g; {w, d, v, p, b, c, q, Escape}
     {firefox, discord, pavucontrol, picom-toggle.sh, blueberry, gnome-calendar, gnome-calculator, exit}
 
 super + w; {n, p, f, t}
@@ -10,13 +10,12 @@ super + w; {n, p, f, t}
 
 super + slash
     rofi -show drun -theme "$HOME/.config/rofi/themes/app-launcher.rasi"
-    # rofi -show drun
 
 super + Return
     kitty
 
-super + shift + slash
-    xfce4-appfinder
+super + shift + n
+    noticenter
 
 super + space
     hotkeys.sh
@@ -27,11 +26,9 @@ super + e
 
 super + x
     powermenu
-    # archlinux-logout
 
 super + shift + x
     pkill -u $USER
-    # pkill dwm-ulti
 
 super shift + d
     reload_discord
