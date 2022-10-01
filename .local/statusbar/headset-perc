@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-headsetcontrol -b | awk 'FNR == 2 {print $2}' > /home/cs/.cache/headset_percent
+while true; do
+	headsetcontrol -b | awk 'FNR == 2 {print $2}' > /home/cs/.cache/headset_percent
+    sleep 300
+done
