@@ -44,7 +44,7 @@ static const struct arg args[] = {
         {   // packages
             run_command,
             "^c"BG"^^b"PKGS"^  ^c"PKGS"^^b"BG"^ %s ",
-            "cat /home/cs/.cache/pac-updates-count"
+            "cat /home/cs/.cache/dnf-updates-count"
         },
         SEP,
         {   // thermals

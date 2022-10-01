@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+headsetcontrol -b | awk 'FNR == 2 {print $2}' > ~/.cache/headset_percent

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+dnf check-update | tail --lines +3 | wc -l > /home/cs/.cache/dnf-updates-count

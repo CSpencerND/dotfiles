@@ -20,7 +20,8 @@ function run {
 
 # run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 run "/usr/libexec/polkit-gnome-authentication-agent-1"
-run "/usr/lib64/xfce4/notifyd/xfce4-notifyd"
+# run "/usr/lib64/xfce4/notifyd/xfce4-notifyd"
+run "dunst"
 
 # run "variety"
 run "nm-applet"
@@ -45,6 +46,7 @@ fi
 picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 
 /home/"$USER"/.local/statusbar/weather.py &
+/home/"$USER"/.local/statusbar/headset-perc &
 # /home/"$USER"/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &
 # /home/"$USER"/.local/statusbar/openweather &
 # /home/"$USER"/.local/statusbar/openweather-emoji &
