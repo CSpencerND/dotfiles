@@ -100,23 +100,27 @@ XF86AudioPrev
 XF86AudioStop
     playerctl stop
 
+#Play/Pause
+super + F12
+    playerctl play-pause
+
 #Brightness up
 XF86MonBrightnessUp
-    xbacklight -inc 10
+    light -A 10
+#    xbacklight -inc 10
 
 #Brightness down
 XF86MonBrightnessDown
-    xbacklight -dec 10
+    light -U 10
+#    xbacklight -dec 10
 
 #These actually work with the volume wheel! =D
 #Brightness up
 super + XF86AudioRaiseVolume
-    xbacklight -inc 10
+    light -A 10
+#    xbacklight -inc 10
 
 #Brightness down
 super + XF86AudioLowerVolume
-    xbacklight -dec 10
-
-#Play/Pause
-super + F12
-    playerctl play-pause
+    light -U 10
+#    xbacklight -dec 10
