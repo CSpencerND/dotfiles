@@ -17,9 +17,13 @@ super + Return
 super + shift + n
     noticenter
 
-super + space
-    hotkeys.sh
+# super + space
+    # hotkeys.sh
     # rofi -show window
+
+# super + shift + v
+super + space
+    rofi -show window -theme "$HOME/.config/rofi/themes/app-launcher.rasi"
 
 super + e
     rofi -modi emoji -show emoji -theme "$HOME/.config/rofi/themes/emojimenu.rasi"
