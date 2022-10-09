@@ -67,7 +67,10 @@ return packer.startup(function(use)
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
         -- "hrsh7th/cmp-nvim-lsp",
-	{ "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" },
+        {
+            "hrsh7th/cmp-nvim-lsp",
+            commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8",
+        },
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-emoji",
         "rcarriga/cmp-dap",
@@ -101,9 +104,15 @@ return packer.startup(function(use)
 
     use { -- Language Server
         -- "neovim/nvim-lspconfig", -- enable LSP
-	{ "neovim/nvim-lspconfig", commit = "148c99bd09b44cf3605151a06869f6b4d4c24455" },
+        {
+            "neovim/nvim-lspconfig",
+            commit = "148c99bd09b44cf3605151a06869f6b4d4c24455",
+        },
         -- "williamboman/nvim-lsp-installer", -- simple to use language server installer
-	{ "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" },
+        {
+            "williamboman/nvim-lsp-installer",
+            commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6",
+        },
         "williamboman/mason.nvim",
         -- "williamboman/mason-lspconfig.nvim",
         "tamago324/nlsp-settings.nvim", -- language server settings defined in json for formatters and linters
@@ -219,7 +228,7 @@ return packer.startup(function(use)
         "MattesGroeger/vim-bookmarks",
     }
 
-    use { -- Vim Perks
+    use { -- Nvim Perks
         "lewis6991/impatient.nvim",
         "moll/vim-bbye",
         "nacro90/numb.nvim",
@@ -236,6 +245,7 @@ return packer.startup(function(use)
                 require("cinnamon").setup()
             end,
         },
+        "j-hui/fidget.nvim",
     }
 
     use { -- Utilities
@@ -262,6 +272,7 @@ return packer.startup(function(use)
         "morhetz/gruvbox",
         "folke/tokyonight.nvim",
     }
+    --[[ use { "shaunsingh/oxocarbon.nvim", branch = "fennel" } ]]
 
     -- Automatically set up your configuration after cloning packer.nvim
     if PACKER_BOOTSTRAP then

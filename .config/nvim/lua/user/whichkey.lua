@@ -273,6 +273,10 @@ local mappings = {
             "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
             "Colorscheme with Preview",
         },
+        n = {
+            "<cmd>Telescope notify<cr>",
+            "Notifications",
+        },
     },
 
     g = {
