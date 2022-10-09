@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+if [ $# -gt 0 ]; then
+	for arg in "$@"; do
+
+		rfc="const $arg = () => {
+    return (
+        <div>
+            $arg 
+        </div>
+    )
+}
+
+export default $arg 
+"
+
+		mkdir "$arg"/
+		touch "$arg"/"$arg".jsx
+		echo "$rfc" >>"$arg"/"$arg".jsx
+		echo "Component $arg created at $arg/$arg.jsx"
+	done
+
+else
+	echo "Enter component names as arguments"
+
+fi
