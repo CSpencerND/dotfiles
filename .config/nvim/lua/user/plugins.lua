@@ -272,7 +272,7 @@ return packer.startup(function(use)
         "morhetz/gruvbox",
         "folke/tokyonight.nvim",
     }
-    --[[ use { "shaunsingh/oxocarbon.nvim", branch = "fennel" } ]]
+    use { "shaunsingh/oxocarbon.nvim", branch = "fennel" }
 
     -- Automatically set up your configuration after cloning packer.nvim
     if PACKER_BOOTSTRAP then
