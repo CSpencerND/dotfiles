@@ -1,7 +1,5 @@
 # m h dom mon dow command
-@hourly /home/cs/.local/statusbar/sb-clock
-# @daily /home/cs/.local/statusbar/moonphase
 @hourly /home/cs/.local/statusbar/weather.py
-@daily /home/cs/.local/bin/pkg-dump
-# 0 */6 * * * /usr/bin/reflector -c US --protocol https --age 6 --sort rate --number 50
-0 */6 * * * /home/cs/.local/statusbar/pac-updates
+@hourly /home/cs/.local/statusbar/dnf-updates
+@reboot /home/cs/.local/statusbar/dnf-updates
+@reboot dnf history userinstalled > /home/cs/Documents/backup/pkgs/user-pkgs
