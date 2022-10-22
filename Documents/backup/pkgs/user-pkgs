@@ -1,3 +1,4 @@
+Waiting for process with pid 1936 to finish.
 Packages installed by user
 Hyprland-v0.6.3beta-4.fc36.x86_64
 ShellCheck-0.7.2-5.fc36.x86_64
@@ -13,7 +14,7 @@ autoconf-2.71-2.fc36.noarch
 automake-1.16.5-7.fc36.noarch
 biosdevname-0.7.3-9.fc36.x86_64
 blueberry-1.4.7-3.fc36.noarch
-btop-1.2.9-1.fc36.x86_64
+btop-1.2.12-1.fc36.x86_64
 cargo-1.64.0-1.fc36.x86_64
 chkconfig-1.21-1.fc36.x86_64
 chromium-105.0.5195.125-2.fc36.x86_64
@@ -49,21 +50,21 @@ imlib2-devel-1.7.4-2.fc36.x86_64
 initscripts-10.16-2.fc36.x86_64
 inkscape-1.2.1-1.fc36.x86_64
 intel-media-driver-22.3.1-1.fc36.2.x86_64
-kernel-5.19.12-200.fc36.x86_64
 kernel-5.19.14-200.fc36.x86_64
 kernel-5.19.15-201.fc36.x86_64
-kernel-core-5.19.12-200.fc36.x86_64
+kernel-5.19.16-200.fc36.x86_64
 kernel-core-5.19.14-200.fc36.x86_64
 kernel-core-5.19.15-201.fc36.x86_64
-kernel-devel-5.19.12-200.fc36.x86_64
+kernel-core-5.19.16-200.fc36.x86_64
 kernel-devel-5.19.14-200.fc36.x86_64
 kernel-devel-5.19.15-201.fc36.x86_64
-kernel-modules-5.19.12-200.fc36.x86_64
+kernel-devel-5.19.16-200.fc36.x86_64
 kernel-modules-5.19.14-200.fc36.x86_64
 kernel-modules-5.19.15-201.fc36.x86_64
-kernel-modules-extra-5.19.12-200.fc36.x86_64
+kernel-modules-5.19.16-200.fc36.x86_64
 kernel-modules-extra-5.19.14-200.fc36.x86_64
 kernel-modules-extra-5.19.15-201.fc36.x86_64
+kernel-modules-extra-5.19.16-200.fc36.x86_64
 kitty-0.26.3-2.fc36.x86_64
 langpacks-en-3.0-25.fc36.noarch
 lazygit-0.35-1.fc36.x86_64
