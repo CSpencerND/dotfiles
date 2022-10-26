@@ -1,4 +1,4 @@
-Waiting for process with pid 1936 to finish.
+Waiting for process with pid 1949 to finish.
 Packages installed by user
 Hyprland-v0.6.3beta-4.fc36.x86_64
 ShellCheck-0.7.2-5.fc36.x86_64
@@ -94,7 +94,7 @@ playerctl-2.4.1-2.fc36.x86_64
 polkit-gnome-0.106-0.11.20170423gita0763a2.fc36.x86_64
 python3-pip-21.3.1-3.fc36.noarch
 python3.11-3.11.0~rc2-1.fc36.x86_64
-python3.9-3.9.14-1.fc36.x86_64
+python3.9-3.9.15-1.fc36.x86_64
 qpwgraph-0.3.5-1.fc36.x86_64
 ranger-1.9.3-7.fc36.noarch
 redshift-gtk-1.12-14.fc36.x86_64
