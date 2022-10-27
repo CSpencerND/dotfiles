@@ -246,8 +246,9 @@ var Settings = class Settings {
                 throw this._errorSet(key);
             }
         } else {
-            // ignore error here
+            throw this._errorWritable(key);
         }
+        key = KEY_WALLPAPER;
         if (this.getChangeLockscreen()){
             if (this._screensaver_setting.is_writable(key)){
                 // Set a new Screensaver-Image:
@@ -255,7 +256,7 @@ var Settings = class Settings {
                     throw this._errorSet(key);
                 }
             } else {
-                // ignore error here
+                throw this._errorWritable(key);
             }
         }
         Gio.Settings.sync(); // Necessary: http://stackoverflow.com/questions/9985140
