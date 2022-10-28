@@ -3,11 +3,11 @@
 if [ $# -gt 0 ]; then
 	for arg in "$@"; do
 
-		rfc="const $arg = () => {
+		rfc="const $arg = (props) => {
     return (
-        <div>
+        <>
             $arg 
-        </div>
+        </>
     )
 }
 
