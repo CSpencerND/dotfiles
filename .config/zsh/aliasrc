@@ -84,8 +84,9 @@ alias top='btop'
 
 ### DNF
 alias dnf="sudo dnf"
-alias dnfi="sudo dnf install"
-alias dnfy="sudo dnf -y install"
+alias dnfi="dnf install"
+alias dnfy="dnf -y install"
+alias dnfc="dnf check-update"
 
 ### Pacman
 alias update="sudo pacman -Syyu && pacmod || pacmod"
