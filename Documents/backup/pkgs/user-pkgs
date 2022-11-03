@@ -1,4 +1,4 @@
-Waiting for process with pid 2013 to finish.
+Waiting for process with pid 2014 to finish.
 Packages installed by user
 Hyprland-v0.6.3beta-4.fc36.x86_64
 ShellCheck-0.7.2-5.fc36.x86_64
@@ -39,6 +39,7 @@ gnome-shell-extension-system-monitor-applet-1:38-18.20220527gitb359d88.fc36.noar
 gnome-shell-extension-user-theme-42.3-1.fc36.noarch
 gnome-shell-extension-workspace-indicator-42.3-1.fc36.noarch
 gnome-tweaks-42~beta-1.fc36.noarch
+gpick-0.2.6-32.20210528git0e858d3.fc36.x86_64
 gstreamer1-plugin-libav-1.20.3-5.fc36.x86_64
 gstreamer1-vaapi-1.20.3-1.fc36.x86_64
 gtk3-devel-3.24.34-1.fc36.x86_64
