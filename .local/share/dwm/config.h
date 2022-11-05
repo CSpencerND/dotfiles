@@ -212,6 +212,7 @@ static const Rule rules[] = {
 	RULE(.class = "Steam",                                 .isfloating = 1)
 	RULE(.class = "gnome-",                                .isfloating = 1)
 	RULE(.class = "Gpick",                                 .isfloating = 1)
+	RULE(.class = "Gimp",                                  .isfloating = 1)
 
         // scratchpads
 	RULE(.class = "basic",   .tags = SPTAG(0),             .isfloating = 1)
