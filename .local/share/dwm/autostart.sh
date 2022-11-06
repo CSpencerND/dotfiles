@@ -47,6 +47,7 @@ picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 
 /home/"$USER"/.local/statusbar/weather.py &
 /home/"$USER"/.local/statusbar/headset-perc &
+/home/"$USER"/.local/statusbar/dnf-updates &
 # /home/"$USER"/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &
 # /home/"$USER"/.local/statusbar/openweather &
 # /home/"$USER"/.local/statusbar/openweather-emoji &
