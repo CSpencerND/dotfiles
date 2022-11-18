@@ -34,14 +34,16 @@ run "solaar -w hide -b solaar"
 run "redshift-gtk"
 # run "cbatticon -x /home/cs/.local/bin/bat-notif.sh"
 
-screens_count=$(xrandr -q | grep " connected" | wc -l)
+run "slstatus"
 
-/home/"$USER"/.local/statusbar/thermals.sh
-if [[ $screens_count == 1 ]]; then
-    slstatus-sm &   
-else
-    slstatus &
-fi
+# screens_count=$(xrandr -q | grep " connected" | wc -l)
+#
+# /home/"$USER"/.local/statusbar/thermals.sh
+# if [[ $screens_count == 1 ]]; then
+#     slstatus-sm &   
+# else
+#     slstatus &
+# fi
 
 picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 

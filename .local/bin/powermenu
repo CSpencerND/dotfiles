@@ -14,17 +14,17 @@ dir="$HOME/.config/rofi/themes"
 theme='powermenu'
 
 # CMDs
-lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f4,5,6`"
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+lastlogin=$(last "$USER" | head -n1 | tr -s ' ' | cut -d' ' -f4,5,6)
+uptime=$(uptime -p | sed -e 's/up //g')
+host=$(hostname)
 
 # Options
-hibernate=''
 shutdown=''
 reboot=''
-lock=''
-suspend=''
 logout=''
+lock=''
+# hibernate=''
+# suspend=''
 yes='﫠'
 no=''
 
@@ -56,7 +56,8 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$hibernate\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$lock\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	# echo -e "$lock\n$suspend\n$logout\n$hibernate\n$reboot\n$shutdown" | rofi_cmd
 }
 
 # Execute Command
@@ -67,12 +68,12 @@ run_cmd() {
 			systemctl poweroff
 		elif [[ $1 == '--reboot' ]]; then
 			systemctl reboot
-		elif [[ $1 == '--hibernate' ]]; then
-			systemctl hibernate
-		elif [[ $1 == '--suspend' ]]; then
-			systemctl suspend
+		# elif [[ $1 == '--hibernate' ]]; then
+		# 	systemctl hibernate
+		# elif [[ $1 == '--suspend' ]]; then
+		# 	systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
-            pkill -u "$USER"
+			pkill -u "$USER"
 		fi
 	else
 		exit 0
@@ -82,23 +83,22 @@ run_cmd() {
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-    $shutdown)
-		run_cmd --shutdown
-        ;;
-    $reboot)
-		run_cmd --reboot
-        ;;
-    $hibernate)
-		run_cmd --hibernate
-        ;;
-    $lock)
-	    ~/bin/screen-lock	
-        ;;
-    $suspend)
-		run_cmd --suspend
-        ;;
-    $logout)
-		run_cmd --logout
-        ;;
+$shutdown)
+	run_cmd --shutdown
+	;;
+$reboot)
+	run_cmd --reboot
+	;;
+$lock)
+	~/.local/bin/betterlockscreen -l
+	;;
+$logout)
+	run_cmd --logout
+	;;
+	#   $hibernate)
+	# run_cmd --hibernate
+	#       ;;
+	#   $suspend)
+	# run_cmd --suspend
+	#       ;;
 esac
-
