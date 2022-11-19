@@ -1,7 +1,7 @@
 # 𝄆 𝄢 𝄋 𝄞 ❯ ➜ ─ #box drawing line
 # Use custom format
 format = '''
-[╭\[](blue)$username(yellow)[@](blue)$hostname[\]](blue) [➜](blue) $directory [➜](blue) $nodejs$python [\(](blue)$git_branch $git_state$git_status$git_commit[\)](blue)
+[╭\[](blue)$username(yellow)[@](blue)$hostname[\]](blue) [➜](blue) $directory [➜](blue) $nodejs$python$c$lua$rust [\(](blue)$git_branch $git_state$git_status$git_commit[\)](blue)
 [╰─❯](blue) '''
 # {](blue)[}
 
@@ -42,10 +42,26 @@ style = "cyan"
 [nodejs]
 # format = "[$symbol]($style)"
 version_format = "v${major}.${minor}"
-format = "[{](blue) [$symbol](green)[($version )](yellow)[}](blue) [➜](blue)"
+format = "[{](blue) [$symbol](bold fg:76)[($version )](yellow)[}](blue) [➜](blue)"
 
 [python]
 # format = "[$symbol]($style)"
 symbol = " "
 version_format = "v${major}.${minor}"
-format = "[{](blue) [$symbol](green)[($version )](yellow)[}](blue) [➜](blue)"
+format = "[{](blue) [$symbol](bold cyan)[($version )](yellow)[}](blue) [➜](blue)"
+
+[c]
+symbol = "C "
+detect_extensions = ["c", "cpp", "h"]
+version_format = "v${major}.${minor}"
+format = "[{](blue) [$symbol](bold cyan)[($version )](yellow)[}](blue) [➜](blue)"
+
+[lua]
+symbol = " "
+version_format = "v${major}.${minor}"
+format = "[{](blue) [$symbol](bold fg:27)[($version )](yellow)[}](blue) [➜](blue)"
+
+[rust]
+symbol = " "
+version_format = "v${major}.${minor}"
+format = "[{](blue) [$symbol](bold fg:202)[($version )](yellow)[}](blue) [➜](blue)"
