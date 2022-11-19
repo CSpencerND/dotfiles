@@ -1,7 +1,7 @@
 # 𝄆 𝄢 𝄋 𝄞 ❯ ➜ ─ #box drawing line
 # Use custom format
 format = '''
-[╭\[](blue)$username(yellow)[@](blue)$hostname[\]](blue) [➜](blue) $directory [➜](blue) $nodejs$python[➜](blue) [\(](blue)$git_branch $git_state$git_status$git_commit[\)](blue)
+[╭\[](blue)$username(yellow)[@](blue)$hostname[\]](blue) [➜](blue) $directory [➜](blue) $nodejs$python [\(](blue)$git_branch $git_state$git_status$git_commit[\)](blue)
 [╰─❯](blue) '''
 # {](blue)[}
 
@@ -31,7 +31,7 @@ read_only_style = "yellow"
 
 [git_status]
 style = "yellow"
-format = '([$all_status$ahead_behind]($style))'
+format = '([$all_status$ahead_behind]($style)) '
 
 [git_commit]
 style = "cyan"
@@ -42,8 +42,10 @@ style = "cyan"
 [nodejs]
 # format = "[$symbol]($style)"
 version_format = "v${major}.${minor}"
-format = "{ [$symbol]($style)[($version )](yellow)} "
+format = "[{](blue) [$symbol](green)[($version )](yellow)[}](blue) [➜](blue)"
 
 [python]
 # format = "[$symbol]($style)"
-format = "{ [$symbol($version )]($style)} "
+symbol = " "
+version_format = "v${major}.${minor}"
+format = "[{](blue) [$symbol](green)[($version )](yellow)[}](blue) [➜](blue)"
