@@ -73,7 +73,7 @@ run_cmd() {
 		# elif [[ $1 == '--suspend' ]]; then
 		# 	systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
-			pkill -u "$USER"
+			pkill -u $USER
 		fi
 	else
 		exit 0
