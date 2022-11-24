@@ -76,7 +76,7 @@ local lsp = {
         -- return "[" .. table.concat(buf_client_names, ", ") .. "]"
     end,
     icon = " ",
-    color = { gui = "bold", fg = "#d6d3ea", bg = "#2d2b3a" },
+    color = { gui = "bold", fg = "#d6d3ea", bg = "#292e42" },
     cond = conditions.hide_in_width,
     separator = { left = "", right = "" },
 }
@@ -84,7 +84,7 @@ local lsp = {
 local branch = {
     "b:gitsigns_head",
     icon = " ",
-    color = { gui = "bold", bg = "#363347" },
+    color = { gui = "bold", bg = "#3b4261" },
     cond = conditions.hide_in_width,
     separator = { left = "", right = "" },
 }
@@ -98,7 +98,7 @@ local diff = {
         removed = icons.git.Remove .. " ",
     },
     cond = nil,
-    color = { bg = "#2d2b3a" },
+    color = { bg = "#292e42" },
     separator = { left = "", right = "" },
 }
 
@@ -134,7 +134,7 @@ local scrollbar = {
         return chars[index]
     end,
     padding = { left = 0, right = 0 },
-    color = { fg = "#f6c177", bg = "#21202a" },
+    color = { fg = "#f6c177", bg = "#292e42" },
     cond = nil,
 }
 
@@ -175,7 +175,7 @@ lualine.setup {
         },
         lualine_x = { "diagnostics", lsp }, -- lsp },
         lualine_y = {
-            { "filetype", color = { bg = "#393547", gui = "bold" } },
+            { "filetype", color = { bg = "#3b4261", gui = "bold" } },
         },
         lualine_z = { "location", scrollbar }, -- progress
     },
