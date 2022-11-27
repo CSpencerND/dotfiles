@@ -40,7 +40,7 @@ const char *battery_icon(void)
         }
         else if (!strcmp(state, "Discharging"))
         {
-                if (perc < 12)
+                if (perc <= 12)
                 {
                         strcpy(icon, "  ");
                 }
