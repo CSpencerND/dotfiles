@@ -38,7 +38,6 @@ run "slstatus"
 
 # screens_count=$(xrandr -q | grep " connected" | wc -l)
 #
-# /home/"$USER"/.local/statusbar/thermals.sh
 # if [[ $screens_count == 1 ]]; then
 #     slstatus-sm &   
 # else
@@ -47,6 +46,7 @@ run "slstatus"
 
 picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 
+/home/"$USER"/.local/statusbar/thermals.sh
 /home/"$USER"/.local/statusbar/weather.py &
 /home/"$USER"/.local/statusbar/headset-perc &
 /home/"$USER"/.local/statusbar/dnf-updates &
