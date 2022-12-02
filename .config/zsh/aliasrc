@@ -9,6 +9,7 @@ alias gts="git status"
 alias gta="git add"
 alias gtc="git commit"
 alias gtp="git push"
+alias glo="git log --oneline"
 alias lg="lazygit"
 
 ### Backup Git
