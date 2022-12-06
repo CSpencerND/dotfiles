@@ -13,6 +13,7 @@ autoconf-2.71-4.fc37.noarch
 automake-1.16.5-9.fc37.noarch
 biosdevname-0.7.3-10.fc37.x86_64
 blueberry-1.4.7-4.fc37.noarch
+blueman-1:2.3.5-1.fc37.x86_64
 btop-1.2.13-1.fc37.x86_64
 cargo-1.65.0-1.fc37.x86_64
 chkconfig-1.21-1.fc37.x86_64
