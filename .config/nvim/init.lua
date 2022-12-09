@@ -60,7 +60,8 @@ vim.cmd([[
     try
         " colorscheme catppuccin
         " colorscheme horizon
-        colorscheme tokyonight-night
+        " colorscheme tokyonight-night
+        colorscheme kanagawa
         " colorscheme rose-pine
         " colorscheme gruvbox
         " colorscheme synthwave84
