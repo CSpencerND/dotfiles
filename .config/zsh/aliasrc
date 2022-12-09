@@ -28,7 +28,6 @@ alias nvz="$EDITOR ~/.config/zsh/.zshrc"
 alias qtc="$EDITOR ~/.config/qtile/config.py"
 
 ### Programming Shortcuts
-BROWSER="chromium"
 alias live="live-server ."
 alias se="sudoedit"
 

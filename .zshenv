@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+export BROWSER="chromium-browser"
 export XDG_CURRENT_DESKTOP="dwm"
 
 # XDG Compliance

@@ -19,7 +19,7 @@ end
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins.lua source <afile> | PackerInstall
   augroup end
 ]]
 
@@ -44,6 +44,7 @@ packer.init {
 -- Install Plugins
 return packer.startup(function(use)
     use { -- Core Components
+        "tpope/vim-obsession",
         "wbthomason/packer.nvim",
         "nvim-lua/plenary.nvim",
         "nvim-lua/popup.nvim",
@@ -275,7 +276,7 @@ return packer.startup(function(use)
     use { "shaunsingh/oxocarbon.nvim", branch = "fennel" }
 
     -- Automatically set up your configuration after cloning packer.nvim
-    if PACKER_BOOTSTRAP then
-        require("packer").sync()
-    end
+    -- if PACKER_BOOTSTRAP then
+    --     require("packer").sync()
+    -- end
 end)
