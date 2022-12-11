@@ -22,29 +22,8 @@ xmenu.selforeground: #282a36
 xmenu.border: #bd93f9
 xmenu.borderWidth: 1
 
-! st
-st.font: Hack Nerd Font:pixelsize=16:antialias=true:autohint=true
-st.alpha: 0.9
-st.termname: st-256color
-st.color0:  #1a1b26 
-st.color1:  #ff5555 
-st.color2:  #50fa7b 
-st.color3:  #f1fa8c
-st.color4:  #bd93f9 
-st.color5:  #ff79c6
-st.color6:  #8be9fd
-st.color7:  #a89984
-st.color8:  #928374
-st.color9:  #ff5555 
-st.color10: #50fa7b 
-st.color11: #fabd2f
-st.color12: #bd93f9 
-st.color13: #ff79c6 
-st.color14: #50fa7b 
-st.color15: #ebebe2
-st.background: #1a1b26 
-st.foreground: #f8f8f2 
-st.cursorColor: #f8f8f2 
+#include "./.Xresources.d/st"
+#include "./.Xresources.d/kanagawa"
 
 ! general settings
 URxvt.saveLines:        50000
@@ -89,42 +68,43 @@ URxvt.background:   [80]#222222
 !URxvt.background:  [80]#404552
 !URxvt.background:  [70]#3F424A
 
-*.cursorColor:  #c8c8c8
 
-*background: #1E1E2E
-*foreground: #D9E0EE
+! special
+! *background: #1E1E2E
+! *foreground: #D9E0EE
+! *.cursorColor:  #c8c8c8
 
 ! Gray
-*color0: #6E6C7E
-*color8: #988BA2
+! *color0: #6E6C7E
+! *color8: #988BA2
 
 ! Red
-*color1: #F28FAD
-*color9: #F28FAD
+! *color1: #F28FAD
+! *color9: #F28FAD
 
 ! Green
-*color2: #ABE9B3
-*color10: #ABE9B3
+! *color2: #ABE9B3
+! *color10: #ABE9B3
 
 ! Yellow
-*color3: #FAE3B0
-*color11:  #FAE3B0
+! *color3: #FAE3B0
+! *color11:  #FAE3B0
 
 ! Blue
-*color4: #96CDFB
-*color12: #96CDFB
+! *color4: #96CDFB
+! *color12: #96CDFB
 
 ! Maguve
-*color5: #DDB6F2
-*color13: #DDB6F2
+! *color5: #DDB6F2
+! *color13: #DDB6F2
 
 ! Pink
-*color6: #F5C2E7
-*color14: #F5C2E7
+! *color6: #F5C2E7
+! *color14: #F5C2E7
 
 ! Whites
-*color7: #C3BAC6
-*color15: #D9E0EE
+! *color7: #C3BAC6
+! *color15: #D9E0EE
 
 !!! end
 !!! get your color schemes from here
