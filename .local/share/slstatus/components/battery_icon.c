@@ -56,7 +56,7 @@ const char *battery_icon(void)
                 {
                         strcpy(icon, "  ");
                 }
-                else if (perc > 88)
+                else if (perc >= 88)
                 {
                         strcpy(icon, "  ");
                 }
