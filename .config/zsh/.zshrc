@@ -26,6 +26,7 @@ export COLORTERM="truecolor"
 export MANPAGER="'$VISUAL' +Man!"
 export MANWIDTH=999
 export PAGER="less"
+# export PAGER=/usr/local/bin/moar
 
 # colorize man pages
 export LESS_TERMCAP_mb=$'\e[1;32m'

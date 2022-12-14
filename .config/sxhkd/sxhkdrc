@@ -47,6 +47,9 @@ super + F1
 super + F2
     ~/.screenlayout/2screens.sh && ~/.fehbg
 
+super + grave
+    xrandr -s 1920x1080 && ~/.fehbg
+
 super + shift + Escape
     xkill
 # management }}}
