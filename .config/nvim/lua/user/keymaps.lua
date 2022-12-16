@@ -11,8 +11,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- emmet
-vim.g.user_emmet_mode="n"
-vim.g.user_emmet_leader_key=","
+vim.g.user_emmet_mode = "n"
+vim.g.user_emmet_leader_key = ","
 
 -- Modes
 --   normal_mode = "n",
@@ -27,6 +27,10 @@ vim.g.user_emmet_leader_key=","
 keymap("n", "<C-s>", ":w<CR>", opts)
 keymap("n", "<C-q>", ":q<CR>", opts)
 keymap("n", "<leader>sv", ":source ~/.config/nvim/init.lua<CR>", opts)
+
+-- Move screen one line but with cursor
+keymap("n", "<C-e>", "<C-e>j", opts)
+keymap("n", "<C-S-y>", "<C-S-y>k", opts)
 
 -- Select all and find replace --
 keymap("n", "<leader>a", "ggVG", opts)
@@ -55,9 +59,12 @@ keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Insert --
--- Press jk fast to enter
+-- Press jk fast to escape
 -- keymap("i", "jk", "<ESC>", opts)
 keymap("i", "<C-BS>", "<C-w>", opts)
+
+-- Move to end of word and stay in insert mode
+keymap("i", "<C-a>", "<Esc>ea", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -82,4 +89,3 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
