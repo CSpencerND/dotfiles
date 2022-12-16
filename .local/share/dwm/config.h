@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#include "themes/rose-pine.h"
+#include "themes/kanagawa.h"
 
 /* custom function */
 static void shiftmon(const Arg *arg);
@@ -99,7 +99,7 @@ static char *colors[][ColCount] = {
 
 	[SchemeTagsSel] = {
                 main_color,
-                highlight_color,
+                secondary_color,
                 unused,
                 unused
         },
