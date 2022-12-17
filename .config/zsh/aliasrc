@@ -11,6 +11,7 @@ alias gtc="git commit"
 alias gtp="git push"
 alias glo="git log --oneline"
 alias lg="lazygit"
+alias cdg='cd $(git rev-parse --show-toplevel)'
 
 ### Backup Git
 alias bks="backup status"
