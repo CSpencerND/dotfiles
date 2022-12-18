@@ -89,11 +89,63 @@ local opts = {
 
 local m_opts = {
     mode = "n", -- NORMAL mode
-    prefix = "M",
+    prefix = "m",
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
+}
+
+local m_mappings = {
+    -- Harpoon --
+    a = {
+        '<cmd>lua require("harpoon.mark").add_file()<cr>',
+        "Harpoon Mark",
+    },
+    g = {
+        '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
+        "Harpoon GUI",
+    },
+    u = {
+        '<cmd>lua require("harpoon.ui").nav_next()<cr>',
+        "Next File",
+    },
+    i = {
+        '<cmd>lua require("harpoon.ui").nav_prev()<cr>',
+        "Prev File",
+    },
+    ["1"] = {
+        '<cmd>lua require("harpoon.ui").nav_file(1)<cr>',
+        "File 1",
+    },
+    ["2"] = {
+        '<cmd>lua require("harpoon.ui").nav_file(2)<cr>',
+        "File 2",
+    },
+    ["3"] = {
+        '<cmd>lua require("harpoon.ui").nav_file(3)<cr>',
+        "File 3",
+    },
+    ["4"] = {
+        '<cmd>lua require("harpoon.ui").nav_file(4)<cr>',
+        "File 4",
+    },
+
+    -- Bookmarks --
+    b = {
+        name = "Bookmarks",
+        a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
+        c = { "<cmd>BookmarkClear<cr>", "Clear" },
+        m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
+        j = { "<cmd>BookmarkNext<cr>", "Next" },
+        k = { "<cmd>BookmarkPrev<cr>", "Prev" },
+        s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
+        f = {
+            "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
+            "Find",
+        },
+        x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
+    },
 }
 
 local g_opts = {
@@ -103,25 +155,6 @@ local g_opts = {
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
-}
-
-local m_mappings = {
-    a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
-    c = { "<cmd>BookmarkClear<cr>", "Clear" },
-    m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
-    j = { "<cmd>BookmarkNext<cr>", "Next" },
-    k = { "<cmd>BookmarkPrev<cr>", "Prev" },
-    -- s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
-    s = {
-        "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
-        "Show",
-    },
-    x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
-    h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon Mark" },
-    g = {
-        '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
-        "Harpoon Menu",
-    },
 }
 
 local g_mappings = {
@@ -410,6 +443,8 @@ local mappings = {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         t = { "<cmd>TSContextToggle<cr>", "Context Toggle" },
     },
+
+    u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
 }
 
 local vopts = {

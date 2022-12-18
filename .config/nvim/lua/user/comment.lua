@@ -9,7 +9,28 @@ if not status_ok_1 then
 end
 
 comment.setup {
+    padding = true,
+    sticky = true,
+    -- ignore = nil,
     ignore = "^$",
+    toggler = {
+        line = "gcc",
+        block = "gbc",
+    },
+    opleader = {
+        line = "gc",
+        block = "gb",
+    },
+    extra = {
+        above = "gcO",
+        below = "gco",
+        eol = "gcA",
+    },
+    mappings = {
+        basic = true,
+        extra = true,
+    },
+    post_hook = nil,
     pre_hook = function(ctx)
         -- For inlay hints
         local line_start = (ctx.srow or ctx.range.srow) - 1
@@ -18,8 +39,7 @@ comment.setup {
 
         require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
 
-        if
-            vim.bo.filetype == "javascript"
+        if vim.bo.filetype == "javascript"
             or vim.bo.filetype == "typescript"
         then
             local U = require "Comment.utils"
@@ -32,10 +52,10 @@ comment.setup {
             local location = nil
             if ctx.ctype == U.ctype.blockwise then
                 location =
-                    require("ts_context_commentstring.utils").get_cursor_location()
+                require("ts_context_commentstring.utils").get_cursor_location()
             elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
                 location =
-                    require("ts_context_commentstring.utils").get_visual_start_location()
+                require("ts_context_commentstring.utils").get_visual_start_location()
             end
 
             return require("ts_context_commentstring.internal").calculate_commentstring {

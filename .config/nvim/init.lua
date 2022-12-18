@@ -28,7 +28,6 @@ require "user.hop"
 require "user.illuminate"
 require "user.indentline"
 require "user.jaq"
--- require "user.mason"
 require "user.matchup"
 require "user.notify"
 require "user.numb"
@@ -44,6 +43,7 @@ require "user.toggleterm"
 require "user.zen-mode"
 require "user.winbar"
 require "user.gps"
+require "user.inlay-hints"
 
 -- [[ require "user.bookmark" ]]
 -- require("mason").setup()

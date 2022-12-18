@@ -16,12 +16,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
--- vim.cmd [[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost plugins.lua source <afile> | PackerSync
---   augroup end
--- ]]
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerInstall
+  augroup end
+]]
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -115,7 +115,7 @@ return packer.startup(function(use)
             commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6",
         },
         "williamboman/mason.nvim",
-        -- "williamboman/mason-lspconfig.nvim",
+        "williamboman/mason-lspconfig.nvim",
         "tamago324/nlsp-settings.nvim", -- language server settings defined in json for formatters and linters
         {
             "jose-elias-alvarez/null-ls.nvim",
@@ -239,7 +239,7 @@ return packer.startup(function(use)
         "metakirby5/codi.vim",
         "folke/zen-mode.nvim",
         "Djancyp/cheat-sheet",
-        -- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
+        "lvimuser/lsp-inlayhints.nvim",
         {
             "declancm/cinnamon.nvim",
             config = function()
@@ -247,6 +247,7 @@ return packer.startup(function(use)
             end,
         },
         "j-hui/fidget.nvim",
+        "mbbill/undotree",
     }
 
     use { -- Utilities
