@@ -50,27 +50,6 @@ require "user.gps"
 -- require "user.ts-context"
 -- require "user.lsp-inlayhints"
 
--- Colorscheme
---[[ vim.o.background = "light" ]]
--- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
--- vim.g.sonokai_style = "andromeda"
--- vim.g.gruvbox_contrast_dark = "medium"
-
-vim.cmd([[
-    try
-        " colorscheme catppuccin
-        " colorscheme horizon
-        " colorscheme tokyonight-night
-        colorscheme kanagawa
-        " colorscheme rose-pine
-        " colorscheme gruvbox
-        " colorscheme synthwave84
-    catch /^Vim\%((\a\+)\)\=:E185/
-        colorscheme default
-        set background=dark
-    endtry
-]])
-
 vim.cmd([[hi DiagnosticError guibg=NONE]])
 vim.cmd([[hi DiagnosticInfo guibg=NONE]])
 vim.cmd([[hi DiagnosticHint guibg=NONE]])

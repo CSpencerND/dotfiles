@@ -1,3 +1,13 @@
+-- Colorscheme
+vim.cmd [[
+    try
+        colorscheme kanagawa
+    catch /^Vim\%((\a\+)\)\=:E185/
+        colorscheme default
+        set background=dark
+    endtry
+]]
+
 local options = {
     title = true,
     titlestring = "%F - neovim",
@@ -9,6 +19,7 @@ local options = {
     colorcolumn = "80",
     fileencoding = "utf-8", -- the encoding written to a file
     hlsearch = true, -- highlight all matches on previous search pattern
+    incsearch = true,
     ignorecase = true, -- ignore case in search patterns
     mouse = "a", -- allow the mouse to be used in neovim
     pumheight = 10, -- pop up menu height

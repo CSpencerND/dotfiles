@@ -66,7 +66,7 @@ local setup = {
         "^:",
         "^ ",
     }, -- hide mapping boilerplate
-    show_help = false, -- show help message on the command line when the popup is visible
+    show_help = true, -- show help message on the command line when the popup is visible
     -- triggers = "auto", -- automatically setup triggers
     -- triggers = {"<leader>"} -- or specify a list manually
     triggers_blacklist = {
@@ -260,8 +260,11 @@ local mappings = {
 
     r = {
         r = { "<cmd>lua require('renamer').rename()<cr>", "Renamer" },
-        s = { ":%s/", "sed" },
+        -- s = { ":%s/", "sed" },
+        s = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", "SED" },
     },
+
+    x = { "<cmd>!chmod +x %<CR>", "chmod" },
 
     d = {
         name = "Debug",
