@@ -24,6 +24,7 @@ xmenu.borderWidth: 1
 
 #include "./.Xresources.d/st"
 #include "./.Xresources.d/kanagawa"
+! #include "./.Xresources.d/dwm"
 
 ! general settings
 URxvt.saveLines:        50000

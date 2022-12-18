@@ -1,0 +1,55 @@
+! st
+! st.font: Hack Nerd Font:pixelsize=16:antialias=true:autohint=true
+! st.alpha: 0.9
+! st.termname: st-256color
+! st.color0:  #1a1b26 
+! st.color1:  #ff5555 
+! st.color2:  #50fa7b 
+! st.color3:  #f1fa8c
+! st.color4:  #bd93f9 
+! st.color5:  #ff79c6
+! st.color6:  #8be9fd
+! st.color7:  #a89984
+! st.color8:  #928374
+! st.color9:  #ff5555 
+! st.color10: #50fa7b 
+! st.color11: #fabd2f
+! st.color12: #bd93f9 
+! st.color13: #ff79c6 
+! st.color14: #50fa7b 
+! st.color15: #ebebe2
+! st.background: #1a1b26 
+! st.foreground: #f8f8f2 
+! st.cursorColor: #f8f8f2 
+
+st.font: CaskaydiaCove Nerd Font:pixelsize=16:antialias=true:autohint=true
+st.alpha: 0.9
+st.termname: st-256color
+
+st.foreground:  #dcd7ba 
+st.background:  #1f1f28 
+st.cursorColor: #dcd7ba 
+
+st.color0:  #090618 
+st.color8:  #727169
+
+st.color1:  #c34043 
+st.color9:  #e82424 
+                   
+st.color2:  #76946a       
+st.color10: #98bb6c
+            
+st.color3:  #c0a36e
+st.color11: #e6c384
+                   
+st.color4:  #7e9cd8       
+st.color12: #7fb4ca
+            
+st.color5:  #957fb8       
+st.color13: #938aa9        
+            
+st.color6:  #6a9589
+st.color14: #7aa89f        
+                   
+st.color7:  #c8c093
+st.color15: #dcd7ba

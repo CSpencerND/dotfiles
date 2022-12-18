@@ -1,0 +1,35 @@
+dwm.normfgcolor:             #dcd7ba 
+dwm.normbgcolor:             #1f1f28
+dwm.normbordercolor:         #dcd7ba     
+dwm.normfloatcolor:          #090618
+dwm.selfgcolor:              #727169            
+dwm.selbgcolor:               #c34043
+dwm.selbordercolor:           #e82424
+dwm.selfloatcolor:            #76946a
+dwm.titlenormfgcolor:         #98bb6c       
+dwm.titlenormbgcolor:          #c0a36e
+dwm.titlenormbordercolor:      #e6c384       
+dwm.titlenormfloatcolor:       #7e9cd8       
+dwm.titleselfgcolor:           #7fb4ca
+dwm.titleselbgcolor:           #957fb8
+dwm.titleselbordercolor:       #938aa9       
+dwm.titleselfloatcolor:        #6a9589       
+dwm.tagsnormfgcolor:           #7aa89f
+dwm.tagsnormbgcolor:           #c8c093
+dwm.tagsnormbordercolor:       #dcd7ba       
+dwm.tagsnormfloatcolor:               
+dwm.tagsselfgcolor:            
+dwm.tagsselbgcolor:            
+dwm.tagsselbordercolor:               
+dwm.tagsselfloatcolor:                
+dwm.hidnormfgcolor:            
+dwm.hidnormbgcolor:            
+dwm.hidselfgcolor:                    
+dwm.hidselbgcolor:                    
+dwm.urgfgcolor:                
+dwm.urgbgcolor:               
+dwm.urgbordercolor:           
+dwm.urgfloatcolor:            
+                             
+                             
+
