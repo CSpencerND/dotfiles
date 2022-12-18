@@ -43,7 +43,7 @@ require "user.toggleterm"
 require "user.zen-mode"
 require "user.winbar"
 require "user.gps"
-require "user.inlay-hints"
+-- require "user.inlay-hints"
 
 -- [[ require "user.bookmark" ]]
 -- require("mason").setup()

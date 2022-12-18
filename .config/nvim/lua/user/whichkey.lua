@@ -102,15 +102,15 @@ local m_mappings = {
         '<cmd>lua require("harpoon.mark").add_file()<cr>',
         "Harpoon Mark",
     },
-    g = {
+    m = {
         '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
         "Harpoon GUI",
     },
-    u = {
+    ["."] = {
         '<cmd>lua require("harpoon.ui").nav_next()<cr>',
         "Next File",
     },
-    i = {
+    [","] = {
         '<cmd>lua require("harpoon.ui").nav_prev()<cr>',
         "Prev File",
     },
