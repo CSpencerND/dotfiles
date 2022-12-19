@@ -15,7 +15,9 @@ null_ls.setup {
         -- formatting
         formatting.stylua,
         formatting.rustfmt,
-        formatting.prettier,
+        formatting.prettier.with {
+            extra_filetypes = { "toml", "solidity" },
+        },
         formatting.black, -- .with({ extra_args = { "--fast" } }),
         formatting.shfmt,
         --[[ formatting.codespell.with { filetypes = { "markdown", "txt", "html" } }, ]]

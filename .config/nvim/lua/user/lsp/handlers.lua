@@ -19,6 +19,7 @@ M.setup = function()
     local config = {
         -- disable virtual text
         virtual_text = false,
+        virtual_lines = false,
         -- show signs
         signs = {
             active = signs,
@@ -37,10 +38,9 @@ M.setup = function()
                 local t = vim.deepcopy(d)
                 local code = d.code or (d.user_data and d.user_data.lsp.code)
                 if code then
-                    t.message = string.format("%s [%s]", t.message, code):gsub(
-                        "1. ",
-                        ""
-                    )
+                    t.message = string
+                        .format("%s [%s]", t.message, code)
+                        :gsub("1. ", "")
                 end
                 return t.message
             end,
@@ -49,19 +49,15 @@ M.setup = function()
 
     vim.diagnostic.config(config)
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-        vim.lsp.handlers.hover,
-        {
+    vim.lsp.handlers["textDocument/hover"] =
+        vim.lsp.with(vim.lsp.handlers.hover, {
             border = "rounded",
-        }
-    )
+        })
 
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-        vim.lsp.handlers.signature_help,
-        {
+    vim.lsp.handlers["textDocument/signatureHelp"] =
+        vim.lsp.with(vim.lsp.handlers.signature_help, {
             border = "rounded",
-        }
-    )
+        })
 end
 
 local function lsp_highlight_document(client)
@@ -150,6 +146,7 @@ M.on_attach = function(client, bufnr)
     local clients = { "tsserver", "sumneko_lua" }
     for _, c in pairs(clients) do
         if client.name == c then
+            require("lsp-inlayhints").on_attach(client, bufnr)
             client.server_capabilities.document_formatting = false
         end
     end

@@ -127,6 +127,12 @@ return packer.startup(function(use)
         --     commit = "4852d99f9511d090745d3cc1f09a75772b9e07e9",
         -- },
         "nvim-lua/lsp-status.nvim",
+        {
+            "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+            config = function()
+                require("lsp_lines").setup()
+            end,
+        },
     }
 
     use { -- Treesitter / Syntax Highlighting
