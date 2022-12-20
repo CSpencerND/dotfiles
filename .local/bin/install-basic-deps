@@ -14,3 +14,9 @@ module.exports = {
     plugins: [require("daisyui"), require("@tailwindcss/typography")],
 }
 EOT
+
+cat <<EOT > src/index.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+EOT
