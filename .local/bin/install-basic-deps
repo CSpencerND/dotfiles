@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+yarn add -D tailwindcss postcss autoprefixer @tailwindcss/typography
+yarn add daisyui hamburger-react react-feather
+npx tailwindcss init -p
+
+cat <<EOT > tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    theme: {
+        extend: {},
+    },
+    plugins: [require("daisyui"), require("@tailwindcss/typography")],
+}
+EOT
