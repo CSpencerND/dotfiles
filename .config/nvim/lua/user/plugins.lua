@@ -138,7 +138,10 @@ return packer.startup(function(use)
     use { -- Treesitter / Syntax Highlighting
         { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
         -- "romgrk/nvim-treesitter-context",
-        "JoosepAlviste/nvim-ts-context-commentstring",
+        {
+            "JoosepAlviste/nvim-ts-context-commentstring",
+            event = "BufReadPost",
+        },
         { "p00f/nvim-ts-rainbow" },
         "windwp/nvim-ts-autotag",
         "mizlan/iswap.nvim",
@@ -148,6 +151,7 @@ return packer.startup(function(use)
     -------------------------------------------------------------------------------
 
     use { -- Language specific
+        -- "SirVer/ultisnips",
         "mlaursen/vim-react-snippets",
         {
             "dsznajder/vscode-es7-javascript-react-snippets",

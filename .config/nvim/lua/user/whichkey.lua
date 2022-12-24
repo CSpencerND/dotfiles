@@ -264,7 +264,7 @@ local mappings = {
         s = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", "SED" },
     },
 
-    x = { "<cmd>!chmod +x %<CR>", "chmod" },
+    x = { "<cmd>!chmod +x %<CR>", "chmod+x" },
 
     d = {
         name = "Debug",
