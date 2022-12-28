@@ -3,7 +3,7 @@
 #################################################################
 
 super + g; {w, d, v, p, b, c, q, Escape}
-    {firefox, discord, pavucontrol, picom-toggle.sh, blueberry, gnome-calendar, gnome-calculator, exit}
+    {firefox, Discord, pavucontrol, picom-toggle.sh, blueberry, gnome-calendar, gnome-calculator, exit}
 
 super + w; {n, p, f, t}
     {variety -n, variety -p, variety -f, variety -t}
@@ -18,11 +18,10 @@ super + shift + n
     noticenter
 
 # super + space
-    # hotkeys.sh
-    # rofi -show window
+#     hotkeys.sh
 
 # super + shift + v
-super + space
+super + shift + space
     rofi -show window -theme "$HOME/.config/rofi/themes/app-launcher.rasi"
 
 super + e

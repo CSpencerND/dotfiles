@@ -6,7 +6,6 @@ lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.diagnostics.float.focusable = true
 lvim.builtin.treesitter.autotag = true
 lvim.builtin.which_key.setup.layout.align = "center"
-require('nvim-ts-autotag').setup()
 
 reload "user.plugins"
 reload "user.options"

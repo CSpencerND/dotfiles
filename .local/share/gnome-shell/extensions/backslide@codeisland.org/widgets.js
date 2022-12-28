@@ -476,19 +476,9 @@ var SliderItem = GObject.registerClass({},
 class SliderItem extends GObject.Object {
 
     _init(value) {
-        this.item = new PopupMenu.PopupBaseMenuItem();
-
-        var layout = new Clutter.GridLayout();
-        this._box = new St.Widget({
-							style_class: 'slider-item',
-							layout_manager: layout,
-              x_expand: true,
-              y_expand: true
-        });
-
+        this.item = new PopupMenu.PopupBaseMenuItem({reactive: false});
         this._slider = new Slider.Slider(value);
-        layout.attach(this._slider, 2, 0, 1, 1);
-        this.item.actor.add(this._box);
+        this.item.add_child(this._slider);
     }
 
     setValue(value) {
