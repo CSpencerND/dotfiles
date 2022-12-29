@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-# whether to skip timeshift autosnap on updates (doesn't seem to work)
-export SKIPAUTOSNAP=false
-
 #Cuz it looks nice :)
 # colorscript random
 
@@ -13,7 +10,7 @@ clear
 autoload -U colors && colors
 
 # Configure color-scheme
-COLOR_SCHEME=dark # dark/light
+export COLOR_SCHEME=dark # dark/light
 
 # -----------------------------------------------------------------------------
 

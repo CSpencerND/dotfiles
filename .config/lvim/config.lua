@@ -1,5 +1,5 @@
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.colorscheme = "kanagawa"
+lvim.colorscheme = "lunar"
 
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.lsp.diagnostics.virtual_text = false
