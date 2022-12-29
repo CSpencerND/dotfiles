@@ -15,7 +15,7 @@ export COLOR_SCHEME=dark # dark/light
 # -----------------------------------------------------------------------------
 
 # Default Apps
-export VISUAL="nvim"
+export VISUAL="lvim" || "nvim"
 export EDITOR=$VISUAL
 export SUDO_EDITOR=$VISUAL
 export TERMINAL="kitty"

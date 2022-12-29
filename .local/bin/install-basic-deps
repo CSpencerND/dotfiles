@@ -128,3 +128,6 @@ img:not(#logo) {
     @apply bg-base-content shadow-md shadow-black/50;
 }
 EOT
+
+echo "You will probably need to edit the file names and/or locations\!"
+echo "Double check that they work for your project\!"
