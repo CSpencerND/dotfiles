@@ -15,7 +15,7 @@ export default $arg
 "
 
 		mkdir "$arg"/
-		echo "$rfc" >>"$arg"/index.jsx
+		echo "$rfc" >>"$arg"/"$arg".jsx
 		echo "Component $arg created at $arg/$arg.jsx"
 	done
 
