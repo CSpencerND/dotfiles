@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+while true; do
+    ac=$(cat /sys/class/power_supply/AC/online)
+    if [ "$ac" -eq 1 ]; then
+        break
+    fi
+	bat=$(cat /sys/class/power_supply/BAT0/capacity)
+	notify-send "🔋 Battery $bat%"
+	if [ "$bat" -le 50 ]; then
+		notify-send -u critical -t 999999 "🔋 Plug in the charger!"
+        mpv ~/Music/warning-notification.wav
+	fi
+	sleep 5m
+done
