@@ -1,42 +1,37 @@
 #!/usr/bin/env node
 
-const fs = require("fs")
-const cwd = process.cwd()
+const fs = require('fs');
+const readline = require('readline');
 
-let imports = ""
-let imageImports = []
+const cwd = process.cwd();
 
-fs.readdirSync(cwd).forEach((file) => {
-    if (/\.(jpg|png|gif|webp|avif)$/.test(file)) {
-        let fileNameWithoutExtension = file
-            .replace(/\.[^/.]+$/, "")
-            .replace(/-/g, "")
-            .replace(/[^\w]/g, "")
-        imports += `import ${fileNameWithoutExtension} from "./${file}";\n`
-        imageImports.push(fileNameWithoutExtension)
+let imports = '';
+const imageImportsTest = [];
+
+fs.readdirSync(cwd).forEach(file => {
+  if (/\.(jpg|png|gif|webp|avif)$/.test(file)) {
+    const fileNameWithoutExtension = file.replace(/\.[^/.]+$/, '').replace(/-/g, '').replace(/[^\w]/g, '');
+    imports += `import ${fileNameWithoutExtension} from "./${file}";\n`;
+    imageImportsTest.push(`[${fileNameWithoutExtension}, "${fileNameWithoutExtension}"]`);
+  }
+});
+
+const output = `${imports}\nconst imageImportsTest = [\n  ${imageImportsTest.join(',\n  ')}\n];\n\nexport default imageImportsTest;\n`;
+
+if (fs.existsSync('index.ts')) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  rl.question('index.ts already exists. Do you want to overwrite it? (y/N) ', answer => {
+    if (answer.toLowerCase() === 'y') {
+      fs.writeFileSync('index.ts', output);
+    } else {
+      console.log('Aborted');
     }
-})
-
-const output = `${imports}\nconst imageImports = [${imageImports.join(
-    ", "
-)}];\n\nexport default imageImports;\n`
-
-if (fs.existsSync("index.ts")) {
-    const readline = require("readline").createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    })
-    readline.question(
-        "index.ts already exists. Do you want to overwrite it? (y/N)",
-        (answer) => {
-            if (answer === "" || answer.toLowerCase() === "n") {
-                console.log("Aborted")
-            } else if (answer.toLowerCase() === "y") {
-                fs.writeFileSync("index.ts", output)
-            }
-            readline.close()
-        }
-    )
+    rl.close();
+  });
 } else {
-    fs.writeFileSync("index.ts", output)
+  fs.writeFileSync('index.ts', output);
 }
+
