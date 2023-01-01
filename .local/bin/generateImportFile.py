@@ -19,7 +19,7 @@ for file in os.listdir(cwd):
 output = f"{imports}\nconst imageImports = [{', '.join(image_imports)}];\n\nexport default imageImports;\n"
 
 if os.path.exists("index.js"):
-    answer = input("index.js already exists. Do you want to overwrite it? (Y/n) ")
+    answer = input("index.js already exists. Do you want to overwrite it? (y/N) ")
     if answer.lower() == "y":
         with open("index.js", "w") as f:
             f.write(output)
