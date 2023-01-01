@@ -18,10 +18,10 @@ for file in os.listdir(cwd):
 
 output = f"{imports}\nconst imageImports = [{', '.join(image_imports)}];\n\nexport default imageImports;\n"
 
-if os.path.exists("index.js"):
-    answer = input("index.js already exists. Do you want to overwrite it? (y/N) ")
+if os.path.exists("index.ts"):
+    answer = input("index.ts already exists. Do you want to overwrite it? (y/N) ")
     if answer.lower() == "y":
-        with open("index.js", "w") as f:
+        with open("index.ts", "w") as f:
             f.write(output)
     else:
         print("Aborted")

@@ -21,18 +21,18 @@ const output = `${imports}\nconst imageImports = [${imageImports.join(
     ", "
 )}];\n\nexport default imageImports;\n`
 
-if (fs.existsSync("index.js")) {
+if (fs.existsSync("index.ts")) {
     const readline = require("readline").createInterface({
         input: process.stdin,
         output: process.stdout,
     })
     readline.question(
-        "index.js already exists. Do you want to overwrite it? (y/N)",
+        "index.ts already exists. Do you want to overwrite it? (y/N)",
         (answer) => {
             if (answer === "" || answer.toLowerCase() === "n") {
                 console.log("Aborted")
             } else if (answer.toLowerCase() === "y") {
-                fs.writeFileSync("index.js", output)
+                fs.writeFileSync("index.ts", output)
             }
             readline.close()
         }
