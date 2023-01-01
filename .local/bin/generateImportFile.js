@@ -38,5 +38,5 @@ if (fs.existsSync("index.js")) {
         }
     )
 } else {
-    fs.writeFileSync("index.js", output)
+    fs.writeFileSync("index.ts", output)
 }

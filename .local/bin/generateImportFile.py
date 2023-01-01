@@ -26,5 +26,5 @@ if os.path.exists("index.js"):
     else:
         print("Aborted")
 else:
-    with open("index.js", "w") as f:
+    with open("index.ts", "w") as f:
         f.write(output)
