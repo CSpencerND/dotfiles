@@ -14,9 +14,11 @@ for file in os.listdir(cwd):
             re.sub(r"\.[^/.]+$", "", file).replace("-", "").replace("[^\w]", "")
         )
         imports += f'import {file_name_without_extension} from "./{file}";\n'
-        image_imports_test.append(f'[{file_name_without_extension}, "{file_name_without_extension}"]')
+        image_imports_test.append(
+            f'[{file_name_without_extension}, "{file_name_without_extension}"]'
+        )
 
-output = f"{imports}\nconst imageImportsTest = [{', '.join(image_imports_test)}];\nexport default imageImportsTest;"
+output = f"import {{ StaticImageData }} from 'next/image';\n{imports}\ntype ImageImport = [StaticImageData, string]\nconst imageImportsTest: ImageImport[] = [\n    {', '.join(image_imports_test)}\n]\nexport default imageImportsTest;"
 
 if os.path.exists("index.ts"):
     answer = input("index.ts already exists. Do you want to overwrite it? (y/N) ")
