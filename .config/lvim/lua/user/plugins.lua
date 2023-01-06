@@ -1,4 +1,5 @@
 lvim.plugins = {
+    "mrjones2014/nvim-ts-rainbow",
     "jose-elias-alvarez/typescript.nvim",
     "tpope/vim-obsession",
     "p00f/nvim-ts-rainbow",

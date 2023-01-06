@@ -6,6 +6,7 @@ lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.diagnostics.float.focusable = true
 lvim.builtin.treesitter.autotag = true
 lvim.builtin.which_key.setup.layout.align = "center"
+lvim.builtin.treesitter.rainbow.enable = true
 
 reload "user.plugins"
 reload "user.options"
