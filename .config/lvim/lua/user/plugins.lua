@@ -1,8 +1,14 @@
 lvim.plugins = {
+    -- { "echasnovski/mini.nvim", branch = "stable" },
+    {
+        "echasnovski/mini.animate",
+        config = function()
+            require("mini.animate").setup()
+        end,
+    },
     "mrjones2014/nvim-ts-rainbow",
     "jose-elias-alvarez/typescript.nvim",
     "tpope/vim-obsession",
-    "p00f/nvim-ts-rainbow",
     "NvChad/nvim-colorizer.lua",
     "kylechui/nvim-surround",
     "ThePrimeagen/harpoon",

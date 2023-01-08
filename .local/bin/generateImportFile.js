@@ -4,7 +4,7 @@ const fs = require("fs")
 const cwd = process.cwd()
 
 let imports = ""
-const imageImports = []
+const initialImports = []
 
 fs.readdir(cwd, (err, files) => {
     if (err) throw err
@@ -22,31 +22,31 @@ fs.readdir(cwd, (err, files) => {
             // Add the import statement for the file
             imports += `import ${fileNameWithoutExtension} from "./${file}";\n`
 
-            // Add the file to the imageImports array
-            imageImports.push(
+            // Add the file to the initialImports array
+            initialImports.push(
                 `[${fileNameWithoutExtension}, "${fileNameWithoutExtension}"]`
             )
         }
     }
 
     // Create the output string
-    const output = `import { ImageImport, ImageDataX } from "~/types";
+    const output = `import { ImageImport, ImageData } from "~/types";
 ${imports}
-const imageImports: ImageImport[] = [
-    ${imageImports.join(", ")}
+const initialImports: ImageImport[] = [
+    ${initialImports.join(", ")}
 ]
 
-const imageImportsX: ImageDataX[] = []
+const imageImports: ImageData[] = []
 
-imageImports.forEach((imageImport) => {
+initialImports.forEach((imageImport) => {
     const imageData = imageImport[0]
     const alt: string = imageImport[1]
 
     imageData.alt = alt
-    imageImportsX.push(imageData)
+    imageImports.push(imageData)
 })
 
-export default imageImportsX;`
+export default imageImports;`
 
     // Check if the index.ts file already exists
     fs.stat("index.ts", (error) => {
