@@ -1,11 +1,5 @@
 lvim.plugins = {
     -- { "echasnovski/mini.nvim", branch = "stable" },
-    {
-        "echasnovski/mini.animate",
-        config = function()
-            require("mini.animate").setup()
-        end,
-    },
     "mrjones2014/nvim-ts-rainbow",
     "jose-elias-alvarez/typescript.nvim",
     "tpope/vim-obsession",
@@ -28,6 +22,15 @@ lvim.plugins = {
     { "tzachar/cmp-tabnine", run = "./install.sh" },
 
     {
+        "echasnovski/mini.animate",
+        config = function()
+            require("mini.animate").setup {
+                scroll = { enable = false },
+            }
+        end,
+    },
+
+    {
         "windwp/nvim-ts-autotag",
         config = function()
             require("nvim-ts-autotag").setup()
@@ -43,7 +46,6 @@ lvim.plugins = {
         end,
     },
 
-    -- "folke/todo-comments.nvim",
     {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
