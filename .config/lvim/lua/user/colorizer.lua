@@ -13,7 +13,7 @@ require("colorizer").setup({
         hsl_fn = true, -- CSS hsl() and hsla() functions
         mode = "virtualtext", -- foreground, background,  virtualtext.
         virtualtext = " The quick brown fox", --   / 
-        tailwind = "normal", -- "normal" / "lsp" / "both"
+        tailwind = "both", -- "normal" / "lsp" / "both"
         -- parsers can contain values used in |user_default_options|
         sass = { enable = true, parsers = { css } }, -- Enable sass colors
     },

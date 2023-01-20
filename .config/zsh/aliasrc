@@ -75,11 +75,14 @@ alias free='free -mt'
 
 if [ -x "$(command -v lvim)" ]; then
     alias lv='lvim'
+    alias lvims='lvim -S'
     alias vi="nvim"
     alias nv='lvim'
+    alias nvims="nvim -S"
 elif [ -x "$(command -v nvim)" ]; then
     alias vi="nvim"
     alias nv='nvim'
+    alias nvims="nvim -S"
 fi
 
 alias top='btop'
