@@ -39,12 +39,18 @@ super shift + d
 super control + d
     killall Discord
 
-# management {{{
+# window management {{{
 super + F1
     ~/.screenlayout/1screens.sh && ~/.fehbg
 
 super + F2
     ~/.screenlayout/2screens.sh && ~/.fehbg
+
+super + F3
+    ~/.screenlayout/3screens.sh && ~/.fehbg
+
+super + shift + F3
+    xrandr -d :0 --output DP-1 --auto && ~/.screenlayout/3screens.sh && ~/.fehbg
 
 super + shift + grave
     ~/.screenlayout/hires.sh && ~/.fehbg
@@ -54,7 +60,7 @@ super + grave
 
 super + shift + Escape
     xkill
-# management }}}
+# window management }}}
 
 super + shift + Return
     thunar
