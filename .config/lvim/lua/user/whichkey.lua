@@ -167,23 +167,25 @@ local m_opts = {
 }
 
 local m_mappings = {
-    m = {
+    g = {
         '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
         "Harpoon UI",
     },
-    -- m = {
-    --     "<cmd>lua require('telescope').extensions.harpoon.marks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Harpoon'})<cr>",
-    --     "Harpoon"
-    -- },
+    m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
+
     n = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
     p = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Harpoon Prev" },
-    a = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
-    f = { '<cmd>lua require("harpoon.ui").nav_file(1)<cr>', "Go To 1" },
-    t = { '<cmd>lua require("harpoon.ui").nav_file(2)<cr>', "Go To 2" },
-    r = { '<cmd>lua require("harpoon.ui").nav_file(3)<cr>', "Go To 3" },
-    e = { '<cmd>lua require("harpoon.ui").nav_file(4)<cr>', "Go To 4" },
 
-    s = { "<cmd>Telescope harpoon marks<cr>", "Search Files" },
+    ["/"] = { "<cmd>Telescope harpoon marks<cr>", "Search Files" },
+
+    a = { '<cmd>lua require("harpoon.ui").nav_file(1)<cr>', "Go To 1" },
+    s = { '<cmd>lua require("harpoon.ui").nav_file(2)<cr>', "Go To 2" },
+    d = { '<cmd>lua require("harpoon.ui").nav_file(3)<cr>', "Go To 3" },
+    f = { '<cmd>lua require("harpoon.ui").nav_file(4)<cr>', "Go To 4" },
+    q = { '<cmd>lua require("harpoon.ui").nav_file(1)<cr>', "Go To 5" },
+    w = { '<cmd>lua require("harpoon.ui").nav_file(2)<cr>', "Go To 6" },
+    e = { '<cmd>lua require("harpoon.ui").nav_file(3)<cr>', "Go To 7" },
+    r = { '<cmd>lua require("harpoon.ui").nav_file(4)<cr>', "Go To 8" },
 
     -- l = { "<cmd>lua require('user.bfs').open()<cr>", "Buffers" },
     -- a = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" },

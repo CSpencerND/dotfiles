@@ -33,7 +33,9 @@ alias live="live-server ."
 alias se="sudoedit"
 
 ### Colorize commands
-alias ls='ls --color=auto'
+command -v colorls > /dev/null && alias ls='colorls --sd --gs' && \
+	alias tree='colorls --tree'
+alias ls='ls -F --color=auto'
 alias grep='grep -i --color=auto'
 alias fgrep='grep -F --color=auto'
 alias egrep='grep -E --color=auto'
@@ -46,11 +48,8 @@ alias ip='ip --color=auto'
 alias ll='ls -lAG'
 alias la='ls -A'
 
-# alias l='ls -F'
 command -v lsd > /dev/null && alias ls='lsd --group-dirs first' && \
 	alias tree='lsd --tree'
-command -v colorls > /dev/null && alias ls='colorls --sd --gs' && \
-	alias tree='colorls --tree'
 
 ## CAT & LESS
 command -v bat > /dev/null && \

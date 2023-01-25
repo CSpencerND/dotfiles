@@ -40,7 +40,7 @@ static const unsigned int systrayspacing = 4;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 
 /* Indicators: see patch/bar_indicators.h for options */
-static int tagindicatortype              = INDICATOR_BOTTOM_BAR_SLIM;
+static int tagindicatortype              = INDICATOR_TOP_LEFT_LARGER_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
 
@@ -155,7 +155,8 @@ static Sp scratchpads[] = {
 static const char *tags[] = { "1", "2", "3", "4", "5" };
 
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { "1", "2", "3", "4", "5" },
+	// [DEFAULT_TAGS]        = { "", "", "", "", "" },
+	[DEFAULT_TAGS]        = { "", "", "", "", "" },
 	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>" },
 };
