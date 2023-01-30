@@ -9,6 +9,7 @@ formatters.setup {
             "javascriptreact",
             "typescriptreact",
             "toml",
+            "graphql"
         },
     },
 }
