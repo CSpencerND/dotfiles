@@ -5,6 +5,8 @@ require "user.lsp.languages.js-ts"
 require "user.lsp.languages.sh"
 require "user.lsp.languages.rust"
 
+require("lspconfig").graphql.setup {}
+
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
     { command = "stylua", filetypes = { "lua" } },
