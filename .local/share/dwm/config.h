@@ -331,8 +331,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_period,          tagmon,         {.i = +1 } },
 	{ MODKEY|ControlMask,   XK_comma,           shiftmon,       {.i = -1 } },
 	{ MODKEY|ControlMask,   XK_period,          shiftmon,       {.i = +1 } },
-	{ MODKEY|Mod1Mask,      XK_comma,           tagswapmon,     {.i = +1 } },
-	{ MODKEY|Mod1Mask,      XK_period,          tagswapmon,     {.i = -1 } },
+	{ MODKEY|Mod1Mask,      XK_comma,           tagswapmon,     {.i = -1 } },
+	{ MODKEY|Mod1Mask,      XK_period,          tagswapmon,     {.i = +1 } },
 	{ MODKEY,               XK_b,               togglebar,      {0} },
 
 	// layout
