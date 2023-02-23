@@ -65,7 +65,7 @@ vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
 vim.api.nvim_set_keymap(
     "n",
-    "<m-P>",
+    "<c-m>",
     "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
     -- "<cmd>lua require('telescope').extensions.harpoon.marks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Harpoon'})<cr>",
     opts

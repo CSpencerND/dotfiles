@@ -11,6 +11,7 @@ mappings.L = nil
 mappings.s = nil
 mappings.w = nil
 mappings[";"] = nil
+mappings["gs"] = nil
 
 -- mappings["b"] = {
 --     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{initial_mode='normal'})<cr>",
@@ -139,11 +140,11 @@ mappings["o"] = {
     name = "Options",
     c = { "<cmd>lua lvim.builtin.cmp.active = false<cr>", "Completion off" },
     C = { "<cmd>lua lvim.builtin.cmp.active = true<cr>", "Completion on" },
-    -- w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
-    -- r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
-    -- l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
-    -- s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
-    -- t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
+    w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
+    r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
+    l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
+    s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
+    t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
 }
 
 mappings["n"] = {
@@ -201,4 +202,20 @@ local m_mappings = {
     -- x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
 }
 
+local g_opts = {
+    mode = "n", -- NORMAL mode
+    prefix = "g",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+}
+
+local g_mappings = {
+    j = {"<cmd>TSJJoin<cr>", "join array"},
+    k = {"<cmd>TSJSplit<cr>", "split array"},
+    m = {"<cmd>TSJToggle<cr>", "toggle array"},
+}
+
 which_key.register(m_mappings, m_opts)
+which_key.register(g_mappings, g_opts)

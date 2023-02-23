@@ -21,7 +21,15 @@ lvim.plugins = {
     "renerocksai/calendar-vim",
 
     { "tzachar/cmp-tabnine", run = "./install.sh" },
-
+    {
+        "Wansmer/treesj",
+        requires = { "nvim-treesitter" },
+        config = function()
+            require("treesj").setup({
+                use_default_keymaps = false
+            })
+        end,
+    },
     {
         "echasnovski/mini.animate",
         config = function()
