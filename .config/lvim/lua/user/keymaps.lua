@@ -27,7 +27,12 @@ keymap("n", "g*", "g*zz", opts)
 keymap("n", "g#", "g#zz", opts)
 
 keymap("n", "-", ":lua require'lir.float'.toggle()<cr>", opts)
-keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
+keymap(
+    "n",
+    "gx",
+    [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]],
+    opts
+)
 keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
 
 -- Visual --
@@ -63,20 +68,21 @@ end
 
 vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
-vim.api.nvim_set_keymap(
+keymap(
     "n",
-    "<c-m>",
+    "<c-;>",
     "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
-    -- "<cmd>lua require('telescope').extensions.harpoon.marks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Harpoon'})<cr>",
     opts
 )
-vim.api.nvim_set_keymap(
-    "n",
-    "<m-p>",
-    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>"
-    ,
-    opts
-)
+
+-- keymap(
+--     "n",
+--     "<c-;>",
+--     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
+--     opts
+-- )
+
+keymap("n", "<s-c-;>", ":Telescope find_files<cr>", opts)
 
 vim.cmd [[
   function! QuickFixToggle()
@@ -102,6 +108,11 @@ M.show_documentation = function()
         vim.lsp.buf.hover()
     end
 end
-vim.api.nvim_set_keymap("n", "K", ":lua require('user.keymaps').show_documentation()<CR>", opts)
+vim.api.nvim_set_keymap(
+    "n",
+    "K",
+    ":lua require('user.keymaps').show_documentation()<CR>",
+    opts
+)
 
 return M
