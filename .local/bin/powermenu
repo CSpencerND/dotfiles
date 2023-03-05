@@ -24,7 +24,7 @@ reboot=''
 logout=''
 lock=''
 # hibernate=''
-# suspend=''
+suspend=''
 yes='﫠'
 no=''
 
@@ -56,7 +56,7 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$lock\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
 	# echo -e "$lock\n$suspend\n$logout\n$hibernate\n$reboot\n$shutdown" | rofi_cmd
 }
 
@@ -70,8 +70,8 @@ run_cmd() {
 			systemctl reboot
 		# elif [[ $1 == '--hibernate' ]]; then
 		# 	systemctl hibernate
-		# elif [[ $1 == '--suspend' ]]; then
-		# 	systemctl suspend
+		elif [[ $1 == '--suspend' ]]; then
+			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
 			pkill -u $USER
 		fi
@@ -98,7 +98,8 @@ $logout)
 	#   $hibernate)
 	# run_cmd --hibernate
 	#       ;;
-	#   $suspend)
-	# run_cmd --suspend
+$suspend)
+	run_cmd --suspend
 	#       ;;
+	;;
 esac
