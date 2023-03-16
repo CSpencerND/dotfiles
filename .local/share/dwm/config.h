@@ -216,6 +216,8 @@ static const Rule rules[] = {
 	RULE(.class = "Gimp",                                  .isfloating = 1)
 	RULE(.class = "polychromatic-controller",              .isfloating = 1)
 	RULE(.class = "Inkscape",                              .isfloating = 1)
+	RULE(.class = "zoom",                                  .isfloating = 1)
+	RULE(.class = "Devtools",                              .isfloating = 1)
 
         // scratchpads
 	RULE(.class = "basic",   .tags = SPTAG(0),             .isfloating = 1)

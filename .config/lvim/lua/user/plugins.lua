@@ -1,5 +1,27 @@
 lvim.plugins = {
     -- { "echasnovski/mini.nvim", branch = "stable" },
+    {
+        "zbirenbaum/copilot.lua",
+        config = function()
+            vim.defer_fn(function()
+                require("copilot").setup {
+                    plugin_manager_path = os.getenv "LUNARVIM_RUNTIME_DIR"
+                        .. "/site/pack/packer",
+                }
+            end, 100)
+        end,
+    },
+    {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+        config = function()
+            require("copilot_cmp").setup {
+                formatters = {
+                    insert_text = require("copilot_cmp.format").remove_existing,
+                },
+            }
+        end,
+    },
     "jparise/vim-graphql",
     "mrjones2014/nvim-ts-rainbow",
     "jose-elias-alvarez/typescript.nvim",
@@ -20,14 +42,14 @@ lvim.plugins = {
     "renerocksai/telekasten.nvim",
     "renerocksai/calendar-vim",
 
-    { "tzachar/cmp-tabnine", run = "./install.sh" },
+    -- { "tzachar/cmp-tabnine", run = "./install.sh" },
     {
         "Wansmer/treesj",
         requires = { "nvim-treesitter" },
         config = function()
-            require("treesj").setup({
-                use_default_keymaps = false
-            })
+            require("treesj").setup {
+                use_default_keymaps = false,
+            }
         end,
     },
     {

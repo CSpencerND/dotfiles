@@ -9,9 +9,18 @@ formatters.setup {
             "javascriptreact",
             "typescriptreact",
             "toml",
-            "graphql"
+            "graphql",
         },
     },
+    -- {
+    --     command = "dprint",
+    --     filetypes = {
+    --         "javascript",
+    --         "typescript",
+    --         "javascriptreact",
+    --         "typescriptreact",
+    --     },
+    -- },
 }
 
 vim.list_extend(
@@ -27,7 +36,8 @@ require("typescript").setup {
     go_to_source_definition = {
         fallback = true, -- fall back to standard LSP definition on failure
     },
-    server = { -- pass options to lspconfig's setup method
+    server = {
+        -- pass options to lspconfig's setup method
         on_attach = require("lvim.lsp").common_on_attach,
         on_init = require("lvim.lsp").common_on_init,
         capabilities = capabilities,
