@@ -1,0 +1,13 @@
+ 
+{
+    "name": "My Style Sheet",
+    "content_scripts": [
+        {
+          "matches": ["*://*/*"],
+          "css": ["Custom.css"]
+        }
+    ],
+    "version": "1.0.0",
+    "description": "User StyleSheet",
+    "manifest_version": 3
+}
