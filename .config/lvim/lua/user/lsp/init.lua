@@ -5,7 +5,9 @@ require "user.lsp.languages.js-ts"
 require "user.lsp.languages.sh"
 require "user.lsp.languages.rust"
 
-require("lspconfig").graphql.setup {}
+require("lspconfig").graphql.setup {
+    filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript", "javascript" },
+}
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
