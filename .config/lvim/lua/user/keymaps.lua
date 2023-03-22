@@ -75,13 +75,6 @@ keymap(
     opts
 )
 
--- keymap(
---     "n",
---     "<c-;>",
---     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
---     opts
--- )
-
 keymap("n", "<s-c-;>", ":Telescope find_files<cr>", opts)
 
 vim.cmd [[

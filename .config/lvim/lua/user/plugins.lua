@@ -1,5 +1,65 @@
 lvim.plugins = {
-    -- { "echasnovski/mini.nvim", branch = "stable" },
+    {
+        "folke/trouble.nvim",
+        cmd = "TroubleToggle",
+    },
+    {
+        "rmagatti/goto-preview",
+        config = function()
+            require("goto-preview").setup {
+                width = 120,              -- Width of the floating window
+                height = 25,              -- Height of the floating window
+                default_mappings = false, -- Bind default mappings
+                debug = false,            -- Print debug information
+                opacity = nil,            -- 0-100 opacity level of the floating window where 100 is fully transparent.
+                post_open_hook = nil,     -- A function taking two arguments, a buffer and a window to be ran as a hook.
+                -- You can use "default_mappings = true" setup option
+                -- Or explicitly set keybindings
+                vim.cmd "nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+                vim.cmd "nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+                vim.cmd "nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>",
+            }
+        end,
+    },
+    {
+        "sindrets/diffview.nvim",
+        event = "BufRead",
+    },
+    {
+        "andymass/vim-matchup",
+        event = "CursorMoved",
+        config = function()
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end,
+    },
+    {
+        "echasnovski/mini.map",
+        branch = "stable",
+        config = function()
+            require("mini.map").setup()
+            local map = require "mini.map"
+            map.setup {
+                integrations = {
+                    map.gen_integration.builtin_search(),
+                    map.gen_integration.diagnostic {
+                        error = "DiagnosticFloatingError",
+                        warn = "DiagnosticFloatingWarn",
+                        info = "DiagnosticFloatingInfo",
+                        hint = "DiagnosticFloatingHint",
+                    },
+                },
+                symbols = {
+                    encode = map.gen_encode_symbols.dot "4x2",
+                },
+                window = {
+                    side = "right",
+                    width = 20, -- set to 1 for a pure scrollbar :)
+                    winblend = 15,
+                    show_integration_count = false,
+                },
+            }
+        end,
+    },
     {
         "zbirenbaum/copilot.lua",
         config = function()
@@ -34,15 +94,10 @@ lvim.plugins = {
     "opalmay/vim-smoothie",
     "filipdutescu/renamer.nvim",
     "windwp/nvim-spectre",
-    "petertriho/nvim-scrollbar",
     "lvimuser/lsp-inlayhints.nvim",
     "tversteeg/registers.nvim",
     "folke/zen-mode.nvim",
 
-    "renerocksai/telekasten.nvim",
-    "renerocksai/calendar-vim",
-
-    -- { "tzachar/cmp-tabnine", run = "./install.sh" },
     {
         "Wansmer/treesj",
         requires = { "nvim-treesitter" },

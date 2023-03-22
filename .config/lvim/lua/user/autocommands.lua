@@ -6,6 +6,28 @@
 --     ]]
 --   end,
 -- })
+vim.api.nvim_create_autocmd({ "BufEnter", "Filetype" }, {
+    desc = "Open mini.map and exclude some filetypes",
+    pattern = { "*" },
+    callback = function()
+        local exclude_ft = {
+            "qf",
+            "NvimTree",
+            "toggleterm",
+            "TelescopePrompt",
+            "alpha",
+            "netrw",
+        }
+
+        local map = require "mini.map"
+        if vim.tbl_contains(exclude_ft, vim.o.filetype) then
+            vim.b.minimap_disable = true
+            map.close()
+        elseif vim.o.buftype == "" then
+            map.open()
+        end
+    end,
+})
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = {
@@ -22,9 +44,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     },
     callback = function()
         vim.cmd [[
-      nnoremap <silent> <buffer> q :close<CR> 
-      nnoremap <silent> <buffer> <esc> :close<CR> 
-      set nobuflisted 
+      nnoremap <silent> <buffer> q :close<CR>
+      nnoremap <silent> <buffer> <esc> :close<CR>
+      set nobuflisted
     ]]
     end,
 })
@@ -34,8 +56,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     callback = function()
         vim.cmd [[
       nnoremap <silent> <buffer> <m-r> :close<CR>
-      " nnoremap <silent> <buffer> <m-r> <NOP> 
-      set nobuflisted 
+      " nnoremap <silent> <buffer> <m-r> <NOP>
+      set nobuflisted
     ]]
     end,
 })
@@ -46,10 +68,10 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
         local buf_ft = vim.bo.filetype
         if buf_ft == "" or buf_ft == nil then
             vim.cmd [[
-      nnoremap <silent> <buffer> q :close<CR> 
-      " nnoremap <silent> <buffer> <c-j> j<CR> 
-      " nnoremap <silent> <buffer> <c-k> k<CR> 
-      set nobuflisted 
+      nnoremap <silent> <buffer> q :close<CR>
+      " nnoremap <silent> <buffer> <c-j> j<CR>
+      " nnoremap <silent> <buffer> <c-k> k<CR>
+      set nobuflisted
     ]]
         end
     end,
