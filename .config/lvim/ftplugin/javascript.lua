@@ -13,7 +13,7 @@ local opts = {
 }
 
 local mappings = {
-  C = {
+  c = {
     name = "Javascript",
     i = { "<cmd>TypescriptAddMissingImports<Cr>", "AddMissingImports" },
     o = { "<cmd>TypescriptOrganizeImports<cr>", "OrganizeImports" },

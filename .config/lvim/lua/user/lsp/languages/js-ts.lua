@@ -37,8 +37,11 @@ require("typescript").setup {
         fallback = true, -- fall back to standard LSP definition on failure
     },
     server = {
-        -- pass options to lspconfig's setup method
-        on_attach = require("lvim.lsp").common_on_attach,
+        on_attach = function(client, bufnr)
+            require("lvim.lsp").common_on_attach(client, bufnr)
+            require("twoslash-queries").attach(client, bufnr)
+        end,
+
         on_init = require("lvim.lsp").common_on_init,
         capabilities = capabilities,
     },

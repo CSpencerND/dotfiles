@@ -13,7 +13,7 @@ local opts = {
 }
 
 local mappings = {
-  C = {
+  c = {
     name = "Rust",
     r = { "<cmd>RustRunnables<Cr>", "Runnables" },
     t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
