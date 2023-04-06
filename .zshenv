@@ -48,6 +48,14 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_PREFIX="$XDG_DATA_HOME"/npm
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history 
 
+# pnpm
+export PNPM_HOME="/home/cs/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 # Misc
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg #gpg --homedir "$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go

@@ -291,4 +291,4 @@ eval "$(starship init zsh)"
 # fnm
 eval "$(fnm env)"
 
-export PYTHONSTARTUP=~/.config/pyrc
+# export PYTHONSTARTUP=~/.config/pyrc
