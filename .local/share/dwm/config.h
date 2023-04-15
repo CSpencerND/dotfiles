@@ -219,6 +219,7 @@ static const Rule rules[] = {
 	RULE(.class = "zoom",                                  .isfloating = 1)
 	RULE(.class = "Devtools",                              .isfloating = 1)
 	RULE(.class = "Slack",                                 .isfloating = 1)
+	RULE(.class = "Arandr",                                .isfloating = 1)
 
         // scratchpads
 	RULE(.class = "basic",   .tags = SPTAG(0),             .isfloating = 1)
