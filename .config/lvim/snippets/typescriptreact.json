@@ -1,0 +1,26 @@
+{
+    "wgsp": {
+        "prefix": "wgsp",
+        "body": [
+            "export async function generateStaticParams(){",
+            "    const posts = await fetch('https://.../posts').then((res) => res.json())",
+            "",
+            "    return posts.map((post) => ({",
+            "        slug: post.slug,",
+            "    }))",
+            "}"
+        ],
+        "description": "Typescript: Next.js generate static params"
+    },
+    "wrfc": {
+        "prefix": "wrfc",
+        "body": [
+            "export function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(){",
+            "    return (",
+            "        <div>${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}</div>",
+            "    )",
+            "}"
+        ],
+        "description": "Typescript: Next.js react functional component"
+    }
+}

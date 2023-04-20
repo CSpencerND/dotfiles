@@ -1,4 +1,5 @@
 lvim.plugins = {
+    "avneesh0612/react-nextjs-snippets",
     "marilari88/twoslash-queries.nvim",
     {
         "folke/trouble.nvim",

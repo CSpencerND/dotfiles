@@ -15,7 +15,7 @@ reload "user.whichkey"
 reload "user.telescope"
 reload "user.scrollbar"
 
-lvim.colorscheme = "tokyonight-night"
+lvim.colorscheme = "kanagawa"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.diagnostics.float.focusable = true
@@ -31,3 +31,5 @@ lvim.builtin.indentlines.options = {
     space_char_blankline = " ",
     show_current_context_start = true,
 }
+
+require("luasnip.loaders.from_vscode").lazy_load()
