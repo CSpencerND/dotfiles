@@ -40,7 +40,7 @@ run "slstatus"
 # screens_count=$(xrandr -q | grep " connected" | wc -l)
 #
 # if [[ $screens_count == 1 ]]; then
-#     slstatus-sm &   
+#     slstatus-sm &
 # else
 #     slstatus &
 # fi
@@ -54,3 +54,5 @@ picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 # /home/"$USER"/.local/bin/s76-power-default || notify-send "Power Profile" "Failure" &
 # /home/"$USER"/.local/statusbar/openweather &
 # /home/"$USER"/.local/statusbar/openweather-emoji &
+
+command -v nordvpn && nordvpn c
