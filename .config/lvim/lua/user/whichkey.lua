@@ -18,6 +18,7 @@ mappings["gs"] = nil
 --     "Buffers",
 -- }
 -- mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" }
+mappings["m"] = { "<cmd>:lua MiniMap.toggle()<CR>", "MiniMap Toggle" }
 mappings["k"] = { "<cmd>InspectTwoslashQueries<CR>", "Twoslash Query" }
 mappings["z"] = { "<cmd>:ZenMode<cr>", "Zen Mode" }
 mappings["v"] = { "<cmd>vsplit<cr>", "vsplit" }
