@@ -1,4 +1,6 @@
 # 𝄆 𝄢 𝄋 𝄞 ❯ ➜ ─ #box drawing line
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # Use custom format
 format = '''
 [╭\[](blue)$username(yellow)[@](blue)$hostname[\]](blue) [➜](blue) $directory [➜](blue) $nodejs$python$c$lua$rust [\(](blue)$git_branch $git_state$git_status$git_commit[\)](blue)

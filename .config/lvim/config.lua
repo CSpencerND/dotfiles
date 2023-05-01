@@ -15,7 +15,7 @@ reload "user.whichkey"
 reload "user.telescope"
 reload "user.scrollbar"
 
-lvim.colorscheme = "kanagawa"
+lvim.colorscheme = "tokyonight-night"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.diagnostics.float.focusable = true
