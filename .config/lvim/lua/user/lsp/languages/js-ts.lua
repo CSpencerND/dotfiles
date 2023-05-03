@@ -1,28 +1,3 @@
--- Setup lsp.
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-    {
-        command = "prettier",
-        filetypes = {
-            "javascript",
-            "typescript",
-            "javascriptreact",
-            "typescriptreact",
-            "toml",
-            "graphql",
-        },
-    },
-    -- {
-    --     command = "dprint",
-    --     filetypes = {
-    --         "javascript",
-    --         "typescript",
-    --         "javascriptreact",
-    --         "typescriptreact",
-    --     },
-    -- },
-}
-
 vim.list_extend(
     lvim.lsp.automatic_configuration.skipped_servers,
     { "tsserver" }

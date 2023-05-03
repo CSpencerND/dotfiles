@@ -6,15 +6,42 @@ require "user.lsp.languages.sh"
 require "user.lsp.languages.rust"
 
 require("lspconfig").graphql.setup {
-    filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript", "javascript" },
+    filetypes = {
+        "graphql",
+        "typescriptreact",
+        "javascriptreact",
+        "typescript",
+        "javascript",
+    },
 }
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-    { command = "stylua", filetypes = { "lua" } },
+    {
+        command = "stylua",
+        filetypes = { "lua" },
+    },
+    {
+        command = "prettier",
+        filetypes = {
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+
+            "html",
+            "markdown",
+            "css",
+            "scss",
+
+            "json",
+            "yaml",
+            "toml",
+            "graphql",
+        },
+    },
 }
 
--- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
     "bash",
     "c",
