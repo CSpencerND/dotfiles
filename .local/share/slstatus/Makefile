@@ -11,6 +11,7 @@ COM =\
 	components/seperator\
 	components/temperature\
 	components/battery_icon\
+	components/load_avg\
 	# components/battery\
 	# components/cpu\
 	# components/disk\
@@ -20,7 +21,6 @@ COM =\
 	# components/kernel_release\
 	# components/keyboard_indicators\
 	# components/keymap\
-	# components/load_avg\
 	# components/netspeeds\
 	# components/num_files\
 	# components/ram\

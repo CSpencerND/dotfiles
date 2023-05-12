@@ -58,7 +58,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -s '^o' 'ranger^M'
 bindkey -s '^l' 'clear^M'
-bindkey -s '^b' 'tmux^M'
+bindkey -s '^[t' 'tmux^M'
 
 # enable terminal linewrap
 setterm -linewrap on 2> /dev/null

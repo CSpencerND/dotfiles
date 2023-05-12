@@ -29,7 +29,7 @@ static const struct arg args[] = {
         SEP,
         {   // calendar
             datetime,
-            "^c"BG"^^b"CAL"^  ^c"CAL"^^b"BG"^ %s ",
+            "^c"BG"^^b"CAL"^  ^c"CAL"^^b"BG"^ %s ",
             "%a, %b %d"
         },
         SEP,
@@ -47,16 +47,22 @@ static const struct arg args[] = {
             "cat /home/cs/.cache/dnf-updates-count"
         },
         SEP,
+        {   // headset
+            run_command,
+            "^c"BG"^^b"HS"^ 󰋎 ^c"HS"^^b"BG"^ %s ",
+            "cat /home/cs/.cache/headset_percent"
+        },
+        SEP,
         {   // thermals
             temp,
-            "^c"BG"^^b"THRML"^ 﨏 ^c"THRML"^^b"BG"^ %s° ",
+            "^c"BG"^^b"THRML"^  ^c"THRML"^^b"BG"^ %s° ",
             NULL
         },
         SEP,
-        {   // headset
-            run_command,
-            "^c"BG"^^b"HS"^  ^c"HS"^^b"BG"^ %s ",
-            "cat /home/cs/.cache/headset_percent"
+        {   // load avg
+            load_avg, 
+            "^c"BG"^^b"LOAD"^ 󱇯 ^c"LOAD"^^b"BG"^ %s° ",
+            NULL
         },
         SEP,
         {   // battery

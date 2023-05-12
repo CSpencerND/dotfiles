@@ -49,9 +49,9 @@ static const char buttonbar[]            = " ";
 
 static const char *fonts[] = {
 	// "Hack Nerd Font:size=10",
-	"CaskaydiaCove Nerd Font:size=10",
+	"CaskaydiaCove Nerd Font:size=12",
 	// "JoyPixels:pixelsize=10:antialias=true:autohint=true"
-	"monospace:size=10"
+	"monospace:size=12"
 };
 
 static char *colors[][ColCount] = {
@@ -156,7 +156,7 @@ static const char *tags[] = { "1", "2", "3", "4", "5" };
 
 static char *tagicons[][NUMTAGS] = {
 	// [DEFAULT_TAGS]        = { "", "", "", "", "" },
-	[DEFAULT_TAGS]        = { "", "", "", "", "" },
+	[DEFAULT_TAGS]        = { "󰎥", "󰎨", "󰎫", "󰎲", "󰎯" },
 	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>" },
 };
