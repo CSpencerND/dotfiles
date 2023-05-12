@@ -44,13 +44,13 @@ static const struct arg args[] = {
         {   // packages
             run_command,
             "^c"BG"^^b"PKGS"^  ^c"PKGS"^^b"BG"^ %s ",
-            "cat /home/cs/.cache/pac-updates-count"
+            "cat /home/cs/.cache/dnf-updates-count"
         },
         SEP,
         {   // thermals
             temp,
             "^c"BG"^^b"THRML"^ 﨏 ^c"THRML"^^b"BG"^ %s° ",
-            "/sys/class/thermal/thermal_zone1/temp"
+            NULL
         },
         SEP,
         {   // headset

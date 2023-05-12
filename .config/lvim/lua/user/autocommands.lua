@@ -6,28 +6,28 @@
 --     ]]
 --   end,
 -- })
-vim.api.nvim_create_autocmd({ "BufEnter", "Filetype" }, {
-    desc = "Open mini.map and exclude some filetypes",
-    pattern = { "*" },
-    callback = function()
-        local exclude_ft = {
-            "qf",
-            "NvimTree",
-            "toggleterm",
-            "TelescopePrompt",
-            "alpha",
-            "netrw",
-        }
+-- vim.api.nvim_create_autocmd({ "BufEnter", "Filetype" }, {
+--     desc = "Open mini.map and exclude some filetypes",
+--     pattern = { "*" },
+--     callback = function()
+--         local exclude_ft = {
+--             "qf",
+--             "NvimTree",
+--             "toggleterm",
+--             "TelescopePrompt",
+--             "alpha",
+--             "netrw",
+--         }
 
-        local map = require "mini.map"
-        if vim.tbl_contains(exclude_ft, vim.o.filetype) then
-            vim.b.minimap_disable = true
-            map.close()
-        elseif vim.o.buftype == "" then
-            map.open()
-        end
-    end,
-})
+--         local map = require "mini.map"
+--         if vim.tbl_contains(exclude_ft, vim.o.filetype) then
+--             vim.b.minimap_disable = true
+--             map.close()
+--         elseif vim.o.buftype == "" then
+--             map.open()
+--         end
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = {
