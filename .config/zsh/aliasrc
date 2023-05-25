@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 ### Fix obvious typos
 alias cd..="cd .."
@@ -25,15 +25,16 @@ alias bkp="backup push"
 alias cddwm="cd ~/.local/share/dwm"
 alias cdsl="cd ~/.local/share/slstatus"
 alias cdsb="cd ~/.local/statusbar"
-alias nvz="$EDITOR ~/.config/zsh/.zshrc"
-alias qtc="$EDITOR ~/.config/qtile/config.py"
+alias nvz="\$EDITOR ~/.config/zsh/.zshrc"
+alias lvz="\$EDITOR ~/.config/zsh/.zshrc"
+alias qtc="\$EDITOR ~/.config/qtile/config.py"
 
 ### Programming Shortcuts
 alias live="live-server ."
 alias se="sudoedit"
 
 ### Colorize commands
-command -v colorls > /dev/null && alias ls='colorls --sd --gs' && \
+command -v colorls >/dev/null && alias ls='colorls --sd --gs' &&
 	alias tree='colorls --tree'
 alias ls='ls -F --color=auto'
 alias grep='grep -i --color=auto'
@@ -48,13 +49,13 @@ alias ip='ip --color=auto'
 alias ll='ls -lAG'
 alias la='ls -A'
 
-command -v lsd > /dev/null && alias ls='lsd --group-dirs first' && \
+command -v lsd >/dev/null && alias ls='lsd --group-dirs first' &&
 	alias tree='lsd --tree'
 
 ## CAT & LESS
-command -v bat > /dev/null && \
-	alias bat='bat --theme=ansi' && \
-	alias cat='bat --pager=never' && \
+command -v bat >/dev/null &&
+	alias bat='bat --theme=ansi' &&
+	alias cat='bat --pager=never' &&
 	alias less='bat'
 # # in debian the command is batcat
 # command -v batcat > /dev/null && \
@@ -70,18 +71,18 @@ alias mv='mv -iv'
 alias mkdir='mkdir -pv'
 alias du='du -sh'
 alias df='df -Th'
-alias free='free -mt' 
+alias free='free -mt'
 
 if [ -x "$(command -v lvim)" ]; then
-    alias lv='lvim'
-    alias lvims='lvim -S'
-    alias vi="nvim"
-    alias nv='lvim'
-    alias nvims="nvim -S"
+	alias lv='lvim'
+	alias lvims='lvim -S'
+	alias vi="nvim"
+	alias nv='lvim'
+	alias nvims="nvim -S"
 elif [ -x "$(command -v nvim)" ]; then
-    alias vi="nvim"
-    alias nv='nvim'
-    alias nvims="nvim -S"
+	alias vi="nvim"
+	alias nv='nvim'
+	alias nvims="nvim -S"
 fi
 
 alias top='btop'
@@ -123,10 +124,12 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
 
 #iso and version used to install ArcoLinux
-alias iso="cat /etc/dev-rel | awk -F '=' '/ISO/ {print $2}'"
+iso() {
+	awk -F '=' '/ISO/ {print $2}' /etc/dev-rel
+}
 
 #clear
-alias clean="clear; seq 1 $(tput cols) | sort -R | sparklines | lolcat"
+# alias clean="clear; seq 1 $(tput cols) | sort -R | sparklines | lolcat"
 
 #search content with ripgrep
 alias rg="rg --sort path"
@@ -136,23 +139,23 @@ alias jctl="journalctl -p 3 -xb"
 
 #nano for important configuration files
 #know what you do in these files
-alias nlxdm="sudo $EDITOR /etc/lxdm/lxdm.conf"
-alias nlightdm="sudo $EDITOR /etc/lightdm/lightdm.conf"
-alias npacman="sudo $EDITOR /etc/pacman.conf"
-alias ngrub="sudo $EDITOR /etc/default/grub"
-alias nconfgrub="sudo $EDITOR /boot/grub/grub.cfg"
-alias nmkinitcpio="sudo $EDITOR /etc/mkinitcpio.conf"
-alias nmirrorlist="sudo $EDITOR /etc/pacman.d/mirrorlist"
+alias nlxdm="sudo \$EDITOR /etc/lxdm/lxdm.conf"
+alias nlightdm="sudo \$EDITOR /etc/lightdm/lightdm.conf"
+alias npacman="sudo \$EDITOR /etc/pacman.conf"
+alias ngrub="sudo \$EDITOR /etc/default/grub"
+alias nconfgrub="sudo \$EDITOR /boot/grub/grub.cfg"
+alias nmkinitcpio="sudo \$EDITOR /etc/mkinitcpio.conf"
+alias nmirrorlist="sudo \$EDITOR /etc/pacman.d/mirrorlist"
 alias narcomirrorlist='sudo nano /etc/pacman.d/arcolinux-mirrorlist'
-alias nsddm="sudo $EDITOR /etc/sddm.conf"
-alias nsddmk="sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf"
-alias nfstab="sudo $EDITOR /etc/fstab"
-alias nnsswitch="sudo $EDITOR /etc/nsswitch.conf"
-alias nsamba="sudo $EDITOR /etc/samba/smb.conf"
+alias nsddm="sudo \$EDITOR /etc/sddm.conf"
+alias nsddmk="sudo \$EDITOR /etc/sddm.conf.d/kde_settings.conf"
+alias nfstab="sudo \$EDITOR /etc/fstab"
+alias nnsswitch="sudo \$EDITOR /etc/nsswitch.conf"
+alias nsamba="sudo \$EDITOR /etc/samba/smb.conf"
 alias ngnupgconf="sudo nano /etc/pacman.d/gnupg/gpg.conf"
-alias nhosts="sudo $EDITOR /etc/hosts"
-alias nb="$EDITOR ~/.bashrc"
-alias nz="$EDITOR ~/.zshrc"
+alias nhosts="sudo \$EDITOR /etc/hosts"
+alias nb="\$EDITOR ~/.bashrc"
+alias nz="\$EDITOR ~/.zshrc"
 alias nf="EDITOR ~/.config/fish/config.fish"
 
 #gpg
@@ -165,7 +168,7 @@ alias fix-gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-key
 alias fix-keyserver="[ -d ~/.gnupg ] || mkdir ~/.gnupg ; cp /etc/pacman.d/gnupg/gpg.conf ~/.gnupg/ ; echo 'done'"
 
 #fixes
-alias fix-permissions="sudo chown -R $USER:$USER ~/.config ~/.local"
+alias fix-permissions="sudo chown -R \$USER:\$USER ~/.config ~/.local"
 alias keyfix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
 alias key-fix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
 alias keys-fix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
@@ -199,14 +202,9 @@ alias sr="sudo reboot"
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
 
-
-
-
-
-
 ### Misc
 alias luamake=/home/cspencer/Installed/lua-language-server/3rd/luamake/luamake
-alias wget="wget -c --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias wget="wget -c --hsts-file=\$XDG_CACHE_HOME/wget-hsts"
 alias gedit="devour gedit"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias update-grub="grub-mkconfig -o /boot/grub/grub.cfg"
@@ -227,9 +225,8 @@ alias set_thold="system76-power charge-thresholds --profile"
 alias ethernet_off="sudo ifconfig enp35s0 down"
 alias ethernet_on="sudo ifconfig enp35s0 up"
 
-alias polyconfig="vi $XDG_CONFIG_HOME/polybar/config"
+alias polyconfig="vi \$XDG_CONFIG_HOME/polybar/config"
 
 alias backup='/usr/bin/git --git-dir=$HOME/.backup/ --work-tree=$HOME'
 
 alias notify-send="sudo -u cs DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send"
-
