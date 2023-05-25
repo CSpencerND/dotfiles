@@ -1,10 +1,8 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-set "HomeDir=%~dp0"
-set "PathSave=%PATH%"
 set "LuaExe=lua"
-set "LuaScript=%HomeDir%z.lua"
+set "LuaScript=%~dp0z.lua"
 set "MatchType=-n"
 set "StrictSub=-n"
 set "RunMode=-n"
@@ -120,8 +118,12 @@ rem -- Exploits variable expansion and the pushd stack to set the current
 rem -- directory without leaking a pushd.
 popd
 setlocal
-set NewPath=%CD%
-endlocal & popd & cd /d "%NewPath%"
+set "NewPath=%CD%"
+set "CDCmd=cd /d"
+if /i not "%_ZL_CD%"=="" (
+	set "CDCmd=%_ZL_CD%"
+)
+endlocal & popd & %CDCmd% "%NewPath%"
 
 :end
 echo.

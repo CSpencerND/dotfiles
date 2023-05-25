@@ -37,7 +37,7 @@ formatters.setup {
             "json",
             "yaml",
             "toml",
-            "graphql",
+            -- "graphql",
         },
     },
 }
