@@ -49,7 +49,7 @@ export NPM_CONFIG_PREFIX="$XDG_DATA_HOME"/npm
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history 
 
 # pnpm
-export PNPM_HOME="/home/cs/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -66,7 +66,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export TUXTYPE_CONF="$XDG_CONFIG_HOME/tuxtype/settings.txt"
 # export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
-export MYVIMRC=XDG_CONFIG_HOME/nvim/init.lua
+export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc 
@@ -83,4 +83,4 @@ HIST_STAMPS=mm/dd/yyyy
 HISTSIZE=10000
 SAVEHIST=10000
 
-unclutter --timeout 3 -b
+unclutter --timeout 3 -b &
