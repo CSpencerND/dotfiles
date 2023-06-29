@@ -5,9 +5,10 @@
   "name": "BackSlide",
   "original-author": "Lukas Knuth",
   "shell-version": [
-    "43"
+    "43",
+    "44"
   ],
   "url": "https://gitlab.com/p91paul/BackSlide",
   "uuid": "backslide@codeisland.org",
-  "version": 27
+  "version": 28
 }

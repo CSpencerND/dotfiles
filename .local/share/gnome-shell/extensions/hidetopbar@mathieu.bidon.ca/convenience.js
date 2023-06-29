@@ -17,6 +17,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+const Meta = imports.gi.Meta;
+
 var DEBUG = function (message) {
     // Enable for debugging purposes.
     if(false) global.log(Date().substr(16,8) + " [hidetopbar]: " + message);
@@ -65,4 +67,11 @@ var GlobalSignalsHandler = class HideTopBar_GlobalSignalsHandler {
         }
     }
 };
+
+function getMonitorManager() {
+    if (global.backend.get_monitor_manager !== undefined)
+        return global.backend.get_monitor_manager();
+    else
+        return Meta.MonitorManager.get();
+}
 
