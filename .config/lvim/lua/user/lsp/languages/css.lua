@@ -13,4 +13,6 @@ require("lspconfig").cssls.setup {
     },
 }
 
+require'lspconfig'.tailwindcss.setup{}
+
 -- require("lspconfig").cssmodules_ls.setup {}
