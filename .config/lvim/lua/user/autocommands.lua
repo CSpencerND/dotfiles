@@ -29,6 +29,15 @@
 --     end,
 -- })
 
+-- Apply the autocmd to set the filetype to "sh" for .env* files
+vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile", "BufReadPost" }, {
+    pattern = { "*.env", "*.env.local" },
+    callback = function()
+        vim.bo.filetype = "sh"
+        vim.cmd "runtime! syntax/sh.vim"
+    end,
+})
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = {
         "Jaq",
