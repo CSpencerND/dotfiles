@@ -8,10 +8,10 @@ require "user.lsp.languages.rust"
 require("lspconfig").graphql.setup {
     filetypes = {
         "graphql",
-        "typescriptreact",
-        "javascriptreact",
-        "typescript",
-        "javascript",
+        -- "typescriptreact",
+        -- "javascriptreact",
+        -- "typescript",
+        -- "javascript",
     },
 }
 
