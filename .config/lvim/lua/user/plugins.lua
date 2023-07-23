@@ -1,4 +1,5 @@
 lvim.plugins = {
+    "prisma/vim-prisma",
     "fladson/vim-kitty",
     "avneesh0612/react-nextjs-snippets",
     "marilari88/twoslash-queries.nvim",

@@ -15,6 +15,8 @@ require("lspconfig").graphql.setup {
     },
 }
 
+require("lspconfig").prismals.setup {}
+
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
     {
