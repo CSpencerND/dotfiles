@@ -45,6 +45,8 @@ run "slstatus"
 #     slstatus &
 # fi
 
+[[ $(xrandr -q | grep -c " connected") -gt 1 ]]; light -S 100
+
 picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 
 /home/"$USER"/.local/statusbar/thermals.sh
@@ -55,4 +57,4 @@ picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 # /home/"$USER"/.local/statusbar/openweather &
 # /home/"$USER"/.local/statusbar/openweather-emoji &
 
-command -v nordvpn && nordvpn c
+# command -v nordvpn && nordvpn c

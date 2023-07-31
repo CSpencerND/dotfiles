@@ -135,6 +135,7 @@ polkit-gnome-0.106-0.13.20170423gita0763a2.fc38.x86_64
 polychromatic-0.8.1-1.1.noarch
 portaudio-19-40.fc38.x86_64
 portmidi-217-51.fc38.x86_64
+python2-cairo-devel-1.18.2-13.fc38.x86_64
 python3-gexiv2-0.14.1-1.fc38.noarch
 python3-pip-22.3.1-2.fc38.noarch
 python3.10-3.10.12-1.fc38.x86_64
@@ -153,6 +154,8 @@ rpmfusion-free-release-38-1.noarch
 rpmfusion-nonfree-release-38-1.noarch
 rpmlint-2.4.0-6.fc38.noarch
 ruby-3.2.2-180.fc38.x86_64
+rust-cargo-devel-0.70.1-1.fc38.noarch
+rust-cargo-util-devel-0.2.4-1.fc38.noarch
 shfmt-3.5.1-2.fc38.x86_64
 solaar-1.1.9-1.fc38.noarch
 sqlite-3.40.1-2.fc38.x86_64
