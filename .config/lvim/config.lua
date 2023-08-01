@@ -14,8 +14,9 @@ reload "user.inlay-hints"
 reload "user.whichkey"
 reload "user.telescope"
 reload "user.scrollbar"
+reload "user.kanagawa"
 
-lvim.colorscheme = "kanagawa"
+-- lvim.colorscheme = "kanagawa"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.diagnostics.float.focusable = true
