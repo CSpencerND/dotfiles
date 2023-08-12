@@ -1,4 +1,7 @@
 lvim.plugins = {
+    { "catppuccin/nvim", as = "catppuccin" },
+    { "rose-pine/neovim", as = "rose-pine" },
+    "Mofiqul/dracula.nvim",
     "prisma/vim-prisma",
     "fladson/vim-kitty",
     "avneesh0612/react-nextjs-snippets",

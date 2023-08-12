@@ -65,6 +65,10 @@ mappings["f"] = {
     name = "Find",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    p = {
+        "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+        "Colorscheme with Preview",
+    },
     f = { "<cmd>Telescope find_files<cr>", "Find files" },
     t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
     s = { "<cmd>Telescope grep_string<cr>", "Find String" },
@@ -143,10 +147,22 @@ mappings["o"] = {
     name = "Options",
     c = { "<cmd>lua lvim.builtin.cmp.active = false<cr>", "Completion off" },
     C = { "<cmd>lua lvim.builtin.cmp.active = true<cr>", "Completion on" },
-    w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
-    r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
-    l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
-    s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
+    w = {
+        '<cmd>lua require("user.functions").toggle_option("wrap")<cr>',
+        "Wrap",
+    },
+    r = {
+        '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>',
+        "Relative",
+    },
+    l = {
+        '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>',
+        "Cursorline",
+    },
+    s = {
+        '<cmd>lua require("user.functions").toggle_option("spell")<cr>',
+        "Spell",
+    },
     t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
 }
 
@@ -215,9 +231,9 @@ local g_opts = {
 }
 
 local g_mappings = {
-    j = {"<cmd>TSJJoin<cr>", "join array"},
-    k = {"<cmd>TSJSplit<cr>", "split array"},
-    m = {"<cmd>TSJToggle<cr>", "toggle array"},
+    j = { "<cmd>TSJJoin<cr>", "join array" },
+    k = { "<cmd>TSJSplit<cr>", "split array" },
+    m = { "<cmd>TSJToggle<cr>", "toggle array" },
 }
 
 which_key.register(m_mappings, m_opts)

@@ -1,16 +1,16 @@
 #!/bin/sh
 
 ### default
-xrandr -s 1920x1080
+# xrandr -s 1920x1080
 
 ### 1600x900
 # xrandr --output eDP-1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off
 
 ### 1080 proper
-# xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off
-# xrandr --newmode "1920x1080_120.00" 369.50 1920 2080 2288 2656 1080 1083 1088 1160 -hsync +vsync
-# xrandr --addmode eDP-1 1920x1080_120.00
-# xrandr --output eDP-1 --mode 1920x1080_120.00
+xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off
+xrandr --newmode "1920x1080_120.00" 369.50 1920 2080 2288 2656 1080 1083 1088 1160 -hsync +vsync
+xrandr --addmode eDP-1 1920x1080_120.00
+xrandr --output eDP-1 --mode 1920x1080_120.00
 
 ### 1080 scaled
 # xrandr --newmode "1920x1080_120.00" 369.50 1920 2080 2288 2656 1080 1083 1088 1160 -hsync +vsync && \
