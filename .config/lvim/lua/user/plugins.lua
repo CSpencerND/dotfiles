@@ -1,15 +1,14 @@
 lvim.plugins = {
-    "dyng/ctrlsf.vim",
-    { "catppuccin/nvim", as = "catppuccin" },
-    { "rose-pine/neovim", as = "rose-pine" },
-    "Mofiqul/dracula.nvim",
-    "prisma/vim-prisma",
-    "fladson/vim-kitty",
-    "avneesh0612/react-nextjs-snippets",
-    "marilari88/twoslash-queries.nvim",
     {
         "folke/trouble.nvim",
         cmd = "TroubleToggle",
+    },
+    {
+        "LukasPietzschmann/telescope-tabs",
+        requires = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            require("telescope-tabs").setup {}
+        end,
     },
     {
         "rmagatti/goto-preview",
@@ -40,56 +39,9 @@ lvim.plugins = {
             vim.g.matchup_matchparen_offscreen = { method = "popup" }
         end,
     },
-    -- {
-    --     "echasnovski/mini.map",
-    --     branch = "stable",
-    -- config = function()
-    --     require("mini.map").setup()
-    --     local map = require "mini.map"
-    --     map.setup {
-    --         integrations = {
-    --             map.gen_integration.builtin_search(),
-    --             map.gen_integration.diagnostic {
-    --                 error = "DiagnosticFloatingError",
-    --                 warn = "DiagnosticFloatingWarn",
-    --                 info = "DiagnosticFloatingInfo",
-    --                 hint = "DiagnosticFloatingHint",
-    --             },
-    --         },
-    --         symbols = {
-    --             encode = map.gen_encode_symbols.dot "4x2",
-    --         },
-    --         window = {
-    --             side = "right",
-    --             width = 20, -- set to 1 for a pure scrollbar :)
-    --             winblend = 15,
-    --             show_integration_count = false,
-    --         },
-    --     }
-    -- end,
-    -- },
-    -- {
-    --     "zbirenbaum/copilot.lua",
-    --     config = function()
-    --         vim.defer_fn(function()
-    --             require("copilot").setup {
-    --                 plugin_manager_path = os.getenv "LUNARVIM_RUNTIME_DIR"
-    --                     .. "/site/pack/packer",
-    --             }
-    --         end, 100)
-    --     end,
-    -- },
-    -- {
-    --     "zbirenbaum/copilot-cmp",
-    --     after = { "copilot.lua" },
-    --     config = function()
-    --         require("copilot_cmp").setup {
-    --             formatters = {
-    --                 insert_text = require("copilot_cmp.format").remove_existing,
-    --             },
-    --         }
-    --     end,
-    -- },
+    "prisma/vim-prisma",
+    "avneesh0612/react-nextjs-snippets",
+    "marilari88/twoslash-queries.nvim",
     "jparise/vim-graphql",
     "HiPhish/nvim-ts-rainbow2",
     "jose-elias-alvarez/typescript.nvim",
@@ -102,10 +54,11 @@ lvim.plugins = {
     "opalmay/vim-smoothie",
     "filipdutescu/renamer.nvim",
     "windwp/nvim-spectre",
+    "dyng/ctrlsf.vim",
     "lvimuser/lsp-inlayhints.nvim",
     "tversteeg/registers.nvim",
     "folke/zen-mode.nvim",
-
+    "fladson/vim-kitty",
     {
         "Wansmer/treesj",
         requires = { "nvim-treesitter" },
@@ -167,4 +120,58 @@ lvim.plugins = {
     "lunarvim/horizon.nvim",
     "lunarvim/darkplus.nvim",
     "lunarvim/templeos.nvim",
+    { "catppuccin/nvim", as = "catppuccin" },
+    { "rose-pine/neovim", as = "rose-pine" },
+    "Mofiqul/dracula.nvim",
 }
+
+-- {
+--     "echasnovski/mini.map",
+--     branch = "stable",
+-- config = function()
+--     require("mini.map").setup()
+--     local map = require "mini.map"
+--     map.setup {
+--         integrations = {
+--             map.gen_integration.builtin_search(),
+--             map.gen_integration.diagnostic {
+--                 error = "DiagnosticFloatingError",
+--                 warn = "DiagnosticFloatingWarn",
+--                 info = "DiagnosticFloatingInfo",
+--                 hint = "DiagnosticFloatingHint",
+--             },
+--         },
+--         symbols = {
+--             encode = map.gen_encode_symbols.dot "4x2",
+--         },
+--         window = {
+--             side = "right",
+--             width = 20, -- set to 1 for a pure scrollbar :)
+--             winblend = 15,
+--             show_integration_count = false,
+--         },
+--     }
+-- end,
+-- },
+-- {
+--     "zbirenbaum/copilot.lua",
+--     config = function()
+--         vim.defer_fn(function()
+--             require("copilot").setup {
+--                 plugin_manager_path = os.getenv "LUNARVIM_RUNTIME_DIR"
+--                     .. "/site/pack/packer",
+--             }
+--         end, 100)
+--     end,
+-- },
+-- {
+--     "zbirenbaum/copilot-cmp",
+--     after = { "copilot.lua" },
+--     config = function()
+--         require("copilot_cmp").setup {
+--             formatters = {
+--                 insert_text = require("copilot_cmp.format").remove_existing,
+--             },
+--         }
+--     end,
+-- },
