@@ -1,4 +1,5 @@
 lvim.plugins = {
+    "dyng/ctrlsf.vim",
     { "catppuccin/nvim", as = "catppuccin" },
     { "rose-pine/neovim", as = "rose-pine" },
     "Mofiqul/dracula.nvim",
