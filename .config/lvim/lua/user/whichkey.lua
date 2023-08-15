@@ -138,7 +138,7 @@ mappings["t"] = {
         "<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
         "Find Tab",
     },
-    t = { "<cmd>tabnew %<cr>", "New Tab" },
+    t = { "<cmd>tabnew<cr>", "New Tab" },
     c = { "<cmd>tabclose<cr>", "Close Tab" },
     o = { "<cmd>tabonly<cr>", "Only Tab" },
     n = { "<cmd>tabnext<cr>", "Only Tab" },
