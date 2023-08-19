@@ -52,6 +52,6 @@
             "",
             "export default ${1:${TM_FILENAME_BASE}}"
         ],
-        "description": "Typescript: Next.js react functional component with type and const"
+        "description": "Typescript: Next.js Page component with type and const"
     }
 }
