@@ -86,8 +86,10 @@ elif [ -x "$(command -v nvim)" ]; then
 fi
 
 if [ -x "$(command -v "$HOME"/neovim/bin/nvim)" ]; then
-    alias nvc="~/neovim/bin/nvim"
-    alias nvcs="~/neovim/bin/nvim -S"
+    alias nvd="~/neovim/bin/nvim"
+    alias nvds="~/neovim/bin/nvim -S"
+    alias nv="~/neovim/bin/nvim"
+    alias nvs="~/neovim/bin/nvim -S"
 fi
 
 alias top='btop'
