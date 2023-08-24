@@ -85,6 +85,11 @@ elif [ -x "$(command -v nvim)" ]; then
 	alias nvims="nvim -S"
 fi
 
+if [ -x "$(command -v "$HOME"/neovim/bin/nvim)" ]; then
+    alias nvc="~/neovim/bin/nvim"
+    alias nvcs="~/neovim/bin/nvim -S"
+fi
+
 alias top='btop'
 
 ### DNF
