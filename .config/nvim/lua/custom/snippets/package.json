@@ -1,0 +1,15 @@
+{
+  "name": "wagon-snippets",
+  "author": "iAmTheWagon",
+  "engines": {
+    "vscode": "^1.64.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+          "language": "typescriptreact",
+          "path": "./typescriptreact.json"
+      }
+    ]
+  }
+}

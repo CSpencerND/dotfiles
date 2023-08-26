@@ -1,0 +1,58 @@
+{
+    "wgsp": {
+        "prefix": "wgsp",
+        "body": [
+            "export async function generateStaticParams(){",
+            "    const posts = await fetch('https://.../posts').then((res) => res.json())",
+            "",
+            "    return posts.map((post) => ({",
+            "        slug: post.slug,",
+            "    }))",
+            "}"
+        ],
+        "description": "Typescript: Next.js generate static params"
+    },
+    "wrfc": {
+        "prefix": "wrfc",
+        "body": [
+            "export function ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}(){",
+            "    return (",
+            "        <div>${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}</div>",
+            "    )",
+            "}"
+        ],
+        "description": "Typescript: Next.js react functional component"
+    },
+    "wrfcc": {
+        "prefix": "wrfcc",
+        "body": [
+            "type ${1:${TM_FILENAME_BASE}}Props = {}",
+            "",
+            "export const ${1:${TM_FILENAME_BASE}}: React.FC<${1:${TM_FILENAME_BASE}}Props> = ({...props}) => {",
+            "    return (",
+            "        <div {...props}>${1:${TM_FILENAME_BASE}}</div>",
+            "    )",
+            "}",
+            ""
+        ],
+        "description": "Typescript: Next.js react functional component with type and const"
+    },
+    "wrfcp": {
+        "prefix": "wrfcp",
+        "body": [
+            "import type { NextPage } from \"next\"",
+            "",
+            "type ${1:${TM_FILENAME_BASE}}Props = {params: {}}",
+            "",
+            "const ${1:${TM_FILENAME_BASE}}: NextPage<${1:${TM_FILENAME_BASE}}Props> = ({params}) => {",
+            "    return (",
+            "        <div>${1:${TM_FILENAME_BASE}}</div>",
+            "    )",
+            "}",
+            "",
+            "export default ${1:${TM_FILENAME_BASE}}"
+        ],
+        "description": "Typescript: Next.js Page component with type and const"
+    }
+}
+
