@@ -18,13 +18,15 @@ export COLOR_SCHEME=dark # dark/light
 # -----------------------------------------------------------------------------
 
 # Default Apps
-if [[ -x /home/$USER/.local/bin/lvim ]]; then
-    export VISUAL=/home/$USER/.local/bin/lvim
-elif [[ -x /usr/local/bin/nvim ]]; then
-    export VISUAL=/usr/local/bin/nvim
-else
-    echo "Neither lvim nor nvim was found!"
-fi
+# if [[ -x /home/$USER/.local/bin/lvim ]]; then
+#     export VISUAL=/home/$USER/.local/bin/lvim
+# elif [[ -x /usr/local/bin/nvim ]]; then
+#     export VISUAL=/usr/local/bin/nvim
+# else
+#     echo "Neither lvim nor nvim was found!"
+# fi
+
+export VISUAL="nvim"
 export EDITOR=$VISUAL
 export SUDO_EDITOR=$VISUAL
 export TERMINAL="kitty"

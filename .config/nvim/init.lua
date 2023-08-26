@@ -1,56 +1,21 @@
--- Core
-require "user.plugins"
-require "user.cmp"
-require "user.lsp"
-require "user.treesitter"
-require "user.keymaps"
-require "user.whichkey"
-require "user.options"
-require "user.gitsigns"
-require "user.lualine"
-require "user.functions"
-------------------------
+require "core"
 
--- require "user.catppuccin"
--- require "user.rose-pine"
-require "user.quickscope"
-require "user.alpha"
-require "user.autocommands"
-require "user.autopairs"
-require "user.bufferline"
-require "user.colorizer"
-require "user.comment"
-require "user.dap"
-require "user.dial"
-require "user.fidget"
-require "user.git-blame"
-require "user.hop"
-require "user.illuminate"
-require "user.indentline"
-require "user.jaq"
-require "user.matchup"
-require "user.notify"
-require "user.numb"
-require "user.nvim-tree"
-require "user.project"
-require "user.registers"
-require "user.renamer"
-require "user.spectre"
-require "user.surround"
-require "user.telescope"
-require "user.todo-comments"
-require "user.toggleterm"
-require "user.zen-mode"
-require "user.winbar"
-require "user.gps"
--- require "user.inlay-hints"
+local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
--- [[ require "user.bookmark" ]]
--- require("mason").setup()
--- require "user.ts-context"
--- require "user.lsp-inlayhints"
+if custom_init_path then
+  dofile(custom_init_path)
+end
 
-vim.cmd([[hi DiagnosticError guibg=NONE]])
-vim.cmd([[hi DiagnosticInfo guibg=NONE]])
-vim.cmd([[hi DiagnosticHint guibg=NONE]])
-vim.cmd([[hi DiagnosticWarn guibg=NONE]])
+require("core.utils").load_mappings()
+
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+
+-- bootstrap lazy.nvim!
+if not vim.loop.fs_stat(lazypath) then
+  require("core.bootstrap").gen_chadrc_template()
+  require("core.bootstrap").lazy(lazypath)
+end
+
+dofile(vim.g.base46_cache .. "defaults")
+vim.opt.rtp:prepend(lazypath)
+require "plugins"

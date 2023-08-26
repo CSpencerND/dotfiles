@@ -141,8 +141,8 @@ mappings["t"] = {
     t = { "<cmd>tabnew<cr>", "New Tab" },
     c = { "<cmd>tabclose<cr>", "Close Tab" },
     o = { "<cmd>tabonly<cr>", "Only Tab" },
-    n = { "<cmd>tabnext<cr>", "Only Tab" },
-    p = { "<cmd>tabprevious<cr>", "Only Tab" },
+    n = { "<cmd>tabnext<cr>", "Next Tab" },
+    p = { "<cmd>tabprevious<cr>", "Prev Tab" },
 }
 
 mappings["o"] = {
