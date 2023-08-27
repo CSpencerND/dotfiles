@@ -5,17 +5,8 @@ local opts = { noremap = true, silent = true }
 
 M.disabled = {}
 
-M.movement = {
+M.tabufline = {
     n = {
-        ["<C-j>"] = { "<cmd> call smoothie#do('<C-d>zz') <CR>", "Half Page Down", opts = opts },
-        ["<C-k>"] = { "<cmd> call smoothie#do('<C-u>zz') <CR>", "Half Page Up", opts = opts },
-        ["<A-j>"] = { "<C-e>jzz", "One Line Down", opts = opts },
-        ["<A-k>"] = { "<C-Y>kzz", "One Line Up", opts = opts },
-        ["n"] = { "nzz", opts = opts },
-        ["N"] = { "Nzz", opts = opts },
-        ["*"] = { "*zz", opts = opts },
-        ["g*"] = { "g*zz", opts = opts },
-
         ["<C-i>"] = {
             function()
                 require("nvchad.tabufline").tabuflineNext()
@@ -30,8 +21,43 @@ M.movement = {
             "Buffer Previous",
         },
 
-        -- ["<C-I>"] = { ":tnext <CR>", "Tab Previous", opts = opts },
-        -- ["<C-U>"] = { ":tprevious <CR>", "Tab Previous", opts = opts },
+        ["<C-S-i>"] = {
+            function()
+                require("nvchad.tabufline").move_buf(1)
+            end,
+            "Move Buffer Next",
+        },
+
+        ["<C-S-u>"] = {
+            function()
+                require("nvchad.tabufline").move_buf(-1)
+            end,
+            "Move Buffer Previous",
+        },
+
+        ["<A-Tab>"] = { "<cmd> Telescope buffers <CR>", "List Buffers", opts = opts },
+
+        ["<C-S-l>"] = { ":tabnext <CR>", "Tab Next", opts = opts },
+        ["<C-S-h>"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
+
+        ["<leader>ti"] = { ":tabnext <CR>", "Tab Next", opts = opts },
+        ["<leader>tu"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
+
+        ["<leader>tn"] = { ":tabnew <CR>", "Tab New", opts = opts },
+        ["<leader>tx"] = { ":tabclose <CR>", "Tab Close", opts = opts },
+    },
+}
+
+M.movement = {
+    n = {
+        ["<C-j>"] = { "<cmd> call smoothie#do('<C-d>zz') <CR>", "Half Page Down", opts = opts },
+        ["<C-k>"] = { "<cmd> call smoothie#do('<C-u>zz') <CR>", "Half Page Up", opts = opts },
+        ["<A-j>"] = { "<C-e>jzz", "One Line Down", opts = opts },
+        ["<A-k>"] = { "<C-Y>kzz", "One Line Up", opts = opts },
+        ["n"] = { "nzz", opts = opts },
+        ["N"] = { "Nzz", opts = opts },
+        ["*"] = { "*zz", opts = opts },
+        ["g*"] = { "g*zz", opts = opts },
 
         ["<C-b>"] = { "<Home>", "Beginning of line" },
         ["<C-e>"] = { "<End>", "End of line" },
