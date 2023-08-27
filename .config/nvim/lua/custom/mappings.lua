@@ -35,10 +35,8 @@ M.tabufline = {
             "Move Buffer Previous",
         },
 
-        ["<A-Tab>"] = { "<cmd> Telescope buffers <CR>", "List Buffers", opts = opts },
-
-        ["<C-Tab>"] = { ":tabnext <CR>", "Tab Next", opts = opts },
-        ["<C-S-Tab>"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
+        ["<A-Tab>"] = { ":tabnext <CR>", "Tab Next", opts = opts },
+        ["<A-S-Tab>"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
 
         ["<C-S-l>"] = { ":tabnext <CR>", "Tab Next", opts = opts },
         ["<C-S-h>"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
@@ -138,6 +136,7 @@ M.misc = {
         ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Lazy Git" },
         ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover Info" },
         ["<C-q>"] = { ":q <CR>" },
+        ["<C-S-q>"] = { ":quitall <CR>" },
         ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Nvimtree" },
         ["<leader>ob"] = { "<cmd> Obsession <CR>", "Obsession" },
         ["<leader>tt"] = {
