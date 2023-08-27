@@ -132,6 +132,7 @@ M.options = {
 
 M.misc = {
     n = {
+        ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Lazy Git" },
         ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover Info" },
         ["<C-q>"] = { ":q <CR>" },
         ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Nvimtree" },
