@@ -37,6 +37,9 @@ M.tabufline = {
 
         ["<A-Tab>"] = { "<cmd> Telescope buffers <CR>", "List Buffers", opts = opts },
 
+        ["<C-Tab>"] = { ":tabnext <CR>", "Tab Next", opts = opts },
+        ["<C-S-Tab>"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
+
         ["<C-S-l>"] = { ":tabnext <CR>", "Tab Next", opts = opts },
         ["<C-S-h>"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
 
