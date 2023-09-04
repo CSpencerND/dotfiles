@@ -9,6 +9,17 @@ autocmd("VimResized", {
     command = "tabdo wincmd =",
 })
 
+-- local function open_nvim_tree(data)
+--     local real_file = vim.fn.filereadable(data.file) == 1
+--     local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+--
+--     if not real_file and not no_name then
+--         require("nvim-tree.api").tree.toggle { focus = true, find_file = true }
+--     end
+-- end
+
+-- autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
 local options = {
     timeoutlen = 100, -- time to wait for a mapped sequence to complete (in milliseconds)
     undofile = true, -- enable persistent undo
@@ -29,10 +40,4 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-vim.cmd [[autocmd FileType * set formatoptions-=ro]]
-
--- for i = 1, 9, 1 do
---     vim.keymap.set("n", string.format("<A-%s>", i), function()
---         vim.api.nvim_set_current_buf(vim.t.bufs[i])
---     end)
--- end
+require("custom.configs.lspsaga")

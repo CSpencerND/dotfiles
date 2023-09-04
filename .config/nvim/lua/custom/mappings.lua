@@ -41,6 +41,9 @@ M.tabufline = {
         ["<C-S-l>"] = { ":tabnext <CR>", "Tab Next", opts = opts },
         ["<C-S-h>"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
 
+        ["<C-.>"] = { ":tabnext <CR>", "Tab Next", opts = opts },
+        ["<C-,>"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
+
         ["<leader>ti"] = { ":tabnext <CR>", "Tab Next", opts = opts },
         ["<leader>tu"] = { ":tabprevious <CR>", "Tab Previous", opts = opts },
 
@@ -87,11 +90,13 @@ M.editing = {
         ["gj"] = { "<cmd>TSJJoin<cr>", "join array" },
         ["gk"] = { "<cmd>TSJSplit<cr>", "split array" },
         ["gm"] = { "<cmd>TSJToggle<cr>", "toggle array" },
+        ["x"] = { '"_x' },
     },
     v = {
         ["<"] = { "<gv", "Indent Left", opts = opts },
         [">"] = { ">gv", "Indent Right", opts = opts },
         ["p"] = { '"_dP', opts = opts },
+        ["x"] = { '"_x', opts = opts },
     },
     x = {
         ["J"] = { ":move '>+1<CR>gv-gv", opts = opts },
@@ -134,7 +139,6 @@ M.options = {
 M.misc = {
     n = {
         ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Lazy Git" },
-        ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover Info" },
         ["<C-q>"] = { ":q <CR>" },
         ["<C-S-q>"] = { ":quitall <CR>" },
         ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Nvimtree" },
@@ -175,6 +179,46 @@ M.hop = {
             ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = false })<CR>",
             opts = opts,
         },
+    },
+}
+
+M.saga = {
+    n = {
+        ["K"] = { "<cmd> Lspsaga hover_doc <CR>" },
+        ["<leader>K"] = { "<cmd> Lspsaga hover_doc ++keep <CR>" },
+
+        ["gd"] = {
+            ":execute 'Lspsaga goto_definition' | call timer_start(100, {-> feedkeys('zz')})<CR>",
+            "Goto Definition",
+        },
+        ["gD"] = {
+            ":execute 'Lspsaga goto_type_definition' | call timer_start(100, {-> feedkeys('zz')}) <CR>",
+            "Goto Type Definition",
+        },
+
+        ["<leader>pd"] = { "<cmd> Lspsaga peek_definition <CR>", "Peek Definition" },
+        ["<leader>pD"] = { "<cmd> Lspsaga peek_type_definition <CR>", "Peek Type Definition" },
+
+        ["<leader>dd"] = { "<cmd> Lspsaga show_line_diagnostics <CR>", "Diagnostic Current" },
+        ["<leader>dj"] = { "<cmd> Lspsaga diagnostic_jump_next <CR>", "Diagnostic Next" },
+        ["<leader>dk"] = { "<cmd> Lspsaga diagnostic_jump_prev <CR>", "Diagnostic Previous" },
+
+        ["<leader>dw"] = { "<cmd> Lspsaga show_workspace_diagnostics ++normal <CR>", "Workspace Diagnostics" },
+        ["<leader>dW"] = { "<cmd> Lspsaga show_workspace_diagnostics ++float <CR>", "Workspace Diagnostics" },
+
+        ["<leader>sf"] = { "<cmd> Lspsaga finder ++normal <CR>", "Saga Finder" },
+        ["<leader>sF"] = { "<cmd> Lspsaga finder ++float <CR>", "Saga Finder" },
+
+        ["<leader>so"] = { "<cmd> Lspsaga outline ++normal <CR>", "Saga Outline" },
+        ["<leader>sO"] = { "<cmd> Lspsaga outline ++float <CR>", "Saga Outline" },
+
+        ["<leader>sr"] = { "<cmd> Lspsaga rename <CR>", "Rename" },
+        ["<leader>sR"] = { "<cmd> Lspsaga rename ++project <CR>", "Project Rename" },
+
+        ["<leader>sc"] = { "<cmd> Lspsaga outgoing_calls <CR>", "Outgoing Calls" },
+        ["<leader>sC"] = { "<cmd> Lspsaga incoming_calls <CR>", "Incoming Calls" },
+
+        ["<leader>da"] = { "<cmd> Lspsaga code_action <CR>", "Diagnostic Actions" },
     },
 }
 

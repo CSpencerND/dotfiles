@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "tailwindcss", "prismals", "clangd" }
+local servers = { "html", "cssls", "tsserver", "tailwindcss", "prismals", "jsonls", "clangd" }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
@@ -14,9 +14,8 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.tsserver.setup {
-    on_attach = function(client, bufnr)
-        require("twoslash-queries").attach(client, bufnr)
-    end,
+    capabilities = capabilities,
+    on_attach = on_attach,
 }
 
 lspconfig.prismals.setup {}
@@ -32,11 +31,22 @@ lspconfig.cssls.setup {
     },
 }
 
-lspconfig.tailwindcss.setup {}
+lspconfig.tailwindcss.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
 
 require("typescript").setup {
+    -- disable_commands = false, -- prevent the plugin from creating Vim commands
     debug = false, -- enable debug logging for commands
     go_to_source_definition = {
         fallback = true, -- fall back to standard LSP definition on failure
+    },
+    server = {
+        on_attach = function(client, bufnr)
+            require("twoslash-queries").attach(client, bufnr)
+        end,
+
+        capabilities = capabilities,
     },
 }

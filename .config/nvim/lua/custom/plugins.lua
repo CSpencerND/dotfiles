@@ -1,4 +1,5 @@
 local overrides = require "custom.configs.overrides"
+local home = vim.fn.expand "$HOME"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -19,6 +20,7 @@ local plugins = {
         config = function()
             require "plugins.configs.lspconfig"
             require "custom.configs.lspconfig"
+            require("mason-lspconfig").setup()
         end, -- Override to setup mason-lspconfig
     },
 
@@ -51,6 +53,51 @@ local plugins = {
     },
 
     -- Install a plugin
+    {
+        "jackMort/ChatGPT.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("chatgpt").setup {
+                api_key_cmd = "gpg --decrypt " .. home .. "/.gpt.gpg",
+            }
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+    },
+    {
+        "nvimdev/lspsaga.nvim",
+        config = function()
+            require("lspsaga").setup {}
+        end,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
+        event = "LspAttach",
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        event = "VeryLazy",
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+    },
+    {
+        "mlaursen/vim-react-snippets",
+        event = "VeryLazy",
+    },
+    {
+        "hrsh7th/nvim-cmp",
+        event = "VeryLazy",
+    },
+    {
+        "hrsh7th/cmp-cmdline",
+        event = "VeryLazy",
+    },
     {
         "jose-elias-alvarez/typescript.nvim",
         event = "VeryLazy",

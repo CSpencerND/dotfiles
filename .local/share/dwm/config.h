@@ -109,10 +109,10 @@ static char *colors[][ColCount] = {
 	[SchemeUrg] = {unused,unused,unused,unused},
 };
 
-const char *spcmd0[] = { "/usr/bin/kitty", "-c", "/home/cs/.config/kitty/scratchpad.conf", "--class", "basic",                                   NULL };
-const char *spcmd1[] = { "/usr/bin/kitty", "-c", "/home/cs/.config/kitty/scratchpad.conf", "--class", "task",    "btop",                         NULL };
-const char *spcmd2[] = { "/usr/bin/kitty", "-c", "/home/cs/.config/kitty/scratchpad.conf", "--class", "note",    "nvim", "~/Documents/notes/",   NULL };
-const char *spcmd3[] = { "/usr/bin/kitty", "-c", "/home/cs/.config/kitty/scratchpad.conf", "--class", "explore", "ranger",                       NULL };
+const char *spcmd0[] = { "/usr/bin/kitty", "-c", "/home/cs/.config/kitty/scratchpad.conf", "--class", "basic",                                    NULL };
+const char *spcmd1[] = { "/usr/bin/kitty", "-c", "/home/cs/.config/kitty/scratchpad.conf", "--class", "task",    "btop",                          NULL };
+const char *spcmd2[] = { "/usr/bin/kitty", "-c", "/home/cs/.config/kitty/scratchpad.conf", "--class", "note",    "nvim", "~/Documents/notes.md",  NULL };
+const char *spcmd3[] = { "/usr/bin/kitty", "-c", "/home/cs/.config/kitty/scratchpad.conf", "--class", "explore", "ranger",                        NULL };
 
 // const char *spcmd0[] = { "kitty", "--class", "basic",    NULL };
 
