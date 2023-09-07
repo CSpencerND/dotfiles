@@ -14,8 +14,13 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.tsserver.setup {
-    capabilities = capabilities,
     on_attach = on_attach,
+    capabilities = capabilities,
+    init_options = {
+        preferences = {
+            disableSuggestions = true,
+        },
+    },
 }
 
 lspconfig.prismals.setup {}
@@ -32,8 +37,8 @@ lspconfig.cssls.setup {
 }
 
 lspconfig.tailwindcss.setup {
-    capabilities = capabilities,
     on_attach = on_attach,
+    capabilities = capabilities,
 }
 
 require("typescript").setup {
