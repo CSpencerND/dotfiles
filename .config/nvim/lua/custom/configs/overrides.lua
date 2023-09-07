@@ -123,14 +123,6 @@ M.nvimtree = {
         hide_root_folder = false,
         signcolumn = "yes",
     },
-    renderer = {
-        highlight_git = true,
-        icons = {
-            show = {
-                git = true,
-            },
-        },
-    },
     filters = {
         dotfiles = true,
         custom = { "node_modules", "\\.cache" },
@@ -141,6 +133,42 @@ M.nvimtree = {
         enable = true,
         show_on_dirs = true,
         show_on_open_dirs = true,
+    },
+    renderer = {
+        group_empty = true,
+        full_name = true,
+        root_folder_label = function(root_cwd)
+            return "󱧳 " .. vim.fn.fnamemodify(root_cwd, ":t")
+        end,
+        indent_width = 4,
+        highlight_git = true,
+        indent_markers = {
+            enable = true,
+            inline_arrows = false,
+            icons = {
+                corner = "╰",
+                edge = "│",
+                item = "│",
+                bottom = "─",
+                none = " ",
+            },
+        },
+        icons = {
+            show = {
+                git = true,
+                file = true,
+                folder = true,
+                folder_arrow = true,
+            },
+            glyphs = {
+                folder = {
+                    arrow_open = "",
+                    arrow_closed = "󰧞",
+                    -- arrow_open = "",
+                    -- arrow_closed = "",
+                },
+            },
+        },
     },
 }
 
