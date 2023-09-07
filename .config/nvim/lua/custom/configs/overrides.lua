@@ -118,8 +118,11 @@ M.nvimtree = {
         timeout = 200,
     },
     view = {
-        adaptive_size = false,
-        width = 30,
+        width = {
+            min = 30,
+            max = -1,
+            padding = 1
+        },
         hide_root_folder = false,
         signcolumn = "yes",
     },
@@ -158,12 +161,12 @@ M.nvimtree = {
                 git = true,
                 file = true,
                 folder = true,
-                folder_arrow = true,
+                folder_arrow = false,
             },
             glyphs = {
                 folder = {
-                    arrow_open = "",
-                    arrow_closed = "󰧞",
+                    -- arrow_open = "",
+                    -- arrow_closed = "󰧞",
                     -- arrow_open = "",
                     -- arrow_closed = "",
                 },
