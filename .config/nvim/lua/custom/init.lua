@@ -9,16 +9,14 @@ autocmd("VimResized", {
     command = "tabdo wincmd =",
 })
 
--- local function open_nvim_tree(data)
---     local real_file = vim.fn.filereadable(data.file) == 1
---     local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
---
---     if not real_file and not no_name then
---         require("nvim-tree.api").tree.toggle { focus = true, find_file = true }
---     end
--- end
-
--- autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+-- exempt env files from lsp
+autocmd("BufEnter", {
+    pattern = ".env*",
+    group = vim.api.nvim_create_augroup("__env", { clear = true }),
+    callback = function(args)
+        vim.diagnostic.disable(args.buf)
+    end,
+})
 
 local options = {
     timeoutlen = 100, -- time to wait for a mapped sequence to complete (in milliseconds)
@@ -40,4 +38,4 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-require("custom.configs.lspsaga")
+require "custom.configs.lspsaga"
