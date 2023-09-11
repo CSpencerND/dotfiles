@@ -230,3 +230,6 @@ eval "$(starship init zsh)"
 eval "$(fnm env)"
 
 # export PYTHONSTARTUP=~/.config/pyrc
+
+# bun completions
+[ -s "/home/cs/.bun/_bun" ] && source "/home/cs/.bun/_bun"

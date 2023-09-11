@@ -44,7 +44,6 @@ export PATH="$HOME/miniconda3/bin:$PATH" # can't be changed?
 # Node / NPM
 export PATH="$PATH:$HOME/.local/share/npm/bin"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-# export NPM_CONFIG_PREFIX="$HOME"/node_modules
 export NPM_CONFIG_PREFIX="$XDG_DATA_HOME"/npm
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history 
 
@@ -54,7 +53,10 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+
+# bun
+export BUN_INSTALL="$HOME/.bun" 
+export PATH="$BUN_INSTALL/bin:$PATH" 
 
 # Misc
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg #gpg --homedir "$XDG_DATA_HOME"/gnupg
