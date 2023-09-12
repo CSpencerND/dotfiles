@@ -136,8 +136,9 @@ M.options = {
     },
 }
 
-M.misc = {
+M.general = {
     n = {
+        ["<leader>cc"] = { ":e " .. vim.fn.expand "~/.config/nvim/lua/custom/plugins.lua" .. "<CR>" },
         ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Lazy Git" },
         ["<C-q>"] = { ":q <CR>" },
         ["<C-S-q>"] = { ":quitall <CR>" },

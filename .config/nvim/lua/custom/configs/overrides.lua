@@ -70,8 +70,14 @@ M.treesitter = {
             json = "",
         },
     },
-    indent = { enable = true, disable = { "yaml", "python" } },
-    autotag = { enable = true },
+    indent = {
+        enable = true,
+        disable = { "yaml", "python" },
+    },
+    autotag = {
+        enable = true,
+        -- enable_close_on_slash = false,
+    },
     textobjects = {
         swap = {
             enable = false,
@@ -158,10 +164,11 @@ M.nvimtree = {
     },
     update_cwd = true,
     respect_buf_cwd = true,
-    sync_root_with_cwd = false,
+    sync_root_with_cwd = true,
     update_focused_file = {
         enable = true,
-        update_cwd = true,
+        update_root = true,
+        ignore_list = {},
     },
     git = {
         enable = true,
@@ -220,6 +227,26 @@ M.nvimtree = {
                     -- arrow_closed = "󰧞",
                     -- arrow_open = "",
                     -- arrow_closed = "",
+                },
+            },
+        },
+    },
+    actions = {
+        use_system_clipboard = true,
+        change_dir = {
+            enable = true,
+            global = false,
+            restrict_above_cwd = false,
+        },
+        open_file = {
+            quit_on_open = false,
+            resize_window = false,
+            window_picker = {
+                enable = true,
+                chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                exclude = {
+                    filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                    buftype = { "nofile", "terminal", "help" },
                 },
             },
         },
