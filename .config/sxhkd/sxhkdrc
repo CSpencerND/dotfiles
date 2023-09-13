@@ -80,7 +80,7 @@ super + Print
 
 #reload sxhkd:
 super + backslash
-    pkill -USR1 -x sxhkd
+    reload-sxhkd.sh
 
 
 #################################################################
