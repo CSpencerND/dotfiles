@@ -78,6 +78,7 @@ local plugins = {
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope.nvim",
         },
+        enabled = false
     },
     {
         "nvimdev/lspsaga.nvim",

@@ -179,7 +179,7 @@ M.nvimtree = {
         width = {
             min = 30,
             max = -1,
-            padding = 1,
+            padding = 2,
         },
         hide_root_folder = false,
         signcolumn = "yes",
@@ -196,7 +196,7 @@ M.nvimtree = {
         show_on_open_dirs = true,
     },
     renderer = {
-        group_empty = true,
+        group_empty = false,
         full_name = true,
         root_folder_label = function(root_cwd)
             return "󱧳 " .. vim.fn.fnamemodify(root_cwd, ":t")
