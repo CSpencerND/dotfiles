@@ -157,9 +157,33 @@ M.general = {
             "Floating Diagnostic",
         },
         ["<leader>tr"] = { "<cmd> TroubleToggle <CR>", "Diagnostics" },
+        ["<leader>dt"] = {
+            function()
+                local vd = vim.diagnostic
+                if vd.is_disabled() then
+                    vd.enable()
+                else
+                    vd.disable()
+                end
+            end,
+            "Diagnostic Toggle",
+        },
+        -- ["<leader>;"] = { ":lua vim.diagnostic.config({virtual_text = false}) <CR>", "Toggle Virtual Text" },
     },
 }
 
+-- function ToggleVirtualText()
+--     local current_config = vim.diagnostic.get_config({})
+--     current_config.virtual_text = not current_config.virtual_text
+--     vim.diagnostic.config(current_config)
+-- end
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>;",
+    ":lua ToggleVirtualText()<CR>",
+    { noremap = true, silent = true, nowait = true }
+)
 M.hop = {
     n = {
         [";"] = { ":HopWord<cr>", opts = opts },

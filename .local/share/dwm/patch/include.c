@@ -31,6 +31,7 @@
 #include "vanitygaps.c"
 #include "warp.c"
 #include "dragmfact.c"
+
 /* Layouts */
 #include "layout_facts.c"
 #include "layout_bstack.c"
@@ -41,3 +42,5 @@
 #include "layout_monocle.c"
 #include "layout_tile.c"
 
+/* Session Restore */
+#include "restore_after_restart.c"

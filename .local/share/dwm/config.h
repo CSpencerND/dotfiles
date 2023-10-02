@@ -1,6 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 #include "themes/kanagawa.h"
 
+#define SESSION_FILE "/home/cs/.cache/dwm-session"
+
 /* custom function */
 static void shiftmon(const Arg *arg);
 
@@ -358,9 +360,11 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,   XK_p,               setscratch,     {.ui = 4 } },
 	{ MODKEY|Mod1Mask,      XK_p,               removescratch,  {.ui = 4 } },
 
-	// quit / restart - if restart doesn't work, try quit
+	// quit / restart / sessions
 	{ MODKEY|ShiftMask,     XK_r,               self_restart,   {0} },
-	{ MODKEY|ControlMask,   XK_r,               quit,           {0} },
+	{ MODKEY|ControlMask,   XK_x,               quit,           {0} },
+	{ MODKEY,               XK_y,               saveSession,    {0} },
+	{ MODKEY|ShiftMask,     XK_y,               restoreSession, {0} },
 
 	// gaps
 	{ MODKEY,               XK_a,               incrgaps,       {.i = -1 } },

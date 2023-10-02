@@ -45,6 +45,8 @@ lspconfig.tailwindcss.setup {
                 "class:list",
                 "classList",
                 "ngClass",
+
+                -- headlessui_transition
                 "enter",
                 "enterFrom",
                 "enterTo",
