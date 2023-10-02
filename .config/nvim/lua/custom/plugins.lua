@@ -21,6 +21,10 @@ local plugins = {
             require "plugins.configs.lspconfig"
             require "custom.configs.lspconfig"
             require("mason-lspconfig").setup()
+
+            vim.diagnostic.config {
+                virtual_text = false,
+            }
         end, -- Override to setup mason-lspconfig
     },
 
@@ -78,7 +82,7 @@ local plugins = {
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope.nvim",
         },
-        enabled = false
+        enabled = false,
     },
     {
         "nvimdev/lspsaga.nvim",

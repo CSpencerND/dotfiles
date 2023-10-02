@@ -168,6 +168,18 @@ M.general = {
             end,
             "Diagnostic Toggle",
         },
+        ["<leader>dv"] = {
+            function()
+                vim.diagnostic.config { virtual_text = true }
+            end,
+            "Virtual Text On",
+        },
+        ["<leader>dV"] = {
+            function()
+                vim.diagnostic.config { virtual_text = false }
+            end,
+            "Virtual Text Off",
+        },
         -- ["<leader>;"] = { ":lua vim.diagnostic.config({virtual_text = false}) <CR>", "Toggle Virtual Text" },
     },
 }
