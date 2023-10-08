@@ -49,7 +49,7 @@
 #define Button7 7
 #define Button8 8
 #define Button9 9
-#define NUMTAGS 5
+#define NUMTAGS 7
 #define BARRULES 20
 #define BUTTONMASK (ButtonPressMask | ButtonReleaseMask)
 #define CLEANMASK(mask)                                                        \

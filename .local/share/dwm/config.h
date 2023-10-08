@@ -154,13 +154,13 @@ static Sp scratchpads[] = {
  * them. This works seamlessly with alternative tags and alttagsdecoration patches.
  */
 
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
 
 static char *tagicons[][NUMTAGS] = {
 	// [DEFAULT_TAGS]        = { "", "", "", "", "" },
-	[DEFAULT_TAGS]        = { "󰎥", "󰎨", "󰎫", "󰎲", "󰎯" },
-	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E" },
-	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>" },
+	[DEFAULT_TAGS]        = { "󰎥", "󰎨", "󰎫", "󰎲", "󰎯", "󰎴", "󰎷" },
+	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E", "F", "G" },
+	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", },
 };
 
 
