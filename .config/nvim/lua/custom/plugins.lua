@@ -70,6 +70,10 @@ local plugins = {
 
     -- Install a plugin
     {
+        "js-everts/cmp-tailwind-colors",
+        event = "VeryLazy",
+    },
+    {
         "jackMort/ChatGPT.nvim",
         event = "VeryLazy",
         config = function()

@@ -18,6 +18,7 @@ M.telescope = {
 }
 
 local cmp = require "cmp"
+-- local tw = require "cmp_tailwind_colors"
 
 M.cmp = {
     mapping = {
@@ -38,6 +39,17 @@ M.cmp = {
         },
 
         ["<Tab>"] = {},
+    },
+
+    formatting = {
+        format = function(entry, item)
+            item = require("cmp-tailwind-colors").format(entry, item)
+            local icons = require("nvchad.icons.lspkind")
+            if icons[item.kind] then
+                item.kind = icons[item.kind] .. item.kind
+            end
+            return item
+        end,
     },
 }
 
