@@ -70,6 +70,20 @@ local plugins = {
 
     -- Install a plugin
     {
+        "uga-rosa/ccc.nvim",
+        event = "VeryLazy",
+        config = function ()
+            local ccc = require("ccc")
+            ccc.setup {
+                inputs = {
+                    ccc.input.hsl,
+                    ccc.input.rgb,
+                    ccc.input.hex
+                }
+            }
+        end
+    },
+    {
         "js-everts/cmp-tailwind-colors",
         event = "VeryLazy",
     },
