@@ -157,7 +157,7 @@ M.general = {
             "Floating Diagnostic",
         },
         ["<leader>tr"] = { "<cmd> TroubleToggle <CR>", "Diagnostics" },
-        ["<leader>dt"] = {
+        ["<leader>dT"] = {
             function()
                 local vd = vim.diagnostic
                 if vd.is_disabled() then
@@ -168,17 +168,31 @@ M.general = {
             end,
             "Diagnostic Toggle",
         },
-        ["<leader>dv"] = {
+        ["<leader>dt"] = {
             function()
-                vim.diagnostic.config { virtual_text = true }
+                local config = vim.diagnostic.config
+
+                if config().virtual_text == true then
+                    config { virtual_text = false }
+                else
+                    config { virtual_text = true }
+                end
             end,
-            "Virtual Text On",
+            "Virtual Text Toggle",
         },
-        ["<leader>dV"] = {
+        ["<leader>ok"] = {
             function()
-                vim.diagnostic.config { virtual_text = false }
+                local iskeyword = vim.opt.iskeyword:get()
+
+                for _, v in ipairs(iskeyword) do
+                    if v == "-" then
+                        vim.opt.iskeyword:remove "-"
+                    else
+                        vim.opt.iskeyword:append "-"
+                    end
+                end
             end,
-            "Virtual Text Off",
+            "Keyword Hyphen Toggle",
         },
         -- ["<leader>;"] = { ":lua vim.diagnostic.config({virtual_text = false}) <CR>", "Toggle Virtual Text" },
     },
