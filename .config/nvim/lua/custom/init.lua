@@ -23,6 +23,11 @@ autocmd("FileType", {
     desc = "Disable New Line Comment",
 })
 
+autocmd("FileType", {
+    command = "set iskeyword+=-",
+    desc = "Add hyphen to keyword detection",
+})
+
 local opt = vim.opt
 
 opt.timeoutlen = 100 -- time to wait for a mapped sequence to complete (in milliseconds)
