@@ -82,3 +82,6 @@ require("typescript").setup {
         capabilities = capabilities,
     },
 }
+
+-- lspconfig.astro.setup {}
+require("lspconfig").astro.setup({})

@@ -72,16 +72,16 @@ local plugins = {
     {
         "uga-rosa/ccc.nvim",
         event = "VeryLazy",
-        config = function ()
-            local ccc = require("ccc")
+        config = function()
+            local ccc = require "ccc"
             ccc.setup {
                 inputs = {
                     ccc.input.hsl,
                     ccc.input.rgb,
-                    ccc.input.hex
-                }
+                    ccc.input.hex,
+                },
             }
-        end
+        end,
     },
     {
         "js-everts/cmp-tailwind-colors",
