@@ -169,7 +169,6 @@ _source_plugin() {
 
 # ZSH Autosuggestions
 _source_plugin zsh-autosuggestions && ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
-_source_plugin alias-tips
 
 # ZSH Syntax Highlighting
 if _source_plugin zsh-syntax-highlighting
@@ -217,6 +216,9 @@ then
 	ZSH_HIGHLIGHT_STYLES[bracket-level-5]=fg=cyan,bold
 	ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=standout
 fi
+
+_source_plugin alias-tips
+_source_plugin fzf-dir-navigator
 
 unset -f _source_plugin
 
