@@ -70,6 +70,25 @@ local plugins = {
 
     -- Install a plugin
     {
+        "vuki656/package-info.nvim",
+        ft = "json",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        config = function()
+            -- local colors = require("base46.themes.kanagawa").base_16
+
+            require("package-info").setup {
+                package_manager = "pnpm",
+                hide_up_to_date = true,
+                hide_unstable_versions = true,
+                -- colors = {
+                --     outdated = colors.base08,
+                -- },
+            }
+
+            require("telescope").load_extension "package_info"
+        end,
+    },
+    {
         "uga-rosa/ccc.nvim",
         event = "VeryLazy",
         config = function()
