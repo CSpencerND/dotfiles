@@ -74,7 +74,7 @@ local plugins = {
         ft = "json",
         dependencies = { "MunifTanjim/nui.nvim" },
         config = function()
-            -- local colors = require("base46.themes.kanagawa").base_16
+            -- local colors = require("base46.themes.catppuccin").base_16
 
             require("package-info").setup {
                 package_manager = "pnpm",
