@@ -74,15 +74,15 @@ local plugins = {
         ft = "json",
         dependencies = { "MunifTanjim/nui.nvim" },
         config = function()
-            -- local colors = require("base46.themes.catppuccin").base_16
+            local colors = require("base46.themes.catppuccin").base_16
 
             require("package-info").setup {
                 package_manager = "pnpm",
                 hide_up_to_date = true,
                 hide_unstable_versions = true,
-                -- colors = {
-                --     outdated = colors.base08,
-                -- },
+                colors = {
+                    outdated = colors.base0C,
+                },
             }
 
             require("telescope").load_extension "package_info"
