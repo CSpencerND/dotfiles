@@ -78,10 +78,18 @@ local plugins = {
 
             require("package-info").setup {
                 package_manager = "pnpm",
-                hide_up_to_date = true,
+                hide_up_to_date = false,
                 hide_unstable_versions = true,
                 colors = {
                     outdated = colors.base0C,
+                    up_to_date = colors.base03,
+                },
+                icons = {
+                    enable = true,
+                    style = {
+                        up_to_date = "|  ",
+                        outdated = "|  ",
+                    },
                 },
             }
 
