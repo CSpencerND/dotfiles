@@ -70,6 +70,10 @@ local plugins = {
 
     -- Install a plugin
     {
+        "davidosomething/format-ts-errors.nvim",
+        ft = { "ts", "tsx", "js", "jsx" },
+    },
+    {
         "vuki656/package-info.nvim",
         ft = "json",
         dependencies = { "MunifTanjim/nui.nvim" },
