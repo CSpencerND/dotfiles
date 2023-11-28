@@ -55,6 +55,11 @@ lspconfig.tailwindcss.setup {
                 "leaveFrom",
                 "leaveTo",
             },
+            experimental = {
+                classRegex = {
+                    { "tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                },
+            },
             lint = {
                 cssConflict = "warning",
                 invalidApply = "error",
@@ -85,4 +90,4 @@ require("typescript").setup {
 }
 
 -- lspconfig.astro.setup {}
-require("lspconfig").astro.setup({})
+require("lspconfig").astro.setup {}
