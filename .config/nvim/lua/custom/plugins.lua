@@ -28,7 +28,8 @@ local plugins = {
         end, -- Override to setup mason-lspconfig
     },
 
-    -- override plugin configs
+    -------------------------------------------------------------------------------------------
+    -- override plugin configs ----------------------------------------------------------------
     {
         "numToStr/Comment.nvim",
         opts = function()
@@ -68,7 +69,13 @@ local plugins = {
         opts = overrides.colorizer,
     },
 
-    -- Install a plugin
+    -------------------------------------------------------------------------------------------
+    -- Install a plugin -----------------------------------------------------------------------
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+    },
     {
         "davidosomething/format-ts-errors.nvim",
         ft = { "ts", "tsx", "js", "jsx" },
@@ -213,7 +220,7 @@ local plugins = {
     },
     {
         "marilari88/twoslash-queries.nvim",
-        event = "VeryLazy",
+        ft = { "ts", "tsx", "js", "jsx" },
     },
     {
         "tpope/vim-obsession",

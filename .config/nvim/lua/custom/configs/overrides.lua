@@ -88,7 +88,7 @@ M.treesitter = {
     },
     autotag = {
         enable = true,
-        -- enable_close_on_slash = false,
+        enable_close_on_slash = false,
     },
     textobjects = {
         swap = {
@@ -139,7 +139,7 @@ M.mason = {
         -- web dev
         "css-lsp",
         "html-lsp",
-        "typescript-language-server",
+        -- "typescript-language-server",
         "tailwindcss-language-server",
         "prettier",
         "prisma-language-server",
@@ -189,7 +189,7 @@ M.nvimtree = {
     },
     view = {
         width = {
-            min = 30,
+            min = 40,
             max = -1,
             padding = 2,
         },

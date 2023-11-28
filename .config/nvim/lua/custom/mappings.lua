@@ -5,6 +5,20 @@ local opts = { noremap = true, silent = true }
 
 M.disabled = {}
 
+M.typescript = {
+    n = {
+        ["<leader>lo"] = { "<cmd>TSToolsOrganizeImports<cr>", "OrganizeImports" },
+        ["<leader>ll"] = { "<cmd>TSToolsSortImports<cr>", "SortImports" },
+        ["<leader>lu"] = { "<cmd>TSToolsRemoveUnusedImports<Cr>", "RemoveUnusedImports" },
+        ["<leader>lU"] = { "<cmd>TSToolsRemoveUnused<Cr>", "RemoveUnusedSymbols" },
+        ["<leader>lm"] = { "<cmd>TSToolsAddMissingImports<Cr>", "AddMissingImports" },
+        ["<leader>lf"] = { "<cmd>TSToolsFixAll<Cr>", "FixAllErrors" },
+        ["<leader>lg"] = { "<cmd>TSToolsGoToSourceDefinition<Cr>", "GoToSourceDefinition" },
+        ["<leader>lr"] = { "<cmd>TSToolsRenameFile<Cr>", "RenameFile" },
+        ["<leader>lq"] = { "<cmd>TwoslashQueriesInspect<CR>", "Twoslash Query" },
+    },
+}
+
 M.tabufline = {
     n = {
         ["<C-i>"] = {
@@ -83,7 +97,6 @@ M.movement = {
 
 M.editing = {
     n = {
-        ["<leader>k"] = { "<cmd>TwoslashQueriesInspect<CR>", "Twoslash Query" },
         ["<leader>r/"] = { ":%s/", "sed" },
         ["<leader>rs"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", "super sed" },
         ["<leader>a"] = { "ggVG", "Select All", opts = opts },
@@ -236,7 +249,7 @@ M.hop = {
 M.saga = {
     n = {
         ["K"] = { "<cmd> Lspsaga hover_doc <CR>" },
-        ["<leader>K"] = { "<cmd> Lspsaga hover_doc ++keep <CR>" },
+        ["<leader>k"] = { "<cmd> Lspsaga hover_doc ++keep <CR>" },
 
         ["gd"] = {
             ":execute 'Lspsaga goto_definition' | call timer_start(100, {-> feedkeys('zz')})<CR>",
