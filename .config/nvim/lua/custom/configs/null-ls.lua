@@ -8,8 +8,8 @@ local sources = {
     -- webdev
     -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
     -- b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
-    format.prettier,
-    lint.eslint_d,
+    format.prettierd,
+    -- lint.eslint_d,
 
     -- Lua
     format.stylua,
@@ -23,6 +23,6 @@ local sources = {
 }
 
 null_ls.setup {
-    debug = true,
+    debug = false,
     sources = sources,
 }

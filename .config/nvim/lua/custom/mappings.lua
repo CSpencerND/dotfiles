@@ -163,7 +163,7 @@ M.general = {
             end,
             "Toggle Transparency",
         },
-        ["<leader>fd"] = {
+        ["<leader>dd"] = {
             function()
                 vim.diagnostic.open_float { border = "rounded" }
             end,
@@ -248,7 +248,7 @@ M.hop = {
 
 M.saga = {
     n = {
-        ["K"] = { "<cmd> Lspsaga hover_doc <CR>" },
+        -- ["K"] = { "<cmd> Lspsaga hover_doc <CR>" },
         ["<leader>k"] = { "<cmd> Lspsaga hover_doc ++keep <CR>" },
 
         ["gd"] = {
@@ -263,7 +263,7 @@ M.saga = {
         ["<leader>pd"] = { "<cmd> Lspsaga peek_definition <CR>", "Peek Definition" },
         ["<leader>pD"] = { "<cmd> Lspsaga peek_type_definition <CR>", "Peek Type Definition" },
 
-        ["<leader>dd"] = { "<cmd> Lspsaga show_line_diagnostics <CR>", "Diagnostic Current" },
+        -- ["<leader>dd"] = { "<cmd> Lspsaga show_line_diagnostics <CR>", "Diagnostic Current" },
         ["<leader>dj"] = { "<cmd> Lspsaga diagnostic_jump_next <CR>", "Diagnostic Next" },
         ["<leader>dk"] = { "<cmd> Lspsaga diagnostic_jump_prev <CR>", "Diagnostic Previous" },
 

@@ -44,7 +44,7 @@ M.cmp = {
     formatting = {
         format = function(entry, item)
             item = require("cmp-tailwind-colors").format(entry, item)
-            local icons = require("nvchad.icons.lspkind")
+            local icons = require "nvchad.icons.lspkind"
             if icons[item.kind] then
                 item.kind = icons[item.kind] .. item.kind
             end
@@ -132,25 +132,20 @@ M.treesitter = {
 
 M.mason = {
     ensure_installed = {
-        -- lua
-        "lua-language-server",
-        "stylua",
-
-        -- web dev
-        "css-lsp",
-        "html-lsp",
-        -- "typescript-language-server",
-        "tailwindcss-language-server",
-        "prettier",
-        "prisma-language-server",
-
-        -- python
-        "python-lsp-server",
+        "bashls",
         "black",
-
-        -- c/cpp
-        "clangd",
         "clang-format",
+        "clangd",
+        "cssls",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "prettierd",
+        "prismals",
+        "pylsp",
+        "shfmt",
+        "stylua",
+        "tailwindcss",
     },
 }
 

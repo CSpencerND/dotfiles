@@ -78,7 +78,6 @@ local plugins = {
     },
     {
         "davidosomething/format-ts-errors.nvim",
-        ft = { "ts", "tsx", "js", "jsx" },
     },
     {
         "vuki656/package-info.nvim",
@@ -90,7 +89,7 @@ local plugins = {
             require("package-info").setup {
                 package_manager = "pnpm",
                 hide_up_to_date = false,
-                hide_unstable_versions = true,
+                hide_unstable_versions = false,
                 colors = {
                     outdated = colors.base0C,
                     up_to_date = colors.base03,
@@ -220,7 +219,7 @@ local plugins = {
     },
     {
         "marilari88/twoslash-queries.nvim",
-        ft = { "ts", "tsx", "js", "jsx" },
+        event = "VeryLazy",
     },
     {
         "tpope/vim-obsession",
