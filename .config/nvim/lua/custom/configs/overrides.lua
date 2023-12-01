@@ -137,6 +137,7 @@ M.mason = {
         "clang-format",
         "clangd",
         "cssls",
+        "eslint_d",
         "html",
         "jsonls",
         "lua_ls",

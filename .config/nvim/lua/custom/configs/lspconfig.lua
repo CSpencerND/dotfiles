@@ -55,18 +55,18 @@ require("typescript-tools").setup {
         expose_as_code_action = { "all" },
         -- string|nil - specify a custom path to `tsserver.js` file, if this is nil or file under path
         -- not exists then standard path resolution strategy is applied
-        tsserver_path = nil,
+        tsserver_path = "/home/cs/.local/share/npm/lib/node_modules/typescript/lib/tsserver.js",
         -- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
         -- (see 💅 `styled-components` support section)
         tsserver_plugins = {},
         -- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
         -- memory limit in megabytes or "auto"(basically no limit)
-        tsserver_max_memory = "auto",
+        tsserver_max_memory = "500",
         -- described below
         tsserver_format_options = {},
         tsserver_file_preferences = {},
         -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
-        complete_function_calls = true,
+        complete_function_calls = false,
         include_completions_with_insert_text = true,
         -- CodeLens
         -- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
@@ -164,5 +164,38 @@ lspconfig.tailwindcss.setup {
             },
             validate = true,
         },
+    },
+}
+
+lspconfig.eslint.setup {
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+        "vue",
+        "svelte",
+        "graphql",
+    },
+    settings = {
+        codeAction = {
+            disableRuleComment = { enable = true, location = "separateLine" },
+            showDocumentation = { enable = true },
+        },
+        -- experimental = { useFlatConfig = true },
+        nodePath =  "/home/cs/.local/share/fnm/aliases/default/bin/node",
+        onIgnoredFiles = "off",
+        options = {
+            cache = true,
+            fix = true,
+            -- overrideConfigFile = lib.path.resolve_config "linters/eslint/dist/main.js",
+            -- resolvePluginsRelativeTo = lib.path.resolve_config "linters/eslint/node_modules",
+            useEslintrc = true,
+        },
+        packageManager = "pnpm",
+        run = "onType",
+        workingDirectory = { mode = "auto" },
     },
 }
