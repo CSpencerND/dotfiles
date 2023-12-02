@@ -171,10 +171,10 @@ local plugins = {
         "hrsh7th/cmp-cmdline",
         event = "VeryLazy",
     },
-    {
-        "jose-elias-alvarez/typescript.nvim",
-        event = "VeryLazy",
-    },
+    -- {
+    --     "jose-elias-alvarez/typescript.nvim",
+    --     event = "VeryLazy",
+    -- },
     {
         "kdheepak/lazygit.nvim",
         event = "VeryLazy",
@@ -221,6 +221,7 @@ local plugins = {
     {
         "marilari88/twoslash-queries.nvim",
         event = "VeryLazy",
+        enabled = false
     },
     {
         "tpope/vim-obsession",
