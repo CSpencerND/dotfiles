@@ -149,6 +149,7 @@ local plugins = {
             "nvim-tree/nvim-web-devicons",
         },
         event = "LspAttach",
+        enabled = false
     },
     {
         "williamboman/mason-lspconfig.nvim",
