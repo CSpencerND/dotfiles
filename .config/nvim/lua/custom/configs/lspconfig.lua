@@ -151,7 +151,11 @@ lspconfig.tailwindcss.setup {
             },
             experimental = {
                 classRegex = {
-                    { "tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                    -- { "tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                    {
+                        "tv\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)",
+                        '"(.*?)"',
+                    },
                 },
             },
             lint = {
@@ -186,7 +190,7 @@ lspconfig.eslint.setup {
             showDocumentation = { enable = true },
         },
         -- experimental = { useFlatConfig = true },
-        nodePath =  "/home/cs/.local/share/fnm/aliases/default/bin/node",
+        nodePath = "/home/cs/.local/share/fnm/aliases/default/bin/node",
         onIgnoredFiles = "off",
         options = {
             cache = true,

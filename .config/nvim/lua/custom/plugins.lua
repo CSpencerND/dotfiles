@@ -72,6 +72,14 @@ local plugins = {
     -------------------------------------------------------------------------------------------
     -- Install a plugin -----------------------------------------------------------------------
     {
+        "rcarriga/nvim-notify",
+        lazy = false,
+        config = function()
+            vim.notify = require "notify"
+            require("telescope").load_extension("notify")
+        end,
+    },
+    {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
@@ -149,7 +157,6 @@ local plugins = {
             "nvim-tree/nvim-web-devicons",
         },
         event = "LspAttach",
-        enabled = false
     },
     {
         "williamboman/mason-lspconfig.nvim",
@@ -157,7 +164,7 @@ local plugins = {
     },
     {
         "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
+        event = "LspAttach",
     },
     {
         "mlaursen/vim-react-snippets",
@@ -221,7 +228,7 @@ local plugins = {
     {
         "marilari88/twoslash-queries.nvim",
         event = "VeryLazy",
-        enabled = false
+        enabled = false,
     },
     {
         "tpope/vim-obsession",

@@ -263,7 +263,7 @@ M.saga = {
         ["<leader>pd"] = { "<cmd> Lspsaga peek_definition <CR>", "Peek Definition" },
         ["<leader>pD"] = { "<cmd> Lspsaga peek_type_definition <CR>", "Peek Type Definition" },
 
-        -- ["<leader>dd"] = { "<cmd> Lspsaga show_line_diagnostics <CR>", "Diagnostic Current" },
+        ["<leader>dD"] = { "<cmd> Lspsaga show_line_diagnostics <CR>", "Diagnostic Current" },
         ["<leader>dj"] = { "<cmd> Lspsaga diagnostic_jump_next <CR>", "Diagnostic Next" },
         ["<leader>dk"] = { "<cmd> Lspsaga diagnostic_jump_prev <CR>", "Diagnostic Previous" },
 
@@ -288,11 +288,11 @@ M.saga = {
 
 M.package_info = {
     n = {
-        ["<leader>pi"] = { ":lua require('package-info').toggle() <CR>", "Package Info Toggle" },
-        ["<leader>pu"] = { ":lua require('package-info').update() <CR>", "Package Update" },
-        ["<leader>pr"] = { ":lua require('package-info').delete() <CR>", "Package Remove" },
-        ["<leader>pa"] = { ":lua require('package-info').install() <CR>", "Package Add" },
-        ["<leader>pv"] = { ":lua require('package-info').change_version() <CR>", "Package Version" },
+        ["<leader>Pi"] = { ":lua require('package-info').toggle() <CR>", "Package Info Toggle" },
+        ["<leader>Pu"] = { ":lua require('package-info').update() <CR>", "Package Update" },
+        ["<leader>Pr"] = { ":lua require('package-info').delete() <CR>", "Package Remove" },
+        ["<leader>Pa"] = { ":lua require('package-info').install() <CR>", "Package Add" },
+        ["<leader>Pv"] = { ":lua require('package-info').change_version() <CR>", "Package Version" },
     },
 }
 
