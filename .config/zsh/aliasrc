@@ -22,6 +22,7 @@ alias bkp="backup push"
 
 ### Navigation Shortcuts
 # alias lvp='cd ~/.local/share/lunarvim/lvim/lua/user/'
+alias cdth="cd ~/.local/share/nvim/lazy/base46/lua/base46/themes"
 alias cddwm="cd ~/.local/share/dwm"
 alias cdsl="cd ~/.local/share/slstatus"
 alias cdsb="cd ~/.local/statusbar"
