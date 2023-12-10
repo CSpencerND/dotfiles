@@ -6,20 +6,20 @@ local highlights = require "custom.highlights"
 
 M.ui = {
     ------------------------------- base46 -------------------------------------
-    theme = "decay",
-    theme_toggle = { "decay", "one_light" },
-    changed_themes = {
-        decay = {
-            base_16 = {
-                base00 = "#1f1e28"
-            }
-        },
-        chadracula = {
-            base_16 = {
-                base00 = "#1f1e28"
-            }
-        }
-    },
+    theme = "onedarker",
+    theme_toggle = { "onedarker", "one_light" },
+    -- changed_themes = {
+    --     onedarker = {
+    --         base_16 = {
+    --             base00 = "#1f1f28"
+    --         }
+    --     },
+    --     onedarker = {
+    --         base_16 = {
+    --             base00 = "#1f1f28"
+    --         }
+    --     }
+    -- },
 
     hl_override = highlights.override,
     hl_add = highlights.add,
