@@ -78,6 +78,7 @@ local plugins = {
             vim.notify = require "notify"
             require("telescope").load_extension("notify")
         end,
+        enabled = false
     },
     {
         "pmizio/typescript-tools.nvim",
