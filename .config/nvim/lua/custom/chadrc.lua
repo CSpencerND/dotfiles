@@ -6,15 +6,15 @@ local highlights = require "custom.highlights"
 
 M.ui = {
     ------------------------------- base46 -------------------------------------
-    theme = "onedarker",
-    theme_toggle = { "onedarker", "one_light" },
+    theme = "tokyodark",
+    theme_toggle = { "tokyodark", "one_light" },
     -- changed_themes = {
-    --     onedarker = {
+    --     tokyodark = {
     --         base_16 = {
     --             base00 = "#1f1f28"
     --         }
     --     },
-    --     onedarker = {
+    --     tokyodark = {
     --         base_16 = {
     --             base00 = "#1f1f28"
     --         }

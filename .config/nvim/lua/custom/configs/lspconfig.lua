@@ -67,7 +67,7 @@ require("typescript-tools").setup {
         tsserver_format_options = {},
         tsserver_file_preferences = {},
         -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
-        complete_function_calls = false,
+        complete_function_calls = true,
         include_completions_with_insert_text = false,
         -- CodeLens
         -- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
