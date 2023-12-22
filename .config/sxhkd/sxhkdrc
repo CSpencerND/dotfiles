@@ -2,8 +2,8 @@
 #     GENERAL
 #################################################################
 
-super + g; {s, w, d, v, p, b, c, q, Escape}
-    {lvsp, firefox, Discord, pavucontrol, picom-toggle.sh, blueberry, gnome-calendar, gnome-calculator, exit}
+super + g; {w, d, v, p, b, c, q, Escape}
+    {firefox, Discord, pavucontrol, picom-toggle.sh, blueberry, gnome-calendar, gnome-calculator, exit}
 
 super + w; {n, p, f, t}
     {variety -n, variety -p, variety -f, variety -t}
@@ -17,11 +17,10 @@ super + Return
 super + shift + n
     noticenter
 
-# super + space
-#     hotkeys.sh
+super + space
+    hotkeys.sh
 
-# super + shift + v
-super + shift + space
+super + space
     rofi -show window -theme "$HOME/.config/rofi/themes/app-launcher.rasi"
 
 super + e
@@ -33,11 +32,17 @@ super + x
 super + shift + x
     pkill -u $USER
 
-super shift + d
+super + control + d
     reload_discord
 
-super control + d
+super + shift + d
     killall Discord
+
+super + shift + w
+    killall firefox
+
+super + shift + f
+    killall aurora
 
 # window management {{{
 super + F1

@@ -50,3 +50,8 @@ btop++ needs an interactive shell to run.
 
 2023/12/04 (01:07:36) | ===> btop++ v.1.2.13
 2023/12/04 (01:07:42) | ERROR: Stall in Runner thread, restarting!
+
+2023/12/14 (04:49:10) | ===> btop++ v.1.2.13
+2023/12/14 (04:49:10) | ERROR: Stall in Runner thread, restarting!
+2023/12/14 (04:49:38) | ERROR: Stall in Runner thread, restarting!
+2023/12/14 (04:49:44) | ERROR: Stall in Runner thread, restarting!
