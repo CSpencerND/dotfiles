@@ -224,6 +224,7 @@ static const Rule rules[] = {
 	RULE(.class = "Arandr",                                .isfloating = 1)
 	RULE(.class = "fcadefbneo.exe",                        .isfloating = 1)
 	RULE(.class = "Fightcade",                             .isfloating = 1)
+	RULE(.class = "errands",                               .isfloating = 1)
 
         // scratchpads
 	RULE(.class = "basic",   .tags = SPTAG(0),             .isfloating = 1)
