@@ -74,24 +74,8 @@ alias du='du -sh'
 alias df='df -Th'
 alias free='free -mt'
 
-if [ -x "$(command -v lvim)" ]; then
-	alias lv='lvim'
-	alias lvims='lvim -S'
-	alias vi="nvim"
-	alias nv='lvim'
-	alias nvims="nvim -S"
-elif [ -x "$(command -v nvim)" ]; then
-	alias vi="nvim"
-	alias nv='nvim'
-	alias nvims="nvim -S"
-fi
-
-if [ -x "$(command -v "$HOME"/neovim/bin/nvim)" ]; then
-    alias nvd="~/neovim/bin/nvim"
-    alias nvds="~/neovim/bin/nvim -S"
-    alias nv="~/neovim/bin/nvim"
-    alias nvs="~/neovim/bin/nvim -S"
-fi
+alias nv="/usr/bin/nvim"
+alias nvs="/usr/bin/nvim -S"
 
 alias top='btop'
 

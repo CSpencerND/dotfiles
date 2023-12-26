@@ -1,22 +1,22 @@
-local on_attach = require("plugins.configs.lspconfig").on_attach
-local capabilities = require("plugins.configs.lspconfig").capabilities
-local lspconfig = require "lspconfig"
+local base = require("plugins.configs.lspconfig")
+local on_attach = base.on_attach
+local capabilities = base.capabilities
+
+local lspconfig = require("lspconfig")
 
 -- if you just want default config for the servers then put them in a table
 local servers = { "html", "prismals", "jsonls", "clangd", "astro" }
 
 for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
+    lspconfig[lsp].setup({
         on_attach = on_attach,
         capabilities = capabilities,
-    }
+    })
 end
 
-require("typescript-tools").setup {
-    -- on_attach = function(client, bufnr)
-    --     require("twoslash-queries").attach(client, bufnr)
-    -- end,
+require("typescript-tools").setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     handlers = {
         ["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
             if result.diagnostics == nil then
@@ -81,45 +81,10 @@ require("typescript-tools").setup {
             filetypes = { "javascriptreact", "typescriptreact" },
         },
     },
-}
+})
 
--- lspconfig.tsserver.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     init_options = {
---         preferences = {
---             disableSuggestions = true,
---         },
---     },
---     handlers = {
---         ["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
---             if result.diagnostics == nil then
---                 return
---             end
---
---             -- ignore some tsserver diagnostics
---             local idx = 1
---             while idx <= #result.diagnostics do
---                 local entry = result.diagnostics[idx]
---
---                 local formatter = require("format-ts-errors")[entry.code]
---                 entry.message = formatter and formatter(entry.message) or entry.message
---
---                 -- codes: https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
---                 if entry.code == 80001 then
---                     -- { message = "File is a CommonJS module; it may be converted to an ES module.", }
---                     table.remove(result.diagnostics, idx)
---                 else
---                     idx = idx + 1
---                 end
---             end
---
---             vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
---         end,
---     },
--- }
-
-lspconfig.cssls.setup {
+lspconfig.cssls.setup({
+    on_attach = on_attach,
     capabilities = capabilities,
     settings = {
         css = {
@@ -128,9 +93,11 @@ lspconfig.cssls.setup {
             },
         },
     },
-}
+})
 
-lspconfig.tailwindcss.setup {
+lspconfig.tailwindcss.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         tailwindCSS = {
             classAttributes = {
@@ -152,7 +119,10 @@ lspconfig.tailwindcss.setup {
             experimental = {
                 classRegex = {
                     -- { "tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-                    { "tv\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)", "\"(.*?)\"" },
+                    {
+                        "tv\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)",
+                        '"(.*?)"',
+                    },
                 },
             },
             lint = {
@@ -167,9 +137,11 @@ lspconfig.tailwindcss.setup {
             validate = true,
         },
     },
-}
+})
 
-lspconfig.eslint.setup {
+lspconfig.eslint.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
     filetypes = {
         "javascript",
         "javascriptreact",
@@ -200,4 +172,4 @@ lspconfig.eslint.setup {
         run = "onSave",
         workingDirectory = { mode = "auto" },
     },
-}
+})

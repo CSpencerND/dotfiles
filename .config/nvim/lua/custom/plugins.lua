@@ -1,5 +1,5 @@
-local overrides = require "custom.configs.overrides"
-local home = vim.fn.expand "$HOME"
+local overrides = require("custom.configs.overrides")
+local home = vim.fn.expand("$HOME")
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -11,20 +11,21 @@ local plugins = {
         dependencies = {
             -- format & linting
             {
-                "jose-elias-alvarez/null-ls.nvim",
-                config = function()
-                    require "custom.configs.null-ls"
+                "nvimtools/none-ls.nvim",
+                event = "VeryLazy",
+                opts = function()
+                    return require("custom.configs.null-ls")
                 end,
             },
         },
         config = function()
-            require "plugins.configs.lspconfig"
-            require "custom.configs.lspconfig"
+            require("plugins.configs.lspconfig")
+            require("custom.configs.lspconfig")
             require("mason-lspconfig").setup()
 
-            vim.diagnostic.config {
+            vim.diagnostic.config({
                 virtual_text = false,
-            }
+            })
         end, -- Override to setup mason-lspconfig
     },
 
@@ -56,7 +57,19 @@ local plugins = {
         opts = overrides.treesitter,
         dependencies = {
             "JoosepAlviste/nvim-ts-context-commentstring",
-            "windwp/nvim-ts-autotag",
+            {
+                "windwp/nvim-ts-autotag",
+                ft = {
+                    "html",
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact",
+                },
+                config = function()
+                    require("nvim-ts-autotag").setup()
+                end,
+            },
         },
     },
 
@@ -75,10 +88,10 @@ local plugins = {
         "rcarriga/nvim-notify",
         lazy = false,
         config = function()
-            vim.notify = require "notify"
+            vim.notify = require("notify")
             require("telescope").load_extension("notify")
         end,
-        enabled = false
+        enabled = false,
     },
     {
         "pmizio/typescript-tools.nvim",
@@ -95,7 +108,7 @@ local plugins = {
         config = function()
             local colors = require("base46.themes.catppuccin").base_16
 
-            require("package-info").setup {
+            require("package-info").setup({
                 package_manager = "pnpm",
                 hide_up_to_date = false,
                 hide_unstable_versions = false,
@@ -110,23 +123,23 @@ local plugins = {
                         outdated = "|  ",
                     },
                 },
-            }
+            })
 
-            require("telescope").load_extension "package_info"
+            require("telescope").load_extension("package_info")
         end,
     },
     {
         "uga-rosa/ccc.nvim",
         event = "VeryLazy",
         config = function()
-            local ccc = require "ccc"
-            ccc.setup {
+            local ccc = require("ccc")
+            ccc.setup({
                 inputs = {
                     ccc.input.hsl,
                     ccc.input.rgb,
                     ccc.input.hex,
                 },
-            }
+            })
         end,
     },
     {
@@ -137,9 +150,9 @@ local plugins = {
         "jackMort/ChatGPT.nvim",
         event = "VeryLazy",
         config = function()
-            require("chatgpt").setup {
+            require("chatgpt").setup({
                 api_key_cmd = "gpg --decrypt " .. home .. "/.gpt.gpg",
-            }
+            })
         end,
         dependencies = {
             "MunifTanjim/nui.nvim",
@@ -151,7 +164,7 @@ local plugins = {
     {
         "nvimdev/lspsaga.nvim",
         config = function()
-            require("lspsaga").setup {}
+            require("lspsaga").setup({})
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
@@ -195,9 +208,9 @@ local plugins = {
         event = "VeryLazy",
         requires = { "nvim-treesitter" },
         config = function()
-            require("treesj").setup {
+            require("treesj").setup({
                 use_default_keymaps = false,
-            }
+            })
         end,
     },
     {
@@ -240,7 +253,7 @@ local plugins = {
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
         config = function()
-            require("nvim-surround").setup {
+            require("nvim-surround").setup({
                 keymaps = { -- vim-surround style keymaps
                     normal = "s",
                     visual = "s",
@@ -253,7 +266,7 @@ local plugins = {
                     normal_cur_line = nil,
                     visual_line = nil,
                 },
-            }
+            })
         end,
     },
     {
@@ -266,7 +279,7 @@ local plugins = {
         branch = "v2", -- optional but strongly recommended
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
-            require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
+            require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
         end,
     },
     {
@@ -289,9 +302,9 @@ local plugins = {
         "echasnovski/mini.animate",
         event = "VeryLazy",
         config = function()
-            require("mini.animate").setup {
+            require("mini.animate").setup({
                 scroll = { enable = false },
-            }
+            })
         end,
     },
     {
@@ -299,7 +312,7 @@ local plugins = {
         event = "VeryLazy",
         requires = "nvim-lua/plenary.nvim",
         config = function()
-            require("todo-comments").setup {}
+            require("todo-comments").setup({})
         end,
     },
     --     "zbirenbaum/copilot.lua",

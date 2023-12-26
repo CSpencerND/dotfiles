@@ -6,37 +6,13 @@ local highlights = require "custom.highlights"
 
 M.ui = {
     ------------------------------- base46 -------------------------------------
-    theme = "tokyodark",
-    theme_toggle = { "tokyodark", "one_light" },
-    -- changed_themes = {
-    --     tokyodark = {
-    --         base_16 = {
-    --             base00 = "#1f1f28"
-    --         }
-    --     },
-    --     tokyodark = {
-    --         base_16 = {
-    --             base00 = "#1f1f28"
-    --         }
-    --     }
-    -- },
+    theme = "catppuccin",
+    theme_toggle = { "catppuccin", "one_light" },
 
     hl_override = highlights.override,
     hl_add = highlights.add,
 
-    transparency = false,
-    lsp_semantic_tokens = true, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
-
-    extended_integrations = { "notify" }, -- these aren't compiled by default, ex: "alpha", "notify"
-
-    -- cmp themeing
-    cmp = {
-        icons = true,
-        lspkind_text = true,
-        style = "flat_dark", -- default/flat_light/flat_dark/atom/atom_colored
-        border_color = "grey_fg", -- only applicable for "default" style, use color names from base30 variables
-        selected_item_bg = "colored", -- colored / simple
-    },
+    lsp_semantic_tokens = true,
 
     telescope = { style = "bordered" }, -- borderless / bordered
 

@@ -1,6 +1,6 @@
 local M = {}
 
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 
 M.telescope = {
     defaults = {
@@ -17,26 +17,24 @@ M.telescope = {
     },
 }
 
-local cmp = require "cmp"
--- local tw = require "cmp_tailwind_colors"
-
+local cmp = require("cmp")
 M.cmp = {
     mapping = {
         ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
         ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 
-        ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { "i" }),
-        ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { "i" }),
+        ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+        ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
 
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(8),
         ["<C-u>"] = cmp.mapping.scroll_docs(-8),
 
-        ["<C-c>"] = cmp.mapping {
+        ["<C-c>"] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
-        },
+        }),
 
         ["<Tab>"] = {},
     },
@@ -44,7 +42,7 @@ M.cmp = {
     formatting = {
         format = function(entry, item)
             item = require("cmp-tailwind-colors").format(entry, item)
-            local icons = require "nvchad.icons.lspkind"
+            local icons = require("nvchad.icons.lspkind")
             if icons[item.kind] then
                 item.kind = icons[item.kind] .. item.kind
             end
@@ -68,20 +66,19 @@ M.treesitter = {
         "markdown",
         "markdown_inline",
     },
-    context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-        config = {
-            -- Languages that have a single comment style
-            typescript = "// %s",
-            css = "/* %s */",
-            scss = "/* %s */",
-            html = "<!-- %s -->",
-            svelte = "<!-- %s -->",
-            vue = "<!-- %s -->",
-            json = "",
-        },
-    },
+    -- context_commentstring = {
+    --     enable = true,
+    --     enable_autocmd = false,
+    --     config = {
+    --         typescript = "// %s",
+    --         css = "/* %s */",
+    --         scss = "/* %s */",
+    --         html = "<!-- %s -->",
+    --         svelte = "<!-- %s -->",
+    --         vue = "<!-- %s -->",
+    --         json = "",
+    --     },
+    -- },
     indent = {
         enable = true,
         disable = { "yaml", "python" },
@@ -151,7 +148,7 @@ M.mason = {
 }
 
 local function tree_on_attach(bufnr)
-    local api = require "nvim-tree.api"
+    local api = require("nvim-tree.api")
 
     local function opts(desc)
         return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -159,8 +156,8 @@ local function tree_on_attach(bufnr)
 
     api.config.mappings.default_on_attach(bufnr)
 
-    vim.keymap.set("n", "l", api.node.open.edit, opts "Open")
-    vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Close")
+    vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
+    vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close"))
 end
 
 M.nvimtree = {
@@ -189,7 +186,6 @@ M.nvimtree = {
             max = -1,
             padding = 2,
         },
-        hide_root_folder = false,
         signcolumn = "yes",
     },
     filters = {
