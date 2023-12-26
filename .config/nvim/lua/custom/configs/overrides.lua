@@ -66,19 +66,6 @@ M.treesitter = {
         "markdown",
         "markdown_inline",
     },
-    -- context_commentstring = {
-    --     enable = true,
-    --     enable_autocmd = false,
-    --     config = {
-    --         typescript = "// %s",
-    --         css = "/* %s */",
-    --         scss = "/* %s */",
-    --         html = "<!-- %s -->",
-    --         svelte = "<!-- %s -->",
-    --         vue = "<!-- %s -->",
-    --         json = "",
-    --     },
-    -- },
     indent = {
         enable = true,
         disable = { "yaml", "python" },
