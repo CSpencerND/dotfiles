@@ -42,6 +42,6 @@ opt.relativenumber = true -- set relative numbered lines
 opt.wrap = false -- display lines as one long line
 opt.title = true
 opt.titlestring = "%F - neovim"
-opt.colorcolumn = "96"
+opt.colorcolumn = "82"
 
-require "custom.configs.lspsaga"
+require("custom.configs.lspsaga")

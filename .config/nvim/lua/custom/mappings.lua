@@ -146,12 +146,25 @@ M.options = {
         ["<leader>or"] = { "<cmd> set rnu! <CR>", "Relative Numbers" },
         ["<leader>ol"] = { "<cmd> set cursorline! <CR>", "Cursorline" },
         ["<leader>ow"] = { "<cmd> set wrap! <CR>", "Wrap" },
+        ["<leader>oc"] = {
+            function()
+                local cc = vim.o.colorcolumn
+                if cc ~= "" then
+                    vim.cmd("set colorcolumn=")
+                    print("Colorcolumn turned off")
+                else
+                    vim.cmd("set colorcolumn=82")
+                    print("Colorcolumn set to 82")
+                end
+            end,
+            "Colorcolumn",
+        },
     },
 }
 
 M.general = {
     n = {
-        ["<leader>cc"] = { ":e " .. vim.fn.expand "~/.config/nvim/lua/custom/plugins.lua" .. "<CR>" },
+        ["<leader>cc"] = { ":e " .. vim.fn.expand("~/.config/nvim/lua/custom/plugins.lua") .. "<CR>" },
         ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Lazy Git" },
         ["<C-q>"] = { ":q <CR>" },
         ["<C-S-q>"] = { ":quitall <CR>" },
@@ -165,7 +178,7 @@ M.general = {
         },
         ["<leader>dd"] = {
             function()
-                vim.diagnostic.open_float { border = "rounded" }
+                vim.diagnostic.open_float({ border = "rounded" })
             end,
             "Floating Diagnostic",
         },
@@ -186,9 +199,9 @@ M.general = {
                 local config = vim.diagnostic.config
 
                 if config().virtual_text == true then
-                    config { virtual_text = false }
+                    config({ virtual_text = false })
                 else
-                    config { virtual_text = true }
+                    config({ virtual_text = true })
                 end
             end,
             "Virtual Text Toggle",
@@ -199,9 +212,9 @@ M.general = {
 
                 for _, v in ipairs(iskeyword) do
                     if v == "-" then
-                        vim.opt.iskeyword:remove "-"
+                        vim.opt.iskeyword:remove("-")
                     else
-                        vim.opt.iskeyword:append "-"
+                        vim.opt.iskeyword:append("-")
                     end
                 end
             end,
