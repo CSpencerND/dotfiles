@@ -249,7 +249,11 @@ local plugins = {
     },
     {
         "avneesh0612/react-nextjs-snippets",
-        event = "VeryLazy",
+        ft = {
+            "javascriptreact",
+            "typescriptreact",
+        },
+        event = "LspAttach",
     },
     {
         "marilari88/twoslash-queries.nvim",
