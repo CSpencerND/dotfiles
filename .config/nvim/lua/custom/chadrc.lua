@@ -2,12 +2,12 @@
 local M = {}
 
 -- Path to overriding theme and highlights files
-local highlights = require "custom.highlights"
+local highlights = require("custom.highlights")
 
 M.ui = {
     ------------------------------- base46 -------------------------------------
-    theme = "catppuccin",
-    theme_toggle = { "catppuccin", "one_light" },
+    theme = "tokyonight",
+    theme_toggle = { "tokyonight", "one_light" },
 
     hl_override = highlights.override,
     hl_add = highlights.add,
@@ -15,6 +15,8 @@ M.ui = {
     lsp_semantic_tokens = true,
 
     telescope = { style = "bordered" }, -- borderless / bordered
+
+    extended_integrations = { "notify" }, -- these aren't compiled by default, ex: "alpha", "notify"
 
     ------------------------------- nvchad_ui modules -----------------------------
     statusline = {
@@ -74,7 +76,7 @@ M.ui = {
         -- },
     },
 
-    cheatsheet = { theme = "grid" }, -- simple/grid
+    cheatsheet = { theme = "simple" }, -- simple/grid
 
     lsp = {
         -- show function signatures i.e args as you type
@@ -86,8 +88,16 @@ M.ui = {
 }
 
 M.plugins = "custom.plugins"
+M.lazy_nvim = {
+    ui = {
+        border = "rounded",
+    },
+    checker = {
+        enabled = true,
+    },
+}
 
 -- check core.mappings for table structure
-M.mappings = require "custom.mappings"
+M.mappings = require("custom.mappings")
 
 return M

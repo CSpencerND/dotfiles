@@ -100,10 +100,17 @@ local plugins = {
         "rcarriga/nvim-notify",
         lazy = false,
         config = function()
-            vim.notify = require("notify")
+            local notify = require("notify")
+            vim.notify = notify
             require("telescope").load_extension("notify")
+            notify.setup({
+                background_colour = "NotifyBackground",
+                fps = 60,
+                level = 3,
+                timeout = 3000,
+            })
         end,
-        enabled = false,
+        enabled = true,
     },
     {
         "pmizio/typescript-tools.nvim",
@@ -176,7 +183,16 @@ local plugins = {
     {
         "nvimdev/lspsaga.nvim",
         config = function()
-            require("lspsaga").setup({})
+            require("lspsaga").setup()
+            -- require("lspsaga").init_lsp_saga({
+            --     move_in_saga = { prev = "<C-k>", next = "<C-j>" },
+            --     finder_action_keys = {
+            --         open = "<CR>",
+            --     },
+            --     definition_action_keys = {
+            --         edit = "<CR>",
+            --     },
+            -- })
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",

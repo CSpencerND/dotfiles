@@ -43,5 +43,3 @@ opt.wrap = false -- display lines as one long line
 opt.title = true
 opt.titlestring = "%F - neovim"
 opt.colorcolumn = "82"
-
-require("custom.configs.lspsaga")
