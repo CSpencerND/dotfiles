@@ -45,7 +45,11 @@ run "slstatus"
 #     slstatus &
 # fi
 
-[[ $(xrandr -q | grep -c " connected") -gt 1 ]]; light -S 100
+if [[ $(xrandr -q | grep -c " connected") -gt 1 ]]; then
+	light -S 100
+else
+	light -S 50
+fi
 
 picom --config ~/.config/picom/picom.conf -b --experimental-backends &
 

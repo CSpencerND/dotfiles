@@ -66,6 +66,11 @@ M.treesitter = {
         "markdown",
         "markdown_inline",
     },
+    -- matchup = {
+    --     enable = true, -- mandatory, false will disable the whole extension
+    --     -- disable = { "c", "ruby" }, -- optional, list of language that will be disabled
+    --     -- [options]
+    -- },
     indent = {
         enable = true,
         disable = { "yaml", "python" },
@@ -92,7 +97,7 @@ M.treesitter = {
     playground = {
         enable = false,
         disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+        updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
         persist_queries = false, -- Whether the query persists across vim sessions
         keybindings = {
             toggle_query_editor = "o",
@@ -246,15 +251,15 @@ M.nvimtree = {
 
 M.colorizer = {
     user_default_options = {
-        css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        names = false, -- "Name" codes like Blue or blue
-        RGB = true, -- #RGB hex codes
-        RRGGBB = true, -- #RRGGBB hex codes
-        RRGGBBAA = true, -- #RRGGBBAA hex codes
-        AARRGGBB = true, -- 0xAARRGGBB hex codes
-        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-        rgb_fn = true, -- CSS rgb() and rgba() functions
-        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = false,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        names = false,    -- "Name" codes like Blue or blue
+        RGB = true,       -- #RGB hex codes
+        RRGGBB = true,    -- #RRGGBB hex codes
+        RRGGBBAA = true,  -- #RRGGBBAA hex codes
+        AARRGGBB = true,  -- 0xAARRGGBB hex codes
+        css_fn = true,    -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        rgb_fn = true,    -- CSS rgb() and rgba() functions
+        hsl_fn = true,    -- CSS hsl() and hsla() functions
         tailwind = "lsp", -- "normal" / "lsp" / "both"
     },
 }

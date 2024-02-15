@@ -1,5 +1,7 @@
 #!/bin/sh
 
+alias prettier="prettier --experimental-ternaries"
+
 ### Fix obvious typos
 alias cd..="cd .."
 alias pdw="pwd"

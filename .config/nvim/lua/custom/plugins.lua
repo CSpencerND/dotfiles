@@ -243,10 +243,11 @@ local plugins = {
     },
     {
         "andymass/vim-matchup",
-        event = "CursorMoved",
+        event = "VeryLazy",
         config = function()
             vim.g.matchup_matchparen_offscreen = { method = "popup" }
         end,
+        enabled = false,
     },
     {
         "max397574/better-escape.nvim",
