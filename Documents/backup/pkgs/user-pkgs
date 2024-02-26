@@ -138,6 +138,7 @@ polkit-gnome-0.106-0.13.20170423gita0763a2.fc38.x86_64
 polychromatic-0.8.3-1.1.noarch
 portaudio-19-40.fc38.x86_64
 portmidi-217-51.fc38.x86_64
+postgresql-15.4-1.fc38.x86_64
 python2-cairo-devel-1.18.2-13.fc38.x86_64
 python3-gexiv2-0.14.2-1.fc38.noarch
 python3-pip-22.3.1-3.fc38.noarch
