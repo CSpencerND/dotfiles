@@ -16,6 +16,9 @@ local plugins = {
                 opts = function()
                     return require("custom.configs.null-ls")
                 end,
+                dependencies = {
+                    "gbprod/none-ls-shellcheck.nvim",
+                },
             },
         },
         config = function()
@@ -29,6 +32,18 @@ local plugins = {
         end, -- Override to setup mason-lspconfig
     },
 
+    -- {
+    --     "nvimtools/none-ls.nvim",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         -- require("null-ls").register(require("none-ls-shellcheck.diagnostics"))
+    --         -- require("null-ls").register(require("none-ls-shellcheck.code_actions"))
+    --         return require("custom.configs.null-ls")
+    --     end,
+    --     dependencies = {
+    --         "gbprod/none-ls-shellcheck.nvim",
+    --     },
+    -- },
     -------------------------------------------------------------------------------------------
     -- override plugin configs ----------------------------------------------------------------
     {
