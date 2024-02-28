@@ -5,7 +5,7 @@ local capabilities = base.capabilities
 local lspconfig = require("lspconfig")
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "prismals", "jsonls", "clangd", "astro" }
+local servers = { "html", "prismals", "jsonls", "astro" }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup({
@@ -174,5 +174,14 @@ lspconfig.eslint.setup({
         packageManager = "pnpm",
         run = "onSave",
         workingDirectory = { mode = "auto" },
+    },
+})
+
+lspconfig.clangd.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
     },
 })
