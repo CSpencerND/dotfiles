@@ -9,7 +9,7 @@ local opts = {
         format.prettierd,
         format.stylua,
         format.shfmt,
-        lint.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
+        -- lint.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
         format.clang_format,
     },
     on_attach = function(client, bufnr)

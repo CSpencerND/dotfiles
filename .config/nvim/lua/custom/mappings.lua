@@ -5,6 +5,12 @@ local opts = { noremap = true, silent = true }
 
 M.disabled = {}
 
+-- M.misc = {
+--     i = {
+--         ["phi"] = { "φ<C-r>z" },
+--     },
+-- }
+
 M.typescript = {
     n = {
         ["<leader>lo"] = { "<cmd>TSToolsOrganizeImports<cr>", "OrganizeImports" },
@@ -164,6 +170,9 @@ M.options = {
 
 M.general = {
     n = {
+        ["<leader>ot"] = { "<cmd> Twilight <CR>" },
+        ["<leader>oz"] = { "<cmd> ZenMode <CR>" },
+        ["<leader>cd"] = { "<cmd> cd %:h <CR> <cmd> pwd <CR>", "cd into current file" },
         ["<leader>cc"] = { ":e " .. vim.fn.expand("~/.config/nvim/lua/custom/plugins.lua") .. "<CR>" },
         ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Lazy Git" },
         ["<C-q>"] = { ":q <CR>" },

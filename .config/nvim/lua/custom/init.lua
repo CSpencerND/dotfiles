@@ -3,6 +3,14 @@ vim.g.vscode_snippets_path = "/home/cs/.config/nvim/lua/custom/snippets/"
 -- Autocommands ------------------------------
 local autocmd = vim.api.nvim_create_autocmd
 
+autocmd("TextYankPost", {
+    desc = "Highlight when yanking text",
+    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
 autocmd("VimResized", {
     pattern = "*",
     command = "tabdo wincmd =",
@@ -42,6 +50,6 @@ opt.relativenumber = true -- set relative numbered lines
 opt.wrap = false          -- display lines as one long line
 opt.title = true
 opt.titlestring = "%F - neovim"
-opt.colorcolumn = "82"
+opt.colorcolumn = "72"
 
 vim.g.nonels_supress_issue58 = true

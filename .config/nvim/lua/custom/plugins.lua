@@ -339,6 +339,10 @@ local plugins = {
         event = "VeryLazy",
     },
     {
+        "folke/twilight.nvim",
+        event = "VeryLazy",
+    },
+    {
         "folke/zen-mode.nvim",
         event = "VeryLazy",
     },
