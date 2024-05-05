@@ -9,8 +9,9 @@ local opts = {
         format.prettierd,
         format.stylua,
         format.shfmt,
+        format.black,
+        -- format.clang_format,
         -- lint.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
-        format.clang_format,
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
