@@ -17,7 +17,7 @@ super + Return
 super + shift + n
     noticenter
 
-super + space
+super + shift + space
     hotkeys.sh
 
 super + space
