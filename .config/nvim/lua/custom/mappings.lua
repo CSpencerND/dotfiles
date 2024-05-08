@@ -116,6 +116,7 @@ M.editing = {
         [">"] = { ">gv", "Indent Right", opts = opts },
         ["p"] = { '"_dP', opts = opts },
         ["x"] = { '"_x', opts = opts },
+        ["<leader>i"] = { "!tac <CR>", opts = opts, "invert selection" },
     },
     x = {
         ["J"] = { ":move '>+1<CR>gv-gv", opts = opts },
