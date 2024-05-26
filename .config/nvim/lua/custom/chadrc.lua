@@ -6,15 +6,15 @@ local highlights = require("custom.highlights")
 
 M.ui = {
     ------------------------------- base46 -------------------------------------
-    theme = "kanagawa",
-    theme_toggle = { "kanagawa", "one_light" },
+    theme = "chadracula",
+    theme_toggle = { "chadracula", "chadracula" },
 
     hl_override = highlights.override,
     hl_add = highlights.add,
 
     lsp_semantic_tokens = true,
 
-    telescope = { style = "bordered" }, -- borderless / bordered
+    telescope = { style = "bordered" },   -- borderless / bordered
 
     extended_integrations = { "notify" }, -- these aren't compiled by default, ex: "alpha", "notify"
 
