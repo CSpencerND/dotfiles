@@ -1,6 +1,3 @@
 .backup
-<<<<<<< HEAD
-~/.config/npm/*
-=======
 ~/.config/npm/npmrc
->>>>>>> a0dd24f1 (add npmrc to gitignore)
+npmrc
