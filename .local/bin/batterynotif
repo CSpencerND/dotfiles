@@ -1,15 +1,48 @@
 #!/usr/bin/env bash
 
-while true; do
-	ac=$(cat /sys/class/power_supply/AC/online)
-	if [ "$ac" -eq 1 ]; then
-		continue
+POWER_PATH="/sys/class/power_supply"
+AC_FILE="$POWER_PATH/AC/online"
+BAT_FILE="$POWER_PATH/BAT0/capacity"
+WARNING_SOUND="$HOME/Music/warning-notification.wav"
+
+do_files_exist() {
+	if [ ! -f "$AC_FILE" ]; then
+		echo "AC power status file not found."
+		exit 1
 	fi
-	bat=$(cat /sys/class/power_supply/BAT0/capacity)
-	notify-send "🔋 Battery $bat%"
-	if [ "$bat" -le 42 ]; then
-		notify-send -u critical -t 5000 "🔋 Plug in the charger!"
-		mpv ~/Music/warning-notification.wav
+
+	if [ ! -f "$BAT_FILE" ]; then
+		echo "Battery capacity file not found."
+		exit 1
 	fi
-	sleep 5m
-done
+}
+
+run() {
+	while true; do
+		ac=$(cat "$AC_FILE")
+
+		if [ "$ac" -eq 1 ]; then
+			sleep 8m
+			continue
+		fi
+
+		bat=$(cat "$BAT_FILE")
+
+		if [ "$bat" -le 34 ]; then
+			notify-send -u critical -t 5000 "🔋 Plug in the charger!"
+
+			if command -v mpv &>/dev/null && [ -f "$WARNING_SOUND" ]; then
+				mpv "$WARNING_SOUND"
+			fi
+		fi
+
+		sleep 8m
+	done
+}
+
+main() {
+	do_files_exist
+	run
+}
+
+main

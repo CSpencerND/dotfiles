@@ -70,34 +70,6 @@ local plugins = {
     {
         "nvim-treesitter/nvim-treesitter",
         opts = overrides.treesitter,
-        dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            {
-                "windwp/nvim-ts-autotag",
-                ft = {
-                    "html",
-                    "javascript",
-                    "javascriptreact",
-                    "typescript",
-                    "typescriptreact",
-                },
-                config = function()
-                    require("nvim-ts-autotag").setup()
-                    -- require("ts_context_commentstring").setup({
-                    --     enable_autocmd = false,
-                    --     languages = {
-                    --         typescript = "// %s",
-                    --         css = "/* %s */",
-                    --         scss = "/* %s */",
-                    --         html = "<!-- %s -->",
-                    --         svelte = "<!-- %s -->",
-                    --         vue = "<!-- %s -->",
-                    --         json = "",
-                    --     },
-                    -- })
-                end,
-            },
-        },
     },
 
     {
@@ -111,6 +83,35 @@ local plugins = {
 
     -------------------------------------------------------------------------------------------
     -- Install a plugin -----------------------------------------------------------------------
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    {
+        "windwp/nvim-ts-autotag",
+        ft = {
+            "html",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+        },
+        config = function()
+            require("nvim-ts-autotag").setup({
+                opts = {
+                    -- Defaults
+                    enable_close = true,
+                    enable_rename = true,
+                    enable_close_on_slash = false,
+                },
+                -- Also override individual filetype configs, these take priority.
+                -- Empty by default, useful if one of the "opts" global settings
+                -- doesn't work well in a specific filetype
+                -- per_filetype = {
+                --     ["html"] = {
+                --         enable_close = false,
+                --     },
+                -- },
+            })
+        end,
+    },
     {
         "rcarriga/nvim-notify",
         lazy = false,

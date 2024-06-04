@@ -75,10 +75,10 @@ M.treesitter = {
         enable = true,
         disable = { "yaml", "python" },
     },
-    autotag = {
-        enable = true,
-        enable_close_on_slash = false,
-    },
+    -- autotag = {
+    --     enable = true,
+    --     enable_close_on_slash = false,
+    -- },
     textobjects = {
         swap = {
             enable = false,
