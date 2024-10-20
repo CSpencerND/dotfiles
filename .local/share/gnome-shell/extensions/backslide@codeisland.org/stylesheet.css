@@ -14,3 +14,8 @@
 .untoggled {
     color: #808080;
 }
+
+.middle-aligned {
+    text-align: center;
+    span: -1;
+}

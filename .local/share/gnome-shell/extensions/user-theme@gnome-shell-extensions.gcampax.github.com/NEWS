@@ -1,3 +1,129 @@
+46.2
+====
+* apps-menu: Fix a11y of category labels [Florian; !319]
+* window-list: Fix long-press support [Florian; !320]
+* Misc. bug fixes and cleanups [Florian; !324]
+
+Contributors:
+  Florian Müllner
+
+Translators:
+  Hugo Carvalho [pt], Jose Riha [sk], Jordi Mas i Hernandez [ca],
+  Scrambled 777 [hi]
+
+46.1
+====
+* screenshot-window-sizer: Add flathub-recommended size [Florian; !317]
+
+Contributors:
+  Florian Müllner
+
+Translators:
+  Rachida SACI [kab], Matheus Polkorny [pt_BR], Fabio Tomat [fur]
+
+46.0
+====
+* system-monitor: Fix net speed [Florian; !313]
+* Misc. bug fixes and cleanups [Aral; !311]
+
+Contributors:
+  Aral Balkan, Florian Müllner
+
+Translators:
+  Anders Jonsson [sv], Piotr Drąg [pl], Balázs Úr [hu], Milo Casagrande [it],
+  Quentin PAGÈS [oc], Athmane MOKRAOUI [kab], Changwoo Ryu [ko],
+  Ask Hjorth Larsen [da]
+
+46.rc
+=====
+* Fix window previews in workspace indicator [Florian; !304]
+* Fix menu ornament in workspace indicator [Florian; !305]
+* Misc. bug fixes and cleanups [Florian; !306, !309]
+
+Contributors:
+  Florian Müllner
+
+Translators:
+  Danial Behzadi [fa], Ekaterine Papava [ka], Sabri Ünal [tr], Artur S0 [ru],
+  Yuri Chornoivan [uk], Vasil Pupkin [be], Asier Sarasua Garmendia [eu],
+  Yaron Shahrabani [he], Brage Fuglseth [nb], Nathan Follens [nl],
+  Aurimas Černius [lt], Matej Urbančič [sl], Boyuan Yang [zh_CN],
+  Kukuh Syafaat [id], Fran Dieguez [gl], Andi Chandler [en_GB],
+  Baurzhan Muftakhidinov [kk], Rūdolfs Mazurs [lv], Guillaume Bernard [fr],
+  Daniel Mustieles [es], Jiri Grönroos [fi]
+
+46.beta
+=======
+* apps-menu: Rename Applications to Apps [Allan; !299]
+* Misc. bug fixes and cleanups [Florian; !296, !297, !300, !301, !302]
+
+Contributors:
+  Allan Day, Florian Müllner
+
+Translators:
+  Gabriel Brand [de], Daniel Rusek [cs], Fran Dieguez [gl],
+  Aefgh Threenine [th], Vasil Pupkin [be], Artur S0 [ru], Yosef Or Boczko [he],
+  Sabri Ünal [tr]
+
+46.alpha
+========
+* workspace-indicator: Fix initial preview visibility [Florian; !280, !292]
+* screenshot-window-sizer: Fix cycling between sizes backwards [Florian; !284]
+* Add back overview in Classic session [Florian; !287]
+* Allow running Classic session headless [Jonas; !289]
+* window-list: Fix buttons not being clickable at the screen edge
+  [Florian; !291]
+* Add system-monitor extension [Florian; !277]
+* Fixed crash [Florian; !290]
+* Misc. bug fixes and cleanups [Florian; !276, !275, !278, !281, !286, !288]
+
+Contributors:
+  Jonas Ådahl, Florian Müllner
+
+Translators:
+  Kristjan SCHMIDT [eo], Brage Fuglseth [nb]
+
+45.0
+====
+
+Contributors:
+  Andre Klapper
+
+Translators:
+  Bruce Cowan [en_GB]
+
+45.rc
+=====
+* Misc. bug fixes and cleanups [Florian; !267, !224, !272]
+
+Contributors:
+  Florian Müllner
+
+Translators:
+  Sabri Ünal [tr], Florentina Musat [ro], A S Alam [pa]
+
+45.beta
+=======
+* Port extensions to ESM [Florian; !259, !266, !268, !269]
+* Misc. bug fixes and cleanups [Florian; !260, !261, !262, !263, !264]
+
+Contributors:
+  Florian Müllner
+
+Translators:
+  Efstathios Iosifidis [el]
+
+45.alpha
+========
+* window-list: Modernize default styling [Alexander; !253]
+* Replace classic styling with built-in light style [Florian; !254]
+* window-list: Add tooltip for long window titles [Arik; !251]
+* light-style: New extension [Florian; !256]
+* Misc. bug fixes and cleanups [Florian; !255, !257]
+
+Contributors:
+  Florian Müllner, Arik W, Alexander Weichart
+
 44.0
 ====
 * Bump version

@@ -16,30 +16,29 @@
  * You should have received a copy of the GNU General Public License
  * along with Backslide.  If not, see <http://www.gnu.org/licenses/>.
 */
-const Gio = imports.gi.Gio;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
+import Gio from 'gi://Gio';
 
-var KEY_DELAY = "delay";
-var KEY_RANDOM = "random";
-var KEY_IMAGE_LIST = "image-list";
-var KEY_WALLPAPER = "picture-uri";
-var KEY_WALLPAPER_DARK = "picture-uri-dark";
-var KEY_ELAPSED_TIME = "elapsed-time";
-var KEY_CHANGE_LOCKSCREEN = "change-lockscreen";
+export const KEY_DELAY = "delay";
+export const KEY_RANDOM = "random";
+export const KEY_IMAGE_LIST = "image-list";
+export const KEY_WALLPAPER = "picture-uri";
+export const KEY_WALLPAPER_DARK = "picture-uri-dark";
+export const KEY_ELAPSED_TIME = "elapsed-time";
+export const KEY_CHANGE_LOCKSCREEN = "change-lockscreen";
 
-var DELAY_MINUTES_MIN = 1;
-var DELAY_MINUTES_DEFAULT = 5;
-var DELAY_HOURS_MAX = 48;
-var DELAY_MINUTES_MAX = DELAY_HOURS_MAX * 60;
+export const DELAY_MINUTES_MIN = 1;
+export const DELAY_MINUTES_DEFAULT = 5;
+export const DELAY_HOURS_MAX = 48;
+export const DELAY_MINUTES_MAX = DELAY_HOURS_MAX * 60;
 
-var valid_minutes = function(minutes) {
+export function valid_minutes(minutes) {
     return minutes >= DELAY_MINUTES_MIN && minutes <= DELAY_MINUTES_MAX;
 }
 
 /**
  * This class takes care of reading/writing the settings from/to the GSettings backend.
  */
-var Settings = class Settings {
+export class Settings {
 
     static _schemaName = "org.gnome.shell.extensions.backslide";
 
@@ -47,17 +46,8 @@ var Settings = class Settings {
      * Creates a new Settings-object to access the settings of this extension.
      * @private
      */
-    constructor() {
-        let schemaDir = Me.dir.get_child('schemas').get_path();
-
-        let schemaSource = Gio.SettingsSchemaSource.new_from_directory(
-            schemaDir, Gio.SettingsSchemaSource.get_default(), false
-        );
-        let schema = schemaSource.lookup(Settings._schemaName, false);
-
-        this._setting = new Gio.Settings({
-            settings_schema: schema
-        });
+    constructor(extension) {
+        this._setting = extension.getSettings();
         this._background_setting = new Gio.Settings({
             schema: "org.gnome.desktop.background"
         });

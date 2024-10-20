@@ -44,7 +44,7 @@ if ! pnpm add -D "${development_dependencies[@]}"; then
 fi
 
 echo "Creating prettier.config.js..."
-cat >prettier.config.js <<EOF
+cat >.prettierrc.js <<EOF
 /** @type {import("prettier").Config} */
 module.exports = {
     tabWidth: 4,

@@ -51,7 +51,8 @@ else
 	light -S 50
 fi
 
-picom --config ~/.config/picom/picom.conf -b --experimental-backends &
+# picom --config ~/.config/picom/picom.conf -b --experimental-backends &
+/usr/bin/picom --config ~/.config/picom/picom.conf &
 
 /home/"$USER"/.local/statusbar/thermals.sh
 /home/"$USER"/.local/statusbar/weather.py &

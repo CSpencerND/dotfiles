@@ -4,11 +4,12 @@
   "gettext-domain": "backslide",
   "name": "BackSlide",
   "original-author": "Lukas Knuth",
+  "settings-schema": "org.gnome.shell.extensions.backslide",
   "shell-version": [
-    "43",
-    "44"
+    "46",
+    "47"
   ],
   "url": "https://gitlab.com/p91paul/BackSlide",
   "uuid": "backslide@codeisland.org",
-  "version": 28
+  "version": 33
 }

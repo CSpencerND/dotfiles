@@ -22,34 +22,33 @@
 // modifications. Dash to Dock is distributed under the terms of the GNU
 // General Public License, version 2 or later.
 
-const GLib = imports.gi.GLib;
-const Meta = imports.gi.Meta;
-const Shell = imports.gi.Shell;
+import GLib from 'gi://GLib';
+import Meta from 'gi://Meta';
+import Shell from 'gi://Shell';
 
-const Main = imports.ui.main;
-const Signals = imports.signals;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as Signals from 'resource:///org/gnome/shell/misc/signals.js';
 
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
+import * as Convenience from './convenience.js';
 
 // A good compromise between reactivity and efficiency; to be tuned.
-const INTELLIHIDE_CHECK_INTERVAL = 100;
+export const INTELLIHIDE_CHECK_INTERVAL = 100;
 
-const OverlapStatus = {
+export const OverlapStatus = {
     UNDEFINED: -1,
     FALSE: 0,
     TRUE: 1
 };
 
-const IntellihideMode = {
+export const IntellihideMode = {
     ALL_WINDOWS: 0,
     FOCUS_APPLICATION_WINDOWS: 1,
     MAXIMIZED_WINDOWS : 2
 };
 
-// List of windows type taken into account. Order is important (keep the original
-// enum order).
-const handledWindowTypes = [
+// List of windows type taken into account. Order is important (keep the
+// original enum order).
+export const handledWindowTypes = [
     Meta.WindowType.NORMAL,
     Meta.WindowType.DOCK,
     Meta.WindowType.DIALOG,
@@ -65,17 +64,23 @@ const handledWindowTypes = [
  * Intallihide object: emit 'status-changed' signal when the overlap of windows
  * with the provided targetBoxClutter.ActorBox changes;
  */
-var Intellihide = class HideTopBar_Intellihide {
+export class Intellihide extends Signals.EventEmitter {
 
     constructor(settings, monitorIndex) {
+        super();
+
         // Load settings
         this._settings = settings;
         this._monitorIndex = monitorIndex;
 
         this._signalsHandler = new Convenience.GlobalSignalsHandler();
         this._tracker = Shell.WindowTracker.get_default();
-        this._focusApp = null; // The application whose window is focused.
-        this._topApp = null; // The application whose window is on top on the monitor with the dock.
+
+        // The application whose window is focused.
+        this._focusApp = null;
+
+        // The application whose window is on top on the monitor with the panel.
+        this._topApp = null;
 
         this._isEnabled = false;
         this._status = OverlapStatus.UNDEFINED;
@@ -109,12 +114,14 @@ var Intellihide = class HideTopBar_Intellihide {
             this._checkOverlap.bind(this)
         ], [
             // when windows are alwasy on top, the focus window can change
-            // without the windows being restacked. Thus monitor window focus change.
+            // without the windows being restacked. Thus monitor window focus
+            // change.
             this._tracker,
             'notify::focus-app',
             this._checkOverlap.bind(this)
         ], [
-            // updates when monitor changes, for instance in multimonitor, when monitors are attached
+            // updates when monitor changes, for instance in multimonitor, when
+            // monitors are attached
             Convenience.getMonitorManager(),
             'monitors-changed',
             this._checkOverlap.bind(this)
@@ -159,7 +166,9 @@ var Intellihide = class HideTopBar_Intellihide {
     _addWindowSignals(wa) {
         if (!this._handledWindow(wa))
             return;
-        let signalId = wa.connect('notify::allocation', this._checkOverlap.bind(this));
+        let signalId = wa.connect(
+            'notify::allocation', this._checkOverlap.bind(this)
+        );
         this._trackedWindows.set(wa, signalId);
         wa.connect('destroy', this._removeWindowSignals.bind(this));
     }
@@ -221,15 +230,19 @@ var Intellihide = class HideTopBar_Intellihide {
         if (windows.length > 0) {
             /*
              * Get the top window on the monitor where the dock is placed.
-             * The idea is that we dont want to overlap with the windows of the topmost application,
-             * event is it's not the focused app -- for instance because in multimonitor the user
-             * select a window in the secondary monitor.
+             * The idea is that we dont want to overlap with the windows of the
+             * topmost application, event is it's not the focused app -- for
+             * instance because in multimonitor the user select a window in the
+             * secondary monitor.
              */
 
             let topWindow = null;
             for (let i = windows.length - 1; i >= 0; i--) {
                 let meta_win = windows[i].get_meta_window();
-                if (this._handledWindow(windows[i]) && (meta_win.get_monitor() == this._monitorIndex)) {
+                if (
+                    this._handledWindow(windows[i])
+                    && (meta_win.get_monitor() == this._monitorIndex)
+                ) {
                     topWindow = meta_win;
                     break;
                 }
@@ -240,7 +253,9 @@ var Intellihide = class HideTopBar_Intellihide {
                 // If there isn't a focused app, use that of the window on top
                 this._focusApp = this._tracker.focus_app || this._topApp
 
-                windows = windows.filter(this._intellihideFilterInteresting, this);
+                windows = windows.filter(
+                    this._intellihideFilterInteresting, this,
+                );
 
                 for (let i = 0;  i < windows.length; i++) {
                     let win = windows[i].get_meta_window();
@@ -287,7 +302,9 @@ var Intellihide = class HideTopBar_Intellihide {
         if (!this._handledWindow(wa))
             return false;
 
-        let currentWorkspace = global.workspace_manager.get_active_workspace_index();
+        let currentWorkspace = (
+            global.workspace_manager.get_active_workspace_index()
+        );
         let wksp = meta_win.get_workspace();
         let wksp_index = wksp.index();
 
@@ -295,8 +312,8 @@ var Intellihide = class HideTopBar_Intellihide {
         if (this._settings.get_boolean('enable-active-window')) {
                 // Skip windows of other apps
                 if (this._focusApp) {
-                    // The DropDownTerminal extension is not an application per se
-                    // so we match its window by wm class instead
+                    // The DropDownTerminal extension is not an application per
+                    // se so we match its window by wm class instead
                     if (meta_win.get_wm_class() == 'DropDownTerminalWindow')
                         return true;
 
@@ -305,20 +322,35 @@ var Intellihide = class HideTopBar_Intellihide {
 
                     // Consider half maximized windows side by side
                     // and windows which are alwayson top
-                    if((currentApp != this._focusApp) && (currentApp != this._topApp)
-                        && !((focusWindow && focusWindow.maximized_vertically && !focusWindow.maximized_horizontally)
-                              && (meta_win.maximized_vertically && !meta_win.maximized_horizontally)
-                              && meta_win.get_monitor() == focusWindow.get_monitor())
-                        && !meta_win.is_above())
+                    if(
+                        (currentApp != this._focusApp)
+                        && (currentApp != this._topApp)
+                        && !(
+                            focusWindow
+                            && focusWindow.maximized_vertically
+                            && !focusWindow.maximized_horizontally
+                            && meta_win.maximized_vertically
+                            && !meta_win.maximized_horizontally
+                            && (
+                                meta_win.get_monitor()
+                                == focusWindow.get_monitor()
+                            )
+                        )
+                        && !meta_win.is_above()
+                    ) {
                         return false;
+                    }
                 }
         }
 
-        if ( wksp_index == currentWorkspace && meta_win.showing_on_its_workspace() )
+        if (
+            wksp_index == currentWorkspace
+            && meta_win.showing_on_its_workspace()
+        ) {
             return true;
-        else
+        } else {
             return false;
-
+        }
     }
 
     // Filter windows by type
@@ -341,7 +373,7 @@ var Intellihide = class HideTopBar_Intellihide {
 
         let wtype = metaWindow.get_window_type();
         for (let i = 0; i < handledWindowTypes.length; i++) {
-            var hwtype = handledWindowTypes[i];
+            let hwtype = handledWindowTypes[i];
             if (hwtype == wtype)
                 return true;
             else if (hwtype > wtype)
@@ -350,5 +382,3 @@ var Intellihide = class HideTopBar_Intellihide {
         return false;
     }
 };
-
-Signals.addSignalMethods(Intellihide.prototype);

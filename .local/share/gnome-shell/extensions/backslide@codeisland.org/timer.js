@@ -16,9 +16,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Backslide.  If not, see <http://www.gnu.org/licenses/>.
 */
-const GLib = imports.gi.GLib;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Pref = Me.imports.settings;
+import GLib from 'gi://GLib';
+import * as Pref from './settings.js';
 
 /**
  * A simple interface for a timer which will call the given callback-function in
@@ -42,7 +41,7 @@ const Pref = Me.imports.settings;
  *     </li>
  * </ul>
  */
-var Timer = class Timer {
+export class Timer {
 
     /**
      * Create a new timer (doesn't start it). To be usefull, you also need to specify a
@@ -50,8 +49,8 @@ var Timer = class Timer {
      * @see #setCallback
      * @private
      */
-    constructor(){
-        this._settings = new Pref.Settings();
+    constructor(extension){
+        this._settings = new Pref.Settings(extension);
         this._delay = this._settings.getDelay();
         this._elapsed_minutes = this._settings.getElapsedTime();
         // Listen to changes and restart with new delay.

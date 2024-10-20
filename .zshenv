@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export BROWSER="firefox"
+# export BROWSER="firefox"
 export XDG_CURRENT_DESKTOP="dwm"
 
 # XDG Compliance

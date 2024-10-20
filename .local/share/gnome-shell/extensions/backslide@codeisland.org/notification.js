@@ -16,65 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with Backslide.  If not, see <http://www.gnu.org/licenses/>.
 */
-const MessageTray = imports.ui.messageTray;
-const St = imports.gi.St;
-const Main = imports.ui.main;
+
+import St from 'gi://St';
+import * as MessageTray from 'resource:///org/gnome/shell/ui/messageTray.js';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 /**
  * A simple to use class for showing notifications.
  */
-var Notification = class Notification {
-
-    constructor(){
-        this._source = new SimpleSource("BackSlide", "dialog-error");
-    }
+export class Notification {
 
     /**
      * Issue a simple notification.
      * @param title the notification-title
-     * @param banner_text the text for the banner
-     * @param body the body-text (larger).
+     * @param body the notification text.
      */
-    notify(title, banner_text, body){
-        Main.messageTray.add(this._source.source);
-        let notification = new MessageTray.Notification(this._source, title, banner_text,
-            {
-                body: body,
-                bodyMarkup: true
-            }
-        );
-        this._source.notify(notification);
-    }
-}
+    notify(title, body){
 
-/**
- * A simple source-implementation for notifying new Notifications.
- */
-var SimpleSource = class SimpleSource {
-
-    /**
-     * Create a new simple source for notifications.
-     * @param title the title
-     * @param icon_name the image to show with the notifications.
-     * @private
-     */
-    constructor(title, icon_name){
-        this.source = new MessageTray.Source(title, icon_name);
-        this._icon_name = icon_name;
-    }
-
-    createNotificationIcon() {
-        let iconBox = new St.Icon({
-            icon_name: this._icon_name,
-            icon_size: 48
+        const source = MessageTray.getSystemSource();
+        const notification = new MessageTray.Notification({
+            source,
+            title: title,
+            body: body,
+            bodyMarkup: true
         });
-        if (St.IconType !== undefined){
-            iconBox.icon_type = St.IconType.FULLCOLOR; // Backwards compatibility with 3.4
-        }
-        return iconBox;
-    }
-
-    open() {
-        this.destroy();
+        notification.setIconName("dialog-error");
+        source.addNotification(notification);
     }
 }

@@ -73,8 +73,8 @@ run_cmd() {
 		elif [[ $1 == '--suspend' ]]; then
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
-			logout
-			# pkill -u $USER
+			# loginctl terminate-session $XDG_SESSION_ID
+			pkill -u $USER
 		fi
 	else
 		exit 0

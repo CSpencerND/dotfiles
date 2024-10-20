@@ -16,13 +16,10 @@
  * You should have received a copy of the GNU General Public License
  * along with Backslide.  If not, see <http://www.gnu.org/licenses/>.
 */
-const GLib = imports.gi.GLib;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Pref = Me.imports.settings;
-const Notify = Me.imports.notification;
-
-const Gettext = imports.gettext.domain('backslide');
-const _ = Gettext.gettext;
+import GLib from 'gi://GLib';
+import * as Pref from './settings.js';
+import * as Notify from './notification.js';
+import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
 /**
  * This is where the list of wallpapers is maintained and the current
@@ -30,14 +27,14 @@ const _ = Gettext.gettext;
  * This also includes jumping to next/previous wallpaper.
  * All Wallpaper-functionality is bundled in this class.
  */
-var Wallpaper = class Wallpaper {
+export class Wallpaper {
 
     /**
      * Constructs a new class to do all the wallpaper-related work.
      * @private
      */
-    constructor(){
-        this._settings = new Pref.Settings();
+    constructor(extension){
+        this._settings = new Pref.Settings(extension);
         this._notify = new Notify.Notification();
         this._image_queue = [];
         this._is_random = false;
@@ -232,7 +229,7 @@ var Wallpaper = class Wallpaper {
             }
             this._notify.notify(
                 "BackSlide Wallpaper Error",
-                _("The following images where invalid (not found or not image-types) and have been removed:"),
+                _("The following images where invalid (not found or not image-types) and have been removed:\n") +
                 body
             );
         }
