@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+main() {
+  if [ -z "$1" ]; then
+    echo "Usage: $0 <search_pattern>"
+    return 1
+  fi
+
+  sudo btrfs subvolume list /.snapshots | awk '{print $9}' | while read -r snapshot; do
+    if [[ "$snapshot" =~ "$1" ]]; then
+      sudo btrfs subvolume delete "/.snapshots/$snapshot"
+      if [ $? -eq 0 ]; then
+        echo "Deleted: $snapshot"
+      else
+        echo "Failed to delete: $snapshot"
+      fi
+    fi
+  done
+
+  sudo btrfs filesystem sync /
+  echo "Btrfs filesystem synced."
+}
+
+main "$1"
